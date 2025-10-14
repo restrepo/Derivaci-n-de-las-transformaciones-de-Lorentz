@@ -21,6 +21,8 @@
     pdfpagemode=UseOutlines,
 }
 \usepackage{enumitem}
+\usepackage{tikz}
+\renewcommand{\arraystretch}{1.9}
 
 % --- INFORMACIÓN DEL TÍTULO ---
 \title{Una Derivación Completa de las Transformaciones de Lorentz \\ y su Interpretación Geométrica}
@@ -50,6 +52,106 @@ La derivación se basa en dos postulados fundamentales de la Relatividad Especia
 
 El segundo principio puede ser cambiado simplemente por la suposición de que el espacio y el tiempo deben ser homogéneos e isotrópicos, ver \url{https://arxiv.org/pdf/gr-qc/0107091}
 
+La motivación de la relatividad especial surge de la necesidad de usar el primer postulado para la interacción electromagnética. Aunque dicho postulado es evidente en sistemas mecánicos, no es claro para la interacción electromagnética. De hecho, una partícula cargada en reposo sólo tiene asociado un campo eléctrico, mientras que una partícula moviéndose a velocidad constante relativa al observador en reposo, genera una corriente eléctrica que a su vez induce un campo magnético. Además, el campo eléctrico se deforma (las regiones de campo constante pasan de ser esféricas a elipsoidales). Cómo en última instancia los objetos de medida están hechos de partículas cargadas dentro de los átomos que la componen, es de esperarse
+
+\section{Noción de transformaciones}
+
+Un ejemplo de transformación es la de un montaje experimental en la cual se determina el movimiento de un cuerpo con respecto a los ejes $x$, $y$ correspondientes a los lados de la mesa ilustrado en la figura~\ref{fig:tabla} izquierda. Posteriormente se repite la medida con la mesa rotada un ángulo $\theta$ pero manteniendo la posición del montaje experimental sobre la misma, como se ilustra en la figura~\ref{fig:tabla} derecha. Es claro que la trayectoria del movimiento no depende del sistema de referencia.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.4]{table}
+  \includegraphics[scale=0.4]{tabletheta}
+  \caption{Rotación de sistema de coordenadas}
+  \label{fig:tabla}
+\end{figure}
+
+
+
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.75]{so2}
+  \caption{Rotación por ángulo $\theta$}
+  \label{fig:so2}
+\end{figure}
+
+
+
+Considere un punto $(x,y)$ en sistema de referencia de dos dimensiones. Si cambiamos a un sistema de referencia rotado por un ángulo $\theta$, $(x',y')$, como se muestra en la figura~\ref{fig:so2}, podemos definir los dos triángulos rectángulos que se muestran en la figura y a partir de ellos obtener la transformación de los sistemas de referencia debido a la rotación
+\begin{align}
+  x'=&x\cos\theta+y\sin\theta \nonumber\\
+  y'=&y\cos\theta-x\sin\theta\,.
+\end{align}
+
+% --- Inicio del código para insertar ---
+
+% Para las ecuaciones matemáticas
+\begin{align*}
+    \boldsymbol{r} &= (x, y) \\
+    \boldsymbol{r}' &= (x', y') \\[1em] % Añade un poco de espacio vertical
+    r^2 = \boldsymbol{r} \cdot \boldsymbol{r} &= x^2 + y^2 \\
+  {r'}^2 =  \boldsymbol{r}' \cdot \boldsymbol{r}' &= x'^2 + y'^2 = x^2 + y^2 = \boldsymbol{r} \cdot \boldsymbol{r}
+\end{align*}
+
+La demostración del último paso se hace a continuación.
+
+% --- Inicio del código para insertar ---
+
+\subsection*{Demostración de la Invariancia del Producto Escalar bajo Rotación}
+
+El objetivo es demostrar que el módulo al cuadrado de un vector es el mismo después de una rotación de coordenadas. Es decir, probaremos que:
+\[
+\boldsymbol{r}' \cdot \boldsymbol{r}' = \boldsymbol{r} \cdot \boldsymbol{r} \quad \Leftrightarrow \quad x'^2 + y'^2 = x^2 + y^2
+\]
+
+\subsubsection*{Paso 1: Ecuaciones de Transformación por Rotación}
+Las coordenadas $(x', y')$ en un sistema que ha sido rotado un ángulo $\theta$ en sentido antihorario se relacionan con las coordenadas originales $(x, y)$ mediante:
+\begin{align*}
+    x' &= x \cos\theta + y \sin\theta \\
+    y' &= -x \sin\theta + y \cos\theta
+\end{align*}
+
+\subsubsection*{Paso 2: Sustitución y Expansión Algebraica}
+Sustituimos estas transformaciones en la expresión para el módulo al cuadrado en el sistema rotado, $\boldsymbol{r}' \cdot \boldsymbol{r}' = x'^2 + y'^2$.
+
+\begin{align*}
+    x'^2 + y'^2 &= (x \cos\theta + y \sin\theta)^2 + (-x \sin\theta + y \cos\theta)^2 \\[1em]
+    % Expandiendo los binomios al cuadrado
+    &= (x^2 \cos^2\theta + 2xy \cos\theta \sin\theta + y^2 \sin^2\theta) \\
+    &\quad + (x^2 \sin^2\theta - 2xy \sin\theta \cos\theta + y^2 \cos^2\theta) \\[1em]
+    % Agrupando términos semejantes
+    &= (x^2 \cos^2\theta + x^2 \sin^2\theta) + (y^2 \sin^2\theta + y^2 \cos^2\theta) \\
+    &\quad + (2xy \cos\theta \sin\theta - 2xy \sin\theta \cos\theta) \\[1em]
+    % Factorizando y cancelando
+    &= x^2(\cos^2\theta + \sin^2\theta) + y^2(\sin^2\theta + \cos^2\theta) + \cancel{2xy \cos\theta \sin\theta} - \cancel{2xy \sin\theta \cos\theta} \\[1em]
+    % Aplicando la identidad trigonométrica fundamental (sin^2 + cos^2 = 1)
+    &= x^2(1) + y^2(1) \\[1em]
+    % Resultado final
+    &= x^2 + y^2
+\end{align*}
+
+\subsubsection*{Paso 3: Conclusión}
+Hemos demostrado que $x'^2 + y'^2 = x^2 + y^2$. Por lo tanto, podemos concluir que el producto escalar es una cantidad invariante bajo rotaciones:
+\[
+\boxed{
+{r'}^2=\boldsymbol{r}' \cdot \boldsymbol{r}' = x'^2 + y'^2 = x^2 + y^2 = \boldsymbol{r} \cdot \boldsymbol{r} = r^2
+}
+\]
+
+% --- Fin del código para insertar ---
+
+% Para el texto de conclusión
+\vspace{1em} % Añade un poco más de espacio vertical
+\noindent % Evita la sangría del párrafo
+\textit{¡El producto escalar es invariante con respecto al sistema de coordenadas rotado!}
+
+% --- Fin del código para insertar ---
+
+Note que por consiguiente, la velocidad al cuadrado en la fórmula para la energía cinética (que se verá en detalle luego) es invariante bajo rotaciones del sistema de coordenadas
+\begin{align*}
+    E =\frac{1}{2}m v^2\,.
+\end{align*}
+
 \section{Configuración}
 
 Consideremos dos sistemas de referencia inerciales, $S$ y $S'$.
@@ -57,12 +159,62 @@ Consideremos dos sistemas de referencia inerciales, $S$ y $S'$.
     \item El sistema $S$ tiene coordenadas $(x, y, z, t)$.
     \item El sistema $S'$ tiene coordenadas $(x', y', z', t')$.
 \end{itemize}
-Configuramos los sistemas de tal manera que $S'$ se mueve con una velocidad constante $\vec{v}$ relativa a $S$ a lo largo del eje x positivo. En el tiempo $t=t'=0$, los orígenes de los dos sistemas coinciden.
+Configuramos los sistemas de tal manera que $S'$ se mueve con una velocidad constante $\boldsymbol{v}$ relativa a $S$ a lo largo del eje x positivo. En el tiempo $t=t'=0$, los orígenes de los dos sistemas coinciden.
 \[
 \text{Sistema S} \quad \xrightarrow{v} \quad \text{Sistema S'}
 \]
 Dado que el movimiento relativo es solo a lo largo del eje x, las coordenadas perpendiculares al movimiento no se ven afectadas:
 \[ y' = y, \quad z' = z \]
+
+\begin{figure}
+% --- Inicio del código TikZ para insertar ---
+%\begin{center}
+\centering
+\begin{tikzpicture}[
+    scale=1.2,          % Escala general de la figura
+    font=\Large,        % Tamaño de la fuente para las etiquetas
+    axis/.style={->, thick}, % Estilo para los ejes (flecha, grueso)
+]
+
+% --- Sistema de referencia S (estacionario, en gris) ---
+% Eje horizontal x
+\draw[axis, black] (0,0) -- (3,0) node[below, black, pos=0.8] {$x$};
+% Eje vertical t
+\draw[axis, black] (0,0) -- (0,3) node[left] {$t$};
+% Etiqueta del sistema
+\node[black, anchor=south east] at (0,3.1) {$S$};
+
+% --- Sistema de referencia S' (en movimiento, en rojo) ---
+% Usamos un 'scope' con 'xshift' para mover todo el sistema S'
+\begin{scope}[xshift=1.5cm,yshift=0.1cm]
+    % Eje horizontal x'
+    \draw[axis, red] (0,0) -- (3,0) node[below, black, pos=0.8] {$x'$};
+    % Eje vertical t'
+    \draw[axis, red] (0,0) -- (0,3) node[left] {$t'$};
+    % Etiqueta del sistema
+    \node[red, anchor=south west] at (0,3.1) {$S'$};
+\end{scope}
+
+% --- Flecha de velocidad v ---
+\draw[axis, black] (1.7, 1.5) -- (2.7, 1.5) node[midway, above] {$v$};
+
+% --- Punto del evento ---
+\fill[black] (4.5, 2.2) circle (3.5pt);
+
+% --- distancia entre sistemas ---
+\draw[axis, gray] (0.5, 0.5) -- (0.0, 0.5) node[midway, ,gray,pos=-0.5] {$vt$};
+\draw[axis, gray] (1.0, 0.5) -- (1.5, 0.5);
+
+
+
+\end{tikzpicture}
+%\end{center}
+% --- Fin del código TikZ ---
+    \caption{Sistema de referencia inercial $\color{red}S'$, a velocidad constante en $x$, $v$, con respecto al sistema en reposo $S$. A un tiempo $t$ el origin de $\color{red}S'$ se encuentra a una distancia $x = vt$ del origen de $S$. }
+    \label{fig:placeholder}
+\end{figure}
+
+
 Ahora nos enfocamos en derivar las transformaciones para $x'$ y $t'$.
 
 \section{Pasos de la Derivación}
@@ -70,37 +222,95 @@ Ahora nos enfocamos en derivar las transformaciones para $x'$ y $t'$.
 \subsection{Paso 1: La Suposición de Linealidad}
 
 Las transformaciones deben ser lineales para preservar el principio de inercia. Un movimiento uniforme en un sistema debe aparecer como un movimiento uniforme en el otro. Por lo tanto, las transformaciones tienen la forma:
-\[ x' = Ax + Bt, \quad t' = Dx + Et \]
-
+\begin{align}
+\label{eq:tl1}
+ x' = Ax + Bt\,.   
+\end{align}
+ 
 \subsection{Paso 2: Usando el Movimiento del Origen}
 
-El origen de $S'$ ($x'=0$) se mueve con velocidad $v$ en el sistema $S$, por lo que su posición es $x=vt$. Sustituyendo esto en la primera ecuación:
+El origen de $S'$ ($x'=0$) se mueve con velocidad $v$ en el sistema $S$, por lo que su posición es $x=vt$. Sustituyendo esto en la ecuación~\eqref{eq:tl1}:
 \[ 0 = A(vt) + Bt \implies B = -Av \]
 Esto da $x' = A(x-vt)$. Renombramos la constante $A$ con el símbolo más convencional $\gamma$.
-\[ x' = \gamma (x - vt) \]
+\begin{align}
+\label{eq:xplt}
+x' = \gamma (x - vt).    
+\end{align}
 
 \subsection{Paso 3: Aplicando el Principio de Relatividad}
 
 La transformación inversa (de $S'$ a $S$) debe tener la misma forma, con la velocidad invertida ($v \to -v$):
-\[ x = \gamma (x' + vt') \]
+\begin{align}
+\label{eq:invxplt}
+    x = \gamma (x' + vt').
+\end{align}
 
 \subsection{Paso 4: Aplicando el Segundo Postulado}
 Imaginemos un pulso de luz emitido desde el origen en $t=t'=0$. Un observador en $S$ ve su frente de onda en $x=ct$, mientras que un observador en $S'$ lo ve en $x'=ct'$. Sustituyendo esto en nuestras ecuaciones de transformación:
+
+\newcounter{paso}
+
+\noindent
+%\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{l|p{0.35\textwidth}|p{0.6\textwidth}}
+\textbf{Paso}&\textbf{Encontrar} $\gamma$& \textbf{Paso algebraico} \\\hline
+\stepcounter{paso}\thepaso)&$\begin{aligned}
+    x' =& \gamma (x - vt),\\
+    x = &\gamma (x' + vt').
+\end{aligned}$& Ecuaciones \eqref{eq:xplt} y \eqref{eq:invxplt}\\\hline
+\stepcounter{paso}\thepaso)&$\begin{aligned}[t]
+ct' &= \gamma(ct - vt) = \gamma t (c-v)   \\
+ct &= \gamma(ct' + vt') = \gamma t' (c+v)  
+\end{aligned}$  &  Reemplazando $x=ct$ y $x'=ct'$ en  
+las ecuaciones anteriores\\\hline
+\stepcounter{paso}\thepaso)&$(ct')(ct) = [\gamma t (c-v)][\gamma t' (c+v)]$& Multiplicando las dos ecuaciones\\\hline
+\stepcounter{paso}\thepaso)&$c^2 t' t = \gamma^2 t t' (c-v)(c+v)$& 
+Realizando las operaciones indicadas\\\hline
+\stepcounter{paso}\thepaso)&$c^2= \gamma^2 (c^2-v^2)$& Dividiendo por $tt'$ a ambos lados de la igualdad y expandiendo la diferencia de cuadrados \\\hline
+\stepcounter{paso}\thepaso)&$1=\gamma^2(1-v^2/c^2)$&Dividiendo por $c^2$ a ambos lados de la igualdad.\\\hline
+\stepcounter{paso}\thepaso)&$\gamma^2 = \dfrac{1}{1-v^2/c^2}$&
+Dividiendo por $1-v^2/c^2$ a ambos lados de la igualdad.
+\\[8pt]\hline
+\stepcounter{paso}\thepaso)&$\gamma = \dfrac{1}{\sqrt{1-v^2/c^2}}$&
+Sacando raíz cuadrada a ambos lados iguales\\[8pt]\hline
+\end{tabular}
+
+De ésta forma:
 \begin{align}
-ct' &= \gamma(ct - vt) = \gamma t (c-v) \label{eq:1} \\
-ct &= \gamma(ct' + vt') = \gamma t' (c+v) \label{eq:2}
+\label{eq:gamma}
+    \boxed{\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}} \,,
+\end{align}
+y 
+\begin{align}
+\label{eq:gammasquare}
+    \gamma^2 =&\frac{1}{1-\dfrac{v^2}{c^2}} =  \frac{c^2}{c^2-v^2}\,.
 \end{align}
 
-\subsection{Paso 5: Resolviendo para el Factor de Lorentz \texorpdfstring{$\gamma$}{gamma}}
-Multiplicando la ecuación (\ref{eq:1}) por la (\ref{eq:2}):
-\[ (ct')(ct) = [\gamma t (c-v)][\gamma t' (c+v)] \implies c^2 = \gamma^2 (c^2 - v^2) \]
-Resolviendo para $\gamma$:
-\[ \gamma^2 = \frac{c^2}{c^2 - v^2} = \frac{1}{1 - v^2/c^2} \implies \boxed{\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}} \]
-
 \subsection{Paso 6: Derivando la Transformación del Tiempo}
-Resolvemos para $t'$ sustituyendo $x'=\gamma(x-vt)$ en $x = \gamma(x' + vt')$:
-\[ x = \gamma(\gamma(x-vt) + vt') \implies \gamma v t' = x(1-\gamma^2) + \gamma^2 v t \]
-Usando la identidad $1-\gamma^2 = -v^2/c^2 \gamma^2$, simplificamos y resolvemos para $t'$:
+Dado que ya tenemos la expresión completa para $x'$, en las ecuaciones \eqref{eq:xplt} y \eqref{eq:invxplt}, podemos
+despejar $t'$
+
+\noindent
+\setcounter{paso}{0}
+\begin{tabular}{l|p{0.35\textwidth}|p{0.6\textwidth}}
+\textbf{paso} &\textbf{Despejar} $t'$& \textbf{Paso algebraico} \\\hline
+\stepcounter{paso}\thepaso) & $\begin{aligned}
+    x' =& \gamma (x - vt),\\
+    x = &\gamma (x' + vt').
+\end{aligned}$& Ecuaciones \eqref{eq:xplt} y \eqref{eq:invxplt}\\\hline
+\stepcounter{paso}\thepaso) & $x=\gamma[\gamma(x-vt) +v t']$&sustituyendo $x'=\gamma(x-vt)$ en $x = \gamma(x' + vt')$\\\hline
+\stepcounter{paso}\thepaso) & $x=\gamma^2x-\gamma^2 vt +\gamma v t'$  & Expandiendo el lado derecho\\\hline
+\stepcounter{paso}\thepaso) & $\gamma v t' = x-\gamma^2x +\gamma^2 v t$ & Sumando $-\gamma^2x +\gamma^2 v t$ a ambos lados de la igualdad. \\\hline
+\stepcounter{paso}\thepaso) & $\gamma v t' = x(1-\gamma^2) +\gamma^2 v t$  & Factorizando $x$.\\\hline
+\stepcounter{paso}\thepaso) & $\gamma v t' = x\left(1-\dfrac{c^2}{c^2-v^2}\right) +\gamma^2 v t$ & Reemplazando $\gamma^2$ de la ecuación~\eqref{eq:gammasquare} \\\hline
+\stepcounter{paso}\thepaso) & $\gamma v t' = x\left(\dfrac{\cancel{c^2}-v^2-\cancel{c^2}}{c^2-v^2}\right) +\gamma^2 v t$. & Sumando las fracciones.\\\hline
+\stepcounter{paso}\thepaso) & $\gamma v t' =\gamma^2 v t- xv^2\left[\dfrac{c^2}{c^2(c^2-v^2)}\right]$ & Multiplicando y dividiendo por $c^2$ en el último término. \\[5pt]\hline
+\stepcounter{paso}\thepaso) & $\cancel{\gamma}\cancel{v}  t' =\gamma^{\cancel{2}}\cancel{v}  t- \gamma^{\cancel{2}} \dfrac{v^{\cancel{2}} x}{c^2}$  &
+Usando de nuevo la ecuación~\eqref{eq:gammasquare} para $\gamma^2$ y cancelando términos iguales a ambos lados de la igualdad\\\hline
+\stepcounter{paso}\thepaso) & $t' = \gamma\left(t-\dfrac{vx}{c^2}\right)$\\[5pt]\hline
+\end{tabular}
+
+De modo que
 \[ \boxed{t' = \gamma \left( t - \frac{vx}{c^2} \right)} \]
 
 \section{Resumen de las Transformaciones de Lorentz}
@@ -139,11 +349,18 @@ y' &= y \\
 z' &= z
 \end{align*}
 
+Mientras que para factor de Lorentz $\gamma$, o el factor de contracción relativista $1/\gamma$, 
+\begin{align}
+    \lim_{c\to\infty}\ \gamma = 1\,. 
+\end{align}
+
+Esto quiere decir que las las distancia y tiempos no están afectados por las transformaciones de Galileo.
+
 
 
 
 % --- INFORMACIÓN DEL TÍTULO ---
-\section{Derivación de las Transformaciones de Lorentz a partir de Simetrías del Espaciotiempo}
+\section{Derivación de las Transformaciones de Lorentz a partir de Simetrías del Espacio--tiempo}
 \subsection{El Enfoque de Ignatowski}
 Este documento presenta una derivación de las transformaciones de Lorentz basada en principios fundamentales de simetría, en lugar de postular la constancia de la velocidad de la luz. Este enfoque, a veces llamado la derivación de Ignatowski, se basa en el Principio de Relatividad y la homogeneidad e isotropía del espaciotiempo. Mostraremos que estos principios conducen lógicamente a la existencia de una velocidad universal e invariante, que identificamos con la velocidad de la luz.
 
@@ -256,6 +473,61 @@ Toda la evidencia experimental, desde el electromagnetismo hasta la desintegraci
 
 \section{Derivación de la Dilatación del Tiempo a partir de las Transformaciones de Lorentz}
 
+En las aplicaciones prácticas, donde se estudia el movimiento de un cuerpo a velocidad constante, es conveniente asumir que el sistema inercial se mueve con la misma velocidad del cuerpo bajo estudio, como se ilustra en la figura~\ref{fig:movv}.
+
+\begin{figure}
+% --- Inicio del código TikZ para insertar ---
+%\begin{center}
+\centering
+\begin{tikzpicture}[
+    scale=1.2,          % Escala general de la figura
+    font=\Large,        % Tamaño de la fuente para las etiquetas
+    axis/.style={->, thick}, % Estilo para los ejes (flecha, grueso)
+]
+
+% --- Sistema de referencia S (estacionario, en gris) ---
+% Eje horizontal x
+\draw[axis, black] (0,0) -- (3,0) node[below, black, pos=0.8] {$x$};
+% Eje vertical t
+\draw[axis, black] (0,0) -- (0,3) node[left] {$t$};
+% Etiqueta del sistema
+\node[black, anchor=south east] at (0,3.1) {$S$};
+
+% --- Sistema de referencia S' (en movimiento, en rojo) ---
+% Usamos un 'scope' con 'xshift' para mover todo el sistema S'
+\begin{scope}[xshift=1.5cm,yshift=0.1cm]
+    % Eje horizontal x'
+    \draw[axis, red] (0,0) -- (3.5,0) node[below, black, pos=0.8] {$x'$};
+    % Eje vertical t'
+    \draw[axis, red] (0,0) -- (0,3) node[left] {$t'$};
+    % Etiqueta del sistema
+    \node[red, anchor=south west] at (0,3.1) {$S'$};
+\end{scope}
+
+% --- Flecha de velocidad v ---
+\draw[axis, black] (1.7, 1.5) -- (2.7, 1.5) node[midway, above] {$v$};
+
+% --- Punto del evento ---
+\fill[black] (1.7, 1.5) circle (3.5pt);
+
+\node[inner sep=0pt] (russell) at (3.5,2)
+    {\includegraphics[scale=0.03]{clock}};
+
+\draw[dotted] (3.5, 0.1) -- (3.5,2);
+
+\node[black] (russell) at (3.5,-0.15) {$x'_c$};
+
+\draw[axis, black] (3.7, 2) -- (4.7, 2) node[midway, above] {$v$};
+
+
+\end{tikzpicture}
+%\end{center}
+% --- Fin del código TikZ ---
+    \caption{Sistema de referencia inercial $\color{red}S'$, moviendos con velocidad constante en $x$, $v$, con el objeto bajo estudio }
+    \label{fig:movv}
+\end{figure}
+
+
 La dilatación del tiempo es una consecuencia directa y famosa de las transformaciones de Lorentz. Describe el fenómeno en el que un reloj que está en movimiento relativo a un observador se mide por ese observador como si estuviera marcando el tiempo más lentamente que un reloj que está en reposo relativo a él.
 
 Para derivar esto, estableceremos un experimento mental simple y aplicaremos la transformación de Lorentz para el tiempo.
@@ -263,7 +535,7 @@ Para derivar esto, estableceremos un experimento mental simple y aplicaremos la 
 \subsection{La Configuración Física (Experimento Mental)}
 
 \begin{enumerate}
-    \item \textbf{Dos Sistemas:} Tenemos dos sistemas inerciales, $S$ y $S'$. Como antes, el sistema $S$ es el sistema "estacionario" (por ejemplo, un observador en el suelo), y el sistema $S'$ se mueve con una velocidad constante $v$ a lo largo del eje x relativo a $S$.
+    \item \textbf{Dos Sistemas:} Tenemos dos sistemas inerciales, $S$ y $S'$. Como antes, el sistema $S$ es el sistema ``estacionario" (por ejemplo, un observador en el suelo), y el sistema $S'$ se mueve con una velocidad constante $v$ a lo largo del eje x relativo a $S$.
 
     \item \textbf{Un Reloj en el Sistema en Movimiento:} Imaginemos que hay un reloj en reposo en el sistema en movimiento, $S'$. Dado que el reloj no se mueve \textit{dentro de su propio sistema}, su posición es un valor constante, que llamaremos $x'_c$.
 
@@ -315,12 +587,76 @@ Interpretemos este importante resultado:
 \begin{itemize}
     \item El factor de Lorentz $\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$ es siempre mayor o igual a 1, ya que la velocidad $v$ debe ser menor que $c$.
     \item Esto significa que $\Delta t \ge \Delta t_0$.
-    \item El intervalo de tiempo ($\Delta t$) medido por el observador en el sistema "estacionario" $S$ es \textit{más largo} que el intervalo de tiempo propio ($\Delta t_0$) medido en el sistema de reposo del reloj.
+    \item El intervalo de tiempo ($\Delta t$) medido por el observador en el sistema ``estacionario" $S$ es \textit{más largo} que el intervalo de tiempo propio ($\Delta t_0$) medido en el sistema de reposo del reloj.
 \end{itemize}
 Un intervalo de tiempo más largo entre tictacs significa que se observa que el reloj funciona más lentamente. Por lo tanto, el observador en $S$ concluye que el reloj en movimiento funciona lentamente en comparación con su propio reloj idéntico. Este fenómeno es la \textbf{dilatación del tiempo}.
 
 
 \section{Derivación de la Contracción de la Longitud a partir de las Transformaciones de Lorentz}
+
+\begin{figure}
+% --- Inicio del código TikZ para insertar ---
+%\begin{center}
+\centering
+\begin{tikzpicture}[
+    scale=1.2,          % Escala general de la figura
+    font=\Large,        % Tamaño de la fuente para las etiquetas
+    axis/.style={->, thick}, % Estilo para los ejes (flecha, grueso)
+]
+
+% --- Sistema de referencia S (estacionario, en gris) ---
+% Eje horizontal x
+\draw[axis, black] (0,0) -- (4,0) node[below, black, pos=0.5] {$x$};
+% Eje vertical t
+\draw[axis, black] (0,0) -- (0,3) node[left] {$t$};
+% Etiqueta del sistema
+\node[black, anchor=south east] at (0,3.1) {$S$};
+
+% --- Sistema de referencia S' (en movimiento, en rojo) ---
+% Usamos un 'scope' con 'xshift' para mover todo el sistema S'
+\begin{scope}[xshift=1.5cm,yshift=0.1cm]
+    % Eje horizontal x'
+    \draw[axis, red] (0,0) -- (3.5,0) node[below, black, pos=0.8] {$x'$};
+    % Eje vertical t'
+    \draw[axis, red] (0,0) -- (0,3) node[left] {$t'$};
+    % Etiqueta del sistema
+    \node[red, anchor=south west] at (0,3.1) {$S'$};
+\end{scope}
+
+% --- Flecha de velocidad v ---
+\draw[axis, black] (1.7, 1.5) -- (2.7, 1.5) node[midway, above] {$v$};
+
+% --- Punto del evento ---
+\fill[black] (1.7, 1.5) circle (3.5pt);
+
+\node[inner sep=0pt] (russell) at (3.32,2)
+    {\includegraphics[scale=0.1]{ruler}};
+
+
+\draw[dotted] (2.95, -0.2) -- (2.95,2);
+\node[black] (russell) at (2.95,-0.2) {$x_1$};
+
+\draw[dotted] (3.7, -0.2) -- (3.7,2);
+\node[black] (russell) at (3.7,-0.2) {$x_2$};
+
+
+\draw[axis, black] (3.7, 2) -- (4.7, 2) node[midway, above] {$v$};
+
+% --- distancia entre sistemas ---
+\draw[axis, gray] (3.15, 0.5) -- (2.95, 0.5) node[midway, ,gray,pos=-0.8] {$t$};
+\draw[axis, gray] (3.5, 0.5) -- (3.7, 0.5);
+
+
+
+\end{tikzpicture}
+%\end{center}
+% --- Fin del código TikZ ---
+    \caption{Sistema de referencia inercial $\color{red}S'$, moviendos con velocidad constante en $x$, $v$, con el objeto bajo estudio }
+    \label{fig:movruler}
+\end{figure}
+
+
+
 
 La contracción de la longitud es otra predicción fundamental de la Relatividad Especial. Afirma que se mide que un objeto en movimiento es más corto a lo largo de su dirección de movimiento que su longitud cuando se mide en reposo. Este efecto también se conoce como contracción de Lorentz.
 
@@ -396,24 +732,17 @@ Interpretemos este resultado:
 \end{itemize}
 Es crucial notar que esta contracción \textbf{solo ocurre a lo largo de la dirección del movimiento}. Las longitudes en las direcciones perpendiculares al movimiento (y y z) no se ven afectadas, porque las transformaciones de Lorentz para esas coordenadas son simplemente $y' = y$ y $z' = z$.
 
+ver \url{https://inspirehep.net/literature/2825885}
+
 \section{Forma Vectorial y Rapidez}
 
-\subsection{Unidades Naturales y Rapidez}
-Para tener las coordenadas con las mismas unidades, podemos definir
+%\subsection{Unidades Naturales y Rapidez}
+Para tener las coordenadas con las mismas unidades,, debemos usar $ct$ paraque seae sea interpretado como una dimensión espacial
 \begin{align}
-    x^0 =& ct\,, & x^1 =& x \,, & x^2 =& y \,, & x^3 =& z\,.
+ct' =& \gamma\left(ct-\frac{v}{c}x\right),\\
+x'=&\gamma\left(x-\frac{v}{c}ct\right)
 \end{align}
-\[ ct' = \gamma[ct-(v/c)x], \quad x'=\gamma(x-(v/c)ct) \]
 
-\[ {x^0}' = \gamma[c{x^0}-(v/c){x^1}], \quad {x^1}'=\gamma({x^1}-(v/c){x^0}) \]
-
-En física teórica, es común usar unidades naturales donde $c=1$\footnote{el siguiente análisis también es válido para $x^0 = ct$}. Las transformaciones se convierten en:
-\begin{align*}
-   t' =& \gamma(t-vx),\\ 
-   x'=&\gamma(x-vt),
-\end{align*}
-con
-\[  \quad \gamma = \frac{1}{\sqrt{1-v^2}}\,. \]
 
 \subsection{Funciones Hiperbólicas}
 \begin{align*}
@@ -433,12 +762,12 @@ Por lo tanto
 \end{align*}
 
 Podemos parametrizar la velocidad usando la \textbf{rapidez}, $\xi$:
-\[ \gamma = \cosh\xi, \quad v\gamma = \sinh\xi \]
+\[ \gamma = \cosh\xi, \quad \frac{v}{c}\gamma = \sinh\xi \]
 Esta parametrización es válida porque satisface automáticamente la identidad $\gamma^2(1-v^2)=1$:
-\[ \cosh^2\xi - \sinh^2\xi = \gamma^2 - (v\gamma)^2 = \gamma^2(1-v^2) = 1 \]
+\[ \cosh^2\xi - \sinh^2\xi = \gamma^2 - \left(\frac{v}{c}\gamma\right)^2 = \gamma^2\left(1-\frac{v^2}{c^2}\right) = 1 \]
 A partir de esto, también encontramos que la velocidad está relacionada con la rapidez por 
 \begin{align*}
-    v = \tanh\xi\,,
+    \frac{v}{c} = \tanh\xi\,,
 \end{align*}
 donde
 \begin{align*}
@@ -449,13 +778,34 @@ En resumen, las transformaciones de Lorentz se pueden escribir como
 \[
 \boxed{
 \begin{aligned}    
-    t' =& t\cosh\xi - x\sinh\xi \\
-    x' = &x\cosh\xi -t\sinh\xi\\
+    ct' =& ct\cosh\xi - x\sinh\xi \\
+    x' = &x\cosh\xi -ct\sinh\xi\\
     y' = & y\\
     z' = &z\,.
 \end{aligned}
 }
 \]
+
+Si definimos la coordenada temporal en la dimensiones de distancia como $x^0\equiv ct$, podemos definir el cuadrivector
+\begin{align}
+    x^\mu \equiv \left(x^0, x^1, x^2,x^3 \right) = \left(ct, x, y,z \right)
+\end{align}
+y
+\[
+\boxed{
+\begin{aligned}    
+    {x^0}' =& x^0\cosh\xi - x^1\sinh\xi \\
+    {x^1}' = &x^1\cosh\xi -x^0\sinh\xi\\
+    {x^2}' = & x^2\\
+    {x^3}' = &x^3\,.
+\end{aligned}
+}
+\]
+
+A continuación trabajaremos en dos dimensiones, una temporal y una espacial, a saber
+\begin{align}
+    x^\mu \equiv \left(x^0, x^1 \right) = \left(ct, x \right)
+\end{align}
 
 \section{Invariancia}
 Para rotaciones tenemos el vector de posición de la figura~\ref{fig:rot}
@@ -484,16 +834,16 @@ $\boldsymbol{b} = (b_1,b_2)$ y $\boldsymbol{c} = (c_1,c_2) $ como
 \end{align}
 con $g_{1}$ y $g_{2}$ a ser fijados. 
 
-Con esta definición el módulo del vector de impulso $\boldsymbol{b} = (t,x)$ en la base transformada, 
+Con esta definición el módulo del vector de impulso $\boldsymbol{b} = ({x^0},{x^1})$ en la base transformada, 
 \begin{align*}
-\boldsymbol{b}' = (t',x') = (t\cosh\xi - x\sinh\xi, x\cosh\xi -t\sinh\xi),
+\boldsymbol{b}' = ({x^0}',{x^1}') = ({x^0}\cosh\xi - {x^1}\sinh\xi, {x^1}\cosh\xi -{x^0}\sinh\xi),
 \end{align*}
 es
 \begin{align*}
     \boldsymbol{b}'\cdot\boldsymbol{b}' =& 
-g_{1} {t'}^2 + g_{2} {x'}^2 \\
-=& g_1\left(t^2\cosh^2\xi -2 tx\cosh\xi\sinh\xi+x^2\sinh^2\xi\right)+
-g_2\left(x^2\cosh^2-2tx\cosh\xi\sinh\xi + t^2\sinh^2\xi\right).
+g_{1} {{x^0}'}^2 + g_{2} {{x^1}'}^2 \\
+=& g_1\left({x^0}^2\cosh^2\xi -2 {x^0}{x^1}\cosh\xi\sinh\xi+{x^1}^2\sinh^2\xi\right)+
+g_2\left({x^1}^2\cosh^2-2{x^0}{x^1}\cosh\xi\sinh\xi + {x^0}^2\sinh^2\xi\right).
 \end{align*}
 Si $g_1=1$ y $g_2=-1$, tenemos la definición del producto escalar en el espacio de Minkowski como
 \begin{align}
@@ -503,9 +853,9 @@ Si $g_1=1$ y $g_2=-1$, tenemos la definición del producto escalar en el espacio
 y por lo tanto
 \begin{align*}
     \boldsymbol{b}'\cdot\boldsymbol{b}' =& 
-{t'}^2 - {x'}^2 \\
-=& t^2(\cosh^2\xi-\sinh^2\xi)+x^2(\sinh^2-\cosh^2) -\cancel{2 tx\cosh\xi\sinh\xi}+\cancel{2 tx\cosh\xi\sinh\xi}\\
-=&t^2 - x^2\,.
+{{x^0}'}^2 - {{x^1}'}^2 \\
+=& {x^0}^2(\cosh^2\xi-\sinh^2\xi)+{x^1}^2(\sinh^2-\cosh^2) -\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}+\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}\\
+=&{x^0}^2 - {x^1}^2\,.
 \end{align*}
 Podemos ver que la invarianza del producto escalar bajo una transformación de Lorentz, fija la definición del producto escalar en ese espacio, como se da en la ec.~\eqref{eq:mdp}.
 
@@ -778,11 +1128,11 @@ Esta sección proporciona un análisis completo del movimiento de una partícula
 \subsection{Configuración del Problema}
 Consideramos el movimiento de una partícula de masa en reposo $m$.
 \begin{itemize}
-    \item \textbf{Condiciones Iniciales:} En el tiempo $t=0$, la partícula está en la posición $(x_0, y_0)$ con una velocidad inicial $\vec{u}_0 = (u_{x0}, u_{y0})$.
-    \item \textbf{Fuerza:} Una fuerza constante $\vec{F}$ actúa solo en la dirección y negativa: $\vec{F} = (0, -F)$, donde $F$ es una constante positiva.
+    \item \textbf{Condiciones Iniciales:} En el tiempo $t=0$, la partícula está en la posición $(x_0, y_0)$ con una velocidad inicial $\boldsymbol{u}_0 = (u_{x0}, u_{y0})$.
+    \item \textbf{Fuerza:} Una fuerza constante $\boldsymbol{F}$ actúa solo en la dirección y negativa: $\boldsymbol{F} = (0, -F)$, donde $F$ es una constante positiva.
 \end{itemize}
 En relatividad, la Segunda Ley de Newton se escribe como la tasa de cambio del momento relativista:
-\[ \vec{F} = \frac{d\vec{p}}{dt}, \quad \text{donde} \quad \vec{p} = \gamma m \vec{u} \]
+\[ \boldsymbol{F} = \frac{d\boldsymbol{p}}{dt}, \quad \text{donde} \quad \boldsymbol{p} = \gamma m \boldsymbol{u} \]
 El factor de Lorentz, $\gamma$, depende de la velocidad total $u = \sqrt{u_x^2 + u_y^2}$:
 \[ \gamma = \frac{1}{\sqrt{1 - u^2/c^2}} = \frac{1}{\sqrt{1 - (u_x^2 + u_y^2)/c^2}} \]
 Esta dependencia de la velocidad total significa que el movimiento en las direcciones x e y está acoplado, una característica clave de la dinámica relativista.
@@ -790,7 +1140,7 @@ Esta dependencia de la velocidad total significa que el movimiento en las direcc
 \subsection{La Ecuación de Movimiento Relativista}
 
 \subsection{Resolviendo para el Momento}
-La ecuación vectorial $\vec{F} = d\vec{p}/dt$ proporciona dos ecuaciones escalares para las componentes del momento $p_x$ y $p_y$.
+La ecuación vectorial $\boldsymbol{F} = d\boldsymbol{p}/dt$ proporciona dos ecuaciones escalares para las componentes del momento $p_x$ y $p_y$.
 \begin{itemize}
     \item \textbf{Dirección x:} $F_x = \frac{dp_x}{dt} = 0$. Esto implica que la componente x del momento se conserva:
     \[ p_x(t) = p_{x0} = \gamma_0 m u_{x0} \]
@@ -869,7 +1219,7 @@ La fórmula relativista se reduce correctamente a la clásica.
 \subsection{Derivación Directa del Caso No Relativista}
 Como confirmación final, podemos derivar la ecuación de movimiento clásica directamente del Teorema del Trabajo y la Energía no relativista, $W_{neto} = \Delta K$.
 \begin{itemize}
-    \item \textbf{Trabajo Realizado:} $W_{neto} = \vec{F} \cdot \Delta\vec{r} = -F(y(t) - y_0)$.
+    \item \textbf{Trabajo Realizado:} $W_{neto} = \boldsymbol{F} \cdot \Delta\boldsymbol{r} = -F(y(t) - y_0)$.
     \item \textbf{Cambio en la Energía Cinética:} $\Delta K = K_{final} - K_{inicial} = \frac{1}{2}mu(t)^2 - \frac{1}{2}mu_0^2$.
 \end{itemize}
 Usando las velocidades clásicas $u_x(t) = u_{x0}$ y $u_y(t) = u_{y0} - \frac{F}{m}t$:
@@ -1196,5 +1546,103 @@ tenemos que la magnitud fuerza por unidad de longitud que ejerce $I_1$ sobre $I_
 en la dirección hacia el cable con corriente $I_1$, como se muestra en la figura.
 \end{minipage}
 
+
+% --- Inicio del código LaTeX para insertar ---
+
+\section*{Derivación de las Transformaciones de Lorentz usando las dos ecuaciones}
+
+\subsection*{Introducción}
+
+Las transformaciones de Lorentz son el conjunto de ecuaciones que relacionan las coordenadas de espacio y tiempo de un evento, medidas por dos observadores en diferentes sistemas de referencia inerciales. La derivación se basa en los dos postulados fundamentales de la Relatividad Especial:
+\begin{enumerate}
+    \item \textbf{El Principio de Relatividad:} Las leyes de la física son las mismas en todos los sistemas de referencia inerciales.
+    \item \textbf{La Constancia de la Velocidad de la Luz:} La velocidad de la luz en el vacío, $c$, es la misma para todos los observadores inerciales.
+\end{enumerate}
+
+\subsection*{Configuración Inicial}
+Consideramos dos sistemas de referencia inerciales, $S(x,t)$ y $S'(x',t')$. El sistema $S'$ se mueve con una velocidad constante $v$ relativa a $S$ a lo largo del eje x. En $t=t'=0$, sus orígenes coinciden. Nuestro objetivo es encontrar las funciones que conectan sus coordenadas.
+
+\subsection*{Paso 1: La Suposición de Linealidad}
+Debido a la homogeneidad del espaciotiempo, las ecuaciones de transformación deben ser lineales. Por lo tanto, podemos escribir las formas más generales:
+\begin{align*}
+    x' &= Ax + Bt \\
+    t' &= Dx + Et
+\end{align*}
+donde los coeficientes $A, B, D, E$ solo pueden depender de la velocidad relativa $v$. Las coordenadas perpendiculares al movimiento no se ven afectadas ($y'=y$, $z'=z$).
+
+\subsection*{Paso 2: Encontrar los Coeficientes para \texorpdfstring{$x'$}{x'}}
+Consideramos el origen del sistema $S'$ ($x'=0$), que se mueve con velocidad $v$ en el sistema $S$, por lo que su posición es $x=vt$. Sustituyendo en la primera ecuación:
+\[ 0 = A(vt) + Bt \implies 0 = (Av + B)t \]
+Como esto debe ser cierto para todo tiempo $t$, se deduce que $B = -Av$. Sustituyendo de nuevo en la ecuación para $x'$:
+\[ x' = Ax - Avt = A(x-vt) \]
+Renombramos la constante $A(v)$ con el símbolo convencional $\gamma(v)$, el factor de Lorentz:
+\begin{equation} \label{eq:x_prime_trans}
+    \boxed{x' = \gamma(v)(x - vt)}
+\end{equation}
+
+\subsection*{Paso 3: Encontrar los Coeficientes \texorpdfstring{$D$}{D} y \texorpdfstring{$E$}{E} para \texorpdfstring{$t'$}{t'}}
+Ahora aplicamos el segundo postulado. Imaginemos que en $t=t'=0$ se emite un pulso de luz desde el origen común.
+
+\subsubsection*{Caso 1: Pulso de luz hacia la derecha (+x)}
+En $S$, el frente de luz se describe por $x = ct$. En $S'$, por $x' = ct'$. Sustituimos estas condiciones en nuestras ecuaciones de transformación:
+\begin{itemize}
+    \item De la ecuación para $x'$: $ct' = \gamma(ct - vt) \implies t' = \gamma t (1 - v/c)$.
+    \item De la ecuación para $t'$: $t' = D(ct) + Et = t(Dc + E)$.
+\end{itemize}
+Igualando ambas expresiones para $t'$ (el factor $t$ se cancela):
+\begin{equation} \label{eq:sys1}
+    \gamma (1 - v/c) = Dc + E
+\end{equation}
+
+\subsubsection*{Caso 2: Pulso de luz hacia la izquierda (-x)}
+En $S$, el frente de luz es $x = -ct$. En $S'$, es $x' = -ct'$. Sustituimos de nuevo:
+\begin{itemize}
+    \item De la ecuación para $x'$: $-ct' = \gamma(-ct - vt) \implies t' = \gamma t (1 + v/c)$.
+    \item De la ecuación para $t'$: $t' = D(-ct) + Et = t(E - Dc)$.
+\end{itemize}
+Igualando las expresiones para $t'$:
+\begin{equation} \label{eq:sys2}
+    \gamma (1 + v/c) = E - Dc
+\end{equation}
+
+Ahora tenemos un sistema de dos ecuaciones lineales para las incógnitas $D$ y $E$:
+\[ \begin{cases} E + Dc = \gamma (1 - v/c) \\ E - Dc = \gamma (1 + v/c) \end{cases} \]
+\textbf{Para encontrar E}, sumamos las dos ecuaciones:
+\[ (E + Dc) + (E - Dc) = \gamma (1 - v/c) + \gamma (1 + v/c) \implies 2E = 2\gamma \implies \boxed{E = \gamma(v)} \]
+\textbf{Para encontrar D}, restamos la segunda ecuación de la primera:
+\[ (E + Dc) - (E - Dc) = \gamma (1 - v/c) - \gamma (1 + v/c) \implies 2Dc = \gamma(-2v/c) \implies \boxed{D = -\frac{\gamma(v) v}{c^2}} \]
+
+\subsection*{Paso 4: Formular la Transformación del Tiempo y Encontrar \texorpdfstring{$\gamma(v)$}{gamma(v)}}
+Con los coeficientes $D$ y $E$, la transformación para $t'$ es:
+\[ t' = Dx + Et \implies t' = -\frac{\gamma v}{c^2}x + \gamma t \]
+Reordenando, obtenemos la forma familiar:
+\begin{equation} \label{eq:t_prime_trans}
+    \boxed{t' = \gamma \left(t - \frac{vx}{c^2}\right)}
+\end{equation}
+Para encontrar la forma explícita de $\gamma(v)$, usamos el Principio de Relatividad. La transformación inversa de (\ref{eq:t_prime_trans}) es $t = \gamma(t' + vx'/c^2)$. Sustituimos en ella las expresiones para $x'$ y $t'$ que hemos encontrado:
+\begin{align*}
+    t &= \gamma \left[ \gamma \left(t - \frac{vx}{c^2}\right) + \frac{v}{c^2} \gamma(x - vt) \right] \\
+    t &= \gamma^2 \left[ t - \frac{vx}{c^2} + \frac{vx}{c^2} - \frac{v^2t}{c^2} \right] \\
+    t &= \gamma^2 \left[ t - \frac{v^2t}{c^2} \right] = \gamma^2 t \left(1 - \frac{v^2}{c^2}\right)
+\end{align*}
+Cancelando $t$ de ambos lados, nos queda $1 = \gamma^2 (1 - v^2/c^2)$. Finalmente, resolvemos para $\gamma(v)$:
+\[ \gamma^2 = \frac{1}{1 - v^2/c^2} \implies \boxed{\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}} \]
+
+\subsection*{Resumen de las Transformaciones de Lorentz}
+Habiendo encontrado todos los coeficientes y la forma de $\gamma$, tenemos el conjunto completo de las transformaciones de Lorentz:
+\[
+\boxed{
+\begin{aligned}
+t' &= \gamma \left( t - \frac{vx}{c^2} \right) \\
+x' &= \gamma (x - vt) \\
+y' &= y \\
+z' &= z
+\end{aligned}
+\quad \text{con} \quad
+\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}
+}
+\]
+
+% --- Fin del código LaTeX ---
 
 \end{document}
