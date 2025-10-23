@@ -22,7 +22,11 @@
 }
 \usepackage{enumitem}
 \usepackage{tikz}
+% https://www.texdev.net/2021/06/30/siunitx-v2-to-v3
+\usepackage{siunitx}
 \renewcommand{\arraystretch}{1.9}
+% commment/uncomment to show/hide the solution
+%\renewcommand{\phantom}[1]{#1}
 
 % --- INFORMACIÓN DEL TÍTULO ---
 \title{Una Derivación Completa de las Transformaciones de Lorentz \\ y su Interpretación Geométrica}
@@ -299,7 +303,7 @@ despejar $t'$
     x = &\gamma (x' + vt').
 \end{aligned}$& Ecuaciones \eqref{eq:xplt} y \eqref{eq:invxplt}\\\hline
 \stepcounter{paso}\thepaso) & $x=\gamma[\gamma(x-vt) +v t']$&sustituyendo $x'=\gamma(x-vt)$ en $x = \gamma(x' + vt')$\\\hline
-\stepcounter{paso}\thepaso) & $x=\gamma^2x-\gamma^2 vt +\gamma v t'$  & Expandiendo el lado derecho\\\hline
+\stepcounter{paso}\thepaso) & $x=\gamma^2x-\gamma^2 vt +\gamma v t'$  & Distribuyendo $\gamma$ el lado derecho\\\hline
 \stepcounter{paso}\thepaso) & $\gamma v t' = x-\gamma^2x +\gamma^2 v t$ & Sumando $-\gamma^2x +\gamma^2 v t$ a ambos lados de la igualdad. \\\hline
 \stepcounter{paso}\thepaso) & $\gamma v t' = x(1-\gamma^2) +\gamma^2 v t$  & Factorizando $x$.\\\hline
 \stepcounter{paso}\thepaso) & $\gamma v t' = x\left(1-\dfrac{c^2}{c^2-v^2}\right) +\gamma^2 v t$ & Reemplazando $\gamma^2$ de la ecuación~\eqref{eq:gammasquare} \\\hline
@@ -640,7 +644,7 @@ Un intervalo de tiempo más largo entre tictacs significa que se observa que el 
 \node[black] (russell) at (3.7,-0.2) {$x_2$};
 
 
-\draw[axis, black] (3.7, 2) -- (4.7, 2) node[midway, above] {$v$};
+%\draw[axis, black] (3.7, 2) -- (4.7, 2) node[midway, above] {$v$};
 
 % --- distancia entre sistemas ---
 \draw[axis, gray] (3.15, 0.5) -- (2.95, 0.5) node[midway, ,gray,pos=-0.8] {$t$};
@@ -662,77 +666,452 @@ La contracción de la longitud es otra predicción fundamental de la Relatividad
 
 La clave para medir correctamente la longitud de un objeto en movimiento es determinar las posiciones de sus dos extremos \textbf{simultáneamente} en el sistema de referencia del observador.
 
-\subsection{La Configuración Física (Experimento Mental)}
+La longitud propia, $L_0$, es la distancia entre dos puntos cuyas posiciones son medidas por un observador en reposo respecto a los dos puntos. La longitud contraida se denota como $L_0$
 
-\begin{enumerate}
-    \item \textbf{Dos Sistemas:} Como siempre, consideramos un sistema estacionario $S$ (el sistema del observador) y un sistema $S'$ que se mueve con una velocidad constante $v$ a lo largo del eje x positivo relativo a $S$.
+% --- Inicio del código LaTeX para insertar ---
 
-    \item \textbf{Un Objeto en el Sistema en Movimiento:} Colocamos un objeto, como una varilla, en reposo en el sistema en movimiento $S'$. La varilla está alineada a lo largo del eje x'.
-    \begin{itemize}
-        \item La posición del primer extremo de la varilla en el sistema $S'$ es $x'_1$.
-        \item La posición del segundo extremo de la varilla en el sistema $S'$ es $x'_2$.
-    \end{itemize}
-\end{enumerate}
+\section*{Demostración de la Contracción de Lorentz a partir de la Dilatación del Tiempo}
 
-\subsection{Definiendo la Longitud Propia}
+Esta es una de las demostraciones más elegantes en relatividad, ya que muestra cuán profundamente entrelazados están el espacio y el tiempo. En lugar de derivar la contracción de la longitud directamente de los postulados, la derivaremos como una consecuencia lógica de la dilatación del tiempo. Para ello, construiremos un experimento mental que involucre tanto una medición de distancia como una de tiempo desde dos perspectivas diferentes.
 
-La longitud de un objeto medida en el sistema de referencia donde está en reposo se llama su \textbf{longitud propia}, denotada por $L_0$.
-
-En nuestra configuración, la varilla está en reposo en el sistema $S'$. Por lo tanto, su longitud propia es la simple diferencia entre las coordenadas de sus extremos en ese sistema:
-\[ L_0 = x'_2 - x'_1 \]
-Nuestro objetivo es encontrar la longitud de esta misma varilla según lo medido por un observador en el sistema estacionario $S$. Llamemos a esta longitud medida $L$.
-
-\subsection{Midiendo la Longitud en el Sistema Estacionario}
-
-Para medir la longitud $L$ de la varilla en movimiento, el observador en el sistema $S$ debe localizar las posiciones de sus dos extremos, $x_1$ y $x_2$, en el mismo instante de tiempo, $t$.
+\subsection*{El Experimento Mental}
+Imaginemos un viaje espacial:
 \begin{itemize}
-    \item La medición de la posición del primer extremo, $x_1$, ocurre en el tiempo $t$.
-    \item La medición de la posición del segundo extremo, $x_2$, ocurre en el mismo tiempo $t$.
+    \item Hay dos puntos fijos en el espacio: un punto de partida (la Tierra) y un punto de destino (una estrella lejana).
+    \item Un observador en la Tierra (en el sistema de referencia \textbf{S}) mide la distancia entre la Tierra y la estrella. Como esta distancia está en reposo con respecto a él, mide la \textbf{longitud propia}, $L_0$.
+    \item Una nave espacial (en el sistema de referencia \textbf{S'}) viaja de la Tierra a la estrella a una velocidad constante $v$.
 \end{itemize}
-La longitud medida por el observador en el sistema $S$ es por lo tanto:
-\[ L = x_2 - x_1 \]
+Nuestro objetivo es encontrar la distancia entre la Tierra y la estrella medida por el astronauta en la nave, a la que llamaremos $L$.
 
-\subsection{Aplicando las Transformaciones de Lorentz}
+\subsection*{La Demostración: Paso a Paso}
+La demostración se basa en calcular el tiempo del viaje desde ambas perspectivas y luego conectarlos usando la fórmula de la dilatación del tiempo.
 
-Necesitamos una transformación de Lorentz que conecte las coordenadas en $S$ y $S'$. La transformación para la coordenada espacial $x'$ es la más directa de usar:
-\[ x' = \gamma (x - vt) \]
-Aplicamos esta transformación a los dos extremos de la varilla.
+\subsubsection*{Paso 1: La Perspectiva de la Tierra (Sistema S)}
+\begin{itemize}
+    \item \textbf{Distancia del viaje:} Para el observador en la Tierra, la distancia que debe recorrer la nave es la longitud propia, $L_0$.
+    \item \textbf{Tiempo del viaje:} El observador en la Tierra mide el tiempo que tarda la nave en completar el viaje usando sus propios relojes. Llamaremos a este tiempo $\Delta t$. Usando la fórmula básica \texttt{tiempo = distancia / velocidad}, tenemos:
+    \[ \Delta t = \frac{L_0}{v} \]
+\end{itemize}
+Despejando la distancia, obtenemos nuestra primera ecuación clave:
+\begin{equation} \label{eq:dist_tierra}
+    L_0 = v \cdot \Delta t
+\end{equation}
+
+\subsubsection*{Paso 2: La Perspectiva del Astronauta (Sistema S')}
+\begin{itemize}
+    \item \textbf{Distancia del viaje:} Para el astronauta, él está en reposo y es la estrella la que se acerca a él a una velocidad $v$. La distancia que él mide entre la Tierra y la estrella es $L$.
+    \item \textbf{Tiempo del viaje:} El astronauta mide la duración del viaje en su propio reloj. Este tiempo es el \textbf{tiempo propio}, $\Delta t_0$, porque para él, los eventos de ``salida" y ``llegada" ocurren en su misma ubicación (en $x'=0$). De nuevo, usando \texttt{tiempo = distancia / velocidad}:
+    \[ \Delta t_0 = \frac{L}{v} \]
+\end{itemize}
+Despejando la distancia, obtenemos nuestra segunda ecuación clave:
+\begin{equation} \label{eq:dist_nave}
+    L = v \cdot \Delta t_0
+\end{equation}
+
+\subsubsection*{Paso 3: El Puente - Conectando las Perspectivas con la Dilatación del Tiempo}
+Ahora tenemos dos ecuaciones diferentes para la distancia, cada una involucrando una medida de tiempo diferente. Aquí es donde entra en juego la \textbf{dilatación del tiempo}, que actúa como un puente entre los dos sistemas de referencia.
+
+La fórmula de la dilatación del tiempo nos dice cómo se relacionan el tiempo medido por el observador en la Tierra ($\Delta t$) y el tiempo propio medido por el astronauta ($\Delta t_0$):
+\begin{equation} \label{eq:dilatacion}
+    \Delta t = \gamma \Delta t_0 \quad \text{donde} \quad \gamma = \frac{1}{\sqrt{1 - v^2/c^2}}
+\end{equation}
+
+\subsubsection*{Paso 4: Combinar las Ecuaciones y Resolver}
+Tenemos un sistema de tres ecuaciones y nuestro objetivo es encontrar una relación entre $L$ y $L_0$.
 \begin{enumerate}
-    \item Para el primer extremo de la varilla (coordenadas $x'_1$ y $x_1$):
-    \[ x'_1 = \gamma (x_1 - vt) \]
-    \item Para el segundo extremo de la varilla (coordenadas $x'_2$ y $x_2$):
-    \[ x'_2 = \gamma (x_2 - vt) \]
+    \item Partimos de la Ecuación (\ref{eq:dist_tierra}):
+    \[ L_0 = v \cdot \Delta t \]
+    \item Sustituimos la Ecuación (\ref{eq:dilatacion}) en la ecuación anterior para eliminar $\Delta t$:
+    \[ L_0 = v \cdot (\gamma \Delta t_0) \]
+    \item Ahora, observamos la Ecuación (\ref{eq:dist_nave}), que nos dice que $L = v \cdot \Delta t_0$. Podemos sustituir todo el término $(v \cdot \Delta t_0)$ en nuestra ecuación actual por $L$:
+    \[ L_0 = \gamma (v \cdot \Delta t_0) \implies L_0 = \gamma L \]
 \end{enumerate}
-Nótese que el tiempo $t$ es el mismo en ambas ecuaciones porque las mediciones se realizan simultáneamente en el sistema $S$.
-
-\subsection{La Derivación}
-
-Ahora, podemos encontrar la longitud propia $L_0$ restando la primera ecuación de la segunda:
-\begin{align*}
-x'_2 - x'_1 &= \left[ \gamma (x_2 - vt) \right] - \left[ \gamma (x_1 - vt) \right] \\
-&= \gamma (x_2 - vt - x_1 + vt) \\
-&= \gamma (x_2 - x_1)
-\end{align*}
-El término $vt$ se cancela, lo que confirma que nuestra elección del tiempo específico de medición no afecta el resultado.
-
-Ahora, sustituimos las definiciones de longitud propia ($L_0 = x'_2 - x'_1$) y longitud medida ($L = x_2 - x_1$):
-\[ L_0 = \gamma L \]
-Para encontrar la longitud medida $L$, reorganizamos la ecuación:
+Finalmente, despejamos $L$, la longitud medida por el astronauta en movimiento:
 \[ L = \frac{L_0}{\gamma} \]
 
-\subsection{Resultado e Interpretación}
-
-Sustituyendo la expresión completa para el factor de Lorentz $\gamma = \frac{1}{\sqrt{1-v^2/c^2}}$ se obtiene la fórmula final para la contracción de la longitud:
+\subsection*{Resultado y Conclusión}
+Al sustituir la expresión completa para $\gamma$, obtenemos la fórmula de la contracción de la longitud:
 \[ \boxed{ L = L_0 \sqrt{1 - v^2/c^2} } \]
-Interpretemos este resultado:
-\begin{itemize}
-    \item El factor $\sqrt{1 - v^2/c^2}$ es siempre menor o igual a 1.
-    \item Esto significa que $L \le L_0$.
-    \item La longitud ($L$) de la varilla medida por el observador en el sistema $S$ es \textit{más corta} que su longitud propia ($L_0$) medida en su sistema de reposo.
-\end{itemize}
-Es crucial notar que esta contracción \textbf{solo ocurre a lo largo de la dirección del movimiento}. Las longitudes en las direcciones perpendiculares al movimiento (y y z) no se ven afectadas, porque las transformaciones de Lorentz para esas coordenadas son simplemente $y' = y$ y $z' = z$.
+Hemos demostrado con éxito que la contracción de la longitud es una consecuencia directa y necesaria de la dilatación del tiempo. Al insistir en que ambos observadores deben estar de acuerdo en los hechos básicos, inevitablemente llegamos a la conclusión de que para el objeto en movimiento la distancia del viaje es más corta. Esto subraya que el espacio y el tiempo están intrínsecamente entrelazados.
+
+% --- Fin del código LaTeX ---
 
 ver \url{https://inspirehep.net/literature/2825885}
+
+
+\section{El Problema con la Suma de Velocidades Clásica}
+
+En la física clásica (galileana), si estás en un tren que se mueve a una velocidad $v$, y lanzas una pelota hacia adelante a una velocidad $u'$ (relativa al tren), un observador en el suelo vería la pelota moverse a una simple suma de las velocidades:
+\[ u = u' + v \quad \text{(Suma Clásica/Galileana)} \]
+Esto funciona perfectamente a velocidades cotidianas. Sin embargo, se rompe a velocidades relativistas.
+
+\textbf{La Contradicción:} Imagina una nave espacial (sistema $S'$) que se aleja de la Tierra (sistema $S$) a $v=0.8c$. La nave dispara una sonda hacia adelante a una velocidad de $u'=0.7c$ relativa a sí misma. Según la fórmula clásica, un observador en la Tierra vería la sonda moverse a:
+\[ u = 0.7c + 0.8c = 1.5c \]
+Esto es más rápido que la velocidad de la luz, lo cual viola el segundo postulado de la Relatividad Especial. Necesitamos una nueva fórmula que respete el límite de velocidad cósmico.
+
+\section{La Configuración para la Fórmula Relativista}
+
+Usamos tres sistemas de referencia:
+\begin{itemize}
+    \item \textbf{Sistema S:} Un observador estacionario (por ejemplo, en la Tierra).
+    \item \textbf{Sistema S':} Un sistema que se mueve con velocidad $v$ relativa a $S$ (por ejemplo, la nave espacial).
+    \item \textbf{Objeto:} Un objeto que se mueve con velocidad $u'$ relativa a $S'$.
+\end{itemize}
+Nuestro objetivo es encontrar la velocidad del objeto, \textbf{$u$}, medida por el observador en el sistema estacionario, $S$.
+\[
+\text{S (Tierra)} \quad \xrightarrow{v} \quad \text{S' (Nave)} \quad \xrightarrow{u'} \quad \text{Objeto (Sonda)}
+\]
+\[
+\text{¿Cuál es la velocidad } u \text{ del Objeto relativa a S?}
+\]
+
+\section{Derivación a partir de las Transformaciones de Lorentz}
+
+Las velocidades constantes se definen como el cociente entre la posición y el tiempo:
+\[ u = \frac{x}{t} \quad \text{y} \quad u' = \frac{x'}{t'}\,, \]
+que son respectivamente las velocidades del un objeto con respecto a los sistemas $S$ y $S'$ que se me mueve a su vez con una velocidad $v$
+
+Comenzamos con las transformaciones de Lorentz que relacionan las coordenadas:
+\begin{align*}
+x' &= \gamma(x - vt) \\
+t' &= \gamma\left(t - \frac{vx}{c^2}\right)
+\end{align*}
+Ahora, podemos construir la fracción para $u'$ dividiendo $x'$ por $t'$:
+\[ u' = \frac{x'}{t'} = \frac{\gamma(x - vt)}{\gamma\left(t - \frac{v\,x}{c^2}\right)} \]
+Los factores $\gamma$ se cancelan:
+\[ u' = \frac{x - v\,t}{t - \frac{v\,x}{c^2}} \]
+Para poner esto en términos de velocidades, dividimos el numerador y el denominador por $dt$:
+\[ u' = \frac{\frac{x}{t} - v\frac{t}{t}}{\frac{t}{t} - \frac{v}{c^2}\frac{x}{t}} \]
+Sustituyendo $u = \frac{x}{t}$:
+\[ u' = \frac{u - v}{1 - \frac{uv}{c^2}} \]
+Esta fórmula da la velocidad relativa $u'$ cuando conoces las velocidades en el sistema estacionario. Sin embargo, queremos ``sumar" velocidades, lo que significa que necesitamos resolver esta ecuación para $u$.
+
+\noindent
+\setcounter{paso}{0}
+\begin{tabular}{l|p{0.35\textwidth}|p{0.6\textwidth}}
+\textbf{paso} &\textbf{Despejar} $u$& \textbf{Paso algebraico} \\\hline
+\stepcounter{paso}\thepaso) & $ u' = \dfrac{u - v}{1 - \frac{uv}{c^2}} $
+ & Ecuación inicial \\[5pt]\hline
+\stepcounter{paso}\thepaso) & $u'\left(1 - \dfrac{uv}{c^2}\right) = u - v $ & Multiplicar por $\left(1 - \dfrac{uv}{c^2}\right)$ a ambos lados de la igualdad \\[5pt]\hline
+\stepcounter{paso}\thepaso) & $u' - \dfrac{u'uv}{c^2} = u - v$ & Distribuir $u'$ en el lado derecho.\\[5pt]\hline
+\stepcounter{paso}\thepaso) & $u' + v = u + \dfrac{u'uv}{c^2}$ & Reunir términos con $u$. \\[5pt]\hline
+\stepcounter{paso}\thepaso) & $u' + v = u\left(1 + \dfrac{u'v}{c^2}\right)$ & Factorizar $u$. \\[5pt]\hline
+\stepcounter{paso}\thepaso) & $u = \dfrac{u' + v}{1 + \frac{u'v}{c^2}}$& Dividiendo por $\left(1 + \dfrac{u'v}{c^2}\right)$ a ambos lados de la igualdad.\\[7pt]\hline
+
+\end{tabular}
+
+
+De esta forma obtenemos da la \textbf{Fórmula de Suma de Velocidades de Einstein}:
+\[
+\boxed{
+u = \frac{u' + v}{1 + \frac{u'v}{c^2}}
+}
+\]
+
+\subsection*{Ejercicio: Despejar $c^2$ de la fórmula de suma de velocidades}
+\noindent
+\setcounter{paso}{0}
+\begin{tabular}{l|p{0.3\textwidth}|p{0.65\textwidth}}
+\textbf{paso} &\textbf{Despejar} $c^2$& \textbf{Paso algebraico} \\\hline
+\stepcounter{paso}\thepaso) & $u = \dfrac{u' + v}{1 + \frac{u'v}{c^2}}$& Ecuación inicial\\[7pt]\hline
+\stepcounter{paso}\thepaso) & $u\left(1 + \dfrac{u'v}{c^2}\right) = u' + v $ & Multiplicar por $\left(1 + \dfrac{u'v}{c^2}\right)$ a ambos lados de la igualdad. \\[5pt]\hline
+\stepcounter{paso}\thepaso) & \phantom{$u + \dfrac{u u'v}{c^2} =  u' + v$}& Distribuir $u$ en el lado derecho.\\[5pt]\hline
+\stepcounter{paso}\thepaso) & $\dfrac{u u'v}{c^2} =  u' + v - u$& \phantom{Restar $u$ a ambos lados de la igualdad.}\\[5pt]\hline
+\stepcounter{paso}\thepaso) &\phantom{ $\dfrac{c^2}{u u'v} = \dfrac{1}{ u' + v - u}$}& Tomar el reciproco a ambos lados de la igualdad.\\[5pt]\hline
+\stepcounter{paso}\thepaso) & $c^2 = \dfrac{u u'v}{ u' + v - u}$ & \phantom{ Multiplicar por $u u'v$ a ambos lados de la igualdad. }\\[5pt]\hline
+\end{tabular}
+
+El resultado de despejar $c^2$ es entonces
+
+\begin{align}
+\boxed{
+    c^2 = \dfrac{u u'v}{ u' + v - u}
+    \,.}
+\end{align}
+
+En el límite no relativista de $u\approx u'+v$, tenemos que
+\begin{align}
+    c^2 = \dfrac{u u'v}{ u' + v - u} \approx \dfrac{(u'+v) u'v}{0} = \infty\,, 
+\end{align}
+tenemos que  $c = \infty$ y de éste modo en el límite no relativista, ¡no existe una velocidad límite!.
+
+% --- Inicio del código LaTeX para insertar ---
+
+\section{Fórmulas del Decaimiento Radiactivo}
+En esta sección estableceremos el concepto de vida media para una partícula inestable y veremos como la relatividad especial puede afectar el tiempo de vida media dependiendo del observador inercial
+\subsection*{Introducción: La Naturaleza del Decaimiento}
+
+El decaimiento de una partícula inestable (ya sea un núcleo atómico o una partícula subatómica) es un proceso fundamentalmente \textbf{probabilístico y aleatorio}. No podemos predecir cuándo decaerá una partícula específica. Sin embargo, para una población grande de partículas idénticas, podemos predecir con gran precisión cuántas de ellas decaerán en un intervalo de tiempo determinado.
+
+El principio clave es que la tasa de decaimiento (el número de partículas que decaen por segundo) es directamente proporcional al número de partículas que aún no han decaído. Esto conduce a una ley de \textbf{decaimiento exponencial}.
+
+\subsection*{Fórmula 1: En Términos de la Constante de Decaimiento ($\lambda$)}
+
+Esta es la forma más fundamental de la ecuación, derivada directamente del principio de proporcionalidad. La tasa de cambio del número de partículas, $N$, con respecto al tiempo, $t$, es:
+\[ \frac{dN}{dt} = -\lambda N \]
+Donde $\lambda$ (lambda) es la \textbf{constante de decaimiento} y representa la probabilidad de que una sola partícula decaiga por unidad de tiempo. Resolviendo esta ecuación diferencial, obtenemos la \textbf{fórmula del decaimiento exponencial}:
+\[ \boxed{N(t) = N_0 e^{-\lambda t}} \]
+Donde:
+\begin{itemize}
+    \item $N(t)$ es el número de partículas que quedan en el tiempo $t$.
+    \item $N_0$ es el número inicial de partículas en el tiempo $t=0$.
+    \item $e$ es la base del logaritmo natural.
+    \item $\lambda$ es la constante de decaimiento, con unidades de (tiempo)\textsuperscript{-1} (p. ej., \si{\per\second}).
+\end{itemize}
+
+\subsection*{Fórmula 2: En Términos de la Vida Media ($t_{1/2}$)}
+
+Esta forma es más intuitiva. La \textbf{vida media ($t_{1/2}$)} es el tiempo que tarda en decaer la mitad de una muestra inicial de partículas.
+
+\subsubsection*{Relación entre $\lambda$ y $t_{1/2}$}
+Podemos encontrar esta relación usando la primera fórmula. Por definición, cuando $t = t_{1/2}$, el número de partículas restantes es $N(t_{1/2}) = N_0/2$.
+\[ \frac{N_0}{2} = N_0 e^{-\lambda t_{1/2}} \implies \frac{1}{2} = e^{-\lambda t_{1/2}} \]
+Tomando el logaritmo natural de ambos lados:
+\[ \ln\left(\frac{1}{2}\right) = -\lambda t_{1/2} \implies -\ln(2) = -\lambda t_{1/2} \]
+Esto nos da la relación fundamental:
+\[ \boxed{\lambda = \frac{\ln(2)}{t_{1/2}}} \]
+Sustituyendo esta expresión para $\lambda$ en la primera fórmula de decaimiento:
+\[ N(t) = N_0 e^{-\left(\frac{\ln(2)}{t_{1/2}}\right)t} = N_0 \left(e^{\ln(2)}\right)^{-\frac{t}{t_{1/2}}} = N_0 (2)^{-\frac{t}{t_{1/2}}} \]
+Esto nos da la \textbf{fórmula del decaimiento en términos de la vida media}:
+\[ \boxed{N(t) = N_0 \left(\frac{1}{2}\right)^{\frac{t}{t_{1/2}}}} \]
+Esta forma es muy fácil de interpretar: el exponente ${t}/{t_{1/2}}$ simplemente cuenta ``cuántas vidas medias han pasado'', ver figura~\ref{fig:decrad}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\linewidth]{decaimiento}
+    \caption{Decaimiento radiativo. Tomado de \cite{} }
+    \label{fig:decrad}
+\end{figure}
+
+\subsection*{Ejemplos Aplicados}
+Aquí aplicamos las fórmulas a tres ejemplos que abarcan escalas de tiempo drásticamente diferentes.
+
+\begin{table}[h!]
+\centering
+\caption{Comparación de Vidas Medias y Constantes de Decaimiento.}
+\label{tab:decay_examples}
+\begin{tabular}{l | l | p{2.7cm} | p{5.5cm}}
+\hline
+\textbf{Partícula} & \textbf{Vida Media ($t_{1/2}$)} & \textbf{C. de Decaimiento ($\lambda$)} & \textbf{Contexto Físico} \\
+\hline \hline
+Uranio-238 & \SI{4.47e9}{years} & \SI{4.91e-18}{\per\second} & Isótopo extremadamente estable, clave para la datación radiométrica de rocas muy antiguas y la edad de la Tierra. \\
+\hline
+Neutrón (libre) & \SI{877}{\second} (\SI{14.6}{min}) & \SI{7.9e-4}{\per\second} & Estable dentro de un núcleo, pero inestable cuando está libre. Su vida media es crucial en la cosmología del universo temprano. \\
+\hline
+Muón & \SI{2.2}{\micro\second} (\SI{2.2e-6}{\second}) & \SI{3.15e5}{\per\second} & Partícula fundamental muy inestable. Su detección en la superficie terrestre es una prueba experimental clásica de la dilatación del tiempo. \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{Cálculos de $\lambda$:}
+\begin{itemize}
+    \item \textbf{Uranio-238:}
+    \begin{itemize}
+        \item $t_{1/2} = \SI{4.47e9}{años} \times \SI{3.15e7}{\second\per\text{año}} \approx \SI{1.41e17}{\second}$
+        \item $\lambda = \frac{\ln(2)}{\SI{1.41e17}{\second}} \approx \SI{4.91e-18}{\per\second}$
+    \end{itemize}
+    \item \textbf{Neutrón:}
+    \[ \lambda = \frac{\ln(2)}{\SI{877}{\second}} \approx \SI{7.9e-4}{\per\second} \]
+    \item \textbf{Muón:}
+    \[ \lambda = \frac{\ln(2)}{\SI{2.2e-6}{\second}} \approx \SI{3.15e5}{\per\second} \]
+\end{itemize}
+
+% --- Fin del código LaTeX ---
+
+\section{Características Clave y Ejemplos}
+
+\subsection{Ejemplo 1: La Nave Espacial y la Sonda}
+Volvamos a nuestro problema inicial con la fórmula relativista.
+\begin{itemize}
+    \item $v = 0.8c$ (velocidad de la nave relativa a la Tierra)
+    \item $u' = 0.7c$ (velocidad de la sonda relativa a la nave)
+\end{itemize}
+\[ u = \frac{0.7c + 0.8c}{1 + \frac{(0.7c)(0.8c)}{c^2}} = \frac{1.5c}{1 + \frac{0.56c^2}{c^2}} = \frac{1.5c}{1 + 0.56} = \frac{1.5c}{1.56} \]
+\[ u \approx 0.9615c \]
+El resultado es menor que la velocidad de la luz, como se requiere.
+
+\subsection{Característica 1: La Velocidad de la Luz es el Límite Último}
+¿Qué pasa si la nave que se mueve a $v=0.9c$ dispara un rayo láser hacia adelante ($u'=c$)?
+\[ u = \frac{c + 0.9c}{1 + \frac{(c)(0.9c)}{c^2}} = \frac{1.9c}{1 + 0.9} = \frac{1.9c}{1.9} = c \]
+El observador en la Tierra también mide la velocidad del rayo láser como exactamente $c$. Este hermoso resultado muestra cómo la fórmula defiende perfectamente el segundo postulado de la relatividad. 
+
+\subsection{Característica 2: Se Reduce a la Fórmula Clásica a Bajas Velocidades}
+Si $v \ll c$ y $u' \ll c$, el término $\frac{u'v}{c^2}$ se vuelve extremadamente pequeño y se aproxima a cero.
+\[ u = \frac{u' + v}{1 + \frac{u'v}{c^2}} \approx \frac{u' + v}{1} = u' + v \]
+Esto muestra que la fórmula relativista contiene la fórmula clásica como una aproximación a baja velocidad, lo cual es un requisito clave para cualquier nueva teoría física.
+
+
+\section{Ejemplos}
+\begin{enumerate}
+\item Supongamos que un cañón de bolas de tenis es capaz de lanzar una bola de tenis, de diámetro $d = \qty{67}{\milli\m}$  a la mitad de la velocidad de la luz hacia la raqueta de un tenista al otro lado de una cancha de longitud $h=\qty{24}{\m}$. Una hormiga accidentalmente resultó viajando con la bola. Calcular el tiempo propio que siente la hormiga y el tiempo dilatado para el tenista. Calcular las distancias contraídas con respecto a cada observador (ver figura \ref{fig:dilcon}). 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{tennis.png}
+    \caption{Dilatación y contracción en un ejemplo ficticio para una bola de tenis a velocidades relativistas. En la parte de inferior se ilustra de contracción de las longitudes para la bola observada por el tenista, y la contracción de la cancha, en gris, percibida por la hormiga moviendose con la bola de tenis a una velocidad de $0.87c$ correspondiente a una contracción de Lorentz por un factor de $0.5$.}
+    \label{fig:dilcon}
+\end{figure}
+
+\subsection*{Solución}
+Tenemos que
+\begin{itemize}
+\item Escogemos el sistema $S$ con origen en el tenista
+\item  Esogemos el sistema $S'$ viajando con la bola de tenis.
+\item $v = 0.87c$ es la velocidad de la bola con respecto a $S$.
+\item Longitud de la cancha de tenis: $h = \qty{24}{m}$ 
+\item Diámetro pelota de tenis:  $d = \qty{67}{\milli\m}$
+\end{itemize}
+
+El tiempo que tarda la pelota en atravesar la cancha con respecto al tenista es el tiempo dilatado
+\begin{align}
+    \Delta t = \frac{h}{v} = \frac{\qty{24}{\m}}{0.87\cdot \qty{3e8}{\m/\s}} = \qty{9.2e-8}{\s}\,.
+\end{align}
+
+El tiempo que percibe la hormiga es el tiempo propio
+\begin{align}
+    \Delta t_0 = \frac{\Delta t}{\gamma} =& \Delta t \sqrt{1-v^2/c^2} \nonumber\\
+    =& \qty{9.2e-8}{\s} \sqrt{1-0.87^2} \nonumber\\
+ \approx &0.5\cdot \qty{9.2e-8}{\s} \nonumber\\
+    =& \qty{4.6e-8}{\s}
+\end{align}
+
+Para calcular las distancias con respecto al tenista, partimos del hecho que su distancia propia:
+\begin{quote}
+    La distancia entre dos puntos cuyas posiciones son medidas por
+un observador en reposo respecto a los dos puntos,
+\end{quote}
+corresponde a 
+\begin{align*}
+    L_0^{c} = h = \qty{24}{m}\,.
+\end{align*}
+El tenista observa la bola de diámetro propio percibido por la hormiga $L^b_0 = d$, con un diámetro contraído, como se muestra en la parte inferior de la figura~\ref{fig:dilcon}
+\begin{align*}
+    L^b = \frac{L^b_0}{\gamma} =& d \sqrt{1-v^2/c^2} \\
+        =& d\sqrt{1-0.87^2}\\
+        \approx& 0.5d\\
+    =& 0.5\cdot \qty{67}{\milli\m}\\
+    =& \qty{33.5}{\milli\m}\,.
+\end{align*}
+
+Finalmente, para las distancias percibidas por la hormiga, partimos del hecho para ella la bola está en su distancia propia $L^b_0 = d$.
+
+Sin embargo, percibe una distancia de la cancha de tenis contraída, dada por
+\begin{align*}
+    L^{b} = \frac{L^b_0}{\gamma} =& h\sqrt{1-v^2/c^2}\\
+    \approx& 0.5 h\\
+        =& 0.5\cdot \qty{24}{\m}\\
+    =& \qty{12}{\m}\,.
+\end{align*}
+
+Podemos de hecho comprobar que en su tiempo propio, $\Delta t_0 = \qty{4.6e-8}{s}$, que es más corto que el tiempo dilatado $\Delta t$, puede recorrer esa distancia contraída con $v=0.87c$
+\begin{align*}
+    L^{b} = &v \Delta t_0 \\
+    =&0.87 c \cdot \qty{4.6e-8}{s}\\
+    =&\qty{12}{ m }.
+\end{align*}
+
+    
+ \item La estrella Xquar está a una distancia de 5 años luz de la
+Tierra. La aventurera espacial Raqu se dirige desde la Tierra
+hacia Xquar a una velocidad de $0.9c$.
+\begin{enumerate}[label=(\alph*)]
+    \item Para aquellos que observan desde la Tierra, ¿cuánto tiempo tardará
+Raqu en llegar a Xquar?
+\item Desde el punto de vista de Raqu, ¿cuánto tiempo tardará ella
+en llegar a Xquar?
+\item Aunque Xquar estaba a 5 años luz de la Tierra
+y Raqu viajó a 0.9c, su viaje tomó mucho
+menos tiempo de lo que se podría esperar de estas cifras.
+Explique por qué es esto.
+\end{enumerate}
+
+
+\item Un muón es creado en la atmósfera a 15~Km de altura. Viaja hacia el centro de la Tierra a una velocidad de $0.999c$. 
+\label{item:muon}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Para aquellos que observan desde la Tierra, ¿cuánto tiempo tardará
+el muón en llegar a la superficie de la Tierra?
+\item Desde el punto de vista del muón, ¿cuánto tiempo tardará
+en llegar a la superficie de la Tierra?
+\item Aunque la distancia recorrida fue de 15km hasta la superficie de la Tierra y el muón viajó a $0.999c$, 
+su viaje tomó mucho
+menos tiempo de lo que se podría esperar de estas cifras.
+Explique por qué es esto. ¿Es consistente con la vida media del muón?
+\end{enumerate}
+
+\section*{Soluciones}
+
+\begin{itemize}
+    \item[\ref{item:muon}.]
+
+\textbf{(a) Para aquellos que observan desde la Tierra, ¿cuánto tiempo tardará el muón en llegar a la superficie de la Tierra?}
+
+Esto se pregunta desde la perspectiva del observador "estacionario" en la Tierra. El cálculo se basa en la distancia y la velocidad medidas en el sistema de la Tierra.
+
+\begin{itemize}
+    \item \textbf{Distancia a recorrer ($L_0$):} 15 km = 15,000 m
+    \item \textbf{Velocidad de viaje ($v$):} 0.999c
+    \item \textbf{Velocidad de la luz ($c$):} Aproximadamente $3 \times 10^8$ m/s
+\end{itemize}
+Usamos la fórmula estándar para el tiempo:
+\[ \text{Tiempo} = \frac{\text{Distancia}}{\text{Velocidad}} \]
+\[ \Delta t = \frac{15,000 \text{ m}}{0.999 \times (3 \times 10^8 \text{ m/s})} = \frac{15,000}{2.997 \times 10^8} \text{ s} \approx 5.005 \times 10^{-5} \text{ s} \]
+Para hacer este número más intuitivo, podemos convertirlo a microsegundos ($\mu$s):
+\[ 5.005 \times 10^{-5} \text{ s} = 50.05 \times 10^{-6} \text{ s} = 50.05 \, \mu\text{s} \]
+\textbf{Respuesta:} Para los observadores en la Tierra, el muón tardará aproximadamente \textbf{50.05 microsegundos} en llegar a la superficie.
+
+\textbf{(b) Desde el punto de vista del muón, ¿cuánto tiempo tardará en llegar a la superficie de la Tierra?}
+
+Esto se pregunta desde la perspectiva del muón en movimiento. El tiempo que el muón experimenta en su propio "reloj interno" es el tiempo propio ($\Delta t_0$), que está sujeto a la dilatación del tiempo.
+
+Primero, calculamos el factor de Lorentz ($\gamma$) para una velocidad de 0.999c:
+\[ \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} = \frac{1}{\sqrt{1 - (0.999)^2}} = \frac{1}{\sqrt{1 - 0.998001}} = \frac{1}{\sqrt{0.001999}} \]
+\[ \gamma \approx 22.37 \]
+La fórmula de la dilatación del tiempo es $\Delta t = \gamma \Delta t_0$. Queremos encontrar el tiempo para el muón, $\Delta t_0$:
+\[ \Delta t_0 = \frac{\Delta t}{\gamma} = \frac{50.05 \, \mu\text{s}}{22.37} \approx 2.24 \, \mu\text{s} \]
+\textbf{Respuesta:} Desde el punto de vista del muón, su viaje a la superficie toma solo \textbf{2.24 microsegundos}.
+
+\textbf{}{(c) Explicación y Consistencia}
+
+Esta pregunta llega al corazón de por qué la relatividad es tan esencial para entender nuestro universo.
+
+\textbf{Explicación de la Diferencia de Tiempo (Contracción de la Longitud)}
+
+La "paradoja" se resuelve con la \textbf{contracción de la longitud}. La distancia de 15 km es la \textbf{longitud propia} de la atmósfera medida por alguien en reposo con respecto a ella (en la Tierra).
+
+Desde la perspectiva del muón, está estacionario, y la atmósfera de la Tierra se apresura a su encuentro a 0.999c. Por lo tanto, el muón mide que la altura de la atmósfera está contraída. La distancia contraída ($L$) que ve el muón es:
+\[ L = \frac{L_0}{\gamma} = \frac{15 \text{ km}}{22.37} \approx 0.67 \text{ km} \quad (\text{o 670 metros}) \]
+Desde el sistema de referencia del muón, su tiempo de viaje tiene perfecto sentido. Se ve a sí mismo cubriendo esta distancia mucho más corta a 0.999c:
+\[ \text{Tiempo del Muón} = \frac{\text{Distancia Contraída}}{\text{Velocidad}} = \frac{670 \text{ m}}{0.999 \times (3 \times 10^8 \text{ m/s})} \approx 2.24 \, \mu\text{s} \]
+Esto coincide con el resultado de la parte (b). Para el muón, el viaje es corto porque la distancia es corta.
+
+\textbf{}{Consistencia con la Vida Media del Muón}
+
+Esta es la parte más crucial del problema.
+\begin{enumerate}
+    \item \textbf{Vida Media Propia del Muón:} La vida media de un muón en reposo es aproximadamente $\tau = 2.2 \, \mu\text{s}$.
+
+    \item \textbf{Predicción de la Física Clásica:} Desde el sistema de referencia de la Tierra, el viaje dura $50.05 \, \mu\text{s}$. Como esto es aproximadamente 23 veces más largo que la vida media propia del muón, un físico clásico predeciría que prácticamente ningún muón debería sobrevivir al viaje.
+
+    \item \textbf{Realidad Relativista:}
+    \begin{itemize}
+        \item \textbf{Desde el Sistema de la Tierra (Dilatación del Tiempo):} El observador en la Tierra ve que el reloj interno del muón funciona lentamente. Su vida media \textit{efectiva} en el sistema de la Tierra está dilatada:
+        \[ \text{Vida Media Dilatada} = \gamma \times \tau = 22.37 \times 2.2 \, \mu\text{s} \approx 49.2 \, \mu\text{s} \]
+        Como el tiempo de viaje ($50.05 \, \mu\text{s}$) es muy cercano a esta vida media dilatada, es plausible que muchos muones lleguen al suelo.
+        \item \textbf{Desde el Sistema del Muón (Contracción de la Longitud):} Desde su propia perspectiva, la vida media del muón es solo su valor normal de $2.2 \, \mu\text{s}$. Sin embargo, el viaje que debe hacer dura solo $2.24 \, \mu\text{s}$ porque la distancia se contrajo. Nuevamente, como el tiempo de viaje y la vida media son casi idénticos, es plausible que el muón sobreviva.
+    \end{itemize}
+\end{enumerate}
+\textbf{Conclusión:} Sí, el viaje es perfectamente consistente con la vida media del muón \textit{cuando se tiene en cuenta la relatividad}. El hecho de que detectemos un gran flujo de muones a nivel del mar es una prueba experimental poderosa tanto de la dilatación del tiempo como de la contracción de la longitud.
+\end{itemize}
+
+
+\item Demuestre que la adición de dos velocidades inferiores a la de luz en la fórmula de adición de velocidades relativistas, no puede superar la velocidad de luz.
+
+
+
+\end{enumerate}
+
 
 \section{Forma Vectorial y Rapidez}
 
@@ -743,6 +1122,7 @@ ct' =& \gamma\left(ct-\frac{v}{c}x\right),\\
 x'=&\gamma\left(x-\frac{v}{c}ct\right)
 \end{align}
 
+\
 
 \subsection{Funciones Hiperbólicas}
 \begin{align*}
@@ -880,12 +1260,12 @@ tiene un módulo que es invariante
 En el espacio completo tenemos
 \begin{align*}
     \Delta S^2 =
-     &\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2\,. 
+     &c^2\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2\,. 
 \end{align*}
 
 Definimos un vector en el espacio de Minkowski como
 \begin{align*}
-    x^\mu = (t,x,y,z) = (t,\boldsymbol{r})
+    x^\mu = (ct,x,y,z) = (ct,\boldsymbol{r})
 \end{align*}
 
 \section{Cuadrimomento}
@@ -893,31 +1273,47 @@ En relatividad especial, la magnitud del vector momento para una partícula que 
 \begin{align*}
     p= \gamma m v\,.
 \end{align*}
+A continuación mostraremos porque se necesita el factor $\gamma$ en la ecuación para el momento. 
+
 Si definimos el cuatrivector
 \begin{align*}
-    p^\mu = (E,p_x,p_y,p_z) = (E,\boldsymbol{p})
+    p^\mu = \left(\frac{E}{c},p_x,p_y,p_z\right) = \left(\frac{E}{c},\boldsymbol{p}\right),
 \end{align*}
-Esperamos que el módulo al cuadrado sea un invariante, una constante que llamamos $m^2$, tal que
+donde $c$ se comporta como un factor de conversión (al igual que $h$ cuando se necesite)
 \begin{align*}
-    m^2 =& E^2 - \boldsymbol{p}\cdot\boldsymbol{p} \\
-        =&   E^2 -p^2\,,
+    \left[\frac{E}{c}\right] = \left[ M\frac{L^2}{T^2}\frac{T}{L}  \right] = \left[M \frac{L}{T}\right] = [p]\,,
+\end{align*}
+entonces esperamos que el módulo al cuadrado en el espacio de Minkowski, sea un invariante, una constante que llamaremos $m^2 c^4$ (en unidades de momento al cuadrado), tal que
+\begin{align*}
+    m^2 c^2 =& \frac{E^2}{c^2} - \boldsymbol{p}\cdot\boldsymbol{p} \\
+        =&   \frac{E^2}{c^2} -p^2\,,
 \end{align*}
 donde $p^2 = |\boldsymbol{p}|^2 =\boldsymbol{p}\cdot\boldsymbol{p} $ en el espacio real en tres dimensiones.
 
 Resolviendo para $E$
 \begin{align*}
-    E^2 =& m^2 + p^2\\
-         =& m^2 + \gamma^2 m^2 v^2\\
-         =& m^2(1+\gamma^2 v^2)\\
-         =& m^2 \frac{1-v^2 + v^2}{1-v^2}\\
-         =& \frac{m^2}{1-v^2}\\
-         =& \gamma^2 m^2\,,
+    \frac{E^2}{c^2} =& m^2c^2 + p^2\,.
 \end{align*}
+Resolviendo para $E^2$
+\begin{align*}
+        E^2 =& m^2 c^4 +  p^2c^2\\
+         =& m^2 c^4 + \gamma^2 m^2 v^2 c^2\\
+         =& m^2c^2(c^2+\gamma^2 v^2)\,.
+\end{align*}
+Usando la ecuación~\eqref{eq:gammasquare} para $\gamma^2$
+\begin{align}
+          E^2   =&m^2c^2\left[c^2+ \left(\frac{c^2}{c^2 - v^2}\right)v^2\right]\nonumber\\
+         =& m^2 c^2\left(\frac{c^4-\cancel{c^2v^2}+\cancel{c^2v^2}}{c^2 - v^2}\right)\nonumber\\
+         =& m^2c^2\frac{c^4}{c^2-v^2}\nonumber\\
+         =& m^2c^4\frac{c^2}{c^2-v^2}\nonumber\\
+         =& \gamma^2 m^2 c^4\,,
+\end{align}
+
 Por lo tanto
 \begin{align}
-    E = \gamma m
+    \boxed{E = \gamma m c^2\,.}
 \end{align}
-Recuperando el factor $c$, tenemos
+Usando la ecuación~\eqref{eq:gammasquare} para $\gamma$, tenemos
 \begin{align}
     E = \frac{m c^2}{\sqrt{1-v^2/c^2}}
 \end{align}
@@ -927,198 +1323,339 @@ Hay dos límites:
 \begin{enumerate}
     \item Límite no relativista: $m\gg p$ que resulta en 
     \begin{align*}
-        E = m c^2\,.
+        E = m c^2\,,
     \end{align*}
+    que la energía mínima que puede tener un objeto de masa $m$ y se denomina su \emph{energía en reposo}.
     \item Límite relativista: $m \ll p$ que resulta en
     \begin{align*}
-        E = pc
+        E = pc\,.
     \end{align*}
+
+    Éste límite es válido para partículas con o sin masa (cómo el fotón).  En el caso de un fotón, hemos visto que su energía es 
+    \begin{align}
+        E=h\nu\,,
+    \end{align}
+    y reemplazando en la expresión anterior, tenemos que el momento de un fotón es 
+    \begin{align}
+        p=\frac{E}{c} =& \frac{h}{c}\nu\\
+        [p] =& \left[\frac{E\cdot T}{\dfrac{L}{T}}\cdot \frac{1}{T}\right]\nonumber\\
+         =& \left[\frac{M \dfrac{L^{\cancel{2}}}{T^{\cancel{2}}}\cdot \cancel{T}}{\cancel{\dfrac{L}{T}}}\cdot \frac{1}{\cancel{T}}\right]\nonumber\\
+        = &\left[M \frac{L}{T}\right]\,,
+    \end{align}
+    como era de esperarse. 
+
+    La longitud de onda de un fotón es
+    \begin{align}
+        \lambda =\frac{c}{\nu},,
+    \end{align}
+tal que $[\lambda] = [L]$ y por lo tanto
+\begin{align}
+    p =\frac{h}{\lambda}\,.
+\end{align}
+La correspondiente energía de un fotón de longitud de onda $\lambda$
+\begin{align}
+E = pc =\frac{hc}{\lambda}\,.    
+\end{align}
+
+    En el caso de una partícula relativista con masa, moviendose a una velocidad $v$, comparable a la velocidad de la luz
+    \begin{align}
+        E =&\gamma m v c \nonumber\\
+        =& \frac{mvc}{\sqrt{1-v^2/c^2}}\,.
+    \end{align}
+    Por lo tanto
+    \begin{align}
+        \lim_{v\to c} E = \infty\,.
+    \end{align}
 \end{enumerate}
+De modo que se requeriría  una energía infinita para acelerar un objeto material a la velocidad de la luz. 
 
-
-
-\section{El Problema con la Suma de Velocidades Clásica}
-
-En la física clásica (galileana), si estás en un tren que se mueve a una velocidad $v$, y lanzas una pelota hacia adelante a una velocidad $u'$ (relativa al tren), un observador en el suelo vería la pelota moverse a una simple suma de las velocidades:
-\[ u = u' + v \quad \text{(Suma Clásica/Galileana)} \]
-Esto funciona perfectamente a velocidades cotidianas. Sin embargo, se rompe a velocidades relativistas.
-
-\textbf{La Contradicción:} Imagina una nave espacial (sistema $S'$) que se aleja de la Tierra (sistema $S$) a $v=0.8c$. La nave dispara una sonda hacia adelante a una velocidad de $u'=0.7c$ relativa a sí misma. Según la fórmula clásica, un observador en la Tierra vería la sonda moverse a:
-\[ u = 0.7c + 0.8c = 1.5c \]
-Esto es más rápido que la velocidad de la luz, lo cual viola el segundo postulado de la Relatividad Especial. Necesitamos una nueva fórmula que respete el límite de velocidad cósmico.
-
-\section{La Configuración para la Fórmula Relativista}
-
-Usamos tres sistemas de referencia:
-\begin{itemize}
-    \item \textbf{Sistema S:} Un observador estacionario (por ejemplo, en la Tierra).
-    \item \textbf{Sistema S':} Un sistema que se mueve con velocidad $v$ relativa a $S$ (por ejemplo, la nave espacial).
-    \item \textbf{Objeto:} Un objeto que se mueve con velocidad $u'$ relativa a $S'$.
-\end{itemize}
-Nuestro objetivo es encontrar la velocidad del objeto, \textbf{$u$}, medida por el observador en el sistema estacionario, $S$.
-\[
-\text{S (Tierra)} \quad \xrightarrow{v} \quad \text{S' (Nave)} \quad \xrightarrow{u'} \quad \text{Objeto (Sonda)}
-\]
-\[
-\text{¿Cuál es la velocidad } u \text{ del Objeto relativa a S?}
-\]
-
-\section{Derivación a partir de las Transformaciones de Lorentz}
-
-Las velocidades se definen por las derivadas de la posición con respecto al tiempo:
-\[ u = \frac{dx}{dt} \quad \text{y} \quad u' = \frac{dx'}{dt'} \]
-Comenzamos con las transformaciones de Lorentz que relacionan las coordenadas:
-\begin{align*}
-x' &= \gamma(x - vt) \\
-t' &= \gamma\left(t - \frac{vx}{c^2}\right)
-\end{align*}
-Para obtener las velocidades, tomamos los diferenciales de estas ecuaciones:
-\begin{align*}
-dx' &= \gamma(dx - v\,dt) \\
-dt' &= \gamma\left(dt - \frac{v\,dx}{c^2}\right)
-\end{align*}
-Ahora, podemos construir la fracción para $u'$ dividiendo $dx'$ por $dt'$:
-\[ u' = \frac{dx'}{dt'} = \frac{\gamma(dx - v\,dt)}{\gamma\left(dt - \frac{v\,dx}{c^2}\right)} \]
-Los factores $\gamma$ se cancelan:
-\[ u' = \frac{dx - v\,dt}{dt - \frac{v\,dx}{c^2}} \]
-Para poner esto en términos de velocidades, dividimos el numerador y el denominador por $dt$:
-\[ u' = \frac{\frac{dx}{dt} - v\frac{dt}{dt}}{\frac{dt}{dt} - \frac{v}{c^2}\frac{dx}{dt}} \]
-Sustituyendo $u = \frac{dx}{dt}$:
-\[ u' = \frac{u - v}{1 - \frac{uv}{c^2}} \]
-Esta fórmula da la velocidad relativa $u'$ cuando conoces las velocidades en el sistema estacionario. Sin embargo, queremos "sumar" velocidades, lo que significa que necesitamos resolver esta ecuación para $u$.
-\begin{align*}
-u'\left(1 - \frac{uv}{c^2}\right) &= u - v \\
-u' - \frac{u'uv}{c^2} &= u - v \\
-u' + v &= u + \frac{u'uv}{c^2} \\
-u' + v &= u\left(1 + \frac{u'v}{c^2}\right)
-\end{align*}
-Aislando $u$ nos da la \textbf{Fórmula de Suma de Velocidades de Einstein}:
-\[
-\boxed{
-u = \frac{u' + v}{1 + \frac{u'v}{c^2}}
-}
-\]
-
-\section{Características Clave y Ejemplos}
-
-\subsection{Ejemplo 1: La Nave Espacial y la Sonda}
-Volvamos a nuestro problema inicial con la fórmula relativista.
-\begin{itemize}
-    \item $v = 0.8c$ (velocidad de la nave relativa a la Tierra)
-    \item $u' = 0.7c$ (velocidad de la sonda relativa a la nave)
-\end{itemize}
-\[ u = \frac{0.7c + 0.8c}{1 + \frac{(0.7c)(0.8c)}{c^2}} = \frac{1.5c}{1 + \frac{0.56c^2}{c^2}} = \frac{1.5c}{1 + 0.56} = \frac{1.5c}{1.56} \]
-\[ u \approx 0.9615c \]
-El resultado es menor que la velocidad de la luz, como se requiere.
-
-\subsection{Característica 1: La Velocidad de la Luz es el Límite Último}
-¿Qué pasa si la nave que se mueve a $v=0.9c$ dispara un rayo láser hacia adelante ($u'=c$)?
-\[ u = \frac{c + 0.9c}{1 + \frac{(c)(0.9c)}{c^2}} = \frac{1.9c}{1 + 0.9} = \frac{1.9c}{1.9} = c \]
-El observador en la Tierra también mide la velocidad del rayo láser como exactamente $c$. Este hermoso resultado muestra cómo la fórmula defiende perfectamente el segundo postulado de la relatividad.
-
-\subsection{Característica 2: Se Reduce a la Fórmula Clásica a Bajas Velocidades}
-Si $v \ll c$ y $u' \ll c$, el término $\frac{u'v}{c^2}$ se vuelve extremadamente pequeño y se aproxima a cero.
-\[ u = \frac{u' + v}{1 + \frac{u'v}{c^2}} \approx \frac{u' + v}{1} = u' + v \]
-Esto muestra que la fórmula relativista contiene la fórmula clásica como una aproximación a baja velocidad, lo cual es un requisito clave para cualquier nueva teoría física.
-
+Además, si aceptamos la existencia de una partícula que se pueda mover más rápido que la velocidad de la luz, llamada taquión, el radicando en el denominandor tendría un signo negativo y la energía sería imaginaria, lo que aparentemente no tiene significado físico. Es de anotar que a la fecha no se ha observado ningún taquión en la naturaleza.
 
 \section{Ejemplos}
 \begin{enumerate}
-    
- \item La estrella Xquar está a una distancia de 5 años luz de la
-Tierra. La aventurera espacial Raqu se dirige desde la Tierra
-hacia Xquar a una velocidad de $0.9c$.
-\begin{enumerate}[label=(\alph*)]
-    \item Para aquellos que observan desde la Tierra, ¿cuánto tiempo tardará
-Raqu en llegar a Xquar?
-\item Desde el punto de vista de Raqu, ¿cuánto tiempo tardará ella
-en llegar a Xquar?
-\item Aunque Xquar estaba a 5 años luz de la Tierra
-y Raqu viajó a 0.9c, su viaje tomó mucho
-menos tiempo de lo que se podría esperar de estas cifras.
-Explique por qué es esto.
-\end{enumerate}
+    \item Cálculo de Fotones por Segundo para Corte por Láser de CO\textsubscript{2}.
 
+% --- Inicio del código LaTeX para insertar ---
+Para un láser de CO\textsubscript{2} industrial de \SI{4000}{\watt} (\SI{4}{kW}), una potencia realista para cortar una placa de acero de \SI{20}{\milli\meter}, el número total de fotones que se acumulan en el punto de contacto es de aproximadamente:
+\[ \boxed{N_{\text{fotones}} \approx \num{2.13e23} \text{ fotones por segundo}} \]
+De estos, solo una pequeña fracción (alrededor del \SIrange{5}{10}{\percent}) es absorbida y utilizada para cortar el metal.
 
-\item Un muón es creado en la atmósfera a 15~Km de altura. Viaja hacia el centro de la Tierra a una velocidad de $0.999c$. 
-\label{item:muon}
-
-\begin{enumerate}[label=(\alph*)]
-    \item Para aquellos que observan desde la Tierra, ¿cuánto tiempo tardará
-el muón en llegar a la superficie de la Tierra?
-\item Desde el punto de vista del muón, ¿cuánto tiempo tardará
-en llegar a la superficie de la Tierra?
-\item Aunque la distancia recorrida fue de 15km hasta la superficie de la Tierra y el muón viajó a $0.999c$, 
-su viaje tomó mucho
-menos tiempo de lo que se podría esperar de estas cifras.
-Explique por qué es esto. ¿Es consistente con la vida media del muón?
-\end{enumerate}
-\end{enumerate}
-
-\section{Soluciones}
-
-\begin{itemize}
-    \item[\ref{item:muon}.]
-
-\textbf{(a) Para aquellos que observan desde la Tierra, ¿cuánto tiempo tardará el muón en llegar a la superficie de la Tierra?}
-
-Esto se pregunta desde la perspectiva del observador "estacionario" en la Tierra. El cálculo se basa en la distancia y la velocidad medidas en el sistema de la Tierra.
-
-\begin{itemize}
-    \item \textbf{Distancia a recorrer ($L_0$):} 15 km = 15,000 m
-    \item \textbf{Velocidad de viaje ($v$):} 0.999c
-    \item \textbf{Velocidad de la luz ($c$):} Aproximadamente $3 \times 10^8$ m/s
-\end{itemize}
-Usamos la fórmula estándar para el tiempo:
-\[ \text{Tiempo} = \frac{\text{Distancia}}{\text{Velocidad}} \]
-\[ \Delta t = \frac{15,000 \text{ m}}{0.999 \times (3 \times 10^8 \text{ m/s})} = \frac{15,000}{2.997 \times 10^8} \text{ s} \approx 5.005 \times 10^{-5} \text{ s} \]
-Para hacer este número más intuitivo, podemos convertirlo a microsegundos ($\mu$s):
-\[ 5.005 \times 10^{-5} \text{ s} = 50.05 \times 10^{-6} \text{ s} = 50.05 \, \mu\text{s} \]
-\textbf{Respuesta:} Para los observadores en la Tierra, el muón tardará aproximadamente \textbf{50.05 microsegundos} en llegar a la superficie.
-
-\textbf{(b) Desde el punto de vista del muón, ¿cuánto tiempo tardará en llegar a la superficie de la Tierra?}
-
-Esto se pregunta desde la perspectiva del muón en movimiento. El tiempo que el muón experimenta en su propio "reloj interno" es el tiempo propio ($\Delta t_0$), que está sujeto a la dilatación del tiempo.
-
-Primero, calculamos el factor de Lorentz ($\gamma$) para una velocidad de 0.999c:
-\[ \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} = \frac{1}{\sqrt{1 - (0.999)^2}} = \frac{1}{\sqrt{1 - 0.998001}} = \frac{1}{\sqrt{0.001999}} \]
-\[ \gamma \approx 22.37 \]
-La fórmula de la dilatación del tiempo es $\Delta t = \gamma \Delta t_0$. Queremos encontrar el tiempo para el muón, $\Delta t_0$:
-\[ \Delta t_0 = \frac{\Delta t}{\gamma} = \frac{50.05 \, \mu\text{s}}{22.37} \approx 2.24 \, \mu\text{s} \]
-\textbf{Respuesta:} Desde el punto de vista del muón, su viaje a la superficie toma solo \textbf{2.24 microsegundos}.
-
-\textbf{}{(c) Explicación y Consistencia}
-
-Esta pregunta llega al corazón de por qué la relatividad es tan esencial para entender nuestro universo.
-
-\textbf{Explicación de la Diferencia de Tiempo (Contracción de la Longitud)}
-
-La "paradoja" se resuelve con la \textbf{contracción de la longitud}. La distancia de 15 km es la \textbf{longitud propia} de la atmósfera medida por alguien en reposo con respecto a ella (en la Tierra).
-
-Desde la perspectiva del muón, está estacionario, y la atmósfera de la Tierra se apresura a su encuentro a 0.999c. Por lo tanto, el muón mide que la altura de la atmósfera está contraída. La distancia contraída ($L$) que ve el muón es:
-\[ L = \frac{L_0}{\gamma} = \frac{15 \text{ km}}{22.37} \approx 0.67 \text{ km} \quad (\text{o 670 metros}) \]
-Desde el sistema de referencia del muón, su tiempo de viaje tiene perfecto sentido. Se ve a sí mismo cubriendo esta distancia mucho más corta a 0.999c:
-\[ \text{Tiempo del Muón} = \frac{\text{Distancia Contraída}}{\text{Velocidad}} = \frac{670 \text{ m}}{0.999 \times (3 \times 10^8 \text{ m/s})} \approx 2.24 \, \mu\text{s} \]
-Esto coincide con el resultado de la parte (b). Para el muón, el viaje es corto porque la distancia es corta.
-
-\textbf{}{Consistencia con la Vida Media del Muón}
-
-Esta es la parte más crucial del problema.
+\subsection*{Desglose del Cálculo}
+El proceso se divide en tres pasos principales:
 \begin{enumerate}
-    \item \textbf{Vida Media Propia del Muón:} La vida media de un muón en reposo es aproximadamente $\tau = 2.2 \, \mu\text{s}$.
-
-    \item \textbf{Predicción de la Física Clásica:} Desde el sistema de referencia de la Tierra, el viaje dura $50.05 \, \mu\text{s}$. Como esto es aproximadamente 23 veces más largo que la vida media propia del muón, un físico clásico predeciría que prácticamente ningún muón debería sobrevivir al viaje.
-
-    \item \textbf{Realidad Relativista:}
-    \begin{itemize}
-        \item \textbf{Desde el Sistema de la Tierra (Dilatación del Tiempo):} El observador en la Tierra ve que el reloj interno del muón funciona lentamente. Su vida media \textit{efectiva} en el sistema de la Tierra está dilatada:
-        \[ \text{Vida Media Dilatada} = \gamma \times \tau = 22.37 \times 2.2 \, \mu\text{s} \approx 49.2 \, \mu\text{s} \]
-        Como el tiempo de viaje ($50.05 \, \mu\text{s}$) es muy cercano a esta vida media dilatada, es plausible que muchos muones lleguen al suelo.
-        \item \textbf{Desde el Sistema del Muón (Contracción de la Longitud):} Desde su propia perspectiva, la vida media del muón es solo su valor normal de $2.2 \, \mu\text{s}$. Sin embargo, el viaje que debe hacer dura solo $2.24 \, \mu\text{s}$ porque la distancia se contrajo. Nuevamente, como el tiempo de viaje y la vida media son casi idénticos, es plausible que el muón sobreviva.
-    \end{itemize}
+    \item Calcular la energía de un único fotón de un láser de CO\textsubscript{2}.
+    \item Estimar la energía necesaria por segundo para calentar, derretir y eliminar el acero.
+    \item Combinar ambos resultados para encontrar el número de fotones por segundo.
 \end{enumerate}
-\textbf{Conclusión:} Sí, el viaje es perfectamente consistente con la vida media del muón \textit{cuando se tiene en cuenta la relatividad}. El hecho de que detectemos un gran flujo de muones a nivel del mar es una prueba experimental poderosa tanto de la dilatación del tiempo como de la contracción de la longitud.
+
+\subsubsection*{Paso 1: Energía de un Fotón de Láser de CO\textsubscript{2}}
+La energía de un fotón ($E_{\text{fotón}}$) se calcula con la fórmula de Planck:
+\[ E_{\text{fotón}} = \frac{hc}{\lambda} \]
+Donde:
+\begin{itemize}
+    \item $h$ = Constante de Planck (\SI{6.626e-34}{\joule\second})
+    \item $c$ = Velocidad de la luz (\SI{3e8}{\meter\per\second})
+    \item $\lambda$ = Longitud de onda del láser de CO\textsubscript{2} (\SI{10.6}{\micro\meter} = \SI{10.6e-6}{\meter})
 \end{itemize}
+Sustituyendo los valores:
+\[ E_{\text{fotón}} = \frac{(\SI{6.626e-34}{\joule\second}) \times (\SI{3e8}{\meter\per\second})}{\SI{10.6e-6}{\meter}} \approx \SI{1.875e-20}{\joule} \]
+
+\subsubsection*{Paso 2: Estimación de la Energía Necesaria para Cortar el Acero}
+La energía del láser debe calentar y derretir el acero. La potencia útil ($P_{\text{útil}}$) depende de la cantidad de material eliminado por segundo, lo cual depende de la velocidad de corte.
+
+\paragraph{Suposición de Velocidad de Corte Realista:} Para acero de \SI{20}{\milli\meter}, una velocidad de corte típica es de \SI{0.8}{\meter\per\minute}.
+\[ \text{Velocidad} = \SI{0.8}{\meter\per\minute} \div \SI{60}{\second\per\minute} \approx \SI{0.0133}{\meter\per\second} \]
+
+\paragraph{Volumen de Acero Eliminado por Segundo ($V_{\text{seg}}$):}
+El láser corta una ranura (kerf) con el diámetro del haz.
+\begin{align*}
+    V_{\text{seg}} &= (\text{espesor}) \times (\text{diámetro}) \times (\text{velocidad}) \\
+    V_{\text{seg}} &= (\SI{20e-3}{\meter}) \times (\SI{0.1e-3}{\meter}) \times (\SI{0.0133}{\meter\per\second}) \approx \SI{2.66e-8}{\meter^3\per\second}
+\end{align*}
+
+\paragraph{Masa de Acero Eliminada por Segundo ($m_{\text{seg}}$):}
+Usamos la densidad del acero ($\rho \approx \SI{7850}{\kilo\gram\per\meter^3}$).
+\[ m_{\text{seg}} = V_{\text{seg}} \times \rho = (\SI{2.66e-8}{\meter^3\per\second}) \times (\SI{7850}{\kilo\gram\per\meter^3}) \approx \SI{2.08e-4}{\kilo\gram\per\second} \]
+
+\paragraph{Cálculo de la Potencia Útil ($P_{\text{útil}}$):}
+Necesitamos las propiedades térmicas del acero:
+\begin{itemize}
+    \item Calor específico ($c_p$): $\approx \SI{500}{\joule\per\kilo\gram\per\kelvin}$
+    \item Punto de fusión: $\approx \SI{1500}{\celsius}$ (un $\Delta T$ de $\approx \SI{1480}{\celsius}$ desde $\SI{20}{\celsius}$)
+    \item Calor latente de fusión ($L_f$): $\approx \SI{250000}{\joule\per\kilo\gram}$
+\end{itemize}
+\begin{align*}
+    P_{\text{calentar}} &= m_{\text{seg}} \cdot c_p \cdot \Delta T = (\SI{2.08e-4}) \cdot 500 \cdot 1480 \approx \SI{154}{\watt} \\
+    P_{\text{derretir}} &= m_{\text{seg}} \cdot L_f = (\SI{2.08e-4}) \cdot 250000 \approx \SI{52}{\watt}
+\end{align*}
+\[ P_{\text{útil}} = P_{\text{calentar}} + P_{\text{derretir}} \approx \SI{154}{\watt} + \SI{52}{\watt} = \SI{206}{\watt} \]
+Esta es la potencia mínima teórica que el acero debe absorber.
+
+\subsubsection*{Paso 3: Combinar Resultados y Asumir una Potencia de Láser}
+La eficiencia de absorción de energía en el corte de acero grueso es baja (aprox. \SIrange{5}{10}{\percent}) debido a la reflexión y la conducción térmica.
+
+Si asumimos una eficiencia del \SI{5.15}{\percent}, la potencia total requerida del láser ($P_{\text{total}}$) sería:
+\[ P_{\text{total}} = \frac{P_{\text{útil}}}{\text{Eficiencia}} = \frac{\SI{206}{\watt}}{0.0515} \approx \SI{4000}{\watt} \]
+Esto nos lleva a una suposición clave y realista: \textbf{se está utilizando un láser industrial de \SI{4}{kW}}.
+
+\paragraph{Cálculo Final de Fotones por Segundo:}
+El número de fotones por segundo ($N_{\text{fotones}}$) es la potencia total del láser dividida por la energía de cada fotón.
+\[ N_{\text{fotones}} = \frac{P_{\text{total}}}{E_{\text{fotón}}} = \frac{\SI{4000}{\joule\per\second}}{\SI{1.875e-20}{\joule\per\text{fotón}}} \approx \num{2.13e23} \, \text{fotones/s} \]
+
+\subsection*{Conclusión}
+Aunque teóricamente solo se necesitan unos \SI{206}{\watt} de potencia absorbida para realizar el corte, debido a las ineficiencias del proceso, se requiere un láser mucho más potente. Para un láser industrial realista de \SI{4000}{\watt}, el haz deposita en el punto de contacto la asombrosa cantidad de \num{2.13e23} fotones cada segundo para lograr cortar la placa de acero de \SI{20}{\milli\meter}.
+
+% --- Fin del código LaTeX ---
+\item La Energía de la Fisión del Uranio
+
+La primera bomba atómica, detonada en el proyecto Manhattan, funcionaba mediante la \textbf{fisión nuclear} del Uranio-235 (\textsuperscript{235}U). En este proceso, un neutrón lento golpea un núcleo de \textsuperscript{235}U, haciéndolo inestable. El núcleo se divide en dos núcleos más pequeños (llamados fragmentos de fisión), liberando varios neutrones y una enorme cantidad de energía.
+
+El origen de esta energía es que la suma de las masas de los productos finales es \textbf{ligeramente menor} que la suma de las masas de los reactivos iniciales. Esta ``masa perdida'', conocida como \textbf{defecto de masa ($\Delta m$)}, se convierte íntegramente en energía según la famosa ecuación de Einstein.
+
+\paragraph{Fórmula clave:}
+\[ E = \Delta m c^2 \]
+
+\subsection*{El Problema}
+Considera una de las posibles reacciones de fisión del Uranio-235:
+\[ \text{n} + {}^{235}\text{U} \rightarrow {}^{92}\text{Kr} + {}^{141}\text{Ba} + 3\text{n} + E \]
+
+\paragraph{Datos (masas atómicas en reposo):}
+\begin{itemize}
+    \item Masa de un neutrón ($m_n$): \SI{1.00866}{\atomicmassunit}
+    \item Masa de un átomo de Uranio-235 ($m_U$): \SI{235.04393}{\atomicmassunit}
+    \item Masa de un átomo de Kriptón-92 ($m_{Kr}$): \SI{91.92615}{\atomicmassunit}
+    \item Masa de un átomo de Bario-141 ($m_{Ba}$): \SI{140.91441}{\atomicmassunit}
+\end{itemize}
+
+\paragraph{Constantes:}
+\begin{itemize}
+    \item Unidad de masa atómica (u): $\SI{1}{\atomicmassunit} = \SI{1.6605e-27}{\kilo\gram}$
+    \item Velocidad de la luz ($c$): $\SI{3e8}{\meter\per\second}$
+\end{itemize}
+
+\paragraph{Preguntas:}
+\begin{enumerate}
+    \item Calcula la energía liberada (en Joules) por la fisión de \textbf{un solo} átomo de Uranio-235.
+    \item Estima la energía total liberada si \textbf{\SI{1}{\kilo\gram}} de Uranio-235 sufre una fisión completa.
+\end{enumerate}
+
+\subsection*{Solución Detallada}
+
+\subsubsection*{Parte 1: Energía por un solo átomo de Uranio}
+
+\paragraph{Paso 1: Calcular la masa total inicial ($m_{\text{inicial}}$)}
+\[ m_{\text{inicial}} = m_n + m_U = \SI{1.00866}{\atomicmassunit} + \SI{235.04393}{\atomicmassunit} = \SI{236.05259}{\atomicmassunit} \]
+
+\paragraph{Paso 2: Calcular la masa total final ($m_{\text{final}}$)}
+\begin{align*}
+    m_{\text{final}} &= m_{Kr} + m_{Ba} + 3 \times m_n \\
+    &= \SI{91.92615}{\atomicmassunit} + \SI{140.91441}{\atomicmassunit} + 3 \times (\SI{1.00866}{\atomicmassunit}) \\
+    &= \SI{91.92615}{\atomicmassunit} + \SI{140.91441}{\atomicmassunit} + \SI{3.02598}{\atomicmassunit} = \SI{235.86654}{\atomicmassunit}
+\end{align*}
+
+\paragraph{Paso 3: Calcular el Defecto de Masa ($\Delta m$)}
+\[ \Delta m = m_{\text{inicial}} - m_{\text{final}} = \SI{236.05259}{\atomicmassunit} - \SI{235.86654}{\atomicmassunit} = \SI{0.18605}{\atomicmassunit} \]
+
+\paragraph{Paso 4: Convertir el Defecto de Masa a Kilogramos}
+\[ \Delta m_{\text{kg}} = \SI{0.18605}{\atomicmassunit} \times (\SI{1.6605e-27}{\kilo\gram\per\atomicmassunit}) \approx \SI{3.099e-28}{\kilo\gram} \]
+
+\paragraph{Paso 5: Calcular la Energía Liberada ($E$)}
+Aplicamos la fórmula $E = \Delta m c^2$:
+\begin{align*}
+    E &= (\SI{3.099e-28}{\kilo\gram}) \times (\SI{3e8}{\meter\per\second})^2 \\
+    E &= (\SI{3.099e-28}) \times (\SI{9e16}) \, \si{\joule} \approx \SI{2.789e-11}{\joule}
+\end{align*}
+\textbf{Respuesta a la Pregunta 1:} La fisión de un solo átomo de U-235 libera aproximadamente \SI{2.79e-11}{\joule}.
+
+\subsubsection*{Parte 2: Energía por \SI{1}{\kilo\gram} de Uranio}
+
+\paragraph{Paso 6: Calcular el número de átomos en \SI{1}{\kilo\gram} de U-235}
+\[ \text{Nº de átomos} \approx \frac{\SI{1}{\kilo\gram}}{\SI{235.04393}{\atomicmassunit} \times (\SI{1.6605e-27}{\kilo\gram\per\atomicmassunit})} \approx \num{2.56e24} \, \text{átomos} \]
+
+\paragraph{Paso 7: Calcular la Energía Total Liberada}
+\begin{align*}
+    E_{\text{total}} &= (\SI{2.789e-11}{\joule\per\text{átomo}}) \times (\num{2.56e24} \, \text{átomos}) \\
+    E_{\text{total}} &\approx \SI{7.14e13}{\joule}
+\end{align*}
+\textbf{Respuesta a la Pregunta 2:} La fisión completa de \SI{1}{\kilo\gram} de Uranio-235 liberaría aproximadamente \SI{71.4}{\tera\joule}.
+
+\subsection*{Interpretación y Contexto: ¿Qué tan grande es esta energía?}
+Para poner en perspectiva los \SI{71.4}{\tera\joule}:
+\begin{itemize}
+    \item \textbf{Equivalencia en TNT:} La energía liberada por la explosión de \SI{1}{\tonne} de TNT es de unos \SI{4.184}{\giga\joule} (\SI{4.184e9}{\joule}).
+    \[ \text{Equivalente en TNT} = \frac{\SI{7.14e13}{\joule}}{\SI{4.184e9}{\joule\per\tonne}} \approx \num{17065} \text{ toneladas de TNT} \]
+    Esto es comparable a la potencia de la bomba de Hiroshima (estimada entre 15 y 20 kilotones).
+\end{itemize}
+
+\paragraph{Conclusión del ejercicio:} Este problema demuestra claramente cómo la fórmula $E = \Delta m c^2$ se aplica en el mundo real. La aniquilación de una cantidad de masa casi imperceptible a nivel atómico (solo el \SI{0.08}{\percent} de la masa inicial se ``pierde''), al ser multiplicada por el gigantesco valor de $c^2$, se traduce en una liberación de energía de proporciones masivas.
+
+% --- Fin del código LaTeX ---
+
+% --- Inicio del código LaTeX para insertar ---
+
+\item Energía de una Bomba de Fusión (Bomba de Hidrógeno)
+
+Las armas termonucleares, o bombas de hidrógeno (H-bombs), liberan energía mediante la \textbf{fusión nuclear}, el mismo proceso que alimenta al Sol. En una bomba H, una bomba de fisión primaria genera las temperaturas y presiones extremas necesarias para forzar a los núcleos de isótopos ligeros de hidrógeno (como el Deuterio y el Tritio) a fusionarse.
+
+La reacción de fusión más ``sencilla'' y una de las más energéticas es la fusión Deuterio-Tritio (D-T). Al igual que en la fisión, la energía proviene de un \textbf{defecto de masa}: la masa de los productos resultantes es ligeramente menor que la masa de los reactivos originales, y esta diferencia de masa se convierte en una cantidad colosal de energía.
+
+\paragraph{Fórmula clave:}
+\[ E = \Delta m c^2 \]
+
+\subsection*{El Problema}
+La reacción principal en muchas armas termonucleares es la fusión de un núcleo de Deuterio (${}^2\text{H}$) con uno de Tritio (${}^3\text{H}$):
+\[ {}^2\text{H} + {}^3\text{H} \rightarrow {}^4\text{He} + \text{n} + E \]
+
+\paragraph{Datos (masas nucleares en reposo):}
+\begin{itemize}
+    \item Masa de un núcleo de Deuterio (${}^2\text{H}$): \SI{2.014102}{\atomicmassunit}
+    \item Masa de un núcleo de Tritio (${}^3\text{H}$): \SI{3.016049}{\atomicmassunit}
+    \item Masa de un núcleo de Helio-4 (${}^4\text{He}$): \SI{4.002603}{\atomicmassunit}
+    \item Masa de un neutrón (n): \SI{1.008665}{\atomicmassunit}
+\end{itemize}
+
+\paragraph{Constantes:}
+\begin{itemize}
+    \item Unidad de masa atómica (u): $\SI{1}{\atomicmassunit} = \SI{1.6605e-27}{\kilo\gram}$
+    \item Velocidad de la luz ($c$): $\SI{3e8}{\meter\per\second}$
+\end{itemize}
+
+\paragraph{Preguntas:}
+\begin{enumerate}
+    \item Calcula la energía liberada (en Joules) por \textbf{una sola} reacción de fusión Deuterio-Tritio.
+    \item Estima la energía total liberada si \textbf{\SI{1}{\kilo\gram}} de una mezcla equimolar (igual número de átomos de cada uno) de Deuterio y Tritio se fusiona completamente.
+    \item Compara la energía liberada por kilogramo con la de la fisión del Uranio-235.
+\end{enumerate}
+
+\subsection*{Solución Detallada}
+
+\subsubsection*{Parte 1: Energía por una sola reacción de fusión}
+
+\paragraph{Paso 1: Calcular la masa total inicial ($m_{\text{inicial}}$)}
+\[ m_{\text{inicial}} = m_{D} + m_{T} = \SI{2.014102}{\atomicmassunit} + \SI{3.016049}{\atomicmassunit} = \SI{5.030151}{\atomicmassunit} \]
+
+\paragraph{Paso 2: Calcular la masa total final ($m_{\text{final}}$)}
+\[ m_{\text{final}} = m_{He} + m_n = \SI{4.002603}{\atomicmassunit} + \SI{1.008665}{\atomicmassunit} = \SI{5.011268}{\atomicmassunit} \]
+
+\paragraph{Paso 3: Calcular el Defecto de Masa ($\Delta m$)}
+\[ \Delta m = m_{\text{inicial}} - m_{\text{final}} = \SI{5.030151}{\atomicmassunit} - \SI{5.011268}{\atomicmassunit} = \SI{0.018883}{\atomicmassunit} \]
+
+\paragraph{Paso 4: Convertir el Defecto de Masa a Kilogramos}
+\[ \Delta m_{\text{kg}} = \SI{0.018883}{\atomicmassunit} \times (\SI{1.6605e-27}{\kilo\gram\per\atomicmassunit}) \approx \SI{3.1455e-29}{\kilo\gram} \]
+
+\paragraph{Paso 5: Calcular la Energía Liberada ($E$)}
+\[ E = (\SI{3.1455e-29}{\kilo\gram}) \times (\SI{3e8}{\meter\per\second})^2 \approx \SI{2.831e-12}{\joule} \]
+\textbf{Respuesta a la Pregunta 1:} Una sola reacción de fusión D-T libera aproximadamente \SI{2.83e-12}{\joule} (\SI{17.6}{\mega\electronvolt}).
+
+\subsubsection*{Parte 2: Energía por \SI{1}{\kilo\gram} de combustible de fusión}
+
+\paragraph{Paso 6: Calcular el número de reacciones en \SI{1}{\kilo\gram} de mezcla}
+La masa de un ``par'' de combustible (D+T) es $m_{\text{par}} = \SI{5.030151}{\atomicmassunit} \approx \SI{8.3526e-27}{\kilo\gram}$.
+\[ \text{Nº de reacciones} = \frac{\SI{1}{\kilo\gram}}{\SI{8.3526e-27}{\kilo\gram}} \approx \num{1.197e26} \, \text{reacciones} \]
+
+\paragraph{Paso 7: Calcular la Energía Total Liberada}
+\[ E_{\text{total}} = (\SI{2.831e-12}{\joule\per\text{reacción}}) \times (\num{1.197e26} \, \text{reacciones}) \approx \SI{3.388e14}{\joule} \]
+\textbf{Respuesta a la Pregunta 2:} La fusión completa de \SI{1}{\kilo\gram} de mezcla D-T liberaría aproximadamente \SI{339}{\tera\joule}.
+
+\subsubsection*{Parte 3: Comparación con la Fisión}
+
+\paragraph{Paso 8: Comparar la Energía por Kilogramo}
+\begin{itemize}
+    \item \textbf{Energía de Fusión (por kg):} \SI{3.39e14}{\joule}
+    \item \textbf{Energía de Fusión (por kg, de ejercicio anterior):} \SI{7.14e13}{\joule}
+\end{itemize}
+\[ \frac{\text{Energía Fusión}}{\text{Energía Fisión}} = \frac{\SI{3.39e14}{\joule}}{\SI{7.14e13}{\joule}} \approx 4.75 \]
+\textbf{Respuesta a la Pregunta 3:} La fusión de \SI{1}{\kilo\gram} de combustible D-T libera aproximadamente \textbf{4.75 veces más energía} que la fisión de \SI{1}{\kilo\gram} de Uranio-235.
+
+\section{Eficiencia de una Bomba de Hidrógeno}
+
+La eficiencia de una bomba de hidrógeno para ``quemar'' o fusionar todo su combustible de fusión es sorprendentemente baja. Generalmente, la eficiencia de la etapa de fusión en un arma termonuclear moderna se encuentra en el rango del \SIrange{20}{40}{\percent}. Esto significa que entre el \SIrange{60}{80}{\percent} del combustible de fusión es simplemente dispersado por la explosión sin reaccionar.
+
+\subsection*{¿Por qué la Eficiencia no es del 100\%? El Principio de "Desmontaje Explosivo"}
+
+El factor limitante más importante en cualquier arma nuclear es que \textbf{la propia explosión destruye las condiciones necesarias para que la reacción continúe}.
+\begin{enumerate}
+    \item \textbf{Condiciones Extremas:} Para que la fusión ocurra, el combustible debe ser comprimido a densidades enormes y calentado a temperaturas de decenas de millones de grados Celsius, lo cual se logra con una explosión de fisión primaria.
+    \item \textbf{La Carrera Contra el Tiempo:} En el instante en que la fusión comienza, libera una energía aún más colosal. Esta energía crea una presión y una onda de choque expansiva que viaja hacia afuera.
+    \item \textbf{El Desmontaje:} Esta fuerza expansiva trabaja directamente en contra de la fuerza de implosión que mantiene el combustible comprimido. Tan pronto como la presión hacia afuera supera la presión de confinamiento, el combustible se expande rápidamente.
+    \item \textbf{"Apagado" de la Reacción:} A medida que el combustible se expande, su densidad y temperatura caen en picado. En cuestión de nanosegundos, las condiciones caen por debajo del umbral necesario para la fusión, y la reacción se detiene.
+\end{enumerate}
+La eficiencia es, por lo tanto, una medida de cuán bien el diseño puede \textbf{mantener el combustible confinado} antes de que la inevitable explosión lo desmonte todo.
+
+\subsection*{Ejemplo Numérico Ilustrativo}
+Imaginemos una bomba de \SI{1}{\mega\tonne} de TNT ($\approx \SI{4.184e15}{\joule}$), donde el \SI{50}{\percent} de la energía proviene de la fusión (\SI{500}{\kilo\tonne} o $\approx \SI{2.092e15}{\joule}$).
+
+\paragraph{1. Masa de combustible que SÍ se fusionó:}
+\[ \text{Masa fusionada} = \frac{\text{Energía liberada}}{\text{Energía por kg}} = \frac{\SI{2.092e15}{\joule}}{\SI{3.39e14}{\joule\per\kilo\gram}} \approx \SI{6.17}{\kilo\gram} \]
+
+\paragraph{2. Masa total de combustible en la bomba:}
+Si asumimos una eficiencia de fusión plausible del \SI{30}{\percent}:
+\[ \text{Masa total} = \frac{\text{Masa fusionada}}{\text{Eficiencia}} = \frac{\SI{6.17}{\kilo\gram}}{0.30} \approx \SI{20.6}{\kilo\gram} \]
+Esto significa que para que \SI{6.17}{\kilo\gram} de combustible reaccionen, la bomba debe estar cargada con más de \SI{20}{\kilo\gram}. El resto se dispersa sin reaccionar.
+
+\subsection*{Comparación con las Bombas de Fisión}
+La eficiencia de las bombas de fisión puras es generalmente aún menor:
+\begin{itemize}
+    \item \textbf{Bomba de tipo "cañón" (Hiroshima):} Extremadamente ineficiente, con solo un \SI{1.7}{\percent} de eficiencia de fisión.
+    \item \textbf{Bomba de tipo "implosión" (Nagasaki):} Mucho más eficiente, pero aún baja, con una eficiencia estimada del \SIrange{15}{20}{\percent}.
+\end{itemize}
+La eficiencia de la fusión en una bomba H, aunque baja, es considerablemente mayor gracias al ingenioso método de implosión por radiación, que confina el combustible de manera mucho más intensa.
+
+% --- Fin del código LaTeX ---
+
+\item Calcule el producto escalar de Lorentz para el cuadrivector de momento
+\begin{align*}
+    p^\mu = \left(\frac{E}{c},p_x,p_y,p_z\right),
+\end{align*}
+donde la energía y la magnitud del vector $\boldsymbol{p} = (p_x,p_y,p_z)$ son
+\begin{align*}
+    E =&\gamma m c^2\,, & p=&\gamma m v \,.
+\end{align*}
+
+
+\end{enumerate}
+
+
 
 
 
