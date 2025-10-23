@@ -58,6 +58,199 @@ El segundo principio puede ser cambiado simplemente por la suposición de que el
 
 La motivación de la relatividad especial surge de la necesidad de usar el primer postulado para la interacción electromagnética. Aunque dicho postulado es evidente en sistemas mecánicos, no es claro para la interacción electromagnética. De hecho, una partícula cargada en reposo sólo tiene asociado un campo eléctrico, mientras que una partícula moviéndose a velocidad constante relativa al observador en reposo, genera una corriente eléctrica que a su vez induce un campo magnético. Además, el campo eléctrico se deforma (las regiones de campo constante pasan de ser esféricas a elipsoidales). Cómo en última instancia los objetos de medida están hechos de partículas cargadas dentro de los átomos que la componen, es de esperarse
 
+\section{Preliminares}
+
+\subsection{Vectores en Dos Dimensiones}
+
+Un \textbf{vector} es una cantidad que tiene tanto \textbf{magnitud} (tamaño) como \textbf{dirección}. En dos dimensiones, un vector se puede representar como una flecha en un plano.  La longitud de la flecha representa la magnitud, y la orientación de la flecha representa la dirección.  Matemáticamente, podemos expresar un vector en dos dimensiones como un par ordenado de números (componentes), por ejemplo, $(x, y)$, donde:
+\begin{itemize}
+    \item $x$ es la componente horizontal del vector.
+    \item $y$ es la componente vertical del vector.
+\end{itemize}
+
+\subsubsection{Cálculo de Magnitud Dirección}
+
+\begin{tikzpicture}[scale=0.9]
+    % Ejes
+    \draw[->] (-1,0) -- (5,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,4) node[above] {$y$};
+
+    % Vector v
+    \coordinate (O) at (0,0);
+    \coordinate (V) at (3,2);
+    \coordinate (W) at (0,2);
+    \draw[->, thick, blue] (O) -- (V) node[midway, above right] {$\boldsymbol{v} = (x, y)$};
+
+    % Coordenadas y líneas auxiliares
+    \coordinate (X) at (3,0);
+    \draw[dashed] (V) -- (X);
+    \draw[dashed] (V) -- (W);
+    \draw (0,0) -- (X);
+    \node[below] at (X) {$x$};
+    \node[left] at (0,2) {$y$};
+
+    % Ángulo
+    \draw[<->] (0.7,0) arc (0:33.69:0.7);
+    \node at (1.2,0.4) {$\theta$};
+
+    % Etiquetas
+    \node[below left] at (O) {$O$}; % Origen
+    %\node[right] at (V) {$V$}; % Extremo del vector
+
+    %Cálculo de ángulo:
+    \node[right] at (3.7,1) {$\tan\theta = \dfrac{y}{x}$};
+\end{tikzpicture}
+
+La magnitud del vector viene dada por la longitud del vector, que corresponde a la hipotenusa del triángulo rectángulo de lados $x$ y $y$, se denota por $|\boldsymbol{v}|$ o simplemente $v$
+\begin{align}
+    v = \sqrt{x^2+y^2}\,.
+\end{align}
+
+
+
+El ángulo $\theta$ que define la dirección del vector está dado por:
+
+$$\theta = \arctan{\left(\frac{y}{x}\right)}$$
+
+\subsubsection{Ejemplos de Vectores en Física}
+
+\subsubsection{Posición}
+\begin{itemize}
+    \item \textbf{Concepto:} Indica la ubicación de un objeto en un plano.
+    \item \textbf{Ejemplo:} Un robot se encuentra en un plano cartesiano. Su posición está descrita por el vector $\textbf{r} = (3, 4)$ metros. Esto significa que el robot está a 3 metros a la derecha del origen y a 4 metros hacia arriba del origen.
+    \item \textbf{Magnitud:} La distancia del robot al origen, $|\textbf{r}|=\sqrt{3^2+4^2}= 5$ metros.
+    \item \textbf{Dirección:} El ángulo que forma la flecha con el eje horizontal, cuyo cálculo involucraría funciones trigonométricas (arctan(4/3)).
+\end{itemize}
+
+\subsubsection{Velocidad}
+\begin{itemize}
+    \item \textbf{Concepto:} Describe qué tan rápido y en qué dirección se mueve un objeto.
+    \item \textbf{Ejemplo:} Un drone vuela a 10 m/s en un ángulo de 30 grados hacia el noreste. La velocidad se representa como $\textbf{v} = (8.66, 5)$ m/s (aproximadamente).
+    \item \textbf{Magnitud:} La rapidez del drone es 10 m/s.
+    \item \textbf{Dirección:} 30 grados hacia el noreste.
+\end{itemize}
+
+\subsubsection{Aceleración}
+\begin{itemize}
+    \item \textbf{Concepto:} Describe la tasa de cambio de la velocidad.
+    \item \textbf{Ejemplo:} Un carro que se mueve hacia el este aumenta su velocidad en la dirección horizontal, por lo que su aceleración es $\textbf{a} = (2, 0)$ m/s$^2$.  Esto indica que su velocidad horizontal aumenta en 2 m/s cada segundo, mientras que su velocidad vertical no cambia.
+    \item \textbf{Magnitud:} 2 m/s$^2$
+    \item \textbf{Dirección:} Hacia el este.
+\end{itemize}
+
+\subsubsection{Fuerza}
+\begin{itemize}
+    \item \textbf{Concepto:} Una influencia que puede causar que un objeto cambie su movimiento (acelere).
+    \item \textbf{Ejemplo:} Una persona empuja una caja en diagonal, aplicando una fuerza de $\textbf{F} = (5, -3)$ N.  Esto significa que la persona está empujando con 5 Newtons hacia la derecha y 3 Newtons hacia abajo.
+    \item \textbf{Magnitud:} $|\textbf{F}|=\sqrt{5^2+(-3)^2} = \sqrt{34}$ N
+    \item \textbf{Dirección:} Hacia la derecha e inclinado hacia abajo (el ángulo se calcularía con la función arcotangente).
+\end{itemize}
+
+\subsubsection{Operaciones con Vectores}
+
+\begin{itemize}
+    \item \textbf{Suma de Vectores:} Sumar las componentes correspondientes de cada vector.
+    \item \textbf{Multiplicación por un Escalar:} Multiplicar cada componente del vector por el escalar.
+    \item \textbf{Magnitud de un Vector:} Usar el teorema de Pitágoras: $|\textbf{v}|=\sqrt{x^2+y^2}$
+\end{itemize}
+
+
+\begin{tikzpicture}[scale=0.8]
+
+    % Ejes
+    \draw[->] (0,0) -- (5,0) node[right] {$x$};
+    \draw[->] (0,0) -- (0,4) node[above] {$y$};
+    \node[below left] at (0,0) {O};
+
+    % Vector v
+    \coordinate (V) at (3,1.5);
+    \draw[->, thick, blue] (0,0) -- (V) node[midway, above right] {$\boldsymbol{v}$};
+
+    % Vector w
+    \coordinate (W) at (2,2.5);
+    \draw[->, thick, red] (0,0) -- (W) node[midway, above left] {$\boldsymbol{w}$};
+
+    % Vector Suma (Resultante)
+%    \coordinate (Sum) at ($(V)+(W)$); % Calcula la suma
+%    \draw[->, ultra thick, green!70!black] (0,0) -- (Sum) %node[midway, above right] {$\boldsymbol{v} + \boldsymbol{w}$};
+
+    % Líneas Guía (Opcional - para ilustrar la regla del paralelogramo)
+%    \draw[dashed, gray] (V) -- ($(V)+(W)$);
+%    \draw[dashed, gray] (W) -- ($(V)+(W)$);
+
+\end{tikzpicture}
+
+\subsubsection{Importancia}
+La representación vectorial nos permite analizar y predecir el movimiento de objetos en el mundo real, donde la dirección es fundamental.  Sin vectores, solo tendríamos magnitudes sin contexto espacial.
+
+
+
+
+
+\subsection{Simplificacón de unidades}
+\begin{table}[h!]
+    \centering
+    \caption{Cantidades Físicas Fundamentales y sus Unidades SI}
+    \begin{tabular}{|l|l|l|}
+        \hline
+       \textbf{Nombre}           &\textbf{Símbolo}  [Letra] & \textbf{Unidades} (SI) \\ \hline
+        Tiempo          & [T]               & segundo (s)   \\ \hline
+        Distancia       & [L]               & metro (m)     \\ \hline
+        Masa            & [M]               & kilogramo (kg) \\ \hline
+        Carga eléctrica & [Q]               & coulomb (C)   \\ \hline
+        Temperatura      & [$\Theta$]               & kelvin (K)    \\ \hline
+    \end{tabular}
+    \label{tab:cantidades_fisicas}
+\end{table}
+
+\newpage
+Algunas unidades derivadas
+\begin{itemize}
+\item Magnitud de velocidad y aceleración
+\begin{align*}
+    [v] =& \left[\dfrac{L}{T}\right]\,, & [a] = \left[\dfrac{L}{T^2}\right]\,
+\end{align*}
+    \item Magnitud de la fuerza
+    \begin{align*}
+        F = m a \to [F] =\left[M \dfrac{L}{T^2}\right]
+    \end{align*}
+    donde $m$ es la masa de una partícula que se mueve con una magnitud de aceleración $a$.
+    \item Energía
+    A partir de la energía cinética
+    \begin{align*}
+        E = \frac{1}{2}m v^2 \to [E] = \left[M\frac{L^2}{T^2}\right] \to \text{Joules (J)}
+    \end{align*}
+    donde $m$ es la masa de la partícula que se mueve con una magnitud de velocidad $v$.
+\end{itemize}
+
+
+En el sistema internacional de unidades tenemos las siguientes cantidades fundamentes
+
+\subsection{Factores de conversión}
+
+\begin{align*}
+    1 = \dfrac{\text{cantidad}}{\text{misma cantidad en otras unidades}}
+\end{align*}
+
+Ejemplos
+\begin{align*}
+    1=\dfrac{1\,\text{km}}{1000\,\text{m}} = \dfrac{\text{km}}{1000\,\text{m}} =\dfrac{1000\,\text{m}}{\text{km}}
+\end{align*}
+
+Convertir 60 km/h a m/s
+\begin{align*}
+    60\dfrac{\text{km}}{\text{h}}\cdot 1 =& 60\dfrac{\cancel{\text{km}}}{\text{h}}  \dfrac{1000\,\text{m}}{\cancel{\text{km}}}\\
+    =& 60000\dfrac{\text{m}}{\text{h}}\cdot 1\\
+    =&60000\dfrac{\text{m}}{\cancel{\text{h}}}
+    \dfrac{{\cancel{\text{h}}}}{3600\,\text{s}}\\
+    \approx& 16.7 \frac{\text{m}}{\text{s}}
+\end{align*}
+
+
+Ejercicio: Convierta $2\text{m}^2$ a $\text{cm}^2$
+
+
+
 \section{Noción de transformaciones}
 
 Un ejemplo de transformación es la de un montaje experimental en la cual se determina el movimiento de un cuerpo con respecto a los ejes $x$, $y$ correspondientes a los lados de la mesa ilustrado en la figura~\ref{fig:tabla} izquierda. Posteriormente se repite la medida con la mesa rotada un ángulo $\theta$ pero manteniendo la posición del montaje experimental sobre la misma, como se ilustra en la figura~\ref{fig:tabla} derecha. Es claro que la trayectoria del movimiento no depende del sistema de referencia.
