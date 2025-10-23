@@ -156,7 +156,7 @@ Note que por consiguiente, la velocidad al cuadrado en la fórmula para la energ
     E =\frac{1}{2}m v^2\,.
 \end{align*}
 
-\section{Configuración}
+\section{Transformaciones de Lorentz}
 
 Consideremos dos sistemas de referencia inerciales, $S$ y $S'$.
 \begin{itemize}
@@ -221,9 +221,9 @@ Dado que el movimiento relativo es solo a lo largo del eje x, las coordenadas pe
 
 Ahora nos enfocamos en derivar las transformaciones para $x'$ y $t'$.
 
-\section{Pasos de la Derivación}
+\subsection{Pasos de la Derivación}
 
-\subsection{Paso 1: La Suposición de Linealidad}
+\subsubsection{Paso 1: La Suposición de Linealidad}
 
 Las transformaciones deben ser lineales para preservar el principio de inercia. Un movimiento uniforme en un sistema debe aparecer como un movimiento uniforme en el otro. Por lo tanto, las transformaciones tienen la forma:
 \begin{align}
@@ -231,7 +231,7 @@ Las transformaciones deben ser lineales para preservar el principio de inercia. 
  x' = Ax + Bt\,.   
 \end{align}
  
-\subsection{Paso 2: Usando el Movimiento del Origen}
+\subsubsection{Paso 2: Usando el Movimiento del Origen}
 
 El origen de $S'$ ($x'=0$) se mueve con velocidad $v$ en el sistema $S$, por lo que su posición es $x=vt$. Sustituyendo esto en la ecuación~\eqref{eq:tl1}:
 \[ 0 = A(vt) + Bt \implies B = -Av \]
@@ -241,7 +241,7 @@ Esto da $x' = A(x-vt)$. Renombramos la constante $A$ con el símbolo más conven
 x' = \gamma (x - vt).    
 \end{align}
 
-\subsection{Paso 3: Aplicando el Principio de Relatividad}
+\subsubsection{Paso 3: Aplicando el Principio de Relatividad}
 
 La transformación inversa (de $S'$ a $S$) debe tener la misma forma, con la velocidad invertida ($v \to -v$):
 \begin{align}
@@ -249,7 +249,7 @@ La transformación inversa (de $S'$ a $S$) debe tener la misma forma, con la vel
     x = \gamma (x' + vt').
 \end{align}
 
-\subsection{Paso 4: Aplicando el Segundo Postulado}
+\subsubsection{Paso 4: Aplicando el Segundo Postulado}
 Imaginemos un pulso de luz emitido desde el origen en $t=t'=0$. Un observador en $S$ ve su frente de onda en $x=ct$, mientras que un observador en $S'$ lo ve en $x'=ct'$. Sustituyendo esto en nuestras ecuaciones de transformación:
 
 \newcounter{paso}
@@ -290,7 +290,7 @@ y
     \gamma^2 =&\frac{1}{1-\dfrac{v^2}{c^2}} =  \frac{c^2}{c^2-v^2}\,.
 \end{align}
 
-\subsection{Paso 6: Derivando la Transformación del Tiempo}
+\subsubsection{Paso 6: Derivando la Transformación del Tiempo}
 Dado que ya tenemos la expresión completa para $x'$, en las ecuaciones \eqref{eq:xplt} y \eqref{eq:invxplt}, podemos
 despejar $t'$
 
@@ -317,7 +317,7 @@ Usando de nuevo la ecuación~\eqref{eq:gammasquare} para $\gamma^2$ y cancelando
 De modo que
 \[ \boxed{t' = \gamma \left( t - \frac{vx}{c^2} \right)} \]
 
-\section{Resumen de las Transformaciones de Lorentz}
+\subsection{Resumen de las Transformaciones de Lorentz}
 Las transformaciones de Lorentz completas son:
 \[
 \boxed{
@@ -330,7 +330,7 @@ z' &= z
 }
 \]
 
-\section{Las Transformaciones Inversas}
+\subsubsection{Las Transformaciones Inversas}
 Las transformaciones de $S'$ a $S$ se encuentran intercambiando las coordenadas y haciendo $v \to -v$:
 \[
 \boxed{
@@ -343,7 +343,7 @@ z &= z'
 }
 \]
 
-\subsection{Transformaciones de Galileo}
+\subsubsection{Transformaciones de Galileo}
 Se obtienen cuando no hay una velocidad límite, y por lo tanto $c\to \infty$
 \begin{align*}
 t' &= \lim_{c\to\infty}\left[\gamma \left( t - \frac{vx}{c^2} \right)\right] 
@@ -360,120 +360,12 @@ Mientras que para factor de Lorentz $\gamma$, o el factor de contracción relati
 
 Esto quiere decir que las las distancia y tiempos no están afectados por las transformaciones de Galileo.
 
+\subsubsection{Existencia de una velocidad límite en el Universo}
+
+Toda la evidencia experimental, desde el electromagnetismo hasta la desintegración de partículas, confirma que vivimos en un universo donde hay una velocidad límite. Llamamos a esta velocidad universal $c$, y la identificamos con la velocidad de la luz en el vacío. La constancia de la velocidad de la luz no es una suposición separada, sino una consecuencia directa de la estructura del espacio-tiempo mismo, como se demuestra en el Apendice~\ref{sec:tl}.
 
 
 
-% --- INFORMACIÓN DEL TÍTULO ---
-\section{Derivación de las Transformaciones de Lorentz a partir de Simetrías del Espacio--tiempo}
-\subsection{El Enfoque de Ignatowski}
-Este documento presenta una derivación de las transformaciones de Lorentz basada en principios fundamentales de simetría, en lugar de postular la constancia de la velocidad de la luz. Este enfoque, a veces llamado la derivación de Ignatowski, se basa en el Principio de Relatividad y la homogeneidad e isotropía del espaciotiempo. Mostraremos que estos principios conducen lógicamente a la existencia de una velocidad universal e invariante, que identificamos con la velocidad de la luz.
-
-Ver \cite{Datta:2022cpw} %https://inspirehep.net/literature/2611550
-
-
-\subsection{Principios Fundamentales}
-La derivación se basa en tres supuestos centrales:
-\begin{enumerate}
-    \item \textbf{El Principio de Relatividad:} Las leyes de la física son las mismas en todos los sistemas de referencia inerciales.
-    \item \textbf{Homogeneidad del Espaciotiempo:} Las leyes de la física son independientes de la posición en el espacio y el tiempo.
-    \item \textbf{Isotropía del Espacio:} Las leyes de la física son independientes de la dirección.
-\end{enumerate}
-
-
-\subsection{Paso 1: Linealidad a partir de la Homogeneidad}
-Consideremos dos sistemas de referencia inerciales, $S(x,t)$ y $S'(x',t')$, con $S'$ moviéndose a una velocidad $v$ relativa a $S$ a lo largo del eje x. Buscamos las funciones de transformación $x' = f(x,t)$ y $t' = g(x,t)$.
-
-La homogeneidad del espaciotiempo implica que las ecuaciones de transformación deben ser \textbf{lineales}. Si no lo fueran, un movimiento uniforme en un sistema (una línea recta en un diagrama de espaciotiempo) aparecería como un movimiento acelerado en otro. Esto significaría que las leyes de la física dependerían de la elección del origen, violando la homogeneidad. Por lo tanto, la forma más general de las transformaciones debe ser lineal:
-\begin{align*}
-x' &= Ax + Bt \\
-t' &= Dx + Et
-\end{align*}
-donde los coeficientes $A, B, D, E$ solo pueden depender de la velocidad relativa, $v$.
-
-\subsection{Paso 2: Usando Cinemática Básica}
-Podemos simplificar los coeficientes usando el movimiento de los orígenes de los sistemas.
-\begin{itemize}
-    \item El origen del sistema $S'$ ($x'=0$) se mueve con velocidad $v$ en el sistema $S$. Su posición en $S$ es por lo tanto $x=vt$. Sustituyamos esto en nuestra primera ecuación:
-    \[ 0 = A(vt) + Bt \implies 0 = (Av+B)t \]
-    Esto debe ser válido para todo tiempo $t$, por lo que debemos tener $B = -Av$. La transformación para $x'$ se convierte en:
-    \[ x' = Ax - Avt = A(x-vt) \]
-\end{itemize}
-Renombremos el coeficiente $A(v)$ con la notación más familiar $\gamma(v)$.
-\begin{equation} \label{eq:x_prime}
-x' = \gamma(v)(x - vt)
-\end{equation}
-
-\subsection{Paso 3: Aplicando la Relatividad y la Isotropía}
-El Principio de Relatividad establece que la transformación de $S'$ de vuelta a $S$ debe tener exactamente la misma forma matemática. La única diferencia es que desde la perspectiva de $S'$, el sistema $S$ se mueve con velocidad $-v$. Por lo tanto, la transformación inversa debe ser:
-\begin{equation} \label{eq:x}
-x = \gamma(-v)(x' + vt')
-\end{equation}
-Ahora, invocamos la \textbf{isotropía del espacio}. La isotropía significa que la física no debe depender de la dirección del vector velocidad. Por lo tanto, cualquier efecto físico de la transformación solo puede depender de la \textit{rapidez}, $|v|$, no de la dirección de la velocidad. Esto implica:
-\[ \gamma(v) = \gamma(-v) \]
-Esto simplifica nuestro par de transformaciones a:
-\begin{align*}
-x' &= \gamma(v)(x - vt) \\
-x &= \gamma(v)(x' + vt')
-\end{align*}
-
-\subsection{Paso 4: Encontrando la Transformación del Tiempo}
-Todavía necesitamos determinar la transformación para el tiempo. Podemos mostrar que debe tomar la forma simétrica:
-\begin{equation} \label{eq:t_prime}
-t' = \gamma(v)(t - \alpha(v) x)
-\end{equation}
-donde $\alpha(v)$ es alguna función de la velocidad. Por el Principio de Relatividad, la transformación inversa debe ser:
-\begin{equation} \label{eq:t}
-t = \gamma(v)(t' + \alpha(v) x')
-\end{equation}
-Nótese que la isotropía implica $\alpha(-v) = -\alpha(v)$ (debe ser una función impar).
-
-\subsection{Paso 5: La Propiedad de Grupo y la Constante Universal}
-Este es el paso crucial que reemplaza el postulado de la velocidad de la luz. Consideremos tres sistemas: $S$, $S'$ y $S''$. Sea la velocidad de $S'$ relativa a $S$ $v_1$, y la velocidad de $S''$ relativa a $S'$ $v_2$. La composición de estas dos transformaciones debe dar como resultado una transformación de la misma forma.
-
-Sustituyendo (\ref{eq:x_prime}) y (\ref{eq:t_prime}) en (\ref{eq:x}) y (\ref{eq:t}), podemos resolver para las funciones. Un método más directo es requerir consistencia entre las transformaciones. Sustituyamos (\ref{eq:x_prime}) en (\ref{eq:x}):
-\begin{align*}
-x &= \gamma(v)(x' + vt') \\
-x &= \gamma(v)[\gamma(v)(x-vt) + v t']
-\end{align*}
-Ahora sustituimos nuestra expresión para $t'$ (\ref{eq:t_prime}):
-\begin{align*}
-x &= \gamma(v)[\gamma(v)(x-vt) + v \gamma(v)(t - \alpha(v)x)] \\
-x &= \gamma(v)^2 [ (x-vt) + v(t-\alpha(v)x) ] \\
-x &= \gamma(v)^2 [ x - vt + vt - v\alpha(v)x ] \\
-x &= \gamma(v)^2 x (1 - v\alpha(v))
-\end{align*}
-Como esto debe ser válido para cualquier $x$, debemos tener:
-\[ 1 = \gamma(v)^2 (1 - v\alpha(v)) \]
-Esto relaciona nuestras dos funciones desconocidas, $\gamma(v)$ y $\alpha(v)$.
-
-A partir del argumento de la propiedad de grupo (considerando tres sistemas), se puede mostrar que la razón $\alpha(v)/v$ debe ser una constante universal, independiente del sistema de referencia. Llamemos a esta constante $K$.
-\[ \frac{\alpha(v)}{v} = K \implies \alpha(v) = Kv \]
-Ahora sustituimos esto de nuevo en nuestra relación de consistencia:
-\[ 1 = \gamma(v)^2 (1 - v(Kv)) = \gamma(v)^2 (1 - K v^2) \]
-Resolviendo para $\gamma(v)$:
-\[ \boxed{\gamma(v) = \frac{1}{\sqrt{1 - K v^2}}} \]
-
-\subsection{Paso 6: La Naturaleza Física de la Constante \texorpdfstring{$K$}{K}}
-Hemos derivado la forma completa de las transformaciones basándonos únicamente en principios de simetría. La física está contenida en la constante universal $K$.
-\begin{enumerate}
-    \item \textbf{Caso 1: $K=0$} \\
-    Si $K=0$, entonces $\gamma = 1$ y $\alpha=0$. Las transformaciones se convierten en $x' = x - vt$ y $t'=t$. Esta es la \textbf{transformación de Galileo}. En este universo, no hay límite de velocidad.
-
-    \item \textbf{Caso 2: $K<0$} \\
-    Si $K$ es negativo, sea $K = -1/R^2$. Entonces $\gamma = 1/\sqrt{1+v^2/R^2}$. Esto corresponde a transformaciones en un espacio euclidiano 4D (rotaciones). Esto es matemáticamente posible pero no describe nuestro universo.
-
-    \item \textbf{Caso 3: $K>0$} \\
-    Si $K$ es positivo, debe tener unidades de (1/velocidad$^2$). Definamos una nueva constante $c$ tal que $K = 1/c^2$. Esta constante $c$ debe ser una velocidad universal e invariante. El factor de Lorentz y las transformaciones se convierten en:
-    \[ \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} \]
-    \[ x' = \gamma(x-vt) \]
-    \[ t' = \gamma(t - \frac{v}{c^2}x) \]
-    Estas son las \textbf{transformaciones de Lorentz}.
-\end{enumerate}
-
-\subsection{Conclusión}
-Sin asumir nunca que la luz viaja a una velocidad constante, hemos demostrado que las simetrías fundamentales del espaciotiempo (homogeneidad e isotropía) y el principio de relatividad conducen a una conclusión sorprendente: \textbf{debe existir una velocidad universal e invariante en nuestro universo}.
-
-Toda la evidencia experimental, desde el electromagnetismo hasta la desintegración de partículas, confirma que vivimos en un universo donde $K > 0$. Llamamos a esta velocidad universal $c$, y la identificamos con la velocidad de la luz en el vacío. La constancia de la velocidad de la luz no es una suposición separada, sino una consecuencia directa de la estructura del espaciotiempo mismo.
 
 \section{Derivación de la Dilatación del Tiempo a partir de las Transformaciones de Lorentz}
 
@@ -739,7 +631,7 @@ Hemos demostrado con éxito que la contracción de la longitud es una consecuenc
 ver \url{https://inspirehep.net/literature/2825885}
 
 
-\section{El Problema con la Suma de Velocidades Clásica}
+\section{Suma de velocidades relativista}
 
 En la física clásica (galileana), si estás en un tren que se mueve a una velocidad $v$, y lanzas una pelota hacia adelante a una velocidad $u'$ (relativa al tren), un observador en el suelo vería la pelota moverse a una simple suma de las velocidades:
 \[ u = u' + v \quad \text{(Suma Clásica/Galileana)} \]
@@ -749,7 +641,7 @@ Esto funciona perfectamente a velocidades cotidianas. Sin embargo, se rompe a ve
 \[ u = 0.7c + 0.8c = 1.5c \]
 Esto es más rápido que la velocidad de la luz, lo cual viola el segundo postulado de la Relatividad Especial. Necesitamos una nueva fórmula que respete el límite de velocidad cósmico.
 
-\section{La Configuración para la Fórmula Relativista}
+\subsection{La Configuración para la Fórmula Relativista}
 
 Usamos tres sistemas de referencia:
 \begin{itemize}
@@ -765,7 +657,7 @@ Nuestro objetivo es encontrar la velocidad del objeto, \textbf{$u$}, medida por 
 \text{¿Cuál es la velocidad } u \text{ del Objeto relativa a S?}
 \]
 
-\section{Derivación a partir de las Transformaciones de Lorentz}
+\subsection{Derivación a partir de las Transformaciones de Lorentz}
 
 Las velocidades constantes se definen como el cociente entre la posición y el tiempo:
 \[ u = \frac{x}{t} \quad \text{y} \quad u' = \frac{x'}{t'}\,, \]
@@ -834,6 +726,29 @@ En el límite no relativista de $u\approx u'+v$, tenemos que
     c^2 = \dfrac{u u'v}{ u' + v - u} \approx \dfrac{(u'+v) u'v}{0} = \infty\,, 
 \end{align}
 tenemos que  $c = \infty$ y de éste modo en el límite no relativista, ¡no existe una velocidad límite!.
+
+
+\subsection{Características Clave y Ejemplos}
+
+\subsubsection{Ejemplo 1: La Nave Espacial y la Sonda}
+Volvamos a nuestro problema inicial con la fórmula relativista.
+\begin{itemize}
+    \item $v = 0.8c$ (velocidad de la nave relativa a la Tierra)
+    \item $u' = 0.7c$ (velocidad de la sonda relativa a la nave)
+\end{itemize}
+\[ u = \frac{0.7c + 0.8c}{1 + \frac{(0.7c)(0.8c)}{c^2}} = \frac{1.5c}{1 + \frac{0.56c^2}{c^2}} = \frac{1.5c}{1 + 0.56} = \frac{1.5c}{1.56} \]
+\[ u \approx 0.9615c \]
+El resultado es menor que la velocidad de la luz, como se requiere.
+
+\subsubsection{Característica 1: La Velocidad de la Luz es el Límite Último}
+¿Qué pasa si la nave que se mueve a $v=0.9c$ dispara un rayo láser hacia adelante ($u'=c$)?
+\[ u = \frac{c + 0.9c}{1 + \frac{(c)(0.9c)}{c^2}} = \frac{1.9c}{1 + 0.9} = \frac{1.9c}{1.9} = c \]
+El observador en la Tierra también mide la velocidad del rayo láser como exactamente $c$. Este hermoso resultado muestra cómo la fórmula defiende perfectamente el segundo postulado de la relatividad. 
+
+\subsubsection{Característica 2: Se Reduce a la Fórmula Clásica a Bajas Velocidades}
+Si $v \ll c$ y $u' \ll c$, el término $\frac{u'v}{c^2}$ se vuelve extremadamente pequeño y se aproxima a cero.
+\[ u = \frac{u' + v}{1 + \frac{u'v}{c^2}} \approx \frac{u' + v}{1} = u' + v \]
+Esto muestra que la fórmula relativista contiene la fórmula clásica como una aproximación a baja velocidad, lo cual es un requisito clave para cualquier nueva teoría física.
 
 % --- Inicio del código LaTeX para insertar ---
 
@@ -918,27 +833,6 @@ Muón & \SI{2.2}{\micro\second} (\SI{2.2e-6}{\second}) & \SI{3.15e5}{\per\second
 
 % --- Fin del código LaTeX ---
 
-\section{Características Clave y Ejemplos}
-
-\subsection{Ejemplo 1: La Nave Espacial y la Sonda}
-Volvamos a nuestro problema inicial con la fórmula relativista.
-\begin{itemize}
-    \item $v = 0.8c$ (velocidad de la nave relativa a la Tierra)
-    \item $u' = 0.7c$ (velocidad de la sonda relativa a la nave)
-\end{itemize}
-\[ u = \frac{0.7c + 0.8c}{1 + \frac{(0.7c)(0.8c)}{c^2}} = \frac{1.5c}{1 + \frac{0.56c^2}{c^2}} = \frac{1.5c}{1 + 0.56} = \frac{1.5c}{1.56} \]
-\[ u \approx 0.9615c \]
-El resultado es menor que la velocidad de la luz, como se requiere.
-
-\subsection{Característica 1: La Velocidad de la Luz es el Límite Último}
-¿Qué pasa si la nave que se mueve a $v=0.9c$ dispara un rayo láser hacia adelante ($u'=c$)?
-\[ u = \frac{c + 0.9c}{1 + \frac{(c)(0.9c)}{c^2}} = \frac{1.9c}{1 + 0.9} = \frac{1.9c}{1.9} = c \]
-El observador en la Tierra también mide la velocidad del rayo láser como exactamente $c$. Este hermoso resultado muestra cómo la fórmula defiende perfectamente el segundo postulado de la relatividad. 
-
-\subsection{Característica 2: Se Reduce a la Fórmula Clásica a Bajas Velocidades}
-Si $v \ll c$ y $u' \ll c$, el término $\frac{u'v}{c^2}$ se vuelve extremadamente pequeño y se aproxima a cero.
-\[ u = \frac{u' + v}{1 + \frac{u'v}{c^2}} \approx \frac{u' + v}{1} = u' + v \]
-Esto muestra que la fórmula relativista contiene la fórmula clásica como una aproximación a baja velocidad, lo cual es un requisito clave para cualquier nueva teoría física.
 
 
 \section{Ejemplos}
@@ -1607,11 +1501,11 @@ La masa de un ``par'' de combustible (D+T) es $m_{\text{par}} = \SI{5.030151}{\a
 \[ \frac{\text{Energía Fusión}}{\text{Energía Fisión}} = \frac{\SI{3.39e14}{\joule}}{\SI{7.14e13}{\joule}} \approx 4.75 \]
 \textbf{Respuesta a la Pregunta 3:} La fusión de \SI{1}{\kilo\gram} de combustible D-T libera aproximadamente \textbf{4.75 veces más energía} que la fisión de \SI{1}{\kilo\gram} de Uranio-235.
 
-\section{Eficiencia de una Bomba de Hidrógeno}
+\subsection*{Eficiencia de una Bomba de Hidrógeno}
 
 La eficiencia de una bomba de hidrógeno para ``quemar'' o fusionar todo su combustible de fusión es sorprendentemente baja. Generalmente, la eficiencia de la etapa de fusión en un arma termonuclear moderna se encuentra en el rango del \SIrange{20}{40}{\percent}. Esto significa que entre el \SIrange{60}{80}{\percent} del combustible de fusión es simplemente dispersado por la explosión sin reaccionar.
 
-\subsection*{¿Por qué la Eficiencia no es del 100\%? El Principio de "Desmontaje Explosivo"}
+\subsubsection*{¿Por qué la Eficiencia no es del 100\%? El Principio de "Desmontaje Explosivo"}
 
 El factor limitante más importante en cualquier arma nuclear es que \textbf{la propia explosión destruye las condiciones necesarias para que la reacción continúe}.
 \begin{enumerate}
@@ -1622,7 +1516,7 @@ El factor limitante más importante en cualquier arma nuclear es que \textbf{la 
 \end{enumerate}
 La eficiencia es, por lo tanto, una medida de cuán bien el diseño puede \textbf{mantener el combustible confinado} antes de que la inevitable explosión lo desmonte todo.
 
-\subsection*{Ejemplo Numérico Ilustrativo}
+\subsubsection*{Ejemplo Numérico Ilustrativo}
 Imaginemos una bomba de \SI{1}{\mega\tonne} de TNT ($\approx \SI{4.184e15}{\joule}$), donde el \SI{50}{\percent} de la energía proviene de la fusión (\SI{500}{\kilo\tonne} o $\approx \SI{2.092e15}{\joule}$).
 
 \paragraph{1. Masa de combustible que SÍ se fusionó:}
@@ -1633,7 +1527,7 @@ Si asumimos una eficiencia de fusión plausible del \SI{30}{\percent}:
 \[ \text{Masa total} = \frac{\text{Masa fusionada}}{\text{Eficiencia}} = \frac{\SI{6.17}{\kilo\gram}}{0.30} \approx \SI{20.6}{\kilo\gram} \]
 Esto significa que para que \SI{6.17}{\kilo\gram} de combustible reaccionen, la bomba debe estar cargada con más de \SI{20}{\kilo\gram}. El resto se dispersa sin reaccionar.
 
-\subsection*{Comparación con las Bombas de Fisión}
+\subsubsection*{Comparación con las Bombas de Fisión}
 La eficiencia de las bombas de fisión puras es generalmente aún menor:
 \begin{itemize}
     \item \textbf{Bomba de tipo "cañón" (Hiroshima):} Extremadamente ineficiente, con solo un \SI{1.7}{\percent} de eficiencia de fisión.
@@ -1655,8 +1549,129 @@ donde la energía y la magnitud del vector $\boldsymbol{p} = (p_x,p_y,p_z)$ son
 
 \end{enumerate}
 
+\section{Leyes de Newton}
+\begin{enumerate}
+    \item Si un objeto cambia su  cantidad de movimiento durante un intervalo de tiempo $\Delta t$, es porque existe una fuerza neta actuando sobre él durante ese intervalo.  Dicha fuerza viene dada por
+    \begin{align}
+        \boldsymbol{F} = \frac{\Delta \boldsymbol{p}}{\Delta t}
+    \end{align}
+    donde
+    \begin{align}
+    \Delta t =& t_{\text{final}}-t_{\text{inicial}}\\
+    \Delta\boldsymbol{p} =& \boldsymbol{p}_{\text{final}}
+    - \boldsymbol{p}_{\text{inicial}}\,.    
+    \end{align}
+
+\item  para cada fuerza (acción) que un objeto ejerce sobre otro, existe una fuerza de igual magnitud y dirección opuesta (reacción)
+\end{enumerate}
+
+Durante ese intervalo de tiempo el objeto se desplazo una distancia
+\begin{align}
+    \Delta\boldsymbol{r} =& \boldsymbol{r}_{\text{final}}
+    - \boldsymbol{r}_{\text{inicial}}\,.      
+\end{align}
+%analisis dimensional
+Podemos entonces definir una cantidad escalar que tiene unidades de energía que llamaremos trabajo
+\begin{align}
+    W = \boldsymbol{F}\cdot \Delta\boldsymbol{r}\,.
+\end{align}
 
 
+
+
+Para una partícula de masa $m$ que se mueve a velocidad $\boldsymbol{v}$, su inercia, o cantidad de movimiento, o momento, es
+\begin{align}
+    \boldsymbol{p} = \gamma m \boldsymbol{v}\,.
+\end{align}
+
+
+
+
+
+\section{Límite no relativista}
+
+Para el momento es suficiente hacer $\gamma \approx 1$
+\begin{align}
+    \boldsymbol{p} \approx m \boldsymbol{v}\,.
+\end{align}
+
+
+Para la energía, podemos usar
+\begin{align*}
+    (1+x)^n \approx 1+nx\,,\qquad\text{si $x\ll 1$}\,,
+\end{align*}
+tenemos que en el límite no relativista correspondiente a 
+\begin{align*}
+    \frac{v^2}{c^2} \ll 1\,,
+\end{align*}
+podemos aproximar el factor de Lorentz $\gamma$ de la siguiente manera
+\begin{align}
+    \gamma =&\frac{1}{\sqrt{1-v^2/c^2}}\nonumber\\
+    =& \left(1-\frac{v^2}{c^2}\right)^{-1/2}\nonumber\\
+    \approx& 1+\frac{v^2}{2c^2}\,.
+\end{align}
+
+
+En la ecuación para la energía de una partícula de masa $m$ moviéndose a una velocidad $v$, tenemos que
+\begin{align*}
+    E =& \gamma m c^2\nonumber\\
+     \approx& \left(1+\frac{v^2}{c^2}\right)mc^2\nonumber\\
+      E=&mc^2 + \frac{1}{2}m v^2\,,
+\end{align*}
+donde 
+\begin{align}
+    \text{Energía en reposo:}\qquad& E_0 = mc^2\,,\\
+     \text{Energía cinética:}\qquad& K = \frac{1}{2}mv^2\,.
+\end{align}
+
+Note que el concepto de energía cinética aplica sólo en el caso no relativista.
+
+Note que la diferencia de energía es
+\begin{align}
+    \Delta E =& E_{\text{final}} -E_{\text{inicial}} \nonumber\\
+    =& \cancel{mc^2} + \frac{1}{2}mv^2_{\text{final}} -\cancel{mc^2} - \frac{1}{2}mv^2_{\text{inicial}}\nonumber\\
+=& \frac{1}{2}mv^2_{\text{final}} - \frac{1}{2}mv^2_{\text{inicial}}\nonumber\\
+=& K_\text{final} -K_\text{inicial} \nonumber\\
+=& \Delta K\,.
+\end{align}
+
+Teorema de trabajo y energía
+\begin{align}
+    W =& \Delta K\nonumber\\
+    =& \frac{1}{2}mv^2_{\text{final}} - \frac{1}{2}mv^2_{\text{inicial}}\,.
+\end{align}
+Lo que realmente tiene sentido físico es la diferencia de energías.
+
+\subsection{Aceleración constante}
+
+
+En una dimensión, $x$, con $F$ constante, $t_{\text{inicial}} = 0$ y $t_{\text{final}} = 0$, $v_{\text{inicial}} = v_0$ y $v_{\text{final}} = v$
+
+\begin{align}
+    v_0 = \pm a t =\pm \frac{F}{m} t
+\end{align}
+
+\begin{align}
+    v = v_0 \pm\frac{F}{m} t
+\end{align}
+
+\begin{align*}
+    \pm F\Delta x =& \frac{1}{2}mv^2 - \frac{1}{2}mv^2_0\\
+    =&\frac{1}{2}m \left(v_0 \pm\frac{F}{m} t\right)^2 - 
+    \frac{1}{2}mv^2_0\\
+    =& \pm v_0 t F +\frac{1}{2}\frac{F^2}{m} t^2
+\end{align*}
+
+\begin{align*}
+    \Delta x = x-x_0 = v_0 t \pm \frac{1}{2}\frac{F}{m} t^2\,.
+\end{align*}
+
+\begin{align}
+    x = x_0 + v_0 t \pm \frac{1}{2}\frac{F}{m} t^2
+\end{align}
+\appendix
+
+\section*{Apendices}
 
 
 \section{Movimiento Relativista y No Relativista Bajo una Fuerza Constante}
@@ -1769,7 +1784,124 @@ Dividiendo por $-F$ se obtiene el resultado idéntico:
 
 
 
-\appendix
+
+
+
+
+% --- INFORMACIÓN DEL TÍTULO ---
+\section{Derivación de las Transformaciones de Lorentz a partir de Simetrías del Espacio--tiempo}
+\label{sec:tl}
+\subsection{El Enfoque de Ignatowski}
+Este documento presenta una derivación de las transformaciones de Lorentz basada en principios fundamentales de simetría, en lugar de postular la constancia de la velocidad de la luz. Este enfoque, a veces llamado la derivación de Ignatowski, se basa en el Principio de Relatividad y la homogeneidad e isotropía del espaciotiempo. Mostraremos que estos principios conducen lógicamente a la existencia de una velocidad universal e invariante, que identificamos con la velocidad de la luz.
+
+Ver \cite{Datta:2022cpw} %https://inspirehep.net/literature/2611550
+
+
+\subsection{Principios Fundamentales}
+La derivación se basa en tres supuestos centrales:
+\begin{enumerate}
+    \item \textbf{El Principio de Relatividad:} Las leyes de la física son las mismas en todos los sistemas de referencia inerciales.
+    \item \textbf{Homogeneidad del Espaciotiempo:} Las leyes de la física son independientes de la posición en el espacio y el tiempo.
+    \item \textbf{Isotropía del Espacio:} Las leyes de la física son independientes de la dirección.
+\end{enumerate}
+
+
+\subsection{Paso 1: Linealidad a partir de la Homogeneidad}
+Consideremos dos sistemas de referencia inerciales, $S(x,t)$ y $S'(x',t')$, con $S'$ moviéndose a una velocidad $v$ relativa a $S$ a lo largo del eje x. Buscamos las funciones de transformación $x' = f(x,t)$ y $t' = g(x,t)$.
+
+La homogeneidad del espaciotiempo implica que las ecuaciones de transformación deben ser \textbf{lineales}. Si no lo fueran, un movimiento uniforme en un sistema (una línea recta en un diagrama de espaciotiempo) aparecería como un movimiento acelerado en otro. Esto significaría que las leyes de la física dependerían de la elección del origen, violando la homogeneidad. Por lo tanto, la forma más general de las transformaciones debe ser lineal:
+\begin{align*}
+x' &= Ax + Bt \\
+t' &= Dx + Et
+\end{align*}
+donde los coeficientes $A, B, D, E$ solo pueden depender de la velocidad relativa, $v$.
+
+\subsection{Paso 2: Usando Cinemática Básica}
+Podemos simplificar los coeficientes usando el movimiento de los orígenes de los sistemas.
+\begin{itemize}
+    \item El origen del sistema $S'$ ($x'=0$) se mueve con velocidad $v$ en el sistema $S$. Su posición en $S$ es por lo tanto $x=vt$. Sustituyamos esto en nuestra primera ecuación:
+    \[ 0 = A(vt) + Bt \implies 0 = (Av+B)t \]
+    Esto debe ser válido para todo tiempo $t$, por lo que debemos tener $B = -Av$. La transformación para $x'$ se convierte en:
+    \[ x' = Ax - Avt = A(x-vt) \]
+\end{itemize}
+Renombremos el coeficiente $A(v)$ con la notación más familiar $\gamma(v)$.
+\begin{equation} \label{eq:x_prime}
+x' = \gamma(v)(x - vt)
+\end{equation}
+
+\subsection{Paso 3: Aplicando la Relatividad y la Isotropía}
+El Principio de Relatividad establece que la transformación de $S'$ de vuelta a $S$ debe tener exactamente la misma forma matemática. La única diferencia es que desde la perspectiva de $S'$, el sistema $S$ se mueve con velocidad $-v$. Por lo tanto, la transformación inversa debe ser:
+\begin{equation} \label{eq:x}
+x = \gamma(-v)(x' + vt')
+\end{equation}
+Ahora, invocamos la \textbf{isotropía del espacio}. La isotropía significa que la física no debe depender de la dirección del vector velocidad. Por lo tanto, cualquier efecto físico de la transformación solo puede depender de la \textit{rapidez}, $|v|$, no de la dirección de la velocidad. Esto implica:
+\[ \gamma(v) = \gamma(-v) \]
+Esto simplifica nuestro par de transformaciones a:
+\begin{align*}
+x' &= \gamma(v)(x - vt) \\
+x &= \gamma(v)(x' + vt')
+\end{align*}
+
+\subsection{Paso 4: Encontrando la Transformación del Tiempo}
+Todavía necesitamos determinar la transformación para el tiempo. Podemos mostrar que debe tomar la forma simétrica:
+\begin{equation} \label{eq:t_prime}
+t' = \gamma(v)(t - \alpha(v) x)
+\end{equation}
+donde $\alpha(v)$ es alguna función de la velocidad. Por el Principio de Relatividad, la transformación inversa debe ser:
+\begin{equation} \label{eq:t}
+t = \gamma(v)(t' + \alpha(v) x')
+\end{equation}
+Nótese que la isotropía implica $\alpha(-v) = -\alpha(v)$ (debe ser una función impar).
+
+\subsection{Paso 5: La Propiedad de Grupo y la Constante Universal}
+Este es el paso crucial que reemplaza el postulado de la velocidad de la luz. Consideremos tres sistemas: $S$, $S'$ y $S''$. Sea la velocidad de $S'$ relativa a $S$ $v_1$, y la velocidad de $S''$ relativa a $S'$ $v_2$. La composición de estas dos transformaciones debe dar como resultado una transformación de la misma forma.
+
+Sustituyendo (\ref{eq:x_prime}) y (\ref{eq:t_prime}) en (\ref{eq:x}) y (\ref{eq:t}), podemos resolver para las funciones. Un método más directo es requerir consistencia entre las transformaciones. Sustituyamos (\ref{eq:x_prime}) en (\ref{eq:x}):
+\begin{align*}
+x &= \gamma(v)(x' + vt') \\
+x &= \gamma(v)[\gamma(v)(x-vt) + v t']
+\end{align*}
+Ahora sustituimos nuestra expresión para $t'$ (\ref{eq:t_prime}):
+\begin{align*}
+x &= \gamma(v)[\gamma(v)(x-vt) + v \gamma(v)(t - \alpha(v)x)] \\
+x &= \gamma(v)^2 [ (x-vt) + v(t-\alpha(v)x) ] \\
+x &= \gamma(v)^2 [ x - vt + vt - v\alpha(v)x ] \\
+x &= \gamma(v)^2 x (1 - v\alpha(v))
+\end{align*}
+Como esto debe ser válido para cualquier $x$, debemos tener:
+\[ 1 = \gamma(v)^2 (1 - v\alpha(v)) \]
+Esto relaciona nuestras dos funciones desconocidas, $\gamma(v)$ y $\alpha(v)$.
+
+A partir del argumento de la propiedad de grupo (considerando tres sistemas), se puede mostrar que la razón $\alpha(v)/v$ debe ser una constante universal, independiente del sistema de referencia. Llamemos a esta constante $K$.
+\[ \frac{\alpha(v)}{v} = K \implies \alpha(v) = Kv \]
+Ahora sustituimos esto de nuevo en nuestra relación de consistencia:
+\[ 1 = \gamma(v)^2 (1 - v(Kv)) = \gamma(v)^2 (1 - K v^2) \]
+Resolviendo para $\gamma(v)$:
+\[ \boxed{\gamma(v) = \frac{1}{\sqrt{1 - K v^2}}} \]
+
+\subsection{Paso 6: La Naturaleza Física de la Constante \texorpdfstring{$K$}{K}}
+Hemos derivado la forma completa de las transformaciones basándonos únicamente en principios de simetría. La física está contenida en la constante universal $K$.
+\begin{enumerate}
+    \item \textbf{Caso 1: $K=0$} \\
+    Si $K=0$, entonces $\gamma = 1$ y $\alpha=0$. Las transformaciones se convierten en $x' = x - vt$ y $t'=t$. Esta es la \textbf{transformación de Galileo}. En este universo, no hay límite de velocidad.
+
+    \item \textbf{Caso 2: $K<0$} \\
+    Si $K$ es negativo, sea $K = -1/R^2$. Entonces $\gamma = 1/\sqrt{1+v^2/R^2}$. Esto corresponde a transformaciones en un espacio euclidiano 4D (rotaciones). Esto es matemáticamente posible pero no describe nuestro universo.
+
+    \item \textbf{Caso 3: $K>0$} \\
+    Si $K$ es positivo, debe tener unidades de (1/velocidad$^2$). Definamos una nueva constante $c$ tal que $K = 1/c^2$. Esta constante $c$ debe ser una velocidad universal e invariante. El factor de Lorentz y las transformaciones se convierten en:
+    \[ \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} \]
+    \[ x' = \gamma(x-vt) \]
+    \[ t' = \gamma(t - \frac{v}{c^2}x) \]
+    Estas son las \textbf{transformaciones de Lorentz}.
+\end{enumerate}
+
+\subsection{Conclusión}
+Sin asumir nunca que la luz viaja a una velocidad constante, hemos demostrado que las simetrías fundamentales del espaciotiempo (homogeneidad e isotropía) y el principio de relatividad conducen a una conclusión sorprendente: \textbf{debe existir una velocidad universal e invariante en nuestro universo}.
+
+Toda la evidencia experimental, desde el electromagnetismo hasta la desintegración de partículas, confirma que vivimos en un universo donde $K > 0$. Llamamos a esta velocidad universal $c$, y la identificamos con la velocidad de la luz en el vacío. La constancia de la velocidad de la luz no es una suposición separada, sino una consecuencia directa de la estructura del espaciotiempo mismo.
+
+
 \section{Número Imaginario}
 Definimos
 \begin{align}
