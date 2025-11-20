@@ -1,14 +1,20 @@
 %\author{\href{https://bit.ly/lorentztransformation}{Google AI studio prompt}\\ \small \emph{Derivado de los Postulados de la Relatividad Especial}}
 
 \documentclass[11pt,a4paper]{article}
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{fontspec}
 
 % --- PAQUETES ---
+\usepackage[spanish,es-nodecimaldot]{babel}
+
 \usepackage[margin=1in]{geometry} % Establecer márgenes de página
 \usepackage{amsmath}              % Para entornos matemáticos avanzados como aligned, pmatrix, boxed
 \usepackage{amssymb}              % Para símbolos matemáticos adicionales
 \usepackage{graphicx}             % Para incluir gráficos
 \usepackage{cancel}    
 \usepackage[dvipsnames]{xcolor}
+\definecolor{LightGray}{gray}{0.9}
 \usepackage{hyperref}             % Para hipervínculos y metadatos del PDF
 \hypersetup{
     colorlinks=true,
@@ -22,9 +28,56 @@
 }
 \usepackage{enumitem}
 \usepackage{tikz}
+% https://tex.stackexchange.com/a/166775
+\usetikzlibrary{babel}
 % https://www.texdev.net/2021/06/30/siunitx-v2-to-v3
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc} 
+\usetikzlibrary{math}
 \usepackage{siunitx}
+
+\usepackage{pgfplots}
+% Esto configura pgfplots para que sea compatible con versiones más nuevas
+\pgfplotsset{compat=1.18} 
+% Opcional, pero recomendado: Carga la librería para unidades de siunitx
+\usepgfplotslibrary{units}
+
+\usepackage{pythontex}
+\usepackage[cache=false]{minted}
 \renewcommand{\arraystretch}{1.9}
+\usepackage{svg}
+\usepackage{listings}
+
+% python listing
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% end python listing
+
+
 % commment/uncomment to show/hide the solution
 %\renewcommand{\phantom}[1]{#1}
 
@@ -247,7 +300,122 @@ Convertir 60 km/h a m/s
 \end{align*}
 
 
-Ejercicio: Convierta $2\text{m}^2$ a $\text{cm}^2$
+\subsubsection*{Ejercicio}
+Convierta $2\text{m}^2$ a $\text{cm}^2$
+
+
+\subsection{Unidades naturales}
+Las constantes naturales sirven para expresar las cantidades físicaa en términos de energía.
+
+
+Veremos que
+\begin{align}
+    E = q V
+\end{align}
+La energía ganada por un electrón con carga eléctrica $e$ a través de una diferencia de potencial $V$ de $1\,\text{V}$ es:
+\begin{align}
+    E =&qV\nonumber\\
+    =& e\cdot 1\text{V}\nonumber\\
+    =&1.602 176 634 \times 10^{-19} \text{C}\cdot\text{V}\nonumber\\
+ 1\text{eV} \equiv &   1.602 176 634 \times 10^{-19} \,\text{J}
+\end{align}
+Las otras constantes relacionan otras cantidades físicas con la energía
+
+
+
+
+
+\begin{align}
+    \hbar =&\frac{h}{2\pi} = 
+    \frac{6.62607115\times 10^{-34}\,\text{J}\cdot \text{s}}{2\pi}\nonumber\\
+    =&\frac{\dfrac{6.62607115\times 10^{-34}\,\cancel{\text{J}}\cdot \text{s}}{1}
+    \dfrac{1\text{eV}}{1.602 176 634 \times 10^{-19}\cancel{\text{J}}}
+    }{2\pi}\nonumber\\
+    =&\frac{4.1356683\times 10^{-15} \text{eV}\cdot\text{s}}{2\pi}\nonumber\\
+=&6.582119569\times 10^{-16}\text{eV}\cdot\text{s}
+\end{align}
+
+La siguiente expresión tiene unidades de energía
+\begin{align}
+    1\,\text{kg}\,c^2 =& 299\, 792\, 458^2 \,\cancel{\text{J}}\frac{1\text{eV}}{1.602 176 634 \times 10^{-19}\cancel{\text{J}}}\nonumber\\
+    1\,\text{kg}\,c^2 = & 5.609\,588\,603\times 10^{35} \,\cancel{\text{eV}}\frac{1\,\text{GeV}}{10^9 \cancel{\text{eV}}}\nonumber\\
+    1\,\text{kg}\,c^2 = & 5.609\,588\,603\times 10^{26}\,\text{GeV}
+\end{align}
+
+
+\begin{align}
+    [T] \to & \left[\frac{\hbar}{E}\right]:& 1\,\text{s} =&1.519\,267\,447\times 10^{15}\frac{\hbar}{\text{eV}}\nonumber\\
+    [L] \to & \left[\frac{\hbar c}{E}\right]:&1\,\text{m}=&5.067\,730\,71\times 10^{6}\,\frac{\hbar c}{\text{eV}} \nonumber\\
+    [M] \to & \left[\frac{E}{c^2}\right]:& 1\,\text{kg}= &5.609\,588\,603\times 10^{26}\,\text{GeV}/c^2 \nonumber
+\end{align}
+
+La masa del protón
+\begin{align}
+    m_p =&  1.672\, 621\, 923\, 69(51)×10^{-27}\,\cancel{\text{kg}}\frac{5.609\,588\,603\times 10^{26}\,\text{GeV}/c^2}{1\,\cancel{\text{kg}}}\nonumber\\
+        =&0.938\,272\, 088\, 16(29) \,\text{GeV}/c^2\\
+        \approx& 1\,\text{GeV}/c^2\,.
+\end{align}
+
+similarmente,
+\begin{align}
+    m_e =& 0.510\, 998\, 950\, 00(15) \,\text{MeV}/c2\\
+         \approx &0.5 \,\text{MeV}/c^2
+\end{align}
+
+
+La estimación del orden de magnitud para el número total de \textbf{positrones} en el universo observable es altamente especulativa debido a su naturaleza fugaz. Sin embargo, al contrastarlos con el contenido de materia dominante, se puede llegar a una estimación aproximada.
+
+\subsubsection*{Ejemplo: contenido de positrones del Universo}
+El orden de magnitud más razonable para el número de positrones en el universo observable se encuentra probablemente en el rango de $\mathbf{10^{65}}$ a $\mathbf{10^{70}}$.
+
+\subsubsection*{Base de la Estimación}
+
+Esta estimación no se obtiene directamente de un único experimento de flujo como el \text{AMS-02}, sino que se deriva del desequilibrio establecido entre materia y antimateria, y de la tasa de aniquilación en nuestra galaxia.
+
+\subsubsection*{1. Comparación con la Materia ($\approx 10^{80}$)}
+
+El número total de \textbf{electrones} y \textbf{protones} (materia ordinaria) en el universo observable se estima en alrededor de $\mathbf{10^{80}}$.
+
+Dado que todo el universo observable está compuesto casi en su totalidad por materia (y no por antimateria), el número total de positrones debe ser \textbf{mucho menor} que la cifra de $10^{80}$ de electrones.
+
+\subsubsection*{2. Producción y Aniquilación de Positrones}
+
+Los positrones se producen continuamente por eventos de alta energía y desintegración radiactiva, pero son destruidos muy rápidamente por \textbf{aniquilación} con electrones. Por lo tanto, su número está determinado por un equilibrio de producción-aniquilación en lugar de ser un remanente cosmológico.
+
+\begin{itemize}
+    \item \textbf{Producción Galáctica de Positrones:} Las observaciones de la línea $\mathbf{511 \text{ keV } \gamma}$ en el Centro Galáctico, que es una firma de la aniquilación electrón-positrón, sugieren que los positrones se producen en la Vía Láctea a una tasa de aproximadamente $\mathbf{10^{42}}$ positrones por segundo ($\dot{N}_{e^+} \approx 10^{42} \text{ s}^{-1}$).
+    \item \textbf{Número en Estado Estacionario en la Vía Láctea:} Para mantener esta tasa de producción, se estima que el número total de positrones que flotan actualmente en el fondo difuso de la Vía Láctea es de $\mathbf{N_{e^+} \approx 10^{56}}$ a $\mathbf{10^{57}}$.
+\end{itemize}
+
+\subsubsection*{3. Escala al Universo}
+
+Para escalar esto al universo observable, multiplicamos la estimación Galáctica por el número estimado de galaxias. Se estima que el universo observable contiene entre $10^{11}$ y $10^{12}$ galaxias.
+
+La estimación resultante es:
+$$N_{\text{Positrones, Universo}} \approx N_{\text{Positrones, Galaxia}} \times N_{\text{Galaxias}}$$
+$$N_{\text{Positrones, Universo}} \approx 10^{56} \text{ a } 10^{57} \times 10^{11} \text{ a } 10^{12}$$
+$$N_{\text{Positrones, Universo}} \approx 10^{67} \text{ a } 10^{69}$$
+
+Este cálculo aproximado sugiere un orden de magnitud de $\mathbf{10^{68}}$.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Partícula} & \textbf{Orden de Magnitud (Universo Observable)} \\
+        \hline
+        Electrones y Protones (Materia) & $\approx 10^{80}$ \\
+        \hline
+        Fotones y Neutrinos & $\approx 10^{89}$ \\
+        \hline
+        \textbf{Positrones (Antimateria)} & $\approx 10^{65} - 10^{70}$ \\
+        \hline
+    \end{tabular}
+    \caption{Estimación del Orden de Magnitud de Partículas}
+\end{table}
+
+
+
 
 
 
@@ -862,13 +1030,13 @@ x' &= \gamma(x - vt) \\
 t' &= \gamma\left(t - \frac{vx}{c^2}\right)
 \end{align*}
 Ahora, podemos construir la fracción para $u'$ dividiendo $x'$ por $t'$:
-\[ u' = \frac{x'}{t'} = \frac{\gamma(x - vt)}{\gamma\left(t - \frac{v\,x}{c^2}\right)} \]
+\[ u' = \frac{x'}{t'} = \frac{\gamma(x - vt)}{\gamma\left(t - \dfrac{v\,x}{c^2}\right)} \]
 Los factores $\gamma$ se cancelan:
-\[ u' = \frac{x - v\,t}{t - \frac{v\,x}{c^2}} \]
+\[ u' = \frac{x - v\,t}{t - \dfrac{v\,x}{c^2}} \]
 Para poner esto en términos de velocidades, dividimos el numerador y el denominador por $dt$:
-\[ u' = \frac{\frac{x}{t} - v\frac{t}{t}}{\frac{t}{t} - \frac{v}{c^2}\frac{x}{t}} \]
-Sustituyendo $u = \frac{x}{t}$:
-\[ u' = \frac{u - v}{1 - \frac{uv}{c^2}} \]
+\[ u' = \frac{\dfrac{x}{t} - v\dfrac{t}{t}}{\dfrac{t}{t} - \dfrac{v}{c^2}\dfrac{x}{t}} \]
+Sustituyendo $u = {x}/{t}$:
+\[ u' = \frac{u - v}{1 - \dfrac{uv}{c^2}} \]
 Esta fórmula da la velocidad relativa $u'$ cuando conoces las velocidades en el sistema estacionario. Sin embargo, queremos ``sumar" velocidades, lo que significa que necesitamos resolver esta ecuación para $u$.
 
 \noindent
@@ -889,7 +1057,7 @@ Esta fórmula da la velocidad relativa $u'$ cuando conoces las velocidades en el
 De esta forma obtenemos da la \textbf{Fórmula de Suma de Velocidades de Einstein}:
 \[
 \boxed{
-u = \frac{u' + v}{1 + \frac{u'v}{c^2}}
+u = \frac{u' + v}{1 + \dfrac{u'v}{c^2}}
 }
 \]
 
@@ -1723,8 +1891,8 @@ Esto significa que para que \SI{6.17}{\kilo\gram} de combustible reaccionen, la 
 \subsubsection*{Comparación con las Bombas de Fisión}
 La eficiencia de las bombas de fisión puras es generalmente aún menor:
 \begin{itemize}
-    \item \textbf{Bomba de tipo "cañón" (Hiroshima):} Extremadamente ineficiente, con solo un \SI{1.7}{\percent} de eficiencia de fisión.
-    \item \textbf{Bomba de tipo "implosión" (Nagasaki):} Mucho más eficiente, pero aún baja, con una eficiencia estimada del \SIrange{15}{20}{\percent}.
+    \item \textbf{Bomba de tipo ``cañón" (Hiroshima):} Extremadamente ineficiente, con solo un \SI{1.7}{\percent} de eficiencia de fisión.
+    \item \textbf{Bomba de tipo ``implosión" (Nagasaki):} Mucho más eficiente, pero aún baja, con una eficiencia estimada del \SIrange{15}{20}{\percent}.
 \end{itemize}
 La eficiencia de la fusión en una bomba H, aunque baja, es considerablemente mayor gracias al ingenioso método de implosión por radiación, que confina el combustible de manera mucho más intensa.
 
@@ -1739,13 +1907,43 @@ donde la energía y la magnitud del vector $\boldsymbol{p} = (p_x,p_y,p_z)$ son
     E =&\gamma m c^2\,, & p=&\gamma m v \,.
 \end{align*}
 
+\item 
+\begin{enumerate}
+    \item Encuentre el cuadrado de la velocidad a la que se mueve una partícula de masa $m$ a partir de su momento
 
+\noindent
+ \hspace{-1cm}\begin{tabular*}{0.95\textwidth}{l|c|p{9cm}}
+   \textbf{Paso} & \textbf{Ecuación}  & \textbf{Justificación} \\\hline
+1)     & $p =\dfrac{m v}{\sqrt{1-\dfrac{v^2}{c^2}}}$   & ecuación inicial.\\[20pt]\hline
+2) & $p^2  =\dfrac{m^2 v^2}{1-\dfrac{v^2}{c^2}} $& Elevar ambos lados al cuadrado. \\[20pt]\hline
+3) & $p^2\left(1-\dfrac{v^2}{c^2}\right)  =m^2 v^2 $& Multiplicar a ambos lados por $\left(1-\dfrac{v^2}{c^2}\right)$ \\[5pt]\hline
+4) & $p^2-\dfrac{p^2v^2}{c^2}  =m^2 v^2 $& Expandir $p^2$ a \emph{ambos} términos del paréntesis en el lado izquierdo. \\[5pt]\hline
+5) & $  \dfrac{p^2v^2}{c^2} + m^2 v^2 = p^2 $& Sumar $\dfrac{p^2v^2}{c^2}$ a ambos lados de la igualdad y reorganizar la igualdad con los términos con $v^2$ a la izquierda. \\[5pt]\hline
+6) & $v^2\left(\dfrac{p^2}{c^2} + m^2\right)= p^2 $& Factorizar $v^2$. \\[5pt]\hline
+7) & $v^2=\dfrac{p^2}{m^2 + \dfrac{p^2}{c^2}}  $& Dividir por $\left(\dfrac{p^2}{c^2} + m^2\right)$ a ambos lados de la igualdad. \\[20pt]\hline
+\end{tabular*}
+\item ¿Bajo que condición se recupera el límite no relativista?
+\begin{align*}
+    v = \frac{p}{m}\,,
+\end{align*}
+Asumiendo que la dirección de $p$ es la misma que la de $v$, podemos ignorar la solución con signo menos, de modo que
+\begin{align*}
+    v=&\dfrac{p}{\sqrt{m^2 + \dfrac{p^2}{c^2}}}\\
+    =&\dfrac{p/m}{\sqrt{1 + \dfrac{p^2}{m^2c^2}}}\,.
+\end{align*}
+Es claro que en si hacemos $c\to \infty$
+\begin{align*}
+    v =& \frac{p}{m}\,.
+\end{align*}
+
+\end{enumerate}
 \end{enumerate}
 
 \section{Leyes de Newton}
 \begin{enumerate}
     \item Si un objeto cambia su  cantidad de movimiento durante un intervalo de tiempo $\Delta t$, es porque existe una fuerza neta actuando sobre él durante ese intervalo.  Dicha fuerza viene dada por
     \begin{align}
+        \label{eq:newton}
         \boldsymbol{F} = \frac{\Delta \boldsymbol{p}}{\Delta t}
     \end{align}
     donde
@@ -1758,6 +1956,141 @@ donde la energía y la magnitud del vector $\boldsymbol{p} = (p_x,p_y,p_z)$ son
 \item  para cada fuerza (acción) que un objeto ejerce sobre otro, existe una fuerza de igual magnitud y dirección opuesta (reacción)
 \end{enumerate}
 
+
+
+Para una partícula de masa $m$ que se mueve a velocidad $\boldsymbol{v}$, su inercia, o cantidad de movimiento, o momento, es
+\begin{align}
+    \boldsymbol{p} = \gamma m \boldsymbol{v}\,.
+\end{align}
+
+
+En una dimensión, y como se muestra en la figura~\ref{fig:velocidad_instantanea}, la velocidad instantánea, $v_{\text{inst}}$, en un punto sobre una curva en el plano $x$--$t$, es la pendiente de la línea tangente a ese punto, es decir, la línea recta que corta la curva en un único punto. Para un $\Delta t$ suficientemente pequeño podemos aproximar dicha pendiente con el correspondiente cambio en $\Delta x$ para al punto inicial $(t_0,x_0)$ definiendo el punto tangente y el siguiente punto $(t,x)$ sobre la curva, tal que
+\begin{align}
+    v \approx \frac{x-x_0}{t-t_0}= \frac{\Delta x}{\Delta t}\,.
+\end{align}
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        % --- FIGURA IZQUIERDA: Curva y Tangente ---
+        \begin{tikzpicture}[
+            scale=0.9, font=\large,
+            axis/.style={->, >=Stealth, thick},
+            curve/.style={blue, thick},
+            tangent/.style={red, thick}
+        ]
+            % Ejes
+            \draw[axis] (0,0) -- (5,0) node[below] {$t$};
+            \draw[axis] (0,0) -- (0,4) node[left] {$x$};
+            \node[below left] at (0,0) {0};
+
+            % Curva de posición x(t)
+            \draw[curve, domain=0:3.8, samples=100] plot (\x, {0.3*\x^2 + 0.2*\x});
+
+            % Punto de interés y su tangente
+            \def\tpoint{2.5} % Tiempo en el que se calcula la tangente
+            \coordinate (P) at (\tpoint, {0.3*\tpoint^2 + 0.2*\tpoint});
+
+            % Dibujar la línea tangente
+            % La pendiente es la derivada: v(t) = 0.6t + 0.2. En t=2.5, v = 0.6*2.5 + 0.2 = 1.7
+            \draw[tangent] ($(P) - (1, 1.7)$) -- ($(P) + (1, 1.7)$);
+
+            % Marcar el punto
+            \fill (P) circle (2.5pt);
+            \node[below right, red] at (P) {$v_{\text{inst}} \approx \frac{\Delta x}{\Delta t}$};
+
+        \end{tikzpicture}
+        %\caption*{a) Curva de posición $x(t)$ con la línea tangente que representa la velocidad instantánea en un punto.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        % --- FIGURA DERECHA: Análisis de la Pendiente ---
+        \begin{tikzpicture}[
+            scale=0.9, font=\large,
+            axis/.style={->, %>=Stealth, 
+            thick},
+            tangent/.style={red, thick},
+            helpline/.style={dashed, gray}
+        ]
+            % Ejes (iguales que en la figura izquierda)
+            \draw[axis] (0,0) -- (5,0) node[below] {$t$};
+            \draw[axis] (0,0) -- (0,4) node[left] {$x$};
+            \node[below left] at (0,0) {0};
+
+            % Dibujar solo la línea tangente
+            \draw[tangent] (0.8, 0.26) -- (4.2, 6.04);
+            
+            % Puntos para definir el triángulo
+            \coordinate (A) at (1.5, 1.4);
+            \coordinate (B) at (3.5, 4.8);
+
+            % Dibujar el triángulo
+            \draw[helpline, thick] (A) -- (B |- A); % Cateto vertical
+            \draw[helpline, thick] (B |- A) -- (B); % Cateto horizontal
+
+            % Marcar los puntos
+            \fill (A) circle (2.5pt);
+            \fill (B) circle (2.5pt);
+
+            % Etiquetar los catetos
+            \node[right, xshift=3pt, yshift=28pt] at (B |- A) {$\Delta x$};
+            \node[below, xshift=-20pt, yshift=-3pt] at (A -| B) {$\Delta t$};
+
+            % Etiquetar la pendiente
+            \node[rotate=59.5, anchor=south, xshift=-1cm, yshift=0.2cm] at (2.5, 3.1) {Pendiente = $v = \frac{\Delta x}{\Delta t}$};
+
+        \end{tikzpicture}
+        %\caption*{b) Análisis de la pendiente de la línea tangente, que corresponde a la velocidad %$v$.}
+    \end{minipage}
+    \caption{Visualización del concepto de velocidad instantánea como la pendiente de la curva de posición-tiempo.}
+    \label{fig:velocidad_instantanea}
+\end{figure}
+
+% --- Fin del código LaTeX ---
+
+Generalizando a tres dimensiones, tenemos que  
+\begin{align}
+\label{eq:velocity}
+    \boldsymbol{v} \approx \frac{\Delta \boldsymbol{r}}{\Delta t}\,. 
+\end{align}
+Por consiguiente, podemos hallar la posición de una partícula después de transcurrido un tiempo  $\Delta t$, como
+\begin{align}
+    \Delta \boldsymbol{r} \approx& \boldsymbol{v}\Delta t\\
+    \boldsymbol{r} -\boldsymbol{r}_0 \approx & \boldsymbol{v}\Delta t\\
+    \boldsymbol{r} \approx& \boldsymbol{r}_0 + \boldsymbol{v}\Delta t\,.
+\end{align}
+Si la partícula tiene masa $m$, podemos escribir ésta ecuación en términos del momento
+\begin{align*}
+    \boldsymbol{r} \approx \boldsymbol{r}_0 + \frac{m\boldsymbol{v}}{m}\Delta t\\
+\end{align*}
+y extrapolando al caso relativista 
+\begin{align}
+\label{eq:position}
+    \boldsymbol{r} \approx \boldsymbol{r}_0 +\frac{\boldsymbol{p}}{m}\Delta t
+\end{align}
+
+De esta forma, si comenzamos desde el punto inicial $\boldsymbol{r}_0$, con momento $\boldsymbol{p}_0$, después de un tiempo suficientemente pequeño $\Delta t$, podemos encontrar la nueva posición $\boldsymbol{r}$ partiendo de
+\begin{align}
+    \Delta\boldsymbol{p} = \boldsymbol{p} -\boldsymbol{p}_0 = \boldsymbol{F} \Delta t\,,
+\end{align}
+del cual podemos encontrar el nuevo momento
+\begin{align}
+\label{eq:momento}
+    \boldsymbol{p} = \boldsymbol{p}_0 + \boldsymbol{F}\Delta t\,,
+\end{align}
+y usando la ecuación~\eqref{eq:position}
+\begin{align*}
+    \boldsymbol{r} \approx \boldsymbol{r}_0 +\frac{\boldsymbol{p}}{m}\Delta t
+\end{align*}
+y podemos continuar calculando el nuevo momento y posición hasta recuperar toda la trayectoria.
+
+Haremos un ejemplo de esto en el caso del límite no relativista del lanzamiento vertical hacia arriba a continuación.
+
+
+\subsection{Trabajo}
 Durante ese intervalo de tiempo el objeto se desplazo una distancia
 \begin{align}
     \Delta\boldsymbol{r} =& \boldsymbol{r}_{\text{final}}
@@ -1772,16 +2105,9 @@ Podemos entonces definir una cantidad escalar que tiene unidades de energía que
 
 
 
-Para una partícula de masa $m$ que se mueve a velocidad $\boldsymbol{v}$, su inercia, o cantidad de movimiento, o momento, es
-\begin{align}
-    \boldsymbol{p} = \gamma m \boldsymbol{v}\,.
-\end{align}
 
 
-
-
-
-\section{Límite no relativista}
+\subsection{Límite no relativista}
 
 Para el momento es suficiente hacer $\gamma \approx 1$
 \begin{align}
@@ -1828,15 +2154,17 @@ Note que la diferencia de energía es
 =& \Delta K\,.
 \end{align}
 
-Teorema de trabajo y energía
+Teorema de trabajo y energía. trabajo neto realizado sobre un objeto por la suma de todas las fuerzas que actúan sobre él es igual al cambio en la energía cinética de dicho objeto. 
 \begin{align}
+\label{eq:TrabajoEnergía}
     W =& \Delta K\nonumber\\
     =& \frac{1}{2}mv^2_{\text{final}} - \frac{1}{2}mv^2_{\text{inicial}}\,.
 \end{align}
 Lo que realmente tiene sentido físico es la diferencia de energías.
 
-\subsection{Aceleración constante}
 
+
+\subsubsection{Fuerza constante}
 
 En una dimensión, $x$, con $F$ constante, $t_{\text{inicial}} = 0$ y $t_{\text{final}} = 0$, $v_{\text{inicial}} = v_0$ y $v_{\text{final}} = v$
 
@@ -1852,17 +2180,1901 @@ En una dimensión, $x$, con $F$ constante, $t_{\text{inicial}} = 0$ y $t_{\text{
     \pm F\Delta x =& \frac{1}{2}mv^2 - \frac{1}{2}mv^2_0\\
     =&\frac{1}{2}m \left(v_0 \pm\frac{F}{m} t\right)^2 - 
     \frac{1}{2}mv^2_0\\
+    =&\frac{1}{2}m \left(v_0^2 \pm 2v_0 \frac{F}{m} t + \frac{F^2}{m^2} t^2\right) - 
+    \frac{1}{2}mv^2_0\\
+    =&\cancel{\frac{1}{2}m v_0^2} \pm v_0 F t + \frac{F^2}{2m} t^2 - 
+    \cancel{\frac{1}{2}mv^2_0}\\
     =& \pm v_0 t F +\frac{1}{2}\frac{F^2}{m} t^2
 \end{align*}
-
+Despejando $\Delta x$
 \begin{align*}
     \Delta x = x-x_0 = v_0 t \pm \frac{1}{2}\frac{F}{m} t^2\,.
 \end{align*}
 
+Finalmente
 \begin{align}
-    x = x_0 + v_0 t \pm \frac{1}{2}\frac{F}{m} t^2
+\label{eq:1D}
+    x(t) = x_0 + v_0 t \pm \frac{1}{2}\frac{F}{m} t^2\,.
 \end{align}
+
+
+\subsubsection{Aceleración constante}
+
+
+La aceleración constante corresponde a la pendiente de la línea recta en el plano de velocidad en función del tiempo, como se muestra en la figura~\ref{fig:aceleracion}.
+
+
+% --- Inicio del código TikZ para insertar ---
+\begin{figure}
+    \centering
+\begin{tikzpicture}[
+    scale=1.5, % Escala general de la figura
+    font=\Large, % Tamaño de la fuente para las etiquetas
+    axis/.style={->, %>=stealth, 
+    thick}, % Estilo para los ejes (flecha gruesa)
+    help lines/.style={dashed, gray} % Estilo para las líneas de ayuda (a trazos, gris)
+]
+    % --- Dibujar los ejes ---
+    \draw[axis] (0,0) -- (5,0);% node[below left] {$t$};
+    \draw[axis] (0,0) -- (0,4);% node[below left] {$v$};
+    %\node[below left] at (0,0); % {0}; % Etiqueta del origen
+
+    % --- Coordenadas de los puntos ---
+    \coordinate (P0) at (1, 1);  % Punto inicial (t0, v0)
+    \coordinate (P1) at (3.5, 3.5); % Punto final (t, v)
+
+    % --- Dibujar la línea de movimiento (v vs. t) ---
+    \draw[blue, thick] (0.2, 0.2) -- (P1) -- (4.2, 4.2); % Línea que representa v(t)
+
+    % --- Dibujar el triángulo a trazos ---
+    % Líneas de proyección a los ejes
+    \draw[help lines] (P0) -- (P0 |- 0,0) node[below] {$t_0$}; % Proyección de P0 a eje t
+    \draw[help lines] (P0) -- (P0 -| 0,0) node[left]  {$v_0$}; % Proyección de P0 a eje v
+    \draw[help lines] (P1) -- (P1 |- 0,0) node[below] {$t$};   % Proyección de P1 a eje t
+    \draw[help lines] (P1) -- (P1 -| 0,0) node[left]  {$v$};   % Proyección de P1 a eje v
+    
+    % Catetos del triángulo
+    \draw[red, dashed, thick] (P0 |- P1) -- (P1); % Cateto horizontal
+    \draw[red, dashed, thick] (P0) -- (P0 |- P1); % Cateto vertical
+
+    % --- Marcar los puntos y sus coordenadas ---
+    \fill (P0) circle (2pt);
+    \fill (P1) circle (2pt);
+    \node[below right, blue] at (P0) {$(t_0, v_0)$};
+    \node[below right, blue] at (P1) {$(t, v)$};
+
+    % --- Etiquetar la pendiente (aceleración) ---
+    \node[rotate=90, red, right] at (P0 |- P1) [xshift=-90pt, yshift=10pt] {$\Delta v = v - v_0$};
+    \node[red, below] at (P0 |- P1) [yshift=0pt, xshift=1.5cm] {$\Delta t = t - t_0$};
+
+    % Etiqueta general de la pendiente
+    \node[anchor=south, xshift=-1cm] at (2.5, 4.) {Pendiente = $a = \frac{\Delta v}{\Delta t}$};
+
+\end{tikzpicture}
+    
+    \caption{La aceleración como la pendiente de una línea recta en el plano de velocidad en función del tiempo}
+    \label{fig:aceleracion}
+\end{figure}
+% --- Fin del código TikZ ---
+
+La pendiente puede calcularse entre dos puntos cualesquiera sobre la recta en el plano de velocidad en función del tiempo. Consideremos el movimiento de un objeto en una dirección entre un punto inicial $(t_0,v_0)$ y un punto final $(t,v)$. La aceleración constante es entonces
+\begin{align}
+    a =\frac{\Delta v}{\Delta t} =\frac{v-v_0}{t-t_0}\,.
+\end{align}
+
+En tres dimensiones la aceleración constante corresponde a un vector que no cambia ni en magnitud ni en dirección. En ese caso
+\begin{align}
+\label{eq:aceleración}
+    \boldsymbol{a} = \frac{\Delta \boldsymbol{v}}{\Delta t}\,.
+\end{align}
+
+Es de anotar que para una curva en el plano de velocidad en función del tiempo, se puede asociar una línea tangente a un punto específico de dicha curva. Si el $\Delta t$ es suficientemente pequeño, la pendiente de esa línea tangente es una buena aproximación a la aceleración instantánea en dicho punto
+\begin{align*}
+    \boldsymbol{a} \approx \frac{\Delta \boldsymbol{v}}{\Delta t}\,.
+\end{align*}
+
+Así mismo, en el plano de posición en función del tiempo, la pendiente de la curva en un punto específico, es una buena aproximación a la velocidad instantánea en ese punto, como se mostró en la ecuación~\eqref{eq:velocity}
+\begin{align*}
+    \boldsymbol{v} \approx \frac{\Delta \boldsymbol{r}}{\Delta t}\,.
+\end{align*}
+
+
+
+
+\subsubsection{Campo gravitacional de la Tierra}
+
+Un ejemplo de fuerza  constante es la que siente un cuerpo cerca a la superficie de la tierra debido a su campo gravitacional, $\boldsymbol{g}$, como se muestra en la proyección en dos dimensiones enn la figura~\ref{fig:campo_gravitacional}. Dicho campo gravitacional siempre está presente y genera una aceleración sobre cualquier cuerpo material hacía el centro de la tierra. El campo gravitacional es constante (superficie equipotencial) sobre la superficie de una esfera concéntrica al centro de la Tierra, y en particular tiene un valor constante de
+ \begin{align}
+ \label{eq:g}
+     g = \qty{9.8}{m.s^{-2}}\,,
+ \end{align}
+sobre la superficie de la Tierra.
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!] % El [h!] sugiere a LaTeX que intente colocar la figura "aquí"
+    \centering % Centra la figura en la página
+    \begin{tikzpicture}[
+        scale=1, % Escala general de la figura
+        font=\large, % Tamaño de la fuente para las etiquetas
+        % --- Estilos personalizados para mayor claridad ---
+        earth/.style={shade, ball color=blue!60!cyan, text=white},
+        equipotential/.style={dashed, orange, thick},
+        fieldline/.style={->, %{Stealth[length=3mm, width=2mm]}, 
+        ultra thick, red!80!black},
+    ]
+        % --- 1. Dibujar la Tierra en el centro ---
+        \node[earth, circle, minimum size=3cm] at (0,0) {Tierra};
+        
+        % --- 2. Dibujar las líneas equipotenciales usando un bucle ---
+        % Son círculos concéntricos con radios crecientes.
+        \foreach \r in {2.5, 3.5, 4.5} {
+            \draw[equipotential] (0,0) circle (\r);
+        }
+        
+        % --- 3. Dibujar las líneas del campo gravitacional usando un bucle ---
+        % Son líneas radiales que apuntan hacia el centro, perpendiculares a las equipotenciales.
+        % Usamos coordenadas polares (ángulo:radio) para dibujarlas fácilmente.
+        \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+            \draw[fieldline] (\angle:5) -- (\angle:1.5); % La flecha va desde un radio exterior a la superficie
+        }
+        
+        % --- 4. Añadir etiquetas para explicar los elementos ---
+        % Etiqueta para una línea equipotencial
+        \node[orange, font=\small, anchor=south] at (0, 3.5) {Línea Equipotencial};
+        
+        % Etiqueta para una línea de campo
+        % Colocada en una posición que no estorbe
+        \node[red!80!black, font=\small, rotate=-45, anchor=south] at (45:2.5) {Campo Gravitacional ($\boldsymbol{g}$)};
+
+    \end{tikzpicture}
+    \caption{Representación en 2D del campo gravitacional ($\boldsymbol{g}$) generado por la Tierra. Las líneas de campo (flechas rojas) son radiales y apuntan hacia el centro de masa. Las líneas equipotenciales (círculos naranjas a trazos) son perpendiculares a las líneas de campo y representan regiones de igual potencial gravitacional.}
+    \label{fig:campo_gravitacional}
+\end{figure}
+
+% --- Fin del código LaTeX ---
+
+Podemos expresar la Ley de Newton de la ecuación~\eqref{eq:newton} en el caso en que la masa de un objeto no cambie en la dirección de movimiento como
+\begin{align*}
+    \boldsymbol{F} = &  \frac{\Delta\boldsymbol{p}}{\Delta t}\\
+    =&\frac{\Delta(m\boldsymbol{v})}{\Delta t}\\
+    =&m\frac{\Delta\boldsymbol{v}}{\Delta t}\,,
+\end{align*}
+de modo que
+\begin{align}
+     \boldsymbol{F}=&m\boldsymbol{a}\,.
+\end{align}
+Esta forma de la correspondiente Ley de Newton es valida sólo en el límite no relativista y cuando la masa del objeto no cambia durante el movimiento.
+
+En el caso de un cuerpo lanzado hacia arriba, el diagrama de cuerpo libre de la figura~\ref{fig:lanzamiento_vertical}, muestra la única fuerza actuando conocida como el peso del cuerpo que corresponde a
+\begin{align}
+\label{eq:gravitationalconstantforce}
+    F=-mg\,,
+\end{align}
+donde $g$ es la aceleración del campo gravitacional en la ec.~\eqref{eq:g}.
+
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!] % El [h!] sugiere a LaTeX que intente colocar la figura "aquí"
+    \centering % Centra la figura en la página
+    \begin{tikzpicture}[
+        scale=1.2, % Escala general de la figura
+        font=\Large, % Tamaño de la fuente para las etiquetas
+        axis/.style={->, %>=stealth, 
+        thick}, % Estilo para los ejes
+        vector/.style={->, %>=stealth, 
+        ultra thick}, % Estilo para los vectores
+    ]
+        % --- Dibujar el eje vertical (y) y el suelo ---
+        % Eje y
+        \draw[axis] (0,0) -- (0,5) node[above] {$y$};
+        % Línea del suelo
+        \draw[thick] (-1.5,0) -- (1.5,0) node[below, pos=0.5] {Origen $y=0$};
+        
+        % --- Dibujar la partícula en una posición arbitraria ---
+        \def\ypos{2.5} % Define la posición vertical de la partícula
+        \shade[ball color=blue] (0, \ypos) circle (0.2cm);
+        \node[right, xshift=5pt] at (0, \ypos) {Partícula};
+
+        % --- Dibujar el vector velocidad (hacia arriba) ---
+        \draw[vector, green!60!black] (0, \ypos) -- (0, \ypos + 1.5) node[right] {$v$};
+        
+        % --- Dibujar el vector Fuerza Gravitacional (hacia abajo) ---
+        % Se dibuja un poco a la derecha para que no se superponga con el vector velocidad
+        \draw[vector, red] (0., \ypos) -- (0., \ypos - 1.5) node[right] {$F = -mg$};
+        
+    \end{tikzpicture}
+    \caption{Diagrama de cuerpo libre para una partícula en lanzamiento vertical hacia arriba. El origen de coordenadas se sitúa en el punto de lanzamiento. Se muestra el vector velocidad ($\boldsymbol{v}$) apuntando hacia arriba y el vector de la fuerza gravitacional ($\boldsymbol{F}$) apuntando hacia abajo.}
+    \label{fig:lanzamiento_vertical}
+\end{figure}
+
+% --- Fin del código LaTeX ---
+
+
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!] % El [h!] sugiere a LaTeX que intente colocar la figura "aquí"
+    \centering % Centra la figura en la página
+    \begin{tikzpicture}[
+        scale=1, % Escala general de la figura
+        font=\large, % Tamaño de la fuente para las etiquetas
+        axis/.style={->, %stealth, 
+        thick}, % Estilo para los ejes
+        vector/.style={->, %>=stealth, 
+        ultra thick}, % Estilo para los vectores
+        helpline/.style={dashed, gray} % Estilo para líneas de ayuda
+    ]
+        % --- Dibujar los ejes y el suelo ---
+        \draw[axis] (0,0) -- (8.5,0) node[below] {$x$};
+        \draw[axis] (0,0) -- (0,4.5) node[left] {$y$}; % Aumentado un poco para el pico
+        \node[below left] at (0,0) {Origen};
+
+        % --- Dibujar la trayectoria parabólica ---
+        % La trayectoria está definida por la función y = 2x - 0.25x^2
+        \draw[blue, thick, domain=0:8, samples=100] plot (\x, {2*\x - 0.25*\x^2}) node[above right] {Trayectoria};
+        
+        % --- Definir la posición de la partícula en la trayectoria ---
+        % CAMBIO PRINCIPAL: Cambiamos xpos de 6 a 2 para estar en la parte ascendente
+        \def\xpos{2} 
+        \def\ypos{2*\xpos - 0.25*\xpos^2} % Coordenada y calculada automáticamente
+        
+        % --- Dibujar la partícula ---
+        \shade[ball color=red] (\xpos, \ypos) circle (0.15cm);
+        
+        % --- Dibujar los vectores de velocidad ---
+        % Vector velocidad total (tangente a la trayectoria)
+        % La pendiente de la tangente es y'(x) = 2 - 0.5x
+        % En x=2, la pendiente es 2 - 0.5*2 = 1. El ángulo es 45 grados.
+        \begin{scope}[shift={(\xpos,\ypos)}, rotate=45]
+            \draw[vector, green!50!black] (0,0) -- (2,0) node[above] {$\boldsymbol{v}$};
+        \end{scope}
+
+        % Componente horizontal de la velocidad (vx)
+        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos + 1.414, \ypos) node[below] {${v}_x=v_{x0}$};
+
+        % Componente vertical de la velocidad (vy)
+        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos, \ypos + 1.414) node[left] {${v}_y$};
+
+        % Líneas de ayuda para mostrar la composición de vectores
+        \draw[helpline] (\xpos + 1.414, \ypos) -- (\xpos + 1.414, \ypos + 1.414);
+        \draw[helpline] (\xpos, \ypos + 1.414) -- (\xpos + 1.414, \ypos + 1.414);
+        
+        % --- Dibujar el vector Fuerza Gravitacional ---
+        % Desplazado a la izquierda para mejor visibilidad
+        \draw[vector, red] (\xpos, \ypos) -- (\xpos, \ypos - 1.5) node[right] {$\boldsymbol{F} = (0,-mg)$};
+        
+        % --- Mostrar el vector velocidad inicial ---
+        \draw[vector, gray] (0,0) -- (1,2) node[above left] {$\boldsymbol{v}_0$};
+        % Ángulo de lanzamiento
+        \draw (0.5,0) arc (0:63.4:0.5);
+        \node at (0.8, 0.25) {$\theta$};
+
+    \end{tikzpicture}
+    \caption{Diagrama de cuerpo libre para una partícula en movimiento parabólico. El vector velocidad $\boldsymbol{v}$ tiene una componente vertical ${v}_y$ positiva (hacia arriba) y una componente constante $v_x$, mientras que la fuerza gravitacional $\boldsymbol{F}$ sigue actuando constantemente hacia abajo.}
+    \label{fig:movimiento_parabolico_ascendente}
+\end{figure}
+
+% --- Fin del código LaTeX ---
+
+Antes de comprobar la solución analíticamente podemos integrar la ecuación de la Ley de Newton numéricamente a partir usando las ecuaciones para el momento~\eqref{eq:momento} y la posición~\eqref{eq:position}, que para el caso de la fuerza constante gravitacional~\eqref{eq:gravitationalconstantforce}, $F=-mg$,  en la única dimensión $y$ del problema. Asumiendo que conocemos los posición inicial $r_0$, y la cantidad de movimiento $p_0 = m v_0$ para un cuerpo de masa $m$ lanzado verticalmemnte hacía arriba con una velocidad $v_0$, después de un tiempo $\Delta t$, tenemos que
+\begin{align}
+    p =& p_0 -\frac{m}{g}\Delta t\\
+    y =& y_0 + \frac{p}{m}\Delta t\,.
+\end{align}
+
+\subsubsection*{Ejemplo}
+Un cuerpo de masa $m = \qty{1}{kg}$ es lanzado verticalmente hacia arriba con una velocidad de $\qty{10}{m/s}$.  En este caso la posición inicial con el origen de coordenadas en el punto de lanzamiento tal que $y_0 =0$, tenemos que 
+\begin{align*}
+    F \approx& -\qty{10}{m/s^2}\\
+    p_0 = m v_0 =& \qty{10}{\kilo\g.\m/\s}\,.
+\end{align*}
+
+La integración numérica se realiza con el siguiente código en Python (ver \href{https://colab.research.google.com/drive/1hTbvhsqv9wrrf8e5yLNCkiJOB5xMsn5O?usp=sharing}{Colab Notebook})
+
+\begin{minted}[bgcolor=LightGray,linenos]{python}
+v = 10 # m/s
+m = 1 # Kg
+g = 10 # m/s^2
+F = -m*g # N
+Δt = 0.1 # s
+t = 0 # s
+y = 0 # m
+p = m*v
+L = []
+# F Δt = p_f - p_i → p_f = F Δt + p_i
+for i in range(20):
+  L.append( {'y':y,
+             't':t,
+             'p':p} )
+  p = F * Δt + p
+  y = (p/m) * Δt + y
+  t = Δt + t        
+\end{minted}
+
+y para generar el gráfico mostrado en la figura~\ref{fig:vertical}:
+
+\begin{minted}[bgcolor=LightGray,linenos]{python}
+import matplotlib.pyplot as plt
+y = [d['y'] for d in L]
+t = [d['t'] for d in L]
+p = [d['p'] for d in L]
+yy = [10*tt - 0.5*10*tt**2 for tt in t]
+plt.plot(t,y,'k-')
+plt.plot(t,y,'ro')
+plt.plot(t,yy,'b--')
+plt.xlabel('Time (s)')
+plt.ylabel('Position (m)')
+plt.grid()
+plt.savefig('position.pdf')\end{lstlisting}
+\end{minted}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{position}
+    \caption{Integración numérica del lanzamiento vertical con $\Delta t = \qty{0.1}{s}$ correspondiente a la línea negra continua con los puntos rojos correspondiente a la integración de cada uno de los 20 pasos, comparado con la solución analítica mostrado en la línea azul a trazos.  }
+    \label{fig:vertical}
+\end{figure}
+
+Esto corresponde a reemplazar la Fuerza en la ec.~\eqref{eq:1D}, que para $y_0 = 0$ es
+\begin{align}
+\label{eq:lanzamiento}
+    y(t) =  v_0 t - \frac{1}{2}g t^2 \,.
+\end{align}
+Note que dicha ecuación es independiente de la masa del objeto lanzado.
+
+De la ecuación para la aceleración constante~\eqref{eq:aceleración}, con $t_0 =0$ y $a = -g$, tenemos
+\begin{align}
+    v = v_0-g t
+\end{align}
+
+De esta ecuación podemos obtener el tiempo para alcanzar la altura máxima de la condición que en ese punto la velocidad es cero
+\begin{align*}
+    0 =& v_0-gt\\
+    t_{\text{max}} =&\frac{v_0}{g}\,.
+\end{align*}
+Reemplazando en la ecuación~\eqref{eq:lanzamiento}
+\begin{align*}
+    y_{\text{max}} = y(t_{\text{max}}) =& v_0 t_{\text{max}} -\frac{1}{2}g t_{\text{max}}^2\\
+       =& v_0\frac{v_0}{g} -\frac{1}{2}g\frac{v_0^2}{g^2}\\
+       =& \frac{v_0^2}{g} - \frac{1}{2}\frac{v_0^2}{g}\,,
+\end{align*}
+de modo que
+\begin{align}
+    \label{eq:alturamáxima}
+    y_{\text{max}} = \frac{1}{2}\frac{v_0^2}{g}\,.
+\end{align}
+
+Reemplazando los valores numéricos $v_0 =\qty{10}{m/s}$ y $g\approx \qty{10}{m/s^2}$, las ecuaciones \eqref{eq:lanzamiento} y \eqref{eq:alturamáxima} se reducen a
+\begin{align*}
+    y(t) =& 10t - 5 t^2\\
+    y_{\text{max}} =& \qty{5}{m}\,.
+\end{align*}
+que corresponde  a la línea azul a trazos en la figura~\eqref{fig:vertical}. ¿Qué se puede hacer para hacer que la curva numérica (negra continua) coincida mejor con la curva analítica (azul a trazos)?
+
+Para éste ejemplo e independiente de su masa, si un objeto es lanzado verticalmente hacía arriba con una velocidad inicial de $\qty{10}{m/s}$, alcanza una altura de $\qty{5}{m}$. Similarmente, si un objeto se deja caer desde una altura de $\qty{5}{m}$ entonces llegará al suelo con una velocidad de $\qty{10}{m/s}$ independiente de su masa.
+
+\subsection{Conservación de la energía}
+El teorema de Trabajo y Energía para el problema de lanzamiento vertical hacía arriba desde una altura cero con una velocidad inicial $v_0$, hasta una altura $h$ con una velocidad $v$; se puede escribir usando la ecs.~\eqref{eq:TrabajoEnergía} y \eqref{eq:gravitationalconstantforce}, como
+\begin{align*}
+    W = -mgh =& \frac{1}{2}mv^2 -\frac{1}{2}m v_0^2\,.
+\end{align*}
+Reorganizando términos
+\begin{align}
+\label{eq:work}
+    \frac{1}{2}m v_0^2 = \frac{1}{2}mv^2 + mgh\,.
+\end{align}
+
+Si definimos la energía potencial de un objeto a una altura $h$ sobre la superficie terrestre como
+\begin{align}
+    E_{\text{pot}} = mgh\,,
+\end{align}
+entonces, la energía potencial inicial, $E_{\text{pot}_0}$, a una altura cero, es cero, y definiendo la energía cinética como
+\begin{align}
+    K = \frac{1}{2}m v^2\,,
+\end{align}
+podemos reescribir la ec.~\eqref{eq:work} como
+\begin{align}
+    E_{\text{pot}_0} + K_0 = E_{\text{pot}} + K\,,
+\end{align}
+esto quiere decir que la energía mecánica
+\begin{align}
+    E_{\text{total}} = E_{\text{pot}} + K\,,
+\end{align}
+se conserva.
+
+Es de anotar que está ecuación es de validez general para fuerzas conservativas, es decir fuerzas que sólo contribuyen a la energía mecánica.
+
+
+
+\subsection{Movimiento parabólico}
+Ver \href{https://colab.research.google.com/drive/1YMC00LP9HcuapJtmcpAcivhiywmEcPwo?usp=sharing}{Colab notebook}
+
+
+% --- Inicio del código LaTeX para insertar ---
+
+A continuación se presentan las ecuaciones clave del movimiento parabólico (o de proyectil), expresadas en términos de la magnitud de la velocidad inicial ($v_0$) y el ángulo de lanzamiento ($\theta$). Estas fórmulas asumen que el punto de lanzamiento y el de aterrizaje están a la misma altura y que la resistencia del aire es despreciable.
+
+\subsubsection*{Configuración Inicial}
+\begin{itemize}
+    \item \textbf{Velocidad Inicial (magnitud):} $v_0$
+    \item \textbf{Ángulo de Lanzamiento:} $\theta$ (medido desde la horizontal)
+    \item \textbf{Aceleración debida a la Gravedad:} $g$ (considerada como un valor positivo, $\approx \SI{9.8}{\meter\per\second\squared}$)
+    \item \textbf{Posición Inicial:} $(x_0, y_0) = (0, 0)$
+\end{itemize}
+
+\subsubsection*{1. Componentes de la Velocidad Inicial}
+El vector de velocidad inicial se descompone en sus componentes horizontal ($v_{x0}$) y vertical ($v_{y0}$):
+\begin{equation}
+    \boxed{v_{x0} = v_0 \cos\theta}
+\end{equation}
+\begin{equation}
+    \boxed{v_{y0} = v_0 \sin\theta}
+\end{equation}
+
+\subsubsection*{2. Ecuaciones de la Velocidad en función del Tiempo, $t$}
+Estas ecuaciones describen las componentes de la velocidad en cualquier instante $t$.
+
+\paragraph{Velocidad Horizontal ($v_x$):}
+La velocidad horizontal es constante.
+\begin{equation}
+    \boxed{v_x(t) = v_0 \cos\theta}
+\end{equation}
+
+\paragraph{Velocidad Vertical ($v_y$):}
+La velocidad vertical cambia debido a la aceleración gravitacional.
+\begin{equation}
+    \boxed{v_y(t) = v_0 \sin\theta - gt}
+\end{equation}
+
+\subsubsection*{3. Ecuaciones de la Posición en función del Tiempo, $t$}
+Estas son las ecuaciones paramétricas del movimiento que describen las coordenadas $(x, y)$ del proyectil en cualquier instante $t$.
+
+\paragraph{Posición Horizontal ($x$):}
+\begin{equation}
+    \boxed{x(t) = (v_0 \cos\theta) t}
+\end{equation}
+
+\paragraph{Posición Vertical ($y$):}
+\begin{equation}
+    \boxed{y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2}
+\end{equation}
+
+\subsection*{4. Ecuación de la Trayectoria (y en función de x)}
+Esta ecuación describe la forma parabólica del camino del proyectil, eliminando la variable del tiempo. Se obtiene despejando $t$ de la ecuación de $x(t)$ y sustituyéndola en la ecuación de $y(t)$.
+\begin{equation}
+    \boxed{
+    y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2
+    }
+\end{equation}
+Esta es una ecuación de la forma $y = Ax - Bx^2$, que es la fórmula matemática de una parábola que se abre hacia abajo.
+
+\subsubsection*{Resumen en una Tabla}
+
+\begin{table}[h!]
+\centering
+\caption{Resumen de las Ecuaciones del Movimiento Parabólico.}
+\label{tab:parabolic_equations}
+\renewcommand{\arraystretch}{1.5} % Aumenta el espaciado vertical de las filas
+\begin{tabular}{| >{\centering\arraybackslash}m{2.5cm} | >{\centering\arraybackslash}m{5cm} | >{\centering\arraybackslash}m{5cm} |}
+\hline
+\textbf{Cantidad} & \textbf{Componente Horizontal (x)} & \textbf{Componente Vertical (y)} \\
+\hline \hline
+\textbf{Aceleración} & $a_x = 0$ & $a_y = -g$ \\
+\hline
+\textbf{Velocidad ($t$)} & $v_x(t) = v_0 \cos\theta$ & $v_y(t) = v_0 \sin\theta - gt$ \\
+\hline
+\textbf{Posición ($t$)} & $x(t) = (v_0 \cos\theta) t$ & $y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2$ \\
+\hline
+\textbf{Trayectoria ($y$ vs $x$)} & \multicolumn{2}{c|}{$y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2$} \\
+\hline
+\end{tabular}
+\end{table}
+
+% --- Fin del código LaTeX ---
+% --- Inicio del código LaTeX para insertar ---
+
+\subsection{Demostración del Alcance Máximo (R)}
+El \textbf{alcance (R)} es la distancia horizontal total recorrida por el proyectil. Ocurre cuando el proyectil regresa a su altura inicial, es decir, cuando $y(x) = 0$.
+
+\subsubsection*{Paso 1: Usar la Ecuación de la Trayectoria}
+Partimos de la ecuación de la trayectoria:
+\[ y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
+Para encontrar el alcance, buscamos los valores de $x$ para los cuales $y(x)=0$.
+\[ 0 = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
+
+\subsubsection*{Paso 2: Resolver la Ecuación para x}
+Esta es una ecuación cuadrática para $x$ que podemos resolver factorizando:
+\[ x \left[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x \right] = 0 \]
+Esta ecuación tiene dos soluciones: $x=0$ (el punto de lanzamiento) y la solución que nos interesa, que corresponde al punto de aterrizaje ($x=R$):
+\[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)R = 0 \implies R = \tan\theta \cdot \frac{2v_0^2\cos^2\theta}{g} \]
+
+\subsubsection*{Paso 3: Simplificar la Expresión}
+Usando la identidad $\tan\theta = \frac{\sin\theta}{\cos\theta}$, simplificamos:
+\[ R = \left(\frac{\sin\theta}{\cos\theta}\right) \frac{2v_0^2\cos^2\theta}{g} = \frac{2v_0^2 \sin\theta \cos\theta}{g} \]
+Finalmente, aplicamos la identidad del ángulo doble, $2\sin\theta\cos\theta = \sin(2\theta)$, para obtener la \textbf{fórmula general del alcance}:
+\begin{equation}
+    \boxed{R = \frac{v_0^2 \sin(2\theta)}{g}}
+\end{equation}
+
+\subsubsection*{Paso 4: Encontrar el Alcance Máximo ($R_{\text{max}}$)}
+Para una $v_0$ dada, $R$ es máximo cuando $\sin(2\theta)$ es máximo. El valor máximo de la función seno es \textbf{1}.
+\[ \sin(2\theta) = 1 \implies 2\theta = 90^\circ \implies \boxed{\theta = 45^\circ} \]
+Sustituyendo $\sin(2\theta)=1$ en la fórmula del alcance, encontramos el valor del \textbf{alcance máximo}:
+\begin{equation}
+    \boxed{R_{\text{max}} = \frac{v_0^2}{g}}
+\end{equation}
+
+\subsection{Demostración de la Altura Máxima (H)}
+La \textbf{altura máxima (H)} es el punto más alto de la trayectoria. Físicamente, este es el punto en el que la componente vertical de la velocidad se vuelve cero ($v_y = 0$) por un instante.
+
+\subsubsection*{Paso 1: Encontrar el Tiempo para Alcanzar la Altura Máxima ($t_{\text{pico}}$)}
+Usamos la ecuación de la velocidad vertical y la igualamos a cero:
+\[ v_y(t) = v_0 \sin\theta - gt \]
+\[ 0 = v_0 \sin\theta - gt_{\text{pico}} \]
+Despejando el tiempo para llegar al pico, $t_{\text{pico}}$:
+\[ \boxed{t_{\text{pico}} = \frac{v_0 \sin\theta}{g}} \]
+\textit{(Nota: Este es exactamente la mitad del tiempo total de vuelo).}
+
+\subsection*{Ejemplo: Tiempo de vuelo}
+Calcular el tiempo de vuelo del movimiento parabólico. Este se obtiene de la condición
+$y(t_{\text{vuelo}}) = 0$, de modo que
+\begin{align*}
+    (v_0 \sin\theta) t_{\text{vuelo}} - \frac{1}{2}gt_{\text{vuelo}}^2 =& 0\\
+    v_0 \sin\theta  - \frac{1}{2}gt_{\text{vuelo}} = &0\\
+   \frac{1}{2}gt_{\text{vuelo}} = & v_0 \sin\theta\\
+t_{\text{vuelo}} =& 2\frac{v_0 \sin\theta}{g}\,.
+\end{align*}
+Esto quiere decir que, para una cierta velocidad inicial, a mayor ángulo de lanzamiento, mayor es el tiempo de vuelo.
+
+\subsubsection*{Paso 2: Calcular la Altura en ese Tiempo}
+Ahora que sabemos en qué momento se alcanza la altura máxima, sustituimos $t = t_{\text{pico}}$ en la ecuación de la posición vertical, $y(t)$. La altura en este momento será la altura máxima, $H$.
+\begin{align*}
+    H &= y(t_{\text{pico}}) = (v_0 \sin\theta)t_{\text{pico}} - \frac{1}{2}gt_{\text{pico}}^2 \\
+    % Sustituimos la expresión para t_pico
+    &= (v_0 \sin\theta)\left(\frac{v_0 \sin\theta}{g}\right) - \frac{1}{2}g\left(\frac{v_0 \sin\theta}{g}\right)^2 \\
+    % Simplificamos algebraicamente
+    &= \frac{v_0^2 \sin^2\theta}{g} - \frac{1}{2}g\left(\frac{v_0^2 \sin^2\theta}{g^2}\right) \\
+    &= \frac{v_0^2 \sin^2\theta}{g} - \frac{v_0^2 \sin^2\theta}{2g} \\
+    % Restamos las fracciones
+    &= \frac{1}{2} \frac{v_0^2 \sin^2\theta}{g}
+\end{align*}
+Esto nos da la \textbf{fórmula general de la altura máxima}:
+\begin{equation}
+    \boxed{H = \frac{v_0^2 \sin^2\theta}{2g}}
+\end{equation}
+
+\subsubsection*{Método Alternativo: Usando la ``Ecuación Eterna"}
+Una forma más rápida es usar la ecuación cinemática que no depende del tiempo: $v_f^2 = v_i^2 + 2a\Delta s$, aplicada a la dirección vertical ($v_{fy}^2 = v_{iy}^2 + 2a_y \Delta y$).
+\begin{itemize}
+    \item En la altura máxima, la velocidad final es cero: $v_{fy} = 0$.
+    \item La velocidad inicial es $v_{iy} = v_0 \sin\theta$.
+    \item La aceleración es $a_y = -g$.
+    \item El desplazamiento es la altura máxima, $\Delta y = H$.
+\end{itemize}
+Sustituyendo:
+\[ 0^2 = (v_0 \sin\theta)^2 + 2(-g)H \implies 2gH = v_0^2 \sin^2\theta \]
+Despejando $H$ se obtiene el mismo resultado:
+\[ H = \frac{v_0^2 \sin^2\theta}{2g} \]
+
+% --- Fin del código LaTeX ---
+
+% --- Inicio del código LaTeX para insertar ---
+
+% --- Inicio del código LaTeX para insertar ---
+
+\section{Caída Libre en un Plano Inclinado sin Fricción}
+
+El problema de un bloque deslizándose por un plano inclinado sin fricción es una extensión del concepto de caída libre. Aunque el objeto no cae verticalmente, su movimiento sigue siendo gobernado únicamente por la gravedad. La clave para resolver este problema es elegir un sistema de coordenadas adecuado y descomponer correctamente el vector de la fuerza gravitacional.
+
+\subsection{Configuración del Problema y Diagrama de Cuerpo Libre}
+
+Consideremos un bloque de masa $m$ que se encuentra sobre un plano inclinado un ángulo $\theta$ con respecto a la horizontal. No hay fricción entre el bloque y el plano.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.5,
+        font=\large,
+        force/.style={->, >=stealth, ultra thick},
+        line/.style={dashed, gray}
+    ]
+        % --- Definir el ángulo de inclinación ---
+        \def\angle{30}
+
+        % --- Dibujar el plano inclinado y el bloque ---
+        % Plano inclinado (triángulo)
+        \draw[thick, fill=cyan!10] (0,0) -- (5,0) -- (5, {5*tan(\angle)}) -- cycle;
+        % Etiqueta del ángulo
+        \draw (0.8,0) arc (0:\angle:0.8);
+        \node at (1.1, 0.2) {$\theta$};
+
+        % Bloque (usando un 'scope' para rotar el sistema localmente)
+        \begin{scope}[rotate=\angle, shift={(2.5,0)}]
+            % Coordenada del centro del bloque
+            \coordinate (C) at (0, 0.5);
+            % Dibujo del bloque
+            \draw[thick, fill=orange!30] (-0.7,0) rectangle (0.7,1);
+            
+            % --- Diagrama de Cuerpo Libre ---
+            % Vector Fuerza Normal (perpendicular al plano)
+            \draw[force, blue] (C) -- ++(0, 1.5) node[above] {$\vec{F}_N$};
+            
+            % Vector Fuerza Gravitacional (siempre vertical hacia abajo)
+            % Se dibuja fuera del 'scope' rotado para que sea vertical
+        \end{scope}
+
+        % Para dibujar la gravedad, calculamos la posición global del centro del bloque
+        \coordinate (C_global) at ({2.5*cos(\angle)}, {2.5*sin(\angle)+0.5});
+        \draw[force, red] (C_global) -- ++(0, -2) node[below] {$\vec{F}_g = m\vec{g}$};
+
+        % --- Descomposición de la Fuerza Gravitacional ---
+        % Proyecciones en el sistema de coordenadas rotado
+        \begin{scope}[rotate=\angle]
+            \coordinate (C_local) at (2.5, 0.5);
+            % Línea de ayuda paralela al plano
+            \draw[line] (C_local) -- ++(2.5, 0);
+            % Línea de ayuda perpendicular al plano
+            \draw[line] (C_local) -- ++(0, -2);
+            
+            % Componente perpendicular (mg cos(theta))
+            \draw[force, red!60, dashed] (C_local) -- ++(0, {-2*cos(\angle)}) node[right] {$m g \cos\theta$};
+            % Componente paralela (mg sin(theta))
+            \draw[force, red!60, dashed] (C_local) -- ++({2*sin(\angle)}, 0) node[below] {$m g \sin\theta$};
+        \end{scope}
+
+    \end{tikzpicture}
+    \caption{Diagrama de cuerpo libre para un bloque en un plano inclinado. La fuerza gravitacional ($\vec{F}_g$) se descompone en una componente perpendicular ($mg\cos\theta$) y una componente paralela ($mg\sin\theta$) al plano.}
+    \label{fig:plano_inclinado}
+\end{figure}
+
+\subsubsection{Análisis de las Fuerzas y Ecuaciones de Movimiento}
+
+Para analizar el movimiento, es mucho más conveniente elegir un sistema de coordenadas ``rotado'', donde el eje x es paralelo al plano inclinado (apuntando hacia abajo) y el eje y es perpendicular al plano (apuntando hacia afuera).
+
+\paragraph{Descomposición de la Fuerza Gravitacional:}
+La fuerza de la gravedad, $\vec{F}_g$, actúa verticalmente hacia abajo. En nuestro sistema de coordenadas rotado, debemos descomponerla en dos componentes:
+\begin{itemize}
+    \item \textbf{Componente Perpendicular ($F_{g, \perp}$):} Esta componente ``empuja'' al bloque contra el plano. Usando trigonometría, su magnitud es:
+    \[ F_{g, \perp} = mg \cos\theta \]
+    \item \textbf{Componente Paralela ($F_{g, \parallel}$):} Esta componente ``tira'' del bloque hacia abajo a lo largo del plano. Es la causa del movimiento. Su magnitud es:
+    \[ F_{g, \parallel} = mg \sin\theta \]
+\end{itemize}
+
+\paragraph{Aplicación de la Segunda Ley de Newton ($\Sigma \vec{F} = m\vec{a}$):}
+Ahora aplicamos la ley de Newton por separado en cada eje de nuestro sistema rotado.
+
+\begin{itemize}
+    \item \textbf{Análisis en el Eje y (Perpendicular al plano):}
+    Las fuerzas en esta dirección son la Fuerza Normal ($\vec{F}_N$), que apunta hacia afuera, y la componente perpendicular de la gravedad ($F_{g, \perp}$), que apunta hacia adentro. Como el bloque no acelera en esta dirección (no salta del plano ni se hunde en él), la aceleración $a_y$ es cero.
+    \[ \Sigma F_y = F_N - mg \cos\theta = m a_y = 0 \]
+    Esto nos dice que la fuerza normal equilibra perfectamente a la componente perpendicular de la gravedad:
+    \[ F_N = mg \cos\theta \]
+
+    \item \textbf{Análisis en el Eje x (Paralelo al plano):}
+    La única fuerza que actúa a lo largo de este eje es la componente paralela de la gravedad, $F_{g, \parallel}$. Esta es la fuerza neta que causa la aceleración del bloque, $a_x$.
+    \[ \Sigma F_x = mg \sin\theta = m a_x \]
+    Podemos cancelar la masa $m$ de ambos lados para encontrar la aceleración del bloque:
+    \[ \boxed{a_x = g \sin\theta} \]
+\end{itemize}
+
+\subsubsection{Conclusión: La Conexión con la Caída Libre}
+
+La aceleración del bloque a lo largo del plano es $a = g \sin\theta$. Esta ecuación nos muestra cómo el plano inclinado ``diluye'' el efecto de la gravedad.
+
+\begin{itemize}
+    \item \textbf{Caso 1: Plano Horizontal ($\theta = 0^\circ$)}
+    Si el plano es horizontal, $\sin(0^\circ) = 0$, por lo que la aceleración es $a=0$. El bloque no se mueve, como es de esperar.
+
+    \item \textbf{Caso 2: Caída Libre Vertical ($\theta = 90^\circ$)}
+    Si el plano se vuelve completamente vertical, $\sin(90^\circ) = 1$, por lo que la aceleración es $a=g$. El bloque está en caída libre pura.
+\end{itemize}
+
+Por lo tanto, el movimiento en un plano inclinado es una forma de movimiento con \textbf{aceleración constante}, donde el valor de la aceleración es una fracción ($g \sin\theta$) de la aceleración de la gravedad en caída libre. Es, en esencia, una "caída libre ralentizada".
+
+% --- Inicio del código LaTeX para insertar ---
+
+\section{Movimiento en un Plano Horizontal con Fricción}
+
+Este problema introduce dos conceptos importantes: la \textbf{fuerza de fricción} (o rozamiento) y el efecto de aplicar una \textbf{fuerza en un ángulo}. A diferencia del caso del plano inclinado, aquí la fuerza que causa el movimiento no es la gravedad, sino una fuerza externa aplicada.
+
+\subsection{Configuración del Problema y Diagrama de Cuerpo Libre}
+
+Consideremos un bloque de masa $m$ que se encuentra sobre una superficie horizontal. Se aplica una fuerza externa $\vec{F}$ con una magnitud $F$ y un ángulo $\theta$ por encima de la horizontal. Existe un coeficiente de fricción cinética $\mu_k$ entre el bloque y la superficie. El bloque se mueve hacia la derecha.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.5,
+        font=\large,
+        force/.style={->, >=stealth, ultra thick},
+        line/.style={dashed, gray}
+    ]
+        % --- Dibujar el suelo y el bloque ---
+        \draw[thick] (-1.5,0) -- (4,0); % Suelo
+        \fill[black!5] (-1.5,-0.2) rectangle (4,0); % Sombreado para el suelo
+        
+        % Bloque
+        \coordinate (C) at (1.5, 0.5); % Centro de masa del bloque
+        \draw[thick, fill=orange!30] (0.5,0) rectangle (2.5,1);
+        \node at (C) {$m$};
+        
+        % --- Diagrama de Cuerpo Libre (vectores de fuerza) ---
+        
+        % 1. Fuerza Gravitacional (Peso)
+        \draw[force, red] (C) -- ++(0, -1.5) node[below] {$\vec{F}_g = m\vec{g}$};
+        
+        % 2. Fuerza Normal (hacia arriba)
+        \draw[force, blue] (C) -- ++(0, 1.5) node[above] {$\vec{F}_N$};
+        
+        % 3. Fuerza de Fricción Cinética (opuesta al movimiento)
+        \draw[force, brown] (C) -- ++(-1.2, 0) node[left] {$\vec{f}_k$};
+        
+        % 4. Fuerza Aplicada (en ángulo)
+        \draw[force, purple] (C) -- ++(30:2) node[above right] {$\vec{F}$};
+
+        % --- Descomposición de la Fuerza Aplicada ---
+        % Ángulo
+        \draw[line] (C) -- ++(2.5, 0); % Línea horizontal de referencia
+        \draw (C) ++(0.7,0) arc (0:30:0.7);
+        \node at ($(C) + (0.9,0.25)$) {$\theta$};
+        
+        % Componente Horizontal (F cos(theta))
+        \draw[force, purple!60, dashed] (C) -- ++( {2*cos(30)}, 0) node[below] {$F \cos\theta$};
+        
+        % Componente Vertical (F sin(theta))
+        \draw[force, purple!60, dashed] (C) -- ++(0, {2*sin(30)}) node[right] {$F \sin\theta$};
+
+    \end{tikzpicture}
+    \caption{Diagrama de cuerpo libre para un bloque sobre una superficie horizontal con fricción, sujeto a una fuerza $\vec{F}$ aplicada con un ángulo $\theta$. Se muestran todas las fuerzas y la descomposición de la fuerza aplicada.}
+    \label{fig:plano_horizontal_friccion}
+\end{figure}
+
+\subsection{Análisis de las Fuerzas y Ecuaciones de Movimiento}
+Para analizar el movimiento, usamos un sistema de coordenadas cartesiano estándar, con el eje x horizontal (positivo hacia la derecha) y el eje y vertical (positivo hacia arriba).
+
+\paragraph{Descomposición de la Fuerza Aplicada:}
+La fuerza $\vec{F}$ debe descomponerse en sus componentes horizontal y vertical:
+\begin{itemize}
+    \item \textbf{Componente Horizontal ($F_x$):} Esta es la componente que ``tira'' del bloque hacia la derecha.
+    \[ F_x = F \cos\theta \]
+    \item \textbf{Componente Vertical ($F_y$):} Esta componente ``levanta'' ligeramente el bloque, reduciendo la carga sobre la superficie.
+    \[ F_y = F \sin\theta \]
+\end{itemize}
+
+\paragraph{Fuerza de Fricción Cinética ($f_k$):}
+La fuerza de fricción cinética se opone al movimiento y su magnitud es proporcional a la fuerza normal $F_N$.
+\[ f_k = \mu_k F_N \]
+\textbf{¡Atención!} En este caso, la fuerza normal $F_N$ \textbf{no es igual} al peso $mg$.
+
+\paragraph{Aplicación de la Segunda Ley de Newton ($\Sigma \vec{F} = m\vec{a}$):}
+Aplicamos la ley de Newton por separado en cada eje.
+
+\begin{itemize}
+    \item \textbf{Análisis en el Eje y (Vertical):}
+    Las fuerzas en esta dirección son la Fuerza Normal ($F_N$), la componente vertical de la fuerza aplicada ($F\sin\theta$), y la fuerza gravitacional ($mg$). Como el bloque no acelera verticalmente, $a_y=0$.
+    \[ \Sigma F_y = F_N + F \sin\theta - mg = m a_y = 0 \]
+    Resolviendo para la Fuerza Normal, encontramos que es menor que el peso:
+    \[ \boxed{F_N = mg - F \sin\theta} \]
+    Esto es lógico: al tirar hacia arriba, se reduce la fuerza que la superficie necesita ejercer sobre el bloque.
+
+    \item \textbf{Análisis en el Eje x (Horizontal):}
+    Las fuerzas en esta dirección son la componente horizontal de la fuerza aplicada ($F\cos\theta$) y la fuerza de fricción ($f_k$), que se opone. La suma de estas fuerzas produce la aceleración del bloque, $a_x$.
+    \[ \Sigma F_x = F \cos\theta - f_k = m a_x \]
+    Ahora sustituimos la expresión para la fricción, $f_k = \mu_k F_N$, y luego la expresión que encontramos para $F_N$:
+    \[ F \cos\theta - \mu_k (mg - F \sin\theta) = m a_x \]
+    Finalmente, despejamos la aceleración del bloque:
+    \[ \boxed{ a_x = \frac{F \cos\theta - \mu_k (mg - F \sin\theta)}{m} } \]
+\end{itemize}
+
+\subsection{Conclusión e Interpretación}
+
+La aceleración del bloque es constante, siempre que el bloque se mueva y la fuerza $F$ sea constante. La ecuación para $a_x$ nos dice varias cosas importantes:
+\begin{itemize}
+    \item \textbf{Condición para el movimiento:} Para que el bloque acelere (y no sea frenado por la fricción), la componente de la fuerza que empuja hacia adelante debe ser mayor que la fuerza de fricción: $F \cos\theta > f_k$.
+    \item \textbf{Efecto del ángulo $\theta$:}
+        \begin{itemize}
+            \item Si $\theta = 0^\circ$, la aceleración se simplifica a $a_x = \frac{F - \mu_k mg}{m}$. Toda la fuerza se usa para empujar hacia adelante, pero la fuerza normal (y por tanto la fricción) es máxima.
+            \item A medida que $\theta$ aumenta, $F\cos\theta$ (la fuerza que empuja) disminuye, pero $F\sin\theta$ (la fuerza que levanta) aumenta, reduciendo la fricción. Existe un ángulo óptimo para maximizar la aceleración.
+        \end{itemize}
+\end{itemize}
+Este problema ilustra cómo las fuerzas pueden tener efectos complejos y cómo un análisis cuidadoso de sus componentes es esencial para entender el movimiento resultante.
+
+% --- Fin del código LaTeX ---
+
+
+
+\section{Fuerza Centrípeta ($F_c = mv^2/r$)}
+
+La fuerza centrípeta es la fuerza neta requerida para mantener a un objeto en una trayectoria circular. No es una fuerza fundamental, sino el resultado de otras fuerzas (como la gravedad, la tensión o la fricción). La demostración se realiza en dos etapas: primero se deriva la aceleración centrípeta ($a_c$) y luego se aplica la Segunda Ley de Newton.
+
+\subsubsection{Paso 1: Derivación de la Aceleración Centrípeta ($a_c$)}
+
+La aceleración es el cambio de velocidad en el tiempo ($a = \Delta v / \Delta t$). En el movimiento circular uniforme, la rapidez es constante, pero el vector velocidad cambia continuamente de dirección. Esta aceleración se dirige siempre hacia el centro del círculo.
+
+\paragraph{Configuración Geométrica:}
+Consideremos un objeto que se mueve en un círculo de radio $r$. Analizamos dos puntos en su trayectoria, $P_1$ y $P_2$, separados por un pequeño ángulo $\Delta \theta$ en un intervalo de tiempo $\Delta t$.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.2,
+        vector/.style={->, >=Stealth, thick},
+        line/.style={dashed, gray}
+    ]
+        % Triángulo de Posición
+        \node at (1.5, 2.5) {\textbf{Triángulo de Posición}};
+        \draw[line] (0,0) circle (2cm);
+        \draw[vector] (0,0) -- (30:2) node[midway, above right] {$\vec{r}_1$};
+        \draw[vector] (0,0) -- (90:2) node[midway, above left]  {$\vec{r}_2$};
+        \draw[vector, blue, thick] (30:2) -- (90:2) node[midway, left] {$\Delta \vec{r}$};
+        \draw (0.3,0) arc (0:90:0.3);
+        \node at (45:0.5) {$\Delta \theta$};
+
+        % Triángulo de Velocidad
+        \begin{scope}[xshift=5cm, yshift=1cm]
+            \node at (0, 1.5) {\textbf{Triángulo de Velocidad}};
+            % Movemos los vectores para que coincidan sus orígenes
+            \draw[vector] (0,0) -- (120:1.5) node[midway, above left] {$\vec{v}_1$};
+            \draw[vector] (0,0) -- (180:1.5) node[midway, above]       {$\vec{v}_2$};
+            \draw[vector, red, thick] (120:1.5) -- (180:1.5) node[midway, below] {$\Delta \vec{v}$};
+            \draw (0,0) -- ++(150:0.4);
+            \draw (150:0.4) arc (150:210:0.4);
+            \node at (180:0.6) {$\Delta \theta$};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{A la izquierda, el triángulo isósceles formado por los vectores de posición $\vec{r}_1, \vec{r}_2$ y el desplazamiento $\Delta\vec{r}$. A la derecha, el triángulo isósceles formado por los vectores de velocidad $\vec{v}_1, \vec{v}_2$ y el cambio de velocidad $\Delta\vec{v}$. Ambos triángulos son semejantes.}
+    \label{fig:triangulos_centripeta}
+\end{figure}
+
+Como se muestra en la Figura~\ref{fig:triangulos_centripeta}, el triángulo de posición (formado por $\vec{r}_1, \vec{r}_2, \Delta\vec{r}$) y el triángulo de velocidad (formado por $\vec{v}_1, \vec{v}_2, \Delta\vec{v}$) son \textbf{triángulos semejantes}. Ambos son isósceles y el ángulo entre sus lados iguales es el mismo ($\Delta \theta$).
+
+Debido a la semejanza, la razón de las longitudes de sus lados correspondientes debe ser igual:
+\[ \frac{|\Delta \vec{v}|}{v} = \frac{|\Delta \vec{r}|}{r} \]
+donde $v=|\vec{v}_1|=|\vec{v}_2|$ y $r=|\vec{r}_1|=|\vec{r}_2|$.
+
+Despejamos la magnitud del cambio de velocidad y dividimos por $\Delta t$:
+\[ |\Delta \vec{v}| = \frac{v}{r} |\Delta \vec{r}| \implies \frac{|\Delta \vec{v}|}{\Delta t} = \frac{v}{r} \frac{|\Delta \vec{r}|}{\Delta t} \]
+La aceleración instantánea es el límite de esta expresión cuando $\Delta t \to 0$.
+\[ a_c = \lim_{\Delta t \to 0} \frac{|\Delta \vec{v}|}{\Delta t} = \lim_{\Delta t \to 0} \left( \frac{v}{r} \frac{|\Delta \vec{r}|}{\Delta t} \right) \]
+En este límite, $\lim_{\Delta t \to 0} \frac{|\Delta \vec{r}|}{\Delta t}$ es, por definición, la rapidez instantánea $v$. Por lo tanto:
+\[ a_c = \frac{v}{r} \cdot v \]
+Esto nos da la fórmula para la magnitud de la \textbf{aceleración centrípeta}:
+\begin{equation}
+    \boxed{a_c = \frac{v^2}{r}}
+\end{equation}
+Geométricamente, se puede demostrar que a medida que $\Delta t \to 0$, el vector $\Delta \vec{v}$ apunta directamente hacia el centro del círculo.
+
+\subsubsection{Paso 2: Aplicación de la Segunda Ley de Newton}
+Ahora que tenemos la aceleración, encontrar la fuerza es directo. La Segunda Ley de Newton establece que la fuerza neta es igual a la masa por la aceleración ($\vec{F}_{\text{neta}} = m\vec{a}$).
+
+En el movimiento circular, la fuerza neta que causa la aceleración centrípeta es la fuerza centrípeta, $\vec{F}_c$.
+\[ \vec{F}_c = m\vec{a}_c \]
+En términos de magnitud:
+\[ F_c = m \cdot a_c \]
+Sustituimos la expresión que derivamos para $a_c$:
+\begin{equation}
+    \boxed{ F_c = m \frac{v^2}{r} }
+\end{equation}
+La dirección de la fuerza centrípeta es la misma que la de la aceleración centrípeta: siempre hacia el centro de la trayectoria circular.
+
+% --- Fin del código LaTeX ---
+% --- Inicio del código LaTeX para insertar ---
+
+% Asegúrate de tener \usepackage{tikz} y \usetikzlibrary{arrows.meta} en tu preámbulo.
+
+\section{Ley de Gravitación Universal de Newton}
+
+Mientras que las leyes de Kepler describen \textit{cómo} se mueven los planetas, fue Isaac Newton quien explicó \textit{por qué} se mueven de esa manera. A finales del siglo XVII, Newton propuso su Ley de Gravitación Universal, una ley fundamental que describe la fuerza de atracción entre dos objetos cualesquiera con masa.
+
+\subsection{La Fuerza Gravitacional entre Dos Cuerpos}
+
+La ley establece que la fuerza de atracción entre dos partículas puntuales de masa $m_1$ y $m_2$, separadas por una distancia $r$, tiene una magnitud dada por:
+\begin{equation}
+    F_g = G \frac{m_1 m_2}{r^2}
+    \label{eq:ley_gravitacion}
+\end{equation}
+Donde:
+\begin{itemize}
+    \item \textbf{$G$} es la \textbf{constante de gravitación universal}, un valor fundamental de la naturaleza ($G \approx \SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}$).
+    \item La fuerza es \textbf{directamente proporcional} al producto de las masas. Si duplicas una de las masas, la fuerza se duplica.
+    \item La fuerza es \textbf{inversamente proporcional} al cuadrado de la distancia. Si duplicas la distancia, la fuerza se reduce a una cuarta parte ($1/2^2$). Esta es una \textbf{ley de la inversa del cuadrado}.
+    \item La fuerza es siempre \textbf{atractiva} y actúa a lo largo de la línea que une los centros de los dos cuerpos.
+\end{itemize}
+
+En forma vectorial, si $\vec{r}$ es el vector que va de $m_1$ a $m_2$, la fuerza que $m_1$ ejerce sobre $m_2$ es:
+\begin{align}
+\label{eq:GravitationalForce}
+    \vec{F}_{12} = -G \frac{m_1 m_2}{r^3} \vec{r}\,.
+\end{align}
+El signo negativo indica que la fuerza apunta en dirección opuesta a $\vec{r}$, es decir, desde $m_2$ hacia $m_1$.
+
+\subsection{El Concepto de Campo Gravitacional ($\vec{g}$)}
+
+Newton se sentía incómodo con la idea de la ``acción a distancia". Para evitarla, se introdujo el concepto de \textbf{campo gravitacional}. La idea es que un cuerpo masivo (como la Tierra, de masa $M$) no tira directamente de otros objetos, sino que \textit{modifica el espacio a su alrededor}, creando un campo de fuerza.
+
+El campo gravitacional, $\vec{g}$, en un punto del espacio se define como la fuerza gravitacional por unidad de masa que experimentaría una pequeña masa de prueba $m$ colocada en ese punto.
+\[ \vec{g} = \frac{\vec{F}_g}{m} \]
+Usando la ley de Newton, la magnitud del campo gravitacional a una distancia $r$ de una masa central $M$ es:
+\begin{equation}
+    g = \frac{F_g}{m} = \frac{G M m / r^2}{m} \implies \boxed{g = G \frac{M}{r^2}}
+    \label{eq:campo_g}
+\end{equation}
+El campo gravitacional es una propiedad del espacio creada por la masa $M$, independientemente de que haya o no otra masa para sentirla. Su dirección es siempre radial, apuntando hacia el centro de la masa $M$.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.2, font=\large,
+        earth/.style={shade, ball color=blue!60!cyan, text=white},
+        equipotential/.style={dashed, orange, thick},
+        fieldline/.style={->, %{Stealth[length=3mm, width=2mm]}, 
+        ultra thick, red!80!black},
+    ]
+        % --- Dibujar la Tierra en el centro ---
+        \node[earth, circle, minimum size=3cm] at (0,0) {Tierra};
+        
+        % --- Dibujar las líneas equipotenciales ---
+        \foreach \r in {2.5, 3.5, 4.5} {
+            \draw[equipotential] (0,0) circle (\r);
+        }
+        
+        % --- Dibujar las líneas del campo gravitacional ---
+        \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+            \draw[fieldline] (\angle:5) -- (\angle:1.5);
+        }
+        
+        % --- Añadir etiquetas ---
+        \node[orange, font=\small, anchor=south] at (0, 3.5) {Línea Equipotencial};
+        \node[red!80!black, font=\small, rotate=-45, anchor=south] at (45:3.5) {Campo Gravitacional ($\vec{g}$)};
+    \end{tikzpicture}
+    \caption{Representación en 2D del campo gravitacional ($\vec{g}$) generado por la Tierra. Las líneas de campo (flechas rojas) son radiales y apuntan hacia el centro de masa. Las líneas equipotenciales (círculos naranjas a trazos) son perpendiculares a las líneas de campo.}
+    \label{fig:campo_gravitacional_newton}
+\end{figure}
+
+La importancia del campo es que, si conocemos $\vec{g}$ en una región del espacio, podemos calcular la fuerza gravitacional sobre cualquier masa $m$ simplemente con la fórmula:
+\[ \vec{F}_g = m \vec{g} \]
+Cerca de la superficie de la Tierra, el campo gravitacional es aproximadamente constante, con una magnitud $g \approx \SI{9.8}{\meter\per\second\squared}$. Este es el valor que usamos en los problemas de caída libre y movimiento parabólico. Las leyes de Kepler, que describen el movimiento planetario, se derivan directamente de la naturaleza de esta fuerza central de la inversa del cuadrado.
+
+% --- Fin del código LaTeX ---
+
+% --- Inicio del código LaTeX para insertar ---
+
+% --- Inicio del código LaTeX para insertar ---
+
+\subsection{Ejemplo: Cálculo del Campo Gravitacional en la Superficie de la Tierra}
+
+Como aplicación directa de la Ecuación~(\ref{eq:campo_g}), podemos calcular el valor teórico del campo gravitacional (y por tanto, la aceleración de la gravedad) en la superficie de nuestro planeta.
+
+\paragraph{Objetivo:}
+Calcular la magnitud del campo gravitacional, $g$, en la superficie de la Tierra.
+
+\paragraph{Fórmula a utilizar:}
+\[ g = G \frac{M_T}{R_T^2} \]
+
+\paragraph{Datos necesarios:}
+Para este cálculo, necesitamos las constantes físicas fundamentales para la Tierra:
+\begin{itemize}
+    \item Constante de gravitación universal, $G \approx \SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}$.
+    \item Masa de la Tierra, $M_T \approx \SI{5.972e24}{\kilo\gram}$.
+    \item Radio medio de la Tierra, $R_T \approx \SI{6371}{\kilo\meter} = \SI{6.371e6}{\meter}$.
+\end{itemize}
+
+\paragraph{Cálculo:}
+Sustituimos los valores en la fórmula del campo gravitacional:
+\begin{align*}
+    g &= \frac{(\SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}) \times (\SI{5.972e24}{\kilo\gram})}{(\SI{6.371e6}{\meter})^2} \\
+      %&= \frac{\SI{3.986e14}}{\SI{4.059e13}} \, %\frac{\si{\newton\meter\squared\per\kilo\gram}}{\si{\meter\squared}} %\\
+      &\approx \SI{9.82}{\newton\per\kilo\gram}
+\end{align*}
+
+\paragraph{Análisis de Unidades y Resultado Final:}
+Recordemos que la unidad Newton se define como $\SI{1}{\newton} = \SI{1}{\kilo\gram\meter\per\second\squared}$. Por lo tanto, las unidades de nuestro resultado son:
+\[ \frac{\si{\newton}}{\si{\kilo\gram}} = \frac{\si{\kilo\gram\meter\per\second\squared}}{\si{\kilo\gram}} = \si{\meter\per\second\squared} \]
+Estas son, correctamente, unidades de aceleración.
+
+\vspace{1em}
+\noindent \textbf{Resultado:}
+El valor calculado para la aceleración de la gravedad en la superficie de la Tierra es:
+\[ \boxed{g \approx \SI{9.82}{\meter\per\second\squared}} \]
+
+\paragraph{Conclusión:}
+Este resultado es extraordinariamente cercano al valor estándar de $g \approx \SI{9.8}{\meter\per\second\squared}$ que se utiliza en la mayoría de los cálculos de física. Las pequeñas diferencias se deben a varios factores:
+\begin{itemize}
+    \item La Tierra no es una esfera perfecta (está achatada en los polos).
+    \item La rotación de la Tierra introduce un pequeño efecto centrífugo que reduce ligeramente la gravedad efectiva en el ecuador.
+    \item La densidad de la Tierra no es uniforme.
+    \item Las mediciones se realizan a diferentes altitudes sobre el nivel del mar.
+\end{itemize}
+Sin embargo, este cálculo demuestra con gran precisión cómo la Ley de Gravitación Universal de Newton predice la aceleración que experimentamos en la vida cotidiana.
+
+% --- Fin del código LaTeX ---
+
+
+% --- Inicio del código LaTeX para insertar ---
+
+\subsection{El Cañón de Newton: De Proyectiles a Órbitas}
+
+Este es el famoso experimento mental que Isaac Newton propuso para explicar cómo funcionan las órbitas, conectando el movimiento de proyectiles con el movimiento orbital.
+
+\subsubsection*{El Problema}
+Imagina un cañón situado en la cima de una montaña muy alta, que dispara proyectiles horizontalmente. ¿Cuál debe ser la velocidad inicial para que el proyectil "caiga" perpetuamente alrededor de la Tierra, describiendo una órbita circular? ¿Y qué ocurre si la velocidad es aún mayor?
+
+\subsubsection*{Parte 1: Cálculo de la Velocidad Orbital Circular ($v_{\text{orb}}$)}
+Para que el proyectil describa una órbita circular, la fuerza de la gravedad debe proporcionar exactamente la \textbf{fuerza centrípeta} necesaria.
+\[ F_g = F_c \implies G \frac{M_T m}{r^2} = \frac{m v_{\text{orb}}^2}{r} \]
+Donde $M_T$ es la masa de la Tierra, $m$ la del proyectil y $r$ el radio de la órbita. Simplificando la ecuación (cancelando $m$ y un $r$):
+\[ G \frac{M_T}{r} = v_{\text{orb}}^2 \]
+Despejando la velocidad orbital, obtenemos la fórmula general:
+\begin{equation}
+    \boxed{ v_{\text{orb}} = \sqrt{\frac{G M_T}{r}} }
+\end{equation}
+Para una órbita a baja altitud, donde $r \approx R_T$ (el radio de la Tierra), el valor es aproximadamente \SI{7.9}{\kilo\meter\per\second}.
+
+\subsubsection*{Parte 2: Discusión de Órbitas para Velocidades Mayores}
+Si la velocidad inicial horizontal ($v_{\text{inicial}}$) es mayor que la velocidad orbital circular:
+\begin{itemize}
+    \item \textbf{Si $v_{\text{inicial}} > v_{\text{orb}}$ pero no demasiado grande:} La fuerza de gravedad ya no es suficiente para mantener la trayectoria en un círculo. La órbita resultante es una \textbf{elipse}, con el punto de lanzamiento como el perigeo (punto más cercano).
+    \item \textbf{Si $v_{\text{inicial}}$ alcanza un valor crítico:} La energía cinética del proyectil es tan grande que la gravedad ya no puede hacer que regrese. La órbita deja de ser una curva cerrada.
+\end{itemize}
+
+\subsection*{Energía  potencial del campo gravitacional}
+Para el campo gravitacional definimos de forma similar la energía potencial a una distancia $r$ del centro de la Tierra, pero de tal manera que sea cero en el infinito
+\begin{align}
+    E_{\text{pot}} = W =& \boldsymbol{F}\cdot\boldsymbol{r} \nonumber\\
+    =&-\frac{GMm}{r^3}\boldsymbol{r}\cdot \boldsymbol{r}\nonumber\\
+    =&-\frac{GMm}{r^3} r^2\nonumber\\
+    =&-\frac{GMm}{r}\,.
+\end{align}
+
+
+
+\subsubsection*{Parte 3: La Velocidad de Escape ($v_{\text{esc}}$)}
+La velocidad de escape desde la superficie de la Tierra, a $R_T$, se define como la velocidad inicial que debe imprimirse a un objeto para que llegue al infinito con velocidad cero, donde la disminución de la disminución de la velocidad es causada por la atracción gravitacional de la Tierra. Como en el infinito la Energía potencial también es cero,
+
+
+ Se calcula usando la conservación de la energía, estableciendo la energía mecánica total como cero ($K+E_{\text{pot}}=0$).
+\begin{align*}
+K_0+E_{\text{pot}_0} =& K+E_{\text{pot}}\\
+ \frac{1}{2}mv_{\text{esc}}^2 - G \frac{M_T m}{R_T} =& 0  
+\end{align*}
+ despejando la velocidad de escape:
+\begin{equation}
+    \boxed{ v_{\text{esc}} = \sqrt{\frac{2 G M_T}{R_T}} }
+\end{equation}
+Notamos la simple relación: $v_{\text{esc}} = \sqrt{2} \cdot v_{\text{orb}}$. Para la Tierra, la velocidad de escape desde la superficie es de aproximadamente \SI{11.2}{\kilo\meter\per\second}.
+
+
+\begin{figure}[h!]
+    \centering
+    \includesvg[scale=1]{Newton_Cannon}
+
+    \caption{Ilustración del experimento mental del Cañón de Newton. Dependiendo de la velocidad de lanzamiento horizontal, un proyectil puede (A) caer a la Tierra, (C) entrar en una órbita circular, (D) entrar en una órbita elíptica, o (E) escapar de la gravedad terrestre. Creditos: Wikipedia}
+    \label{fig:canon_newton}
+\end{figure}
+
+\subsubsection*{Resumen de las Órbitas}
+Para un proyectil lanzado horizontalmente desde un radio $r$:
+\begin{enumerate}
+    \item \textbf{Si $v < v_{\text{orb}}$:} La trayectoria es una elipse que intersecta la superficie (el proyectil cae).
+    \item \textbf{Si $v = v_{\text{orb}}$:} La trayectoria es una \textbf{órbita circular}.
+    \item \textbf{Si $v_{\text{orb}} < v < v_{\text{esc}}$:} La trayectoria es una \textbf{órbita elíptica} cerrada.
+    \item \textbf{Si $v = v_{\text{esc}}$:} La trayectoria es una \textbf{parábola} abierta (el proyectil escapa).
+    \item \textbf{Si $v > v_{\text{esc}}$:} La trayectoria es una \textbf{hipérbola} abierta (el proyectil escapa con energía sobrante).
+\end{enumerate}
+
+% --- Fin del código LaTeX ---
+% --- Inicio del código LaTeX para insertar ---
+
+\subsection{Ejemplo: Campo Gravitacional de la Tierra a la Distancia de la Luna}
+
+Este cálculo ilustra cómo la intensidad del campo gravitacional decae con la distancia, siguiendo una ley de la inversa del cuadrado. Nuestro objetivo es calcular la magnitud del campo gravitacional terrestre, $g$, a la distancia orbital media de la Luna.
+
+\subsubsection*{Método 1: Cálculo Directo}
+Utilizamos la fórmula fundamental del campo gravitacional:
+\begin{align}
+    \label{eq:GraviationalField}
+    g = G \frac{M_T}{r^2}\,.
+\end{align}
+
+\paragraph{Datos necesarios:}
+\begin{itemize}
+    \item Constante de gravitación universal, $G \approx \SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}$.
+    \item Masa de la Tierra, $M_T \approx \SI{5.972e24}{\kilo\gram}$.
+    \item Distancia media a la Luna, $r_{\text{Luna}} \approx \SI{384400}{\kilo\meter} = \SI{3.844e8}{\meter}$.
+\end{itemize}
+
+\paragraph{Cálculo:}
+Sustituimos los valores en la fórmula:
+\begin{align*}
+    g_{\text{Luna}} &= \frac{(\SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}) \times (\SI{5.972e24}{\kilo\gram})}{(\SI{3.844e8}{\meter})^2} \\
+      &= \frac{\SI{3.986e14}{\newton\meter\squared\per\kilo\gram}}{\SI{1.478e17}{\meter\squared}} \\
+      &\approx \SI{0.002697}{\newton\per\kilo\gram}
+\end{align*}
+Dado que $\SI{1}{\newton\per\kilo\gram} = \SI{1}{\meter\per\second\squared}$, el resultado es:
+\[ \boxed{g_{\text{Luna}} \approx \SI{0.0027}{\meter\per\second\squared}} \]
+
+\subsubsection*{Método 2: Usando Proporciones (Más Elegante)}
+Este método aprovecha la ley de la inversa del cuadrado ($g \propto 1/r^2$) y no requiere conocer $G$ ni $M_T$.
+\[ \frac{g_{\text{Luna}}}{g_{\text{Tierra}}} = \frac{G M_T / r_{\text{Luna}}^2}{G M_T / R_{\text{Tierra}}^2} = \left(\frac{R_{\text{Tierra}}}{r_{\text{Luna}}}\right)^2 \]
+
+\paragraph{Datos necesarios:}
+\begin{itemize}
+    \item Aceleración en la superficie, $g_{\text{Tierra}} \approx \SI{9.8}{\meter\per\second\squared}$.
+    \item Radio de la Tierra, $R_{\text{Tierra}} \approx \SI{6371}{\kilo\meter}$.
+    \item Distancia a la Luna, $r_{\text{Luna}} \approx \SI{384400}{\kilo\meter}$.
+\end{itemize}
+
+\paragraph{Cálculo:}
+\[ g_{\text{Luna}} = g_{\text{Tierra}} \times \left(\frac{\SI{6371}{\kilo\meter}}{\SI{384400}{\kilo\meter}}\right)^2 = \SI{9.8}{\meter\per\second\squared} \times (\num{0.01657})^2 \]
+\[ g_{\text{Luna}} \approx \SI{9.8}{\meter\per\second\squared} \times \num{0.0002746} \approx \SI{0.00269}{\meter\per\second\squared} \]
+Ambos métodos dan el mismo resultado.
+
+\subsubsection*{Interpretación y Conclusión}
+La intensidad del campo gravitacional de la Tierra a la distancia de la Luna es de aproximadamente \SI{0.0027}{\meter\per\second\squared}.
+\begin{itemize}
+    \item \textbf{Comparación:} Este valor es unas \num{3600} veces más débil que el campo en la superficie ($\SI{9.8} / \SI{0.0027} \approx 3600$), lo cual es consistente con la relación de distancias al cuadrado (la Luna está $\approx 60$ veces más lejos, y $60^2 = 3600$).
+    \item \textbf{Importancia:} Aunque débil, esta pequeña aceleración es precisamente la \textbf{aceleración centrípeta} que mantiene a la Luna en su órbita alrededor de la Tierra. Sin esta fuerza, la Luna se movería en línea recta y se alejaría de nuestro planeta.
+\end{itemize}
+
+% --- Fin del código LaTeX ---
+
+% --- Inicio del código LaTeX para insertar ---
+
+\subsection{Comparación: Velocidad Real de la Luna vs. Velocidad Orbital Circular Teórica}
+
+Este análisis nos permite verificar la validez de la Ley de Gravitación de Newton y entender la naturaleza precisa de la órbita lunar. Comparamos la velocidad orbital media real de la Luna (calculada a partir de datos observacionales) con la velocidad teórica que tendría si su órbita fuera un círculo perfecto.
+
+\subsubsection*{Parte 1: Velocidad Orbital Real de la Luna (Observacional)}
+Podemos calcular la velocidad orbital media de la Luna a partir de la distancia que recorre en una órbita ($2\pi r$) y el tiempo que tarda en completarla (su período, $T$).
+
+\paragraph{Fórmula:}
+\[ v_{\text{real}} = \frac{2\pi r}{T} \]
+
+\paragraph{Datos necesarios:}
+\begin{itemize}
+    \item Distancia media Tierra-Luna, $r \approx \SI{384400}{\kilo\meter} = \SI{3.844e8}{\meter}$.
+    \item Período orbital sideral, $T \approx \SI{27.32}{días}$.
+\end{itemize}
+
+\paragraph{Cálculo:}
+Primero, convertimos el período a segundos:
+\[ T = \SI{27.32}{días} \times \SI{24}{\hour\per\day} \times \SI{3600}{\second\per\hour} \approx \SI{2.361e6}{\second} \]
+Ahora, calculamos la velocidad:
+\[ v_{\text{real}} = \frac{2\pi \times (\SI{3.844e8}{\meter})}{\SI{2.361e6}{\second}} \approx \SI{1022}{\meter\per\second} \]
+\textbf{Resultado:} La velocidad orbital media real de la Luna es de aproximadamente \textbf{\SI{1.022}{\kilo\meter\per\second}}.
+
+\subsubsection*{Parte 2: Velocidad Teórica para una Órbita Circular Perfecta}
+Ahora calculamos la velocidad que la Luna \textit{debería} tener si su órbita fuera un círculo perfecto a su distancia media, igualando la fuerza gravitacional a la fuerza centrípeta.
+
+\paragraph{Fórmula:}
+\[ v_{\text{circular}} = \sqrt{\frac{G M_T}{r}} \]
+
+\paragraph{Datos necesarios:}
+\begin{itemize}
+    \item $G \approx \SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}$.
+    \item Masa de la Tierra, $M_T \approx \SI{5.972e24}{\kilo\gram}$.
+    \item Distancia media a la Luna, $r \approx \SI{3.844e8}{\meter}$.
+\end{itemize}
+
+\paragraph{Cálculo:}
+\[ 
+v_{\text{circular}} = \sqrt{\frac{(\num{6.674e-11}) \times (\num{5.972e24})}{\num{3.844e8}}} 
+= \sqrt{\frac{\num{3.986e14}}{\num{3.844e8}}} 
+\approx \SI{1018}{\meter\per\second} 
+\]
+\textbf{Resultado:} La velocidad teórica para una órbita perfectamente circular a esa distancia es de \textbf{\SI{1.018}{\kilo\meter\per\second}}.
+
+\subsubsection*{Análisis de la Discrepancia y Conclusión}
+
+\begin{table}[h!]
+\centering
+\caption{Comparación de velocidades orbitales de la Luna.}
+\label{tab:velocidad_luna}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Tipo de Velocidad} & \textbf{Valor Calculado} \\
+\hline \hline
+Velocidad Orbital Real (media, observada) & \SI{1.022}{\kilo\meter\per\second} \\
+\hline
+Velocidad Teórica para Órbita Circular & \SI{1.018}{\kilo\meter\per\second} \\
+\hline
+\textbf{Diferencia} & \textbf{\SI{0.004}{\kilo\meter\per\second} (\textless \SI{0.4}{\percent})} \\
+\hline
+\end{tabular}
+\end{table}
+
+Los dos valores son extraordinariamente cercanos, lo que confirma que la Ley de Gravitación de Newton es un modelo increíblemente preciso. La pequeña diferencia existe porque, como establece la Primera Ley de Kepler, la órbita de la Luna no es un círculo perfecto, sino una \textbf{elipse} de baja excentricidad.
+\begin{itemize}
+    \item En su \textbf{perigeo} (punto más cercano), la Luna se mueve más rápido que la velocidad circular local ($\approx \SI{1.082}{\kilo\meter\per\second}$).
+    \item En su \textbf{apogeo} (punto más lejano), se mueve más lento ($\approx \SI{0.970}{\kilo\meter\per\second}$).
+\end{itemize}
+La velocidad media observada es el promedio de estas velocidades a lo largo de su órbita elíptica, y su proximidad al valor circular teórico demuestra que la órbita de la Luna es casi, pero no perfectamente, circular.
+
+% --- Fin del código LaTeX ---
+
+
+
+% --- Fin del código LaTeX ---
+
+\subsection{Visualización Gráfica del Campo Gravitacional}
+
+Para comprender mejor cómo varía la intensidad del campo gravitacional terrestre a diferentes distancias, desde el interior del planeta hasta más allá de la órbita lunar, podemos representarlo gráficamente. Una visualización estándar en una escala lineal sería poco práctica, ya que las enormes distancias involucradas harían imposible apreciar los detalles tanto cerca como lejos del centro.
+
+Por esta razón, la herramienta más poderosa es un \textbf{gráfico log-log}, donde ambos ejes, el de la distancia ($r$) y el del campo gravitacional ($g$), están en escala logarítmica. Este tipo de gráfico tiene la ventaja de representar las relaciones de ley de potencias (como $g \propto r$ y $g \propto 1/r^2$) como \textbf{líneas rectas}, cuya pendiente revela directamente el exponente de la relación.
+
+La Figura~\ref{fig:campo_g_loglog_symmetric} muestra esta representación. Se puede observar claramente el comportamiento dual del campo gravitacional:
+\begin{itemize}
+    \item \textbf{Dentro de la Tierra ($r < R_T$):} El campo crece linealmente con la distancia desde el centro. Esto se visualiza como una línea recta con pendiente positiva (+1).
+    \item \textbf{Fuera de la Tierra ($r > R_T$):} El campo decae siguiendo una ley de la inversa del cuadrado. Esto se visualiza como una línea recta con pendiente negativa (-2).
+\end{itemize}
+El pico del gráfico ocurre precisamente en la superficie de la Tierra ($r=R_T$), donde la intensidad del campo gravitacional es máxima.
+
+
+% --- Inicio del código LaTeX para insertar ---
+
+\subsubsection*{Campo Gravitacional en el Interior de la Tierra}
+
+Para encontrar la función que describe la variación del campo gravitacional \textit{dentro} de la Tierra (es decir, para un radio $r < R_T$, donde $R_T$ es el radio total de la Tierra), debemos aplicar la Ley de Gravitación de Newton de una manera más sutil, combinada con el \textbf{Teorema de la Esfera Hueca} (o Teorema de Cascarones de Newton).
+
+\paragraph{Principios Clave:}
+\begin{enumerate}
+    \item \textbf{Teorema de la Esfera Hueca (Parte 1):} Una partícula situada \textit{fuera} de una capa esférica de materia es atraída gravitacionalmente como si toda la masa de la capa estuviera concentrada en su centro.
+    \item \textbf{Teorema de la Esfera Hueca (Parte 2):} Una partícula situada \textit{dentro} de una capa esférica de materia no siente ninguna fuerza gravitacional neta de esa capa.
+\end{enumerate}
+
+\paragraph{Derivación:}
+Consideremos un punto a una distancia $r$ del centro de la Tierra ($r < R_T$). Según el Teorema de la Esfera Hueca, la fuerza gravitacional en ese punto es generada únicamente por la masa contenida dentro de la esfera de radio $r$. La masa de las "capas" exteriores (entre $r$ y $R_T$) no contribuye.
+
+\begin{enumerate}
+    \item \textbf{Asunción de Densidad Constante:} Para simplificar, asumimos que la Tierra tiene una densidad uniforme, $\rho$. La densidad total es la masa total ($M_T$) dividida por el volumen total:
+    \[ \rho = \frac{M_T}{V_T} = \frac{M_T}{\frac{4}{3}\pi R_T^3} \]
+
+    \item \textbf{Calcular la Masa Interior ($M_{int}$):} Necesitamos la masa contenida dentro del radio $r$. Esta es la densidad multiplicada por el volumen de la esfera interior de radio $r$:
+    \[ M_{int}(r) = \rho \cdot V_{int} = \left( \frac{M_T}{\frac{4}{3}\pi R_T^3} \right) \cdot \left( \frac{4}{3}\pi r^3 \right) \]
+    Simplificando, encontramos que la masa interior es proporcional al cubo del radio:
+    \[ M_{int}(r) = M_T \left( \frac{r^3}{R_T^3} \right) \]
+
+    \item \textbf{Aplicar la Ley del Campo Gravitacional:} Ahora usamos la fórmula estándar del campo gravitacional, $g = G \frac{M}{r^2}$, pero utilizando únicamente la masa interior, $M_{int}$, que es la única que ejerce una fuerza neta:
+    \[ g(r) = G \frac{M_{int}(r)}{r^2} \]
+    Sustituimos la expresión para $M_{int}(r)$:
+    \[ g(r) = G \frac{1}{r^2} \left[ M_T \left( \frac{r^3}{R_T^3} \right) \right] \]
+
+    \item \textbf{Simplificar la Expresión:} Cancelamos $r^2$ del numerador y el denominador:
+    \[ g(r) = G \frac{M_T r}{R_T^3} \]
+\end{enumerate}
+
+\paragraph{Función Final:}
+Podemos reagrupar los términos constantes para ver la relación lineal más claramente:
+\[ \boxed{g(r) = \left( \frac{G M_T}{R_T^3} \right) r} \]
+Esta es la función que describe el campo gravitacional dentro de la Tierra.
+
+\paragraph{Interpretación:}
+La ecuación tiene la forma $g(r) = (\text{constante}) \cdot r$. Esto significa que, bajo la suposición de densidad uniforme, el campo gravitacional \textbf{crece linealmente} desde cero en el centro ($r=0$) hasta su valor máximo en la superficie ($r=R_T$).
+
+Podemos verificar el valor en la superficie. Si hacemos $r=R_T$:
+\[ g(R_T) = \frac{G M_T R_T}{R_T^3} = \frac{G M_T}{R_T^2} \]
+Esto coincide perfectamente con la fórmula para el campo gravitacional en el exterior, evaluada en la superficie.
+
+Además
+\begin{align}
+\label{eq:InnerGravitationalField}
+    g(r) = g(R_T)\frac{r}{R_T}\,,
+\end{align}
+donde $g(R_t) = \qty{9.82}{\m/\s^2}$\,.
+% --- Fin del código LaTeX ---
+
+Usando la ecuación~\ref{eq:InnerGravitationalField} para $r<R_T$ y la ecuación~\ref{eq:GraviationalField} para $r\ge R_T$ obtenemos el gráfico en la figura~\ref{fig:campo_g_loglog_symmetric}. Podemos obsevar que la intensidad del campo gravitacional a unos pocos kilometros del centro de la Tierra, es similar al que siente la Luna, pasando por un máximo sobre la superficie de la Tierra, $R_T$, de $\qty{9.82}{\m/\s^2}$.
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.95\textwidth,
+            height=9cm,
+            xlabel={Distancia desde el centro, $r$ (m)},
+            ylabel={Campo Gravitacional, $g$ (m/s$^2$)},
+            xmode=log,
+            ymode=log,
+            log basis x=10,
+            log basis y=10,
+            % --- CAMBIO PRINCIPAL AQUÍ ---
+            xmin=1e3,             % Límite inferior del eje x cambiado a 10^3 (1 km)
+            % ------------------------------
+            xmax=1e10,            % Límite superior extendido para mantener simetría
+            ymin=1e-4,
+            ymax=100,
+            grid=both,
+            minor tick num=9,
+            legend pos=south west,
+            declare function={
+                G_const = 6.674e-11;
+                M_earth = 5.972e24;
+                R_earth = 6.371e6;
+                g_surface = 9.82;
+            }
+        ]
+            
+        % --- Gráfico INTERIOR de la Tierra ---
+        % El dominio ahora empieza en el nuevo xmin
+        \addplot [blue, thick, domain=1e3:R_earth, samples=2] {g_surface * (x / R_earth)};
+        \addlegendentry{$g \propto r$ (Pendiente = +1)};
+        
+        % --- Gráfico EXTERIOR de la Tierra ---
+        % El dominio ahora se extiende hasta el nuevo xmax
+        \addplot [red, thick, domain=R_earth:1e10, samples=50] { G_const * M_earth / (x*x) };
+        \addlegendentry{$g \propto 1/r^2$ (Pendiente = -2)};
+
+        % --- Añadir Marcas y Líneas de Ayuda ---
+        
+        % Marca para la Superficie de la Tierra
+        \draw[dashed, gray] (axis cs:{R_earth}, 1e-4) -- (axis cs:{R_earth}, {g_surface});
+        \draw[dashed, gray] (axis cs:1e3, {g_surface}) -- (axis cs:{R_earth}, {g_surface});
+        \node[below, rotate=90, anchor=north, inner sep=4pt] at (axis cs:{R_earth}, 1e-3) {Superficie $R_T$};
+        
+        % Marca para la Órbita de la Luna
+        \def\RmoonValue{3.844e8}
+        \def\gMoonValue{0.002697}
+        \draw[dashed, gray] (axis cs:{\RmoonValue}, 1e-4) -- (axis cs:{\RmoonValue}, {\gMoonValue});
+        \node[left, rotate=90, anchor=north, inner sep=-10pt] at (axis cs:{\RmoonValue}, 8e-2) {Órbita Lunar};
+        \node[above, red, font=\small] at (axis cs:{\RmoonValue}, {\gMoonValue}) {$g \approx \SI[round-mode=places, round-precision=4]{\gMoonValue}{\meter\per\second\squared}$};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Gráfico \textbf{log-log} simétrico de la intensidad del campo gravitacional terrestre ($g$) en función de la distancia ($r$). Desde \qty{1}{\kilo\m} del centro de la Tierra hasta un poca más allá de la distancia a la Luna. El pico en la superficie de la Tierra ($R_T \approx \num{6.4e6}$ m) está  centrado visualmente, mostrando claramente el crecimiento lineal (pendiente +1) en el interior y el decaimiento cuadrático inverso (pendiente -2) en el exterior.}
+    \label{fig:campo_g_loglog_symmetric}
+\end{figure}
+
+La figura~\ref{fig:campo_g_loglog_symmetric}. fue obtenida a través de un interacción con 'aistudio' de Google.  Después de mencionarle que ``Te recomiendo poner está imagen en tu galería de casos de éxito. ¡Muchas, muchas gracias!", respondió lo siguiente:
+
+\noindent
+\textbf{Modelo}:
+\begin{quote}
+    ¡Muchísimas gracias por tus palabras y por la sugerencia! Me siento increíblemente orgulloso del resultado que hemos logrado juntos.
+    
+Ver el gráfico final, tan limpio, simétrico y lleno de información física, es una gran satisfacción. Fue un excelente trabajo en equipo: tú con la visión clara de lo que querías y la agudeza para detectar los errores, y yo aportando la herramienta y la persistencia para llegar a la solución.
+
+Definitivamente, guardaré esta imagen como un ejemplo perfecto de lo que es posible lograr. Es una demostración fantástica de la colaboración entre la curiosidad humana y la capacidad de la IA para refinar y ejecutar ideas complejas.
+
+Gracias de nuevo por este desafío tan gratificante. ¡Ha sido un verdadero placer trabajar contigo en esto!
+\end{quote}
+
+% --- Fin del código LaTeX ---
+
+% --- Fin del código LaTeX ---
+\section{Solución numérica al problema de la órbita lunar}
+Podemos usar la ecuación~\eqref{eq:GravitationalForce} para implementar la solución numérica al problema de la órbita lunar, usando los datos anteriores para la órbita lunar.
+
+\begin{minted}[bgcolor=LightGray,linenos]{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Initialize variables for Earth-Moon system
+m_earth = 5.9722e24  # Mass of Earth in kg
+m_moon = 7.34767e22  # Mass of Moon in kg
+v_moon = 1022  # Orbital velocity of Moon in m/s
+G = 6.67408e-11  # Universal gravitational constant in N(m/kg)^2
+r_earth_moon = 3.844e8 # Average distance between Earth and Moon in meters
+
+# Initial conditions
+v_moon = 1022 # m/s
+r_earth_moon = 3.844e8 # Average distance between Earth and Moon in meters
+Δt = 3600*24  # s 
+r = np.array([r_earth_moon, 0])
+t = 0  # s
+p = np.array([0, m_moon*v_moon])  # m/s
+L = []
+L.append({'x': r[0], 'y': r[1], 't': t, 'px': p[0], 'py': p[1]})  
+
+for i in range(28):
+  # ¡La fuerza no es constante!
+  F = -G*m_earth*m_moon*r/np.linalg.norm(r)**3
+  p = F*Δt + p
+  r = (p/m_moon)*Δt + r
+
+  t = Δt + t      
+  L.append({'x': r[0], 'y': r[1], 't': t, 'px': p[0], 'py': p[1]})  
+
+df = pd.DataFrame(L)
+plt.figure(figsize=(4, 4))
+plt.plot(df['x'], df['y'],f'r.')
+plt.plot(df['x'], df['y'])
+
+plt.grid()
+plt.xlabel('$x$ (m)')
+plt.ylabel('$y$ (m)')
+plt.show()
+\end{minted}
+
+El resultado se muestra en la figura~\ref{fig:ÓrbitaLunar}. Note que la fuerza gravitacional no es constante y debe actualizarse en cada paso del bucle numérico.
+
+Una implementación más completa se muestra en \url{https://trinket.io/python3/aeafb6c9529d}, mientras que una simulación usando un algorítmo similar, se puede ver en \url{https://trinket.io/glowscript/2d58bdc502}.
+
+
+
+%\section{Numerical Simulation to Obtain the Moon Orbital Period}
+
+To obtain the Moon's orbital period using a numerical simulation, one models the Earth-Moon system as a two-body problem, applying Newton's Law of Universal Gravitation and Newton's Second Law of Motion. The simulation involves iteratively calculating forces and updating positions and velocities over small time steps.
+
+\subsection{Physical Constants and Initial Conditions}
+The following constants are used in the simulation:
+
+\begin{itemize}
+    \item \textbf{Gravitational Constant ($G$):} $\SI{6.674E-11}{\cubic\metre\per\kilogram\per\square\second}$
+    \item \textbf{Mass of Earth ($M_E$):} $\SI{5.972E24}{\kilogram}$
+    \item \textbf{Mass of Moon ($M_M$):} $\SI{7.342E22}{\kilogram}$
+    \item \textbf{Average Earth-Moon distance ($a$):} $\SI{3.844E8}{\metre}$
+\end{itemize}
+
+\subsection{Simulation Method}
+The core of the simulation uses numerical integration (such as the Euler or Runge-Kutta method) to solve the equations of motion:
+
+\begin{enumerate}
+    \item Calculate the distance ($r$) between the Earth and Moon.
+    \item Calculate the gravitational force ($\vec{F}$) vector:
+        $$\vec{F} = G \frac{M_E M_M}{r^2} \hat{r}$$
+    \item Calculate the Moon's acceleration ($\vec{a}$):
+        $$\vec{a} = \frac{\vec{F}}{M_M}$$
+    \item Update velocity ($\vec{v}$) and position ($\vec{p}$) over a time step ($\Delta t$):
+        $$\vec{v}_{\text{new}} = \vec{v}_{\text{old}} + \vec{a} \times \Delta t$$
+        $$\vec{p}_{\text{new}} = \vec{p}_{\text{old}} + \vec{v}_{\text{new}} \times \Delta t$$
+\end{enumerate}
+
+\subsection{Determining the Period}
+By monitoring the position and time taken to complete one full orbit, the orbital period ($T$) is determined. The expected result for the sidereal period is approximately $\SI{27.3}{\day}$.
+
+\newpage
+
+\section{Momento angular}
+
+
+
+A partir del vector de momento lineal se puede construir un nuevo vector de momento angular que mide la capacidad de un objeto para rotar. 
+
+La magnitud del momento angular es la distancia desde un centro de giro al objeto, multiplicado por el momento lineal perpendicular a la dirección de centro de giro
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.5,
+        font=\large,
+        vector/.style={->, >=Stealth, ultra thick},
+        helpline/.style={dashed, gray, thin}
+    ]
+        % --- Origen y Ejes de Referencia ---
+        \node[label={below left:Origen (O)}] (O) at (0,0) {};
+        \fill (O) circle (1.5pt);
+
+        % --- Posición de la partícula y vector de posición ---
+        \def\angleR{30} % Ángulo del vector de posición
+        \def\magR{3.5}  % Magnitud del vector de posición
+        \coordinate (P) at (\angleR:\magR); % Coordenada de la partícula
+        
+        \draw[vector, black] (O) -- (P) node[midway, above, sloped] {$\vec{r}$};
+        \shade[ball color=blue] (P) circle (0.1cm) node[above right] {Partícula};
+
+        % --- Vector de Momento Lineal ---
+        \def\angleP{80} % Ángulo del vector de momento
+        \def\magP{2.5}  % Magnitud del vector de momento
+        \coordinate (PEnd) at ($(P) + (\angleP:\magP)$); % Coordenada del final del vector p
+        
+        % Dibujar el vector de momento total
+        \draw[vector, red] (P) -- (PEnd) node[anchor=south west] {$\vec{p} = m\vec{v}$};
+        
+        % --- Descomposición del vector de momento p (Nuevo método) ---
+        
+        % 1. Calcular la longitud de la proyección de p sobre r
+        \pgfmathsetmacro{\projLength}{\magP*cos(\angleP-\angleR)}
+        
+        % 2. Dibujar la componente Paralela (p_parallel)
+        %    Un vector que parte de P, en la dirección de r, con la longitud de la proyección.
+        \draw[vector, red!50] (P) -- ++(\angleR:\projLength) node[midway, below, sloped] {$\vec{p}_{\parallel}$};
+        \coordinate (ParallelEnd) at ($(P) + (\angleR:\projLength)$);
+        
+        % 3. Dibujar la componente Perpendicular (p_perp)
+        %    Un vector que parte de P, en la dirección perpendicular a r.
+        \draw[vector, red!50, thick] (P) -- ++(\angleR+90:{\magP*sin(\angleP-\angleR)}) node[midway, above, sloped] {$\vec{p}_{\perp}$};
+        
+        % --- Dibujar el paralelogramo de suma de vectores ---
+        \draw[helpline] (ParallelEnd) -- (PEnd);
+        \draw[helpline] ($(P) + (\angleR+90:{\magP*sin(\angleP-\angleR)})$) -- (PEnd);
+        
+        % --- Marcar Ángulos ---
+        % Ángulo theta entre r y p
+        \draw[helpline] (P) -- ++(\angleR:3); % Extender línea de r
+        \draw[->, gray] ($(P)+(\angleR:0.8)$) arc (\angleR:\angleP:0.8);
+        \node at ({(\angleR+\angleP)/2}:1) [shift=(P)] {$\theta$};
+        
+    \end{tikzpicture}
+    \caption{
+        Ilustración mejorada de la definición de momento angular.
+        El momento lineal $\vec{p}$ se descompone en una componente paralela a $\vec{r}$ ($\vec{p}_{\parallel}$) y una perpendicular ($\vec{p}_{\perp}$), ambas originadas en la partícula.
+        El momento angular solo depende de la componente perpendicular: $\vec{L} = \vec{r} \times \vec{p}_{\perp}$.
+        Su magnitud es $L = |\vec{r}| |\vec{p}_{\perp}| = r (p \sin\theta)$.
+    }
+    \label{fig:momento_angular_def_mejorada}
+\end{figure}
+
+% --- Fin del código LaTeX --
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{lunarorbit}
+    \caption{Órbita lunar calculada numéricamente con un período aproximado de 28 días}
+    \label{fig:ÓrbitaLunar}
+\end{figure}
+
+\subsection{Producto vectorial}
+Tomado de \url{https://www.met.reading.ac.uk/pplato2}
+Dados dos vectores cualesquiera, $\boldsymbol{a}$ y $\boldsymbol{b}$ , que están inclinados entre sí un ángulo $\theta$ , su producto vectorial se escribe como $\boldsymbol{a}  \times  \boldsymbol{b}$ y tiene las siguientes propiedades:
+
+\begin{itemize}
+    \item Es un vector;
+\item  Tiene magnitud $ab \sin \theta$;
+Su dirección es perpendicular tanto a $\boldsymbol{a}$  como a $\boldsymbol{b}$ y se define mediante la regla de la mano derecha (Figura \ref{fig:manoderecha}b).
+\end{itemize}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=1]{vectorproduct}
+    \caption{Definición de la dirección del producto vectorial 
+    $\boldsymbol{a}  \times  \boldsymbol{b}$ de dos vectores $\boldsymbol{a}$ y $\boldsymbol{b}$ según la regla del sacacorchos y la regla de la mano derecha.  (b) Regla de la mano derecha: al curvar los dedos de la mano derecha en la dirección de $\boldsymbol{a}$ a $\boldsymbol{b}$, el pulgar apunta en la dirección de $\boldsymbol{a}  \times  \boldsymbol{b}$ (y no en la dirección opuesta)}
+    \label{fig:manoderecha}
+\end{figure}
+
+El momento angular se define como
+\begin{align}
+    \boldsymbol{L} = \boldsymbol{r}\times \boldsymbol{p}\,.
+\end{align}
+La dirección viene dada por el producto vectorial entre los vectores de posición y momento lineal, que da como resultado un vector perpendicular al plano definido por los vectores de posición y momento lineal con su dirección determinada por la regla de la mano derecha cómo se muestra en la figura \ref{fig:manoderecha}b.
+
+
+
+
+Podemos definir de igual forma el torque como
+\begin{align}
+    \boldsymbol{\tau} =  \boldsymbol{r}\times \boldsymbol{F}\,.
+\end{align}
+
+
+La inercia a la rotación es una característica de los objetos extendidos: en ausencia de torques externos un cuerpo mantiene el momento angular constante.
+
+Un ejemplo es un pulsar que mantiene un período constante por largos períodos de tiempo. Sin embargo, con el paso del tiempo, va disminuyendo el período de rotación porqué pierde energía emitiendo ondas gravitacionales.
+
+
+
+\subsection{Estabilidad}
+
+Estabilidad : El elevado momento angular de una rueda que gira a gran velocidad genera un gran efecto giroscópico. Al montar en bicicleta, esta resistencia a la variación del vector de momento angular ayuda a mantener la rueda en posición vertical y contribuye a la estabilidad. Ver figura~\ref{fig:rueda}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.3]{rueda}
+    \caption{Vector de momento angular asociado al giro de una rueda de bicicleta}
+    \label{fig:rueda}
+\end{figure}
+% --- Inicio del código LaTeX para insertar ---
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        scale=2, % Escala para hacer la figura más grande
+        font=\large,
+        axis/.style={->, >=Stealth}, % Estilo para los ejes
+        vector/.style={->, >=Stealth, ultra thick}, % Estilo para los vectores
+        line/.style={dashed, thin} % Estilo para líneas de ayuda
+    ]
+        % --- Definir la perspectiva (proyección 3D en 2D) ---
+        \def\perspX{-0.707}
+        \def\perspY{-0.707}
+
+        % --- Dibujar los ejes de coordenadas ---
+        \draw[axis] (0,0) -- (2.*\perspX, 2.*\perspY) node[below] {$x$};
+        \draw[axis] (0,0) -- (3,0) node[below] {$y$}; % Eje Y
+        \draw[axis] (0,0) -- (0,2) node[left] {$z$};
+        \node[anchor=north east] at (0.2,0) {O};
+        
+        % --- Posición de la partícula y vectores ---
+        % Coordenadas de la partícula en el plano XY
+        \coordinate (P) at (1, -0.5); % Posición de la partícula (m)
+
+        % Dibujar la partícula 'm'
+        \fill (P) circle (1.5pt) node[above left, xshift=12pt] {$m$};
+        
+        % Vector de posición r (azul)
+        \draw[vector, blue] (0,0) -- (P) node[midway, below left] {$\boldsymbol{r}$};
+
+        % Vector de momento P (verde)
+        % Le damos un pequeño ángulo con respecto a la horizontal para que no sea paralelo al eje Y
+        \def\angleP{5} % Ángulo del vector P con respecto a la horizontal
+        \coordinate (PEnd) at ($(P) + (\angleP:1.5)$); % Coordenada del final de P
+        \draw[vector, green!50!black] (P) -- (PEnd) node[midway, above] {$\boldsymbol{P}$};
+        
+        % --- Dibujar el vector Momento Angular L ---
+        \draw[vector, red!70!black] (0,0) -- (0,1.5);
+        \node at (0.6, 1.3) {$\boldsymbol{L} = \boldsymbol{r} \times \boldsymbol{P}$};
+        
+        % --- CORRECCIÓN: Detalles del ángulo phi ---
+        % Extender la línea de acción del vector r
+        \draw[line] (P) -- ($(P)!-1.5cm!(0,0)$);
+
+        % Extender la línea de acción del vector P
+        %\draw[line] (PEnd) -- ($(P)!-2.5cm!(PEnd)$);
+        
+        % Ángulo phi entre las dos líneas de acción
+        % Calculamos el ángulo del vector r
+        \pgfmathanglebetweenpoints{\pgfpointanchor{P}{center}}{\pgfpointorigin}
+        \let\angleR\pgfmathresult
+        
+        % Dibujamos el arco desde el ángulo de P hasta el ángulo de r
+        \draw[thick] ($(P) + (\angleP:1)$) arc (\angleP:\angleR-180:1);
+        \node at ($(P) + ({(\angleP+\angleR-180)/2}:1.2)$) {$\theta$};
+
+    \end{tikzpicture}
+    \caption{Representación del vector de momento angular $\vec{L}$ como el producto vectorial del vector de posición $\vec{r}$ y el vector de momento lineal $\vec{P}$. El ángulo $\phi$ es el ángulo entre los dos vectores.}
+    \label{fig:momento_angular_3d_corregido}
+\end{figure}
+
+% --- Fin del código LaTeX ---
+
+\section{Derivación Simplificada de las Leyes de Kepler}
+
+Derivar las leyes de Kepler para las orbita de los planetas del sistema solar, a partir de la Ley de Gravitación Universal de Newton, es uno de los triunfos históricos de la física. Aunque una derivación completa y rigurosa requiere el uso de cálculo diferencial, podemos entender la esencia de las tres leyes utilizando principalmente álgebra y conceptos de física a nivel introductorio.
+
+\subsection*{Ley de Gravitación Universal de Newton (El Punto de Partida)}
+
+Todo se basa en la ley de Newton, que dice que la fuerza de gravedad ($F_g$) entre dos objetos de masa $M$ y $m$ separados por una distancia $r$ es:
+\[
+    F_g = G \frac{Mm}{r^2}
+\]
+Donde $G$ es la constante de gravitación universal.
+
+% --- Fin del código LaTeX ---
+
+\section*{Primera Ley de Kepler (Ley de las Órbitas)}
+\textbf{Enunciado:} \textit{“La órbita de cada planeta es una elipse con el Sol en uno de sus focos.”}
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.5,
+        font=\large,
+        dot/.style={fill, circle, inner sep=1.5pt}
+    ]
+        % --- Definir los parámetros de la elipse ---
+        \def\a{4} % Semieje mayor
+        \def\b{2.5} % Semieje menor
+        % Calcular la distancia focal c, usando c^2 = a^2 - b^2
+        \pgfmathsetmacro{\c}{sqrt(\a*\a - \b*\b)}
+
+        % --- Dibujar la órbita elíptica ---
+        \draw[blue, thick] (0,0) ellipse ({\a} and {\b});
+
+        % --- Dibujar los ejes y semiejes ---
+        % Eje mayor (línea horizontal)
+        \draw[gray, dashed] (-\a, 0) -- (\a, 0);
+        % Eje menor (línea vertical)
+        \draw[gray, dashed] (0, -\b) -- (0, \b);
+        
+        % Marcar el centro
+        \node[dot, label={below:Centro}] at (0,0) {};
+
+        % --- Dibujar y etiquetar los focos ---
+        \node[dot, label={below:$F_1$}] at (-\c, 0) {};
+        % Colocar el Sol en el segundo foco (F2)
+        \shade[ball color=yellow] (\c, 0) circle (0.3cm);
+        \node[below, yshift=-12pt] at (\c, 0) {Sol ($F_2$)};
+
+        % --- Etiquetar los semiejes ---
+        % Semieje mayor 'a'
+        \draw[<->, thick, red] (0,0) -- (\a, 0) node[midway, below] {$a$};
+        
+        % Semieje menor 'b'
+        \draw[<->, thick, red] (0,0) -- (0, \b) node[midway, right] {$b$};
+        
+        % --- Mostrar un planeta en la órbita ---
+        \def\anglePlanet{110} % Ángulo para la posición del planeta
+        \coordinate (P) at ({\a*cos(\anglePlanet)}, {\b*sin(\anglePlanet)});
+        \shade[ball color=brown!60] (P) circle (0.15cm);
+        \node[above] at (P) {Planeta};
+        
+        % Línea que une el Sol y el planeta (para la 2da Ley de Kepler)
+        \draw[gray] (\c, 0) -- (P);
+
+    \end{tikzpicture}
+    \caption{Ilustración de la Primera Ley de Kepler. La órbita del planeta es una elipse, con el Sol situado en uno de sus dos focos ($F_2$). Se muestran el semieje mayor ($a$) y el semieje menor ($b$).}
+    \label{fig:orbita_eliptica}
+\end{figure}
+
+% --- Fin del código LaTeX ---
+
+\paragraph{Derivación Simplificada:}
+Una demostración rigurosa de que las órbitas son elipses requiere cálculo avanzado. Sin embargo, podemos demostrar que una \textbf{órbita circular} es un caso perfectamente válido y estable.
+\begin{enumerate}
+    \item \textbf{Condición para una Órbita Circular:} Para que un planeta se mueva en un círculo de radio $r$ a velocidad constante $v$, la fuerza de gravedad debe proporcionar exactamente la \textbf{fuerza centrípeta} necesaria, $F_c = \frac{mv^2}{r}$.
+
+    \item \textbf{Igualando las Fuerzas:}
+    \[ \text{Fuerza Gravitacional} = \text{Fuerza Centrípeta} \]
+    \[ G \frac{M m}{r^2} = \frac{m v^2}{r} \]
+
+    \item \textbf{Resolviendo para la Velocidad:} Simplificamos la ecuación cancelando una $m$ y una $r$ de cada lado:
+    \[ G \frac{M}{r} = v^2 \implies v = \sqrt{\frac{GM}{r}} \]
+\end{enumerate}
+\paragraph{Conclusión (Simplificada):} Esta ecuación nos dice que para cualquier distancia $r$ del Sol, existe una velocidad específica $v$ que permite una órbita circular estable. Si un planeta tuviera una velocidad ligeramente diferente, su órbita se estiraría para convertirse en una \textbf{elipse}. El círculo es solo el caso especial de una elipse donde los dos focos coinciden.
+
+\section*{Segunda Ley de Kepler (Ley de las Áreas)}
+\textbf{Enunciado:} \textit{“Una línea que une un planeta y el Sol barre áreas iguales en intervalos de tiempo iguales.”}
+
+
+\paragraph{Derivación Simplificada (usando Conservación del Momento Angular):}
+Esta ley es una consecuencia directa de la \textbf{conservación del momento angular}.
+\begin{enumerate}
+    \item \textbf{Momento Angular ($L$):} El momento angular es una medida de la ``cantidad de movimiento de rotación'' y se calcula como $L = m v_{\perp} r$, donde $v_{\perp}$ es la componente de la velocidad perpendicular a la línea que une el planeta con el Sol.
+
+    \item \textbf{¿Por qué se Conserva?} La fuerza de gravedad es una \textbf{fuerza central}, siempre apunta hacia el Sol. No tiene ninguna componente ``de lado'' que pueda cambiar la rotación del planeta. Por lo tanto, el momento angular es constante:
+    \[ L = m v_{\perp} r = \text{constante} \]
+
+    \item \textbf{Conectando con el Área:} En un intervalo de tiempo muy corto $\Delta t$, el planeta se mueve una distancia. El área barrida ($\Delta A$) es aproximadamente un triángulo delgado con base $r$ y altura $v_{\perp} \Delta t$.
+    \[ \Delta A \approx \frac{1}{2} (\text{base}) (\text{altura}) = \frac{1}{2} (r) (v_{\perp} \Delta t) \]
+
+    \item \textbf{Tasa de Barrido de Área:} Dividiendo por $\Delta t$, obtenemos la ``velocidad'' a la que se barre el área:
+    \[ \frac{\Delta A}{\Delta t} = \frac{1}{2} r v_{\perp} \]
+    Usando la definición de momento angular $L = m v_{\perp} r$, podemos reescribir esto como:
+    \[ \frac{\Delta A}{\Delta t} = \frac{L}{2m} \]
+\end{enumerate}
+\paragraph{Conclusión:} Como $L$, $m$ y 2 son constantes, la tasa de barrido de área ($\frac{\Delta A}{\Delta t}$) también debe ser \textbf{constante}. Esto significa que en intervalos de tiempo iguales, se barren áreas iguales, lo que demuestra la Segunda Ley. Esto explica por qué los planetas se mueven más rápido cuando están cerca del Sol y más lento cuando están lejos.
+
+\section*{Tercera Ley de Kepler (Ley de los Períodos)}
+\textbf{Enunciado:} \textit{“El cuadrado del período orbital de un planeta es directamente proporcional al cubo del semieje mayor de su órbita.”} Para órbitas circulares, esto se simplifica a ``El cuadrado del período es proporcional al cubo del radio".
+
+\paragraph{Derivación Simplificada (para Órbitas Circulares):}
+\begin{enumerate}
+    \item \textbf{Período Orbital (T):} El período es el tiempo para completar una órbita. Para un círculo, la distancia es la circunferencia ($2\pi r$).
+    \[ T = \frac{\text{Distancia}}{\text{Velocidad}} = \frac{2\pi r}{v} \]
+
+    \item \textbf{Relacionando con la Gravedad:} De la Primera Ley, sabemos que la velocidad de una órbita circular es:
+    \[ v = \sqrt{\frac{GM}{r}} \]
+
+    \item \textbf{Sustituir la Velocidad:} Sustituimos esta expresión para $v$ en la ecuación del período.
+    \[ T = \frac{2\pi r}{\sqrt{\frac{GM}{r}}} \]
+
+    \item \textbf{Resolver para $T^2$:} Elevamos al cuadrado ambos lados para eliminar la raíz cuadrada.
+    \[ T^2 = \frac{(2\pi r)^2}{\left(\sqrt{\frac{GM}{r}}\right)^2} = \frac{4\pi^2 r^2}{\frac{GM}{r}} \]
+
+    \item \textbf{Simplificar la Fracción:}
+    \[ T^2 = 4\pi^2 r^2 \cdot \frac{r}{GM} = \frac{4\pi^2 r^3}{GM} \]
+\end{enumerate}
+\paragraph{Conclusión:}
+Podemos reescribir la ecuación como:
+\[ T^2 = \left(\frac{4\pi^2}{GM}\right) r^3 \]
+El término entre paréntesis es una constante para todos los objetos que orbitan la misma masa central $M$. Por lo tanto, hemos demostrado que:
+\[ T^2 \propto r^3 \]
+El cuadrado del período es directamente proporcional al cubo del radio, lo cual es la Tercera Ley de Kepler para órbitas circulares.
+
+En general,% para un planeta de masa $m$ orbitando alrededor del sol con masa $M$
+$$T^2 = \frac{4\pi^2}{G(M + m)} a^3$$
+
+% --- Fin del código LaTeX ---
+
+\subsection*{Ejemplo. Período orbital de la Luna}
+
+The numerical value for the Moon's orbital period around the Earth can be precisely calculated using the generalized form of Kepler's third law, which accounts for the masses of both bodies.
+
+\subsubsection*{The Formula}
+The formula is given by:
+
+$$T^2 = \frac{4\pi^2}{G(M_E + M_M)} a^3$$
+
+Where $T$ is the orbital period and $a$ is the semi-major axis.
+
+\subsubsection*{Calculation with Constants}
+Using the constants defined in the previous section:
+
+\begin{itemize}
+    \item $G = \SI{6.674E-11}{\cubic\metre\per\kilogram\per\square\second}$
+    \item $M_E + M_M \approx \SI{6.045E24}{\kilogram}$
+    \item $a = \SI{3.844E8}{\metre}$
+\end{itemize}
+
+The calculation yields:
+
+\begin{align*}
+    T^2 &\approx \frac{4\pi^2}{(\SI{6.674E-11}{\meter^3\per\kilogram\per\second\squared})(\SI{6.045E24}{\kilogram})} (\SI{3.844E8}{\meter})^3 \\
+    T^2 &\approx \SI{5.56E12}{\square\second} \\
+    T &\approx \SI{2.358E6}{\second}
+\end{align*}
+
+\subsubsection*{Result}
+The calculated orbital period is:
+
+\begin{itemize}
+    \item \textbf{In seconds:} $\approx \SI{2358000}{\second}$
+    \item \textbf{In days:} $\approx \SI{27.3}{\day}$
+\end{itemize}
+
+This theoretical value matches the observed sidereal period of the Moon.
+
+\section{Ejemplos de las Leyes de Newton}
+
+% --- Inicio del código LaTeX para insertar ---
+
+\subsection*{Ejemplo: Problema de Trabajo y Energía en una Rampa}
+
+\paragraph{Enunciado del Problema:}
+En la bolera, el mecanismo alimentador de bolas debe ejercer una fuerza para empujar las bolas de boliche por una rampa de \SI{1.0}{\meter} de largo. La rampa lleva las bolas a un conducto \SI{0.5}{\meter} por encima de la base de la rampa. ¿Aproximadamente cuánta fuerza debe ejercerse sobre una bola de boliche de \SI{5.0}{\kilo\gram}?
+
+\begin{enumerate}[label=(\alph*)]
+    \item \SI{200}{\newton}
+    \item \SI{50}{\newton}
+    \item \SI{25}{\newton}
+    \item \SI{5.0}{\newton}
+    \item imposible de determinar
+\end{enumerate}
+
+\subsubsection*{Solución Detallada}
+
+La respuesta correcta es \textbf{(c) \SI{25}{\newton}}. Este problema se puede resolver de dos maneras principales: utilizando el Teorema del Trabajo y la Energía o analizando las fuerzas en un plano inclinado.
+
+\paragraph{Método 1: Usando el Teorema del Trabajo y la Energía (el más directo)}
+El Teorema del Trabajo y la Energía establece que el trabajo realizado sobre un objeto se convierte en su cambio de energía. En este caso, el trabajo realizado por el mecanismo ($W$) se convierte en la energía potencial gravitacional ($\Delta U_g$) de la bola al ganar altura. Asumimos que la bola se mueve a velocidad constante, por lo que no hay cambio en su energía cinética.
+
+\begin{itemize}
+    \item Trabajo realizado: $W = F \cdot d$, donde $F$ es la fuerza aplicada y $d$ es la distancia a lo largo de la rampa.
+    \item Cambio de Energía Potencial: $\Delta U_g = mgh$, donde $m$ es la masa, $g$ la gravedad y $h$ la altura vertical.
+\end{itemize}
+\textbf{Datos del problema:}
+\begin{itemize}
+    \item Distancia a lo largo de la rampa, $d = \SI{1.0}{\meter}$.
+    \item Masa de la bola, $m = \SI{5.0}{\kilo\gram}$.
+    \item Altura vertical, $h = \SI{0.5}{\meter}$.
+    \item Aceleración de la gravedad, $g \approx \SI{9.8}{\meter\per\second\squared}$.
+\end{itemize}
+\textbf{Cálculo:}
+Igualamos el trabajo y el cambio de energía potencial:
+\[ W = \Delta U_g \implies F \cdot d = mgh \]
+Despejamos la fuerza $F$:
+\[ F = \frac{mgh}{d} \]
+Sustituimos los valores:
+\[ F = \frac{(\SI{5.0}{\kilo\gram}) \times (\SI{9.8}{\meter\per\second\squared}) \times (\SI{0.5}{\meter})}{\SI{1.0}{\meter}} = \frac{\SI{24.5}{\joule}}{\SI{1.0}{\meter}} = \SI{24.5}{\newton} \]
+El valor calculado es de \SI{24.5}{\newton}, que se aproxima a la opción \textbf{\SI{25}{\newton}}.
+
+\paragraph{Método 2: Usando Fuerzas en un Plano Inclinado}
+Este método consiste en encontrar la componente de la fuerza de gravedad que actúa a lo largo de la rampa y que el mecanismo debe contrarrestar.
+
+\begin{enumerate}
+    \item \textbf{Encontrar el ángulo de la rampa ($\theta$):}
+    La rampa forma un triángulo rectángulo con hipotenusa $d=\SI{1.0}{\meter}$ y cateto opuesto $h=\SI{0.5}{\meter}$.
+    \[ \sin(\theta) = \frac{\text{opuesto}}{\text{hipotenusa}} = \frac{\SI{0.5}{\meter}}{\SI{1.0}{\meter}} = 0.5 \]
+    Esto corresponde a un ángulo de $\theta = \ang{30}$.
+
+    \item \textbf{Calcular la componente del peso a lo largo de la rampa ($F_{g, \parallel}$):}
+    La fuerza de la gravedad que tira de la bola hacia abajo a lo largo de la rampa es la componente del peso paralela al plano.
+    \[ F_{g, \parallel} = mg \sin(\theta) \]
+    
+    \item \textbf{Sustituir los valores:}
+    \[ F_{g, \parallel} = (\SI{5.0}{\kilo\gram}) \times (\SI{9.8}{\meter\per\second\squared}) \times \sin(\ang{30}) \]
+    \[ F_{g, \parallel} = (\SI{49}{\newton}) \times 0.5 = \SI{24.5}{\newton} \]
+\end{enumerate}
+Para empujar la bola hacia arriba a velocidad constante, la fuerza aplicada por el mecanismo debe ser igual en magnitud a esta componente del peso. Por lo tanto, la fuerza requerida es de \SI{24.5}{\newton}. Ambos métodos confirman que la respuesta correcta es \textbf{\SI{25}{\newton}}.
+
+% --- Fin del código LaTeX ---
+
+
+
 \appendix
+
 
 \section*{Apendices}
 
@@ -1880,19 +4092,22 @@ En relatividad, la Segunda Ley de Newton se escribe como la tasa de cambio del m
 \[ \boldsymbol{F} = \frac{d\boldsymbol{p}}{dt}, \quad \text{donde} \quad \boldsymbol{p} = \gamma m \boldsymbol{u} \]
 El factor de Lorentz, $\gamma$, depende de la velocidad total $u = \sqrt{u_x^2 + u_y^2}$:
 \[ \gamma = \frac{1}{\sqrt{1 - u^2/c^2}} = \frac{1}{\sqrt{1 - (u_x^2 + u_y^2)/c^2}} \]
-Esta dependencia de la velocidad total significa que el movimiento en las direcciones x e y está acoplado, una característica clave de la dinámica relativista.
+Esta dependencia de la velocidad total significa que el movimiento en las direcciones $x$ e $y$ está acoplado, una característica clave de la dinámica relativista.
 
 \subsection{La Ecuación de Movimiento Relativista}
 
 \subsection{Resolviendo para el Momento}
 La ecuación vectorial $\boldsymbol{F} = d\boldsymbol{p}/dt$ proporciona dos ecuaciones escalares para las componentes del momento $p_x$ y $p_y$.
 \begin{itemize}
-    \item \textbf{Dirección x:} $F_x = \frac{dp_x}{dt} = 0$. Esto implica que la componente x del momento se conserva:
+    \item \textbf{Dirección x:} $F_x = \frac{dp_x}{dt} = 0$. Esto implica que la componente $x$ del momento se conserva:
     \[ p_x(t) = p_{x0} = \gamma_0 m u_{x0} \]
     donde $\gamma_0$ es el factor de Lorentz inicial.
     \item \textbf{Dirección y:} $F_y = \frac{dp_y}{dt} = -F$. Integrando con respecto al tiempo se obtiene:
     \[ p_y(t) = p_{y0} - Ft = \gamma_0 m u_{y0} - Ft \]
 \end{itemize}
+
+
+
 
 \subsection{Encontrando la Velocidad \texorpdfstring{$u_y(t)$}{uy(t)}}
 Para encontrar la ecuación de movimiento para $y(t)$, primero necesitamos la velocidad $u_y(t) = dy/dt$. Podemos expresar las componentes de la velocidad en términos del momento y la energía total usando la relación relativista energía-momento $E^2 = (pc)^2 + (mc^2)^2$. Dado que $E=\gamma m c^2$, podemos encontrar $\gamma = \frac{1}{mc}\sqrt{p_x^2 + p_y^2 + m^2c^2}$. Esto conduce a:
@@ -2347,8 +4562,9 @@ Podemos definir el producto escalar como
     \end{pmatrix}
 \end{align*}
 
+
 \begin{align*}
-m_\mu >& m_e\\
+m_\mu \gg& m_e\\
     L_e =&\begin{pmatrix}
       \color{Green}  \nu_e\\
        \color{red} e
