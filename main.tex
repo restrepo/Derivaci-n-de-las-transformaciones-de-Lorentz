@@ -29,6 +29,7 @@
 \usepackage{enumitem}
 \usepackage{tikz}
 % https://tex.stackexchange.com/a/166775
+% https://vosores.github.io/tikz.html
 \usetikzlibrary{babel}
 % https://www.texdev.net/2021/06/30/siunitx-v2-to-v3
 \usetikzlibrary{arrows.meta}
@@ -46,43 +47,23 @@
 \usepackage[cache=false]{minted}
 \renewcommand{\arraystretch}{1.9}
 \usepackage{svg}
-\usepackage{listings}
 
-% python listing
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\usepackage[most]{tcolorbox} % Para los recuadros de color
 
-\lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2
+% Definir un estilo para los cuadros de ejemplo
+\newtcolorbox{examplebox}[1][]{
+    colback=white,
+    colframe=black,
+    sharp corners,
+    boxrule=1pt,
+    #1
 }
-
-\lstset{style=mystyle}
-
-% end python listing
-
 
 % commment/uncomment to show/hide the solution
 %\renewcommand{\phantom}[1]{#1}
 
 % --- INFORMACIÓN DEL TÍTULO ---
-\title{Una Derivación Completa de las Transformaciones de Lorentz \\ y su Interpretación Geométrica}
+\title{Fundamentación en Física}
 \author{\href{https://bit.ly/lorentztransformation}{Google AI studio prompt}\\ \small \emph{Derivado de los Postulados de la Relatividad Especial}}
 \date{\today}
 
@@ -3230,6 +3211,7 @@ Para el campo gravitacional definimos de forma similar la energía potencial a u
 
 
 
+
 \subsubsection*{Parte 3: La Velocidad de Escape ($v_{\text{esc}}$)}
 La velocidad de escape desde la superficie de la Tierra, a $R_T$, se define como la velocidad inicial que debe imprimirse a un objeto para que llegue al infinito con velocidad cero, donde la disminución de la disminución de la velocidad es causada por la atracción gravitacional de la Tierra. Como en el infinito la Energía potencial también es cero,
 
@@ -3244,13 +3226,14 @@ K_0+E_{\text{pot}_0} =& K+E_{\text{pot}}\\
     \boxed{ v_{\text{esc}} = \sqrt{\frac{2 G M_T}{R_T}} }
 \end{equation}
 Notamos la simple relación: $v_{\text{esc}} = \sqrt{2} \cdot v_{\text{orb}}$. Para la Tierra, la velocidad de escape desde la superficie es de aproximadamente \SI{11.2}{\kilo\meter\per\second}.
+ver \url{https://trinket.io/python3/78e5585e116e}
 
 
 \begin{figure}[h!]
     \centering
     \includesvg[scale=1]{Newton_Cannon}
 
-    \caption{Ilustración del experimento mental del Cañón de Newton. Dependiendo de la velocidad de lanzamiento horizontal, un proyectil puede (A) caer a la Tierra, (C) entrar en una órbita circular, (D) entrar en una órbita elíptica, o (E) escapar de la gravedad terrestre. Creditos: Wikipedia}
+    \caption{Ilustración del experimento mental del Cañón de Newton. Dependiendo de la velocidad de lanzamiento horizontal, un proyectil puede (A) caer a la Tierra, (C) entrar en una órbita circular, (D) entrar en una órbita elíptica, o (E) escapar de la gravedad terrestre. Créditos: Wikipedia}
     \label{fig:canon_newton}
 \end{figure}
 
@@ -4073,6 +4056,276 @@ Para empujar la bola hacia arriba a velocidad constante, la fuerza aplicada por 
 
 
 
+\section{Electrostática}
+% --- Inicio del código LaTeX para insertar ---
+
+Otro ejemplo de fuerza central corresponde a la interacción entre dos cargas eléctricas $q_1$ y $q_2$, las cuales pueden ser positivas o negativas. Un ejemplo es la fuerza de repulsión entre dos globos que han sido previamente frotados con un paño de tela de algodón. El paño de tela pierde electrones, quedando con una carga neta positiva, mientras que el globo de látex gana electrones, quedando con una carga neta negativa. En general, la fuerza eléctrica entre dos objetos cargados se conoce como la Ley de Coulomb
+\begin{align}
+    \boldsymbol{F} =& k \frac{q_1 q_2}{r^2}\frac{\boldsymbol{r}}{r}\nonumber\\
+      \boldsymbol{F} =& k \frac{q_1 q_2}{r^3}\boldsymbol{r}\,,
+\end{align}
+donde $k$ es la constante de Coulomb
+\begin{align}
+    k =\frac{1}{4\pi\epsilon_0} 
+    = \qty{8.987551785972(14)e19}{\newton\m^2\coulomb^{-2}}\,,
+\end{align}
+donde $\epsilon_0$ es la permitividad del vacio
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{CoulombsLaw}
+
+    \caption{Signos en la Ley de Coulomb. Créditos: Wikipedia}
+    \label{fig:canon_newton}
+\end{figure}
+
+El campo eléctrico generado por una partícula de carga $q$ es
+\begin{align}
+      \boldsymbol{E} =& k \frac{q}{r^3}\boldsymbol{r}\,,
+\end{align}
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!]
+    \centering
+    % Usamos minipage para colocar las dos figuras una al lado de la otra
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        % --- FIGURA IZQUIERDA: Carga Negativa ---
+        \begin{tikzpicture}[
+            scale=1.2, font=\large,
+            charge/.style={circle, shade, ball color=blue, minimum size=1cm},
+            equipotential/.style={dashed, green!50!black},
+            fieldline/.style={->, >=Stealth, thick, red},
+        ]
+            % --- Dibujar la carga negativa en el centro ---
+            \node[charge] at (0,0) {\textbf{--}};
+            
+            % --- Dibujar las líneas equipotenciales ---
+            \foreach \r in {1, 2, 3} {
+                \draw[equipotential] (0,0) circle (\r);
+            }
+            
+            % --- Dibujar las líneas del campo eléctrico (hacia adentro) ---
+            \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+                \draw[fieldline] (\angle:3.5) -- (\angle:0.5);
+            }
+            
+            % --- Añadir etiquetas ---
+            \node[green!50!black, font=\small] at (0, 2.2) {Equipotencial};
+            \node[red, font=\small, rotate=-45] at (45:2.5) {Campo $\vec{E}$};
+        \end{tikzpicture}
+        \caption*{a) Carga Negativa: Las líneas de campo apuntan radialmente hacia adentro.}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        % --- FIGURA DERECHA: Carga Positiva ---
+        \begin{tikzpicture}[
+            scale=1.2, font=\large,
+            charge/.style={circle, shade, ball color=red, minimum size=1cm},
+            equipotential/.style={dashed, green!50!black},
+            fieldline/.style={->, >=Stealth, thick, blue},
+        ]
+            % --- Dibujar la carga positiva en el centro ---
+            \node[charge] at (0,0) {\textbf{+}};
+            
+            % --- Dibujar las líneas equipotenciales ---
+            \foreach \r in {1, 2, 3} {
+                \draw[equipotential] (0,0) circle (\r);
+            }
+            
+            % --- Dibujar las líneas del campo eléctrico (hacia afuera) ---
+            \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+                \draw[fieldline] (\angle:0.5) -- (\angle:3.5);
+            }
+
+            % --- Añadir etiquetas ---
+            \node[green!50!black, font=\small] at (0, 2.2) {Equipotencial};
+            \node[blue, font=\small, rotate=45] at (45:2.5) {Campo $\vec{E}$};
+        \end{tikzpicture}
+        \caption*{b) Carga Positiva: Las líneas de campo apuntan radialmente hacia afuera.}
+    \end{minipage}
+    
+    \caption{Representación de las líneas del campo eléctrico ($\vec{E}$) y las superficies equipotenciales para una carga puntual negativa y una positiva. Las líneas de campo siempre son perpendiculares a las equipotenciales.}
+    \label{fig:campos_electricos}
+\end{figure}
+
+% --- Fin del código LaTeX ---
+
+
+Las magnitudes correspondientes para un par de cargas $q_1$ y $q_2$ son
+\begin{align}
+    F =& k\frac{q_1q_2}{r^2}\,,& E=& k\frac{q_1}{r^2} \,,
+\end{align}
+En este caso la carga $q_2$ corresponde a una carga de prueba para el  campo $E$ generado por $q_1$
+
+%\newpage
+\subsection{La Cantidad de Carga en un Grupo de Electrones}
+
+
+
+
+\begin{examplebox}
+    \textbf{Problema:} Calcule la carga, en coulombs, transportada por 6 mil millones de electrones.
+\end{examplebox}
+
+\vspace{5mm}
+
+% --- CORRECCIÓN FINAL Y DEFINITIVA ---
+% Usamos 'tabular' para la estructura general y 'array' para las ecuaciones.
+\def\arraystretch{1.5} % Aumenta el espaciado vertical de las filas
+\noindent % Asegura que la tabla ocupe todo el ancho
+\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+    \hline
+    \textcolor{red}{\textbf{Razonamiento}} & \textcolor{red}{\textbf{Desarrollo}} \\
+    \hline
+    Exprese 6 mil millones (6 billion) en notación científica. & 
+    % Usamos un entorno matemático y dentro un 'array' para alinear.
+    \[
+    \begin{array}{r@{\,}c@{\,}l} 
+        1 \text{ mil millones} &=& 1 \times 10^9 \\
+        6 \text{ mil millones} &=& 6 \times 10^9
+    \end{array} 
+    \] \\
+    \hline
+    Calcule la carga, $q$, en coulombs multiplicando el número de electrones por la carga de un electrón ($-1.6 \times 10^{-19}$~C). & 
+    % Usamos un entorno matemático y dentro un 'array' para alinear.
+    \[
+    \begin{array}{r@{\,}c@{\,}l}
+        q &=& (6 \times 10^9) \times (q_e) \\
+          &=& (6 \times 10^9) \times (-1.6 \times 10^{-19} \, \text{C}) \\
+          &=& -9.6 \times 10^{-10} \, \text{C}
+    \end{array} 
+    \] \\
+    \hline
+\end{tabular}
+\def\arraystretch{1.0} % Restablece el valor por defecto
+
+\vspace{1cm}
+
+\textcolor{red}{\textbf{Ejemplo resuelto: Inténtalo tú mismo 12.1.1}}
+\subsubsection*{La Cantidad de Carga en un Grupo de Electrones}
+
+\begin{tcolorbox}[colframe=red, boxrule=1.5pt]
+    \textbf{Problema:} Calcule la carga, en coulombs, transportada por 4 millones de electrones.
+\end{tcolorbox}
+
+% --- Fin del código LaTeX ---
+
+% --- Inicio del código LaTeX para insertar ---
+
+\subsection{Energía Potencial Electrostática ($U_e$)}
+
+La \textbf{energía potencial electrostática ($U_e$)} de un sistema de dos cargas es una medida de la energía almacenada en el sistema debido a su configuración espacial. Se define como el \textbf{trabajo} que una fuerza externa debe realizar para traer una de las cargas (la carga de prueba, $q_2$) desde una posición de referencia en el infinito hasta una distancia $r$ de la otra carga ($q_1$), que se mantiene fija.
+
+\subsubsection*{La Fórmula de la Energía Potencial}
+La energía potencial generada por una carga fuente $q_1$ y sentida por una carga de prueba $q_2$ separadas por una distancia $r$ es:
+\begin{equation}
+    \boxed{
+    U_e = k \frac{q_1 q_2}{r}
+    }
+    \label{eq:energia_potencial_e}
+\end{equation}
+\textbf{Notas importantes sobre la fórmula:}
+\begin{itemize}
+    \item A diferencia de la Ley de Coulomb para la magnitud de la fuerza, en esta ecuación los signos de las cargas $q_1$ y $q_2$ \textbf{son cruciales} y deben incluirse en el cálculo.
+    \item La energía potencial decae como $1/r$, mientras que la fuerza decae como $1/r^2$.
+\end{itemize}
+
+\subsubsection*{Análisis de la Fórmula}
+El signo de la energía potencial tiene una interpretación física directa:
+\begin{description}
+    \item[Si $U_e > 0$ (Repulsión):] Ocurre cuando $q_1$ y $q_2$ tienen el mismo signo. Se requiere un trabajo positivo (añadir energía al sistema) para juntar las cargas contra su repulsión natural. Si se sueltan, esta energía potencial se convertirá en energía cinética a medida que se alejan.
+
+    \item[Si $U_e < 0$ (Atracción):] Ocurre cuando $q_1$ y $q_2$ tienen signos opuestos. El propio campo eléctrico realiza el trabajo para juntar las cargas. El sistema se encuentra en un estado ``ligado'' o en un ``pozo de potencial''. Se necesitaría realizar un trabajo externo positivo para separar las cargas y llevarlas al infinito.
+\end{description}
+
+\subsubsection*{Relación con el Potencial Eléctrico (Voltaje)}
+El concepto de energía potencial está íntimamente ligado al de \textbf{potencial eléctrico ($V$)}, que es una propiedad del espacio creada por la carga fuente $q_1$. El potencial eléctrico se define como la energía potencial por unidad de carga:
+\[ V = \frac{U_e}{q_2} \]
+El potencial eléctrico creado por una carga puntual $q_1$ a una distancia $r$ es:
+\[ V = k \frac{q_1}{r} \]
+Con esta definición, podemos encontrar la energía potencial de cualquier carga de prueba $q_2$ colocada en un punto con potencial $V$ simplemente multiplicando:
+\[ U_e = q_2 V \]
+Esta relación es fundamental en el análisis de circuitos y campos electrostáticos.\footnote{Formalmente, la energía potencial es el negativo del trabajo realizado por la fuerza eléctrica para mover una carga desde el infinito: $U_e(r) = -\int_\infty^r \vec{F}_e \cdot d\vec{r}' = -\int_\infty^r (k \frac{q_1 q_2}{r'^2}) dr' = k \frac{q_1 q_2}{r}$.}
+
+% --- Fin del código LaTeX ---
+
+% --- Inicio del código LaTeX para insertar ---
+
+\subsection{Ejemplo Avanzado: Energía Potencial Eléctrica en el Núcleo de Uranio}
+
+Este ejemplo ilustra la escala de las energías involucradas a nivel nuclear y la inmensa fuerza de repulsión electrostática que la ``fuerza nuclear fuerte'' debe superar para mantener el núcleo unido. Además, se usa el hecho que para grandes núcleos es la fuerza eléctrica la que fuerza la fisión nuclear y entrega la energía cinética a las partes. 
+
+Para entender esto, podemos pensar en los nucléos de los elementos químicos como gotas de un liquido muy denso que se mantiene cohesionado por la tensión superficial. La tensión superficial, $T$, es proporcional al área de la superficie sobre el volumen. Para un esfera
+\begin{align*}
+    T \propto \frac{\pi r^2}{\frac{4}{3}\pi r^3}
+    \propto \frac{1}{r}\,,
+\end{align*}
+y por consiguiente disminuye con el radio. Esto hace por ejemplo que un bebe (volumen menor) necesite más abrigo que un adulto para controlar su temperatura corporal. En el caso de los núcleos implica que las ``gotas" prefieren fusionarse para el caso de núcleos livianos y fisionarse para el caso de núcleos pesados que tienden a deformarse más facilmente cuando reciben el impacto de un neutrón, como se ilustra en la figura~\ref{fig:gotas}
+
+\includegraphics[scale=0.7]{fusion}
+
+\includegraphics{gotas}
+
+\subsubsection*{El Problema}
+Calcular la energía potencial eléctrica total almacenada en un núcleo de Uranio-238 (${}^{238}_{92}\text{U}$) debido a la repulsión mutua de sus 92 protones. Luego, comparar esta energía con la de sus productos de fisión para entender la idea de Lise Meitner sobre la energía liberada.
+
+\subsubsection*{El Error del "Doble Conteo"}
+Una primera intuición podría ser calcular la energía de un protón debida a los otros 91 y luego multiplicar por el número total de protones (92). Esto llevaría a una fórmula incorrecta de la forma $U_e \propto k \frac{(92e)(91e)}{R}$. Sin embargo, este método es erróneo porque cuenta la interacción de cada par de protones dos veces. La energía total de un sistema de cargas es el trabajo necesario para ensamblarlo, sumando la energía de cada \textbf{par único} de interacciones. Para un sistema complejo como un núcleo, la mejor aproximación es tratarlo como una esfera de carga uniforme.
+
+\subsubsection*{Cálculo de la Energía Potencial Total del Núcleo de Uranio}
+La energía potencial electrostática de una esfera de radio $R$ con una carga total $Q$ distribuida uniformemente es:
+\begin{equation}
+    U_{\text{esfera}} = \frac{3}{5} k \frac{Q^2}{R}\,.
+\end{equation}
+El factor 3/5 es, por tanto, un factor puramente geométrico que surge de la integración sobre el volumen de una esfera, ver apéndice~\ref{sec:3_5} 
+
+La energía potencial es el trabajo realizado para, partiendo de un nucleón inicial, traer cada uno de los 92 protones desde el infinito. En la naturaleza éste trabajo fue realizado después de la colisión de las dos estrellas de neutrones que formaron nuestra protonebulosa planetaria
+
+
+\paragraph{Datos para el Uranio-238:}
+\begin{itemize}
+    \item Carga total, $Q = Z e = 92 \times \SI{1.602e-19}{\coulomb}$.
+    \item Radio del núcleo, $R_U \approx (\SI{1.2}{\femto\meter}) \times A^{1/3} = (\SI{1.2e-15}{\meter}) \times (238)^{1/3} \approx \SI{7.44e-15}{\meter}$.
+    \item Constante de Coulomb, $k \approx \SI{8.99e9}{\newton\meter\squared\per\coulomb\squared}$.
+\end{itemize}
+
+\paragraph{Cálculo:}
+% --- CORRECCIÓN APLICADA AQUÍ ---
+\begin{align*}
+    U_{\text{Uranio}} &= \frac{3}{5} k \frac{(92e)^2}{R_U} \\
+    &= \frac{3}{5} \times \num{8.99e9} \times \frac{(92 \times \num{1.602e-19})^2}{\num{7.44e-15}} \, \si{\joule} \\
+    &\approx \num{1.51e-10} \, \si{\joule}
+\end{align*}
+Convirtiendo a Mega-electronvoltios (\SI{1}{\mega\electronvolt} = \SI{1.602e-13}{\joule}):
+\[ U_{\text{Uranio}} \approx \frac{\SI{1.51e-10}{\joule}}{\SI{1.602e-13}{\joule\per\mega\electronvolt}} \approx \SI{944}{\mega\electronvolt} \]
+
+\subsubsection*{La Genialidad de Lise Meitner: Comparando las Energías}
+La idea clave de Meitner y Frisch fue comparar la energía del núcleo original con la suma de las energías de sus fragmentos de fisión, por ejemplo, Kriptón-92 (${}^{92}_{36}\text{Kr}$) y Bario-141 (${}^{141}_{56}\text{Ba}$).
+
+\paragraph{Energía de los Fragmentos:}
+\begin{itemize}
+    \item \textbf{Kriptón-92:} $Z=36, A=92 \implies R_{Kr} \approx \SI{5.4}{\femto\meter}$.
+    \[ U_{Kr} = \frac{3}{5} k \frac{(36e)^2}{R_{Kr}} \approx \SI{200}{\mega\electronvolt} \]
+    \item \textbf{Bario-141:} $Z=56, A=141 \implies R_{Ba} \approx \SI{6.2}{\femto\meter}$.
+    \[ U_{Ba} = \frac{3}{5} k \frac{(56e)^2}{R_{Ba}} \approx \SI{450}{\mega\electronvolt} \]
+\end{itemize}
+La suma de la energía electrostática de los fragmentos es:
+\[ U_{\text{fragmentos}} = U_{Kr} + U_{Ba} \approx \SI{200}{\mega\electronvolt} + \SI{450}{\mega\electronvolt} = \SI{650}{\mega\electronvolt} \]
+
+\subsubsection*{Conclusión Final: La Fuente de la Energía de Fisión}
+La diferencia entre la energía electrostática almacenada antes y después de la fisión es la energía que se libera.
+\begin{itemize}
+    \item Energía electrostática en el núcleo de Uranio: $\approx \SI{944}{\mega\electronvolt}$
+    \item Energía electrostática en sus productos: $\approx \SI{650}{\mega\electronvolt}$
+\end{itemize}
+La diferencia de energía liberada es:
+\[ \Delta E_{\text{electrostática}} = U_{\text{Uranio}} - U_{\text{fragmentos}} \approx \SI{944}{\mega\electronvolt} - \SI{650}{\mega\electronvolt} \approx \SI{294}{\mega\electronvolt} \]
+Este valor, derivado puramente de la repulsión de Coulomb, se aproxima de manera sorprendente a la energía total liberada en una reacción de fisión (que experimentalmente es de unos \SI{200}{\mega\electronvolt}). Lise Meitner y Otto Frisch fueron los primeros en realizar este cálculo, explicando así el origen de la enorme cantidad de energía descubierta por Otto Hahn y Fritz Strassmann.
+
+% --- Fin del código LaTeX ---
+
 \appendix
 
 
@@ -4721,6 +4974,74 @@ z' &= z
 }
 \]
 
+% --- Inicio del código LaTeX para insertar ---
+
+\section{Derivación del Factor 3/5 para la Energía Potencial de una Esfera}
+\label{sec:3_5}
+
+El factor numérico de $3/5$ en la fórmula para la energía potencial electrostática de una esfera cargada no es arbitrario; es el resultado de un cálculo riguroso utilizando integración para encontrar la energía total necesaria para ensamblar dicha esfera.
+
+\subsection{El Concepto: Energía de Ensamblaje}
+
+La energía potencial total del núcleo se puede conceptualizar como el \textbf{trabajo total} que una fuerza externa debe realizar para construir la esfera de carga, trayendo pequeñas cantidades de carga (infinitesimales, $dq$) desde el infinito y añadiéndolas capa por capa contra la repulsión electrostática de la carga ya acumulada. La energía total es la suma (la integral) de todo el trabajo infinitesimal realizado en cada paso.
+
+\subsection{La Derivación (usando Cálculo)}
+
+\paragraph{Paso 1: Configurar el Problema.}
+Queremos construir una esfera de radio final $R$ y carga total $Q$. Asumimos que la carga se distribuye uniformemente, por lo que la densidad de carga $\rho$ es constante:
+\begin{equation}
+    \rho = \frac{\text{Carga Total}}{\text{Volumen Total}} = \frac{Q}{\frac{4}{3}\pi R^3}\,.
+\end{equation}
+En un paso intermedio del proceso, hemos construido una esfera de radio $r$ (con $r < R$).
+
+\paragraph{Paso 2: Calcular la Carga y el Potencial de la Esfera Intermedia.}
+La carga acumulada en la esfera de radio $r$, denotada como $q(r)$, es:
+\begin{equation}
+    q(r) = \rho \cdot V(r) = \left( \frac{Q}{\frac{4}{3}\pi R^3} \right) \cdot \left( \frac{4}{3}\pi r^3 \right) = Q \frac{r^3}{R^3}\,.
+\end{equation}
+El potencial eléctrico en la superficie de esta esfera, $V(r)$, debido a la carga $q(r)$ es:
+\begin{equation}
+    V(r) = k \frac{q(r)}{r} = k \frac{1}{r} \left( Q \frac{r^3}{R^3} \right) = k \frac{Q r^2}{R^3}\,.
+\end{equation}
+
+\paragraph{Paso 3: Calcular el Trabajo para Añadir la Siguiente Capa.}
+Ahora, traemos una capa esférica infinitesimalmente delgada de carga, $dq$, desde el infinito. El grosor de esta capa es $dr$, y su carga es $dq = \rho \cdot (4\pi r^2 dr)$. El trabajo infinitesimal ($dU$) necesario para traer esta carga $dq$ al potencial $V(r)$ es:
+\begin{equation}
+    dU = V(r) \cdot dq\,.
+\end{equation}
+Sustituimos nuestras expresiones para $V(r)$ y $dq$:
+\[
+    dU = \left( k \frac{Q r^2}{R^3} \right) \cdot \left( \rho (4\pi r^2 dr) \right)\,.
+\]
+
+\paragraph{Paso 4: Sustituir la Densidad y Simplificar.}
+Reemplazamos la expresión para la densidad $\rho$:
+\begin{align*}
+    dU &= \left( k \frac{Q r^2}{R^3} \right) \cdot \left( \frac{Q}{\frac{4}{3}\pi R^3} \cdot 4\pi r^2 dr \right)\,, \\
+       &= k \frac{Q^2 r^4}{R^6} \cdot 3 \cdot dr\,, \\
+       &= 3k \frac{Q^2}{R^6} r^4 dr\,.
+\end{align*}
+
+\paragraph{Paso 5: Integrar para Encontrar la Energía Total.}
+La energía potencial total, $U_e$, es la integral de todo el trabajo infinitesimal $dU$ necesario para construir la esfera desde un radio 0 hasta el radio final $R$:
+\begin{align*}
+    U_e &= \int_0^R dU = \int_0^R 3k \frac{Q^2}{R^6} r^4 dr\,, \\
+        &= 3k \frac{Q^2}{R^6} \int_0^R r^4 dr\,, \\
+        &= 3k \frac{Q^2}{R^6} \left[ \frac{r^5}{5} \right]_0^R\,, \\
+        &= 3k \frac{Q^2}{R^6} \left( \frac{R^5}{5} - 0 \right)\,, \\
+        &= \frac{3}{5} k \frac{Q^2 R^5}{R^6} = \frac{3}{5} k \frac{Q^2}{R}\,.
+\end{align*}
+
+\subsection*{Conclusión}
+Hemos demostrado que la energía potencial electrostática total (o energía de autointeracción) de una esfera con carga $Q$ y radio $R$, distribuida uniformemente, es:
+\begin{equation}
+    \boxed{
+    U_e = \frac{3}{5} k \frac{Q^2}{R}
+    }\,.
+\end{equation}
+El factor $3/5$ es, por tanto, un coeficiente puramente geométrico que surge de la integración sobre el volumen de una esfera bajo la suposición de densidad de carga uniforme.
+
+% --- Fin del código LaTeX ---
 % --- Fin del código LaTeX ---
 
 \end{document}
