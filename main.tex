@@ -70,7 +70,7 @@
 
 % --- INFORMACIÓN DEL TÍTULO ---
 \title{Fundamentación en Física}
-\author{\href{https://bit.ly/lorentztransformation}{Google AI studio prompt}\\ \small \emph{Derivado de los Postulados de la Relatividad Especial}}
+\author{\href{https://bit.ly/lorentztransformation}{Google AI studio prompt}\\ \small \emph{Temás de física a nivel algebraico}}
 \date{\today}
 
 % --- INICIO DEL DOCUMENTO ---
@@ -3712,12 +3712,19 @@ La magnitud del momento angular es la distancia desde un centro de giro al objet
 
 \subsection{Producto vectorial}
 Tomado de \url{https://www.met.reading.ac.uk/pplato2}
-Dados dos vectores cualesquiera, $\boldsymbol{a}$ y $\boldsymbol{b}$ , que están inclinados entre sí un ángulo $\theta$ , su producto vectorial se escribe como $\boldsymbol{a}  \times  \boldsymbol{b}$ y tiene las siguientes propiedades:
+Dados dos vectores cualesquiera, $\boldsymbol{a}$ y $\boldsymbol{b}$ , que están inclinados entre sí un ángulo $\theta$, su producto vectorial es otro vector $\boldsymbol{c}$, tal que
+\begin{align}
+    \boldsymbol{c} = \boldsymbol{a}  \times  \boldsymbol{b}
+\end{align}
+y tiene las siguientes propiedades:
 
 \begin{itemize}
-    \item Es un vector;
-\item  Tiene magnitud $ab \sin \theta$;
-Su dirección es perpendicular tanto a $\boldsymbol{a}$  como a $\boldsymbol{b}$ y se define mediante la regla de la mano derecha (Figura \ref{fig:manoderecha}b).
+\item  Tiene magnitud 
+\begin{align}
+    c = ab \sin \theta;
+\end{align}
+    \item $\boldsymbol{c}$ es un vector perpendicular al plano formado por los vectores $\boldsymbol{a}$ y $\boldsymbol{b}$;
+\item  Su dirección es perpendicular tanto a $\boldsymbol{a}$  como a $\boldsymbol{b}$ y se define mediante la regla de la mano derecha (Figura \ref{fig:manoderecha}b).
 \end{itemize}
 
 
@@ -3731,6 +3738,7 @@ Su dirección es perpendicular tanto a $\boldsymbol{a}$  como a $\boldsymbol{b}$
 
 El momento angular se define como
 \begin{align}
+\label{eq:L}
     \boldsymbol{L} = \boldsymbol{r}\times \boldsymbol{p}\,.
 \end{align}
 La dirección viene dada por el producto vectorial entre los vectores de posición y momento lineal, que da como resultado un vector perpendicular al plano definido por los vectores de posición y momento lineal con su dirección determinada por la regla de la mano derecha cómo se muestra en la figura \ref{fig:manoderecha}b.
@@ -3920,7 +3928,18 @@ Una demostración rigurosa de que las órbitas son elipses requiere cálculo ava
 \paragraph{Derivación Simplificada (usando Conservación del Momento Angular):}
 Esta ley es una consecuencia directa de la \textbf{conservación del momento angular}.
 \begin{enumerate}
-    \item \textbf{Momento Angular ($L$):} El momento angular es una medida de la ``cantidad de movimiento de rotación'' y se calcula como $L = m v_{\perp} r$, donde $v_{\perp}$ es la componente de la velocidad perpendicular a la línea que une el planeta con el Sol.
+    \item \textbf{Momento Angular ($L$):} El momento angular es una medida de la ``cantidad de movimiento de rotación'' y se calcula de acuerdo a la ecuación~\eqref{eq:L} como ($\boldsymbol{p} = m\boldsymbol{v}$)
+    \begin{align*}
+        \boldsymbol{L} = &\boldsymbol{r}\times\boldsymbol{p}\nonumber\\
+        =& m \boldsymbol{r}\times\boldsymbol{v}\,,
+    \end{align*}
+    con magnitud
+    \begin{align}
+    \label{eq:Leqmvr}
+     L =& m v r\sin\theta\nonumber\\
+       =& m_{\perp} r
+    \end{align}
+    donde $v_{\perp}=v\sin\theta$ es la componente de la velocidad perpendicular a la línea que une el planeta con el Sol.
 
     \item \textbf{¿Por qué se Conserva?} La fuerza de gravedad es una \textbf{fuerza central}, siempre apunta hacia el Sol. No tiene ninguna componente ``de lado'' que pueda cambiar la rotación del planeta. Por lo tanto, el momento angular es constante:
     \[ L = m v_{\perp} r = \text{constante} \]
@@ -5071,6 +5090,7 @@ tenemos que
 
 La energía total ($E$) es la suma de la cinética ($K$) y la potencial ($U$). Usando la ecuación anterior \eqref{eq:vala2}:
 \begin{equation}
+\label{eq:HE}
     E = K + U = \frac{1}{2}mv^2 - \frac{k e^2}{r} = \frac{k e^2}{2r} - \frac{k e^2}{r} = -\frac{k e^2}{2r}
 \end{equation}
 La energía disponible para perder (magnitud) es 
@@ -5119,6 +5139,41 @@ Usando las constantes físicas conocidas:
 \textbf{Conclusión:}
 Bajo las leyes de la física clásica descritas en este texto, el átomo de hidrógeno colapsaría en menos de una diezmilmillonésima de segundo. La estabilidad observada de la materia es la prueba irrefutable de que, a escalas atómicas, las leyes de Newton y Maxwell deben ser reemplazadas por una nueva física: la \textbf{Mecánica Cuántica}.
 
+\subsection{El Límite de Velocidad Circular: Radiación de Sincrotrón}
+
+La fórmula de Larmor ($P \propto a^2$) tiene una consecuencia drástica para el diseño de aceleradores de partículas. Nos impone un límite práctico a la energía máxima que puede alcanzar un electrón en una órbita circular.
+
+Consideremos un electrón moviéndose en un círculo de radio $R$ con una velocidad $v$ cercana a la de la luz ($v \approx c$).
+
+\subsubsection{El Conflicto Energético}
+
+\begin{enumerate}
+    \item \textbf{Ganancia de Energía:} En el acelerador, suministramos energía al electrón mediante campos eléctricos. Llamemos a esta potencia de entrada $P_{\text{entrada}}$.
+    \item \textbf{Pérdida de Energía:} Al girar, el electrón tiene aceleración centrípeta. Según Larmor, esto implica que debe radiar energía. Esta energía perdida se llama \textbf{Radiación de Sincrotrón}.
+\end{enumerate}
+
+Para velocidades relativistas, la fórmula de Larmor debe corregirse multiplicándola por el factor de Lorentz a la cuarta potencia ($\gamma^4$). Dado que la energía total es $E = \gamma m c^2$, podemos decir que $\gamma \propto E$.
+
+La potencia radiada ($P_{\text{rad}}$) escala de la siguiente manera:
+
+\begin{equation}
+    P_{\text{rad}} \propto \frac{E^4}{R^2 m^4}
+\end{equation}
+
+Esta relación revela tres hechos fundamentales:
+
+\begin{itemize}
+    \item \textbf{La Barrera de la Energía ($E^4$):} Si intentamos duplicar la energía del electrón ($2E$), la pérdida de energía por radiación se multiplica por $2^4 = 16$. La pérdida crece muchísimo más rápido que nuestra capacidad de suministrar energía.
+    \item \textbf{El Límite de Equilibrio:} Se alcanza la energía máxima cuando la energía que inyectamos es igual a la que el electrón ``tira'' en forma de luz:
+    \begin{equation}
+        P_{\text{entrada}} = P_{\text{rad}} \implies \text{Velocidad Límite Constante}
+    \end{equation}
+    \item \textbf{La Importancia de la Masa ($1/m^4$):} Como la masa está en el denominador, las partículas ligeras radian mucho más. Un protón es unas 2000 veces más masivo que un electrón. Por lo tanto, para la misma energía, un electrón radia $2000^4$ (16 billones) de veces más que un protón.
+\end{itemize}
+
+\textbf{Conclusión:}
+Es imposible acelerar electrones a energías arbitrariamente altas en un anillo circular, porque eventualmente toda la energía suministrada se disipa instantáneamente como radiación de sincrotrón (luz brillante, desde infrarrojos hasta rayos X). Por esta razón, el Gran Colisionador de Hadrones (LHC) usa protones (masivos) en lugar de electrones para alcanzar altas energías.
+
 \subsection{Motivación: El Enigma de los Espectros Atómicos}
 
 Tras analizar cómo una antena genera ondas de radio, surge una pregunta natural: si la materia está hecha de cargas eléctricas en movimiento (electrones orbitando núcleos), ¿deberían los átomos comportarse como antenas microscópicas?
@@ -5148,36 +5203,40 @@ Para el hidrógeno visible, solo aparecen cuatro líneas nítidas (la serie de B
     \item Dos líneas Violetas (434 nm y 410 nm).
 \end{itemize}
 
-Esta es la \textbf{huella digital del átomo}. La existencia de estas líneas de emisión implica que el electrón no puede caer en espiral de forma continua. En cambio, debe estar saltando instantáneamente entre ``escalones" de energía fijos, emitiendo la diferencia exacta de energía como un paquete de luz.
+Esta es la \textbf{huella digital del átomo}. La existencia de estas líneas de emisión implica que el electrón no puede caer en espiral de forma continua. En cambio, debe estar saltando instantáneamente entre ``escalones'' de energía fijos, emitiendo la diferencia exacta de energía como un paquete de luz.
 
-Este comportamiento es imposible de explicar con las ecuaciones de Maxwell y Newton puras. Se necesita una nueva \textbf{regla} que ``congele" al electrón en órbitas estables y solo permita transiciones específicas: el modelo de Bohr.
+Este comportamiento es imposible de explicar con las ecuaciones de Maxwell y Newton puras. Se necesita una nueva \textbf{regla} que ``congele'' al electrón en órbitas estables y solo permita transiciones específicas: el modelo de Bohr.
 
-\section{Modelo de Bohr para el átomo de Hidrogeno}
+\section{Modelo de Bohr para el átomo de Hidrógeno}
 
 
-Para resolver la paradoja de la inestabilidad del átomo, Niels Bohr propuso en 1913 un modelo que mezcla la física clásica con una nueva \textbf{regla} audaz. Bohr asumió que, de alguna manera, existen ciertas órbitas "especiales" donde el electrón no irradia energía.
+Para resolver la paradoja de la inestabilidad del átomo, Niels Bohr propuso en 1913 un modelo que mezcla la física clásica con una nueva \textbf{regla} audaz. Bohr asumió que, de alguna manera, existen ciertas órbitas ``especiales'' donde el electrón no irradia energía.
 
 Para encontrar estas órbitas, Bohr introdujo un postulado de \textbf{cuantización}: El momento angular ($L$) del electrón no puede tener cualquier valor, sino solo múltiplos enteros de una constante fundamental.
 
-\subsubsection{Las Dos Ecuaciones Fundamentales}
+\subsection{Las Dos Ecuaciones Fundamentales}
 
 Para derivar el modelo, solo necesitamos plantear un sistema de dos ecuaciones algebraicas con dos incógnitas: la velocidad ($v$) y el radio ($r$).
 
 \textbf{1. Equilibrio de Fuerzas (Física Clásica):}
-La fuerza eléctrica de atracción debe ser igual a la fuerza centrípeta para mantener la órbita circular:
+La fuerza eléctrica de atracción debe ser igual a la fuerza centrípeta para mantener la órbita circular. Cómo en la ecuación~\eqref{eq:vala2}
 \begin{equation}
     \frac{m v^2}{r} = k \frac{e^2}{r^2} \implies m v^2 = \frac{k e^2}{r}.
     \label{eq:bohr_force}
 \end{equation}
 
 \textbf{2. Cuantización del Momento Angular (Nueva Física):}
-El momento angular ($L = mvr$) debe ser un múltiplo entero de la constante de Planck reducida ($\hbar = \frac{h}{2\pi}$):
+El momento angular, ecuación~\eqref{eq:Leqmvr}, para una órbita circular,
+\begin{align}
+  L = mvr\,,
+\end{align}
+debe ser un múltiplo entero de la constante de Planck reducida ($\hbar = \frac{h}{2\pi}$):
 \begin{equation}
     m v r = n \hbar, \quad \text{donde } n = 1, 2, 3, \dots.
     \label{eq:bohr_quant}
 \end{equation}
 
-\subsubsection{Derivación Algebraica del Radio de Bohr}
+\subsection{Derivación Algebraica del Radio de Bohr}
 
 Nuestro objetivo es encontrar el radio $r$. Tenemos un sistema de ecuaciones.
 Primero, despejamos la velocidad $v$ de la ecuación de cuantización (\ref{eq:bohr_quant}):
@@ -5210,10 +5269,10 @@ Finalmente, despejamos $r$. Al depender del número entero $n$, lo llamaremos $r
     a_0 \approx 5.29 \times 10^{-11} \text{ m}.
 \end{equation}
 
-\subsubsection{Derivación de los Niveles de Energía}
+\subsection{Derivación de los Niveles de Energía}
 
 Ahora calculamos la energía total permitida para cada órbita.
-Como vimos anteriormente, la energía total mecánica es
+Como vimos anteriormente en la ecuación~\eqref{eq:HE}, la energía total mecánica es
 \begin{equation}
     E = -\frac{1}{2} \frac{k e^2}{r}.
 \end{equation}
