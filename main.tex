@@ -1,6 +1,6 @@
 %\author{\href{https://bit.ly/lorentztransformation}{Google AI studio prompt}\\ \small \emph{Derivado de los Postulados de la Relatividad Especial}}
 
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper]{book}
 %\usepackage[utf8]{inputenc}
 %\usepackage[T1]{fontenc}
 \usepackage{fontspec}
@@ -65,6 +65,9 @@
     #1
 }
 
+\newenvironment{abstract}{}{}
+\usepackage{abstract}
+
 % commment/uncomment to show/hide the solution
 %\renewcommand{\phantom}[1]{#1}
 
@@ -81,26 +84,16 @@
 
 
 \begin{abstract}
-Este documento proporciona una derivación detallada y paso a paso de las transformaciones de Lorentz, fundamentada en los postulados de la Relatividad Especial. Luego, extiende esta derivación para explorar la estructura geométrica más profunda de las transformaciones, introduciendo los conceptos de rapidez y el formalismo matricial. Finalmente, demuestra cómo un impulso de Lorentz (boost) puede ser visto formalmente como una rotación en un espaciotiempo complejo a través de una rotación de Wick.
+
+Este libro proporciona una introducción estructurada y exhaustiva a los principios fundamentales de la física, diseñada pedagógicamente para ser accesible utilizando herramientas matemáticas a nivel algebraico. La obra comienza estableciendo las bases del análisis vectorial y el manejo riguroso de sistemas de unidades, para luego adentrarse en una derivación lógica y paso a paso de la Relatividad Especial, abarcando la cinemática relativista y la equivalencia masa-energía. Posteriormente, el texto explora la Dinámica Newtoniana a través del estudio del movimiento bajo fuerzas y aceleraciones constantes, el teorema del trabajo y la energía, y un análisis detallado de la Gravitación Universal que incluye una derivación simplificada de las leyes de Kepler. Finalmente, se desarrolla el Electromagnetismo clásico, guiando al lector desde las interacciones fundamentales de Coulomb y Ampère hasta la inducción de Faraday y el aporte crucial de Maxwell con la corriente de desplazamiento; este recorrido culmina demostrando la inestabilidad radiativa del modelo atómico clásico, lo que justifica de manera natural la transición hacia la física cuántica mediante el modelo de Bohr.
 \end{abstract}
 
-\section{Introducción}
+%\chapter*{Introducción}
 
-Las transformaciones de Lorentz son la piedra angular de la teoría de la Relatividad Especial de Einstein. Relacionan las coordenadas de espacio y tiempo de un evento según lo medido por dos observadores en diferentes sistemas de referencia inerciales. Reemplazan a las antiguas transformaciones de Galileo, que son inconsistentes con la constancia observada de la velocidad de la luz.
 
-La derivación se basa en dos postulados fundamentales de la Relatividad Especial:
-\begin{enumerate}
-    \item \textbf{El Principio de Relatividad:} Las leyes de la física son las mismas en todos los sistemas de referencia inerciales.
-    \item \textbf{La Constancia de la Velocidad de la Luz:} La velocidad de la luz en el vacío, denotada por $c$, es la misma para todos los observadores inerciales, independientemente del movimiento de la fuente de luz o del observador.
-\end{enumerate}
+\chapter{Preliminares}
 
-El segundo principio puede ser cambiado simplemente por la suposición de que el espacio y el tiempo deben ser homogéneos e isotrópicos, ver \url{https://arxiv.org/pdf/gr-qc/0107091}
-
-La motivación de la relatividad especial surge de la necesidad de usar el primer postulado para la interacción electromagnética. Aunque dicho postulado es evidente en sistemas mecánicos, no es claro para la interacción electromagnética. De hecho, una partícula cargada en reposo sólo tiene asociado un campo eléctrico, mientras que una partícula moviéndose a velocidad constante relativa al observador en reposo, genera una corriente eléctrica que a su vez induce un campo magnético. Además, el campo eléctrico se deforma (las regiones de campo constante pasan de ser esféricas a elipsoidales). Cómo en última instancia los objetos de medida están hechos de partículas cargadas dentro de los átomos que la componen, es de esperarse
-
-\section{Preliminares}
-
-\subsection{Vectores en Dos Dimensiones}
+\section{Vectores en Dos Dimensiones}
 
 Un \textbf{vector} es una cantidad que tiene tanto \textbf{magnitud} (tamaño) como \textbf{dirección}. En dos dimensiones, un vector se puede representar como una flecha en un plano.  La longitud de la flecha representa la magnitud, y la orientación de la flecha representa la dirección.  Matemáticamente, podemos expresar un vector en dos dimensiones como un par ordenado de números (componentes), por ejemplo, $(x, y)$, donde:
 \begin{itemize}
@@ -108,7 +101,7 @@ Un \textbf{vector} es una cantidad que tiene tanto \textbf{magnitud} (tamaño) c
     \item $y$ es la componente vertical del vector.
 \end{itemize}
 
-\subsubsection{Cálculo de Magnitud Dirección}
+\subsection{Cálculo de Magnitud Dirección}
 
 \begin{tikzpicture}[scale=0.9]
     % Ejes
@@ -152,9 +145,158 @@ El ángulo $\theta$ que define la dirección del vector está dado por:
 
 $$\theta = \arctan{\left(\frac{y}{x}\right)}$$
 
-\subsubsection{Ejemplos de Vectores en Física}
 
-\subsubsection{Posición}
+\subsection{Operaciones con Vectores: Suma, Diferencia y Producto Escalar}
+
+Las operaciones vectoriales nos permiten modelar interacciones físicas complejas. A continuación, detallamos las tres operaciones más fundamentales en dos dimensiones:
+
+\paragraph{1. Suma de Vectores}
+La suma de dos vectores $\boldsymbol{u} = (u_x, u_y)$ y $\boldsymbol{v} = (v_x, v_y)$ se realiza sumando sus componentes correspondientes. Geométricamente, equivale a colocar la "cola" del segundo vector en la "punta" del primero; el vector resultante va desde el origen del primero hasta la punta del segundo (regla del triángulo o del paralelogramo).
+
+\begin{equation}
+    \boldsymbol{u} + \boldsymbol{v} = (u_x + v_x, u_y + v_y)
+\end{equation}
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.8]
+    % Ejes
+    \draw[<->, gray] (-1,0) -- (6,0) node[right] {$x$};
+    \draw[<->, gray] (0,-1) -- (0,5) node[above] {$y$};
+    
+    % Vectores
+    \draw[->, thick, blue] (0,0) -- (3,1) node[midway, below right] {$\boldsymbol{u}$};
+    \draw[->, thick, red] (3,1) -- (4,4) node[midway, right] {$\boldsymbol{v}$};
+    \draw[->, thick, purple] (0,0) -- (4,4) node[midway, above left] {$\boldsymbol{u}+\boldsymbol{v}$};
+    
+    % Líneas guía
+    \draw[dashed, gray] (0,0) -- (1,3) -- (4,4);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Ejemplo:} Si una persona camina un desplazamiento $\boldsymbol{d}_1 = (3, 2)$ km y luego otro desplazamiento $\boldsymbol{d}_2 = (1, 3)$ km, su desplazamiento total desde el origen es $\boldsymbol{d}_{\text{total}} = (3+1, 2+3) = (4, 5)$ km.
+
+\paragraph{2. Diferencia de Vectores}
+La resta o diferencia entre dos vectores se define algebraicamente restando sus componentes:
+\begin{equation}
+    \boldsymbol{u} - \boldsymbol{v} = (u_x - v_x, u_y - v_y)
+\end{equation}
+Geométricamente, si ambos vectores parten del mismo origen, el vector diferencia $\boldsymbol{u} - \boldsymbol{v}$ es el vector que va desde la punta de $\boldsymbol{v}$ hasta la punta de $\boldsymbol{u}$.
+
+\textbf{¡Importante!} La diferencia geométrica entre dos vectores (el vector relativo que los une) es una magnitud física real y, por lo tanto, es \textbf{completamente independiente de dónde coloquemos el origen del sistema de coordenadas}. Representa la relación espacial directa entre dos puntos en el espacio.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=0.8]
+    % Ejes
+    \draw[<->, gray] (-1,0) -- (5,0) node[right] {$x$};
+    \draw[<->, gray] (0,-1) -- (0,4) node[above] {$y$};
+    
+    % Vectores
+    \draw[->, thick, blue] (0,0) -- (4,2) node[midway, below right] {$\boldsymbol{u}$};
+    \draw[->, thick, red] (0,0) -- (1,3) node[midway, left] {$\boldsymbol{v}$};
+    
+    % Vector diferencia
+    \draw[->, thick, green!60!black] (1,3) -- (4,2) node[midway, above right] {$\boldsymbol{u}-\boldsymbol{v}$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Ejemplo:} Si un objeto A está en la posición $\boldsymbol{r}_A = (1, 3)$ m y un objeto B está en $\boldsymbol{r}_B = (4, 2)$ m, el vector de posición relativa de B con respecto a A es $\Delta\boldsymbol{r} = \boldsymbol{r}_B - \boldsymbol{r}_A = (4-1, 2-3) = (3, -1)$ m. Sin importar desde dónde se mida el sistema, B siempre estará 3 metros a la derecha y 1 metro abajo de A.
+
+\paragraph{3. Producto Escalar (Producto Punto)}
+A diferencia de la suma y la resta, el producto escalar toma dos vectores y devuelve un \textbf{número escalar} (no un vector). Algebraicamente se calcula multiplicando las componentes correspondientes y sumándolas:
+
+\begin{equation}
+    \boldsymbol{u} \cdot \boldsymbol{v} = u_x v_x + u_y v_y
+\end{equation}
+
+Sin embargo, su definición geométrica más profunda y útil en física se expresa en términos de las magnitudes de los vectores ($|\boldsymbol{u}|$ y $|\boldsymbol{v}|$) y el ángulo $\theta$ que se forma entre ellos:
+
+\begin{equation}
+    \boldsymbol{u} \cdot \boldsymbol{v} = |\boldsymbol{u}| |\boldsymbol{v}| \cos\theta
+\end{equation}
+
+\textbf{¡Importante!} Esta definición geométrica revela que el producto escalar es una \textbf{cantidad invariante}. Su valor depende exclusivamente de las longitudes de los vectores y del ángulo físico entre ellos. Es \textbf{independiente del sistema de referencia} o de cómo estén rotados los ejes de coordenadas. Físicamente, representa la proyección de un vector a lo largo del otro, multiplicada por la longitud de este último (fundamental para calcular conceptos como el Trabajo mecánico).
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.2]
+    % Vectores
+    \draw[->, thick, blue] (0,0) -- (4,0) node[right] {$\boldsymbol{u}$};
+    \draw[->, thick, red] (0,0) -- (2.5,2.5) node[above right] {$\boldsymbol{v}$};
+    
+    % Proyección
+    \draw[dashed, gray, thick] (2.5,2.5) -- (2.5,0);
+    \draw[thick, orange, |<->|] (0,-0.2) -- (2.5,-0.2) node[midway, below] {$|\boldsymbol{v}|\cos\theta$};
+    
+    % Ángulo
+    \draw (0.8,0) arc (0:45:0.8) node[midway, right, xshift=2pt] {$\theta$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Ejemplo:} Supongamos que aplicamos una fuerza constante $\boldsymbol{F} = (4, 0)$ N (totalmente horizontal) sobre un bloque que realiza un desplazamiento $\Delta\boldsymbol{r} = (3, 3)$ m. 
+\begin{itemize}
+    \item \textbf{Usando componentes:} El trabajo realizado es $W = \boldsymbol{F} \cdot \Delta\boldsymbol{r} = (4)(3) + (0)(3) = 12$ Joules.
+    \item \textbf{Usando magnitudes y ángulo:} La magnitud de la fuerza es $|\boldsymbol{F}| = 4$ N. El desplazamiento es la diagonal de un cuadrado $3 \times 3$, por lo que su magnitud es $|\Delta\boldsymbol{r}| = \sqrt{3^2 + 3^2} = \sqrt{18} = 3\sqrt{2}$ m, y su ángulo con la horizontal es $\theta = 45^\circ$.
+    $$ W = (4)(3\sqrt{2})\cos(45^\circ) = 12\sqrt{2} \left(\frac{\sqrt{2}}{2}\right) = 12 \text{ J} $$
+\end{itemize}
+Ambos métodos arrojan el mismo resultado invariante.
+
+\subsection{Operaciones con Vectores en Tres Dimensiones: Producto Vectorial}
+
+Cuando pasamos del plano (2D) al espacio (3D), surge una nueva y poderosa operación matemática llamada \textbf{producto vectorial} (o producto cruz). A diferencia del producto escalar que vimos anteriormente (el cual devuelve un simple número), el producto vectorial toma dos vectores y da como resultado un \textbf{nuevo vector}.
+
+\paragraph{Definición Geométrica (Magnitud y Dirección)}
+La forma más sencilla e intuitiva de definir el producto vectorial entre dos vectores $\boldsymbol{u}$ y $\boldsymbol{v}$ es analizando por separado su tamaño y hacia dónde apunta:
+
+\begin{itemize}
+    \item \textbf{Magnitud (Tamaño):} La longitud del nuevo vector depende de las magnitudes de los vectores originales y del seno del ángulo $\theta$ que se forma entre ellos:
+    \begin{equation}
+        |\boldsymbol{u} \times \boldsymbol{v}| = |\boldsymbol{u}| |\boldsymbol{v}| \sin\theta.
+    \end{equation}
+    Geométricamente, el valor de esta magnitud representa exactamente el \textbf{área del paralelogramo} formado por $\boldsymbol{u}$ y $\boldsymbol{v}$.
+    
+    \item \textbf{Dirección:} El nuevo vector $\boldsymbol{u} \times \boldsymbol{v}$ es siempre \textbf{perpendicular} (forma un ángulo de $90^\circ$) al plano donde residen $\boldsymbol{u}$ y $\boldsymbol{v}$. Para saber hacia qué lado apunta, se utiliza la \textbf{regla de la mano derecha}: si curvas los dedos de tu mano derecha desde $\boldsymbol{u}$ hacia $\boldsymbol{v}$, tu pulgar extendido señalará la dirección de $\boldsymbol{u} \times \boldsymbol{v}$.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.5]
+    % Plano base (Paralelogramo) para dar la ilusión de 3D
+    \fill[cyan!10, opacity=0.8] (0,0) -- (2.5,-0.5) -- (3.5,1) -- (1,1.5) -- cycle;
+    \draw[dashed, cyan!50!black] (0,0) -- (2.5,-0.5) -- (3.5,1) -- (1,1.5) -- cycle;
+    
+    % Vectores base en el plano
+    \draw[->, thick, blue] (0,0) -- (2.5,-0.5) node[midway, below] {$\boldsymbol{u}$};
+    \draw[->, thick, red] (0,0) -- (1,1.5) node[midway, left] {$\boldsymbol{v}$};
+    
+    % Ángulo theta
+    \draw[thick] (0.6,-0.12) arc (-11:56:0.6);
+    \node at (0.8, 0.4) {$\theta$};
+    
+    % Vector producto cruz (Perpendicular al plano)
+    \draw[->, thick, purple, line width=1.2pt] (0,0) -- (0,2.5) node[right] {$\boldsymbol{u} \times \boldsymbol{v}$};
+    
+    % Símbolos de perpendicularidad (ángulos rectos)
+    \draw[gray, thin] (0,0.3) -- (0.25, 0.25) -- (0.25, -0.05);
+    \draw[gray, thin] (0,0.3) -- (0.1, 0.45) -- (0.1, 0.15);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Ejemplo Físico: El Torque }
+
+Una de las aplicaciones más comunes del producto vectorial en física es el cálculo del torque ($\boldsymbol{\tau}$), que mide la tendencia de una fuerza a hacer rotar un objeto. Se define como $\boldsymbol{\tau} = \boldsymbol{r} \times \boldsymbol{F}$.
+
+Supongamos que usas una llave inglesa de longitud $|\boldsymbol{r}| = 0.2 \text{ m}$ para apretar una tuerca. Aplicas una fuerza de magnitud $|\boldsymbol{F}| = 50 \text{ N}$ empujando la llave en un ángulo de $\theta = 30^\circ$ con respecto al mango.
+
+Utilizando nuestra definición, la magnitud del torque generado se calcula de la siguiente manera:
+\begin{equation}
+    |\boldsymbol{\tau}| = |\boldsymbol{r}| |\boldsymbol{F}| \sin(30^\circ).
+\end{equation}
+Sustituyendo los valores numéricos, obtenemos
+\begin{equation}
+    |\boldsymbol{\tau}| = (0.2 \text{ m})(50 \text{ N})(0.5) = 10 \times 0.5 = 5 \text{ N}\cdot\text{m}.
+\end{equation}
+
+\subsection{Ejemplos de Vectores en Física}
+
+\subsection{Posición}
 \begin{itemize}
     \item \textbf{Concepto:} Indica la ubicación de un objeto en un plano.
     \item \textbf{Ejemplo:} Un robot se encuentra en un plano cartesiano. Su posición está descrita por el vector $\textbf{r} = (3, 4)$ metros. Esto significa que el robot está a 3 metros a la derecha del origen y a 4 metros hacia arriba del origen.
@@ -162,7 +304,7 @@ $$\theta = \arctan{\left(\frac{y}{x}\right)}$$
     \item \textbf{Dirección:} El ángulo que forma la flecha con el eje horizontal, cuyo cálculo involucraría funciones trigonométricas (arctan(4/3)).
 \end{itemize}
 
-\subsubsection{Velocidad}
+\subsection{Velocidad}
 \begin{itemize}
     \item \textbf{Concepto:} Describe qué tan rápido y en qué dirección se mueve un objeto.
     \item \textbf{Ejemplo:} Un drone vuela a 10 m/s en un ángulo de 30 grados hacia el noreste. La velocidad se representa como $\textbf{v} = (8.66, 5)$ m/s (aproximadamente).
@@ -170,7 +312,7 @@ $$\theta = \arctan{\left(\frac{y}{x}\right)}$$
     \item \textbf{Dirección:} 30 grados hacia el noreste.
 \end{itemize}
 
-\subsubsection{Aceleración}
+\subsection{Aceleración}
 \begin{itemize}
     \item \textbf{Concepto:} Describe la tasa de cambio de la velocidad.
     \item \textbf{Ejemplo:} Un carro que se mueve hacia el este aumenta su velocidad en la dirección horizontal, por lo que su aceleración es $\textbf{a} = (2, 0)$ m/s$^2$.  Esto indica que su velocidad horizontal aumenta en 2 m/s cada segundo, mientras que su velocidad vertical no cambia.
@@ -178,7 +320,7 @@ $$\theta = \arctan{\left(\frac{y}{x}\right)}$$
     \item \textbf{Dirección:} Hacia el este.
 \end{itemize}
 
-\subsubsection{Fuerza}
+\subsection{Fuerza}
 \begin{itemize}
     \item \textbf{Concepto:} Una influencia que puede causar que un objeto cambie su movimiento (acelere).
     \item \textbf{Ejemplo:} Una persona empuja una caja en diagonal, aplicando una fuerza de $\textbf{F} = (5, -3)$ N.  Esto significa que la persona está empujando con 5 Newtons hacia la derecha y 3 Newtons hacia abajo.
@@ -186,59 +328,21 @@ $$\theta = \arctan{\left(\frac{y}{x}\right)}$$
     \item \textbf{Dirección:} Hacia la derecha e inclinado hacia abajo (el ángulo se calcularía con la función arcotangente).
 \end{itemize}
 
-\subsubsection{Operaciones con Vectores}
 
-\begin{itemize}
-    \item \textbf{Suma de Vectores:} Sumar las componentes correspondientes de cada vector.
-    \item \textbf{Multiplicación por un Escalar:} Multiplicar cada componente del vector por el escalar.
-    \item \textbf{Magnitud de un Vector:} Usar el teorema de Pitágoras: $|\textbf{v}|=\sqrt{x^2+y^2}$
-\end{itemize}
-
-
-\begin{tikzpicture}[scale=0.8]
-
-    % Ejes
-    \draw[->] (0,0) -- (5,0) node[right] {$x$};
-    \draw[->] (0,0) -- (0,4) node[above] {$y$};
-    \node[below left] at (0,0) {O};
-
-    % Vector v
-    \coordinate (V) at (3,1.5);
-    \draw[->, thick, blue] (0,0) -- (V) node[midway, above right] {$\boldsymbol{v}$};
-
-    % Vector w
-    \coordinate (W) at (2,2.5);
-    \draw[->, thick, red] (0,0) -- (W) node[midway, above left] {$\boldsymbol{w}$};
-
-    % Vector Suma (Resultante)
-%    \coordinate (Sum) at ($(V)+(W)$); % Calcula la suma
-%    \draw[->, ultra thick, green!70!black] (0,0) -- (Sum) %node[midway, above right] {$\boldsymbol{v} + \boldsymbol{w}$};
-
-    % Líneas Guía (Opcional - para ilustrar la regla del paralelogramo)
-%    \draw[dashed, gray] (V) -- ($(V)+(W)$);
-%    \draw[dashed, gray] (W) -- ($(V)+(W)$);
-
-\end{tikzpicture}
-
-\subsubsection{Importancia}
-La representación vectorial nos permite analizar y predecir el movimiento de objetos en el mundo real, donde la dirección es fundamental.  Sin vectores, solo tendríamos magnitudes sin contexto espacial.
-
-
-
-
-
-\subsection{Simplificacón de unidades}
+\section{Simplificacón de unidades}
 \begin{table}[h!]
     \centering
-    \caption{Cantidades Físicas Fundamentales y sus Unidades SI}
-    \begin{tabular}{|l|l|l|}
+    \caption{Cantidades Físicas Fundamentales y sus Unidades SI. Las unidades naturales se explicaran a continuación, donde $\hbar$ es la constante de Planck reducida, $c$ es la velocidad de la luz, $\epsilon_0$ es la permitividad del vacío,  $k_B$ la constante de Boltzman: ver \href{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-phys-constants.pdf}{PDG: Physical Contants table}}
+    \begin{tabular}{|l|l|l|p{2cm}|}
         \hline
-       \textbf{Nombre}           &\textbf{Símbolo}  [Letra] & \textbf{Unidades} (SI) \\ \hline
-        Tiempo          & [T]               & segundo (s)   \\ \hline
-        Distancia       & [L]               & metro (m)     \\ \hline
-        Masa            & [M]               & kilogramo (kg) \\ \hline
-        Carga eléctrica & [Q]               & coulomb (C)   \\ \hline
-        Temperatura      & [$\Theta$]               & kelvin (K)    \\ \hline
+       \textbf{Nombre}           &\textbf{Símbolo}  [Letra] & \textbf{Unidades} (SI) &  \textbf{Unidades Naturales} \\ \hline
+        Tiempo          & [T]               & segundo (s) & $\left[\dfrac{\hbar}{E}\right]$   \\ \hline
+        Distancia       & [L]               & metro (m)   & $\left[\dfrac{\hbar c}{E}\right]$ \\ \hline
+        Masa            & [M]               & kilogramo (kg) & $\left[\dfrac{E}{c^2}\right]$ \\ \hline
+        Carga eléctrica & [Q]               & Coulomb (C)  & 
+        $\left[\sqrt{\epsilon_0 \hbar c}\right]$\\ \hline
+        Temperatura      & [$\Theta$]               & Kelvin (K) &   $\left[\dfrac{E}{k_B}\right]$\\ \hline
+        Energía     & [$E$]               & Joules (J) & [$E$]   \\ \hline
     \end{tabular}
     \label{tab:cantidades_fisicas}
 \end{table}
@@ -266,7 +370,7 @@ Algunas unidades derivadas
 
 En el sistema internacional de unidades tenemos las siguientes cantidades fundamentes
 
-\subsection{Factores de conversión}
+\section{Factores de conversión}
 
 \begin{align*}
     1 = \dfrac{\text{cantidad}}{\text{misma cantidad en otras unidades}}
@@ -287,11 +391,11 @@ Convertir 60 km/h a m/s
 \end{align*}
 
 
-\subsubsection*{Ejercicio}
+\subsection*{Ejercicio}
 Convierta $2\text{m}^2$ a $\text{cm}^2$
 
 
-\subsection{Unidades naturales}
+\section{Unidades naturales}
 Las constantes naturales sirven para expresar las cantidades físicaa en términos de energía.
 
 
@@ -352,20 +456,20 @@ similarmente,
 
 La estimación del orden de magnitud para el número total de \textbf{positrones} en el universo observable es altamente especulativa debido a su naturaleza fugaz. Sin embargo, al contrastarlos con el contenido de materia dominante, se puede llegar a una estimación aproximada.
 
-\subsubsection*{Ejemplo: contenido de positrones del Universo}
+\subsection*{Ejemplo: contenido de positrones del Universo}
 El orden de magnitud más razonable para el número de positrones en el universo observable se encuentra probablemente en el rango de $\mathbf{10^{65}}$ a $\mathbf{10^{70}}$.
 
-\subsubsection*{Base de la Estimación}
+\subsection*{Base de la Estimación}
 
 Esta estimación no se obtiene directamente de un único experimento de flujo como el \text{AMS-02}, sino que se deriva del desequilibrio establecido entre materia y antimateria, y de la tasa de aniquilación en nuestra galaxia.
 
-\subsubsection*{1. Comparación con la Materia ($\approx 10^{80}$)}
+\subsection*{1. Comparación con la Materia ($\approx 10^{80}$)}
 
 El número total de \textbf{electrones} y \textbf{protones} (materia ordinaria) en el universo observable se estima en alrededor de $\mathbf{10^{80}}$.
 
 Dado que todo el universo observable está compuesto casi en su totalidad por materia (y no por antimateria), el número total de positrones debe ser \textbf{mucho menor} que la cifra de $10^{80}$ de electrones.
 
-\subsubsection*{2. Producción y Aniquilación de Positrones}
+\subsection*{2. Producción y Aniquilación de Positrones}
 
 Los positrones se producen continuamente por eventos de alta energía y desintegración radiactiva, pero son destruidos muy rápidamente por \textbf{aniquilación} con electrones. Por lo tanto, su número está determinado por un equilibrio de producción-aniquilación en lugar de ser un remanente cosmológico.
 
@@ -374,7 +478,7 @@ Los positrones se producen continuamente por eventos de alta energía y desinteg
     \item \textbf{Número en Estado Estacionario en la Vía Láctea:} Para mantener esta tasa de producción, se estima que el número total de positrones que flotan actualmente en el fondo difuso de la Vía Láctea es de $\mathbf{N_{e^+} \approx 10^{56}}$ a $\mathbf{10^{57}}$.
 \end{itemize}
 
-\subsubsection*{3. Escala al Universo}
+\subsection*{3. Escala al Universo}
 
 Para escalar esto al universo observable, multiplicamos la estimación Galáctica por el número estimado de galaxias. Se estima que el universo observable contiene entre $10^{11}$ y $10^{12}$ galaxias.
 
@@ -411,8 +515,8 @@ Este cálculo aproximado sugiere un orden de magnitud de $\mathbf{10^{68}}$.
 Un ejemplo de transformación es la de un montaje experimental en la cual se determina el movimiento de un cuerpo con respecto a los ejes $x$, $y$ correspondientes a los lados de la mesa ilustrado en la figura~\ref{fig:tabla} izquierda. Posteriormente se repite la medida con la mesa rotada un ángulo $\theta$ pero manteniendo la posición del montaje experimental sobre la misma, como se ilustra en la figura~\ref{fig:tabla} derecha. Es claro que la trayectoria del movimiento no depende del sistema de referencia.
 \begin{figure}
   \centering
-  \includegraphics[scale=0.4]{table}
-  \includegraphics[scale=0.4]{tabletheta}
+  \includegraphics[scale=0.35]{table}
+  \includegraphics[scale=0.35]{tabletheta}
   \caption{Rotación de sistema de coordenadas}
   \label{fig:tabla}
 \end{figure}
@@ -449,21 +553,21 @@ La demostración del último paso se hace a continuación.
 
 % --- Inicio del código para insertar ---
 
-\subsection*{Demostración de la Invariancia del Producto Escalar bajo Rotación}
+\section*{Demostración de la Invariancia del Producto Escalar bajo Rotación}
 
 El objetivo es demostrar que el módulo al cuadrado de un vector es el mismo después de una rotación de coordenadas. Es decir, probaremos que:
 \[
 \boldsymbol{r}' \cdot \boldsymbol{r}' = \boldsymbol{r} \cdot \boldsymbol{r} \quad \Leftrightarrow \quad x'^2 + y'^2 = x^2 + y^2
 \]
 
-\subsubsection*{Paso 1: Ecuaciones de Transformación por Rotación}
+\subsection*{Paso 1: Ecuaciones de Transformación por Rotación}
 Las coordenadas $(x', y')$ en un sistema que ha sido rotado un ángulo $\theta$ en sentido antihorario se relacionan con las coordenadas originales $(x, y)$ mediante:
 \begin{align*}
     x' &= x \cos\theta + y \sin\theta \\
     y' &= -x \sin\theta + y \cos\theta
 \end{align*}
 
-\subsubsection*{Paso 2: Sustitución y Expansión Algebraica}
+\subsection*{Paso 2: Sustitución y Expansión Algebraica}
 Sustituimos estas transformaciones en la expresión para el módulo al cuadrado en el sistema rotado, $\boldsymbol{r}' \cdot \boldsymbol{r}' = x'^2 + y'^2$.
 
 \begin{align*}
@@ -482,13 +586,14 @@ Sustituimos estas transformaciones en la expresión para el módulo al cuadrado 
     &= x^2 + y^2
 \end{align*}
 
-\subsubsection*{Paso 3: Conclusión}
+\subsection*{Paso 3: Conclusión}
 Hemos demostrado que $x'^2 + y'^2 = x^2 + y^2$. Por lo tanto, podemos concluir que el producto escalar es una cantidad invariante bajo rotaciones:
-\[
-\boxed{
+\begin{align}
+\label{eq:so3}
+    \boxed{
 {r'}^2=\boldsymbol{r}' \cdot \boldsymbol{r}' = x'^2 + y'^2 = x^2 + y^2 = \boldsymbol{r} \cdot \boldsymbol{r} = r^2
 }
-\]
+\end{align}
 
 % --- Fin del código para insertar ---
 
@@ -503,6 +608,22 @@ Note que por consiguiente, la velocidad al cuadrado en la fórmula para la energ
 \begin{align*}
     E =\frac{1}{2}m v^2\,.
 \end{align*}
+
+\chapter{Relatividad especial}
+
+\section{Introducción}
+Las transformaciones de Lorentz son la piedra angular de la teoría de la Relatividad Especial de Einstein. Relacionan las coordenadas de espacio y tiempo de un evento según lo medido por dos observadores en diferentes sistemas de referencia inerciales. Reemplazan a las antiguas transformaciones de Galileo, que son inconsistentes con la constancia observada de la velocidad de la luz.
+
+La derivación se basa en dos postulados fundamentales de la Relatividad Especial:
+\begin{enumerate}
+    \item \textbf{El Principio de Relatividad:} Las leyes de la física son las mismas en todos los sistemas de referencia inerciales.
+    \item \textbf{La Constancia de la Velocidad de la Luz:} La velocidad de la luz en el vacío, denotada por $c$, es la misma para todos los observadores inerciales, independientemente del movimiento de la fuente de luz o del observador.
+\end{enumerate}
+
+El segundo principio puede ser cambiado simplemente por la suposición de que el espacio y el tiempo deben ser homogéneos e isotrópicos, ver \url{https://arxiv.org/pdf/gr-qc/0107091}
+
+La motivación de la relatividad especial surge de la necesidad de usar el primer postulado para la interacción electromagnética. Aunque dicho postulado es evidente en sistemas mecánicos, no es claro para la interacción electromagnética. De hecho, una partícula cargada en reposo sólo tiene asociado un campo eléctrico, mientras que una partícula moviéndose a velocidad constante relativa al observador en reposo, genera una corriente eléctrica que a su vez induce un campo magnético. Además, el campo eléctrico se deforma (las regiones de campo constante pasan de ser esféricas a elipsoidales). Cómo en última instancia los objetos de medida están hechos de partículas cargadas dentro de los átomos que la componen, es de esperarse
+
 
 \section{Transformaciones de Lorentz}
 
@@ -569,9 +690,9 @@ Dado que el movimiento relativo es solo a lo largo del eje x, las coordenadas pe
 
 Ahora nos enfocamos en derivar las transformaciones para $x'$ y $t'$.
 
-\subsection{Pasos de la Derivación}
+\section{Pasos de la Derivación}
 
-\subsubsection{Paso 1: La Suposición de Linealidad}
+\subsection{Paso 1: La Suposición de Linealidad}
 
 Las transformaciones deben ser lineales para preservar el principio de inercia. Un movimiento uniforme en un sistema debe aparecer como un movimiento uniforme en el otro. Por lo tanto, las transformaciones tienen la forma:
 \begin{align}
@@ -579,7 +700,7 @@ Las transformaciones deben ser lineales para preservar el principio de inercia. 
  x' = Ax + Bt\,.   
 \end{align}
  
-\subsubsection{Paso 2: Usando el Movimiento del Origen}
+\subsection{Paso 2: Usando el Movimiento del Origen}
 
 El origen de $S'$ ($x'=0$) se mueve con velocidad $v$ en el sistema $S$, por lo que su posición es $x=vt$. Sustituyendo esto en la ecuación~\eqref{eq:tl1}:
 \[ 0 = A(vt) + Bt \implies B = -Av \]
@@ -589,7 +710,7 @@ Esto da $x' = A(x-vt)$. Renombramos la constante $A$ con el símbolo más conven
 x' = \gamma (x - vt).    
 \end{align}
 
-\subsubsection{Paso 3: Aplicando el Principio de Relatividad}
+\subsection{Paso 3: Aplicando el Principio de Relatividad}
 
 La transformación inversa (de $S'$ a $S$) debe tener la misma forma, con la velocidad invertida ($v \to -v$):
 \begin{align}
@@ -597,7 +718,7 @@ La transformación inversa (de $S'$ a $S$) debe tener la misma forma, con la vel
     x = \gamma (x' + vt').
 \end{align}
 
-\subsubsection{Paso 4: Aplicando el Segundo Postulado}
+\subsection{Paso 4: Aplicando el Segundo Postulado}
 Imaginemos un pulso de luz emitido desde el origen en $t=t'=0$. Un observador en $S$ ve su frente de onda en $x=ct$, mientras que un observador en $S'$ lo ve en $x'=ct'$. Sustituyendo esto en nuestras ecuaciones de transformación:
 
 \newcounter{paso}
@@ -627,7 +748,7 @@ Dividiendo por $1-v^2/c^2$ a ambos lados de la igualdad.
 Sacando raíz cuadrada a ambos lados iguales\\[8pt]\hline
 \end{tabular}
 
-De ésta forma:
+De ésta forma obtenemos el \emph{factor de Lorentz}
 \begin{align}
 \label{eq:gamma}
     \boxed{\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}} \,,
@@ -638,10 +759,70 @@ y
     \gamma^2 =&\frac{1}{1-\dfrac{v^2}{c^2}} =  \frac{c^2}{c^2-v^2}\,.
 \end{align}
 
-\subsubsection{Paso 6: Derivando la Transformación del Tiempo}
+Podemos ver que el factor de Lorentz, $\gamma$, varía desde el valor $1$ cuando $v\ll c$, o $c\to \infty$, hasta $\infty$ cuando $v\to c$, como se ilustra en la figura~\ref{fig:gammafactor}. La función $\gamma$ no tiene valores reales para $v>c$. Por consiguiente, $v=c$ se considera la velocidad límite para un sistema de referencia inercial, una velocidad que no se puede superar por ningún objeto material.
+
+\begin{figure}
+    \centering
+\begin{tikzpicture}
+    \begin{axis}[
+        width=7cm,
+        height=7cm,
+        % Etiquetas de los ejes
+        xlabel={Velocidad del sistema inercial ($v$)},
+        ylabel={Factor de Lorentz ($\gamma$)},
+        % Rango de los ejes (usamos x = v/c, de 0 a 1)
+        xmin=0, xmax=1.05,
+        ymin=0, ymax=10,
+        % Ticks (marcas) personalizados para el eje x en términos de c
+        xtick={0, 0.2, 0.4, 0.6, 0.8, 1.0},
+        xticklabels={0, $0.2c$, $0.4c$, $0.6c$, $0.8c$, $c$},
+        % Ticks para el eje y
+        ytick={1, 2, 4, 6, 8, 10},
+        % Estilo de los ejes y cuadrícula
+        axis lines=left,
+        grid=both,
+        grid style={dashed, gray!50},
+        % Posición de la leyenda
+        legend pos=north west,
+        % Cantidad de puntos para suavizar la curva (crítico cerca de c)
+        samples=200
+    ]
+    
+    % Graficamos la función Gamma. 
+    % El dominio va hasta 0.995 para evitar la división por cero en x=1
+    \addplot[
+        domain=0:0.9949, 
+        color=blue, 
+        thick
+    ]
+    {1 / sqrt(1 - x^2)};
+    \addlegendentry{$\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$}
+
+    % Dibujamos la asíntota vertical en v = c (x = 1)
+    \draw[dashed, red, thick] (axis cs:1, 0) -- (axis cs:1, 10);
+    
+    % Añadimos un texto para la asíntota
+    \node[red, anchor=south east, rotate=90] at (axis cs:0.97, 2) {Asíntota $v=c$};
+
+    % Marcamos el punto de reposo (v=0, gamma=1)
+    \addplot[mark=*, color=blue] coordinates {(0,1)};
+    \node[anchor=south west] at (axis cs:0, 1) {$\gamma(0)=1$};
+
+    \end{axis}
+\end{tikzpicture}
+ \includegraphics[scale=0.16]{Lorentz_factor_log_log}
+    \caption{Factor de Lorentz. Versión log-log de Wikipedia}
+    \label{fig:gammafactor}
+\end{figure}
+
+\subsection{Paso 6: Derivando la Transformación del Tiempo}
 Dado que ya tenemos la expresión completa para $x'$, en las ecuaciones \eqref{eq:xplt} y \eqref{eq:invxplt}, podemos
 despejar $t'$
 
+\subsubsection*{Ejercicio}
+Complete los pasos que faltan en la derivación en la siguiente tabla
+
+%\renewcommand{\phantom}[1]{#1}
 \noindent
 \setcounter{paso}{0}
 \begin{tabular}{l|p{0.35\textwidth}|p{0.6\textwidth}}
@@ -650,22 +831,23 @@ despejar $t'$
     x' =& \gamma (x - vt),\\
     x = &\gamma (x' + vt').
 \end{aligned}$& Ecuaciones \eqref{eq:xplt} y \eqref{eq:invxplt}\\\hline
-\stepcounter{paso}\thepaso) & $x=\gamma[\gamma(x-vt) +v t']$&sustituyendo $x'=\gamma(x-vt)$ en $x = \gamma(x' + vt')$\\\hline
+\stepcounter{paso}\thepaso) & \phantom{ $x=\gamma[\gamma(x-vt) +v t']$}&Sustituyendo $x'=\gamma(x-vt)$ en $x = \gamma(x' + vt')$\\\hline
 \stepcounter{paso}\thepaso) & $x=\gamma^2x-\gamma^2 vt +\gamma v t'$  & Distribuyendo $\gamma$ el lado derecho\\\hline
-\stepcounter{paso}\thepaso) & $\gamma v t' = x-\gamma^2x +\gamma^2 v t$ & Sumando $-\gamma^2x +\gamma^2 v t$ a ambos lados de la igualdad. \\\hline
+\stepcounter{paso}\thepaso) & \phantom{$\gamma v t' = x-\gamma^2x +\gamma^2 v t$} & Sumando $-\gamma^2x +\gamma^2 v t$ a ambos lados de la igualdad. \\\hline
 \stepcounter{paso}\thepaso) & $\gamma v t' = x(1-\gamma^2) +\gamma^2 v t$  & Factorizando $x$.\\\hline
-\stepcounter{paso}\thepaso) & $\gamma v t' = x\left(1-\dfrac{c^2}{c^2-v^2}\right) +\gamma^2 v t$ & Reemplazando $\gamma^2$ de la ecuación~\eqref{eq:gammasquare} \\\hline
-\stepcounter{paso}\thepaso) & $\gamma v t' = x\left(\dfrac{\cancel{c^2}-v^2-\cancel{c^2}}{c^2-v^2}\right) +\gamma^2 v t$. & Sumando las fracciones.\\\hline
-\stepcounter{paso}\thepaso) & $\gamma v t' =\gamma^2 v t- xv^2\left[\dfrac{c^2}{c^2(c^2-v^2)}\right]$ & Multiplicando y dividiendo por $c^2$ en el último término. \\[5pt]\hline
-\stepcounter{paso}\thepaso) & $\cancel{\gamma}\cancel{v}  t' =\gamma^{\cancel{2}}\cancel{v}  t- \gamma^{\cancel{2}} \dfrac{v^{\cancel{2}} x}{c^2}$  &
-Usando de nuevo la ecuación~\eqref{eq:gammasquare} para $\gamma^2$ y cancelando términos iguales a ambos lados de la igualdad\\\hline
-\stepcounter{paso}\thepaso) & $t' = \gamma\left(t-\dfrac{vx}{c^2}\right)$\\[5pt]\hline
+\stepcounter{paso}\thepaso) & \phantom{$\gamma v t' = x\left(1-\dfrac{c^2}{c^2-v^2}\right) +\gamma^2 v t$} & Reemplazando $\gamma^2=\dfrac{c^2}{c^2-v^2}$ en el término en $x$ \\\hline
+\stepcounter{paso}\thepaso) & $\gamma v t' = x\left(\dfrac{\cancel{c^2}-v^2-\cancel{c^2}}{c^2-v^2}\right) +\gamma^2 v t$. & Sumando las fracciones y cancelando $c^2$ en el numerador\\\hline
+\stepcounter{paso}\thepaso) & \phantom{$\gamma v t' =\gamma^2 v t- xv^2\left[\dfrac{c^2}{c^2(c^2-v^2)}\right]$} & Multiplicando y dividiendo por $c^2$ en el término que multiplica a $x$ \\[5pt]\hline
+\stepcounter{paso}\thepaso) & ${\gamma}{v}  t' =\gamma^{{2}}{v}  t- \gamma^{{2}} \dfrac{v^2 x}{c^2}$  &
+Recuperando $\gamma^2$ a partir de $\dfrac{c^2}{c^2-v^2}$ \\\hline
+\stepcounter{paso}\thepaso) & \phantom{$t' = \gamma t-\dfrac{vx}{c^2}$} & Dividiendo a  a ambos lados de la igualdad por $\gamma v$ \\[5pt]\hline
+\stepcounter{paso}\thepaso) & $t' = \gamma\left(t-\dfrac{vx}{c^2}\right)$&Factorizando $\gamma$\\[5pt]\hline
 \end{tabular}
 
 De modo que
 \[ \boxed{t' = \gamma \left( t - \frac{vx}{c^2} \right)} \]
 
-\subsection{Resumen de las Transformaciones de Lorentz}
+\section{Resumen de las Transformaciones de Lorentz}
 Las transformaciones de Lorentz completas son:
 \[
 \boxed{
@@ -678,7 +860,7 @@ z' &= z
 }
 \]
 
-\subsubsection{Las Transformaciones Inversas}
+\subsection{Las Transformaciones Inversas}
 Las transformaciones de $S'$ a $S$ se encuentran intercambiando las coordenadas y haciendo $v \to -v$:
 \[
 \boxed{
@@ -691,7 +873,7 @@ z &= z'
 }
 \]
 
-\subsubsection{Transformaciones de Galileo}
+\subsection{Transformaciones de Galileo}
 Se obtienen cuando no hay una velocidad límite, y por lo tanto $c\to \infty$
 \begin{align*}
 t' &= \lim_{c\to\infty}\left[\gamma \left( t - \frac{vx}{c^2} \right)\right] 
@@ -708,7 +890,7 @@ Mientras que para factor de Lorentz $\gamma$, o el factor de contracción relati
 
 Esto quiere decir que las las distancia y tiempos no están afectados por las transformaciones de Galileo.
 
-\subsubsection{Existencia de una velocidad límite en el Universo}
+\subsection{Existencia de una velocidad límite en el Universo}
 
 Toda la evidencia experimental, desde el electromagnetismo hasta la desintegración de partículas, confirma que vivimos en un universo donde hay una velocidad límite. Llamamos a esta velocidad universal $c$, y la identificamos con la velocidad de la luz en el vacío. La constancia de la velocidad de la luz no es una suposición separada, sino una consecuencia directa de la estructura del espacio-tiempo mismo, como se demuestra en el Apendice~\ref{sec:tl}.
 
@@ -776,7 +958,7 @@ La dilatación del tiempo es una consecuencia directa y famosa de las transforma
 
 Para derivar esto, estableceremos un experimento mental simple y aplicaremos la transformación de Lorentz para el tiempo.
 
-\subsection{La Configuración Física (Experimento Mental)}
+\section{La Configuración Física (Experimento Mental)}
 
 \begin{enumerate}
     \item \textbf{Dos Sistemas:} Tenemos dos sistemas inerciales, $S$ y $S'$. Como antes, el sistema $S$ es el sistema ``estacionario" (por ejemplo, un observador en el suelo), y el sistema $S'$ se mueve con una velocidad constante $v$ a lo largo del eje x relativo a $S$.
@@ -790,7 +972,7 @@ Para derivar esto, estableceremos un experimento mental simple y aplicaremos la 
     \end{itemize}
 \end{enumerate}
 
-\subsection{Definiendo el Tiempo Propio}
+\section{Definiendo el Tiempo Propio}
 
 El intervalo de tiempo entre dos eventos que ocurren en la \textbf{misma ubicación espacial} en un sistema dado se llama \textbf{intervalo de tiempo propio}, denotado por $\Delta t_0$.
 
@@ -799,7 +981,7 @@ En nuestra configuración, los dos tictacs del reloj ocurren en la misma ubicaci
 Nuestro objetivo es encontrar el intervalo de tiempo entre estos mismos dos eventos según lo medido por el observador en el sistema estacionario $S$. Llamemos a este intervalo $\Delta t$.
 \[ \Delta t = t_2 - t_1 \]
 
-\subsection{Aplicando las Transformaciones de Lorentz}
+\section{Aplicando las Transformaciones de Lorentz}
 
 Necesitamos relacionar las coordenadas de tiempo en $S$ con las coordenadas en $S'$. La transformación de Lorentz inversa para el tiempo es la opción más conveniente aquí, ya que expresa el tiempo del sistema estacionario ($t$) en términos de las coordenadas del sistema en movimiento ($t', x'$).
 \[ t = \gamma \left( t' + \frac{vx'}{c^2} \right) \]
@@ -811,7 +993,7 @@ Ahora, aplicamos esta transformación a nuestros dos eventos:
     \[ t_2 = \gamma \left( t'_2 + \frac{vx'_c}{c^2} \right) \]
 \end{enumerate}
 
-\subsection{La Derivación}
+\section{La Derivación}
 
 El intervalo de tiempo $\Delta t$ medido por el observador en el sistema $S$ es la diferencia entre $t_2$ y $t_1$.
 \begin{align*}
@@ -823,7 +1005,7 @@ El intervalo de tiempo $\Delta t$ medido por el observador en el sistema $S$ es 
 El término que involucra la posición $x'_c$ se cancela precisamente porque el reloj estaba en reposo en el sistema $S'$. Ahora sustituimos la definición de tiempo propio, $\Delta t_0 = t'_2 - t'_1$:
 \[ \Delta t = \gamma \Delta t_0 \]
 
-\subsection{Resultado e Interpretación}
+\section{Resultado e Interpretación}
 
 La fórmula final para la dilatación del tiempo se obtiene sustituyendo la expresión para $\gamma$:
 \[ \boxed{ \Delta t = \frac{\Delta t_0}{\sqrt{1 - v^2/c^2}} } \]
@@ -910,7 +1092,7 @@ La longitud propia, $L_0$, es la distancia entre dos puntos cuyas posiciones son
 
 % --- Inicio del código LaTeX para insertar ---
 
-\section*{Demostración de la Contracción de Lorentz a partir de la Dilatación del Tiempo}
+\subsection*{Demostración de la Contracción de Lorentz a partir de la Dilatación del Tiempo}
 
 Esta es una de las demostraciones más elegantes en relatividad, ya que muestra cuán profundamente entrelazados están el espacio y el tiempo. En lugar de derivar la contracción de la longitud directamente de los postulados, la derivaremos como una consecuencia lógica de la dilatación del tiempo. Para ello, construiremos un experimento mental que involucre tanto una medición de distancia como una de tiempo desde dos perspectivas diferentes.
 
@@ -978,6 +1160,86 @@ Hemos demostrado con éxito que la contracción de la longitud es una consecuenc
 
 ver \url{https://inspirehep.net/literature/2825885}
 
+\subsection{Perspectiva Histórica: El Experimento de Michelson-Morley y la Naturaleza de la Contracción}
+
+La derivación de la contracción de la longitud suele generar una profunda inquietud conceptual en los estudiantes: ¿Se ``aplastan'' los objetos físicamente o es solo una ilusión óptica? Para aclarar esta diferencia, es fundamental revisar el experimento más famoso que falló en la historia de la física: el experimento de Michelson y Morley (1887).
+
+A finales del siglo XIX, los físicos estaban convencidos de que las ondas electromagnéticas (la luz) requerían un medio material para propagarse, al igual que el sonido requiere aire. A este medio invisible, estacionario y que llenaba todo el universo, se le llamó el \textbf{éter luminífero}. El experimento de Michelson y Morley fue diseñado para medir la velocidad de la Tierra a través de este éter.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=1.5]
+    
+        % --- ESTILOS ---
+        \tikzstyle{mirror}=[draw, thick, fill=gray!30, minimum width=2pt, minimum height=30pt, inner sep=0pt]
+        \tikzstyle{splitter}=[draw, thick, fill=cyan!20, minimum width=2pt, minimum height=35pt, inner sep=0pt, rotate=45]
+        \tikzstyle{beam}=[thick, ->]
+        
+        % --- COMPONENTES ---
+        % Fuente de luz
+        \node[draw, thick, fill=yellow!20, minimum size=20pt, align=center] (Source) at (-2.5, 0) {Fuente};
+        
+        % Divisor de haz (Espejo semitransparente)
+        \node[splitter] (Splitter) at (0, 0) {};
+        \node[below left, xshift=-5pt, yshift=-5pt] at (0,0) {Divisor};
+    
+        % Espejo 1 (Brazo paralelo al movimiento)
+        \node[mirror] (M1) at (2.5, 0) {};
+        \node[right] at (2.6, 0) {Espejo 1};
+        \draw[<->, gray] (0,-0.5) -- (2.5,-0.5) node[midway, below] {$L_\parallel$};
+    
+        % Espejo 2 (Brazo perpendicular al movimiento)
+        \node[mirror, rotate=90] (M2) at (0, 2.5) {};
+        \node[above] at (0, 2.6) {Espejo 2};
+        \draw[<->, gray] (-0.5,0) -- (-0.5,2.5) node[midway, left] {$L_\perp$};
+    
+        % Detector
+        \node[draw, thick, fill=green!20, minimum width=30pt, minimum height=15pt, align=center] (Detector) at (0, -2.5) {Detector};
+    
+        % --- RAYOS DE LUZ ---
+        % Haz incidente
+        \draw[beam, red] (Source.east) -- (-0.1, 0);
+        
+        % Brazo 1 (Ida y vuelta)
+        \draw[beam, red, transform canvas={yshift=2pt}] (0.1, 0) -- (2.4, 0);
+        \draw[beam, red, transform canvas={yshift=-2pt}] (2.4, 0) -- (0.1, 0);
+    
+        % Brazo 2 (Ida y vuelta)
+        \draw[beam, blue, transform canvas={xshift=2pt}] (0, 0.1) -- (0, 2.4);
+        \draw[beam, blue, transform canvas={xshift=-2pt}] (0, 2.4) -- (0, 0.1);
+    
+        % Haz recombinado al detector
+        \draw[beam, purple, line width=1.5pt] (0, -0.1) -- (Detector.north);
+    
+        % --- MOVIMIENTO DE LA TIERRA ---
+        \draw[->, ultra thick, orange!90!black] (1.5, 1.5) -- (3, 1.5) node[midway, above] {$\vec{v}$ (Tierra)};
+    
+    \end{tikzpicture}
+    \caption{Esquema simplificado del Interferómetro de Michelson-Morley. Un haz de luz se divide en dos: uno viaja paralelo al movimiento de la Tierra ($L_\parallel$) y otro perpendicular ($L_\perp$). Al recombinarse en el detector, cualquier diferencia en el tiempo de viaje produciría un patrón de interferencia.}
+    \label{fig:michelson_morley}
+\end{figure}
+
+El montaje experimental, mostrado en la Figura \ref{fig:michelson_morley}, divide un haz de luz en dos brazos. Si la Tierra navega por el éter a velocidad $v$, la luz que viaja en el brazo paralelo ($L_\parallel$) debe luchar contra el ``viento de éter'', retrasándose respecto a la luz que viaja por el brazo perpendicular ($L_\perp$). Asombrosamente, el resultado fue nulo: ambos haces llegaban siempre al mismo tiempo, sin importar en qué época del año o en qué dirección apuntara el aparato.
+
+\subsubsection*{La Interpretación Dinámica: El Éter y la Contracción ``Real''}
+
+Para salvar la idea del éter ante este resultado negativo, los físicos George FitzGerald (en 1889) y Hendrik Lorentz (en 1892) propusieron una explicación audaz. Argumentaron que si un objeto físico se mueve a través del éter, la presión o interacción mecánica de esta sustancia con las fuerzas electromagnéticas que unen los átomos provocaría que el objeto se \textit{comprimiera físicamente} en la dirección del movimiento en un factor exacto de $\sqrt{1 - v^2/c^2}$.
+
+Bajo esta interpretación, si preguntamos \textit{¿qué tipo de observador vería el brazo del interferómetro contraído?}, la respuesta es clara: \textbf{solo un observador hipotético que se encuentre en reposo absoluto con respecto al éter}. 
+
+Este observador estacionario vería pasar a la Tierra y notaría que el brazo $L_\parallel$ del interferómetro se acortó de verdad. Sin embargo, el experimentador en la Tierra no notaría nada. Si intentara medir el brazo con una regla de madera, la regla misma se habría contraído mecánicamente por el éter en la misma proporción. 
+
+Al hacerse físicamente más corto el brazo $L_\parallel$, la luz recorre menos distancia. Este ahorro de distancia compensa con una exactitud milimétrica el retraso sufrido al nadar contra el viento de éter, explicando perfectamente el resultado nulo del experimento. En este paradigma, la contracción es absoluta y asimétrica.
+
+\subsubsection*{La Interpretación Cinemática: Relatividad Especial}
+
+En 1905, Albert Einstein revolucionó la física al proponer una solución radicalmente distinta. Einstein descartó el éter por completo, considerándolo indetectable e innecesario. En su lugar, postuló que la velocidad de la luz, $c$, es exactamente la misma para todos los observadores inerciales, independientemente de la velocidad de la fuente.
+
+En la Relatividad Especial, la contracción de la longitud que derivamos en la sección anterior no es una deformación mecánica, estructural o física provocada por la fricción contra un fluido estelar. Es, por el contrario, un \textbf{efecto cinemático relativo} derivado de la geometría misma del espaciotiempo. 
+
+Como el espacio y el tiempo están entrelazados, la longitud de un objeto se define localizando sus dos extremos \textit{simultáneamente}. Pero la relatividad demuestra que la simultaneidad es relativa: dos eventos que son simultáneos para el experimentador en la Tierra no lo son para un observador que pasa volando en una nave. Al diferir en su medición del tiempo, difieren necesariamente en su medición del espacio.
+
+La gran diferencia entre la contracción de Lorentz (éter) y la de Einstein (relatividad) es la \textbf{simetría}. En la teoría del éter, solo el objeto que se mueve a través del fluido absoluto se acorta. En la teoría de Einstein, no hay movimiento absoluto: si tú viajas en una nave y yo me quedo en la Tierra, yo mido que tu nave está contraída, pero tú observas que soy yo y mi planeta los que estamos contraídos en la dirección de tu movimiento. La contracción relativista es un efecto de perspectiva espaciotemporal, no un colapso material.
 
 \section{Suma de velocidades relativista}
 
@@ -989,7 +1251,7 @@ Esto funciona perfectamente a velocidades cotidianas. Sin embargo, se rompe a ve
 \[ u = 0.7c + 0.8c = 1.5c \]
 Esto es más rápido que la velocidad de la luz, lo cual viola el segundo postulado de la Relatividad Especial. Necesitamos una nueva fórmula que respete el límite de velocidad cósmico.
 
-\subsection{La Configuración para la Fórmula Relativista}
+\section{La Configuración para la Fórmula Relativista}
 
 Usamos tres sistemas de referencia:
 \begin{itemize}
@@ -1005,7 +1267,7 @@ Nuestro objetivo es encontrar la velocidad del objeto, \textbf{$u$}, medida por 
 \text{¿Cuál es la velocidad } u \text{ del Objeto relativa a S?}
 \]
 
-\subsection{Derivación a partir de las Transformaciones de Lorentz}
+\section{Derivación a partir de las Transformaciones de Lorentz}
 
 Las velocidades constantes se definen como el cociente entre la posición y el tiempo:
 \[ u = \frac{x}{t} \quad \text{y} \quad u' = \frac{x'}{t'}\,, \]
@@ -1048,7 +1310,7 @@ u = \frac{u' + v}{1 + \dfrac{u'v}{c^2}}
 }
 \]
 
-\subsection*{Ejercicio: Despejar $c^2$ de la fórmula de suma de velocidades}
+\section*{Ejercicio: Despejar $c^2$ de la fórmula de suma de velocidades}
 \noindent
 \setcounter{paso}{0}
 \begin{tabular}{l|p{0.3\textwidth}|p{0.65\textwidth}}
@@ -1076,9 +1338,9 @@ En el límite no relativista de $u\approx u'+v$, tenemos que
 tenemos que  $c = \infty$ y de éste modo en el límite no relativista, ¡no existe una velocidad límite!.
 
 
-\subsection{Características Clave y Ejemplos}
+\section{Características Clave y Ejemplos}
 
-\subsubsection{Ejemplo 1: La Nave Espacial y la Sonda}
+\subsection{Ejemplo 1: La Nave Espacial y la Sonda}
 Volvamos a nuestro problema inicial con la fórmula relativista.
 \begin{itemize}
     \item $v = 0.8c$ (velocidad de la nave relativa a la Tierra)
@@ -1088,27 +1350,148 @@ Volvamos a nuestro problema inicial con la fórmula relativista.
 \[ u \approx 0.9615c \]
 El resultado es menor que la velocidad de la luz, como se requiere.
 
-\subsubsection{Característica 1: La Velocidad de la Luz es el Límite Último}
+\subsection{Característica 1: La Velocidad de la Luz es el Límite Último}
 ¿Qué pasa si la nave que se mueve a $v=0.9c$ dispara un rayo láser hacia adelante ($u'=c$)?
 \[ u = \frac{c + 0.9c}{1 + \frac{(c)(0.9c)}{c^2}} = \frac{1.9c}{1 + 0.9} = \frac{1.9c}{1.9} = c \]
 El observador en la Tierra también mide la velocidad del rayo láser como exactamente $c$. Este hermoso resultado muestra cómo la fórmula defiende perfectamente el segundo postulado de la relatividad. 
 
-\subsubsection{Característica 2: Se Reduce a la Fórmula Clásica a Bajas Velocidades}
+\subsection{Característica 2: Se Reduce a la Fórmula Clásica a Bajas Velocidades}
 Si $v \ll c$ y $u' \ll c$, el término $\frac{u'v}{c^2}$ se vuelve extremadamente pequeño y se aproxima a cero.
 \[ u = \frac{u' + v}{1 + \frac{u'v}{c^2}} \approx \frac{u' + v}{1} = u' + v \]
 Esto muestra que la fórmula relativista contiene la fórmula clásica como una aproximación a baja velocidad, lo cual es un requisito clave para cualquier nueva teoría física.
+
+
+\subsection{Dependencia de la Velocidad del Sonido con el Sistema de Referencia}
+
+Una pregunta fundamental al estudiar cinemática y ondas es si la velocidad de propagación de una onda depende de la velocidad del observador en un sistema de referencia inercial. En el caso del sonido, la respuesta es afirmativa: \textbf{sí depende}. 
+
+A diferencia de la luz (cuya velocidad $c$ es invariante y constante para todos los observadores inerciales, como establece la Relatividad Especial), el sonido es una \textbf{onda mecánica}. Por lo tanto, su comportamiento obedece a la mecánica clásica y a las transformaciones de Galileo estudiadas en secciones anteriores.
+
+\subsubsection{El Medio de Propagación y la Relatividad de Galileo}
+
+El sonido no puede viajar en el vacío; requiere un medio material (como el aire, el agua o un metal) para propagarse. La velocidad del sonido, que denotaremos como $v_s$ (aproximadamente $343 \text{ m/s}$ en el aire a temperatura ambiente), es constante \textbf{únicamente con respecto a ese medio material}.
+
+Dado que aplica la relatividad de Galileo (la suma clásica de velocidades), si un observador se mueve con una velocidad $v_o$ con respecto al aire, la velocidad de la onda de sonido que este percibe ($v_{\text{percibida}}$) será el resultado de una suma o resta vectorial:
+
+\begin{itemize}
+    \item \textbf{Si el observador se acerca a la fuente del sonido:} La onda viaja al encuentro del observador. En este sistema de referencia, la velocidad percibida será mayor y se expresa como
+    \begin{equation}
+        v_{\text{percibida}} = v_s + v_o.
+    \end{equation}
+    donde $v_s$ es la velocidad del sonido y $v_o$ es la velocidad del observador.
+    \item \textbf{Si el observador se aleja de la fuente del sonido:} La onda debe ``perseguir'' al observador, tardando más en alcanzarlo. La velocidad percibida será menor y viene dada por
+    \begin{equation}
+        v_{\text{percibida}} = v_s - v_o.
+    \end{equation}
+\end{itemize}
+
+En el caso límite en el que un observador viajara alejándose exactamente a la misma velocidad del sonido ($v_o = v_s$), la onda nunca lo alcanzaría y, desde su sistema de referencia, la velocidad relativa del sonido sería exactamente cero.
+
+\subsubsection{Consecuencia: El Efecto Doppler Clásico}
+
+Esta dependencia de la velocidad relativa es la razón física subyacente por la cual experimentamos el \textbf{Efecto Doppler} en la acústica. 
+
+
+Si La fuente se aleja (acerca) a un observador en reposi: La onda viaja por el aire a la misma velocidad constante, pero los frentes de onda se alargan (``aplastan'') físicamente
+    \begin{equation}
+        f_{\text{obs}} = f_0 \left( \frac{v_s}{v_s \pm v} \right).
+    \end{equation}
+donde el signo ``$+$'' es cuando se aleja y la frecuencia disminuye y el ``$-$'' cuando se acerca y la frecuencia aumenta. 
+
+En resumen, para las ondas mecánicas como el sonido, el medio material (el aire) actúa como un sistema de referencia privilegiado. Cualquier observador inercial que se mueva a través de él medirá una velocidad de propagación diferente. Esta profunda asimetría en la física clásica servirá de contraste vital para entender el comportamiento de la luz, la cual no requiere de un medio para propagarse y mantiene su velocidad invariable sin importar quién la mida.
+
+\subsection{El Efecto Doppler: Sonido Clásico vs. Luz Relativista}
+
+El efecto Doppler es el fenómeno por el cual la frecuencia percibida de una onda cambia cuando la fuente y el observador se encuentran en movimiento relativo. Sin embargo, existe una diferencia fundamental entre las ondas mecánicas (como el sonido) que requieren un medio material, y las ondas electromagnéticas (como la luz) cuya velocidad es invariante.
+
+\subsubsection{Derivación del Efecto Doppler Relativista (Fuente Alejándose)}
+
+A diferencia del sonido, donde usamos las transformaciones de Galileo, para la luz debemos usar la Relatividad Especial. Deduciremos la fórmula para una fuente (como una nave espacial) que se aleja de un observador en la Tierra con una velocidad $v$.
+
+\textbf{Paso 1: El tiempo propio.} En el sistema de referencia de la nave, el tiempo que transcurre entre la emisión de un pulso de luz y el siguiente es el periodo propio, $T_0$. Su frecuencia original es
+\begin{equation}
+    f_0 = \frac{1}{T_0}.
+\end{equation}
+
+\textbf{Paso 2: Dilatación del tiempo.} Desde la Tierra, vemos que el reloj de la nave funciona más lentamente debido a la relatividad. El tiempo dilatado $T$ medido por nosotros entre las emisiones de los pulsos es
+\begin{equation}
+    T = \gamma T_0 = \frac{T_0}{\sqrt{1 - \frac{v^2}{c^2}}}.
+\end{equation}
+
+\textbf{Paso 3: El estiramiento geométrico.} Mientras la nave espera ese tiempo dilatado $T$ para emitir el segundo pulso, sigue alejándose de nosotros, recorriendo una distancia adicional $d = v T$. El tiempo extra de viaje que debe recorrer el segundo pulso para alcanzarnos es
+\begin{equation}
+    t_{\text{extra}} = \frac{d}{c} = \frac{v T}{c}.
+\end{equation}
+
+\textbf{Paso 4: El periodo observado.} El tiempo total medido en la Tierra entre la llegada del primer y segundo pulso, $T_{\text{obs}}$, será el tiempo dilatado $T$ más el tiempo extra de viaje:
+\begin{equation}
+    T_{\text{obs}} = T + \frac{v T}{c} = T \left(1 + \frac{v}{c}\right).
+\end{equation}
+
+\textbf{Paso 5: Álgebra y simplificación.} Sustituimos el tiempo dilatado $T$ del Paso 2 en la ecuación anterior:
+\begin{equation}
+    T_{\text{obs}} = \frac{T_0}{\sqrt{1 - \frac{v^2}{c^2}}} \left(1 + \frac{v}{c}\right).
+\end{equation}
+Aplicamos la diferencia de cuadrados en el denominador, $\left(1 - \frac{v^2}{c^2}\right) = \left(1 - \frac{v}{c}\right)\left(1 + \frac{v}{c}\right)$, y reescribimos el numerador como $\sqrt{1 + \frac{v}{c}} \sqrt{1 + \frac{v}{c}}$:
+\begin{equation}
+    T_{\text{obs}} = T_0 \frac{\sqrt{1 + \frac{v}{c}} \sqrt{1 + \frac{v}{c}}}{\sqrt{1 - \frac{v}{c}} \sqrt{1 + \frac{v}{c}}}.
+\end{equation}
+Al cancelar términos semejantes, obtenemos el periodo observado:
+\begin{equation}
+    T_{\text{obs}} = T_0 \sqrt{\frac{1 + \frac{v}{c}}{1 - \frac{v}{c}}}.
+\end{equation}
+
+\textbf{Paso 6: La frecuencia observada.} La frecuencia observada ($f_{\text{obs}}$) es la inversa del periodo ($1 / T_{\text{obs}}$). Al invertir la fracción dentro de la raíz, obtenemos la fórmula del \textbf{Efecto Doppler Relativista} para una fuente que se aleja (lo que explica el corrimiento al rojo o \textit{redshift} de las galaxias):
+\begin{equation}
+    f_{\text{obs}} = f_0 \sqrt{\frac{1 - \frac{v}{c}}{1 + \frac{v}{c}}}.
+    \label{eq:doppler_aleja}
+\end{equation}
+\textit{Nota:} Si la fuente y el observador se estuvieran \textbf{acercando}, simplemente invertimos los signos de la ecuación (\ref{eq:doppler_aleja}), obteniendo un corrimiento hacia el azul (mayor frecuencia).
+
+\subsubsection{Ejemplos Numéricos: Asimetría Clásica vs. Simetría Relativista}
+
+Para ilustrar la diferencia fundamental entre un fenómeno que depende de un medio material (sonido) y uno relativista (luz), analizaremos el caso en el que la velocidad relativa de acercamiento es exactamente la mitad de la velocidad de propagación de la onda.
+
+\paragraph{Caso 1: El Sonido (Física Clásica)}
+Supongamos que el aire está en reposo. La velocidad del sonido es $v_s = 340 \text{ m/s}$, la frecuencia emitida es $f_0 = 1000 \text{ Hz}$, y la velocidad de movimiento es $v = 0.5 v_s = 170 \text{ m/s}$.
+
+    
+    \textbf{La fuente se aleja del observador (Observador en reposo):} La onda viaja por el aire a la misma velocidad constante de $340 \text{ m/s}$ hacia el observador, pero los frentes de onda se van ``estirando'' físicamente tras el tren. La frecuencia es
+    \begin{equation}
+        f_{\text{obs}} = f_0 \left( \frac{v_s}{v_s + v} \right) = 1000 \left( \frac{340}{340 + 170} \right) = 666.67 \text{ Hz}.
+    \end{equation}
+
+
+\paragraph{Caso 2: La Luz (Relatividad Especial)}
+Para la luz, la velocidad es $c \approx 300,000 \text{ km/s}$, la frecuencia original es $f_0 = 1000 \text{ THz}$, y la velocidad de alejamiento es $v = 0.5 c$.
+En relatividad, no hay éter ni medio de referencia. No importa quién se considere ``en reposo'', la luz golpeará a ambos observadores a velocidad $c$. Usamos la versión de alejamiento de la fórmula que derivamos previamente:
+
+\begin{equation}
+    f_{\text{obs}} = f_0 \sqrt{\frac{1 - \frac{v}{c}}{1 + \frac{v}{c}}}.
+\end{equation}
+Sustituyendo $v = 0.5 c$:
+\begin{equation}
+    f_{\text{obs}} = 1000 \sqrt{\frac{1 - 0.5}{1 + 0.5}} = 1000 \sqrt{\frac{0.5}{1.5}} = 1000 \sqrt{\frac{1}{2}}.
+\end{equation}
+Lo que nos da un resultado simétrico y único:
+\begin{equation}
+    f_{\text{obs}} \approx 577.35 \text{ THz}.
+\end{equation}
+
+\textbf{Conclusión de la Luz:} Gracias a la dilatación del tiempo y a la geometría relativista, las transformaciones de Lorentz garantizan que la velocidad de la onda no cambie (sigue siendo $c$), manifestándose el alejamiento únicamente como un corrimiento al rojo de la  frecuencia de la luz. Del ultravioleta al verde en este caso, pues el verde va de $526$--$\qty{606}{THz}$.
+
 
 % --- Inicio del código LaTeX para insertar ---
 
 \section{Fórmulas del Decaimiento Radiactivo}
 En esta sección estableceremos el concepto de vida media para una partícula inestable y veremos como la relatividad especial puede afectar el tiempo de vida media dependiendo del observador inercial
-\subsection*{Introducción: La Naturaleza del Decaimiento}
+\section*{Introducción: La Naturaleza del Decaimiento}
 
 El decaimiento de una partícula inestable (ya sea un núcleo atómico o una partícula subatómica) es un proceso fundamentalmente \textbf{probabilístico y aleatorio}. No podemos predecir cuándo decaerá una partícula específica. Sin embargo, para una población grande de partículas idénticas, podemos predecir con gran precisión cuántas de ellas decaerán en un intervalo de tiempo determinado.
 
 El principio clave es que la tasa de decaimiento (el número de partículas que decaen por segundo) es directamente proporcional al número de partículas que aún no han decaído. Esto conduce a una ley de \textbf{decaimiento exponencial}.
 
-\subsection*{Fórmula 1: En Términos de la Constante de Decaimiento ($\lambda$)}
+\section*{Fórmula 1: En Términos de la Constante de Decaimiento ($\lambda$)}
 
 Esta es la forma más fundamental de la ecuación, derivada directamente del principio de proporcionalidad. La tasa de cambio del número de partículas, $N$, con respecto al tiempo, $t$, es:
 \[ \frac{dN}{dt} = -\lambda N \]
@@ -1122,11 +1505,11 @@ Donde:
     \item $\lambda$ es la constante de decaimiento, con unidades de (tiempo)\textsuperscript{-1} (p. ej., \si{\per\second}).
 \end{itemize}
 
-\subsection*{Fórmula 2: En Términos de la Vida Media ($t_{1/2}$)}
+\section*{Fórmula 2: En Términos de la Vida Media ($t_{1/2}$)}
 
 Esta forma es más intuitiva. La \textbf{vida media ($t_{1/2}$)} es el tiempo que tarda en decaer la mitad de una muestra inicial de partículas.
 
-\subsubsection*{Relación entre $\lambda$ y $t_{1/2}$}
+\subsection*{Relación entre $\lambda$ y $t_{1/2}$}
 Podemos encontrar esta relación usando la primera fórmula. Por definición, cuando $t = t_{1/2}$, el número de partículas restantes es $N(t_{1/2}) = N_0/2$.
 \[ \frac{N_0}{2} = N_0 e^{-\lambda t_{1/2}} \implies \frac{1}{2} = e^{-\lambda t_{1/2}} \]
 Tomando el logaritmo natural de ambos lados:
@@ -1146,7 +1529,7 @@ Esta forma es muy fácil de interpretar: el exponente ${t}/{t_{1/2}}$ simplement
     \label{fig:decrad}
 \end{figure}
 
-\subsection*{Ejemplos Aplicados}
+\section*{Ejemplos Aplicados}
 Aquí aplicamos las fórmulas a tres ejemplos que abarcan escalas de tiempo drásticamente diferentes.
 
 \begin{table}[h!]
@@ -1194,7 +1577,7 @@ Muón & \SI{2.2}{\micro\second} (\SI{2.2e-6}{\second}) & \SI{3.15e5}{\per\second
     \label{fig:dilcon}
 \end{figure}
 
-\subsection*{Solución}
+\section*{Solución}
 Tenemos que
 \begin{itemize}
 \item Escogemos el sistema $S$ con origen en el tenista
@@ -1355,9 +1738,11 @@ Esta es la parte más crucial del problema.
 \end{enumerate}
 
 
+
+
 \section{Forma Vectorial y Rapidez}
 
-%\subsection{Unidades Naturales y Rapidez}
+%\section{Unidades Naturales y Rapidez}
 Para tener las coordenadas con las mismas unidades,, debemos usar $ct$ paraque seae sea interpretado como una dimensión espacial
 \begin{align}
 ct' =& \gamma\left(ct-\frac{v}{c}x\right),\\
@@ -1366,7 +1751,7 @@ x'=&\gamma\left(x-\frac{v}{c}ct\right)
 
 \
 
-\subsection{Funciones Hiperbólicas}
+\section{Funciones Hiperbólicas}
 \begin{align*}
     \cosh x =& \frac{{e}^{x}+{e}^{-x}}{2}\,,&
 \sinh x =& \frac{{e}^{x}-{e}^{-x}}{2}\,.
@@ -1408,11 +1793,13 @@ En resumen, las transformaciones de Lorentz se pueden escribir como
 }
 \]
 
-Si definimos la coordenada temporal en la dimensiones de distancia como $x^0\equiv ct$, podemos definir el cuadrivector
+Si definimos la coordenada temporal en la dimensiones de distancia como $x^0\equiv ct$, podemos definir el cuadrivector de impulso (boost)
 \begin{align}
     x^\mu \equiv \left(x^0, x^1, x^2,x^3 \right) = \left(ct, x, y,z \right)
+    = (ct,\boldsymbol{r})
 \end{align}
-y
+donde hemos usado el superíndice $\mu$ para denotar un vector de impulso, enfatizando que pertenece a un espacio diferente con una dimensión temporal y las correspondientes dimensiones espaciales, llamado espacio de Minkowski Minkowski.
+El vector de impulso se transforma bajo una transformación de Lorentz como
 \[
 \boxed{
 \begin{aligned}    
@@ -1424,80 +1811,72 @@ y
 }
 \]
 
-A continuación trabajaremos en dos dimensiones, una temporal y una espacial, a saber
+A continuación trabajaremos en dos dimensiones, una temporal y una espacial, de manera que el vector de impulso es
 \begin{align}
     x^\mu \equiv \left(x^0, x^1 \right) = \left(ct, x \right)
 \end{align}
 
-\section{Invariancia}
-Para rotaciones tenemos el vector de posición de la figura~\ref{fig:rot}
+\section{Invariancia bajo transformaciones de Lorentz}
+En la ecuación~\eqref{eq:so3} vimos que el producto escalar era invariante bajo rotaciones en el espacio.
+
+Verifiquemos, bajo qué condiciones el módulo del vector de impulso es invariante bajo transformaciones de Lorentz. 
+Definimos el producto escalar entre dos vectores de impulso (en el espacio de Minkowski)
+$x^\mu = (x^0,x^1)$ y $y^\mu = (y^0,y^1) $ como
+\begin{align}
+    x^\mu \cdot y^\mu = g_{00} x^0 y^0 + g_{11} x^1 y^1\,.
+\end{align}
+con $g_{00}$ y $g_{11}$ a ser fijados por la condición de invarianza. 
+
+El vector de impulso en la base transformada es, 
 \begin{align*}
-    \boldsymbol{r}' = (x',y')=  (x\cos\theta+y\sin\theta,y\cos\theta-x\sin\theta).
+{x'}^\mu = ({x'}^0,{x'}^1) = ({x^0}\cosh\xi - {x^1}\sinh\xi, {x^1}\cosh\xi -{x^0}\sinh\xi),
 \end{align*}
+El producto escalar en el espacio de Minkowski del vector de impulso consigo mismo es 
+\begin{align*}
+    {x'}^\mu \cdot {x'}^\mu =& 
+g_{00} \left({x^0}'\right)^2 + g_{11} \left({x^1}'\right)^2 \\
+=& g_{00}\left[\left({x^0}\right)^2\cosh^2\xi -2 {x^0}{x^1}\cosh\xi\sinh\xi+\left({x^1}\right)^2\sinh^2\xi\right]\\
+&+
+g_{11}\left[\left({x^1}\right)^2\cosh^2-2{x^0}{x^1}\cosh\xi\sinh\xi + \left({x^0}\right)^2\sinh^2\xi\right].
+\end{align*}
+Si $g_{00}=1$ y $g_{11}=-1$, el producto escalar en el espacio de Minkowski resulta ser invariante, ya que, usando $\cosh^2\xi-\sinh^2\xi=1$
+\begin{align*}
+        {x'}^\mu \cdot {x'}^\mu   
+=& \left({x^0}\right)^2(\cosh^2\xi-\sinh^2\xi)+\left({x^1}\right)^2(\sinh^2-\cosh^2) -\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}+\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}\\
+=&\left({x^0}\right)^2 - \left({x^1}\right)^2\,.
+\end{align*}
+
+Generalizando a todas las coordenadas del espacio-tiempo, tenemos que el producto escalar entre $x^\mu=(x^0,x^1, x^2, x^3$ y $y^\mu=(y^0,y^1,y^2,y^3)$ en el espacio de Minkowski es
+\begin{align}
+    x^\mu\cdot y^\mu =& x^0 y^0 -x^1 y^1 -x^2 y^2 -x^3 y^3\,.
+\end{align}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\linewidth]{so2}
-    \caption{Rotación de coordenadas}
-    \label{fig:rot}
-\end{figure}
-
-El módulo de este vector es invariante
-
-\begin{align*}
-    \boldsymbol{r}'\cdot\boldsymbol{r}' =&{x'}^2+{y'}^2  \\
-    =&(x\cos\theta+y\sin\theta)^2+(y\cos\theta-x\sin\theta)^2\\
-    = & x^2+y^2\,.
-\end{align*}
-Verifiquemos, bajo qué condiciones el módulo del vector de impulso es invariante bajo transformaciones de Lorentz. Definimos el producto escalar entre dos vectores
-$\boldsymbol{b} = (b_1,b_2)$ y $\boldsymbol{c} = (c_1,c_2) $ como
-\begin{align}
-    \boldsymbol{b} \cdot \boldsymbol{c} = g_{1} b_1 c_1 + g_{2} b_2 c_2\,.
-\end{align}
-con $g_{1}$ y $g_{2}$ a ser fijados. 
-
-Con esta definición el módulo del vector de impulso $\boldsymbol{b} = ({x^0},{x^1})$ en la base transformada, 
-\begin{align*}
-\boldsymbol{b}' = ({x^0}',{x^1}') = ({x^0}\cosh\xi - {x^1}\sinh\xi, {x^1}\cosh\xi -{x^0}\sinh\xi),
-\end{align*}
-es
-\begin{align*}
-    \boldsymbol{b}'\cdot\boldsymbol{b}' =& 
-g_{1} {{x^0}'}^2 + g_{2} {{x^1}'}^2 \\
-=& g_1\left({x^0}^2\cosh^2\xi -2 {x^0}{x^1}\cosh\xi\sinh\xi+{x^1}^2\sinh^2\xi\right)+
-g_2\left({x^1}^2\cosh^2-2{x^0}{x^1}\cosh\xi\sinh\xi + {x^0}^2\sinh^2\xi\right).
-\end{align*}
-Si $g_1=1$ y $g_2=-1$, tenemos la definición del producto escalar en el espacio de Minkowski como
-\begin{align}
-\label{eq:mdp}
-    \boldsymbol{b} \cdot \boldsymbol{c} \equiv b_1 c_1 - b_2 c_2\,,
-\end{align}
-y por lo tanto
-\begin{align*}
-    \boldsymbol{b}'\cdot\boldsymbol{b}' =& 
-{{x^0}'}^2 - {{x^1}'}^2 \\
-=& {x^0}^2(\cosh^2\xi-\sinh^2\xi)+{x^1}^2(\sinh^2-\cosh^2) -\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}+\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}\\
-=&{x^0}^2 - {x^1}^2\,.
-\end{align*}
-Podemos ver que la invarianza del producto escalar bajo una transformación de Lorentz, fija la definición del producto escalar en ese espacio, como se da en la ec.~\eqref{eq:mdp}.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.5]{b2-b1.png}
-    \caption{$\Delta\boldsymbol{b} = \boldsymbol{b}_2 - \boldsymbol{b}_1$}
+\begin{tikzpicture}[>=stealth, scale=0.8]
+    
+    % Vectores
+    \draw[->, thick, blue] (0,0) -- (4,2) node[midway, below right] {$x_1^\mu$};
+    \draw[->, thick, red] (0,0) -- (1,3) node[midway, left] {$x_2^\mu$};    
+    % Vector diferencia
+    \draw[->, thick, green!60!black] (1,3) -- (4,2) node[midway, above right] {$x^\mu_2 - x^\mu_1$};
+\end{tikzpicture}
+    \caption{$\Delta x^\mu = x^\mu_2 - x^\mu_1$}
     \label{fig:b2-b1}
 \end{figure}
 
 Similarmente, para la diferencia de dos impulsos, como en la figura~\ref{fig:b2-b1}
 \begin{align*}
-    \Delta\boldsymbol{b} = \boldsymbol{b}_2 - \boldsymbol{b}_1 
+    \Delta x^\mu = x^\mu_2 - x^\mu_1 
 \end{align*}
-tiene un módulo que es invariante
+tiene un módulo al cuadrado, que es invariante
 \begin{align*}
-    \Delta S^2 = |\Delta\boldsymbol{b}|^2=& |\boldsymbol{b}_2 -\boldsymbol{b}_1 |^2\\
-    =&(\boldsymbol{b}_2 -\boldsymbol{b}_1)\cdot (\boldsymbol{b}_2 -\boldsymbol{b}_1)  \\
-=&\left(t_2-t_1\right)^2 -\left(x_2-x_1\right)^2\\
-    = &\Delta t^2 - \Delta x^2\,. 
+    \Delta S^2 =& \Delta x^\mu\cdot \Delta x^\mu \\ 
+     =&\left(x^0_2-x^0_1\right)^2 -\left(x_2-x_1\right)^2
+    -\left(y_2-y_1\right)^2-\left(z_2-z_1\right)^2\\
+    =&\left(ct_2- c t_1\right)^2 -\left(x_2-x_1\right)^2
+    -\left(y_2-y_1\right)^2-\left(z_2-z_1\right)^2\\
+    = &c^2\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2 \,. 
 \end{align*}
 En el espacio completo tenemos
 \begin{align*}
@@ -1505,10 +1884,6 @@ En el espacio completo tenemos
      &c^2\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2\,. 
 \end{align*}
 
-Definimos un vector en el espacio de Minkowski como
-\begin{align*}
-    x^\mu = (ct,x,y,z) = (ct,\boldsymbol{r})
-\end{align*}
 
 \section{Cuadrimomento}
 En relatividad especial, la magnitud del vector momento para una partícula que se mueve a una velocidad $\boldsymbol{v}$, es
@@ -1622,7 +1997,7 @@ Para un láser de CO\textsubscript{2} industrial de \SI{4000}{\watt} (\SI{4}{kW}
 \[ \boxed{N_{\text{fotones}} \approx \num{2.13e23} \text{ fotones por segundo}} \]
 De estos, solo una pequeña fracción (alrededor del \SIrange{5}{10}{\percent}) es absorbida y utilizada para cortar el metal.
 
-\subsection*{Desglose del Cálculo}
+\section*{Desglose del Cálculo}
 El proceso se divide en tres pasos principales:
 \begin{enumerate}
     \item Calcular la energía de un único fotón de un láser de CO\textsubscript{2}.
@@ -1630,7 +2005,7 @@ El proceso se divide en tres pasos principales:
     \item Combinar ambos resultados para encontrar el número de fotones por segundo.
 \end{enumerate}
 
-\subsubsection*{Paso 1: Energía de un Fotón de Láser de CO\textsubscript{2}}
+\subsection*{Paso 1: Energía de un Fotón de Láser de CO\textsubscript{2}}
 La energía de un fotón ($E_{\text{fotón}}$) se calcula con la fórmula de Planck:
 \[ E_{\text{fotón}} = \frac{hc}{\lambda} \]
 Donde:
@@ -1642,7 +2017,7 @@ Donde:
 Sustituyendo los valores:
 \[ E_{\text{fotón}} = \frac{(\SI{6.626e-34}{\joule\second}) \times (\SI{3e8}{\meter\per\second})}{\SI{10.6e-6}{\meter}} \approx \SI{1.875e-20}{\joule} \]
 
-\subsubsection*{Paso 2: Estimación de la Energía Necesaria para Cortar el Acero}
+\subsection*{Paso 2: Estimación de la Energía Necesaria para Cortar el Acero}
 La energía del láser debe calentar y derretir el acero. La potencia útil ($P_{\text{útil}}$) depende de la cantidad de material eliminado por segundo, lo cual depende de la velocidad de corte.
 
 \paragraph{Suposición de Velocidad de Corte Realista:} Para acero de \SI{20}{\milli\meter}, una velocidad de corte típica es de \SI{0.8}{\meter\per\minute}.
@@ -1673,7 +2048,7 @@ Necesitamos las propiedades térmicas del acero:
 \[ P_{\text{útil}} = P_{\text{calentar}} + P_{\text{derretir}} \approx \SI{154}{\watt} + \SI{52}{\watt} = \SI{206}{\watt} \]
 Esta es la potencia mínima teórica que el acero debe absorber.
 
-\subsubsection*{Paso 3: Combinar Resultados y Asumir una Potencia de Láser}
+\subsection*{Paso 3: Combinar Resultados y Asumir una Potencia de Láser}
 La eficiencia de absorción de energía en el corte de acero grueso es baja (aprox. \SIrange{5}{10}{\percent}) debido a la reflexión y la conducción térmica.
 
 Si asumimos una eficiencia del \SI{5.15}{\percent}, la potencia total requerida del láser ($P_{\text{total}}$) sería:
@@ -1684,7 +2059,7 @@ Esto nos lleva a una suposición clave y realista: \textbf{se está utilizando u
 El número de fotones por segundo ($N_{\text{fotones}}$) es la potencia total del láser dividida por la energía de cada fotón.
 \[ N_{\text{fotones}} = \frac{P_{\text{total}}}{E_{\text{fotón}}} = \frac{\SI{4000}{\joule\per\second}}{\SI{1.875e-20}{\joule\per\text{fotón}}} \approx \num{2.13e23} \, \text{fotones/s} \]
 
-\subsection*{Conclusión}
+\section*{Conclusión}
 Aunque teóricamente solo se necesitan unos \SI{206}{\watt} de potencia absorbida para realizar el corte, debido a las ineficiencias del proceso, se requiere un láser mucho más potente. Para un láser industrial realista de \SI{4000}{\watt}, el haz deposita en el punto de contacto la asombrosa cantidad de \num{2.13e23} fotones cada segundo para lograr cortar la placa de acero de \SI{20}{\milli\meter}.
 
 % --- Fin del código LaTeX ---
@@ -1697,7 +2072,7 @@ El origen de esta energía es que la suma de las masas de los productos finales 
 \paragraph{Fórmula clave:}
 \[ E = \Delta m c^2 \]
 
-\subsection*{El Problema}
+\section*{El Problema}
 Considera una de las posibles reacciones de fisión del Uranio-235:
 \[ \text{n} + {}^{235}\text{U} \rightarrow {}^{92}\text{Kr} + {}^{141}\text{Ba} + 3\text{n} + E \]
 
@@ -1721,9 +2096,9 @@ Considera una de las posibles reacciones de fisión del Uranio-235:
     \item Estima la energía total liberada si \textbf{\SI{1}{\kilo\gram}} de Uranio-235 sufre una fisión completa.
 \end{enumerate}
 
-\subsection*{Solución Detallada}
+\section*{Solución Detallada}
 
-\subsubsection*{Parte 1: Energía por un solo átomo de Uranio}
+\subsection*{Parte 1: Energía por un solo átomo de Uranio}
 
 \paragraph{Paso 1: Calcular la masa total inicial ($m_{\text{inicial}}$)}
 \[ m_{\text{inicial}} = m_n + m_U = \SI{1.00866}{\atomicmassunit} + \SI{235.04393}{\atomicmassunit} = \SI{236.05259}{\atomicmassunit} \]
@@ -1749,7 +2124,7 @@ Aplicamos la fórmula $E = \Delta m c^2$:
 \end{align*}
 \textbf{Respuesta a la Pregunta 1:} La fisión de un solo átomo de U-235 libera aproximadamente \SI{2.79e-11}{\joule}.
 
-\subsubsection*{Parte 2: Energía por \SI{1}{\kilo\gram} de Uranio}
+\subsection*{Parte 2: Energía por \SI{1}{\kilo\gram} de Uranio}
 
 \paragraph{Paso 6: Calcular el número de átomos en \SI{1}{\kilo\gram} de U-235}
 \[ \text{Nº de átomos} \approx \frac{\SI{1}{\kilo\gram}}{\SI{235.04393}{\atomicmassunit} \times (\SI{1.6605e-27}{\kilo\gram\per\atomicmassunit})} \approx \num{2.56e24} \, \text{átomos} \]
@@ -1761,7 +2136,7 @@ Aplicamos la fórmula $E = \Delta m c^2$:
 \end{align*}
 \textbf{Respuesta a la Pregunta 2:} La fisión completa de \SI{1}{\kilo\gram} de Uranio-235 liberaría aproximadamente \SI{71.4}{\tera\joule}.
 
-\subsection*{Interpretación y Contexto: ¿Qué tan grande es esta energía?}
+\section*{Interpretación y Contexto: ¿Qué tan grande es esta energía?}
 Para poner en perspectiva los \SI{71.4}{\tera\joule}:
 \begin{itemize}
     \item \textbf{Equivalencia en TNT:} La energía liberada por la explosión de \SI{1}{\tonne} de TNT es de unos \SI{4.184}{\giga\joule} (\SI{4.184e9}{\joule}).
@@ -1784,7 +2159,7 @@ La reacción de fusión más ``sencilla'' y una de las más energéticas es la f
 \paragraph{Fórmula clave:}
 \[ E = \Delta m c^2 \]
 
-\subsection*{El Problema}
+\section*{El Problema}
 La reacción principal en muchas armas termonucleares es la fusión de un núcleo de Deuterio (${}^2\text{H}$) con uno de Tritio (${}^3\text{H}$):
 \[ {}^2\text{H} + {}^3\text{H} \rightarrow {}^4\text{He} + \text{n} + E \]
 
@@ -1809,9 +2184,9 @@ La reacción principal en muchas armas termonucleares es la fusión de un núcle
     \item Compara la energía liberada por kilogramo con la de la fisión del Uranio-235.
 \end{enumerate}
 
-\subsection*{Solución Detallada}
+\section*{Solución Detallada}
 
-\subsubsection*{Parte 1: Energía por una sola reacción de fusión}
+\subsection*{Parte 1: Energía por una sola reacción de fusión}
 
 \paragraph{Paso 1: Calcular la masa total inicial ($m_{\text{inicial}}$)}
 \[ m_{\text{inicial}} = m_{D} + m_{T} = \SI{2.014102}{\atomicmassunit} + \SI{3.016049}{\atomicmassunit} = \SI{5.030151}{\atomicmassunit} \]
@@ -1829,7 +2204,7 @@ La reacción principal en muchas armas termonucleares es la fusión de un núcle
 \[ E = (\SI{3.1455e-29}{\kilo\gram}) \times (\SI{3e8}{\meter\per\second})^2 \approx \SI{2.831e-12}{\joule} \]
 \textbf{Respuesta a la Pregunta 1:} Una sola reacción de fusión D-T libera aproximadamente \SI{2.83e-12}{\joule} (\SI{17.6}{\mega\electronvolt}).
 
-\subsubsection*{Parte 2: Energía por \SI{1}{\kilo\gram} de combustible de fusión}
+\subsection*{Parte 2: Energía por \SI{1}{\kilo\gram} de combustible de fusión}
 
 \paragraph{Paso 6: Calcular el número de reacciones en \SI{1}{\kilo\gram} de mezcla}
 La masa de un ``par'' de combustible (D+T) es $m_{\text{par}} = \SI{5.030151}{\atomicmassunit} \approx \SI{8.3526e-27}{\kilo\gram}$.
@@ -1839,7 +2214,7 @@ La masa de un ``par'' de combustible (D+T) es $m_{\text{par}} = \SI{5.030151}{\a
 \[ E_{\text{total}} = (\SI{2.831e-12}{\joule\per\text{reacción}}) \times (\num{1.197e26} \, \text{reacciones}) \approx \SI{3.388e14}{\joule} \]
 \textbf{Respuesta a la Pregunta 2:} La fusión completa de \SI{1}{\kilo\gram} de mezcla D-T liberaría aproximadamente \SI{339}{\tera\joule}.
 
-\subsubsection*{Parte 3: Comparación con la Fisión}
+\subsection*{Parte 3: Comparación con la Fisión}
 
 \paragraph{Paso 8: Comparar la Energía por Kilogramo}
 \begin{itemize}
@@ -1849,11 +2224,11 @@ La masa de un ``par'' de combustible (D+T) es $m_{\text{par}} = \SI{5.030151}{\a
 \[ \frac{\text{Energía Fusión}}{\text{Energía Fisión}} = \frac{\SI{3.39e14}{\joule}}{\SI{7.14e13}{\joule}} \approx 4.75 \]
 \textbf{Respuesta a la Pregunta 3:} La fusión de \SI{1}{\kilo\gram} de combustible D-T libera aproximadamente \textbf{4.75 veces más energía} que la fisión de \SI{1}{\kilo\gram} de Uranio-235.
 
-\subsection*{Eficiencia de una Bomba de Hidrógeno}
+\section*{Eficiencia de una Bomba de Hidrógeno}
 
 La eficiencia de una bomba de hidrógeno para ``quemar'' o fusionar todo su combustible de fusión es sorprendentemente baja. Generalmente, la eficiencia de la etapa de fusión en un arma termonuclear moderna se encuentra en el rango del \SIrange{20}{40}{\percent}. Esto significa que entre el \SIrange{60}{80}{\percent} del combustible de fusión es simplemente dispersado por la explosión sin reaccionar.
 
-\subsubsection*{¿Por qué la Eficiencia no es del 100\%? El Principio de "Desmontaje Explosivo"}
+\subsection*{¿Por qué la Eficiencia no es del 100\%? El Principio de "Desmontaje Explosivo"}
 
 El factor limitante más importante en cualquier arma nuclear es que \textbf{la propia explosión destruye las condiciones necesarias para que la reacción continúe}.
 \begin{enumerate}
@@ -1864,7 +2239,7 @@ El factor limitante más importante en cualquier arma nuclear es que \textbf{la 
 \end{enumerate}
 La eficiencia es, por lo tanto, una medida de cuán bien el diseño puede \textbf{mantener el combustible confinado} antes de que la inevitable explosión lo desmonte todo.
 
-\subsubsection*{Ejemplo Numérico Ilustrativo}
+\subsection*{Ejemplo Numérico Ilustrativo}
 Imaginemos una bomba de \SI{1}{\mega\tonne} de TNT ($\approx \SI{4.184e15}{\joule}$), donde el \SI{50}{\percent} de la energía proviene de la fusión (\SI{500}{\kilo\tonne} o $\approx \SI{2.092e15}{\joule}$).
 
 \paragraph{1. Masa de combustible que SÍ se fusionó:}
@@ -1875,7 +2250,7 @@ Si asumimos una eficiencia de fusión plausible del \SI{30}{\percent}:
 \[ \text{Masa total} = \frac{\text{Masa fusionada}}{\text{Eficiencia}} = \frac{\SI{6.17}{\kilo\gram}}{0.30} \approx \SI{20.6}{\kilo\gram} \]
 Esto significa que para que \SI{6.17}{\kilo\gram} de combustible reaccionen, la bomba debe estar cargada con más de \SI{20}{\kilo\gram}. El resto se dispersa sin reaccionar.
 
-\subsubsection*{Comparación con las Bombas de Fisión}
+\subsection*{Comparación con las Bombas de Fisión}
 La eficiencia de las bombas de fisión puras es generalmente aún menor:
 \begin{itemize}
     \item \textbf{Bomba de tipo ``cañón" (Hiroshima):} Extremadamente ineficiente, con solo un \SI{1.7}{\percent} de eficiencia de fisión.
@@ -1926,6 +2301,7 @@ Es claro que en si hacemos $c\to \infty$
 \end{enumerate}
 \end{enumerate}
 
+\chapter{Dinámica newtoniana}
 \section{Leyes de Newton}
 \begin{enumerate}
     \item Si un objeto cambia su  cantidad de movimiento durante un intervalo de tiempo $\Delta t$, es porque existe una fuerza neta actuando sobre él durante ese intervalo.  Dicha fuerza viene dada por
@@ -2077,7 +2453,7 @@ y podemos continuar calculando el nuevo momento y posición hasta recuperar toda
 Haremos un ejemplo de esto en el caso del límite no relativista del lanzamiento vertical hacia arriba a continuación.
 
 
-\subsection{Trabajo}
+\section{Trabajo}
 Durante ese intervalo de tiempo el objeto se desplazo una distancia
 \begin{align}
     \Delta\boldsymbol{r} =& \boldsymbol{r}_{\text{final}}
@@ -2094,7 +2470,7 @@ Podemos entonces definir una cantidad escalar que tiene unidades de energía que
 
 
 
-\subsection{Límite no relativista}
+\section{Límite no relativista}
 
 Para el momento es suficiente hacer $\gamma \approx 1$
 \begin{align}
@@ -2151,7 +2527,7 @@ Lo que realmente tiene sentido físico es la diferencia de energías.
 
 
 
-\subsubsection{Fuerza constante}
+\subsection{Fuerza constante}
 
 En una dimensión, $x$, con $F$ constante, $t_{\text{inicial}} = 0$ y $t_{\text{final}} = 0$, $v_{\text{inicial}} = v_0$ y $v_{\text{final}} = v$
 
@@ -2185,7 +2561,7 @@ Finalmente
 \end{align}
 
 
-\subsubsection{Aceleración constante}
+\subsection{Aceleración constante}
 
 
 La aceleración constante corresponde a la pendiente de la línea recta en el plano de velocidad en función del tiempo, como se muestra en la figura~\ref{fig:aceleracion}.
@@ -2268,7 +2644,7 @@ Así mismo, en el plano de posición en función del tiempo, la pendiente de la 
 
 
 
-\subsubsection{Campo gravitacional de la Tierra}
+\subsection{Campo gravitacional de la Tierra}
 
 Un ejemplo de fuerza  constante es la que siente un cuerpo cerca a la superficie de la tierra debido a su campo gravitacional, $\boldsymbol{g}$, como se muestra en la proyección en dos dimensiones enn la figura~\ref{fig:campo_gravitacional}. Dicho campo gravitacional siempre está presente y genera una aceleración sobre cualquier cuerpo material hacía el centro de la tierra. El campo gravitacional es constante (superficie equipotencial) sobre la superficie de una esfera concéntrica al centro de la Tierra, y en particular tiene un valor constante de
  \begin{align}
@@ -2450,7 +2826,7 @@ Antes de comprobar la solución analíticamente podemos integrar la ecuación de
     y =& y_0 + \frac{p}{m}\Delta t\,.
 \end{align}
 
-\subsubsection*{Ejemplo}
+\subsection*{Ejemplo}
 Un cuerpo de masa $m = \qty{1}{kg}$ es lanzado verticalmente hacia arriba con una velocidad de $\qty{10}{m/s}$.  En este caso la posición inicial con el origen de coordenadas en el punto de lanzamiento tal que $y_0 =0$, tenemos que 
 \begin{align*}
     F \approx& -\qty{10}{m/s^2}\\
@@ -2542,7 +2918,7 @@ que corresponde  a la línea azul a trazos en la figura~\eqref{fig:vertical}. ¿
 
 Para éste ejemplo e independiente de su masa, si un objeto es lanzado verticalmente hacía arriba con una velocidad inicial de $\qty{10}{m/s}$, alcanza una altura de $\qty{5}{m}$. Similarmente, si un objeto se deja caer desde una altura de $\qty{5}{m}$ entonces llegará al suelo con una velocidad de $\qty{10}{m/s}$ independiente de su masa.
 
-\subsection{Conservación de la energía}
+\section{Conservación de la energía}
 El teorema de Trabajo y Energía para el problema de lanzamiento vertical hacía arriba desde una altura cero con una velocidad inicial $v_0$, hasta una altura $h$ con una velocidad $v$; se puede escribir usando la ecs.~\eqref{eq:TrabajoEnergía} y \eqref{eq:gravitationalconstantforce}, como
 \begin{align*}
     W = -mgh =& \frac{1}{2}mv^2 -\frac{1}{2}m v_0^2\,.
@@ -2575,7 +2951,7 @@ Es de anotar que está ecuación es de validez general para fuerzas conservativa
 
 
 
-\subsection{Movimiento parabólico}
+\section{Movimiento parabólico}
 Ver \href{https://colab.research.google.com/drive/1YMC00LP9HcuapJtmcpAcivhiywmEcPwo?usp=sharing}{Colab notebook}
 
 
@@ -2583,7 +2959,7 @@ Ver \href{https://colab.research.google.com/drive/1YMC00LP9HcuapJtmcpAcivhiywmEc
 
 A continuación se presentan las ecuaciones clave del movimiento parabólico (o de proyectil), expresadas en términos de la magnitud de la velocidad inicial ($v_0$) y el ángulo de lanzamiento ($\theta$). Estas fórmulas asumen que el punto de lanzamiento y el de aterrizaje están a la misma altura y que la resistencia del aire es despreciable.
 
-\subsubsection*{Configuración Inicial}
+\subsection*{Configuración Inicial}
 \begin{itemize}
     \item \textbf{Velocidad Inicial (magnitud):} $v_0$
     \item \textbf{Ángulo de Lanzamiento:} $\theta$ (medido desde la horizontal)
@@ -2591,7 +2967,7 @@ A continuación se presentan las ecuaciones clave del movimiento parabólico (o 
     \item \textbf{Posición Inicial:} $(x_0, y_0) = (0, 0)$
 \end{itemize}
 
-\subsubsection*{1. Componentes de la Velocidad Inicial}
+\subsection*{1. Componentes de la Velocidad Inicial}
 El vector de velocidad inicial se descompone en sus componentes horizontal ($v_{x0}$) y vertical ($v_{y0}$):
 \begin{equation}
     \boxed{v_{x0} = v_0 \cos\theta}
@@ -2600,7 +2976,7 @@ El vector de velocidad inicial se descompone en sus componentes horizontal ($v_{
     \boxed{v_{y0} = v_0 \sin\theta}
 \end{equation}
 
-\subsubsection*{2. Ecuaciones de la Velocidad en función del Tiempo, $t$}
+\subsection*{2. Ecuaciones de la Velocidad en función del Tiempo, $t$}
 Estas ecuaciones describen las componentes de la velocidad en cualquier instante $t$.
 
 \paragraph{Velocidad Horizontal ($v_x$):}
@@ -2615,7 +2991,7 @@ La velocidad vertical cambia debido a la aceleración gravitacional.
     \boxed{v_y(t) = v_0 \sin\theta - gt}
 \end{equation}
 
-\subsubsection*{3. Ecuaciones de la Posición en función del Tiempo, $t$}
+\subsection*{3. Ecuaciones de la Posición en función del Tiempo, $t$}
 Estas son las ecuaciones paramétricas del movimiento que describen las coordenadas $(x, y)$ del proyectil en cualquier instante $t$.
 
 \paragraph{Posición Horizontal ($x$):}
@@ -2628,7 +3004,7 @@ Estas son las ecuaciones paramétricas del movimiento que describen las coordena
     \boxed{y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2}
 \end{equation}
 
-\subsection*{4. Ecuación de la Trayectoria (y en función de x)}
+\section*{4. Ecuación de la Trayectoria (y en función de x)}
 Esta ecuación describe la forma parabólica del camino del proyectil, eliminando la variable del tiempo. Se obtiene despejando $t$ de la ecuación de $x(t)$ y sustituyéndola en la ecuación de $y(t)$.
 \begin{equation}
     \boxed{
@@ -2637,7 +3013,7 @@ Esta ecuación describe la forma parabólica del camino del proyectil, eliminand
 \end{equation}
 Esta es una ecuación de la forma $y = Ax - Bx^2$, que es la fórmula matemática de una parábola que se abre hacia abajo.
 
-\subsubsection*{Resumen en una Tabla}
+\subsection*{Resumen en una Tabla}
 
 \begin{table}[h!]
 \centering
@@ -2662,22 +3038,22 @@ Esta es una ecuación de la forma $y = Ax - Bx^2$, que es la fórmula matemátic
 % --- Fin del código LaTeX ---
 % --- Inicio del código LaTeX para insertar ---
 
-\subsection{Demostración del Alcance Máximo (R)}
+\section{Demostración del Alcance Máximo (R)}
 El \textbf{alcance (R)} es la distancia horizontal total recorrida por el proyectil. Ocurre cuando el proyectil regresa a su altura inicial, es decir, cuando $y(x) = 0$.
 
-\subsubsection*{Paso 1: Usar la Ecuación de la Trayectoria}
+\subsection*{Paso 1: Usar la Ecuación de la Trayectoria}
 Partimos de la ecuación de la trayectoria:
 \[ y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
 Para encontrar el alcance, buscamos los valores de $x$ para los cuales $y(x)=0$.
 \[ 0 = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
 
-\subsubsection*{Paso 2: Resolver la Ecuación para x}
+\subsection*{Paso 2: Resolver la Ecuación para x}
 Esta es una ecuación cuadrática para $x$ que podemos resolver factorizando:
 \[ x \left[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x \right] = 0 \]
 Esta ecuación tiene dos soluciones: $x=0$ (el punto de lanzamiento) y la solución que nos interesa, que corresponde al punto de aterrizaje ($x=R$):
 \[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)R = 0 \implies R = \tan\theta \cdot \frac{2v_0^2\cos^2\theta}{g} \]
 
-\subsubsection*{Paso 3: Simplificar la Expresión}
+\subsection*{Paso 3: Simplificar la Expresión}
 Usando la identidad $\tan\theta = \frac{\sin\theta}{\cos\theta}$, simplificamos:
 \[ R = \left(\frac{\sin\theta}{\cos\theta}\right) \frac{2v_0^2\cos^2\theta}{g} = \frac{2v_0^2 \sin\theta \cos\theta}{g} \]
 Finalmente, aplicamos la identidad del ángulo doble, $2\sin\theta\cos\theta = \sin(2\theta)$, para obtener la \textbf{fórmula general del alcance}:
@@ -2685,7 +3061,7 @@ Finalmente, aplicamos la identidad del ángulo doble, $2\sin\theta\cos\theta = \
     \boxed{R = \frac{v_0^2 \sin(2\theta)}{g}}
 \end{equation}
 
-\subsubsection*{Paso 4: Encontrar el Alcance Máximo ($R_{\text{max}}$)}
+\subsection*{Paso 4: Encontrar el Alcance Máximo ($R_{\text{max}}$)}
 Para una $v_0$ dada, $R$ es máximo cuando $\sin(2\theta)$ es máximo. El valor máximo de la función seno es \textbf{1}.
 \[ \sin(2\theta) = 1 \implies 2\theta = 90^\circ \implies \boxed{\theta = 45^\circ} \]
 Sustituyendo $\sin(2\theta)=1$ en la fórmula del alcance, encontramos el valor del \textbf{alcance máximo}:
@@ -2693,10 +3069,10 @@ Sustituyendo $\sin(2\theta)=1$ en la fórmula del alcance, encontramos el valor 
     \boxed{R_{\text{max}} = \frac{v_0^2}{g}}
 \end{equation}
 
-\subsection{Demostración de la Altura Máxima (H)}
+\section{Demostración de la Altura Máxima (H)}
 La \textbf{altura máxima (H)} es el punto más alto de la trayectoria. Físicamente, este es el punto en el que la componente vertical de la velocidad se vuelve cero ($v_y = 0$) por un instante.
 
-\subsubsection*{Paso 1: Encontrar el Tiempo para Alcanzar la Altura Máxima ($t_{\text{pico}}$)}
+\subsection*{Paso 1: Encontrar el Tiempo para Alcanzar la Altura Máxima ($t_{\text{pico}}$)}
 Usamos la ecuación de la velocidad vertical y la igualamos a cero:
 \[ v_y(t) = v_0 \sin\theta - gt \]
 \[ 0 = v_0 \sin\theta - gt_{\text{pico}} \]
@@ -2704,7 +3080,7 @@ Despejando el tiempo para llegar al pico, $t_{\text{pico}}$:
 \[ \boxed{t_{\text{pico}} = \frac{v_0 \sin\theta}{g}} \]
 \textit{(Nota: Este es exactamente la mitad del tiempo total de vuelo).}
 
-\subsection*{Ejemplo: Tiempo de vuelo}
+\section*{Ejemplo: Tiempo de vuelo}
 Calcular el tiempo de vuelo del movimiento parabólico. Este se obtiene de la condición
 $y(t_{\text{vuelo}}) = 0$, de modo que
 \begin{align*}
@@ -2715,7 +3091,7 @@ t_{\text{vuelo}} =& 2\frac{v_0 \sin\theta}{g}\,.
 \end{align*}
 Esto quiere decir que, para una cierta velocidad inicial, a mayor ángulo de lanzamiento, mayor es el tiempo de vuelo.
 
-\subsubsection*{Paso 2: Calcular la Altura en ese Tiempo}
+\subsection*{Paso 2: Calcular la Altura en ese Tiempo}
 Ahora que sabemos en qué momento se alcanza la altura máxima, sustituimos $t = t_{\text{pico}}$ en la ecuación de la posición vertical, $y(t)$. La altura en este momento será la altura máxima, $H$.
 \begin{align*}
     H &= y(t_{\text{pico}}) = (v_0 \sin\theta)t_{\text{pico}} - \frac{1}{2}gt_{\text{pico}}^2 \\
@@ -2732,7 +3108,7 @@ Esto nos da la \textbf{fórmula general de la altura máxima}:
     \boxed{H = \frac{v_0^2 \sin^2\theta}{2g}}
 \end{equation}
 
-\subsubsection*{Método Alternativo: Usando la ``Ecuación Eterna"}
+\subsection*{Método Alternativo: Usando la ``Ecuación Eterna"}
 Una forma más rápida es usar la ecuación cinemática que no depende del tiempo: $v_f^2 = v_i^2 + 2a\Delta s$, aplicada a la dirección vertical ($v_{fy}^2 = v_{iy}^2 + 2a_y \Delta y$).
 \begin{itemize}
     \item En la altura máxima, la velocidad final es cero: $v_{fy} = 0$.
@@ -2755,7 +3131,7 @@ Despejando $H$ se obtiene el mismo resultado:
 
 El problema de un bloque deslizándose por un plano inclinado sin fricción es una extensión del concepto de caída libre. Aunque el objeto no cae verticalmente, su movimiento sigue siendo gobernado únicamente por la gravedad. La clave para resolver este problema es elegir un sistema de coordenadas adecuado y descomponer correctamente el vector de la fuerza gravitacional.
 
-\subsection{Configuración del Problema y Diagrama de Cuerpo Libre}
+\section{Configuración del Problema y Diagrama de Cuerpo Libre}
 
 Consideremos un bloque de masa $m$ que se encuentra sobre un plano inclinado un ángulo $\theta$ con respecto a la horizontal. No hay fricción entre el bloque y el plano.
 
@@ -2786,7 +3162,7 @@ Consideremos un bloque de masa $m$ que se encuentra sobre un plano inclinado un 
             
             % --- Diagrama de Cuerpo Libre ---
             % Vector Fuerza Normal (perpendicular al plano)
-            \draw[force, blue] (C) -- ++(0, 1.5) node[above] {$\vec{F}_N$};
+            \draw[force, blue] (C) -- ++(0, 1.5) node[above] {$\boldsymbol{F}_N$};
             
             % Vector Fuerza Gravitacional (siempre vertical hacia abajo)
             % Se dibuja fuera del 'scope' rotado para que sea vertical
@@ -2794,7 +3170,7 @@ Consideremos un bloque de masa $m$ que se encuentra sobre un plano inclinado un 
 
         % Para dibujar la gravedad, calculamos la posición global del centro del bloque
         \coordinate (C_global) at ({2.5*cos(\angle)}, {2.5*sin(\angle)+0.5});
-        \draw[force, red] (C_global) -- ++(0, -2) node[below] {$\vec{F}_g = m\vec{g}$};
+        \draw[force, red] (C_global) -- ++(0, -2) node[below] {$\boldsymbol{F}_g = m\boldsymbol{g}$};
 
         % --- Descomposición de la Fuerza Gravitacional ---
         % Proyecciones en el sistema de coordenadas rotado
@@ -2812,16 +3188,16 @@ Consideremos un bloque de masa $m$ que se encuentra sobre un plano inclinado un 
         \end{scope}
 
     \end{tikzpicture}
-    \caption{Diagrama de cuerpo libre para un bloque en un plano inclinado. La fuerza gravitacional ($\vec{F}_g$) se descompone en una componente perpendicular ($mg\cos\theta$) y una componente paralela ($mg\sin\theta$) al plano.}
+    \caption{Diagrama de cuerpo libre para un bloque en un plano inclinado. La fuerza gravitacional ($\boldsymbol{F}_g$) se descompone en una componente perpendicular ($mg\cos\theta$) y una componente paralela ($mg\sin\theta$) al plano.}
     \label{fig:plano_inclinado}
 \end{figure}
 
-\subsubsection{Análisis de las Fuerzas y Ecuaciones de Movimiento}
+\subsection{Análisis de las Fuerzas y Ecuaciones de Movimiento}
 
 Para analizar el movimiento, es mucho más conveniente elegir un sistema de coordenadas ``rotado'', donde el eje x es paralelo al plano inclinado (apuntando hacia abajo) y el eje y es perpendicular al plano (apuntando hacia afuera).
 
 \paragraph{Descomposición de la Fuerza Gravitacional:}
-La fuerza de la gravedad, $\vec{F}_g$, actúa verticalmente hacia abajo. En nuestro sistema de coordenadas rotado, debemos descomponerla en dos componentes:
+La fuerza de la gravedad, $\boldsymbol{F}_g$, actúa verticalmente hacia abajo. En nuestro sistema de coordenadas rotado, debemos descomponerla en dos componentes:
 \begin{itemize}
     \item \textbf{Componente Perpendicular ($F_{g, \perp}$):} Esta componente ``empuja'' al bloque contra el plano. Usando trigonometría, su magnitud es:
     \[ F_{g, \perp} = mg \cos\theta \]
@@ -2829,12 +3205,12 @@ La fuerza de la gravedad, $\vec{F}_g$, actúa verticalmente hacia abajo. En nues
     \[ F_{g, \parallel} = mg \sin\theta \]
 \end{itemize}
 
-\paragraph{Aplicación de la Segunda Ley de Newton ($\Sigma \vec{F} = m\vec{a}$):}
+\paragraph{Aplicación de la Segunda Ley de Newton ($\Sigma \boldsymbol{F} = m\boldsymbol{a}$):}
 Ahora aplicamos la ley de Newton por separado en cada eje de nuestro sistema rotado.
 
 \begin{itemize}
     \item \textbf{Análisis en el Eje y (Perpendicular al plano):}
-    Las fuerzas en esta dirección son la Fuerza Normal ($\vec{F}_N$), que apunta hacia afuera, y la componente perpendicular de la gravedad ($F_{g, \perp}$), que apunta hacia adentro. Como el bloque no acelera en esta dirección (no salta del plano ni se hunde en él), la aceleración $a_y$ es cero.
+    Las fuerzas en esta dirección son la Fuerza Normal ($\boldsymbol{F}_N$), que apunta hacia afuera, y la componente perpendicular de la gravedad ($F_{g, \perp}$), que apunta hacia adentro. Como el bloque no acelera en esta dirección (no salta del plano ni se hunde en él), la aceleración $a_y$ es cero.
     \[ \Sigma F_y = F_N - mg \cos\theta = m a_y = 0 \]
     Esto nos dice que la fuerza normal equilibra perfectamente a la componente perpendicular de la gravedad:
     \[ F_N = mg \cos\theta \]
@@ -2846,7 +3222,7 @@ Ahora aplicamos la ley de Newton por separado en cada eje de nuestro sistema rot
     \[ \boxed{a_x = g \sin\theta} \]
 \end{itemize}
 
-\subsubsection{Conclusión: La Conexión con la Caída Libre}
+\subsection{Conclusión: La Conexión con la Caída Libre}
 
 La aceleración del bloque a lo largo del plano es $a = g \sin\theta$. Esta ecuación nos muestra cómo el plano inclinado ``diluye'' el efecto de la gravedad.
 
@@ -2866,9 +3242,9 @@ Por lo tanto, el movimiento en un plano inclinado es una forma de movimiento con
 
 Este problema introduce dos conceptos importantes: la \textbf{fuerza de fricción} (o rozamiento) y el efecto de aplicar una \textbf{fuerza en un ángulo}. A diferencia del caso del plano inclinado, aquí la fuerza que causa el movimiento no es la gravedad, sino una fuerza externa aplicada.
 
-\subsection{Configuración del Problema y Diagrama de Cuerpo Libre}
+\section{Configuración del Problema y Diagrama de Cuerpo Libre}
 
-Consideremos un bloque de masa $m$ que se encuentra sobre una superficie horizontal. Se aplica una fuerza externa $\vec{F}$ con una magnitud $F$ y un ángulo $\theta$ por encima de la horizontal. Existe un coeficiente de fricción cinética $\mu_k$ entre el bloque y la superficie. El bloque se mueve hacia la derecha.
+Consideremos un bloque de masa $m$ que se encuentra sobre una superficie horizontal. Se aplica una fuerza externa $\boldsymbol{F}$ con una magnitud $F$ y un ángulo $\theta$ por encima de la horizontal. Existe un coeficiente de fricción cinética $\mu_k$ entre el bloque y la superficie. El bloque se mueve hacia la derecha.
 
 \begin{figure}[h!]
     \centering
@@ -2890,16 +3266,16 @@ Consideremos un bloque de masa $m$ que se encuentra sobre una superficie horizon
         % --- Diagrama de Cuerpo Libre (vectores de fuerza) ---
         
         % 1. Fuerza Gravitacional (Peso)
-        \draw[force, red] (C) -- ++(0, -1.5) node[below] {$\vec{F}_g = m\vec{g}$};
+        \draw[force, red] (C) -- ++(0, -1.5) node[below] {$\boldsymbol{F}_g = m\boldsymbol{g}$};
         
         % 2. Fuerza Normal (hacia arriba)
-        \draw[force, blue] (C) -- ++(0, 1.5) node[above] {$\vec{F}_N$};
+        \draw[force, blue] (C) -- ++(0, 1.5) node[above] {$\boldsymbol{F}_N$};
         
         % 3. Fuerza de Fricción Cinética (opuesta al movimiento)
-        \draw[force, brown] (C) -- ++(-1.2, 0) node[left] {$\vec{f}_k$};
+        \draw[force, brown] (C) -- ++(-1.2, 0) node[left] {$\boldsymbol{f}_k$};
         
         % 4. Fuerza Aplicada (en ángulo)
-        \draw[force, purple] (C) -- ++(30:2) node[above right] {$\vec{F}$};
+        \draw[force, purple] (C) -- ++(30:2) node[above right] {$\boldsymbol{F}$};
 
         % --- Descomposición de la Fuerza Aplicada ---
         % Ángulo
@@ -2914,15 +3290,15 @@ Consideremos un bloque de masa $m$ que se encuentra sobre una superficie horizon
         \draw[force, purple!60, dashed] (C) -- ++(0, {2*sin(30)}) node[right] {$F \sin\theta$};
 
     \end{tikzpicture}
-    \caption{Diagrama de cuerpo libre para un bloque sobre una superficie horizontal con fricción, sujeto a una fuerza $\vec{F}$ aplicada con un ángulo $\theta$. Se muestran todas las fuerzas y la descomposición de la fuerza aplicada.}
+    \caption{Diagrama de cuerpo libre para un bloque sobre una superficie horizontal con fricción, sujeto a una fuerza $\boldsymbol{F}$ aplicada con un ángulo $\theta$. Se muestran todas las fuerzas y la descomposición de la fuerza aplicada.}
     \label{fig:plano_horizontal_friccion}
 \end{figure}
 
-\subsection{Análisis de las Fuerzas y Ecuaciones de Movimiento}
+\section{Análisis de las Fuerzas y Ecuaciones de Movimiento}
 Para analizar el movimiento, usamos un sistema de coordenadas cartesiano estándar, con el eje x horizontal (positivo hacia la derecha) y el eje y vertical (positivo hacia arriba).
 
 \paragraph{Descomposición de la Fuerza Aplicada:}
-La fuerza $\vec{F}$ debe descomponerse en sus componentes horizontal y vertical:
+La fuerza $\boldsymbol{F}$ debe descomponerse en sus componentes horizontal y vertical:
 \begin{itemize}
     \item \textbf{Componente Horizontal ($F_x$):} Esta es la componente que ``tira'' del bloque hacia la derecha.
     \[ F_x = F \cos\theta \]
@@ -2935,7 +3311,7 @@ La fuerza de fricción cinética se opone al movimiento y su magnitud es proporc
 \[ f_k = \mu_k F_N \]
 \textbf{¡Atención!} En este caso, la fuerza normal $F_N$ \textbf{no es igual} al peso $mg$.
 
-\paragraph{Aplicación de la Segunda Ley de Newton ($\Sigma \vec{F} = m\vec{a}$):}
+\paragraph{Aplicación de la Segunda Ley de Newton ($\Sigma \boldsymbol{F} = m\boldsymbol{a}$):}
 Aplicamos la ley de Newton por separado en cada eje.
 
 \begin{itemize}
@@ -2955,7 +3331,7 @@ Aplicamos la ley de Newton por separado en cada eje.
     \[ \boxed{ a_x = \frac{F \cos\theta - \mu_k (mg - F \sin\theta)}{m} } \]
 \end{itemize}
 
-\subsection{Conclusión e Interpretación}
+\section{Conclusión e Interpretación}
 
 La aceleración del bloque es constante, siempre que el bloque se mueva y la fuerza $F$ sea constante. La ecuación para $a_x$ nos dice varias cosas importantes:
 \begin{itemize}
@@ -2976,7 +3352,7 @@ Este problema ilustra cómo las fuerzas pueden tener efectos complejos y cómo u
 
 La fuerza centrípeta es la fuerza neta requerida para mantener a un objeto en una trayectoria circular. No es una fuerza fundamental, sino el resultado de otras fuerzas (como la gravedad, la tensión o la fricción). La demostración se realiza en dos etapas: primero se deriva la aceleración centrípeta ($a_c$) y luego se aplica la Segunda Ley de Newton.
 
-\subsubsection{Paso 1: Derivación de la Aceleración Centrípeta ($a_c$)}
+\subsection{Paso 1: Derivación de la Aceleración Centrípeta ($a_c$)}
 
 La aceleración es el cambio de velocidad en el tiempo ($a = \Delta v / \Delta t$). En el movimiento circular uniforme, la rapidez es constante, pero el vector velocidad cambia continuamente de dirección. Esta aceleración se dirige siempre hacia el centro del círculo.
 
@@ -2993,9 +3369,9 @@ Consideremos un objeto que se mueve en un círculo de radio $r$. Analizamos dos 
         % Triángulo de Posición
         \node at (1.5, 2.5) {\textbf{Triángulo de Posición}};
         \draw[line] (0,0) circle (2cm);
-        \draw[vector] (0,0) -- (30:2) node[midway, above right] {$\vec{r}_1$};
-        \draw[vector] (0,0) -- (90:2) node[midway, above left]  {$\vec{r}_2$};
-        \draw[vector, blue, thick] (30:2) -- (90:2) node[midway, left] {$\Delta \vec{r}$};
+        \draw[vector] (0,0) -- (30:2) node[midway, above right] {$\boldsymbol{r}_1$};
+        \draw[vector] (0,0) -- (90:2) node[midway, above left]  {$\boldsymbol{r}_2$};
+        \draw[vector, blue, thick] (30:2) -- (90:2) node[midway, left] {$\Delta \boldsymbol{r}$};
         \draw (0.3,0) arc (0:90:0.3);
         \node at (45:0.5) {$\Delta \theta$};
 
@@ -3003,42 +3379,42 @@ Consideremos un objeto que se mueve en un círculo de radio $r$. Analizamos dos 
         \begin{scope}[xshift=5cm, yshift=1cm]
             \node at (0, 1.5) {\textbf{Triángulo de Velocidad}};
             % Movemos los vectores para que coincidan sus orígenes
-            \draw[vector] (0,0) -- (120:1.5) node[midway, above left] {$\vec{v}_1$};
-            \draw[vector] (0,0) -- (180:1.5) node[midway, above]       {$\vec{v}_2$};
-            \draw[vector, red, thick] (120:1.5) -- (180:1.5) node[midway, below] {$\Delta \vec{v}$};
+            \draw[vector] (0,0) -- (120:1.5) node[midway, above left] {$\boldsymbol{v}_1$};
+            \draw[vector] (0,0) -- (180:1.5) node[midway, above]       {$\boldsymbol{v}_2$};
+            \draw[vector, red, thick] (120:1.5) -- (180:1.5) node[midway, below] {$\Delta \boldsymbol{v}$};
             \draw (0,0) -- ++(150:0.4);
             \draw (150:0.4) arc (150:210:0.4);
             \node at (180:0.6) {$\Delta \theta$};
         \end{scope}
     \end{tikzpicture}
-    \caption{A la izquierda, el triángulo isósceles formado por los vectores de posición $\vec{r}_1, \vec{r}_2$ y el desplazamiento $\Delta\vec{r}$. A la derecha, el triángulo isósceles formado por los vectores de velocidad $\vec{v}_1, \vec{v}_2$ y el cambio de velocidad $\Delta\vec{v}$. Ambos triángulos son semejantes.}
+    \caption{A la izquierda, el triángulo isósceles formado por los vectores de posición $\boldsymbol{r}_1, \boldsymbol{r}_2$ y el desplazamiento $\Delta\boldsymbol{r}$. A la derecha, el triángulo isósceles formado por los vectores de velocidad $\boldsymbol{v}_1, \boldsymbol{v}_2$ y el cambio de velocidad $\Delta\boldsymbol{v}$. Ambos triángulos son semejantes.}
     \label{fig:triangulos_centripeta}
 \end{figure}
 
-Como se muestra en la Figura~\ref{fig:triangulos_centripeta}, el triángulo de posición (formado por $\vec{r}_1, \vec{r}_2, \Delta\vec{r}$) y el triángulo de velocidad (formado por $\vec{v}_1, \vec{v}_2, \Delta\vec{v}$) son \textbf{triángulos semejantes}. Ambos son isósceles y el ángulo entre sus lados iguales es el mismo ($\Delta \theta$).
+Como se muestra en la Figura~\ref{fig:triangulos_centripeta}, el triángulo de posición (formado por $\boldsymbol{r}_1, \boldsymbol{r}_2, \Delta\boldsymbol{r}$) y el triángulo de velocidad (formado por $\boldsymbol{v}_1, \boldsymbol{v}_2, \Delta\boldsymbol{v}$) son \textbf{triángulos semejantes}. Ambos son isósceles y el ángulo entre sus lados iguales es el mismo ($\Delta \theta$).
 
 Debido a la semejanza, la razón de las longitudes de sus lados correspondientes debe ser igual:
-\[ \frac{|\Delta \vec{v}|}{v} = \frac{|\Delta \vec{r}|}{r} \]
-donde $v=|\vec{v}_1|=|\vec{v}_2|$ y $r=|\vec{r}_1|=|\vec{r}_2|$.
+\[ \frac{|\Delta \boldsymbol{v}|}{v} = \frac{|\Delta \boldsymbol{r}|}{r} \]
+donde $v=|\boldsymbol{v}_1|=|\boldsymbol{v}_2|$ y $r=|\boldsymbol{r}_1|=|\boldsymbol{r}_2|$.
 
 Despejamos la magnitud del cambio de velocidad y dividimos por $\Delta t$:
-\[ |\Delta \vec{v}| = \frac{v}{r} |\Delta \vec{r}| \implies \frac{|\Delta \vec{v}|}{\Delta t} = \frac{v}{r} \frac{|\Delta \vec{r}|}{\Delta t} \]
+\[ |\Delta \boldsymbol{v}| = \frac{v}{r} |\Delta \boldsymbol{r}| \implies \frac{|\Delta \boldsymbol{v}|}{\Delta t} = \frac{v}{r} \frac{|\Delta \boldsymbol{r}|}{\Delta t} \]
 La aceleración instantánea es el límite de esta expresión cuando $\Delta t \to 0$.
-\[ a_c = \lim_{\Delta t \to 0} \frac{|\Delta \vec{v}|}{\Delta t} = \lim_{\Delta t \to 0} \left( \frac{v}{r} \frac{|\Delta \vec{r}|}{\Delta t} \right) \]
-En este límite, $\lim_{\Delta t \to 0} \frac{|\Delta \vec{r}|}{\Delta t}$ es, por definición, la rapidez instantánea $v$. Por lo tanto:
+\[ a_c = \lim_{\Delta t \to 0} \frac{|\Delta \boldsymbol{v}|}{\Delta t} = \lim_{\Delta t \to 0} \left( \frac{v}{r} \frac{|\Delta \boldsymbol{r}|}{\Delta t} \right) \]
+En este límite, $\lim_{\Delta t \to 0} \frac{|\Delta \boldsymbol{r}|}{\Delta t}$ es, por definición, la rapidez instantánea $v$. Por lo tanto:
 \[ a_c = \frac{v}{r} \cdot v \]
 Esto nos da la fórmula para la magnitud de la \textbf{aceleración centrípeta}:
 \begin{equation}
 \label{eq:acentripeta}
     \boxed{a_c = \frac{v^2}{r}}
 \end{equation}
-Geométricamente, se puede demostrar que a medida que $\Delta t \to 0$, el vector $\Delta \vec{v}$ apunta directamente hacia el centro del círculo.
+Geométricamente, se puede demostrar que a medida que $\Delta t \to 0$, el vector $\Delta \boldsymbol{v}$ apunta directamente hacia el centro del círculo.
 
-\subsubsection{Paso 2: Aplicación de la Segunda Ley de Newton}
-Ahora que tenemos la aceleración, encontrar la fuerza es directo. La Segunda Ley de Newton establece que la fuerza neta es igual a la masa por la aceleración ($\vec{F}_{\text{neta}} = m\vec{a}$).
+\subsection{Paso 2: Aplicación de la Segunda Ley de Newton}
+Ahora que tenemos la aceleración, encontrar la fuerza es directo. La Segunda Ley de Newton establece que la fuerza neta es igual a la masa por la aceleración ($\boldsymbol{F}_{\text{neta}} = m\boldsymbol{a}$).
 
-En el movimiento circular, la fuerza neta que causa la aceleración centrípeta es la fuerza centrípeta, $\vec{F}_c$.
-\[ \vec{F}_c = m\vec{a}_c \]
+En el movimiento circular, la fuerza neta que causa la aceleración centrípeta es la fuerza centrípeta, $\boldsymbol{F}_c$.
+\[ \boldsymbol{F}_c = m\boldsymbol{a}_c \]
 En términos de magnitud:
 \[ F_c = m \cdot a_c \]
 Sustituimos la expresión que derivamos para $a_c$:
@@ -3056,7 +3432,7 @@ La dirección de la fuerza centrípeta es la misma que la de la aceleración cen
 
 Mientras que las leyes de Kepler describen \textit{cómo} se mueven los planetas, fue Isaac Newton quien explicó \textit{por qué} se mueven de esa manera. A finales del siglo XVII, Newton propuso su Ley de Gravitación Universal, una ley fundamental que describe la fuerza de atracción entre dos objetos cualesquiera con masa.
 
-\subsection{La Fuerza Gravitacional entre Dos Cuerpos}
+\section{La Fuerza Gravitacional entre Dos Cuerpos}
 
 La ley establece que la fuerza de atracción entre dos partículas puntuales de masa $m_1$ y $m_2$, separadas por una distancia $r$, tiene una magnitud dada por:
 \begin{equation}
@@ -3071,19 +3447,19 @@ Donde:
     \item La fuerza es siempre \textbf{atractiva} y actúa a lo largo de la línea que une los centros de los dos cuerpos.
 \end{itemize}
 
-En forma vectorial, si $\vec{r}$ es el vector que va de $m_1$ a $m_2$, la fuerza que $m_1$ ejerce sobre $m_2$ es:
+En forma vectorial, si $\boldsymbol{r}$ es el vector que va de $m_1$ a $m_2$, la fuerza que $m_1$ ejerce sobre $m_2$ es:
 \begin{align}
 \label{eq:GravitationalForce}
-    \vec{F}_{12} = -G \frac{m_1 m_2}{r^3} \vec{r}\,.
+    \boldsymbol{F}_{12} = -G \frac{m_1 m_2}{r^3} \boldsymbol{r}\,.
 \end{align}
-El signo negativo indica que la fuerza apunta en dirección opuesta a $\vec{r}$, es decir, desde $m_2$ hacia $m_1$.
+El signo negativo indica que la fuerza apunta en dirección opuesta a $\boldsymbol{r}$, es decir, desde $m_2$ hacia $m_1$.
 
-\subsection{El Concepto de Campo Gravitacional ($\vec{g}$)}
+\section{El Concepto de Campo Gravitacional ($\boldsymbol{g}$)}
 
 Newton se sentía incómodo con la idea de la ``acción a distancia". Para evitarla, se introdujo el concepto de \textbf{campo gravitacional}. La idea es que un cuerpo masivo (como la Tierra, de masa $M$) no tira directamente de otros objetos, sino que \textit{modifica el espacio a su alrededor}, creando un campo de fuerza.
 
-El campo gravitacional, $\vec{g}$, en un punto del espacio se define como la fuerza gravitacional por unidad de masa que experimentaría una pequeña masa de prueba $m$ colocada en ese punto.
-\[ \vec{g} = \frac{\vec{F}_g}{m} \]
+El campo gravitacional, $\boldsymbol{g}$, en un punto del espacio se define como la fuerza gravitacional por unidad de masa que experimentaría una pequeña masa de prueba $m$ colocada en ese punto.
+\[ \boldsymbol{g} = \frac{\boldsymbol{F}_g}{m} \]
 Usando la ley de Newton, la magnitud del campo gravitacional a una distancia $r$ de una masa central $M$ es:
 \begin{equation}
     g = \frac{F_g}{m} = \frac{G M m / r^2}{m} \implies \boxed{g = G \frac{M}{r^2}}
@@ -3115,14 +3491,14 @@ El campo gravitacional es una propiedad del espacio creada por la masa $M$, inde
         
         % --- Añadir etiquetas ---
         \node[orange, font=\small, anchor=south] at (0, 3.5) {Línea Equipotencial};
-        \node[red!80!black, font=\small, rotate=-45, anchor=south] at (45:3.5) {Campo Gravitacional ($\vec{g}$)};
+        \node[red!80!black, font=\small, rotate=-45, anchor=south] at (45:3.5) {Campo Gravitacional ($\boldsymbol{g}$)};
     \end{tikzpicture}
-    \caption{Representación en 2D del campo gravitacional ($\vec{g}$) generado por la Tierra. Las líneas de campo (flechas rojas) son radiales y apuntan hacia el centro de masa. Las líneas equipotenciales (círculos naranjas a trazos) son perpendiculares a las líneas de campo.}
+    \caption{Representación en 2D del campo gravitacional ($\boldsymbol{g}$) generado por la Tierra. Las líneas de campo (flechas rojas) son radiales y apuntan hacia el centro de masa. Las líneas equipotenciales (círculos naranjas a trazos) son perpendiculares a las líneas de campo.}
     \label{fig:campo_gravitacional_newton}
 \end{figure}
 
-La importancia del campo es que, si conocemos $\vec{g}$ en una región del espacio, podemos calcular la fuerza gravitacional sobre cualquier masa $m$ simplemente con la fórmula:
-\[ \vec{F}_g = m \vec{g} \]
+La importancia del campo es que, si conocemos $\boldsymbol{g}$ en una región del espacio, podemos calcular la fuerza gravitacional sobre cualquier masa $m$ simplemente con la fórmula:
+\[ \boldsymbol{F}_g = m \boldsymbol{g} \]
 Cerca de la superficie de la Tierra, el campo gravitacional es aproximadamente constante, con una magnitud $g \approx \SI{9.8}{\meter\per\second\squared}$. Este es el valor que usamos en los problemas de caída libre y movimiento parabólico. Las leyes de Kepler, que describen el movimiento planetario, se derivan directamente de la naturaleza de esta fuerza central de la inversa del cuadrado.
 
 % --- Fin del código LaTeX ---
@@ -3131,7 +3507,7 @@ Cerca de la superficie de la Tierra, el campo gravitacional es aproximadamente c
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsection{Ejemplo: Cálculo del Campo Gravitacional en la Superficie de la Tierra}
+\section{Ejemplo: Cálculo del Campo Gravitacional en la Superficie de la Tierra}
 
 Como aplicación directa de la Ecuación~(\ref{eq:campo_g}), podemos calcular el valor teórico del campo gravitacional (y por tanto, la aceleración de la gravedad) en la superficie de nuestro planeta.
 
@@ -3182,14 +3558,14 @@ Sin embargo, este cálculo demuestra con gran precisión cómo la Ley de Gravita
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsection{El Cañón de Newton: De Proyectiles a Órbitas}
+\section{El Cañón de Newton: De Proyectiles a Órbitas}
 
 Este es el famoso experimento mental que Isaac Newton propuso para explicar cómo funcionan las órbitas, conectando el movimiento de proyectiles con el movimiento orbital.
 
-\subsubsection*{El Problema}
+\subsection*{El Problema}
 Imagina un cañón situado en la cima de una montaña muy alta, que dispara proyectiles horizontalmente. ¿Cuál debe ser la velocidad inicial para que el proyectil "caiga" perpetuamente alrededor de la Tierra, describiendo una órbita circular? ¿Y qué ocurre si la velocidad es aún mayor?
 
-\subsubsection*{Parte 1: Cálculo de la Velocidad Orbital Circular ($v_{\text{orb}}$)}
+\subsection*{Parte 1: Cálculo de la Velocidad Orbital Circular ($v_{\text{orb}}$)}
 Para que el proyectil describa una órbita circular, la fuerza de la gravedad debe proporcionar exactamente la \textbf{fuerza centrípeta} necesaria.
 \[ F_g = F_c \implies G \frac{M_T m}{r^2} = \frac{m v_{\text{orb}}^2}{r} \]
 Donde $M_T$ es la masa de la Tierra, $m$ la del proyectil y $r$ el radio de la órbita. Simplificando la ecuación (cancelando $m$ y un $r$):
@@ -3209,14 +3585,14 @@ de donde
 a = \frac{GM_T}{r^2}\,.    
 \end{align}
 
-\subsubsection*{Parte 2: Discusión de Órbitas para Velocidades Mayores}
+\subsection*{Parte 2: Discusión de Órbitas para Velocidades Mayores}
 Si la velocidad inicial horizontal ($v_{\text{inicial}}$) es mayor que la velocidad orbital circular:
 \begin{itemize}
     \item \textbf{Si $v_{\text{inicial}} > v_{\text{orb}}$ pero no demasiado grande:} La fuerza de gravedad ya no es suficiente para mantener la trayectoria en un círculo. La órbita resultante es una \textbf{elipse}, con el punto de lanzamiento como el perigeo (punto más cercano).
     \item \textbf{Si $v_{\text{inicial}}$ alcanza un valor crítico:} La energía cinética del proyectil es tan grande que la gravedad ya no puede hacer que regrese. La órbita deja de ser una curva cerrada.
 \end{itemize}
 
-\subsection*{Energía  potencial del campo gravitacional}
+\section*{Energía  potencial del campo gravitacional}
 Para el campo gravitacional definimos de forma similar la energía potencial a una distancia $r$ del centro de la Tierra, pero de tal manera que sea cero en el infinito
 \begin{align}
     E_{\text{pot}} = W =& \boldsymbol{F}\cdot\boldsymbol{r} \nonumber\\
@@ -3228,7 +3604,7 @@ Para el campo gravitacional definimos de forma similar la energía potencial a u
 
 
 
-\subsubsection*{Parte 3: La Velocidad de Escape ($v_{\text{esc}}$)}
+\subsection*{Parte 3: La Velocidad de Escape ($v_{\text{esc}}$)}
 La velocidad de escape desde la superficie de la Tierra, a $R_T$, se define como la velocidad inicial que debe imprimirse a un objeto para que llegue al infinito con velocidad cero, donde la disminución de la disminución de la velocidad es causada por la atracción gravitacional de la Tierra. Como en el infinito la Energía potencial también es cero,
 
 
@@ -3253,7 +3629,7 @@ ver \url{https://trinket.io/python3/78e5585e116e}
     \label{fig:canon_newton}
 \end{figure}
 
-\subsubsection*{Resumen de las Órbitas}
+\subsection*{Resumen de las Órbitas}
 Para un proyectil lanzado horizontalmente desde un radio $r$:
 \begin{enumerate}
     \item \textbf{Si $v < v_{\text{orb}}$:} La trayectoria es una elipse que intersecta la superficie (el proyectil cae).
@@ -3266,11 +3642,11 @@ Para un proyectil lanzado horizontalmente desde un radio $r$:
 % --- Fin del código LaTeX ---
 % --- Inicio del código LaTeX para insertar ---
 
-\subsection{Ejemplo: Campo Gravitacional de la Tierra a la Distancia de la Luna}
+\section{Ejemplo: Campo Gravitacional de la Tierra a la Distancia de la Luna}
 
 Este cálculo ilustra cómo la intensidad del campo gravitacional decae con la distancia, siguiendo una ley de la inversa del cuadrado. Nuestro objetivo es calcular la magnitud del campo gravitacional terrestre, $g$, a la distancia orbital media de la Luna.
 
-\subsubsection*{Método 1: Cálculo Directo}
+\subsection*{Método 1: Cálculo Directo}
 Utilizamos la fórmula fundamental del campo gravitacional:
 \begin{align}
     \label{eq:GraviationalField}
@@ -3294,7 +3670,7 @@ Sustituimos los valores en la fórmula:
 Dado que $\SI{1}{\newton\per\kilo\gram} = \SI{1}{\meter\per\second\squared}$, el resultado es:
 \[ \boxed{g_{\text{Luna}} \approx \SI{0.0027}{\meter\per\second\squared}} \]
 
-\subsubsection*{Método 2: Usando Proporciones (Más Elegante)}
+\subsection*{Método 2: Usando Proporciones (Más Elegante)}
 Este método aprovecha la ley de la inversa del cuadrado ($g \propto 1/r^2$) y no requiere conocer $G$ ni $M_T$.
 \[ \frac{g_{\text{Luna}}}{g_{\text{Tierra}}} = \frac{G M_T / r_{\text{Luna}}^2}{G M_T / R_{\text{Tierra}}^2} = \left(\frac{R_{\text{Tierra}}}{r_{\text{Luna}}}\right)^2 \]
 
@@ -3310,7 +3686,7 @@ Este método aprovecha la ley de la inversa del cuadrado ($g \propto 1/r^2$) y n
 \[ g_{\text{Luna}} \approx \SI{9.8}{\meter\per\second\squared} \times \num{0.0002746} \approx \SI{0.00269}{\meter\per\second\squared} \]
 Ambos métodos dan el mismo resultado.
 
-\subsubsection*{Interpretación y Conclusión}
+\subsection*{Interpretación y Conclusión}
 La intensidad del campo gravitacional de la Tierra a la distancia de la Luna es de aproximadamente \SI{0.0027}{\meter\per\second\squared}.
 \begin{itemize}
     \item \textbf{Comparación:} Este valor es unas \num{3600} veces más débil que el campo en la superficie ($\SI{9.8} / \SI{0.0027} \approx 3600$), lo cual es consistente con la relación de distancias al cuadrado (la Luna está $\approx 60$ veces más lejos, y $60^2 = 3600$).
@@ -3321,11 +3697,11 @@ La intensidad del campo gravitacional de la Tierra a la distancia de la Luna es 
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsection{Comparación: Velocidad Real de la Luna vs. Velocidad Orbital Circular Teórica}
+\section{Comparación: Velocidad Real de la Luna vs. Velocidad Orbital Circular Teórica}
 
 Este análisis nos permite verificar la validez de la Ley de Gravitación de Newton y entender la naturaleza precisa de la órbita lunar. Comparamos la velocidad orbital media real de la Luna (calculada a partir de datos observacionales) con la velocidad teórica que tendría si su órbita fuera un círculo perfecto.
 
-\subsubsection*{Parte 1: Velocidad Orbital Real de la Luna (Observacional)}
+\subsection*{Parte 1: Velocidad Orbital Real de la Luna (Observacional)}
 Podemos calcular la velocidad orbital media de la Luna a partir de la distancia que recorre en una órbita ($2\pi r$) y el tiempo que tarda en completarla (su período, $T$).
 
 \paragraph{Fórmula:}
@@ -3344,7 +3720,7 @@ Ahora, calculamos la velocidad:
 \[ v_{\text{real}} = \frac{2\pi \times (\SI{3.844e8}{\meter})}{\SI{2.361e6}{\second}} \approx \SI{1022}{\meter\per\second} \]
 \textbf{Resultado:} La velocidad orbital media real de la Luna es de aproximadamente \textbf{\SI{1.022}{\kilo\meter\per\second}}.
 
-\subsubsection*{Parte 2: Velocidad Teórica para una Órbita Circular Perfecta}
+\subsection*{Parte 2: Velocidad Teórica para una Órbita Circular Perfecta}
 Ahora calculamos la velocidad que la Luna \textit{debería} tener si su órbita fuera un círculo perfecto a su distancia media, igualando la fuerza gravitacional a la fuerza centrípeta.
 
 \paragraph{Fórmula:}
@@ -3365,7 +3741,7 @@ v_{\text{circular}} = \sqrt{\frac{(\num{6.674e-11}) \times (\num{5.972e24})}{\nu
 \]
 \textbf{Resultado:} La velocidad teórica para una órbita perfectamente circular a esa distancia es de \textbf{\SI{1.018}{\kilo\meter\per\second}}.
 
-\subsubsection*{Análisis de la Discrepancia y Conclusión}
+\subsection*{Análisis de la Discrepancia y Conclusión}
 
 \begin{table}[h!]
 \centering
@@ -3397,7 +3773,7 @@ La velocidad media observada es el promedio de estas velocidades a lo largo de s
 
 % --- Fin del código LaTeX ---
 
-\subsection{Visualización Gráfica del Campo Gravitacional}
+\section{Visualización Gráfica del Campo Gravitacional}
 
 Para comprender mejor cómo varía la intensidad del campo gravitacional terrestre a diferentes distancias, desde el interior del planeta hasta más allá de la órbita lunar, podemos representarlo gráficamente. Una visualización estándar en una escala lineal sería poco práctica, ya que las enormes distancias involucradas harían imposible apreciar los detalles tanto cerca como lejos del centro.
 
@@ -3413,7 +3789,7 @@ El pico del gráfico ocurre precisamente en la superficie de la Tierra ($r=R_T$)
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsubsection*{Campo Gravitacional en el Interior de la Tierra}
+\subsection*{Campo Gravitacional en el Interior de la Tierra}
 
 Para encontrar la función que describe la variación del campo gravitacional \textit{dentro} de la Tierra (es decir, para un radio $r < R_T$, donde $R_T$ es el radio total de la Tierra), debemos aplicar la Ley de Gravitación de Newton de una manera más sutil, combinada con el \textbf{Teorema de la Esfera Hueca} (o Teorema de Cascarones de Newton).
 
@@ -3599,7 +3975,7 @@ Una implementación más completa se muestra en \url{https://trinket.io/python3/
 
 To obtain the Moon's orbital period using a numerical simulation, one models the Earth-Moon system as a two-body problem, applying Newton's Law of Universal Gravitation and Newton's Second Law of Motion. The simulation involves iteratively calculating forces and updating positions and velocities over small time steps.
 
-\subsection{Physical Constants and Initial Conditions}
+\section{Physical Constants and Initial Conditions}
 The following constants are used in the simulation:
 
 \begin{itemize}
@@ -3609,21 +3985,21 @@ The following constants are used in the simulation:
     \item \textbf{Average Earth-Moon distance ($a$):} $\SI{3.844E8}{\metre}$
 \end{itemize}
 
-\subsection{Simulation Method}
+\section{Simulation Method}
 The core of the simulation uses numerical integration (such as the Euler or Runge-Kutta method) to solve the equations of motion:
 
 \begin{enumerate}
     \item Calculate the distance ($r$) between the Earth and Moon.
-    \item Calculate the gravitational force ($\vec{F}$) vector:
-        $$\vec{F} = G \frac{M_E M_M}{r^2} \hat{r}$$
-    \item Calculate the Moon's acceleration ($\vec{a}$):
-        $$\vec{a} = \frac{\vec{F}}{M_M}$$
-    \item Update velocity ($\vec{v}$) and position ($\vec{p}$) over a time step ($\Delta t$):
-        $$\vec{v}_{\text{new}} = \vec{v}_{\text{old}} + \vec{a} \times \Delta t$$
-        $$\vec{p}_{\text{new}} = \vec{p}_{\text{old}} + \vec{v}_{\text{new}} \times \Delta t$$
+    \item Calculate the gravitational force ($\boldsymbol{F}$) vector:
+        $$\boldsymbol{F} = G \frac{M_E M_M}{r^2} \hat{r}$$
+    \item Calculate the Moon's acceleration ($\boldsymbol{a}$):
+        $$\boldsymbol{a} = \frac{\boldsymbol{F}}{M_M}$$
+    \item Update velocity ($\boldsymbol{v}$) and position ($\boldsymbol{p}$) over a time step ($\Delta t$):
+        $$\boldsymbol{v}_{\text{new}} = \boldsymbol{v}_{\text{old}} + \boldsymbol{a} \times \Delta t$$
+        $$\boldsymbol{p}_{\text{new}} = \boldsymbol{p}_{\text{old}} + \boldsymbol{v}_{\text{new}} \times \Delta t$$
 \end{enumerate}
 
-\subsection{Determining the Period}
+\section{Determining the Period}
 By monitoring the position and time taken to complete one full orbit, the orbital period ($T$) is determined. The expected result for the sidereal period is approximately $\SI{27.3}{\day}$.
 
 \newpage
@@ -3655,7 +4031,7 @@ La magnitud del momento angular es la distancia desde un centro de giro al objet
         \def\magR{3.5}  % Magnitud del vector de posición
         \coordinate (P) at (\angleR:\magR); % Coordenada de la partícula
         
-        \draw[vector, black] (O) -- (P) node[midway, above, sloped] {$\vec{r}$};
+        \draw[vector, black] (O) -- (P) node[midway, above, sloped] {$\boldsymbol{r}$};
         \shade[ball color=blue] (P) circle (0.1cm) node[above right] {Partícula};
 
         % --- Vector de Momento Lineal ---
@@ -3664,7 +4040,7 @@ La magnitud del momento angular es la distancia desde un centro de giro al objet
         \coordinate (PEnd) at ($(P) + (\angleP:\magP)$); % Coordenada del final del vector p
         
         % Dibujar el vector de momento total
-        \draw[vector, red] (P) -- (PEnd) node[anchor=south west] {$\vec{p} = m\vec{v}$};
+        \draw[vector, red] (P) -- (PEnd) node[anchor=south west] {$\boldsymbol{p} = m\boldsymbol{v}$};
         
         % --- Descomposición del vector de momento p (Nuevo método) ---
         
@@ -3673,12 +4049,12 @@ La magnitud del momento angular es la distancia desde un centro de giro al objet
         
         % 2. Dibujar la componente Paralela (p_parallel)
         %    Un vector que parte de P, en la dirección de r, con la longitud de la proyección.
-        \draw[vector, red!50] (P) -- ++(\angleR:\projLength) node[midway, below, sloped] {$\vec{p}_{\parallel}$};
+        \draw[vector, red!50] (P) -- ++(\angleR:\projLength) node[midway, below, sloped] {$\boldsymbol{p}_{\parallel}$};
         \coordinate (ParallelEnd) at ($(P) + (\angleR:\projLength)$);
         
         % 3. Dibujar la componente Perpendicular (p_perp)
         %    Un vector que parte de P, en la dirección perpendicular a r.
-        \draw[vector, red!50, thick] (P) -- ++(\angleR+90:{\magP*sin(\angleP-\angleR)}) node[midway, above, sloped] {$\vec{p}_{\perp}$};
+        \draw[vector, red!50, thick] (P) -- ++(\angleR+90:{\magP*sin(\angleP-\angleR)}) node[midway, above, sloped] {$\boldsymbol{p}_{\perp}$};
         
         % --- Dibujar el paralelogramo de suma de vectores ---
         \draw[helpline] (ParallelEnd) -- (PEnd);
@@ -3693,9 +4069,9 @@ La magnitud del momento angular es la distancia desde un centro de giro al objet
     \end{tikzpicture}
     \caption{
         Ilustración mejorada de la definición de momento angular.
-        El momento lineal $\vec{p}$ se descompone en una componente paralela a $\vec{r}$ ($\vec{p}_{\parallel}$) y una perpendicular ($\vec{p}_{\perp}$), ambas originadas en la partícula.
-        El momento angular solo depende de la componente perpendicular: $\vec{L} = \vec{r} \times \vec{p}_{\perp}$.
-        Su magnitud es $L = |\vec{r}| |\vec{p}_{\perp}| = r (p \sin\theta)$.
+        El momento lineal $\boldsymbol{p}$ se descompone en una componente paralela a $\boldsymbol{r}$ ($\boldsymbol{p}_{\parallel}$) y una perpendicular ($\boldsymbol{p}_{\perp}$), ambas originadas en la partícula.
+        El momento angular solo depende de la componente perpendicular: $\boldsymbol{L} = \boldsymbol{r} \times \boldsymbol{p}_{\perp}$.
+        Su magnitud es $L = |\boldsymbol{r}| |\boldsymbol{p}_{\perp}| = r (p \sin\theta)$.
     }
     \label{fig:momento_angular_def_mejorada}
 \end{figure}
@@ -3710,7 +4086,7 @@ La magnitud del momento angular es la distancia desde un centro de giro al objet
     \label{fig:ÓrbitaLunar}
 \end{figure}
 
-\subsection{Producto vectorial}
+\section{Producto vectorial}
 Tomado de \url{https://www.met.reading.ac.uk/pplato2}
 Dados dos vectores cualesquiera, $\boldsymbol{a}$ y $\boldsymbol{b}$ , que están inclinados entre sí un ángulo $\theta$, su producto vectorial es otro vector $\boldsymbol{c}$, tal que
 \begin{align}
@@ -3758,7 +4134,7 @@ Un ejemplo es un pulsar que mantiene un período constante por largos períodos 
 
 
 
-\subsection{Estabilidad}
+\section{Estabilidad}
 
 Estabilidad : El elevado momento angular de una rueda que gira a gran velocidad genera un gran efecto giroscópico. Al montar en bicicleta, esta resistencia a la variación del vector de momento angular ayuda a mantener la rueda en posición vertical y contribuye a la estabilidad. Ver figura~\ref{fig:rueda}
 
@@ -3828,7 +4204,7 @@ Estabilidad : El elevado momento angular de una rueda que gira a gran velocidad 
         \node at ($(P) + ({(\angleP+\angleR-180)/2}:1.2)$) {$\theta$};
 
     \end{tikzpicture}
-    \caption{Representación del vector de momento angular $\vec{L}$ como el producto vectorial del vector de posición $\vec{r}$ y el vector de momento lineal $\vec{P}$. El ángulo $\phi$ es el ángulo entre los dos vectores.}
+    \caption{Representación del vector de momento angular $\boldsymbol{L}$ como el producto vectorial del vector de posición $\boldsymbol{r}$ y el vector de momento lineal $\boldsymbol{P}$. El ángulo $\phi$ es el ángulo entre los dos vectores.}
     \label{fig:momento_angular_3d_corregido}
 \end{figure}
 
@@ -3838,7 +4214,7 @@ Estabilidad : El elevado momento angular de una rueda que gira a gran velocidad 
 
 Derivar las leyes de Kepler para las orbita de los planetas del sistema solar, a partir de la Ley de Gravitación Universal de Newton, es uno de los triunfos históricos de la física. Aunque una derivación completa y rigurosa requiere el uso de cálculo diferencial, podemos entender la esencia de las tres leyes utilizando principalmente álgebra y conceptos de física a nivel introductorio.
 
-\subsection*{Ley de Gravitación Universal de Newton (El Punto de Partida)}
+\section*{Ley de Gravitación Universal de Newton (El Punto de Partida)}
 
 Todo se basa en la ley de Newton, que dice que la fuerza de gravedad ($F_g$) entre dos objetos de masa $M$ y $m$ separados por una distancia $r$ es:
 \[
@@ -3986,18 +4362,18 @@ $$T^2 = \frac{4\pi^2}{G(M + m)} a^3$$
 
 % --- Fin del código LaTeX ---
 
-\subsection*{Ejemplo. Período orbital de la Luna}
+\section*{Ejemplo. Período orbital de la Luna}
 
 The numerical value for the Moon's orbital period around the Earth can be precisely calculated using the generalized form of Kepler's third law, which accounts for the masses of both bodies.
 
-\subsubsection*{The Formula}
+\subsection*{The Formula}
 The formula is given by:
 
 $$T^2 = \frac{4\pi^2}{G(M_E + M_M)} a^3$$
 
 Where $T$ is the orbital period and $a$ is the semi-major axis.
 
-\subsubsection*{Calculation with Constants}
+\subsection*{Calculation with Constants}
 Using the constants defined in the previous section:
 
 \begin{itemize}
@@ -4014,7 +4390,7 @@ The calculation yields:
     T &\approx \SI{2.358E6}{\second}
 \end{align*}
 
-\subsubsection*{Result}
+\subsection*{Result}
 The calculated orbital period is:
 
 \begin{itemize}
@@ -4028,7 +4404,7 @@ This theoretical value matches the observed sidereal period of the Moon.
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsection*{Ejemplo: Problema de Trabajo y Energía en una Rampa}
+\section*{Ejemplo: Problema de Trabajo y Energía en una Rampa}
 
 \paragraph{Enunciado del Problema:}
 En la bolera, el mecanismo alimentador de bolas debe ejercer una fuerza para empujar las bolas de boliche por una rampa de \SI{1.0}{\meter} de largo. La rampa lleva las bolas a un conducto \SI{0.5}{\meter} por encima de la base de la rampa. ¿Aproximadamente cuánta fuerza debe ejercerse sobre una bola de boliche de \SI{5.0}{\kilo\gram}?
@@ -4041,7 +4417,7 @@ En la bolera, el mecanismo alimentador de bolas debe ejercer una fuerza para emp
     \item imposible de determinar
 \end{enumerate}
 
-\subsubsection*{Solución Detallada}
+\subsection*{Solución Detallada}
 
 La respuesta correcta es \textbf{(c) \SI{25}{\newton}}. Este problema se puede resolver de dos maneras principales: utilizando el Teorema del Trabajo y la Energía o analizando las fuerzas en un plano inclinado.
 
@@ -4091,14 +4467,14 @@ Para empujar la bola hacia arriba a velocidad constante, la fuerza aplicada por 
 
 
 
-\section{Electromagnetismo}
+\chapter{Electromagnetismo}
 % --- Inicio del código LaTeX para insertar ---
 
 En la formulación de la relatividad especial hemos visto que las características eléctricas y magnéticas de un objetos siempre van a estar presentes desde algún sistema de referencia inercial. Además hemos visto que los átomos están compuestos de partículas cargadas.
 
 Estás partículas cargadas están a diferentes niveles, desde la formación de enlaces moleculares hasta el colectivo de electrones de valencia pertenecientes a una red cristalina de un metal que tiene propiedades de un fluido. También hemos visto que es posible ionizar átomos de manera que adquieran una carga eléctrica neta negativa. 
 
-\subsection{Electricidad}
+\section{Electricidad}
 
 
 
@@ -4156,7 +4532,7 @@ El campo eléctrico generado por una partícula de carga $q$ es
             
             % --- Añadir etiquetas ---
             \node[green!50!black, font=\small] at (0, 2.2) {Equipotencial};
-            \node[red, font=\small, rotate=-45] at (45:2.5) {Campo $\vec{E}$};
+            \node[red, font=\small, rotate=-45] at (45:2.5) {Campo $\boldsymbol{E}$};
         \end{tikzpicture}
         \caption*{a) Carga Negativa: Las líneas de campo apuntan radialmente hacia adentro.}
     \end{minipage}\hfill
@@ -4184,12 +4560,12 @@ El campo eléctrico generado por una partícula de carga $q$ es
 
             % --- Añadir etiquetas ---
             \node[green!50!black, font=\small] at (0, 2.2) {Equipotencial};
-            \node[blue, font=\small, rotate=45] at (45:2.5) {Campo $\vec{E}$};
+            \node[blue, font=\small, rotate=45] at (45:2.5) {Campo $\boldsymbol{E}$};
         \end{tikzpicture}
         \caption*{b) Carga Positiva: Las líneas de campo apuntan radialmente hacia afuera.}
     \end{minipage}
     
-    \caption{Representación de las líneas del campo eléctrico ($\vec{E}$) y las superficies equipotenciales para una carga puntual negativa y una positiva. Las líneas de campo siempre son perpendiculares a las equipotenciales.}
+    \caption{Representación de las líneas del campo eléctrico ($\boldsymbol{E}$) y las superficies equipotenciales para una carga puntual negativa y una positiva. Las líneas de campo siempre son perpendiculares a las equipotenciales.}
     \label{fig:campos_electricos}
 \end{figure}
 
@@ -4203,7 +4579,7 @@ Las magnitudes correspondientes para un par de cargas $q_1$ y $q_2$ son
 En este caso la carga $q_2$ corresponde a una carga de prueba para el  campo $E$ generado por $q_1$
 
 %\newpage
-\subsubsection{La Cantidad de Carga en un Grupo de Electrones}
+\subsection{La Cantidad de Carga en un Grupo de Electrones}
 
 
 
@@ -4247,7 +4623,7 @@ En este caso la carga $q_2$ corresponde a una carga de prueba para el  campo $E$
 \vspace{1cm}
 
 \textcolor{red}{\textbf{Ejemplo resuelto: Inténtalo tú mismo 12.1.1}}
-\subsubsection*{La Cantidad de Carga en un Grupo de Electrones}
+\subsection*{La Cantidad de Carga en un Grupo de Electrones}
 
 \begin{tcolorbox}[colframe=red, boxrule=1.5pt]
     \textbf{Problema:} Calcule la carga, en coulombs, transportada por 4 millones de electrones.
@@ -4257,11 +4633,11 @@ En este caso la carga $q_2$ corresponde a una carga de prueba para el  campo $E$
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsubsection{Energía Potencial Electrostática ($U_e$)}
+\subsection{Energía Potencial Electrostática ($U_e$)}
 
 La \textbf{energía potencial electrostática ($U_e$)} de un sistema de dos cargas es una medida de la energía almacenada en el sistema debido a su configuración espacial. Se define como el \textbf{trabajo} que una fuerza externa debe realizar para traer una de las cargas (la carga de prueba, $q_2$) desde una posición de referencia en el infinito hasta una distancia $r$ de la otra carga ($q_1$), que se mantiene fija.
 
-\subsubsection*{La Fórmula de la Energía Potencial}
+\subsection*{La Fórmula de la Energía Potencial}
 La energía potencial generada por una carga fuente $q_1$ y sentida por una carga de prueba $q_2$ separadas por una distancia $r$ es:
 \begin{equation}
     \boxed{
@@ -4275,7 +4651,7 @@ La energía potencial generada por una carga fuente $q_1$ y sentida por una carg
     \item La energía potencial decae como $1/r$, mientras que la fuerza decae como $1/r^2$.
 \end{itemize}
 
-\subsubsection*{Análisis de la Fórmula}
+\subsection*{Análisis de la Fórmula}
 El signo de la energía potencial tiene una interpretación física directa:
 \begin{description}
     \item[Si $U_e > 0$ (Repulsión):] Ocurre cuando $q_1$ y $q_2$ tienen el mismo signo. Se requiere un trabajo positivo (añadir energía al sistema) para juntar las cargas contra su repulsión natural. Si se sueltan, esta energía potencial se convertirá en energía cinética a medida que se alejan.
@@ -4283,7 +4659,7 @@ El signo de la energía potencial tiene una interpretación física directa:
     \item[Si $U_e < 0$ (Atracción):] Ocurre cuando $q_1$ y $q_2$ tienen signos opuestos. El propio campo eléctrico realiza el trabajo para juntar las cargas. El sistema se encuentra en un estado ``ligado'' o en un ``pozo de potencial''. Se necesitaría realizar un trabajo externo positivo para separar las cargas y llevarlas al infinito.
 \end{description}
 
-\subsubsection*{Relación con el Potencial Eléctrico (Voltaje)}
+\subsection*{Relación con el Potencial Eléctrico (Voltaje)}
 El concepto de energía potencial está íntimamente ligado al de \textbf{potencial eléctrico ($V$)}, que es una propiedad del espacio creada por la carga fuente $q_1$. El potencial eléctrico se define como la energía potencial por unidad de carga:
 \[ V = \frac{U_e}{q_2} \]
 El potencial eléctrico creado por una carga puntual $q_1$ a una distancia $r$ es:
@@ -4293,9 +4669,9 @@ Con esta definición, podemos encontrar la energía potencial de cualquier carga
 \label{eq:qV}
 U_e = q_2 V
 \end{align}
-Esta relación es fundamental en el análisis de circuitos y campos electrostáticos.\footnote{Formalmente, la energía potencial es el negativo del trabajo realizado por la fuerza eléctrica para mover una carga desde el infinito: $U_e(r) = -\int_\infty^r \vec{F}_e \cdot d\vec{r}' = -\int_\infty^r (k \frac{q_1 q_2}{r'^2}) dr' = k \frac{q_1 q_2}{r}$.}
+Esta relación es fundamental en el análisis de circuitos y campos electrostáticos.\footnote{Formalmente, la energía potencial es el negativo del trabajo realizado por la fuerza eléctrica para mover una carga desde el infinito: $U_e(r) = -\int_\infty^r \boldsymbol{F}_e \cdot d\boldsymbol{r}' = -\int_\infty^r (k \frac{q_1 q_2}{r'^2}) dr' = k \frac{q_1 q_2}{r}$.}
 
-\subsubsection{El electronvoltio}
+\subsection{El electronvoltio}
 La energía potencial que adquiere un electrón al moverse a través de una diferencia de potencia de \qty{1}{V} es
 \begin{align*}
     U_e = & V e = \qty{1}{V}\cdot \qty{1.602176634e-19}{\C} 
@@ -4310,7 +4686,7 @@ Esta cantidad de energía recibe el nombre de electronvoltio
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsubsection{Ejemplo Avanzado: Energía Potencial Eléctrica en el Núcleo de Uranio}
+\subsection{Ejemplo Avanzado: Energía Potencial Eléctrica en el Núcleo de Uranio}
 
 Ver libro: Destroyer of Worlds by Frank Close \url{}
 
@@ -4327,14 +4703,14 @@ y por consiguiente disminuye con el radio. Esto hace por ejemplo que un bebe (vo
 
 \includegraphics{gotas}
 
-\subsubsection*{El Problema}
+\subsection*{El Problema}
 Calcular la energía potencial eléctrica total almacenada en un núcleo de Uranio-238 (${}^{235}_{92}\text{U}$) debido a la repulsión mutua de sus 92 protones. Luego, comparar esta energía con la de sus productos de fisión para entender la idea de Lise Meitner sobre la energía liberada.
 
-\subsubsection*{El Error del ``Doble Conteo"}
+\subsection*{El Error del ``Doble Conteo"}
 % https://www.fisicalab.com/apartado/energia-potencial-electrica
 Una primera intuición podría ser calcular la energía de un protón debida a los otros 91 y luego multiplicar por el número total de protones (92). Esto llevaría a una fórmula incorrecta de la forma $U_e \propto k \frac{(92e)(91e)}{R}$. Sin embargo, este método es erróneo porque cuenta la interacción de cada par de protones dos veces. La energía total de un sistema de cargas es el trabajo necesario para ensamblarlo, sumando la energía de cada \textbf{par único} de interacciones. Para un sistema complejo como un núcleo, la mejor aproximación es tratarlo como una esfera de carga uniforme.
 
-\subsubsection*{Cálculo de la Energía Potencial Total del Núcleo de Uranio}
+\subsection*{Cálculo de la Energía Potencial Total del Núcleo de Uranio}
 La energía potencial electrostática de una esfera de radio $R$ con una carga total $Q$ distribuida uniformemente es:
 \begin{equation}
     U_{\text{esfera}} = \frac{3}{5} k \frac{Q^2}{R}\,.
@@ -4361,7 +4737,7 @@ La energía potencial es el trabajo realizado para, partiendo de un nucleón ini
 Convirtiendo a Mega-electronvoltios (\SI{1}{\mega\electronvolt} = \SI{1.602e-13}{\joule}):
 \[ U_{\text{Uranio}} \approx \frac{\SI{1.51e-10}{\joule}}{\SI{1.602e-13}{\joule\per\mega\electronvolt}} \approx \SI{944}{\mega\electronvolt} \]
 
-\subsubsection*{La Genialidad de Lise Meitner: Comparando las Energías}
+\subsection*{La Genialidad de Lise Meitner: Comparando las Energías}
 La idea clave de Meitner y Frisch fue comparar la energía del núcleo original con la suma de las energías de sus fragmentos de fisión, por ejemplo, Kriptón-92 (${}^{92}_{36}\text{Kr}$) y Bario-141 (${}^{141}_{56}\text{Ba}$) en la fisión
 \begin{align*}
     {}^{235}_{92}\text{U} + n \to {}^{141}_{56}\text{Ba} + 
@@ -4378,7 +4754,7 @@ La idea clave de Meitner y Frisch fue comparar la energía del núcleo original 
 La suma de la energía electrostática de los fragmentos es:
 \[ U_{\text{fragmentos}} = U_{Kr} + U_{Ba} \approx \SI{200}{\mega\electronvolt} + \SI{450}{\mega\electronvolt} = \SI{650}{\mega\electronvolt} \]
 
-\subsubsection*{Conclusión Final: La Fuente de la Energía de Fisión}
+\subsection*{Conclusión Final: La Fuente de la Energía de Fisión}
 La diferencia entre la energía electrostática almacenada antes y después de la fisión es la energía que se libera.
 \begin{itemize}
     \item Energía electrostática en el núcleo de Uranio: $\approx \SI{944}{\mega\electronvolt}$
@@ -4402,7 +4778,7 @@ El Neptunio-239 (${}^{239}_{93}\text{Np}$) también es inestable y sufre otro de
 \end{align*}
 Resultado: Se ha creado un nuevo elemento, el Plutonio-239 (${}^{239}_{94}\text{Pu}$). Note que los nombres de estos dos elementos de la tabla períodica reciben su nombre a semejanza de cuando había nueve planetas y teníamos a Urano, Neptuno y Plutón. 
 
-\subsection{Corriente eléctrica}
+\section{Corriente eléctrica}
 \begin{align}
     I =\frac{q}{t}
 \end{align}
@@ -4435,7 +4811,7 @@ donde
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsubsection{Ejemplo: Cálculo de la potencia eléctrica}
+\subsection{Ejemplo: Cálculo de la potencia eléctrica}
 Usando  $P = V I$
 
 Un equipo funcionando a $\qty{110}{V}$  usa una corriente de $\qty{4}{A}$.
@@ -4466,7 +4842,7 @@ Identificar los valores requeridos de la pregunta, sustituir y calcular. &
 \end{tabular}
 \end{table}
 
-\subsubsection{Consumo de energía}
+\subsection{Consumo de energía}
 Considere la etiqueta para el consumo de energía de un electrodoméstico mostrada en la figura~\ref{fig:nevera}. Calcule la potencia utilizada por el electrodoméstico.
 
 \begin{figure}[h!]
@@ -4491,12 +4867,12 @@ La correspondiente corriente es
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsubsection{Ejemplo: Cálculo de la Potencia Media a partir de la Factura de Servicios}
+\subsection{Ejemplo: Cálculo de la Potencia Media a partir de la Factura de Servicios}
 
 \paragraph{Enunciado del Problema:}
 Si la cuenta de servicios de un hogar registra en un mes un consumo de energía de \qty{191}{\kilo\watt\hour}, ¿cuál fue la potencia media utilizada por la casa durante ese mes?
 
-\subsubsection*{Solución Detallada}
+\subsection*{Solución Detallada}
 
 \paragraph{1. Entender los Conceptos:}
 Este problema nos pide encontrar la \textbf{potencia media}, que es la tasa constante a la que se habría consumido energía durante el mes. La factura nos proporciona la \textbf{energía total} consumida.
@@ -4529,14 +4905,14 @@ Para una interpretación más intuitiva, convertimos el resultado a vatios.
                      &\approx \qty{265.3}{\watt}
 \end{align*}
 
-\subsubsection*{Conclusión}
+\subsection*{Conclusión}
 La potencia media consumida por la casa durante ese mes fue de aproximadamente \textbf{\qty{265}{\watt}}. Esto es equivalente al consumo continuo de, por ejemplo, un refrigerador moderno y varios dispositivos electrónicos pequeños funcionando las 24 horas del día.
 
 % --- Fin del código LaTeX ---
 
 % --- Fin del código LaTeX ---
 
-\subsection{Magnetismo}
+\section{Magnetismo}
 
 % --- Inicio del código LaTeX para insertar (versión simple) ---
 
@@ -4555,7 +4931,7 @@ Un imán genera un campo magnético de tipo dipolar similar al campo eléctrico 
 
 % --- Fin del código LaTeX ---
 
-\subsection{Electromagnetismo}
+\section{Electromagnetismo}
 Cuando una carga eléctrica se mueve o rota genera un campo magnético. 
 
 En la ley de Ampere la corriente eléctrica que se mueve por un alambre, genera un campo magnético concéntrico, como se muestra en la figura~\ref{fig:ampere}  dado por la Ley de Ampere:
@@ -4640,7 +5016,7 @@ donde
     \item $\theta$ es el ángulo entre el campo magnético y el conductor.
 \end{itemize}
 
-\subsection{Campo magnético alrededor de un solenoide}  
+\section{Campo magnético alrededor de un solenoide}  
 
 Si se colocan muchas espiras una al lado de la otra, sus campos se suman y el efecto es mucho más intenso. Esto se logra fácilmente enrollando muchas vueltas de alambre en una bobina denominada solenoide. El campo alrededor del solenoide es similar al campo alrededor de un imán de barra normal. La dirección del campo magnético total se puede determinar considerando el campo alrededor de cada espira y, a su vez, el campo alrededor del alambre portador de corriente que forma la espira. La dirección del campo del solenoide depende de la dirección de la corriente en el alambre que lo compone.
 
@@ -4672,11 +5048,11 @@ $B \propto N$). Es importante tener en cuenta que este es el número de vueltas 
 
 Los solenoides se pueden utilizar para generar campos magnéticos casi uniformes, similares a los campos producidos por un imán de barra. Existen muchas aplicaciones prácticas para los solenoides, como en electroimanes, generación y distribución de energía, y motores eléctricos
 
-\subsubsection{Ejemplo: magnitud del campo magnético en un solenoide}
+\subsection{Ejemplo: magnitud del campo magnético en un solenoide}
 
 % --- Inicio del código LaTeX para insertar ---
 
-\subsubsection*{Cálculo del Campo Magnético en un Solenoide}
+\subsection*{Cálculo del Campo Magnético en un Solenoide}
 
 Un solenoide de longitud $\qty{1}{\m}$ con $N = 10$ vueltas lleva una corriente de $\qty{10}{A}$.
 
@@ -4719,7 +5095,7 @@ Resolver para el campo magnético $B$. &
 
 % --- Fin del código LaTeX ---
 
-\subsection{Ley de inducción de Faraday}
+\section{Ley de inducción de Faraday}
 
 Un campo magnético variable con el tiempo, induce un campo eléctrico que varía con el tiempo también. Esto ocurre por ejemplo cuando un imán permanente entra y sale de un solenoide, como se ilustra en la figura~\ref{fig:faraday}
 
@@ -4742,15 +5118,15 @@ https://doi.org/10.3390/en16145303}}
     \label{fig:ec}
 \end{figure}
 
-\subsubsection{Ejemplo: Estufas de inducción}
+\subsection{Ejemplo: Estufas de inducción}
 
 A diferencia de una estufa convencional de gas o eléctrica que calienta mediante calor radiante desde una fuente caliente, una estufa de inducción calienta a través de la olla de metal en la que se está cocinando la comida. Una bobina de alambre de cobre se coloca dentro de la encimera. El suministro de electricidad de corriente alterna (CA) produce un campo magnético cambiante en la bobina. Esto induce una corriente  en la olla de metal conductora. La resistencia del metal en la olla, por la que fluye la corriente, transforma la energía eléctrica en calor y cocina la comida.
 
-\subsection{Ecuaciones de Maxwell}
+\section{Ecuaciones de Maxwell}
 La contribución final de Maxwell fue la de simetrizar las ecuaciones del electromagnetismo para permitir también que un campo eléctrico que cambie con el tiempo induzca un campo magnético variable con el tiempo. Cómo a su vez un campo magnético variable con el tiempo vuelve a inducir un campo eléctrico variable con el tiempo en un proceso que se repite a la velocidad de la luz. Por consiguiente, la principal predicción de las ecuaciones de Maxwell es la  generación de las ondas electromagnéticas.
 
 
-\subsection{Ejemplo del Aporte de Maxwell: La Corriente de Desplazamiento}
+\section{Ejemplo del Aporte de Maxwell: La Corriente de Desplazamiento}
 
 
 
@@ -4818,14 +5194,14 @@ El aporte crucial de Maxwell, que establece que un campo eléctrico variable ind
     \foreach \y in {2.8, 2.4, 2.0, 1.6, 1.2} {
         \draw[EField] (0.2, \y) -- (2.8, \y);
     }
-    \node[orange!90!black, fill=white, inner sep=1pt] at (1.5, 2.5) {$\vec{E}(t)$ variable};
+    \node[orange!90!black, fill=white, inner sep=1pt] at (1.5, 2.5) {$\boldsymbol{E}(t)$ variable};
 
     % Campo Magnético Inducido (B) - Anillos Azules
     % Representan la "Corriente de Desplazamiento"
     
     % Anillo exterior
     \draw[BField] (1.5, 2) ellipse (0.5 and 1.1);
-    \node[blue!80!black, right] at (1.6, 1.0) {$\vec{B}$ inducido};
+    \node[blue!80!black, right] at (1.6, 1.0) {$\boldsymbol{B}$ inducido};
 
     % Anillo interior (para dar efecto 3D)
     \draw[BField, opacity=0.6, thin] (1.5, 2) ellipse (0.25 and 0.55);
@@ -4889,7 +5265,7 @@ Este ``eslabón perdido" permite que un campo eléctrico cambiante cree uno magn
 
 
 
-\subsection{Ondas electromagnéticas}
+\section{Ondas electromagnéticas}
 Es de anotar que así como cargas en movimiento (a velocidad constante) generan un campo magnético, en general cargas aceleradas (velocidad cambiando con el tiempo) generan ondas electromagnéticas. Por lo tanto una partícula cargada negativa orbitando una carga positiva, por ejemplo, pierde constantemente energía por la emisión de ondas electromagnéticas debido a la aceleración por la órbita.
 
 
@@ -4904,7 +5280,7 @@ A continuación el espectro de ondas electromagnéticas, ver figura~\ref{fig:em}
 \end{figure}
 
 
-\subsection{Generación Controlada de Ondas: La Antena}
+\section{Generación Controlada de Ondas: La Antena}
 
 La predicción fundamental de las ecuaciones de Maxwell es que una carga eléctrica que se acelera debe irradiar energía en forma de ondas electromagnéticas. Para generar estas ondas de manera útil y controlada (como en la radio o el Wi-Fi), no utilizamos descargas aleatorias, sino un dispositivo que mueve las cargas rítmicamente: la \textbf{antena}.
 
@@ -4951,7 +5327,7 @@ El montaje más sencillo para entender este proceso es la \textbf{antena dipolo}
         % Arcos lado izquierdo
         \draw[Ecolor, ->, thick] (0, 1.6) to[out=190+\angle, in=170-\angle] (0, -1.6);
     }
-    \node[Ecolor, font=\bfseries] at (0.8, 1.2) {$\vec{E}$};
+    \node[Ecolor, font=\bfseries] at (0.8, 1.2) {$\boldsymbol{E}$};
 
     % Campo Magnético (B) - Anillos azules alrededor de la corriente
     % Usamos elipses para dar perspectiva 3D
@@ -4960,7 +5336,7 @@ El montaje más sencillo para entender este proceso es la \textbf{antena dipolo}
         % Punta de flecha para indicar dirección (Regla mano derecha)
         \draw[Bcolor, ->, thick] (0.01, \y-0.15) -- (0, \y-0.15);
     }
-    \node[Bcolor, font=\bfseries] at (0.6, 0.5) {$\vec{B}$};
+    \node[Bcolor, font=\bfseries] at (0.6, 0.5) {$\boldsymbol{B}$};
     
     % --- 3. LA ONDA VIAJERA (Representación esquemática) ---
     
@@ -4999,7 +5375,7 @@ El montaje más sencillo para entender este proceso es la \textbf{antena dipolo}
 
 
 
-\subsubsection{El Mecanismo Físico}
+\subsection{El Mecanismo Físico}
 
 El proceso se puede describir en pasos cíclicos, donde la electricidad se transforma en una onda viajera:
 
@@ -5017,7 +5393,7 @@ El proceso se puede describir en pasos cíclicos, donde la electricidad se trans
     Los campos se ``auto-sostienen" y se desprenden de la antena, viajando por el espacio vacío a la velocidad de la luz.
 \end{enumerate}
 
-\subsubsection{Relación entre Frecuencia y Longitud de Onda}
+\subsection{Relación entre Frecuencia y Longitud de Onda}
 
 La onda generada tiene una frecuencia ($f$) determinada por la rapidez con la que oscilan las cargas en la antena. Dado que la onda viaja a una velocidad constante $c$, la distancia entre dos crestas sucesivas de la onda, llamada longitud de onda ($\lambda$), se relaciona algebraicamente mediante:
 
@@ -5040,11 +5416,11 @@ Donde:
 
 Esto explica por qué las antenas de radio FM deben tener un tamaño del orden de metros para interactuar eficientemente con la onda, mientras que las antenas de los teléfonos móviles (frecuencias de GHz) son de pocos centímetros.
 
-\subsection{El Colapso del Átomo Clásico: El Límite de la Física Newtoniana}
+\section{El Colapso del Átomo Clásico: El Límite de la Física Newtoniana}
 
 El modelo planetario del átomo, con un electrón orbitando un protón bajo la fuerza de Coulomb, presenta una contradicción fundamental cuando se combinan las leyes de Newton con el electromagnetismo de Maxwell. A continuación, demostraremos algebraicamente por qué este átomo es inestable y calcularemos su efímera existencia.
 
-\subsubsection{La Predicción de Maxwell: Pérdida de Energía}
+\subsection{La Predicción de Maxwell: Pérdida de Energía}
 
 Como vimos en la sección anterior, una carga eléctrica acelerada debe emitir ondas electromagnéticas. Un electrón en órbita circular, aunque tenga rapidez constante, tiene una aceleración centrípeta constante. Por lo tanto, debe perder energía en forma de radiación.
 
@@ -5064,7 +5440,7 @@ Algebraicamente, esto nos lleva a la \textbf{Fórmula de Larmor} (el factor num�
     \label{eq:larmor}
 \end{equation}
 
-\subsubsection{Estimación Algebraica del Tiempo de Vida}
+\subsection{Estimación Algebraica del Tiempo de Vida}
 
 Para estimar cuánto tiempo tarda el electrón en estrellarse contra el núcleo, podemos usar la relación simple:
 \begin{equation}
@@ -5139,13 +5515,13 @@ Usando las constantes físicas conocidas:
 \textbf{Conclusión:}
 Bajo las leyes de la física clásica descritas en este texto, el átomo de hidrógeno colapsaría en menos de una diezmilmillonésima de segundo. La estabilidad observada de la materia es la prueba irrefutable de que, a escalas atómicas, las leyes de Newton y Maxwell deben ser reemplazadas por una nueva física: la \textbf{Mecánica Cuántica}.
 
-\subsection{El Límite de Velocidad Circular: Radiación de Sincrotrón}
+\section{El Límite de Velocidad Circular: Radiación de Sincrotrón}
 
 La fórmula de Larmor ($P \propto a^2$) tiene una consecuencia drástica para el diseño de aceleradores de partículas. Nos impone un límite práctico a la energía máxima que puede alcanzar un electrón en una órbita circular.
 
 Consideremos un electrón moviéndose en un círculo de radio $R$ con una velocidad $v$ cercana a la de la luz ($v \approx c$).
 
-\subsubsection{El Conflicto Energético}
+\subsection{El Conflicto Energético}
 
 \begin{enumerate}
     \item \textbf{Ganancia de Energía:} En el acelerador, suministramos energía al electrón mediante campos eléctricos. Llamemos a esta potencia de entrada $P_{\text{entrada}}$.
@@ -5174,13 +5550,13 @@ Esta relación revela tres hechos fundamentales:
 \textbf{Conclusión:}
 Es imposible acelerar electrones a energías arbitrariamente altas en un anillo circular, porque eventualmente toda la energía suministrada se disipa instantáneamente como radiación de sincrotrón (luz brillante, desde infrarrojos hasta rayos X). Por esta razón, el Gran Colisionador de Hadrones (LHC) usa protones (masivos) en lugar de electrones para alcanzar altas energías.
 
-\subsection{Motivación: El Enigma de los Espectros Atómicos}
+\section{Motivación: El Enigma de los Espectros Atómicos}
 
 Tras analizar cómo una antena genera ondas de radio, surge una pregunta natural: si la materia está hecha de cargas eléctricas en movimiento (electrones orbitando núcleos), ¿deberían los átomos comportarse como antenas microscópicas?
 
 Según la física clásica que hemos estudiado hasta ahora, la respuesta es sí. Sin embargo, la naturaleza nos muestra algo totalmente diferente, creando uno de los misterios más grandes que llevó al nacimiento de la mecánica cuántica.
 
-\subsubsection{El Átomo como una Antena Variable}
+\subsection{El Átomo como una Antena Variable}
 
 Consideremos el modelo clásico del átomo de hidrógeno. El electrón gira alrededor del protón con una frecuencia orbital ($f_{\text{orb}}$).
 \begin{itemize}
@@ -5192,7 +5568,7 @@ Consideremos el modelo clásico del átomo de hidrógeno. El electrón gira alre
 \textbf{La Predicción Clásica (El ``Grito" de Luz):}
 Si la física clásica fuera correcta, un átomo de hidrógeno excitado debería emitir un pulso de luz que cambia suavemente de color, barriendo todas las frecuencias desde el rojo hasta el ultravioleta y más allá, hasta el colapso final. Deberíamos ver un \textbf{espectro continuo} (un arcoíris completo).
 
-\subsubsection{La Realidad Experimental: Las Líneas Discretas}
+\subsection{La Realidad Experimental: Las Líneas Discretas}
 
 Cuando calentamos gas hidrógeno y hacemos pasar su luz a través de un prisma, no vemos un arcoíris. En su lugar, observamos algo sorprendente: el átomo permanece en silencio en la gran mayoría de las frecuencias y solo ``canta" en colores muy específicos.
 
@@ -5214,7 +5590,7 @@ Para resolver la paradoja de la inestabilidad del átomo, Niels Bohr propuso en 
 
 Para encontrar estas órbitas, Bohr introdujo un postulado de \textbf{cuantización}: El momento angular ($L$) del electrón no puede tener cualquier valor, sino solo múltiplos enteros de una constante fundamental.
 
-\subsection{Las Dos Ecuaciones Fundamentales}
+\section{Las Dos Ecuaciones Fundamentales}
 
 Para derivar el modelo, solo necesitamos plantear un sistema de dos ecuaciones algebraicas con dos incógnitas: la velocidad ($v$) y el radio ($r$).
 
@@ -5236,7 +5612,7 @@ debe ser un múltiplo entero de la constante de Planck reducida ($\hbar = \frac{
     \label{eq:bohr_quant}
 \end{equation}
 
-\subsection{Derivación Algebraica del Radio de Bohr}
+\section{Derivación Algebraica del Radio de Bohr}
 
 Nuestro objetivo es encontrar el radio $r$. Tenemos un sistema de ecuaciones.
 Primero, despejamos la velocidad $v$ de la ecuación de cuantización (\ref{eq:bohr_quant}):
@@ -5269,7 +5645,7 @@ Finalmente, despejamos $r$. Al depender del número entero $n$, lo llamaremos $r
     a_0 \approx 5.29 \times 10^{-11} \text{ m}.
 \end{equation}
 
-\subsection{Derivación de los Niveles de Energía}
+\section{Derivación de los Niveles de Energía}
 
 Ahora calculamos la energía total permitida para cada órbita.
 Como vimos anteriormente en la ecuación~\eqref{eq:HE}, la energía total mecánica es
@@ -5295,13 +5671,13 @@ Esto explica perfectamente el espectro de emisión del hidrógeno: los electrone
 \appendix
 
 
-\section*{Apendices}
+\chapter{Apendices}
 
 
 \section{Movimiento Relativista y No Relativista Bajo una Fuerza Constante}
 Esta sección proporciona un análisis completo del movimiento de una partícula con velocidad inicial en dos dimensiones bajo la influencia de una fuerza constante en una dirección. Primero derivamos la ecuación de movimiento completamente relativista, luego la expresamos elegantemente en términos de la energía total relativista, revelando su conexión con el Teorema del Trabajo y la Energía. Posteriormente, demostramos el principio de correspondencia mostrando cómo la ecuación relativista se reduce correctamente al caso clásico en el límite no relativista. Finalmente, para completar, derivamos la ecuación de movimiento clásica de forma independiente utilizando el Teorema del Trabajo y la Energía no relativista.
 
-\subsection{Configuración del Problema}
+\section{Configuración del Problema}
 Consideramos el movimiento de una partícula de masa en reposo $m$.
 \begin{itemize}
     \item \textbf{Condiciones Iniciales:} En el tiempo $t=0$, la partícula está en la posición $(x_0, y_0)$ con una velocidad inicial $\boldsymbol{u}_0 = (u_{x0}, u_{y0})$.
@@ -5313,9 +5689,9 @@ El factor de Lorentz, $\gamma$, depende de la velocidad total $u = \sqrt{u_x^2 +
 \[ \gamma = \frac{1}{\sqrt{1 - u^2/c^2}} = \frac{1}{\sqrt{1 - (u_x^2 + u_y^2)/c^2}} \]
 Esta dependencia de la velocidad total significa que el movimiento en las direcciones $x$ e $y$ está acoplado, una característica clave de la dinámica relativista.
 
-\subsection{La Ecuación de Movimiento Relativista}
+\section{La Ecuación de Movimiento Relativista}
 
-\subsection{Resolviendo para el Momento}
+\section{Resolviendo para el Momento}
 La ecuación vectorial $\boldsymbol{F} = d\boldsymbol{p}/dt$ proporciona dos ecuaciones escalares para las componentes del momento $p_x$ y $p_y$.
 \begin{itemize}
     \item \textbf{Dirección x:} $F_x = \frac{dp_x}{dt} = 0$. Esto implica que la componente $x$ del momento se conserva:
@@ -5328,20 +5704,20 @@ La ecuación vectorial $\boldsymbol{F} = d\boldsymbol{p}/dt$ proporciona dos ecu
 
 
 
-\subsection{Encontrando la Velocidad \texorpdfstring{$u_y(t)$}{uy(t)}}
+\section{Encontrando la Velocidad \texorpdfstring{$u_y(t)$}{uy(t)}}
 Para encontrar la ecuación de movimiento para $y(t)$, primero necesitamos la velocidad $u_y(t) = dy/dt$. Podemos expresar las componentes de la velocidad en términos del momento y la energía total usando la relación relativista energía-momento $E^2 = (pc)^2 + (mc^2)^2$. Dado que $E=\gamma m c^2$, podemos encontrar $\gamma = \frac{1}{mc}\sqrt{p_x^2 + p_y^2 + m^2c^2}$. Esto conduce a:
 \[ u_y(t) = \frac{p_y(t)}{\gamma(t) m} = \frac{c \, p_y(t)}{\sqrt{p_x(t)^2 + p_y(t)^2 + m^2c^2}} \]
 Sustituyendo nuestras expresiones dependientes del tiempo para el momento:
 \[ \frac{dy}{dt} = u_y(t) = \frac{c (p_{y0} - Ft)}{\sqrt{p_{x0}^2 + (p_{y0} - Ft)^2 + m^2c^2}} \]
 
-\subsection{Integrando para Encontrar la Posición \texorpdfstring{$y(t)$}{y(t)}}
+\section{Integrando para Encontrar la Posición \texorpdfstring{$y(t)$}{y(t)}}
 Integramos la velocidad $u_y(t)$ de $0$ a $t$ para encontrar el desplazamiento.
 \[ y(t) - y_0 = \int_0^t \frac{c (p_{y0} - Ft')}{\sqrt{p_{x0}^2 + (p_{y0} - Ft')^2 + m^2c^2}} \, dt' \]
 Esta integral se puede resolver usando una sustitución u para el término dentro de la raíz cuadrada. El resultado de la integración es:
 \[ y(t) - y_0 = \frac{c}{F} \left( \sqrt{p_{x0}^2 + p_{y0}^2 + m^2c^2} - \sqrt{p_{x0}^2 + (p_{y0} - Ft)^2 + m^2c^2} \right) \]
 Esto da la ecuación de movimiento relativista final para la coordenada y.
 
-\subsection{Teorema del Trabajo y la Energía}
+\section{Teorema del Trabajo y la Energía}
 
 \begin{equation}
 dW = \overline{F} \cdot d\overline{s} \label{eq:3}
@@ -5367,7 +5743,7 @@ W_{12} = \int_{1}^{2} dW = \int_{1}^{2} dT = T_2 - T_1 = \frac{1}{2}m\overline{v
 
 
 
-\subsection{Formulación Energética de la Ecuación Relativista}
+\section{Formulación Energética de la Ecuación Relativista}
 La ecuación anterior se puede expresar de una forma mucho más elegante y físicamente perspicaz utilizando el concepto de energía total relativista.
 Sea $E_0$ la energía total inicial en $t=0$:
 \[ E_0 = \sqrt{(p_{x0}^2 + p_{y0}^2)c^2 + (mc^2)^2} \]
@@ -5379,7 +5755,7 @@ El factor $c$ se cancela, lo que lleva a la forma notablemente simple:
 \[ \boxed{y(t) = y_0 + \frac{E_0 - E(t)}{F}} \]
 Esta ecuación es una declaración directa del Teorema del Trabajo y la Energía, $F \Delta y = -\Delta E$, con la energía relativista en lugar de la energía cinética, ver más abajo.
 
-\subsection{El Límite No Relativista (Principio de Correspondencia)}
+\section{El Límite No Relativista (Principio de Correspondencia)}
 Una teoría relativista válida debe reproducir los resultados clásicos a bajas velocidades ($u \ll c$). Mostramos esto usando la aproximación binomial para la energía total $E = \gamma mc^2$. Para velocidades pequeñas, $\gamma \approx 1 + \frac{1}{2}\frac{u^2}{c^2}$, lo que da:
 \[ E \approx mc^2 + \frac{1}{2}mu^2 = (\text{Energía en Reposo}) + (\text{Energía Cinética Clásica}) \]
 Aplicando esto a nuestra ecuación de movimiento basada en la energía:
@@ -5395,7 +5771,7 @@ Esto produce la ecuación de movimiento clásica final:
 \[ \boxed{y(t) = y_0 + u_{y0}t - \frac{F}{2m}t^2} \]
 La fórmula relativista se reduce correctamente a la clásica.
 
-\subsection{Derivación Directa del Caso No Relativista}
+\section{Derivación Directa del Caso No Relativista}
 Como confirmación final, podemos derivar la ecuación de movimiento clásica directamente del Teorema del Trabajo y la Energía no relativista, $W_{neto} = \Delta K$.
 \begin{itemize}
     \item \textbf{Trabajo Realizado:} $W_{neto} = \boldsymbol{F} \cdot \Delta\boldsymbol{r} = -F(y(t) - y_0)$.
@@ -5418,13 +5794,13 @@ Dividiendo por $-F$ se obtiene el resultado idéntico:
 % --- INFORMACIÓN DEL TÍTULO ---
 \section{Derivación de las Transformaciones de Lorentz a partir de Simetrías del Espacio--tiempo}
 \label{sec:tl}
-\subsection{El Enfoque de Ignatowski}
+\section{El Enfoque de Ignatowski}
 Este documento presenta una derivación de las transformaciones de Lorentz basada en principios fundamentales de simetría, en lugar de postular la constancia de la velocidad de la luz. Este enfoque, a veces llamado la derivación de Ignatowski, se basa en el Principio de Relatividad y la homogeneidad e isotropía del espaciotiempo. Mostraremos que estos principios conducen lógicamente a la existencia de una velocidad universal e invariante, que identificamos con la velocidad de la luz.
 
 Ver \cite{Datta:2022cpw} %https://inspirehep.net/literature/2611550
 
 
-\subsection{Principios Fundamentales}
+\section{Principios Fundamentales}
 La derivación se basa en tres supuestos centrales:
 \begin{enumerate}
     \item \textbf{El Principio de Relatividad:} Las leyes de la física son las mismas en todos los sistemas de referencia inerciales.
@@ -5433,7 +5809,7 @@ La derivación se basa en tres supuestos centrales:
 \end{enumerate}
 
 
-\subsection{Paso 1: Linealidad a partir de la Homogeneidad}
+\section{Paso 1: Linealidad a partir de la Homogeneidad}
 Consideremos dos sistemas de referencia inerciales, $S(x,t)$ y $S'(x',t')$, con $S'$ moviéndose a una velocidad $v$ relativa a $S$ a lo largo del eje x. Buscamos las funciones de transformación $x' = f(x,t)$ y $t' = g(x,t)$.
 
 La homogeneidad del espaciotiempo implica que las ecuaciones de transformación deben ser \textbf{lineales}. Si no lo fueran, un movimiento uniforme en un sistema (una línea recta en un diagrama de espaciotiempo) aparecería como un movimiento acelerado en otro. Esto significaría que las leyes de la física dependerían de la elección del origen, violando la homogeneidad. Por lo tanto, la forma más general de las transformaciones debe ser lineal:
@@ -5443,7 +5819,7 @@ t' &= Dx + Et
 \end{align*}
 donde los coeficientes $A, B, D, E$ solo pueden depender de la velocidad relativa, $v$.
 
-\subsection{Paso 2: Usando Cinemática Básica}
+\section{Paso 2: Usando Cinemática Básica}
 Podemos simplificar los coeficientes usando el movimiento de los orígenes de los sistemas.
 \begin{itemize}
     \item El origen del sistema $S'$ ($x'=0$) se mueve con velocidad $v$ en el sistema $S$. Su posición en $S$ es por lo tanto $x=vt$. Sustituyamos esto en nuestra primera ecuación:
@@ -5456,7 +5832,7 @@ Renombremos el coeficiente $A(v)$ con la notación más familiar $\gamma(v)$.
 x' = \gamma(v)(x - vt)
 \end{equation}
 
-\subsection{Paso 3: Aplicando la Relatividad y la Isotropía}
+\section{Paso 3: Aplicando la Relatividad y la Isotropía}
 El Principio de Relatividad establece que la transformación de $S'$ de vuelta a $S$ debe tener exactamente la misma forma matemática. La única diferencia es que desde la perspectiva de $S'$, el sistema $S$ se mueve con velocidad $-v$. Por lo tanto, la transformación inversa debe ser:
 \begin{equation} \label{eq:x}
 x = \gamma(-v)(x' + vt')
@@ -5469,7 +5845,7 @@ x' &= \gamma(v)(x - vt) \\
 x &= \gamma(v)(x' + vt')
 \end{align*}
 
-\subsection{Paso 4: Encontrando la Transformación del Tiempo}
+\section{Paso 4: Encontrando la Transformación del Tiempo}
 Todavía necesitamos determinar la transformación para el tiempo. Podemos mostrar que debe tomar la forma simétrica:
 \begin{equation} \label{eq:t_prime}
 t' = \gamma(v)(t - \alpha(v) x)
@@ -5480,7 +5856,7 @@ t = \gamma(v)(t' + \alpha(v) x')
 \end{equation}
 Nótese que la isotropía implica $\alpha(-v) = -\alpha(v)$ (debe ser una función impar).
 
-\subsection{Paso 5: La Propiedad de Grupo y la Constante Universal}
+\section{Paso 5: La Propiedad de Grupo y la Constante Universal}
 Este es el paso crucial que reemplaza el postulado de la velocidad de la luz. Consideremos tres sistemas: $S$, $S'$ y $S''$. Sea la velocidad de $S'$ relativa a $S$ $v_1$, y la velocidad de $S''$ relativa a $S'$ $v_2$. La composición de estas dos transformaciones debe dar como resultado una transformación de la misma forma.
 
 Sustituyendo (\ref{eq:x_prime}) y (\ref{eq:t_prime}) en (\ref{eq:x}) y (\ref{eq:t}), podemos resolver para las funciones. Un método más directo es requerir consistencia entre las transformaciones. Sustituyamos (\ref{eq:x_prime}) en (\ref{eq:x}):
@@ -5506,7 +5882,7 @@ Ahora sustituimos esto de nuevo en nuestra relación de consistencia:
 Resolviendo para $\gamma(v)$:
 \[ \boxed{\gamma(v) = \frac{1}{\sqrt{1 - K v^2}}} \]
 
-\subsection{Paso 6: La Naturaleza Física de la Constante \texorpdfstring{$K$}{K}}
+\section{Paso 6: La Naturaleza Física de la Constante \texorpdfstring{$K$}{K}}
 Hemos derivado la forma completa de las transformaciones basándonos únicamente en principios de simetría. La física está contenida en la constante universal $K$.
 \begin{enumerate}
     \item \textbf{Caso 1: $K=0$} \\
@@ -5523,7 +5899,7 @@ Hemos derivado la forma completa de las transformaciones basándonos únicamente
     Estas son las \textbf{transformaciones de Lorentz}.
 \end{enumerate}
 
-\subsection{Conclusión}
+\section{Conclusión}
 Sin asumir nunca que la luz viaja a una velocidad constante, hemos demostrado que las simetrías fundamentales del espaciotiempo (homogeneidad e isotropía) y el principio de relatividad conducen a una conclusión sorprendente: \textbf{debe existir una velocidad universal e invariante en nuestro universo}.
 
 Toda la evidencia experimental, desde el electromagnetismo hasta la desintegración de partículas, confirma que vivimos en un universo donde $K > 0$. Llamamos a esta velocidad universal $c$, y la identificamos con la velocidad de la luz en el vacío. La constancia de la velocidad de la luz no es una suposición separada, sino una consecuencia directa de la estructura del espaciotiempo mismo.
@@ -5569,7 +5945,7 @@ Se puede construir una prueba utilizando cálculo básico.
 \section{Derivando Seno y Coseno de la Fórmula de Euler}
 Una aplicación poderosa de la fórmula de Euler es expresar el seno y el coseno en términos de exponenciales complejas. Esto se logra tratando la fórmula de Euler y su conjugada como un sistema de dos ecuaciones lineales.
 
-\subsection{El Sistema de Ecuaciones}
+\section{El Sistema de Ecuaciones}
 Comenzamos con la fórmula de Euler y una segunda versión donde $\theta$ es reemplazado por $-\theta$:
 \begin{align*}
     e^{i\theta} &= \cos\theta + i\sin\theta \tag{A.1} \\
@@ -5577,7 +5953,7 @@ Comenzamos con la fórmula de Euler y una segunda versión donde $\theta$ es ree
 \end{align*}
 La segunda ecuación utiliza la propiedad par del coseno ($\cos(-\theta)=\cos\theta$) y la propiedad impar del seno ($\sin(-\theta)=-\sin\theta$).
 
-\subsection{Resolviendo para \texorpdfstring{$\cos\theta$}{cos(theta)}}
+\section{Resolviendo para \texorpdfstring{$\cos\theta$}{cos(theta)}}
 Para aislar $\cos\theta$, sumamos las ecuaciones (A.1) y (A.2) para eliminar los términos del seno:
 \begin{align*}
     e^{i\theta} + e^{-i\theta} &= (\cos\theta + i\sin\theta) + (\cos\theta - i\sin\theta) \\
@@ -5586,7 +5962,7 @@ Para aislar $\cos\theta$, sumamos las ecuaciones (A.1) y (A.2) para eliminar los
 Resolviendo para $\cos\theta$ se obtiene:
 \[ \boxed{\cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2}} \]
 
-\subsection{Resolviendo para \texorpdfstring{$\sin\theta$}{sin(theta)}}
+\section{Resolviendo para \texorpdfstring{$\sin\theta$}{sin(theta)}}
 Para aislar $\sin\theta$, restamos la ecuación (A.2) de la ecuación (A.1) para eliminar los términos del coseno:
 \begin{align*}
     e^{i\theta} - e^{-i\theta} &= (\cos\theta + i\sin\theta) - (\cos\theta - i\sin\theta) \\
@@ -5596,7 +5972,7 @@ Resolviendo para $\sin\theta$ se obtiene:
 \[ \boxed{\sin\theta = \frac{e^{i\theta} - e^{-i\theta}}{2i}} \]
 Estas definiciones son fundamentales en muchas áreas de la física y la ingeniería, particularmente en el análisis de Fourier.
 
-\subsection{Conexión con las Funciones Hiperbólicas}
+\section{Conexión con las Funciones Hiperbólicas}
 
 Estas formas exponenciales son sorprendentemente similares a las definiciones de las funciones hiperbólicas:
 \[ \cosh(x) = \frac{e^x + e^{-x}}{2} \quad \text{y} \quad \sinh(x) = \frac{e^x - e^{-x}}{2} \]
@@ -5607,7 +5983,7 @@ Por comparación directa, podemos ver la relación formal utilizada en el texto 
 \end{itemize}
 Esto demuestra la profunda consistencia matemática entre las funciones trigonométricas e hiperbólicas en el plano complejo.
 
-\subsection{La Matriz de Lorentz}
+\section{La Matriz de Lorentz}
 Podemos escribir la transformación $X' = \Lambda X$ como:
 \[ \begin{pmatrix} t' \\ x'  \end{pmatrix} = \Lambda \begin{pmatrix} t \\ x  \end{pmatrix} \]
 Inspeccionando las ecuaciones de transformación, podemos escribir la matriz $\Lambda$ primero en términos de $\gamma$ y $v$, y luego sustituir las funciones hiperbólicas:
@@ -5624,14 +6000,14 @@ Esto revela que un impulso de Lorentz es una \textbf{rotación hiperbólica} en 
 
 La conexión con la geometría se vuelve aún más sorprendente si tratamos la rapidez como un ángulo imaginario. Este procedimiento es parte de una técnica conocida como \textbf{rotación de Wick}.
 
-\subsection{De Funciones Hiperbólicas a Trigonométricas}
+\section{De Funciones Hiperbólicas a Trigonométricas}
 Establezcamos la rapidez $\xi$ como un ángulo imaginario, $\xi = i\theta$. Usando las definiciones de las funciones hiperbólicas en términos de exponenciales, encontramos las siguientes identidades:
 \begin{align*}
     \cosh(i\theta) &= \frac{e^{i\theta} + e^{-i\theta}}{2} = \cos\theta \\
     \sinh(i\theta) &= \frac{e^{i\theta} - e^{-i\theta}}{2} = i \left( \frac{e^{i\theta} - e^{-i\theta}}{2i} \right) = i\sin\theta
 \end{align*}
 
-\subsection{La Transformación Completa en el Espaciotiempo Euclidiano}
+\section{La Transformación Completa en el Espaciotiempo Euclidiano}
 Ahora, realicemos una rotación de Wick completa aplicando dos cambios simultáneamente:
 \begin{enumerate}
     \item \textbf{Rapidez Imaginaria:} $\xi \to i\theta$
@@ -5848,7 +6224,7 @@ en la dirección hacia el cable con corriente $I_1$, como se muestra en la figur
 
 \section*{Derivación de las Transformaciones de Lorentz usando las dos ecuaciones}
 
-\subsection*{Introducción}
+\section*{Introducción}
 
 Las transformaciones de Lorentz son el conjunto de ecuaciones que relacionan las coordenadas de espacio y tiempo de un evento, medidas por dos observadores en diferentes sistemas de referencia inerciales. La derivación se basa en los dos postulados fundamentales de la Relatividad Especial:
 \begin{enumerate}
@@ -5856,10 +6232,10 @@ Las transformaciones de Lorentz son el conjunto de ecuaciones que relacionan las
     \item \textbf{La Constancia de la Velocidad de la Luz:} La velocidad de la luz en el vacío, $c$, es la misma para todos los observadores inerciales.
 \end{enumerate}
 
-\subsection*{Configuración Inicial}
+\section*{Configuración Inicial}
 Consideramos dos sistemas de referencia inerciales, $S(x,t)$ y $S'(x',t')$. El sistema $S'$ se mueve con una velocidad constante $v$ relativa a $S$ a lo largo del eje x. En $t=t'=0$, sus orígenes coinciden. Nuestro objetivo es encontrar las funciones que conectan sus coordenadas.
 
-\subsection*{Paso 1: La Suposición de Linealidad}
+\section*{Paso 1: La Suposición de Linealidad}
 Debido a la homogeneidad del espaciotiempo, las ecuaciones de transformación deben ser lineales. Por lo tanto, podemos escribir las formas más generales:
 \begin{align*}
     x' &= Ax + Bt \\
@@ -5867,7 +6243,7 @@ Debido a la homogeneidad del espaciotiempo, las ecuaciones de transformación de
 \end{align*}
 donde los coeficientes $A, B, D, E$ solo pueden depender de la velocidad relativa $v$. Las coordenadas perpendiculares al movimiento no se ven afectadas ($y'=y$, $z'=z$).
 
-\subsection*{Paso 2: Encontrar los Coeficientes para \texorpdfstring{$x'$}{x'}}
+\section*{Paso 2: Encontrar los Coeficientes para \texorpdfstring{$x'$}{x'}}
 Consideramos el origen del sistema $S'$ ($x'=0$), que se mueve con velocidad $v$ en el sistema $S$, por lo que su posición es $x=vt$. Sustituyendo en la primera ecuación:
 \[ 0 = A(vt) + Bt \implies 0 = (Av + B)t \]
 Como esto debe ser cierto para todo tiempo $t$, se deduce que $B = -Av$. Sustituyendo de nuevo en la ecuación para $x'$:
@@ -5877,10 +6253,10 @@ Renombramos la constante $A(v)$ con el símbolo convencional $\gamma(v)$, el fac
     \boxed{x' = \gamma(v)(x - vt)}
 \end{equation}
 
-\subsection*{Paso 3: Encontrar los Coeficientes \texorpdfstring{$D$}{D} y \texorpdfstring{$E$}{E} para \texorpdfstring{$t'$}{t'}}
+\section*{Paso 3: Encontrar los Coeficientes \texorpdfstring{$D$}{D} y \texorpdfstring{$E$}{E} para \texorpdfstring{$t'$}{t'}}
 Ahora aplicamos el segundo postulado. Imaginemos que en $t=t'=0$ se emite un pulso de luz desde el origen común.
 
-\subsubsection*{Caso 1: Pulso de luz hacia la derecha (+x)}
+\subsection*{Caso 1: Pulso de luz hacia la derecha (+x)}
 En $S$, el frente de luz se describe por $x = ct$. En $S'$, por $x' = ct'$. Sustituimos estas condiciones en nuestras ecuaciones de transformación:
 \begin{itemize}
     \item De la ecuación para $x'$: $ct' = \gamma(ct - vt) \implies t' = \gamma t (1 - v/c)$.
@@ -5891,7 +6267,7 @@ Igualando ambas expresiones para $t'$ (el factor $t$ se cancela):
     \gamma (1 - v/c) = Dc + E
 \end{equation}
 
-\subsubsection*{Caso 2: Pulso de luz hacia la izquierda (-x)}
+\subsection*{Caso 2: Pulso de luz hacia la izquierda (-x)}
 En $S$, el frente de luz es $x = -ct$. En $S'$, es $x' = -ct'$. Sustituimos de nuevo:
 \begin{itemize}
     \item De la ecuación para $x'$: $-ct' = \gamma(-ct - vt) \implies t' = \gamma t (1 + v/c)$.
@@ -5909,7 +6285,7 @@ Ahora tenemos un sistema de dos ecuaciones lineales para las incógnitas $D$ y $
 \textbf{Para encontrar D}, restamos la segunda ecuación de la primera:
 \[ (E + Dc) - (E - Dc) = \gamma (1 - v/c) - \gamma (1 + v/c) \implies 2Dc = \gamma(-2v/c) \implies \boxed{D = -\frac{\gamma(v) v}{c^2}} \]
 
-\subsection*{Paso 4: Formular la Transformación del Tiempo y Encontrar \texorpdfstring{$\gamma(v)$}{gamma(v)}}
+\section*{Paso 4: Formular la Transformación del Tiempo y Encontrar \texorpdfstring{$\gamma(v)$}{gamma(v)}}
 Con los coeficientes $D$ y $E$, la transformación para $t'$ es:
 \[ t' = Dx + Et \implies t' = -\frac{\gamma v}{c^2}x + \gamma t \]
 Reordenando, obtenemos la forma familiar:
@@ -5925,7 +6301,7 @@ Para encontrar la forma explícita de $\gamma(v)$, usamos el Principio de Relati
 Cancelando $t$ de ambos lados, nos queda $1 = \gamma^2 (1 - v^2/c^2)$. Finalmente, resolvemos para $\gamma(v)$:
 \[ \gamma^2 = \frac{1}{1 - v^2/c^2} \implies \boxed{\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}} \]
 
-\subsection*{Resumen de las Transformaciones de Lorentz}
+\section*{Resumen de las Transformaciones de Lorentz}
 Habiendo encontrado todos los coeficientes y la forma de $\gamma$, tenemos el conjunto completo de las transformaciones de Lorentz:
 \[
 \boxed{
@@ -5947,13 +6323,13 @@ z' &= z
 
 El factor numérico de $3/5$ en la fórmula para la energía potencial electrostática de una esfera cargada no es arbitrario; es el resultado de un cálculo riguroso utilizando integración para encontrar la energía total necesaria para ensamblar dicha esfera.
 
-\subsection{El Concepto: Energía de Ensamblaje}
+\section{El Concepto: Energía de Ensamblaje}
 
 See \url{https://www.macmillanlearning.com/studentresources/college/physics/tiplermodernphysics6e/classial_concept_review/chapter_11_ccr_20_electrostatic_energy_of_a_sphere_of_charge.pdf}
 
 La energía potencial total del núcleo se puede conceptualizar como el \textbf{trabajo total} que una fuerza externa debe realizar para construir la esfera de carga, trayendo pequeñas cantidades de carga (infinitesimales, $dq$) desde el infinito y añadiéndolas capa por capa contra la repulsión electrostática de la carga ya acumulada. La energía total es la suma (la integral) de todo el trabajo infinitesimal realizado en cada paso.
 
-\subsection{La Derivación (usando Cálculo)}
+\section{La Derivación (usando Cálculo)}
 
 \paragraph{Paso 1: Configurar el Problema.}
 Queremos construir una esfera de radio final $R$ y carga total $Q$. Asumimos que la carga se distribuye uniformemente, por lo que la densidad de carga $\rho$ es constante:
@@ -6000,7 +6376,7 @@ La energía potencial total, $U_e$, es la integral de todo el trabajo infinitesi
         &= \frac{3}{5} k \frac{Q^2 R^5}{R^6} = \frac{3}{5} k \frac{Q^2}{R}\,.
 \end{align*}
 
-\subsection*{Conclusión}
+\section*{Conclusión}
 Hemos demostrado que la energía potencial electrostática total (o energía de autointeracción) de una esfera con carga $Q$ y radio $R$, distribuida uniformemente, es:
 \begin{equation}
     \boxed{
