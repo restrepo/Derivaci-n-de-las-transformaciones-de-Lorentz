@@ -73,7 +73,7 @@
 
 % --- INFORMACIÓN DEL TÍTULO ---
 \title{Fundamentación en Física}
-\author{\href{https://bit.ly/lorentztransformation}{Google AI studio prompt}\\ \small \emph{Temás de física a nivel algebraico}}
+\author{\href{https://bit.ly/lorentztransformation}{Google AI studio prompt}\\ \small \emph{Temas de física a nivel algebraico}}
 \date{\today}
 
 % --- INICIO DEL DOCUMENTO ---
@@ -101,7 +101,7 @@ Un \textbf{vector} es una cantidad que tiene tanto \textbf{magnitud} (tamaño) c
     \item $y$ es la componente vertical del vector.
 \end{itemize}
 
-\subsection{Cálculo de Magnitud Dirección}
+\subsection{Cálculo de Magnitud y Dirección}
 
 \begin{tikzpicture}[scale=0.9]
     % Ejes
@@ -151,7 +151,7 @@ $$\theta = \arctan{\left(\frac{y}{x}\right)}$$
 Las operaciones vectoriales nos permiten modelar interacciones físicas complejas. A continuación, detallamos las tres operaciones más fundamentales en dos dimensiones:
 
 \paragraph{1. Suma de Vectores}
-La suma de dos vectores $\boldsymbol{u} = (u_x, u_y)$ y $\boldsymbol{v} = (v_x, v_y)$ se realiza sumando sus componentes correspondientes. Geométricamente, equivale a colocar la "cola" del segundo vector en la "punta" del primero; el vector resultante va desde el origen del primero hasta la punta del segundo (regla del triángulo o del paralelogramo).
+La suma de dos vectores $\boldsymbol{u} = (u_x, u_y)$ y $\boldsymbol{v} = (v_x, v_y)$ se realiza sumando sus componentes correspondientes. Geométricamente, equivale a colocar la `cola'' del segundo vector en la ``punta'' del primero; el vector resultante va desde el origen del primero hasta la punta del segundo (regla del triángulo o del paralelogramo).
 
 \begin{equation}
     \boldsymbol{u} + \boldsymbol{v} = (u_x + v_x, u_y + v_y)
@@ -329,10 +329,10 @@ Sustituyendo los valores numéricos, obtenemos
 \end{itemize}
 
 
-\section{Simplificacón de unidades}
+\section{Simplificación de unidades}
 \begin{table}[h!]
     \centering
-    \caption{Cantidades Físicas Fundamentales y sus Unidades SI. Las unidades naturales se explicaran a continuación, donde $\hbar$ es la constante de Planck reducida, $c$ es la velocidad de la luz, $\epsilon_0$ es la permitividad del vacío,  $k_B$ la constante de Boltzman: ver \href{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-phys-constants.pdf}{PDG: Physical Contants table}}
+    \caption{Cantidades Físicas Fundamentales y sus Unidades SI. Las unidades naturales se explicarán a continuación, donde $\hbar$ es la constante de Planck reducida, $c$ es la velocidad de la luz, $\epsilon_0$ es la permitividad del vacío,  $k_B$ la constante de Boltzmann: ver \href{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-phys-constants.pdf}{PDG: Physical Contants table}}
     \begin{tabular}{|l|l|l|p{2cm}|}
         \hline
        \textbf{Nombre}           &\textbf{Símbolo}  [Letra] & \textbf{Unidades} (SI) &  \textbf{Unidades Naturales} \\ \hline
@@ -396,7 +396,7 @@ Convierta $2\text{m}^2$ a $\text{cm}^2$
 
 
 \section{Unidades naturales}
-Las constantes naturales sirven para expresar las cantidades físicaa en términos de energía.
+Las constantes naturales sirven para expresar las cantidades físicas en términos de energía.
 
 
 Veremos que
@@ -454,56 +454,6 @@ similarmente,
 \end{align}
 
 
-La estimación del orden de magnitud para el número total de \textbf{positrones} en el universo observable es altamente especulativa debido a su naturaleza fugaz. Sin embargo, al contrastarlos con el contenido de materia dominante, se puede llegar a una estimación aproximada.
-
-\subsection*{Ejemplo: contenido de positrones del Universo}
-El orden de magnitud más razonable para el número de positrones en el universo observable se encuentra probablemente en el rango de $\mathbf{10^{65}}$ a $\mathbf{10^{70}}$.
-
-\subsection*{Base de la Estimación}
-
-Esta estimación no se obtiene directamente de un único experimento de flujo como el \text{AMS-02}, sino que se deriva del desequilibrio establecido entre materia y antimateria, y de la tasa de aniquilación en nuestra galaxia.
-
-\subsection*{1. Comparación con la Materia ($\approx 10^{80}$)}
-
-El número total de \textbf{electrones} y \textbf{protones} (materia ordinaria) en el universo observable se estima en alrededor de $\mathbf{10^{80}}$.
-
-Dado que todo el universo observable está compuesto casi en su totalidad por materia (y no por antimateria), el número total de positrones debe ser \textbf{mucho menor} que la cifra de $10^{80}$ de electrones.
-
-\subsection*{2. Producción y Aniquilación de Positrones}
-
-Los positrones se producen continuamente por eventos de alta energía y desintegración radiactiva, pero son destruidos muy rápidamente por \textbf{aniquilación} con electrones. Por lo tanto, su número está determinado por un equilibrio de producción-aniquilación en lugar de ser un remanente cosmológico.
-
-\begin{itemize}
-    \item \textbf{Producción Galáctica de Positrones:} Las observaciones de la línea $\mathbf{511 \text{ keV } \gamma}$ en el Centro Galáctico, que es una firma de la aniquilación electrón-positrón, sugieren que los positrones se producen en la Vía Láctea a una tasa de aproximadamente $\mathbf{10^{42}}$ positrones por segundo ($\dot{N}_{e^+} \approx 10^{42} \text{ s}^{-1}$).
-    \item \textbf{Número en Estado Estacionario en la Vía Láctea:} Para mantener esta tasa de producción, se estima que el número total de positrones que flotan actualmente en el fondo difuso de la Vía Láctea es de $\mathbf{N_{e^+} \approx 10^{56}}$ a $\mathbf{10^{57}}$.
-\end{itemize}
-
-\subsection*{3. Escala al Universo}
-
-Para escalar esto al universo observable, multiplicamos la estimación Galáctica por el número estimado de galaxias. Se estima que el universo observable contiene entre $10^{11}$ y $10^{12}$ galaxias.
-
-La estimación resultante es:
-$$N_{\text{Positrones, Universo}} \approx N_{\text{Positrones, Galaxia}} \times N_{\text{Galaxias}}$$
-$$N_{\text{Positrones, Universo}} \approx 10^{56} \text{ a } 10^{57} \times 10^{11} \text{ a } 10^{12}$$
-$$N_{\text{Positrones, Universo}} \approx 10^{67} \text{ a } 10^{69}$$
-
-Este cálculo aproximado sugiere un orden de magnitud de $\mathbf{10^{68}}$.
-
-\begin{table}[h!]
-    \centering
-    \begin{tabular}{|l|c|}
-        \hline
-        \textbf{Partícula} & \textbf{Orden de Magnitud (Universo Observable)} \\
-        \hline
-        Electrones y Protones (Materia) & $\approx 10^{80}$ \\
-        \hline
-        Fotones y Neutrinos & $\approx 10^{89}$ \\
-        \hline
-        \textbf{Positrones (Antimateria)} & $\approx 10^{65} - 10^{70}$ \\
-        \hline
-    \end{tabular}
-    \caption{Estimación del Orden de Magnitud de Partículas}
-\end{table}
 
 
 
@@ -622,7 +572,7 @@ La derivación se basa en dos postulados fundamentales de la Relatividad Especia
 
 El segundo principio puede ser cambiado simplemente por la suposición de que el espacio y el tiempo deben ser homogéneos e isotrópicos, ver \url{https://arxiv.org/pdf/gr-qc/0107091}
 
-La motivación de la relatividad especial surge de la necesidad de usar el primer postulado para la interacción electromagnética. Aunque dicho postulado es evidente en sistemas mecánicos, no es claro para la interacción electromagnética. De hecho, una partícula cargada en reposo sólo tiene asociado un campo eléctrico, mientras que una partícula moviéndose a velocidad constante relativa al observador en reposo, genera una corriente eléctrica que a su vez induce un campo magnético. Además, el campo eléctrico se deforma (las regiones de campo constante pasan de ser esféricas a elipsoidales). Cómo en última instancia los objetos de medida están hechos de partículas cargadas dentro de los átomos que la componen, es de esperarse
+La motivación de la relatividad especial surge de la necesidad de usar el primer postulado para la interacción electromagnética. Aunque dicho postulado es evidente en sistemas mecánicos, no es claro para la interacción electromagnética. De hecho, una partícula cargada en reposo sólo tiene asociado un campo eléctrico, mientras que una partícula moviéndose a velocidad constante relativa al observador en reposo, genera una corriente eléctrica que a su vez induce un campo magnético. Además, el campo eléctrico se deforma (las regiones de campo constante pasan de ser esféricas a elipsoidales). Como en última instancia los objetos de medida están hechos de partículas cargadas dentro de los átomos que la componen, es de esperarse que sean afectadas por el movimiento aunque éste sea a velocidad constante.
 
 
 \section{Transformaciones de Lorentz}
@@ -958,30 +908,30 @@ La dilatación del tiempo es una consecuencia directa y famosa de las transforma
 
 Para derivar esto, estableceremos un experimento mental simple y aplicaremos la transformación de Lorentz para el tiempo.
 
-\section{La Configuración Física (Experimento Mental)}
+\subsection{La Configuración Física (Experimento Mental)}
 
 \begin{enumerate}
-    \item \textbf{Dos Sistemas:} Tenemos dos sistemas inerciales, $S$ y $S'$. Como antes, el sistema $S$ es el sistema ``estacionario" (por ejemplo, un observador en el suelo), y el sistema $S'$ se mueve con una velocidad constante $v$ a lo largo del eje x relativo a $S$.
+    \item \textbf{Dos Sistemas:} Tenemos dos sistemas inerciales, $S$ y $S'$. Como antes, el sistema $S$ es el sistema ``estacionario'' (por ejemplo, un observador en el suelo), y el sistema $S'$ se mueve con una velocidad constante $v$ a lo largo del eje x relativo a $S$.
 
     \item \textbf{Un Reloj en el Sistema en Movimiento:} Imaginemos que hay un reloj en reposo en el sistema en movimiento, $S'$. Dado que el reloj no se mueve \textit{dentro de su propio sistema}, su posición es un valor constante, que llamaremos $x'_c$.
 
-    \item \textbf{Dos Eventos:} Consideraremos dos eventos, que son dos "tictacs" consecutivos de este reloj.
+    \item \textbf{Dos Eventos:} Consideraremos dos eventos, que son dos ``tictacs'' consecutivos de este reloj.
     \begin{itemize}
         \item \textbf{Evento 1:} El reloj hace tictac por primera vez. Desde la perspectiva de un observador en el sistema $S'$, este evento ocurre en las coordenadas $(t'_1, x'_c)$.
         \item \textbf{Evento 2:} El reloj hace tictac por segunda vez. En el sistema $S'$, este evento ocurre en las coordenadas $(t'_2, x'_c)$.
     \end{itemize}
 \end{enumerate}
 
-\section{Definiendo el Tiempo Propio}
+\subsection{Definiendo el Tiempo Propio}
 
-El intervalo de tiempo entre dos eventos que ocurren en la \textbf{misma ubicación espacial} en un sistema dado se llama \textbf{intervalo de tiempo propio}, denotado por $\Delta t_0$.
+El intervalo de tiempo entre dos eventos que ocurren en la \textbf{misma ubicación espacial} en un sistema dado se llama \textbf{intervalo de tiempo propio}, denotado por $\Delta t_0$. Por lo tanto, el tiempo propio es el tiempo que transcurre para un observador que viaja junto con el objeto en movimiento.
 
 En nuestra configuración, los dos tictacs del reloj ocurren en la misma ubicación ($x'_c$) en el sistema $S'$. Por lo tanto, el intervalo de tiempo medido por un observador en el sistema en movimiento $S'$ es el tiempo propio:
 \[ \Delta t_0 = t'_2 - t'_1 \]
 Nuestro objetivo es encontrar el intervalo de tiempo entre estos mismos dos eventos según lo medido por el observador en el sistema estacionario $S$. Llamemos a este intervalo $\Delta t$.
 \[ \Delta t = t_2 - t_1 \]
 
-\section{Aplicando las Transformaciones de Lorentz}
+\subsection{Aplicando las Transformaciones de Lorentz}
 
 Necesitamos relacionar las coordenadas de tiempo en $S$ con las coordenadas en $S'$. La transformación de Lorentz inversa para el tiempo es la opción más conveniente aquí, ya que expresa el tiempo del sistema estacionario ($t$) en términos de las coordenadas del sistema en movimiento ($t', x'$).
 \[ t = \gamma \left( t' + \frac{vx'}{c^2} \right) \]
@@ -993,7 +943,7 @@ Ahora, aplicamos esta transformación a nuestros dos eventos:
     \[ t_2 = \gamma \left( t'_2 + \frac{vx'_c}{c^2} \right) \]
 \end{enumerate}
 
-\section{La Derivación}
+\subsection{La Derivación}
 
 El intervalo de tiempo $\Delta t$ medido por el observador en el sistema $S$ es la diferencia entre $t_2$ y $t_1$.
 \begin{align*}
@@ -1005,7 +955,7 @@ El intervalo de tiempo $\Delta t$ medido por el observador en el sistema $S$ es 
 El término que involucra la posición $x'_c$ se cancela precisamente porque el reloj estaba en reposo en el sistema $S'$. Ahora sustituimos la definición de tiempo propio, $\Delta t_0 = t'_2 - t'_1$:
 \[ \Delta t = \gamma \Delta t_0 \]
 
-\section{Resultado e Interpretación}
+\subsection{Resultado e Interpretación}
 
 La fórmula final para la dilatación del tiempo se obtiene sustituyendo la expresión para $\gamma$:
 \[ \boxed{ \Delta t = \frac{\Delta t_0}{\sqrt{1 - v^2/c^2}} } \]
@@ -1013,7 +963,7 @@ Interpretemos este importante resultado:
 \begin{itemize}
     \item El factor de Lorentz $\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$ es siempre mayor o igual a 1, ya que la velocidad $v$ debe ser menor que $c$.
     \item Esto significa que $\Delta t \ge \Delta t_0$.
-    \item El intervalo de tiempo ($\Delta t$) medido por el observador en el sistema ``estacionario" $S$ es \textit{más largo} que el intervalo de tiempo propio ($\Delta t_0$) medido en el sistema de reposo del reloj.
+    \item El intervalo de tiempo ($\Delta t$) medido por el observador en el sistema ``estacionario'' $S$ es \textit{más largo} que el intervalo de tiempo propio ($\Delta t_0$) medido en el sistema de reposo del reloj.
 \end{itemize}
 Un intervalo de tiempo más largo entre tictacs significa que se observa que el reloj funciona más lentamente. Por lo tanto, el observador en $S$ concluye que el reloj en movimiento funciona lentamente en comparación con su propio reloj idéntico. Este fenómeno es la \textbf{dilatación del tiempo}.
 
@@ -1122,7 +1072,7 @@ Despejando la distancia, obtenemos nuestra primera ecuación clave:
 \subsubsection*{Paso 2: La Perspectiva del Astronauta (Sistema S')}
 \begin{itemize}
     \item \textbf{Distancia del viaje:} Para el astronauta, él está en reposo y es la estrella la que se acerca a él a una velocidad $v$. La distancia que él mide entre la Tierra y la estrella es $L$.
-    \item \textbf{Tiempo del viaje:} El astronauta mide la duración del viaje en su propio reloj. Este tiempo es el \textbf{tiempo propio}, $\Delta t_0$, porque para él, los eventos de ``salida" y ``llegada" ocurren en su misma ubicación (en $x'=0$). De nuevo, usando \texttt{tiempo = distancia / velocidad}:
+    \item \textbf{Tiempo del viaje:} El astronauta mide la duración del viaje en su propio reloj. Este tiempo es el \textbf{tiempo propio}, $\Delta t_0$, porque para él, los eventos de ``salida'' y ``llegada'' ocurren en su misma ubicación (en $x'=0$). De nuevo, usando \texttt{tiempo = distancia / velocidad}:
     \[ \Delta t_0 = \frac{L}{v} \]
 \end{itemize}
 Despejando la distancia, obtenemos nuestra segunda ecuación clave:
@@ -1251,7 +1201,7 @@ Esto funciona perfectamente a velocidades cotidianas. Sin embargo, se rompe a ve
 \[ u = 0.7c + 0.8c = 1.5c \]
 Esto es más rápido que la velocidad de la luz, lo cual viola el segundo postulado de la Relatividad Especial. Necesitamos una nueva fórmula que respete el límite de velocidad cósmico.
 
-\section{La Configuración para la Fórmula Relativista}
+\subsubsection*{La Configuración para la Fórmula Relativista}
 
 Usamos tres sistemas de referencia:
 \begin{itemize}
@@ -1267,7 +1217,7 @@ Nuestro objetivo es encontrar la velocidad del objeto, \textbf{$u$}, medida por 
 \text{¿Cuál es la velocidad } u \text{ del Objeto relativa a S?}
 \]
 
-\section{Derivación a partir de las Transformaciones de Lorentz}
+\subsection{Derivación a partir de las Transformaciones de Lorentz}
 
 Las velocidades constantes se definen como el cociente entre la posición y el tiempo:
 \[ u = \frac{x}{t} \quad \text{y} \quad u' = \frac{x'}{t'}\,, \]
@@ -1310,7 +1260,7 @@ u = \frac{u' + v}{1 + \dfrac{u'v}{c^2}}
 }
 \]
 
-\section*{Ejercicio: Despejar $c^2$ de la fórmula de suma de velocidades}
+\subsection*{Ejercicio: Despejar $c^2$ de la fórmula de suma de velocidades}
 \noindent
 \setcounter{paso}{0}
 \begin{tabular}{l|p{0.3\textwidth}|p{0.65\textwidth}}
@@ -1338,9 +1288,9 @@ En el límite no relativista de $u\approx u'+v$, tenemos que
 tenemos que  $c = \infty$ y de éste modo en el límite no relativista, ¡no existe una velocidad límite!.
 
 
-\section{Características Clave y Ejemplos}
+\subsection{Ejemplos}
 
-\subsection{Ejemplo 1: La Nave Espacial y la Sonda}
+\subsection*{Ejemplo 1: La Nave Espacial y la Sonda}
 Volvamos a nuestro problema inicial con la fórmula relativista.
 \begin{itemize}
     \item $v = 0.8c$ (velocidad de la nave relativa a la Tierra)
@@ -1350,24 +1300,24 @@ Volvamos a nuestro problema inicial con la fórmula relativista.
 \[ u \approx 0.9615c \]
 El resultado es menor que la velocidad de la luz, como se requiere.
 
-\subsection{Característica 1: La Velocidad de la Luz es el Límite Último}
+\subsection*{Característica 1: La Velocidad de la Luz es el Límite Último}
 ¿Qué pasa si la nave que se mueve a $v=0.9c$ dispara un rayo láser hacia adelante ($u'=c$)?
 \[ u = \frac{c + 0.9c}{1 + \frac{(c)(0.9c)}{c^2}} = \frac{1.9c}{1 + 0.9} = \frac{1.9c}{1.9} = c \]
 El observador en la Tierra también mide la velocidad del rayo láser como exactamente $c$. Este hermoso resultado muestra cómo la fórmula defiende perfectamente el segundo postulado de la relatividad. 
 
-\subsection{Característica 2: Se Reduce a la Fórmula Clásica a Bajas Velocidades}
+\subsection*{Característica 2: Se Reduce a la Fórmula Clásica a Bajas Velocidades}
 Si $v \ll c$ y $u' \ll c$, el término $\frac{u'v}{c^2}$ se vuelve extremadamente pequeño y se aproxima a cero.
 \[ u = \frac{u' + v}{1 + \frac{u'v}{c^2}} \approx \frac{u' + v}{1} = u' + v \]
 Esto muestra que la fórmula relativista contiene la fórmula clásica como una aproximación a baja velocidad, lo cual es un requisito clave para cualquier nueva teoría física.
 
 
-\subsection{Dependencia de la Velocidad del Sonido con el Sistema de Referencia}
+\subsection*{Ejemplo 2: Dependencia de la Velocidad del Sonido con el Sistema de Referencia}
 
 Una pregunta fundamental al estudiar cinemática y ondas es si la velocidad de propagación de una onda depende de la velocidad del observador en un sistema de referencia inercial. En el caso del sonido, la respuesta es afirmativa: \textbf{sí depende}. 
 
 A diferencia de la luz (cuya velocidad $c$ es invariante y constante para todos los observadores inerciales, como establece la Relatividad Especial), el sonido es una \textbf{onda mecánica}. Por lo tanto, su comportamiento obedece a la mecánica clásica y a las transformaciones de Galileo estudiadas en secciones anteriores.
 
-\subsubsection{El Medio de Propagación y la Relatividad de Galileo}
+\subsubsection*{El Medio de Propagación y la Relatividad de Galileo}
 
 El sonido no puede viajar en el vacío; requiere un medio material (como el aire, el agua o un metal) para propagarse. La velocidad del sonido, que denotaremos como $v_s$ (aproximadamente $343 \text{ m/s}$ en el aire a temperatura ambiente), es constante \textbf{únicamente con respecto a ese medio material}.
 
@@ -1387,12 +1337,12 @@ Dado que aplica la relatividad de Galileo (la suma clásica de velocidades), si 
 
 En el caso límite en el que un observador viajara alejándose exactamente a la misma velocidad del sonido ($v_o = v_s$), la onda nunca lo alcanzaría y, desde su sistema de referencia, la velocidad relativa del sonido sería exactamente cero.
 
-\subsubsection{Consecuencia: El Efecto Doppler Clásico}
+\subsubsection*{Consecuencia: El Efecto Doppler Clásico}
 
 Esta dependencia de la velocidad relativa es la razón física subyacente por la cual experimentamos el \textbf{Efecto Doppler} en la acústica. 
 
 
-Si La fuente se aleja (acerca) a un observador en reposi: La onda viaja por el aire a la misma velocidad constante, pero los frentes de onda se alargan (``aplastan'') físicamente
+Si La fuente se aleja (acerca) a un observador en reposo: La onda viaja por el aire a la misma velocidad constante, pero los frentes de onda se alargan (``aplastan'') físicamente
     \begin{equation}
         f_{\text{obs}} = f_0 \left( \frac{v_s}{v_s \pm v} \right).
     \end{equation}
@@ -1400,11 +1350,11 @@ donde el signo ``$+$'' es cuando se aleja y la frecuencia disminuye y el ``$-$''
 
 En resumen, para las ondas mecánicas como el sonido, el medio material (el aire) actúa como un sistema de referencia privilegiado. Cualquier observador inercial que se mueva a través de él medirá una velocidad de propagación diferente. Esta profunda asimetría en la física clásica servirá de contraste vital para entender el comportamiento de la luz, la cual no requiere de un medio para propagarse y mantiene su velocidad invariable sin importar quién la mida.
 
-\subsection{El Efecto Doppler: Sonido Clásico vs. Luz Relativista}
+\subsection*{ Ejemplo 4: El Efecto Doppler: Sonido Clásico vs. Luz Relativista}
 
 El efecto Doppler es el fenómeno por el cual la frecuencia percibida de una onda cambia cuando la fuente y el observador se encuentran en movimiento relativo. Sin embargo, existe una diferencia fundamental entre las ondas mecánicas (como el sonido) que requieren un medio material, y las ondas electromagnéticas (como la luz) cuya velocidad es invariante.
 
-\subsubsection{Derivación del Efecto Doppler Relativista (Fuente Alejándose)}
+\subsubsection*{Derivación del Efecto Doppler Relativista (Fuente Alejándose)}
 
 A diferencia del sonido, donde usamos las transformaciones de Galileo, para la luz debemos usar la Relatividad Especial. Deduciremos la fórmula para una fuente (como una nave espacial) que se aleja de un observador en la Tierra con una velocidad $v$.
 
@@ -1448,7 +1398,7 @@ Al cancelar términos semejantes, obtenemos el periodo observado:
 \end{equation}
 \textit{Nota:} Si la fuente y el observador se estuvieran \textbf{acercando}, simplemente invertimos los signos de la ecuación (\ref{eq:doppler_aleja}), obteniendo un corrimiento hacia el azul (mayor frecuencia).
 
-\subsubsection{Ejemplos Numéricos: Asimetría Clásica vs. Simetría Relativista}
+\subsubsection*{Ejemplos Numéricos: Asimetría Clásica vs. Simetría Relativista}
 
 Para ilustrar la diferencia fundamental entre un fenómeno que depende de un medio material (sonido) y uno relativista (luz), analizaremos el caso en el que la velocidad relativa de acercamiento es exactamente la mitad de la velocidad de propagación de la onda.
 
@@ -1484,7 +1434,8 @@ Lo que nos da un resultado simétrico y único:
 % --- Inicio del código LaTeX para insertar ---
 
 \section{Fórmulas del Decaimiento Radiactivo}
-En esta sección estableceremos el concepto de vida media para una partícula inestable y veremos como la relatividad especial puede afectar el tiempo de vida media dependiendo del observador inercial
+En esta sección estableceremos el concepto de vida media para una partícula inestable y veremos cómo la relatividad especial puede afectar el tiempo de vida media dependiendo del observador inercial.
+
 \section*{Introducción: La Naturaleza del Decaimiento}
 
 El decaimiento de una partícula inestable (ya sea un núcleo atómico o una partícula subatómica) es un proceso fundamentalmente \textbf{probabilístico y aleatorio}. No podemos predecir cuándo decaerá una partícula específica. Sin embargo, para una población grande de partículas idénticas, podemos predecir con gran precisión cuántas de ellas decaerán en un intervalo de tiempo determinado.
@@ -1568,12 +1519,12 @@ Muón & \SI{2.2}{\micro\second} (\SI{2.2e-6}{\second}) & \SI{3.15e5}{\per\second
 
 \section{Ejemplos}
 \begin{enumerate}
-\item Supongamos que un cañón de bolas de tenis es capaz de lanzar una bola de tenis, de diámetro $d = \qty{67}{\milli\m}$  a la mitad de la velocidad de la luz hacia la raqueta de un tenista al otro lado de una cancha de longitud $h=\qty{24}{\m}$. Una hormiga accidentalmente resultó viajando con la bola. Calcular el tiempo propio que siente la hormiga y el tiempo dilatado para el tenista. Calcular las distancias contraídas con respecto a cada observador (ver figura \ref{fig:dilcon}). 
+\item Supongamos que un cañón de bolas de tenis es capaz de lanzar una bola de tenis, de diámetro $d = \qty{67}{\milli\m}$  a una velocidad de $0.87c$ hacia la raqueta de un tenista al otro lado de una cancha de longitud $h=\qty{24}{\m}$. Una hormiga accidentalmente resultó viajando con la bola. Calcular el tiempo propio que siente la hormiga y el tiempo dilatado para el tenista. Calcular las distancias contraídas con respecto a cada observador (ver figura \ref{fig:dilcon}). 
 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{tennis.png}
-    \caption{Dilatación y contracción en un ejemplo ficticio para una bola de tenis a velocidades relativistas. En la parte de inferior se ilustra de contracción de las longitudes para la bola observada por el tenista, y la contracción de la cancha, en gris, percibida por la hormiga moviendose con la bola de tenis a una velocidad de $0.87c$ correspondiente a una contracción de Lorentz por un factor de $0.5$.}
+    \caption{Dilatación y contracción en un ejemplo ficticio para una bola de tenis a velocidades relativistas. En la parte  inferior se ilustra de contracción de las longitudes para la bola observada por el tenista, y la contracción de la cancha, en gris, percibida por la hormiga moviendose con la bola de tenis a una velocidad de $0.87c$ correspondiente a una contracción de Lorentz por un factor de $0.5$.}
     \label{fig:dilcon}
 \end{figure}
 
@@ -1581,7 +1532,7 @@ Muón & \SI{2.2}{\micro\second} (\SI{2.2e-6}{\second}) & \SI{3.15e5}{\per\second
 Tenemos que
 \begin{itemize}
 \item Escogemos el sistema $S$ con origen en el tenista
-\item  Esogemos el sistema $S'$ viajando con la bola de tenis.
+\item  Escogemos el sistema $S'$ viajando con la bola de tenis.
 \item $v = 0.87c$ es la velocidad de la bola con respecto a $S$.
 \item Longitud de la cancha de tenis: $h = \qty{24}{m}$ 
 \item Diámetro pelota de tenis:  $d = \qty{67}{\milli\m}$
@@ -1672,7 +1623,7 @@ Explique por qué es esto. ¿Es consistente con la vida media del muón?
 
 \textbf{(a) Para aquellos que observan desde la Tierra, ¿cuánto tiempo tardará el muón en llegar a la superficie de la Tierra?}
 
-Esto se pregunta desde la perspectiva del observador "estacionario" en la Tierra. El cálculo se basa en la distancia y la velocidad medidas en el sistema de la Tierra.
+Esto se pregunta desde la perspectiva del observador ``estacionario'' en la Tierra. El cálculo se basa en la distancia y la velocidad medidas en el sistema de la Tierra.
 
 \begin{itemize}
     \item \textbf{Distancia a recorrer ($L_0$):} 15 km = 15,000 m
@@ -1688,7 +1639,7 @@ Para hacer este número más intuitivo, podemos convertirlo a microsegundos ($\m
 
 \textbf{(b) Desde el punto de vista del muón, ¿cuánto tiempo tardará en llegar a la superficie de la Tierra?}
 
-Esto se pregunta desde la perspectiva del muón en movimiento. El tiempo que el muón experimenta en su propio "reloj interno" es el tiempo propio ($\Delta t_0$), que está sujeto a la dilatación del tiempo.
+Esto se pregunta desde la perspectiva del muón en movimiento. El tiempo que el muón experimenta en su propio ``reloj interno'' es el tiempo propio ($\Delta t_0$), que está sujeto a la dilatación del tiempo.
 
 Primero, calculamos el factor de Lorentz ($\gamma$) para una velocidad de 0.999c:
 \[ \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} = \frac{1}{\sqrt{1 - (0.999)^2}} = \frac{1}{\sqrt{1 - 0.998001}} = \frac{1}{\sqrt{0.001999}} \]
@@ -1703,7 +1654,7 @@ Esta pregunta llega al corazón de por qué la relatividad es tan esencial para 
 
 \textbf{Explicación de la Diferencia de Tiempo (Contracción de la Longitud)}
 
-La "paradoja" se resuelve con la \textbf{contracción de la longitud}. La distancia de 15 km es la \textbf{longitud propia} de la atmósfera medida por alguien en reposo con respecto a ella (en la Tierra).
+La ``paradoja'' se resuelve con la \textbf{contracción de la longitud}. La distancia de 15 km es la \textbf{longitud propia} de la atmósfera medida por alguien en reposo con respecto a ella (en la Tierra).
 
 Desde la perspectiva del muón, está estacionario, y la atmósfera de la Tierra se apresura a su encuentro a 0.999c. Por lo tanto, el muón mide que la altura de la atmósfera está contraída. La distancia contraída ($L$) que ve el muón es:
 \[ L = \frac{L_0}{\gamma} = \frac{15 \text{ km}}{22.37} \approx 0.67 \text{ km} \quad (\text{o 670 metros}) \]
@@ -1740,10 +1691,10 @@ Esta es la parte más crucial del problema.
 
 
 
-\section{Forma Vectorial y Rapidez}
+\section{Espacio de Minkowski}
 
 %\section{Unidades Naturales y Rapidez}
-Para tener las coordenadas con las mismas unidades,, debemos usar $ct$ paraque seae sea interpretado como una dimensión espacial
+Para tener las coordenadas con las mismas unidades,, debemos usar $ct$ para que sea interpretado como una dimensión espacial
 \begin{align}
 ct' =& \gamma\left(ct-\frac{v}{c}x\right),\\
 x'=&\gamma\left(x-\frac{v}{c}ct\right)
@@ -1751,7 +1702,7 @@ x'=&\gamma\left(x-\frac{v}{c}ct\right)
 
 \
 
-\section{Funciones Hiperbólicas}
+\subsection{Funciones Hiperbólicas}
 \begin{align*}
     \cosh x =& \frac{{e}^{x}+{e}^{-x}}{2}\,,&
 \sinh x =& \frac{{e}^{x}-{e}^{-x}}{2}\,.
@@ -1769,7 +1720,7 @@ Por lo tanto
 \end{align*}
 
 Podemos parametrizar la velocidad usando la \textbf{rapidez}, $\xi$:
-\[ \gamma = \cosh\xi, \quad \frac{v}{c}\gamma = \sinh\xi \]
+\[ \gamma = \cosh\xi, \quad -\frac{v}{c}\gamma = \sinh\xi \]
 Esta parametrización es válida porque satisface automáticamente la identidad $\gamma^2(1-v^2)=1$:
 \[ \cosh^2\xi - \sinh^2\xi = \gamma^2 - \left(\frac{v}{c}\gamma\right)^2 = \gamma^2\left(1-\frac{v^2}{c^2}\right) = 1 \]
 A partir de esto, también encontramos que la velocidad está relacionada con la rapidez por 
@@ -1785,8 +1736,8 @@ En resumen, las transformaciones de Lorentz se pueden escribir como
 \[
 \boxed{
 \begin{aligned}    
-    ct' =& ct\cosh\xi - x\sinh\xi \\
-    x' = &x\cosh\xi -ct\sinh\xi\\
+    ct' =& ct\cosh\xi + x\sinh\xi \\
+    x' = &x\cosh\xi + ct\sinh\xi\\
     y' = & y\\
     z' = &z\,.
 \end{aligned}
@@ -1803,8 +1754,8 @@ El vector de impulso se transforma bajo una transformación de Lorentz como
 \[
 \boxed{
 \begin{aligned}    
-    {x^0}' =& x^0\cosh\xi - x^1\sinh\xi \\
-    {x^1}' = &x^1\cosh\xi -x^0\sinh\xi\\
+    {x^0}' =& x^0\cosh\xi + x^1\sinh\xi \\
+    {x^1}' = &x^1\cosh\xi + x^0\sinh\xi\\
     {x^2}' = & x^2\\
     {x^3}' = &x^3\,.
 \end{aligned}
@@ -1813,10 +1764,11 @@ El vector de impulso se transforma bajo una transformación de Lorentz como
 
 A continuación trabajaremos en dos dimensiones, una temporal y una espacial, de manera que el vector de impulso es
 \begin{align}
+\label{eq:bivector}
     x^\mu \equiv \left(x^0, x^1 \right) = \left(ct, x \right)
 \end{align}
 
-\section{Invariancia bajo transformaciones de Lorentz}
+\subsection{Invariancia bajo transformaciones de Lorentz}
 En la ecuación~\eqref{eq:so3} vimos que el producto escalar era invariante bajo rotaciones en el espacio.
 
 Verifiquemos, bajo qué condiciones el módulo del vector de impulso es invariante bajo transformaciones de Lorentz. 
@@ -1829,7 +1781,7 @@ con $g_{00}$ y $g_{11}$ a ser fijados por la condición de invarianza.
 
 El vector de impulso en la base transformada es, 
 \begin{align*}
-{x'}^\mu = ({x'}^0,{x'}^1) = ({x^0}\cosh\xi - {x^1}\sinh\xi, {x^1}\cosh\xi -{x^0}\sinh\xi),
+{x'}^\mu = ({x'}^0,{x'}^1) = ({x^0}\cosh\xi + {x^1}\sinh\xi, {x^1}\cosh\xi +{x^0}\sinh\xi),
 \end{align*}
 El producto escalar en el espacio de Minkowski del vector de impulso consigo mismo es 
 \begin{align*}
@@ -1842,9 +1794,14 @@ g_{11}\left[\left({x^1}\right)^2\cosh^2-2{x^0}{x^1}\cosh\xi\sinh\xi + \left({x^0
 Si $g_{00}=1$ y $g_{11}=-1$, el producto escalar en el espacio de Minkowski resulta ser invariante, ya que, usando $\cosh^2\xi-\sinh^2\xi=1$
 \begin{align*}
         {x'}^\mu \cdot {x'}^\mu   
-=& \left({x^0}\right)^2(\cosh^2\xi-\sinh^2\xi)+\left({x^1}\right)^2(\sinh^2-\cosh^2) -\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}+\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}\\
-=&\left({x^0}\right)^2 - \left({x^1}\right)^2\,.
+=& \left({x^0}\right)^2(\cosh^2\xi-\sinh^2\xi)+\left({x^1}\right)^2(\sinh^2\xi-\cosh^2\xi) -\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}+\cancel{2 {x^0}{x^1}\cosh\xi\sinh\xi}\\
+=&\left({x^0}\right)^2 - \left({x^1}\right)^2\\
+=&x^\mu\cdot x^\mu\,.
 \end{align*}
+donde $x^\mu$ esta definido en la ecuación~\eqref{eq:bivector}.
+
+
+
 
 Generalizando a todas las coordenadas del espacio-tiempo, tenemos que el producto escalar entre $x^\mu=(x^0,x^1, x^2, x^3$ y $y^\mu=(y^0,y^1,y^2,y^3)$ en el espacio de Minkowski es
 \begin{align}
@@ -1875,58 +1832,160 @@ tiene un módulo al cuadrado, que es invariante
      =&\left(x^0_2-x^0_1\right)^2 -\left(x_2-x_1\right)^2
     -\left(y_2-y_1\right)^2-\left(z_2-z_1\right)^2\\
     =&\left(ct_2- c t_1\right)^2 -\left(x_2-x_1\right)^2
-    -\left(y_2-y_1\right)^2-\left(z_2-z_1\right)^2\\
-    = &c^2\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2 \,. 
+    -\left(y_2-y_1\right)^2-\left(z_2-z_1\right)^2\,,
 \end{align*}
-En el espacio completo tenemos
+%
+tenemos así el \emph{intervalo invariante}
 \begin{align*}
     \Delta S^2 =
      &c^2\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2\,. 
 \end{align*}
 
 
-\section{Cuadrimomento}
-En relatividad especial, la magnitud del vector momento para una partícula que se mueve a una velocidad $\boldsymbol{v}$, es
-\begin{align*}
-    p= \gamma m v\,.
-\end{align*}
-A continuación mostraremos porque se necesita el factor $\gamma$ en la ecuación para el momento. 
+% ---------------------------------------------------------
+% 1. Definición segura de los iconos (Pega esto en el preámbulo)
+% SIN NINGUNA LÍNEA EN BLANCO DENTRO DE LOS COMANDOS
+% ---------------------------------------------------------
 
-Si definimos el cuatrivector
-\begin{align*}
-    p^\mu = \left(\frac{E}{c},p_x,p_y,p_z\right) = \left(\frac{E}{c},\boldsymbol{p}\right),
-\end{align*}
-donde $c$ se comporta como un factor de conversión (al igual que $h$ cuando se necesite)
-\begin{align*}
-    \left[\frac{E}{c}\right] = \left[ M\frac{L^2}{T^2}\frac{T}{L}  \right] = \left[M \frac{L}{T}\right] = [p]\,,
-\end{align*}
-entonces esperamos que el módulo al cuadrado en el espacio de Minkowski, sea un invariante, una constante que llamaremos $m^2 c^4$ (en unidades de momento al cuadrado), tal que
-\begin{align*}
-    m^2 c^2 =& \frac{E^2}{c^2} - \boldsymbol{p}\cdot\boldsymbol{p} \\
-        =&   \frac{E^2}{c^2} -p^2\,,
-\end{align*}
-donde $p^2 = |\boldsymbol{p}|^2 =\boldsymbol{p}\cdot\boldsymbol{p} $ en el espacio real en tres dimensiones.
+\newcommand{\iconoRegla}{%
+\begin{tikzpicture}[baseline=-0.5ex, scale=0.25]
+\draw[thick, fill=yellow!20] (0,-0.5) rectangle (4,0.5);
+\foreach \x in {0.5, 1.5, 2.5, 3.5} \draw[thick] (\x, 0.5) -- (\x, 0.2);
+\foreach \x in {1, 2, 3} \draw[thick] (\x, 0.5) -- (\x, 0);
+\end{tikzpicture}%
+}
 
-Resolviendo para $E$
-\begin{align*}
-    \frac{E^2}{c^2} =& m^2c^2 + p^2\,.
-\end{align*}
-Resolviendo para $E^2$
-\begin{align*}
-        E^2 =& m^2 c^4 +  p^2c^2\\
-         =& m^2 c^4 + \gamma^2 m^2 v^2 c^2\\
-         =& m^2c^2(c^2+\gamma^2 v^2)\,.
-\end{align*}
-Usando la ecuación~\eqref{eq:gammasquare} para $\gamma^2$
+A pesar que los relojes y reglas se transforman al cambiar de sistema de referencia inercial, el intervalo invariante es absoluto (independiente del sistema de referencia inercial). Gráficamente
+%
+\begin{equation}
+\Delta S^2 =c^2\cdot {\includegraphics[scale=0.03]{clock}}^2 -  \iconoRegla^{\,2}\,.
+\end{equation}
+
+%\begin{equation}
+%    x^\mu = \Bigg( c \cdot \iconoReloj \; , \;\; \iconoRegla \Bigg).
+%\end{equation}
+
+
+
+\section{Derivación de la Energía y el Momento Relativista a partir del Cuadrivector}
+
+En la mecánica clásica, el momento se define como la masa multiplicada por la velocidad ($\boldsymbol{p} = m\boldsymbol{v}$). Sin embargo, en relatividad, la velocidad espacial $\boldsymbol{v} = \Delta \boldsymbol{r} / \Delta t$ presenta un problema fundamental: aunque la distancia $\Delta \boldsymbol{r}$ y el tiempo $\Delta t$ se transforman al cambiar de sistema de referencia, no lo hacen de una manera que garantice que las leyes de conservación se mantengan para todos los observadores.
+
+Para formular una ley de conservación del momento que sea válida universalmente, debemos construir un vector en el espacio de Minkowski (un \textbf{cuadrivector}) cuyo producto escalar consigo mismo sea un \textbf{invariante relativista}.
+
+\subsubsection{Paso 1: El Tiempo Propio como Invariante}
+
+Recordemos que el producto escalar del cuadrivector de desplazamiento $\Delta X^\mu = (c\Delta t, \Delta \vec{r})$ consigo mismo nos da el intervalo invariante $\Delta s^2$:
+\begin{equation}
+    \Delta S^2 = (c\Delta t)^2 - |\Delta \boldsymbol{r}|^2.
+\end{equation}
+Para un observador que viaja junto con la partícula, la partícula no se mueve ($\Delta \vec{r} = 0$), y el tiempo que mide su reloj es el \textbf{tiempo propio} ($\Delta \tau$). Para este observador, el intervalo es simplemente
+\begin{equation}
+    \Delta S^2 = (c\Delta t_0)^2.
+\end{equation}
+Como $\Delta s^2$ es un invariante (todos los observadores miden el mismo valor), podemos igualar ambas expresiones:
+\begin{equation}
+    c^2 \Delta t_0^2 = c^2 \Delta t^2 - |\Delta \boldsymbol{r}|^2.
+\end{equation}
+Dividiendo toda la ecuación por $c^2 \Delta t^2$, obtenemos
+\begin{equation}
+    \left( \frac{\Delta t_0}{\Delta t} \right)^2 = 1 - \frac{|\Delta \vec{r}|^2}{c^2 \Delta t^2} = 1 - \frac{v^2}{c^2}.
+\end{equation}
+Reconociendo el inverso del factor de Lorentz ($1/\gamma^2$), llegamos a la profunda relación entre el tiempo del laboratorio y el tiempo propio
+\begin{equation}
+    \Delta t = \gamma \Delta t_0.
+    \label{eq:tiempo_propio}
+\end{equation}
+El tiempo propio $\Delta t_0$ es una magnitud escalar invariante, acordada por todos los observadores.
+
+\subsubsection{Paso 2: Construcción de la Cuadrivelocidad}
+
+Para crear un vector de velocidad que se comporte correctamente bajo las transformaciones de Lorentz, debemos tomar el cuadrivector de posición $\Delta X^\mu$ y dividirlo, no por el tiempo relativo $\Delta t$, sino por el tiempo invariante $\Delta \tau$. Definimos así la \textbf{cuadrivelocidad} $U^\mu$:
+\begin{equation}
+    v^\mu = \frac{\Delta x^\mu}{\Delta t_0} = \left( c\frac{\Delta t}{\Delta \tau}, \frac{\Delta \boldsymbol{r}}{\Delta \tau} \right).
+\end{equation}
+Utilizando la regla de la cadena ($\frac{\Delta \boldsymbol{r}}{\Delta \tau} = \frac{\Delta \boldsymbol{r}}{\Delta t} \frac{\Delta t}{\Delta \tau}$) y la ecuación (\ref{eq:tiempo_propio}), podemos expresar $U^\mu$ en términos de las variables medidas en el laboratorio ($v$ y $\gamma$):
+\begin{equation}
+    v^\mu = ( \gamma c, \gamma \boldsymbol{v} ).
+\end{equation}
+Comprobemos que su producto escalar es efectivamente un invariante que no puede depender de la velocidad del sistema de referncia inercial, $v$:
+\begin{equation}
+    v^\mu \cdot v^\mu = (\gamma c)^2 - (\gamma v)^2 = \gamma^2 (c^2 - v^2) = \left( \frac{1}{1 - v^2/c^2} \right) c^2 \left( 1 - \frac{v^2}{c^2} \right) = c^2.
+\end{equation}
+El resultado es $c^2$, una constante universal. ¡Nuestra construcción geométrica funciona a la perfección!
+
+\subsubsection{Paso 3: El Cuadrimomento y las Nuevas Definiciones}
+
+Ahora, multiplicamos la cuadrivelocidad por la masa en reposo de la partícula, $m$. Dado que $m$ es otro escalar invariante (no depende de la velocidad del sistema de referencia inercial, $v$), el resultado será un nuevo cuadrivector garantizado, llamado \textbf{cuadrimomento} ($P^\mu$):
+\begin{equation}
+    p^\mu = m v^\mu = ( \gamma m c, \gamma m \boldsymbol{v} ).
+\end{equation}
+Identificamos las componentes de este nuevo vector con las cantidades dinámicas físicas:
+
+\textbf{1. El Momento Relativista:}
+La parte espacial de nuestro cuadrivector corresponde a la generalización natural del momento lineal clásico. Por lo tanto, definimos rigurosamente el momento relativista como
+\begin{equation}
+    \boldsymbol{p} = \gamma m \boldsymbol{v}.
+    \label{eq:momento_relativista}
+\end{equation}
+
+\textbf{2. La Energía Total Relativista:}
+La componente temporal del cuadrivector es $\gamma m c$. Para entender su significado físico, analicemos la cantidad multiplicada por $c$, es decir, $E \equiv \gamma m c^2$. Si evaluamos el límite de bajas velocidades ($v \ll c$), podemos usar la aproximación binomial
 \begin{align}
-          E^2   =&m^2c^2\left[c^2+ \left(\frac{c^2}{c^2 - v^2}\right)v^2\right]\nonumber\\
-         =& m^2 c^2\left(\frac{c^4-\cancel{c^2v^2}+\cancel{c^2v^2}}{c^2 - v^2}\right)\nonumber\\
-         =& m^2c^2\frac{c^4}{c^2-v^2}\nonumber\\
-         =& m^2c^4\frac{c^2}{c^2-v^2}\nonumber\\
-         =& \gamma^2 m^2 c^4\,,
+    (1+x)^n \approx& 1+nx\,,&\text{sí\quad } x\ll 1\,. 
 \end{align}
 
-Por lo tanto
+Para el limite no relativista $v\ll c$
+\begin{align*}
+\gamma =& \frac{1}{\sqrt{1-\frac{v^2}{c^2}}}&&\\
+=& \left(1-\frac{v^2}{c^2}\right)^{-1/2}&&\\
+\approx& 1 + \frac{1}{2}\frac{v^2}{c^2}\,,&\text{sí\quad } \frac{v^2}{c^2}\ll 1\,.
+\end{align*}
+Entonces
+\begin{equation}
+    E \approx m c^2 \left( 1 + \frac{1}{2}\frac{v^2}{c^2} \right) = m c^2 + \frac{1}{2} m v^2.
+\end{equation}
+Reconocemos inmediatamente el segundo término como la energía cinética clásica. El primer término, $m c^2$, es la energía en reposo intrínseca de la partícula. Queda demostrado, entonces, que la componente temporal nos revela la fórmula fundamental de la \textbf{energía total relativista}:
+\begin{equation}
+    E = \gamma m c^2.
+    \label{eq:energia_relativista}
+\end{equation}
+
+\subsubsection{Conclusión: El Invariante Energía-Momento}
+
+Al sustituir nuestras nuevas definiciones (\ref{eq:momento_relativista}) y (\ref{eq:energia_relativista}) de vuelta en el cuadrimomento, obtenemos 
+\begin{align}
+p^\mu = (E/c, \boldsymbol{p}).     
+\end{align}
+Evaluando nuevamente su producto escalar invariante, tenemos
+\begin{align}
+\label{eq:cuadrimomentumsquare}
+    p^\mu \cdot p^\mu =&\left( \frac{E}{c} \right)^2 - |\boldsymbol{p}|^2\nonumber\\
+    p^\mu \cdot p^\mu =&\left( \frac{E}{c} \right)^2 - p^2\\
+    =& \gamma^2m^2\left(c^2-v^2\right)\nonumber\\
+    =& \gamma^2m^2 c^2\left(\frac{c^2-v^2}{c^2}\right)\nonumber\,,
+\end{align}
+usando la ec.~\eqref{eq:gammasquare} para $\gamma^2$
+\begin{align}
+p^\mu \cdot p^\mu =&\cancel{\gamma^2} m^2 c^2\frac{1}{\cancel{\gamma^2}}\nonumber\\
+    =& m^2 c^2\,,    
+\end{align}
+que como era de esperarse no puede depender de la velocidad del sistema de referencia inercial $v$
+
+Multiplicando por $c^2$ y reorganizando la ec.~\eqref{eq:cuadrimomentumsquare}
+\begin{align*}
+m^2c^2 =& \frac{E^2}{c^2} - p^2 \\
+m^2c^4 =& E^2 - p^2 c^2\\
+\left(m c^2\right)^2 =& E^2 - \left(p c\right)^2\,,
+\end{align*}
+llegamos a la joya de la corona de la dinámica relativista, válida para cualquier partícula en el universo:
+\begin{equation}
+    E^2 = (m c^2)^2 + (p c)^2.
+\end{equation}
+
+
+\subsection{Límites de la energía total relativista}
+Tenemos
 \begin{align}
     \boxed{E = \gamma m c^2\,.}
 \end{align}
@@ -1989,15 +2048,15 @@ De modo que se requeriría  una energía infinita para acelerar un objeto materi
 Además, si aceptamos la existencia de una partícula que se pueda mover más rápido que la velocidad de la luz, llamada taquión, el radicando en el denominandor tendría un signo negativo y la energía sería imaginaria, lo que aparentemente no tiene significado físico. Es de anotar que a la fecha no se ha observado ningún taquión en la naturaleza.
 
 \section{Ejemplos}
-\begin{enumerate}
-    \item Cálculo de Fotones por Segundo para Corte por Láser de CO\textsubscript{2}.
+
+\subsection{ Cálculo de Fotones por Segundo para Corte por Láser de CO\textsubscript{2}}
 
 % --- Inicio del código LaTeX para insertar ---
 Para un láser de CO\textsubscript{2} industrial de \SI{4000}{\watt} (\SI{4}{kW}), una potencia realista para cortar una placa de acero de \SI{20}{\milli\meter}, el número total de fotones que se acumulan en el punto de contacto es de aproximadamente:
 \[ \boxed{N_{\text{fotones}} \approx \num{2.13e23} \text{ fotones por segundo}} \]
 De estos, solo una pequeña fracción (alrededor del \SIrange{5}{10}{\percent}) es absorbida y utilizada para cortar el metal.
 
-\section*{Desglose del Cálculo}
+\subsection*{Desglose del Cálculo}
 El proceso se divide en tres pasos principales:
 \begin{enumerate}
     \item Calcular la energía de un único fotón de un láser de CO\textsubscript{2}.
@@ -2059,11 +2118,70 @@ Esto nos lleva a una suposición clave y realista: \textbf{se está utilizando u
 El número de fotones por segundo ($N_{\text{fotones}}$) es la potencia total del láser dividida por la energía de cada fotón.
 \[ N_{\text{fotones}} = \frac{P_{\text{total}}}{E_{\text{fotón}}} = \frac{\SI{4000}{\joule\per\second}}{\SI{1.875e-20}{\joule\per\text{fotón}}} \approx \num{2.13e23} \, \text{fotones/s} \]
 
-\section*{Conclusión}
+\subsection*{Conclusión}
 Aunque teóricamente solo se necesitan unos \SI{206}{\watt} de potencia absorbida para realizar el corte, debido a las ineficiencias del proceso, se requiere un láser mucho más potente. Para un láser industrial realista de \SI{4000}{\watt}, el haz deposita en el punto de contacto la asombrosa cantidad de \num{2.13e23} fotones cada segundo para lograr cortar la placa de acero de \SI{20}{\milli\meter}.
 
+\subsection{Ejemplo: Equivalencia Masa-Energía en una Reacción Química}
+
+A menudo asociamos la famosa ecuación de Einstein, $E = \Delta m c^2$, exclusivamente con reacciones nucleares. Sin embargo, la relatividad especial dictamina que \textit{cualquier} liberación de energía conlleva una pérdida de masa equivalente, sin importar el mecanismo. El siguiente ejemplo ilustra este principio universal para un proceso químico cotidiano: la combustión.
+
+\textbf{Enunciado del Problema:}
+El gas natural consiste principalmente de metano. Si el calor de combustión del metano es de aproximadamente $50 \text{ MJ/kg}$, y se quema exactamente $1 \text{ kg}$ de este gas natural:
+\begin{enumerate}
+    \item ¿Cuál es la diferencia de masa antes y después del proceso de combustión?
+    \item ¿Qué fracción de la masa original de gas se convirtió en energía?
+\end{enumerate}
+
+\textbf{Datos del problema:}
+\begin{itemize}
+    \item Masa de gas quemada, $m = 1 \text{ kg}$.
+    \item Calor de combustión, $H_c = 50 \text{ MJ/kg} = 50 \times 10^6 \text{ J/kg}$.
+    \item Velocidad de la luz, $c \approx 3 \times 10^8 \text{ m/s}$.
+\end{itemize}
+
+\subsubsection*{Solución Detallada}
+
+\textbf{Paso 1: Calcular la Energía Total Liberada ($E$)}
+
+Primero, calculamos la energía química total que se libera al quemar $1 \text{ kg}$ de gas natural.
+\begin{equation}
+    E = m \cdot H_c = (1 \text{ kg}) \times (50 \times 10^6 \text{ J/kg}) = 50 \times 10^6 \text{ J}.
+\end{equation}
+
+\textbf{Paso 2: Calcular la Diferencia de Masa ($\Delta m$)}
+
+Toda liberación de energía implica un defecto de masa dictado por la equivalencia masa-energía, $E = \Delta m c^2$. Despejando la diferencia de masa ($\Delta m$), obtenemos:
+\begin{equation}
+    \Delta m = \frac{E}{c^2}.
+\end{equation}
+Sustituimos los valores previamente calculados y la velocidad de la luz:
+\begin{equation}
+    \Delta m = \frac{50 \times 10^6 \text{ J}}{(3 \times 10^8 \text{ m/s})^2} = \frac{50 \times 10^6}{9 \times 10^{16}} \text{ kg}.
+\end{equation}
+Al realizar la división, el resultado es:
+\begin{equation}
+    \Delta m \approx 5.56 \times 10^{-10} \text{ kg}.
+\end{equation}
+\textbf{Respuesta a la pregunta 1:} La diferencia de masa antes y después de la combustión es de aproximadamente $5.56 \times 10^{-10} \text{ kg}$ (lo que equivale a tan solo $0.000556$ miligramos).
+
+\textbf{Paso 3: Calcular la Fracción de Masa Convertida}
+
+Para encontrar qué porción de la masa original de $1 \text{ kg}$ se transformó puramente en energía, dividimos el defecto de masa ($\Delta m$) entre la masa inicial ($m$):
+\begin{equation}
+    \text{Fracción} = \frac{\Delta m}{m} = \frac{5.56 \times 10^{-10} \text{ kg}}{1 \text{ kg}} = 5.56 \times 10^{-10}.
+\end{equation}
+Expresado como porcentaje, esto equivale a un minúsculo $0.0000000556\%$.
+
+\subsubsection*{Interpretación Física y Contexto}
+
+Este resultado es fundamental para comprender la profunda diferencia de escala entre las reacciones \textbf{químicas} (como quemar gas, papel o carbón) y las reacciones \textbf{nucleares} (como la fisión del uranio analizada anteriormente en este texto, donde la fracción convertida rondaba el $0.08\%$). 
+
+En una reacción química cotidiana, la fracción de masa que se convierte en energía es del orden de unas pocas partes por cada diez mil millones ($10^{-10}$). Esta diferencia es tan insignificantemente pequeña que, a efectos prácticos y para cualquier instrumento de pesaje estándar, parece que la masa no cambia en absoluto. Esto justifica históricamente por qué en química se postula la \textit{Ley de Conservación de la Masa} de Lavoisier. 
+
+Sin embargo, bajo el lente de la física fundamental y la Relatividad Especial, dicha ley es solo una excelente aproximación: la masa total de los productos de la combustión (humo, vapor de agua y gases) es estrictamente menor que la masa de los reactivos originales (gas metano y oxígeno).
+
 % --- Fin del código LaTeX ---
-\item La Energía de la Fisión del Uranio
+\subsection{La Energía de la Fisión del Uranio}
 
 La primera bomba atómica, detonada en el proyecto Manhattan, funcionaba mediante la \textbf{fisión nuclear} del Uranio-235 (\textsuperscript{235}U). En este proceso, un neutrón lento golpea un núcleo de \textsuperscript{235}U, haciéndolo inestable. El núcleo se divide en dos núcleos más pequeños (llamados fragmentos de fisión), liberando varios neutrones y una enorme cantidad de energía.
 
@@ -2072,7 +2190,7 @@ El origen de esta energía es que la suma de las masas de los productos finales 
 \paragraph{Fórmula clave:}
 \[ E = \Delta m c^2 \]
 
-\section*{El Problema}
+\subsection*{El Problema}
 Considera una de las posibles reacciones de fisión del Uranio-235:
 \[ \text{n} + {}^{235}\text{U} \rightarrow {}^{92}\text{Kr} + {}^{141}\text{Ba} + 3\text{n} + E \]
 
@@ -2096,7 +2214,7 @@ Considera una de las posibles reacciones de fisión del Uranio-235:
     \item Estima la energía total liberada si \textbf{\SI{1}{\kilo\gram}} de Uranio-235 sufre una fisión completa.
 \end{enumerate}
 
-\section*{Solución Detallada}
+\subsection*{Solución Detallada}
 
 \subsection*{Parte 1: Energía por un solo átomo de Uranio}
 
@@ -2136,7 +2254,7 @@ Aplicamos la fórmula $E = \Delta m c^2$:
 \end{align*}
 \textbf{Respuesta a la Pregunta 2:} La fisión completa de \SI{1}{\kilo\gram} de Uranio-235 liberaría aproximadamente \SI{71.4}{\tera\joule}.
 
-\section*{Interpretación y Contexto: ¿Qué tan grande es esta energía?}
+\subsection*{Interpretación y Contexto: ¿Qué tan grande es esta energía?}
 Para poner en perspectiva los \SI{71.4}{\tera\joule}:
 \begin{itemize}
     \item \textbf{Equivalencia en TNT:} La energía liberada por la explosión de \SI{1}{\tonne} de TNT es de unos \SI{4.184}{\giga\joule} (\SI{4.184e9}{\joule}).
@@ -2150,7 +2268,7 @@ Para poner en perspectiva los \SI{71.4}{\tera\joule}:
 
 % --- Inicio del código LaTeX para insertar ---
 
-\item Energía de una Bomba de Fusión (Bomba de Hidrógeno)
+\subsection{Energía de una Bomba de Fusión (Bomba de Hidrógeno)}
 
 Las armas termonucleares, o bombas de hidrógeno (H-bombs), liberan energía mediante la \textbf{fusión nuclear}, el mismo proceso que alimenta al Sol. En una bomba H, una bomba de fisión primaria genera las temperaturas y presiones extremas necesarias para forzar a los núcleos de isótopos ligeros de hidrógeno (como el Deuterio y el Tritio) a fusionarse.
 
@@ -2159,7 +2277,7 @@ La reacción de fusión más ``sencilla'' y una de las más energéticas es la f
 \paragraph{Fórmula clave:}
 \[ E = \Delta m c^2 \]
 
-\section*{El Problema}
+\subsection*{El Problema}
 La reacción principal en muchas armas termonucleares es la fusión de un núcleo de Deuterio (${}^2\text{H}$) con uno de Tritio (${}^3\text{H}$):
 \[ {}^2\text{H} + {}^3\text{H} \rightarrow {}^4\text{He} + \text{n} + E \]
 
@@ -2184,7 +2302,7 @@ La reacción principal en muchas armas termonucleares es la fusión de un núcle
     \item Compara la energía liberada por kilogramo con la de la fisión del Uranio-235.
 \end{enumerate}
 
-\section*{Solución Detallada}
+\subsection*{Solución Detallada}
 
 \subsection*{Parte 1: Energía por una sola reacción de fusión}
 
@@ -2224,7 +2342,7 @@ La masa de un ``par'' de combustible (D+T) es $m_{\text{par}} = \SI{5.030151}{\a
 \[ \frac{\text{Energía Fusión}}{\text{Energía Fisión}} = \frac{\SI{3.39e14}{\joule}}{\SI{7.14e13}{\joule}} \approx 4.75 \]
 \textbf{Respuesta a la Pregunta 3:} La fusión de \SI{1}{\kilo\gram} de combustible D-T libera aproximadamente \textbf{4.75 veces más energía} que la fisión de \SI{1}{\kilo\gram} de Uranio-235.
 
-\section*{Eficiencia de una Bomba de Hidrógeno}
+\subsection*{Eficiencia de una Bomba de Hidrógeno}
 
 La eficiencia de una bomba de hidrógeno para ``quemar'' o fusionar todo su combustible de fusión es sorprendentemente baja. Generalmente, la eficiencia de la etapa de fusión en un arma termonuclear moderna se encuentra en el rango del \SIrange{20}{40}{\percent}. Esto significa que entre el \SIrange{60}{80}{\percent} del combustible de fusión es simplemente dispersado por la explosión sin reaccionar.
 
@@ -2260,7 +2378,7 @@ La eficiencia de la fusión en una bomba H, aunque baja, es considerablemente ma
 
 % --- Fin del código LaTeX ---
 
-\item Calcule el producto escalar de Lorentz para el cuadrivector de momento
+\subsection{Calcule el producto escalar de Lorentz para el cuadrivector de momento}
 \begin{align*}
     p^\mu = \left(\frac{E}{c},p_x,p_y,p_z\right),
 \end{align*}
@@ -2269,7 +2387,7 @@ donde la energía y la magnitud del vector $\boldsymbol{p} = (p_x,p_y,p_z)$ son
     E =&\gamma m c^2\,, & p=&\gamma m v \,.
 \end{align*}
 
-\item 
+
 \begin{enumerate}
     \item Encuentre el cuadrado de la velocidad a la que se mueve una partícula de masa $m$ a partir de su momento
 
@@ -2299,7 +2417,49 @@ Es claro que en si hacemos $c\to \infty$
 \end{align*}
 
 \end{enumerate}
+
+\section{Ejercicios}
+% \subsection{Cuadrivector de velocidad}
+% Demuestre que el producto escalar del Lorentz del cuadrivector de velocidad consigo mismo, es independiente de la velocidad del sistema inercial.
+
+
+
+A continuación, se presentan algunos ejercicios propuestos para afianzar los conceptos fundamentales de la Relatividad Especial desarrollados en este capítulo. Recuerde utilizar el factor de Lorentz, $\gamma = 1/\sqrt{1 - v^2/c^2}$, y mantener un uso riguroso de las unidades a lo largo de sus cálculos.
+
+\begin{enumerate}
+
+    \item \textbf{Postulados de la Relatividad:} Un astronauta viaja en una nave espacial que se dirige hacia la Tierra a una velocidad constante de $0.6c$. Para comunicarse, el astronauta enciende un láser apuntando directamente hacia nuestro planeta. Si un observador estacionario en la Tierra mide la velocidad a la que se acerca el haz de luz del láser, ¿qué valor obtendrá? Justifique su respuesta detalladamente basándose en los postulados de Einstein.
+
+    \item \textbf{Dilatación del Tiempo:} Una nave espacial viaja desde la Tierra hacia la estrella Próxima Centauri a una velocidad constante de $0.8c$. Según el equipo de control de la misión en la Tierra, el viaje de ida tomó exactamente $5.3$ años. ¿Cuánto tiempo transcurrió en los relojes de los astronautas dentro de la nave?
+    
+    \item \textbf{Contracción de la Longitud:} Una regla, que mide exactamente $1.0 \text{ m}$ cuando está en reposo, es lanzada y pasa frente a un estudiante en un laboratorio a una velocidad de $0.9c$ en una dirección paralela a su propia longitud. ¿Qué longitud medirá el estudiante para esta regla en movimiento?
+
+    \item \textbf{Transformaciones de Lorentz:} Un destello de luz ocurre en el origen de un sistema de referencia inercial $S$ en el tiempo $t=0$. Un segundo evento (un pequeño estallido) ocurre en el mismo sistema $S$ en la coordenada $x = 120 \text{ m}$ y en el instante $t = 3.0 \times 10^{-7} \text{ s}$. Encuentre las coordenadas espaciales ($x'$) y temporales ($t'$) de este segundo evento para un observador en un sistema $S'$ que se mueve a $v = 0.5c$ en la dirección $x$ positiva. (Asuma que los orígenes $x=x'=0$ coinciden en $t=t'=0$).
+
+    \item \textbf{Suma Relativista de Velocidades:} Dos naves espaciales, A y B, se acercan mutuamente para un acoplamiento. Un telescopio en la Tierra observa que la nave A se mueve hacia la derecha a $0.7c$ y la nave B se mueve hacia la izquierda a $0.6c$. Utilizando la fórmula de suma de velocidades de Einstein, ¿cuál es la velocidad de la nave A según lo mide el piloto de la nave B?
+
+    \item \textbf{Equivalencia Masa-Energía ($E=mc^2$):} En la aniquilación completa de un electrón y un positrón (ambos con masa en reposo $m_e \approx 9.11 \times 10^{-31} \text{ kg}$), toda su masa se convierte en energía en forma de dos fotones de luz. Suponiendo que las partículas colisionan prácticamente desde el reposo, calcule la energía total liberada en Joules.
+
+    \item \textbf{Dinámica Relativista (Energía Cinética):} ¿Cuánto trabajo mecánico se debe realizar sobre un protón (cuya energía en reposo es aproximadamente $938 \text{ MeV}$) para acelerarlo desde el reposo absoluto hasta una velocidad de $0.8c$? Recuerde que el trabajo realizado es igual a la energía cinética relativista adquirida, $K = (\gamma - 1)mc^2$.
+
+    \item \textbf{Momento Relativista vs. Clásico:} Un asteroide de $1000 \text{ kg}$ viaja por el espacio profundo a una velocidad de $0.99c$. 
+    \begin{enumerate}
+        \item Calcule su cantidad de movimiento usando la fórmula clásica ($p = mv$).
+        \item Calcule su cantidad de movimiento correcta usando la fórmula relativista ($p = \gamma mv$).
+        \item ¿Cuál es la razón (división) entre el momento relativista y el clásico en este caso?
+    \end{enumerate}
+
+    \item \textbf{Invarianza del Intervalo Espaciotemporal:} Dos eventos en el sistema de referencia de la Tierra ($S$) ocurren en la misma ubicación física ($\Delta x = 0$), pero están separados por un intervalo de tiempo de $\Delta t = 5.0 \text{ s}$. En un sistema de referencia de una nave alienígena ($S'$) que pasa a gran velocidad, los mismos dos eventos están separados en el espacio por una distancia de $\Delta x' = 2.0 \times 10^9 \text{ m}$. Utilizando el hecho de que el intervalo $\Delta s^2 = c^2\Delta t^2 - \Delta x^2$ es invariante para todos los observadores, calcule el intervalo de tiempo $\Delta t'$ que miden los alienígenas entre los dos eventos.
+
+    \item \textbf{Relación Invariante Energía-Momento:} Utilizando las definiciones puramente algebraicas de la energía relativista $E = \gamma m c^2$ y el momento relativista $p = \gamma m v$, demuestre paso a paso que la siguiente igualdad es siempre cierta, sin importar la velocidad $v$ de la partícula:
+    \begin{equation}
+        E^2 - (pc)^2 = (mc^2)^2.
+    \end{equation}
+    (Sugerencia: Eleve las expresiones al cuadrado, reste los términos, factorice $(mc^2)^2$ y utilice la definición explícita de $\gamma^2$).
+
 \end{enumerate}
+
+
 
 \chapter{Dinámica newtoniana}
 \section{Leyes de Newton}
@@ -6387,5 +6547,60 @@ El factor $3/5$ es, por tanto, un coeficiente puramente geométrico que surge de
 
 % --- Fin del código LaTeX ---
 % --- Fin del código LaTeX ---
+
+
+
+
+\section{Ejemplo: contenido de positrones del Universo}
+La estimación del orden de magnitud para el número total de \textbf{positrones} en el universo observable es altamente especulativa debido a su naturaleza fugaz. Sin embargo, al contrastarlos con el contenido de materia dominante, se puede llegar a una estimación aproximada.
+
+
+El orden de magnitud más razonable para el número de positrones en el universo observable se encuentra probablemente en el rango de $\mathbf{10^{65}}$ a $\mathbf{10^{70}}$.
+
+\subsection*{Base de la Estimación}
+
+Esta estimación no se obtiene directamente de un único experimento de flujo como el \text{AMS-02}, sino que se deriva del desequilibrio establecido entre materia y antimateria, y de la tasa de aniquilación en nuestra galaxia.
+
+\subsection*{1. Comparación con la Materia ($\approx 10^{80}$)}
+
+El número total de \textbf{electrones} y \textbf{protones} (materia ordinaria) en el universo observable se estima en alrededor de $\mathbf{10^{80}}$.
+
+Dado que todo el universo observable está compuesto casi en su totalidad por materia (y no por antimateria), el número total de positrones debe ser \textbf{mucho menor} que la cifra de $10^{80}$ de electrones.
+
+\subsection*{2. Producción y Aniquilación de Positrones}
+
+Los positrones se producen continuamente por eventos de alta energía y desintegración radiactiva, pero son destruidos muy rápidamente por \textbf{aniquilación} con electrones. Por lo tanto, su número está determinado por un equilibrio de producción-aniquilación en lugar de ser un remanente cosmológico.
+
+\begin{itemize}
+    \item \textbf{Producción Galáctica de Positrones:} Las observaciones de la línea $\mathbf{511 \text{ keV } \gamma}$ en el Centro Galáctico, que es una firma de la aniquilación electrón-positrón, sugieren que los positrones se producen en la Vía Láctea a una tasa de aproximadamente $\mathbf{10^{42}}$ positrones por segundo ($\dot{N}_{e^+} \approx 10^{42} \text{ s}^{-1}$).
+    \item \textbf{Número en Estado Estacionario en la Vía Láctea:} Para mantener esta tasa de producción, se estima que el número total de positrones que flotan actualmente en el fondo difuso de la Vía Láctea es de $\mathbf{N_{e^+} \approx 10^{56}}$ a $\mathbf{10^{57}}$.
+\end{itemize}
+
+\subsection*{3. Escala al Universo}
+
+Para escalar esto al universo observable, multiplicamos la estimación Galáctica por el número estimado de galaxias. Se estima que el universo observable contiene entre $10^{11}$ y $10^{12}$ galaxias.
+
+La estimación resultante es:
+$$N_{\text{Positrones, Universo}} \approx N_{\text{Positrones, Galaxia}} \times N_{\text{Galaxias}}$$
+$$N_{\text{Positrones, Universo}} \approx 10^{56} \text{ a } 10^{57} \times 10^{11} \text{ a } 10^{12}$$
+$$N_{\text{Positrones, Universo}} \approx 10^{67} \text{ a } 10^{69}$$
+
+Este cálculo aproximado sugiere un orden de magnitud de $\mathbf{10^{68}}$.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Partícula} & \textbf{Orden de Magnitud (Universo Observable)} \\
+        \hline
+        Electrones y Protones (Materia) & $\approx 10^{80}$ \\
+        \hline
+        Fotones y Neutrinos & $\approx 10^{89}$ \\
+        \hline
+        \textbf{Positrones (Antimateria)} & $\approx 10^{65} - 10^{70}$ \\
+        \hline
+    \end{tabular}
+    \caption{Estimación del Orden de Magnitud de Partículas}
+\end{table}
 
 \end{document}
