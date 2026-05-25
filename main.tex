@@ -36,6 +36,9 @@
 \usetikzlibrary{calc} 
 \usetikzlibrary{math}
 \usetikzlibrary{bending, decorations.markings, 3d}
+\usetikzlibrary{shapes.symbols}
+\usetikzlibrary{shapes.geometric} 
+
 
 \usepackage{circuitikz}
 
@@ -332,7 +335,7 @@ Sustituyendo los valores numéricos, obtenemos
 \section{Simplificación de unidades}
 \begin{table}[h!]
     \centering
-    \caption{Cantidades Físicas Fundamentales y sus Unidades SI. Las unidades naturales se explicarán a continuación, donde $\hbar$ es la constante de Planck reducida, $c$ es la velocidad de la luz, $\epsilon_0$ es la permitividad del vacío,  $k_B$ la constante de Boltzmann: ver \href{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-phys-constants.pdf}{PDG: Physical Contants table}}
+    \caption{Unidades Físicas Fundamentales y sus Unidades SI. Las unidades naturales se explicarán a continuación, donde $\hbar$ es la constante de Planck reducida, $c$ es la velocidad de la luz, $\epsilon_0$ es la permitividad del vacío,  $k_B$ la constante de Boltzmann: ver \href{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-phys-constants.pdf}{PDG: Physical Contants table}}
     \begin{tabular}{|l|l|l|p{2cm}|}
         \hline
        \textbf{Nombre}           &\textbf{Símbolo}  [Letra] & \textbf{Unidades} (SI) &  \textbf{Unidades Naturales} \\ \hline
@@ -348,6 +351,7 @@ Sustituyendo los valores numéricos, obtenemos
 \end{table}
 
 \newpage
+
 Algunas unidades derivadas
 \begin{itemize}
 \item Magnitud de velocidad y aceleración
@@ -369,6 +373,91 @@ Algunas unidades derivadas
 
 
 En el sistema internacional de unidades tenemos las siguientes cantidades fundamentes
+
+\subsection{Análisis Dimensional}
+
+En física, la palabra \textbf{dimensión} denota la naturaleza física de una cantidad. Ya sea que una distancia se mida en metros, pies o años luz, su dimensión fundamental es siempre la longitud. 
+
+Usamos corchetes para denotar las dimensiones de una cantidad física. Basándonos en las cantidades fundamentales definidas anteriormente, tenemos:
+\begin{itemize}
+    \item Longitud: $[L]$
+    \item Masa: $[M]$
+    \item Tiempo: $[T]$
+\end{itemize}
+
+El \textbf{análisis dimensional} es una herramienta algebraica extremadamente poderosa que sirve para comprobar si una ecuación física es correcta o para deducir la forma de una ecuación desconocida. Se basa en una regla de sentido común llamada el \textbf{Principio de Homogeneidad Dimensional}: \textit{Solo se pueden sumar, restar o igualar cantidades que tengan exactamente las mismas dimensiones.} (En palabras sencillas: no se pueden sumar peras con manzanas).
+
+Cualquier número puro, fracción, función trigonométrica (como el seno o el coseno) o constante matemática (como $\pi$) es \textbf{adimensional}. Su dimensión se considera como $1$.
+
+\subsubsection{Aplicación 1: Comprobación de Ecuaciones}
+
+Supongamos que, tras un largo cálculo algebraico en cinemática, llegamos a la siguiente ecuación para la posición $x$ de un objeto en el tiempo $t$:
+\begin{equation}
+    x = v_0 t + \frac{1}{2} a t^2,
+\end{equation}
+donde $v_0$ es la velocidad inicial y $a$ es la aceleración. Podemos comprobar si esta ecuación tiene sentido físico analizando las dimensiones de cada término por separado:
+
+\begin{enumerate}
+    \item Dimensión del lado izquierdo (posición): 
+    \begin{equation}
+        [x] = [L].
+    \end{equation}
+    
+    \item Dimensión del primer término del lado derecho ($v_0 t$): Sabiendo que la velocidad es longitud sobre tiempo ($[L]/[T]$),
+    \begin{equation}
+        [v_0 t] = [v_0][t] = \left(\frac{[L]}{[T]}\right)[T] = [L].
+    \end{equation}
+    
+    \item Dimensión del segundo término ($\frac{1}{2} a t^2$): El factor $1/2$ es adimensional. La aceleración es longitud sobre tiempo al cuadrado ($[L]/[T]^2$),
+    \begin{equation}
+        \left[\frac{1}{2} a t^2\right] = [1][a] [t^2] = (1)\left(\frac{[L]}{[T]^2}\right)[T]^2 = [L].
+    \end{equation}
+\end{enumerate}
+
+Como todos los términos que se suman y se igualan tienen la misma dimensión de longitud $[L]$, concluimos que la ecuación es \textbf{dimensionalmente correcta}. Si un término hubiera dado, por ejemplo, $[L]/[T]$, sabríamos inmediatamente que cometimos un error algebraico.
+
+\subsubsection{Aplicación 2: Deducción de las Unidades de una Constante}
+
+El análisis dimensional también nos permite encontrar las unidades del Sistema Internacional (SI) de constantes físicas complejas. Preparándonos para el estudio de la dinámica newtoniana en el Capítulo 3, analicemos la Ley de Gravitación Universal de Newton:
+\begin{equation}
+    F_g = G \frac{m_1 m_2}{r^2},
+\end{equation}
+donde $F_g$ es la fuerza de gravedad, $m_1$ y $m_2$ son masas, y $r$ es la distancia de separación. 
+
+\textbf{Objetivo:} Determinar las dimensiones y las unidades SI de la constante de gravitación universal $G$.
+internacional
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{0.45\textwidth}|p{0.5\textwidth}|}
+\hline
+\textbf{Razonamiento} & \textbf{Desarrollo Algebraico} \\
+\hline
+1. Despejar algebraicamente la constante $G$ de la ecuación original. & 
+$\displaystyle G = \frac{F_g \cdot r^2}{m_1 \cdot m_2}$ \\
+\hline
+2. Escribir la ecuación en términos de sus dimensiones. & 
+$\displaystyle [G] = \frac{[F_g] [r^2]}{[m_1] [m_2]}$ \\
+\hline
+3. Sustituir las dimensiones de las cantidades conocidas. Sabemos que la fuerza es masa por aceleración, $[F] = [M][L]/[T]^2$. & 
+$\displaystyle [G] = \frac{\left( \frac{[M][L]}{[T]^2} \right) [L]^2}{[M][M]}$ \\
+\hline
+4. Simplificar algebraicamente la expresión cancelando términos comunes. & 
+$\displaystyle[G] = \frac{[M][L]^3}{[M]^2 [T]^2} = \frac{[L]^3}{[M][T]^2}$ \\
+\hline
+5. Traducir las dimensiones finales a sus correspondientes unidades del Sistema Internacional (SI). & 
+$[L]^3 \rightarrow \text{m}^3$ \newline
+$[M] \rightarrow \text{kg}$ \newline
+$[T]^2 \rightarrow \text{s}^2$ \newline
+Unidades de $G$: $\displaystyle \frac{\text{m}^3}{\text{kg} \cdot \text{s}^2}$ \\
+\hline
+\end{tabular}
+\caption{Pasos para deducir las dimensiones y unidades de una constante física mediante análisis dimensional.}
+\label{tab:analisis_dimensional_G}
+\end{table}
+
+\textit{Nota:} Frecuentemente, las unidades de $G$ también se escriben agrupando el término de fuerza (Newtons, $\text{N}$), resultando en $\text{N}\cdot\text{m}^2/\text{kg}^2$, lo cual es dimensionalmente idéntico al resultado obtenido en la Tabla \ref{tab:analisis_dimensional_G}.
+
 
 \section{Factores de conversión}
 
@@ -558,6 +647,81 @@ Note que por consiguiente, la velocidad al cuadrado en la fórmula para la energ
 \begin{align*}
     E =\frac{1}{2}m v^2\,.
 \end{align*}
+
+\subsection{Ejercicios}
+
+A continuación, se presentan veinte ejercicios propuestos para afianzar los conceptos fundamentales de unidades físicas, factores de conversión y análisis vectorial abordados en este capítulo. Recuerde prestar especial atención a las unidades en cada paso de sus cálculos.
+
+\subsubsection*{Unidades Físicas y Factores de Conversión}
+
+\begin{enumerate}
+    \item \textbf{Conversión de Velocidad:} El límite de velocidad en muchas carreteras de Colombia es de $80 \text{ km/h}$. Utilizando factores de conversión, exprese esta velocidad en metros por segundo ($\text{m/s}$).
+    
+    \item \textbf{Conversión de Área y Volumen:} Un panel solar tiene un área de $2500 \text{ cm}^2$. Exprese esta área en metros cuadrados ($\text{m}^2$). Si una batería almacena un volumen de electrolito de $5 \text{ litros}$, ¿cuántos metros cúbicos ($\text{m}^3$) representa? (Recuerde que $1 \text{ L} = 1000 \text{ cm}^3$).
+    
+    \item \textbf{Análisis Dimensional:} La energía cinética se define algebraicamente como $K = \frac{1}{2}mv^2$, donde $m$ es la masa y $v$ es la magnitud de la velocidad. Demuestre, analizando las unidades, que esta expresión da como resultado unidades de Joules ($\text{J}$) en el Sistema Internacional.
+    
+    \item \textbf{Conversión a Electronvoltios:} En física nuclear, una partícula alfa es expulsada de un núcleo con una energía de $8.0 \times 10^{-13} \text{ J}$. Sabiendo que $1 \text{ eV} = 1.602 \times 10^{-19} \text{ J}$, exprese esta energía en mega-electronvoltios ($\text{MeV}$).
+    
+    \item \textbf{Unidades Naturales (Masa):} El Bosón de Higgs tiene una masa teórica de aproximadamente $125 \text{ GeV}/c^2$. Utilizando los factores de conversión del Sistema de Unidades Naturales dados en el texto, calcule la masa del Bosón de Higgs en kilogramos ($\text{kg}$).
+    
+    \item \textbf{Unidades Naturales (Distancia):} Si el radio de un átomo de hidrógeno es de aproximadamente $0.53 \times 10^{-10} \text{ m}$, utilice el factor de conversión $1 \text{ m} = 5.067 \times 10^6 \frac{\hbar c}{\text{eV}}$ para expresar este radio atómico en unidades de $\frac{\hbar c}{\text{eV}}$.
+\end{enumerate}
+
+\subsubsection*{Componentes, Magnitud y Dirección de Vectores}
+
+
+\begin{enumerate}
+    \setcounter{enumi}{6}
+    \item \textbf{Magnitud y Dirección:} Una fuerza aplicada sobre un objeto está dada por el vector $\boldsymbol{F} = (6, -8) \text{ N}$. Calcule la magnitud de la fuerza $|\boldsymbol{F}|$ y el ángulo $\theta$ que forma con el eje $x$ positivo.
+    
+    \item \textbf{Descomposición Vectorial:} Un dron despega volando en línea recta a una rapidez de $15 \text{ m/s}$ con un ángulo de elevación de $60^\circ$ respecto a la horizontal. Encuentre las componentes rectangulares de su vector velocidad, $\boldsymbol{v} = (v_x, v_y)$.
+    
+    \item \textbf{Desplazamiento Resultante:} Un estudiante camina $4 \text{ km}$ hacia el Este (dirección $+x$) y luego $3 \text{ km}$ hacia el Norte (dirección $+y$). Escriba el vector de desplazamiento final $\boldsymbol{d}$ y calcule la distancia total en línea recta desde su punto de partida hasta su destino.
+    
+    \item \textbf{Vectores de Posición:} Un barco se encuentra en la coordenada $\boldsymbol{r}_A = (-5, 12) \text{ km}$ respecto al faro principal del puerto. ¿A qué distancia exacta ($|\boldsymbol{r}_A|$) se encuentra el barco del faro?
+\end{enumerate}
+
+\subsubsection*{Suma y Diferencia de Vectores}
+
+\begin{enumerate}
+    \setcounter{enumi}{10}
+    \item \textbf{Suma de Fuerzas:} Sobre un objeto actúan dos fuerzas simultáneamente: $\boldsymbol{F}_1 = (12, 5) \text{ N}$ y $\boldsymbol{F}_2 = (-4, 3) \text{ N}$. Calcule el vector de la fuerza neta (resultante) $\boldsymbol{F}_{\text{neta}} = \boldsymbol{F}_1 + \boldsymbol{F}_2$ y encuentre su magnitud.
+    
+    \item \textbf{Posición Relativa:} El vehículo A se encuentra en la posición $\boldsymbol{r}_A = (10, 5) \text{ m}$ y el vehículo B se encuentra en $\boldsymbol{r}_B = (3, 29) \text{ m}$. Calcule el vector de desplazamiento relativo de A con respecto a B, es decir, $\Delta\boldsymbol{r}_{AB} = \boldsymbol{r}_A - \boldsymbol{r}_B$.
+    
+    \item \textbf{Equilibrio de Fuerzas:} Para que un puente se mantenga estático, la suma de todas las fuerzas que actúan sobre un nodo debe ser cero ($\boldsymbol{F}_{\text{neta}} = \boldsymbol{0}$). Si dos cables ejercen fuerzas $\boldsymbol{F}_1 = (500, 200) \text{ N}$ y $\boldsymbol{F}_2 = (-300, 150) \text{ N}$, ¿cuál debe ser el vector de fuerza $\boldsymbol{F}_3$ del pilar de soporte para que el sistema esté en equilibrio?
+    
+    \item \textbf{Propiedades Algebraicas:} Dados los vectores $\boldsymbol{u} = (2, -3)$ y $\boldsymbol{v} = (-1, 4)$, demuestre algebraicamente que la suma de vectores es conmutativa verificando que $\boldsymbol{u} + \boldsymbol{v} = \boldsymbol{v} + \boldsymbol{u}$.
+\end{enumerate}
+
+\subsubsection*{Producto Escalar y Trabajo}
+
+\begin{enumerate}
+    \setcounter{enumi}{14}
+    \item \textbf{Producto Escalar Analítico:} Dados los vectores de fuerza $\boldsymbol{F} = (4, -2) \text{ N}$ y de desplazamiento $\Delta\boldsymbol{r} = (3, 5) \text{ m}$, calcule el trabajo mecánico realizado utilizando la definición algebraica del producto escalar: $W = \boldsymbol{F} \cdot \Delta\boldsymbol{r}$.
+    
+    \item \textbf{Producto Escalar Geométrico:} Una persona arrastra una caja aplicando una fuerza de magnitud $|\boldsymbol{F}| = 150 \text{ N}$ mediante una cuerda que forma un ángulo de $30^\circ$ con el suelo horizontal. Si la caja se desplaza una distancia de $|\Delta\boldsymbol{r}| = 10 \text{ m}$, calcule el trabajo realizado usando la definición geométrica $W = |\boldsymbol{F}| |\Delta\boldsymbol{r}| \cos\theta$.
+    
+    \item \textbf{Ángulo entre Vectores:} Utilizando la relación geométrica del producto escalar ($\boldsymbol{u} \cdot \boldsymbol{v} = |\boldsymbol{u}| |\boldsymbol{v}| \cos\theta$), encuentre el ángulo $\theta$ formado entre los vectores $\boldsymbol{u} = (3, 0)$ y $\boldsymbol{v} = (3, 3)$.
+\end{enumerate}
+
+\subsubsection*{Producto Vectorial y Torque}
+
+\begin{enumerate}
+    \setcounter{enumi}{17}
+    \item \textbf{Magnitud del Torque:} Un mecánico intenta aflojar una tuerca muy apretada utilizando una llave inglesa de longitud $|\boldsymbol{r}| = 0.40 \text{ m}$. Si aplica una fuerza máxima de $|\boldsymbol{F}| = 200 \text{ N}$ en el extremo de la llave con un ángulo de $60^\circ$ respecto al mango, calcule la magnitud del torque generado ($|\boldsymbol{\tau}| = |\boldsymbol{r}| |\boldsymbol{F}| \sin\theta$).
+    
+    \item \textbf{Regla de la Mano Derecha:} Una partícula cargada positivamente se mueve a lo largo del eje $+x$ (hacia la derecha) con una velocidad $\boldsymbol{v}$. Entra en una región donde existe un campo magnético $\boldsymbol{B}$ que apunta directamente a lo largo del eje $+y$ (hacia arriba). Sabiendo que la fuerza magnética viene dada por $\boldsymbol{F} = q(\boldsymbol{v} \times \boldsymbol{B})$, utilice la regla de la mano derecha para determinar en qué dirección apuntará el vector de fuerza $\boldsymbol{F}$ en el espacio 3D.
+    
+    \item \textbf{Maximización del Producto Vectorial:} Si la magnitud del producto cruz es $|\boldsymbol{u} \times \boldsymbol{v}| = |\boldsymbol{u}| |\boldsymbol{v}| \sin\theta$, responda conceptualmente: 
+    \begin{enumerate}
+        \item ¿Qué ángulo $\theta$ entre $0^\circ$ y $180^\circ$ maximiza el resultado del producto vectorial?
+        \item ¿Qué condición geométrica debe cumplirse entre $\boldsymbol{u}$ y $\boldsymbol{v}$ para que su producto vectorial sea exactamente cero?
+    \end{enumerate}
+
+\end{enumerate}
+
 
 \chapter{Relatividad especial}
 
@@ -1162,7 +1326,7 @@ A finales del siglo XIX, los físicos estaban convencidos de que las ondas elect
         \draw[beam, purple, line width=1.5pt] (0, -0.1) -- (Detector.north);
     
         % --- MOVIMIENTO DE LA TIERRA ---
-        \draw[->, ultra thick, orange!90!black] (1.5, 1.5) -- (3, 1.5) node[midway, above] {$\vec{v}$ (Tierra)};
+        \draw[->, ultra thick, orange!90!black] (1.5, 1.5) -- (3, 1.5) node[midway, above] {$\boldsymbol{v}$ (Tierra)};
     
     \end{tikzpicture}
     \caption{Esquema simplificado del Interferómetro de Michelson-Morley. Un haz de luz se divide en dos: uno viaja paralelo al movimiento de la Tierra ($L_\parallel$) y otro perpendicular ($L_\perp$). Al recombinarse en el detector, cualquier diferencia en el tiempo de viaje produciría un patrón de interferencia.}
@@ -1875,11 +2039,11 @@ Para formular una ley de conservación del momento que sea válida universalment
 
 \subsubsection{Paso 1: El Tiempo Propio como Invariante}
 
-Recordemos que el producto escalar del cuadrivector de desplazamiento $\Delta X^\mu = (c\Delta t, \Delta \vec{r})$ consigo mismo nos da el intervalo invariante $\Delta s^2$:
+Recordemos que el producto escalar del cuadrivector de desplazamiento $\Delta X^\mu = (c\Delta t, \Delta \boldsymbol{r})$ consigo mismo nos da el intervalo invariante $\Delta s^2$:
 \begin{equation}
     \Delta S^2 = (c\Delta t)^2 - |\Delta \boldsymbol{r}|^2.
 \end{equation}
-Para un observador que viaja junto con la partícula, la partícula no se mueve ($\Delta \vec{r} = 0$), y el tiempo que mide su reloj es el \textbf{tiempo propio} ($\Delta \tau$). Para este observador, el intervalo es simplemente
+Para un observador que viaja junto con la partícula, la partícula no se mueve ($\Delta \boldsymbol{r} = 0$), y el tiempo que mide su reloj es el \textbf{tiempo propio} ($\Delta \tau$). Para este observador, el intervalo es simplemente
 \begin{equation}
     \Delta S^2 = (c\Delta t_0)^2.
 \end{equation}
@@ -1889,7 +2053,7 @@ Como $\Delta s^2$ es un invariante (todos los observadores miden el mismo valor)
 \end{equation}
 Dividiendo toda la ecuación por $c^2 \Delta t^2$, obtenemos
 \begin{equation}
-    \left( \frac{\Delta t_0}{\Delta t} \right)^2 = 1 - \frac{|\Delta \vec{r}|^2}{c^2 \Delta t^2} = 1 - \frac{v^2}{c^2}.
+    \left( \frac{\Delta t_0}{\Delta t} \right)^2 = 1 - \frac{|\Delta \boldsymbol{r}|^2}{c^2 \Delta t^2} = 1 - \frac{v^2}{c^2}.
 \end{equation}
 Reconociendo el inverso del factor de Lorentz ($1/\gamma^2$), llegamos a la profunda relación entre el tiempo del laboratorio y el tiempo propio
 \begin{equation}
@@ -2009,6 +2173,7 @@ Hay dos límites:
 
     Éste límite es válido para partículas con o sin masa (cómo el fotón).  En el caso de un fotón, hemos visto que su energía es 
     \begin{align}
+    \label{eq:energiafoton}
         E=h\nu\,,
     \end{align}
     y reemplazando en la expresión anterior, tenemos que el momento de un fotón es 
@@ -2391,16 +2556,18 @@ donde la energía y la magnitud del vector $\boldsymbol{p} = (p_x,p_y,p_z)$ son
 \begin{enumerate}
     \item Encuentre el cuadrado de la velocidad a la que se mueve una partícula de masa $m$ a partir de su momento
 
+%\renewcommand{\phantom}[1]{#1}
+
 \noindent
  \hspace{-1cm}\begin{tabular*}{0.95\textwidth}{l|c|p{9cm}}
    \textbf{Paso} & \textbf{Ecuación}  & \textbf{Justificación} \\\hline
 1)     & $p =\dfrac{m v}{\sqrt{1-\dfrac{v^2}{c^2}}}$   & ecuación inicial.\\[20pt]\hline
 2) & $p^2  =\dfrac{m^2 v^2}{1-\dfrac{v^2}{c^2}} $& Elevar ambos lados al cuadrado. \\[20pt]\hline
-3) & $p^2\left(1-\dfrac{v^2}{c^2}\right)  =m^2 v^2 $& Multiplicar a ambos lados por $\left(1-\dfrac{v^2}{c^2}\right)$ \\[5pt]\hline
+3) & \phantom{$p^2\left(1-\dfrac{v^2}{c^2}\right)  =m^2 v^2 $}& Multiplicar a ambos lados por $\left(1-\dfrac{v^2}{c^2}\right)$ \\[5pt]\hline
 4) & $p^2-\dfrac{p^2v^2}{c^2}  =m^2 v^2 $& Expandir $p^2$ a \emph{ambos} términos del paréntesis en el lado izquierdo. \\[5pt]\hline
-5) & $  \dfrac{p^2v^2}{c^2} + m^2 v^2 = p^2 $& Sumar $\dfrac{p^2v^2}{c^2}$ a ambos lados de la igualdad y reorganizar la igualdad con los términos con $v^2$ a la izquierda. \\[5pt]\hline
+5) & \phantom{$  \dfrac{p^2v^2}{c^2} + m^2 v^2 = p^2 $}& Sumar $\dfrac{p^2v^2}{c^2}$ a ambos lados de la igualdad y reorganizar la igualdad con los términos con $v^2$ a la izquierda. \\[5pt]\hline
 6) & $v^2\left(\dfrac{p^2}{c^2} + m^2\right)= p^2 $& Factorizar $v^2$. \\[5pt]\hline
-7) & $v^2=\dfrac{p^2}{m^2 + \dfrac{p^2}{c^2}}  $& Dividir por $\left(\dfrac{p^2}{c^2} + m^2\right)$ a ambos lados de la igualdad. \\[20pt]\hline
+7) & \phantom{$v^2=\dfrac{p^2}{m^2 + \dfrac{p^2}{c^2}}$} & Dividir por $\left(\dfrac{p^2}{c^2} + m^2\right)$ a ambos lados de la igualdad. \\[20pt]\hline
 \end{tabular*}
 \item ¿Bajo que condición se recupera el límite no relativista?
 \begin{align*}
@@ -2612,115 +2779,6 @@ y podemos continuar calculando el nuevo momento y posición hasta recuperar toda
 
 Haremos un ejemplo de esto en el caso del límite no relativista del lanzamiento vertical hacia arriba a continuación.
 
-
-\section{Trabajo}
-Durante ese intervalo de tiempo el objeto se desplazo una distancia
-\begin{align}
-    \Delta\boldsymbol{r} =& \boldsymbol{r}_{\text{final}}
-    - \boldsymbol{r}_{\text{inicial}}\,.      
-\end{align}
-%analisis dimensional
-Podemos entonces definir una cantidad escalar que tiene unidades de energía que llamaremos trabajo
-\begin{align}
-    W = \boldsymbol{F}\cdot \Delta\boldsymbol{r}\,.
-\end{align}
-
-
-
-
-
-
-\section{Límite no relativista}
-
-Para el momento es suficiente hacer $\gamma \approx 1$
-\begin{align}
-    \boldsymbol{p} \approx m \boldsymbol{v}\,.
-\end{align}
-
-
-Para la energía, podemos usar
-\begin{align*}
-    (1+x)^n \approx 1+nx\,,\qquad\text{si $x\ll 1$}\,,
-\end{align*}
-tenemos que en el límite no relativista correspondiente a 
-\begin{align*}
-    \frac{v^2}{c^2} \ll 1\,,
-\end{align*}
-podemos aproximar el factor de Lorentz $\gamma$ de la siguiente manera
-\begin{align}
-    \gamma =&\frac{1}{\sqrt{1-v^2/c^2}}\nonumber\\
-    =& \left(1-\frac{v^2}{c^2}\right)^{-1/2}\nonumber\\
-    \approx& 1+\frac{v^2}{2c^2}\,.
-\end{align}
-
-
-En la ecuación para la energía de una partícula de masa $m$ moviéndose a una velocidad $v$, tenemos que
-\begin{align*}
-    E =& \gamma m c^2\nonumber\\
-     \approx& \left(1+\frac{v^2}{c^2}\right)mc^2\nonumber\\
-      E=&mc^2 + \frac{1}{2}m v^2\,,
-\end{align*}
-donde 
-\begin{align}
-    \text{Energía en reposo:}\qquad& E_0 = mc^2\,,\\
-     \text{Energía cinética:}\qquad& K = \frac{1}{2}mv^2\,.
-\end{align}
-
-Note que el concepto de energía cinética aplica sólo en el caso no relativista.
-
-Note que la diferencia de energía es
-\begin{align}
-    \Delta E =& E_{\text{final}} -E_{\text{inicial}} \nonumber\\
-    =& \cancel{mc^2} + \frac{1}{2}mv^2_{\text{final}} -\cancel{mc^2} - \frac{1}{2}mv^2_{\text{inicial}}\nonumber\\
-=& \frac{1}{2}mv^2_{\text{final}} - \frac{1}{2}mv^2_{\text{inicial}}\nonumber\\
-=& K_\text{final} -K_\text{inicial} \nonumber\\
-=& \Delta K\,.
-\end{align}
-
-Teorema de trabajo y energía. trabajo neto realizado sobre un objeto por la suma de todas las fuerzas que actúan sobre él es igual al cambio en la energía cinética de dicho objeto. 
-\begin{align}
-\label{eq:TrabajoEnergía}
-    W =& \Delta K\nonumber\\
-    =& \frac{1}{2}mv^2_{\text{final}} - \frac{1}{2}mv^2_{\text{inicial}}\,.
-\end{align}
-Lo que realmente tiene sentido físico es la diferencia de energías.
-
-
-
-\subsection{Fuerza constante}
-
-En una dimensión, $x$, con $F$ constante, $t_{\text{inicial}} = 0$ y $t_{\text{final}} = 0$, $v_{\text{inicial}} = v_0$ y $v_{\text{final}} = v$
-
-\begin{align}
-    v_0 = \pm a t =\pm \frac{F}{m} t
-\end{align}
-
-\begin{align}
-    v = v_0 \pm\frac{F}{m} t
-\end{align}
-
-\begin{align*}
-    \pm F\Delta x =& \frac{1}{2}mv^2 - \frac{1}{2}mv^2_0\\
-    =&\frac{1}{2}m \left(v_0 \pm\frac{F}{m} t\right)^2 - 
-    \frac{1}{2}mv^2_0\\
-    =&\frac{1}{2}m \left(v_0^2 \pm 2v_0 \frac{F}{m} t + \frac{F^2}{m^2} t^2\right) - 
-    \frac{1}{2}mv^2_0\\
-    =&\cancel{\frac{1}{2}m v_0^2} \pm v_0 F t + \frac{F^2}{2m} t^2 - 
-    \cancel{\frac{1}{2}mv^2_0}\\
-    =& \pm v_0 t F +\frac{1}{2}\frac{F^2}{m} t^2
-\end{align*}
-Despejando $\Delta x$
-\begin{align*}
-    \Delta x = x-x_0 = v_0 t \pm \frac{1}{2}\frac{F}{m} t^2\,.
-\end{align*}
-
-Finalmente
-\begin{align}
-\label{eq:1D}
-    x(t) = x_0 + v_0 t \pm \frac{1}{2}\frac{F}{m} t^2\,.
-\end{align}
-
-
 \subsection{Aceleración constante}
 
 
@@ -2801,6 +2859,342 @@ Así mismo, en el plano de posición en función del tiempo, la pendiente de la 
     \boldsymbol{v} \approx \frac{\Delta \boldsymbol{r}}{\Delta t}\,.
 \end{align*}
 
+
+
+\section{Trabajo}
+Durante ese intervalo de tiempo el objeto se desplazo una distancia
+\begin{align}
+    \Delta\boldsymbol{r} =& \boldsymbol{r}_{\text{final}}
+    - \boldsymbol{r}_{\text{inicial}}\,.      
+\end{align}
+%analisis dimensional
+Podemos entonces definir una cantidad escalar que tiene unidades de energía que llamaremos trabajo
+\begin{align}
+    W = \boldsymbol{F}\cdot \Delta\boldsymbol{r}\,.
+\end{align}
+
+
+
+
+
+
+\subsection{Límite no relativista}
+
+Para el momento es suficiente hacer $\gamma \approx 1$
+\begin{align}
+    \boldsymbol{p} \approx m \boldsymbol{v}\,.
+\end{align}
+
+
+Para la energía, podemos usar
+\begin{align*}
+    (1+x)^n \approx 1+nx\,,\qquad\text{si $x\ll 1$}\,,
+\end{align*}
+tenemos que en el límite no relativista correspondiente a 
+\begin{align*}
+    \frac{v^2}{c^2} \ll 1\,,
+\end{align*}
+podemos aproximar el factor de Lorentz $\gamma$ de la siguiente manera
+\begin{align}
+    \gamma =&\frac{1}{\sqrt{1-v^2/c^2}}\nonumber\\
+    =& \left(1-\frac{v^2}{c^2}\right)^{-1/2}\nonumber\\
+    \approx& 1+\frac{v^2}{2c^2}\,.
+\end{align}
+
+
+En la ecuación para la energía de una partícula de masa $m$ moviéndose a una velocidad $v$, tenemos que
+\begin{align*}
+    E =& \gamma m c^2\nonumber\\
+     \approx& \left(1+\frac{v^2}{c^2}\right)mc^2\nonumber\\
+      E=&mc^2 + \frac{1}{2}m v^2\,,
+\end{align*}
+donde 
+\begin{align}
+    \text{Energía en reposo:}\qquad& E_0 = mc^2\,,\\
+     \text{Energía cinética:}\qquad& K = \frac{1}{2}mv^2\,.
+\end{align}
+
+Note que el concepto de energía cinética aplica sólo en el caso no relativista.
+
+Note que la diferencia de energía es
+\begin{align}
+    \Delta E =& E_{\text{final}} -E_{\text{inicial}} \nonumber\\
+    =& \cancel{mc^2} + \frac{1}{2}mv^2_{\text{final}} -\cancel{mc^2} - \frac{1}{2}mv^2_{\text{inicial}}\nonumber\\
+=& \frac{1}{2}mv^2_{\text{final}} - \frac{1}{2}mv^2_{\text{inicial}}\nonumber\\
+=& K_\text{final} -K_\text{inicial} \nonumber\\
+=& \Delta K\,.
+\end{align}
+
+\section{Teorema de trabajo y energía} 
+Éste teorema establece que el trabajo neto realizado sobre un objeto por la suma de todas las fuerzas que actúan sobre él es igual al cambio en la energía cinética de dicho objeto. 
+\begin{align}
+\label{eq:TrabajoEnergía}
+    W =& \Delta K\nonumber\\
+    =& \frac{1}{2}mv^2_{\text{final}} - \frac{1}{2}mv^2_{\text{inicial}}\,.
+\end{align}
+Lo que realmente tiene sentido físico es la diferencia de energías.
+
+
+
+\section{Demostración Algebraica del Teorema del Trabajo y la Energía}
+
+La demostración del Teorema del Trabajo y la Energía se suele realizar mediante cálculo diferencial. Sin embargo, para el caso de un objeto sometido a una \emph{fuerza constante} en una sola dimensión, podemos demostrar este poderoso teorema de forma rigurosa utilizando exclusivamente álgebra básica.
+
+\subsubsection{Configuración del Problema}
+
+Consideremos un objeto de masa $m$ que se mueve en línea recta a lo largo del eje $x$. Una fuerza neta constante $F$ actúa sobre él, provocando una aceleración constante $a$. Bajo esta fuerza, el objeto se desplaza una distancia $\Delta x$, y como resultado, su velocidad cambia de un valor inicial $v_i$ a un valor final $v_f$.
+
+\subsection{Demostración Algebraica de la Ecuación Cinemática sin Tiempo}
+
+En el estudio de la cinemática bajo aceleración constante, frecuentemente nos encontramos con situaciones donde conocemos la velocidad, la posición y la aceleración, pero el tiempo de viaje ($t$) es desconocido o irrelevante. Para estos casos, utilizamos una ecuación que relaciona estas variables de forma directa. 
+
+A continuación, demostraremos algebraicamente la conocida ``ecuación eterna'' o ecuación cinemática sin tiempo, combinando las dos ecuaciones más fundamentales del movimiento uniformemente acelerado.
+
+
+\subsection{Demostración de la Velocidad Promedio y el Desplazamiento}
+
+Para un objeto con aceleración constante, el desplazamiento se puede calcular usando la media aritmética de las velocidades inicial y final. A continuación, demostraremos algebraicamente y geométricamente por qué esto es estrictamente cierto.
+
+\subsubsection{Paso 1: El Área bajo la Curva de Velocidad}
+
+Sabemos que para un objeto que se mueve a una velocidad constante $v$, el desplazamiento es simplemente el producto de la velocidad por el tiempo, $\Delta x = v t$. En un gráfico de velocidad en función del tiempo, esto corresponde al área de un rectángulo. 
+
+Si la velocidad cambia, el desplazamiento total sigue siendo el \textbf{área total bajo la curva} trazada en el gráfico de velocidad-tiempo. Si la aceleración es constante, la velocidad cambia a un ritmo uniforme, por lo que la curva es una línea recta inclinada que va desde una velocidad inicial $v_i$ hasta una velocidad final $v_f$.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, scale=1.2]
+    % Áreas bajo la curva
+    \fill[cyan!10] (0,0) rectangle (4,1.5); % Rectángulo
+    \fill[orange!15] (0,1.5) -- (4,1.5) -- (4,3.5) -- cycle; % Triángulo
+
+    % Ejes
+    \draw[->, thick, gray!80!black] (-0.5, 0) -- (5, 0) node[right, text=black] {$t$ (Tiempo)};
+    \draw[->, thick, gray!80!black] (0, -0.5) -- (0, 4) node[above, text=black] {$v$ (Velocidad)};
+
+    % Línea de velocidad
+    \draw[thick, blue] (0, 1.5) -- (4, 3.5);
+
+    % Líneas guía y marcas
+    \draw[dashed, gray] (4, 0) -- (4, 3.5);
+    \draw[dashed, gray] (0, 3.5) -- (4, 3.5);
+    \draw[dashed, gray] (0, 1.5) -- (4, 1.5);
+
+    % Etiquetas en los ejes
+    \node[left] at (0, 1.5) {$v_i$};
+    \node[left] at (0, 3.5) {$v_f$};
+    \node[below] at (4, 0) {$t$};
+    \node[below left] at (0, 0) {$0$};
+
+    % Etiquetas de las áreas
+    \node[blue!80!black] at (2, 0.75) {Área Rectángulo};
+    \node[orange!80!black] at (2.5, 2.1) {Área Triángulo};
+
+    % Etiqueta de la altura del triángulo
+    \draw[<->, thick, red] (4.2, 1.5) -- (4.2, 3.5) node[midway, right] {$v_f - v_i$};
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{Paso 2: Cálculo Algebraico del Desplazamiento ($\Delta x$)}
+
+Como se observa en la figura, la figura geométrica bajo la línea de velocidad es un trapecio, el cual podemos dividir en dos formas simples: un rectángulo en la base y un triángulo en la parte superior.
+
+El desplazamiento total $\Delta x$ es la suma de ambas áreas:
+\begin{equation}
+    \Delta x = \text{Área del Rectángulo} + \text{Área del Triángulo}.
+\end{equation}
+Sustituimos las fórmulas geométricas de área (base $\times$ altura para el rectángulo, y $\frac{1}{2} \times$ base $\times$ altura para el triángulo):
+\begin{equation}
+    \Delta x = (v_i \cdot t) + \frac{1}{2} \cdot t \cdot (v_f - v_i).
+\end{equation}
+Ahora, distribuimos el factor $\frac{1}{2}t$ en el término del triángulo:
+\begin{equation}
+    \Delta x = v_i t + \frac{1}{2} v_f t - \frac{1}{2} v_i t.
+\end{equation}
+Agrupamos los términos semejantes que contienen $v_i$:
+\begin{equation}
+    \Delta x = \left( 1 - \frac{1}{2} \right) v_i t + \frac{1}{2} v_f t = \frac{1}{2} v_i t + \frac{1}{2} v_f t.
+\end{equation}
+Finalmente, factorizamos el tiempo $t$ y el factor $\frac{1}{2}$, obteniendo la fórmula del desplazamiento:
+\begin{equation}
+    \Delta x = \left( \frac{v_i + v_f}{2} \right) t.
+    \label{eq:desplazamiento_trapecio}
+\end{equation}
+
+\subsubsection{Paso 3: La Definición de Velocidad Promedio}
+
+Por definición en cinemática, la \textbf{velocidad promedio} ($v_{\text{prom}}$) es la velocidad constante a la cual un objeto tendría que viajar para cubrir el mismo desplazamiento $\Delta x$ en el mismo intervalo de tiempo $t$. Algebraicamente, esto se escribe como:
+\begin{equation}
+    v_{\text{prom}} = \frac{\Delta x}{t}.
+\end{equation}
+Lo que, reordenando, nos dice que el desplazamiento siempre es igual a la velocidad promedio por el tiempo:
+\begin{equation}
+    \Delta x = v_{\text{prom}} \cdot t.
+    \label{eq:def_vprom}
+\end{equation}
+
+\subsubsection{Paso 4: Conclusión e Igualdad}
+
+Si igualamos nuestra deducción geométrica (Ecuación \ref{eq:desplazamiento_trapecio}) con la definición fundamental (Ecuación \ref{eq:def_vprom}), tenemos:
+\begin{equation}
+    v_{\text{prom}} \cdot t = \left( \frac{v_i + v_f}{2} \right) t.
+\end{equation}
+Al dividir ambos lados por el tiempo $t$, llegamos al resultado final:
+\begin{equation}
+    v_{\text{prom}} = \frac{v_i + v_f}{2}.
+\end{equation}
+
+\textbf{Conclusión:} Hemos demostrado rigurosamente que, si y solo si la aceleración es constante (lo que hace que la gráfica de velocidad sea una línea recta), la velocidad promedio que define el desplazamiento total es matemáticamente idéntica a la media aritmética de la velocidad inicial y la velocidad final.
+
+\subsubsection{Paso 1: Las Dos Ecuaciones Fundamentales}
+
+Nuestra demostración parte de dos principios básicos de la cinemática para un objeto que se mueve con una aceleración constante $a$.
+
+La primera es la definición de la velocidad final ($v_f$), que es igual a la velocidad inicial ($v_i$) más el cambio de velocidad provocado por la aceleración durante un tiempo $t$:
+\begin{equation}
+    v_f = v_i + a t.
+    \label{eq:velocidad_tiempo}
+\end{equation}
+
+La segunda es la ecuación del desplazamiento ($\Delta x$). Para una aceleración constante, el desplazamiento es simplemente la velocidad promedio multiplicada por el tiempo. Dado que la aceleración es uniforme, la velocidad promedio es exactamente la media aritmética entre la velocidad inicial y la final:
+\begin{equation}
+    \Delta x = \left( \frac{v_f + v_i}{2} \right) t.
+    \label{eq:desplazamiento_promedio}
+\end{equation}
+
+\subsubsection{Paso 2: Despejar la Variable Tiempo ($t$)}
+
+Dado que nuestro objetivo es encontrar una ecuación que no dependa del tiempo, el truco algebraico consiste en despejar $t$ de la primera ecuación y sustituirlo en la segunda. 
+
+Tomamos la Ecuación (\ref{eq:velocidad_tiempo}) y restamos $v_i$ a ambos lados:
+\begin{equation}
+    v_f - v_i = a t.
+\end{equation}
+Dividimos por la aceleración $a$ para aislar el tiempo, obteniendo
+\begin{equation}
+    t = \frac{v_f - v_i}{a}.
+    \label{eq:tiempo_despejado}
+\end{equation}
+
+\subsubsection{Paso 3: Sustitución y Multiplicación de Fracciones}
+
+Ahora, tomamos esta expresión para el tiempo (Ecuación \ref{eq:tiempo_despejado}) y la sustituimos en nuestra ecuación de desplazamiento (Ecuación \ref{eq:desplazamiento_promedio}):
+\begin{equation}
+    \Delta x = \left( \frac{v_f + v_i}{2} \right) \left( \frac{v_f - v_i}{a} \right).
+\end{equation}
+Multiplicamos los numeradores entre sí y los denominadores entre sí, lo que nos da
+\begin{equation}
+    \Delta x = \frac{(v_f + v_i)(v_f - v_i)}{2a}.
+\end{equation}
+
+\subsubsection{Paso 4: La Diferencia de Cuadrados}
+
+El numerador de nuestra fracción tiene la forma algebraica clásica de un producto de binomios conjugados: $(A + B)(A - B)$. En álgebra, sabemos que esto es equivalente a una \textbf{diferencia de cuadrados} ($A^2 - B^2$). Aplicando esta regla a nuestras velocidades, el numerador se simplifica enormemente:
+\begin{equation}
+    \Delta x = \frac{v_f^2 - v_i^2}{2a}.
+\end{equation}
+
+\subsubsection{Paso 5: Reorganización Final}
+
+Para llevar la ecuación a su forma más estándar y evitar denominadores, multiplicamos ambos lados de la igualdad por $2a$:
+\begin{equation}
+    2a \Delta x = v_f^2 - v_i^2.
+\end{equation}
+Finalmente, sumamos $v_i^2$ a ambos lados para despejar la velocidad final al cuadrado, revelando la ecuación buscada:
+\begin{equation}
+    v_f^2 = v_i^2 + 2a\Delta x.
+\end{equation}
+
+\textbf{Conclusión:}
+A través de un proceso estrictamente algebraico, hemos demostrado que la diferencia de los cuadrados de las velocidades está directamente dictada por la aceleración y la distancia recorrida. Esta relación geométrica fundamental es precisamente la que da origen a la definición de la energía cinética y al Teorema del Trabajo y la Energía, donde el factor cuadrático ($v^2$) surge naturalmente de la eliminación de la variable temporal.
+
+\subsubsection{Paso 1: La Ecuación Cinemática sin Tiempo}
+
+Puesto que la aceleración es constante, partimos de la ecuación cinemática que relaciona velocidad, aceleración y desplazamiento (a menudo llamada coloquialmente la ``ecuación eterna'' porque no depende de la variable tiempo):
+\begin{equation}
+    v_f^2 = v_i^2 + 2a\Delta x.
+\end{equation}
+
+\subsubsection{Paso 2: Introducir la Masa y Distribuir}
+
+Para conectar esta ecuación puramente cinemática con las causas del movimiento (la dinámica), multiplicamos ambos lados de la igualdad por la mitad de la masa del objeto ($\frac{1}{2}m$):
+\begin{equation}
+    \frac{1}{2}m v_f^2 = \frac{1}{2}m \left( v_i^2 + 2a\Delta x \right).
+\end{equation}
+Al distribuir el factor $\frac{1}{2}m$ en el lado derecho de la ecuación, obtenemos
+\begin{equation}
+    \frac{1}{2}m v_f^2 = \frac{1}{2}m v_i^2 + \frac{1}{2}m (2a\Delta x).
+\end{equation}
+En el último término, el factor $\frac{1}{2}$ se cancela algebraicamente con el $2$, lo que simplifica la expresión a
+\begin{equation}
+    \frac{1}{2}m v_f^2 = \frac{1}{2}m v_i^2 + m a \Delta x.
+    \label{eq:trabajo_energia_intermedia}
+\end{equation}
+
+\subsubsection{Paso 3: Aplicar la Segunda Ley de Newton}
+
+La Segunda Ley de Newton establece que la fuerza neta aplicada sobre el objeto es igual a su masa multiplicada por su aceleración ($F = ma$). Observamos que el término $ma$ aparece exactamente en nuestra Ecuación (\ref{eq:trabajo_energia_intermedia}). Al sustituir la fuerza, la ecuación se transforma en
+\begin{equation}
+    \frac{1}{2}m v_f^2 = \frac{1}{2}m v_i^2 + F \Delta x.
+\end{equation}
+
+\subsubsection{Paso 4: Identificar los Conceptos Físicos (Trabajo y Energía)}
+
+Reorganizamos la ecuación restando el término inicial a ambos lados para agrupar las variables dependientes de la velocidad a la izquierda:
+\begin{equation}
+    \frac{1}{2}m v_f^2 - \frac{1}{2}m v_i^2 = F \Delta x.
+\end{equation}
+Ahora, reconocemos las definiciones físicas fundamentales de la mecánica clásica:
+\begin{itemize}
+    \item La \textbf{energía cinética} se define como $K = \frac{1}{2}mv^2$. Por lo tanto, el lado izquierdo representa el cambio de energía cinética: $\Delta K = K_f - K_i$.
+    \item El \textbf{trabajo mecánico} realizado por una fuerza constante en la dirección del movimiento se define como $W = F \Delta x$.
+\end{itemize}
+Al sustituir estas definiciones conceptuales en nuestra ecuación matemática, llegamos a la conclusión final:
+\begin{equation}
+    K_f - K_i = W,
+\end{equation}
+o, escrito en su forma más universal y compacta,
+\begin{equation}
+    W = \Delta K.
+\end{equation}
+
+\textbf{Conclusión:} 
+Hemos demostrado de manera estrictamente algebraica que el trabajo neto ($W$) realizado por una fuerza sobre un objeto se invierte íntegramente en cambiar su estado de movimiento; es decir, produce una variación exacta y equivalente en su energía cinética ($\Delta K$).
+
+
+
+
+\section{Fuerza constante}
+
+En una dimensión, $x$, con $F$ constante, $t_{\text{inicial}} = 0$ y $t_{\text{final}} = 0$, $v_{\text{inicial}} = v_0$ y $v_{\text{final}} = v$
+
+\begin{align}
+    v_0 = \pm a t =\pm \frac{F}{m} t
+\end{align}
+
+\begin{align}
+    v = v_0 \pm\frac{F}{m} t
+\end{align}
+
+\begin{align*}
+    \pm F\Delta x =& \frac{1}{2}mv^2 - \frac{1}{2}mv^2_0\\
+    =&\frac{1}{2}m \left(v_0 \pm\frac{F}{m} t\right)^2 - 
+    \frac{1}{2}mv^2_0\\
+    =&\frac{1}{2}m \left(v_0^2 \pm 2v_0 \frac{F}{m} t + \frac{F^2}{m^2} t^2\right) - 
+    \frac{1}{2}mv^2_0\\
+    =&\cancel{\frac{1}{2}m v_0^2} \pm v_0 F t + \frac{F^2}{2m} t^2 - 
+    \cancel{\frac{1}{2}mv^2_0}\\
+    =& \pm v_0 t F +\frac{1}{2}\frac{F^2}{m} t^2
+\end{align*}
+Despejando $\Delta x$
+\begin{align*}
+    \Delta x = x-x_0 = v_0 t \pm \frac{1}{2}\frac{F}{m} t^2\,.
+\end{align*}
+
+Finalmente
+\begin{align}
+\label{eq:1D}
+    x(t) = x_0 + v_0 t \pm \frac{1}{2}\frac{F}{m} t^2\,.
+\end{align}
 
 
 
@@ -2915,81 +3309,20 @@ donde $g$ es la aceleración del campo gravitacional en la ec.~\eqref{eq:g}.
 
 
 
-% --- Inicio del código LaTeX para insertar ---
 
-\begin{figure}[h!] % El [h!] sugiere a LaTeX que intente colocar la figura "aquí"
-    \centering % Centra la figura en la página
-    \begin{tikzpicture}[
-        scale=1, % Escala general de la figura
-        font=\large, % Tamaño de la fuente para las etiquetas
-        axis/.style={->, %stealth, 
-        thick}, % Estilo para los ejes
-        vector/.style={->, %>=stealth, 
-        ultra thick}, % Estilo para los vectores
-        helpline/.style={dashed, gray} % Estilo para líneas de ayuda
-    ]
-        % --- Dibujar los ejes y el suelo ---
-        \draw[axis] (0,0) -- (8.5,0) node[below] {$x$};
-        \draw[axis] (0,0) -- (0,4.5) node[left] {$y$}; % Aumentado un poco para el pico
-        \node[below left] at (0,0) {Origen};
-
-        % --- Dibujar la trayectoria parabólica ---
-        % La trayectoria está definida por la función y = 2x - 0.25x^2
-        \draw[blue, thick, domain=0:8, samples=100] plot (\x, {2*\x - 0.25*\x^2}) node[above right] {Trayectoria};
-        
-        % --- Definir la posición de la partícula en la trayectoria ---
-        % CAMBIO PRINCIPAL: Cambiamos xpos de 6 a 2 para estar en la parte ascendente
-        \def\xpos{2} 
-        \def\ypos{2*\xpos - 0.25*\xpos^2} % Coordenada y calculada automáticamente
-        
-        % --- Dibujar la partícula ---
-        \shade[ball color=red] (\xpos, \ypos) circle (0.15cm);
-        
-        % --- Dibujar los vectores de velocidad ---
-        % Vector velocidad total (tangente a la trayectoria)
-        % La pendiente de la tangente es y'(x) = 2 - 0.5x
-        % En x=2, la pendiente es 2 - 0.5*2 = 1. El ángulo es 45 grados.
-        \begin{scope}[shift={(\xpos,\ypos)}, rotate=45]
-            \draw[vector, green!50!black] (0,0) -- (2,0) node[above] {$\boldsymbol{v}$};
-        \end{scope}
-
-        % Componente horizontal de la velocidad (vx)
-        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos + 1.414, \ypos) node[below] {${v}_x=v_{x0}$};
-
-        % Componente vertical de la velocidad (vy)
-        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos, \ypos + 1.414) node[left] {${v}_y$};
-
-        % Líneas de ayuda para mostrar la composición de vectores
-        \draw[helpline] (\xpos + 1.414, \ypos) -- (\xpos + 1.414, \ypos + 1.414);
-        \draw[helpline] (\xpos, \ypos + 1.414) -- (\xpos + 1.414, \ypos + 1.414);
-        
-        % --- Dibujar el vector Fuerza Gravitacional ---
-        % Desplazado a la izquierda para mejor visibilidad
-        \draw[vector, red] (\xpos, \ypos) -- (\xpos, \ypos - 1.5) node[right] {$\boldsymbol{F} = (0,-mg)$};
-        
-        % --- Mostrar el vector velocidad inicial ---
-        \draw[vector, gray] (0,0) -- (1,2) node[above left] {$\boldsymbol{v}_0$};
-        % Ángulo de lanzamiento
-        \draw (0.5,0) arc (0:63.4:0.5);
-        \node at (0.8, 0.25) {$\theta$};
-
-    \end{tikzpicture}
-    \caption{Diagrama de cuerpo libre para una partícula en movimiento parabólico. El vector velocidad $\boldsymbol{v}$ tiene una componente vertical ${v}_y$ positiva (hacia arriba) y una componente constante $v_x$, mientras que la fuerza gravitacional $\boldsymbol{F}$ sigue actuando constantemente hacia abajo.}
-    \label{fig:movimiento_parabolico_ascendente}
-\end{figure}
 
 % --- Fin del código LaTeX ---
 
 Antes de comprobar la solución analíticamente podemos integrar la ecuación de la Ley de Newton numéricamente a partir usando las ecuaciones para el momento~\eqref{eq:momento} y la posición~\eqref{eq:position}, que para el caso de la fuerza constante gravitacional~\eqref{eq:gravitationalconstantforce}, $F=-mg$,  en la única dimensión $y$ del problema. Asumiendo que conocemos los posición inicial $r_0$, y la cantidad de movimiento $p_0 = m v_0$ para un cuerpo de masa $m$ lanzado verticalmemnte hacía arriba con una velocidad $v_0$, después de un tiempo $\Delta t$, tenemos que
 \begin{align}
-    p =& p_0 -\frac{m}{g}\Delta t\\
+    p =& p_0 -{m}{g}\Delta t\\
     y =& y_0 + \frac{p}{m}\Delta t\,.
 \end{align}
 
 \subsection*{Ejemplo}
 Un cuerpo de masa $m = \qty{1}{kg}$ es lanzado verticalmente hacia arriba con una velocidad de $\qty{10}{m/s}$.  En este caso la posición inicial con el origen de coordenadas en el punto de lanzamiento tal que $y_0 =0$, tenemos que 
 \begin{align*}
-    F \approx& -\qty{10}{m/s^2}\\
+    F \approx& -\qty{10}{N}\\
     p_0 = m v_0 =& \qty{10}{\kilo\g.\m/\s}\,.
 \end{align*}
 
@@ -3109,6 +3442,526 @@ se conserva.
 
 Es de anotar que está ecuación es de validez general para fuerzas conservativas, es decir fuerzas que sólo contribuyen a la energía mecánica.
 
+\section{Conservación de la Cantidad de Movimiento}
+
+Así como el Teorema del Trabajo y la Energía nos condujo al principio de conservación de la energía mecánica (un enfoque escalar basado en distancias y cuadrados de velocidades), las Leyes de Newton nos proporcionan una segunda gran ley de conservación, esta vez de naturaleza vectorial: la \textbf{conservación de la cantidad de movimiento} (o momento lineal).
+
+Mientras que la energía es útil para relacionar velocidades con alturas o posiciones, la cantidad de movimiento es la herramienta matemática por excelencia para analizar interacciones directas, explosiones y colisiones entre objetos.
+
+\subsubsection{El Sistema Aislado y la Tercera Ley de Newton}
+
+Consideremos un sistema aislado compuesto por dos partículas de masas $m_1$ y $m_2$. Decir que el sistema está ``aislado'' significa que la suma de las fuerzas externas que actúan sobre ambas partículas es cero ($\boldsymbol{F}_{\text{ext}} = \boldsymbol{0}$). Las únicas fuerzas presentes son las fuerzas internas de interacción entre ellas.
+
+Supongamos que las partículas chocan o interactúan durante un intervalo de tiempo $\Delta t$. Según la \textbf{Tercera Ley de Newton} (Acción y Reacción), la fuerza que la partícula 1 ejerce sobre la partícula 2 ($\boldsymbol{F}_{12}$) es exactamente igual en magnitud y opuesta en dirección a la fuerza que la partícula 2 ejerce sobre la partícula 1 ($\boldsymbol{F}_{21}$):
+\begin{equation}
+    \boldsymbol{F}_{12} = -\boldsymbol{F}_{21}.
+    \label{eq:tercera_ley}
+\end{equation}
+
+\subsubsection{Derivación Algebraica del Principio de Conservación}
+
+Recordemos la forma original de la \textbf{Segunda Ley de Newton} (Ecuación 3.1), que establece que una fuerza neta es igual a la tasa de cambio del momento lineal:
+\begin{equation}
+    \boldsymbol{F} = \frac{\Delta \boldsymbol{p}}{\Delta t}.
+\end{equation}
+
+Aplicamos esta definición a cada partícula en nuestra ecuación de acción y reacción (\ref{eq:tercera_ley}). La fuerza $\boldsymbol{F}_{12}$ causa el cambio de momento en la partícula 2 ($\Delta \boldsymbol{p}_2$), y la fuerza $\boldsymbol{F}_{21}$ causa el cambio de momento en la partícula 1 ($\Delta \boldsymbol{p}_1$):
+\begin{equation}
+    \frac{\Delta \boldsymbol{p}_2}{\Delta t} = - \frac{\Delta \boldsymbol{p}_1}{\Delta t}.
+\end{equation}
+
+Dado que la interacción ocurre exactamente durante el mismo intervalo de tiempo $\Delta t$ para ambas partículas, podemos multiplicar ambos lados de la ecuación por $\Delta t$ para cancelarlo algebraicamente:
+\begin{equation}
+    \Delta \boldsymbol{p}_2 = - \Delta \boldsymbol{p}_1.
+\end{equation}
+
+Reorganizamos la ecuación sumando $\Delta \boldsymbol{p}_1$ a ambos lados:
+\begin{equation}
+    \Delta \boldsymbol{p}_1 + \Delta \boldsymbol{p}_2 = \boldsymbol{0}.
+    \label{eq:cambio_momento_cero}
+\end{equation}
+La Ecuación (\ref{eq:cambio_momento_cero}) nos dice que el \textit{cambio total} en el momento del sistema es cero. Para ver esto de forma más explícita, expandimos los términos de cambio ($\Delta \boldsymbol{p} = \boldsymbol{p}_f - \boldsymbol{p}_i$) para el estado inicial ($i$) y final ($f$):
+\begin{equation}
+    (\boldsymbol{p}_{1f} - \boldsymbol{p}_{1i}) + (\boldsymbol{p}_{2f} - \boldsymbol{p}_{2i}) = \boldsymbol{0}.
+\end{equation}
+
+Reorganizamos los términos, agrupando los momentos iniciales a un lado de la igualdad y los momentos finales al otro:
+\begin{equation}
+    \boldsymbol{p}_{1i} + \boldsymbol{p}_{2i} = \boldsymbol{p}_{1f} + \boldsymbol{p}_{2f}.
+    \label{eq:conservacion_momento}
+\end{equation}
+
+Si definimos la \textbf{cantidad de movimiento total del sistema} como $\boldsymbol{P}_{\text{total}} = \boldsymbol{p}_1 + \boldsymbol{p}_2$, la ecuación anterior se resume de manera elegantemente simple:
+\begin{equation}
+    \boldsymbol{P}_{\text{total}, i} = \boldsymbol{P}_{\text{total}, f}.
+\end{equation}
+
+\textbf{Conclusión:}
+Hemos demostrado de forma puramente algebraica que, en ausencia de fuerzas externas netas, la cantidad de movimiento total de un sistema aislado se mantiene constante antes, durante y después de cualquier interacción. Las fuerzas internas solo pueden transferir momento de un objeto a otro, pero nunca pueden alterar la cantidad de movimiento total del universo que las contiene.
+
+\subsection{Generalización a Sistemas de Múltiples Partículas: El Centro de Masas}
+
+Considere cualquier sistema aislado compuesto por un número $N$ de partículas (como un cúmulo de estrellas, un gas encerrado en una caja o los fragmentos de una explosión).
+
+\subsubsection{La Cantidad de Movimiento Total}
+
+Consideremos un sistema aislado de $N$ partículas, con masas $m_1, m_2, \dots, m_N$ y velocidades $\boldsymbol{v}_1, \boldsymbol{v}_2, \dots, \boldsymbol{v}_N$. La \textbf{masa total} del sistema es simplemente la suma de las masas individuales:
+\begin{equation}
+    M_{\text{total}} = m_1 + m_2 + \dots + m_N.
+\end{equation}
+
+La \textbf{cantidad de movimiento total} del sistema ($\boldsymbol{P}_{\text{total}}$) es la suma vectorial de los momentos de cada partícula:
+\begin{equation}
+    \boldsymbol{P}_{\text{total}} = \boldsymbol{p}_1 + \boldsymbol{p}_2 + \dots + \boldsymbol{p}_N = m_1\boldsymbol{v}_1 + m_2\boldsymbol{v}_2 + \dots + m_N\boldsymbol{v}_N.
+    \label{eq:momento_n_particulas}
+\end{equation}
+
+Como el sistema está aislado (la fuerza externa neta es cero), la Primera Ley de Newton garantiza que este vector $\boldsymbol{P}_{\text{total}}$ es una constante universal en el tiempo, sin importar cuán caóticas sean las colisiones o interacciones internas.
+
+\subsubsection{Definición de la Velocidad del Centro de Masas}
+
+En física, definimos un punto matemático ficticio llamado \textbf{Centro de Masas (CM)} que representa el promedio ponderado de la posición de toda la masa del sistema. La velocidad a la que se mueve este punto ($\boldsymbol{v}_{\text{CM}}$) se define dividiendo la cantidad de movimiento total entre la masa total:
+\begin{align}
+    \boldsymbol{v}_{\text{CM}}=\frac{\boldsymbol{P}_{\text{total}}}{M_{\text{total}}} =  &
+\frac{\boldsymbol{p}_1+\boldsymbol{p}_12+\cdots+\boldsymbol{p}_N}{M_{\text{total}}}
+    \nonumber\\
+    =&\frac{m_1\boldsymbol{v}_1 + m_2\boldsymbol{v}_2 + \dots + m_N\boldsymbol{v}_N}{M_{\text{total}}}.
+\end{align}
+
+Si reorganizamos esta ecuación pasando $M_{\text{total}}$ a multiplicar al lado izquierdo, descubrimos una propiedad bellísima de la mecánica newtoniana:
+\begin{equation}
+    \boldsymbol{P}_{\text{total}} = M_{\text{total}} \boldsymbol{v}_{\text{CM}}.
+    \label{eq:momento_cm}
+\end{equation}
+Esta ecuación nos dice que, sin importar cuán complejo sea el sistema (incluso si son billones de moléculas rebotando), \textbf{todo el sistema se comporta macroscópicamente como si fuera una sola partícula de masa $M_{\text{total}}$ moviéndose a la velocidad $\boldsymbol{v}_{\text{CM}}$}.
+
+
+\subsubsection{El Sistema de Referencia del Centro de Masas}
+
+ ¿Qué sucede si decidimos observar nuestro sistema de $N$ partículas desde un sistema de referencia $S'$ que viaja exactamente a la misma velocidad y en la misma dirección que el Centro de Masas?
+
+En este nuevo sistema de referencia, que llamaremos el \textit{Sistema del Centro de Masas}, aplicamos la relatividad de Galileo. La velocidad de cada partícula vista por nuestro observador que se mueve con el centro de masa ($\boldsymbol{v}'_i$) será la velocidad original menos la velocidad del observador que es justo la $\boldsymbol{v}_{\text{CM}}$:
+\begin{equation}
+    \boldsymbol{v}'_i = \boldsymbol{v}_i - \boldsymbol{v}_{\text{CM}}.
+\end{equation}
+
+Calculemos ahora la cantidad de movimiento total en este nuevo sistema de referencia ($\boldsymbol{P}'_{\text{total}}$):
+\begin{equation}
+    \boldsymbol{P}'_{\text{total}} = m_1\boldsymbol{v}'_1 + m_2\boldsymbol{v}'_2 + \dots + m_N\boldsymbol{v}'_N.
+\end{equation}
+Sustituyendo nuestras velocidades relativas:
+\begin{equation}
+    \boldsymbol{P}'_{\text{total}} = m_1(\boldsymbol{v}_1 - \boldsymbol{v}_{\text{CM}}) + m_2(\boldsymbol{v}_2 - \boldsymbol{v}_{\text{CM}}) + \dots + m_N(\boldsymbol{v}_N - \boldsymbol{v}_{\text{CM}}).
+\end{equation}
+Expandimos los paréntesis algebraicamente:
+\begin{equation}
+    \boldsymbol{P}'_{\text{total}} = (m_1\boldsymbol{v}_1 + m_2\boldsymbol{v}_2 + \dots + m_N\boldsymbol{v}_N) - (m_1\boldsymbol{v}_{\text{CM}} + m_2\boldsymbol{v}_{\text{CM}} + \dots + m_N\boldsymbol{v}_{\text{CM}}).
+\end{equation}
+Notamos dos cosas fundamentales. El primer gran paréntesis es, por definición (Ecuación \ref{eq:momento_n_particulas}), el momento total original $\boldsymbol{P}_{\text{total}}$. En el segundo paréntesis, podemos factorizar la velocidad constante $\boldsymbol{v}_{\text{CM}}$:
+\begin{equation}
+    \boldsymbol{P}'_{\text{total}} = \boldsymbol{P}_{\text{total}} - (m_1 + m_2 + \dots + m_N)\boldsymbol{v}_{\text{CM}}.
+\end{equation}
+Reconociendo que la suma de las masas es $M_{\text{total}}$, obtenemos:
+\begin{equation}
+    \boldsymbol{P}'_{\text{total}} = \boldsymbol{P}_{\text{total}} - M_{\text{total}}\boldsymbol{v}_{\text{CM}}.
+\end{equation}
+Finalmente, usando la Ecuación (\ref{eq:momento_cm}) que nos dice que $\boldsymbol{P}_{\text{total}} = M_{\text{total}}\boldsymbol{v}_{\text{CM}}$, llegamos a la demostración definitiva:
+\begin{equation}
+    \boldsymbol{P}'_{\text{total}} = \boldsymbol{P}_{\text{total}} - \boldsymbol{P}_{\text{total}} = \boldsymbol{0}.
+\end{equation}
+
+\textbf{Conclusión Física:}
+Hemos demostrado mediante álgebra que, si observamos \textit{cualquier} sistema de partículas desde la perspectiva de su Centro de Masas, \textbf{la cantidad de movimiento total del sistema será siempre exactamente cero}. 
+
+Por esta razón, a este sistema de referencia se le conoce en la literatura científica como el \textbf{Sistema de Momento Cero} (\textit{Zero-Momentum Frame}). Es la herramienta analítica más poderosa en física de colisiones (incluyendo la física de partículas en aceleradores como el LHC), ya que elimina de las ecuaciones todo el movimiento de traslación irrelevante, dejando a la vista únicamente la física pura de las interacciones internas.
+
+\subsubsection*{Nota Aclaratoria: Conservación vs. Momento Nulo}
+
+Es muy común y lógico preguntarse: \textit{¿No podíamos deducir esto más fácil usando la Primera Ley de Newton? Si la fuerza neta es cero, el cambio de momento es cero ($\Delta \boldsymbol{P} = \boldsymbol{0}$)}.
+
+Es fundamental distinguir entre dos conceptos físicos distintos:
+\begin{enumerate}
+    \item \textbf{La Conservación del Momento ($\Delta \boldsymbol{P}_{\text{total}} = \boldsymbol{0}$):} Las Leyes de Newton nos garantizan que, en un sistema aislado, la cantidad de movimiento total es una \textbf{constante}. Si observas un choque de asteroides desde la Tierra, el momento total antes y después del choque podría ser una constante inmensa, digamos $\boldsymbol{P}_{\text{total}} = 5000 \text{ kg}\cdot\text{m/s}$. La Ley de Newton te asegura que ese $5000$ no cambiará, pero no lo hace cero.
+    
+    \item \textbf{El Momento Nulo ($\boldsymbol{P}'_{\text{total}} = \boldsymbol{0}$):} La derivación algebraica que acabamos de realizar demuestra algo diferente. Demuestra que, sin importar cuál sea esa constante desde el punto de vista de la Tierra, \textbf{siempre existe un sistema de referencia particular} (el Sistema del Centro de Masas) donde el valor de esa constante es \textbf{exactamente cero}.
+\end{enumerate}
+
+Para entenderlo con una analogía cotidiana: imagina que estás dentro de un tren que viaja a velocidad constante. 
+\begin{itemize}
+    \item Para alguien parado en la estación, tú y tus maletas tienen una cantidad de movimiento enorme que se conserva constante ($\Delta \boldsymbol{P} = \boldsymbol{0}$). 
+    \item Pero si analizamos la física desde tu asiento dentro del tren (tu centro de masas), tú y tus maletas están quietos. La cantidad de movimiento en ese sistema de referencia no solo se conserva, sino que es \textbf{nula} ($\boldsymbol{P}' = \boldsymbol{0}$).
+\end{itemize}
+
+El Sistema del Centro de Masas es el equivalente matemático a ``subirnos al tren'' del universo para que las ecuaciones de colisiones sean muchísimo más fáciles de resolver.
+
+\subsection{Demostración Algebraica de la Posición del Centro de Masas}
+
+En las secciones anteriores, definimos el Centro de Masas (CM) a partir de su estado dinámico, estableciendo que su velocidad ($\boldsymbol{v}_{\text{CM}}$) es el promedio ponderado de las velocidades de todas las partículas para garantizar que $\boldsymbol{P}_{\text{total}} = M_{\text{total}} \boldsymbol{v}_{\text{CM}}$. Pero, ¿de dónde surge la fórmula para encontrar su \textit{posición} exacta ($\boldsymbol{r}_{\text{CM}}$) en el espacio?
+
+A continuación, demostraremos que la fórmula geométrica de la posición es una consecuencia cinemática ineludible de nuestra definición de la cantidad de movimiento, utilizando únicamente álgebra básica.
+
+\subsubsection{Paso 1: La Definición de la Velocidad del CM}
+
+Partimos de la ecuación que define la velocidad del Centro de Masas para un sistema de $N$ partículas:
+\begin{equation}
+    \boldsymbol{v}_{\text{CM}} = \frac{m_1\boldsymbol{v}_1 + m_2\boldsymbol{v}_2 + \dots + m_N\boldsymbol{v}_N}{M_{\text{total}}}.
+    \label{eq:v_cm_demo}
+\end{equation}
+
+\subsubsection{Paso 2: Relación Cinemática entre Velocidad y Posición}
+
+Sabemos por la cinemática fundamental que la velocidad constante o promedio de cualquier objeto es igual a su cambio de posición (desplazamiento, $\Delta\boldsymbol{r}$) dividido por el intervalo de tiempo transcurrido ($\Delta t$):
+\begin{equation}
+    \boldsymbol{v} = \frac{\Delta \boldsymbol{r}}{\Delta t}.
+\end{equation}
+Sustituimos esta definición cinemática geométrica para cada una de las velocidades en la Ecuación (\ref{eq:v_cm_demo}), tanto para el Centro de Masas en el lado izquierdo, como para cada partícula individual en el lado derecho:
+\begin{equation}
+    \frac{\Delta \boldsymbol{r}_{\text{CM}}}{\Delta t} = \frac{m_1\left(\frac{\Delta \boldsymbol{r}_1}{\Delta t}\right) + m_2\left(\frac{\Delta \boldsymbol{r}_2}{\Delta t}\right) + \dots + m_N\left(\frac{\Delta \boldsymbol{r}_N}{\Delta t}\right)}{M_{\text{total}}}.
+\end{equation}
+
+\subsubsection{Paso 3: Simplificación del Tiempo}
+
+Dado que estamos analizando el movimiento de todo el sistema de manera simultánea durante el mismo intervalo de tiempo exacto $\Delta t$, podemos factorizar el término $\frac{1}{\Delta t}$ en el numerador del lado derecho:
+\begin{equation}
+    \frac{\Delta \boldsymbol{r}_{\text{CM}}}{\Delta t} = \frac{\frac{1}{\Delta t} \big( m_1\Delta \boldsymbol{r}_1 + m_2\Delta \boldsymbol{r}_2 + \dots + m_N\Delta \boldsymbol{r}_N \big)}{M_{\text{total}}}.
+\end{equation}
+Multiplicamos ambos lados de la igualdad por $\Delta t$, lo que nos permite cancelar algebraicamente el tiempo de la ecuación. Obtenemos así una relación exclusiva para los desplazamientos:
+\begin{equation}
+    \Delta \boldsymbol{r}_{\text{CM}} = \frac{m_1\Delta \boldsymbol{r}_1 + m_2\Delta \boldsymbol{r}_2 + \dots + m_N\Delta \boldsymbol{r}_N}{M_{\text{total}}}.
+    \label{eq:desplazamiento_cm}
+\end{equation}
+
+\subsubsection{Paso 4: Del Desplazamiento a la Posición Absoluta}
+
+La Ecuación (\ref{eq:desplazamiento_cm}) nos dice cómo cambia la posición del Centro de Masas en función de cómo cambian las posiciones individuales. Sabemos por definición que cualquier desplazamiento es la posición final menos la posición inicial ($\Delta \boldsymbol{r} = \boldsymbol{r}_f - \boldsymbol{r}_i$). 
+
+Sustituyamos esta definición explícita para cada uno de los desplazamientos en nuestra ecuación:
+\begin{equation}
+    \boldsymbol{r}_{\text{CM},f} - \boldsymbol{r}_{\text{CM},i} = \frac{m_1(\boldsymbol{r}_{1f} - \boldsymbol{r}_{1i}) + m_2(\boldsymbol{r}_{2f} - \boldsymbol{r}_{2i}) + \dots + m_N(\boldsymbol{r}_{Nf} - \boldsymbol{r}_{Ni})}{M_{\text{total}}}.
+\end{equation}
+
+Ahora, utilizamos el álgebra distributiva para separar las posiciones finales de las iniciales en el numerador:
+\begin{equation}
+    \boldsymbol{r}_{\text{CM},f} - \boldsymbol{r}_{\text{CM},i} = \frac{(m_1\boldsymbol{r}_{1f} + \dots + m_N\boldsymbol{r}_{Nf}) - (m_1\boldsymbol{r}_{1i} + \dots + m_N\boldsymbol{r}_{Ni})}{M_{\text{total}}}.
+\end{equation}
+
+Podemos separar esta gran fracción en la resta de dos fracciones independientes:
+\begin{equation}
+    \boldsymbol{r}_{\text{CM},f} - \boldsymbol{r}_{\text{CM},i} = \left( \frac{m_1\boldsymbol{r}_{1f} + \dots + m_N\boldsymbol{r}_{Nf}}{M_{\text{total}}} \right) - \left( \frac{m_1\boldsymbol{r}_{1i} + \dots + m_N\boldsymbol{r}_{Ni}}{M_{\text{total}}} \right).
+\end{equation}
+
+Observemos cuidadosamente la estructura de esta ecuación. El lado izquierdo es la resta del estado final menos el estado inicial del Centro de Masas. El lado derecho es exactamente la misma operación matemática, separada en un bloque evaluado con las variables finales y otro bloque idéntico evaluado con las variables iniciales. 
+
+Para que esta igualdad se mantenga cierta para \textit{cualquier} intervalo de tiempo y \textit{cualquier} configuración inicial de las partículas, la estructura matemática que define la posición en un instante dado debe corresponder exactamente a los términos entre paréntesis. Igualando el estado final con el final (o el inicial con el inicial), deducimos ineludiblemente la fórmula general y absoluta para la posición del Centro de Masas en cualquier instante de tiempo:
+\begin{equation}
+    \boldsymbol{r}_{\text{CM}} = \frac{m_1\boldsymbol{r}_1 + m_2\boldsymbol{r}_2 + \dots + m_N\boldsymbol{r}_N}{M_{\text{total}}}.
+\end{equation}
+
+\textbf{Conclusión Física:}
+Esta demostración revela que la fórmula del Centro de Masas no es una definición estática arbitraria, sino la consecuencia directa de exigir que la dinámica del sistema (su cantidad de movimiento total) sea perfectamente coherente con su cinemática geométrica, sin importar dónde se encontraban las partículas originalmente. El Centro de Masas es el único punto geométrico en el espacio cuya trayectoria imita a la perfección a una partícula que poseyera toda la masa del sistema.
+
+Si sobre el sistema de $N$ partículas hay una Fuerza externa neta que actua sobre todas ellas, cómo la fuerza de la gravedad en la explosión de una granada, ecuación fundamental que relaciona la fuerza neta con la cantidad de movimiento total y el Centro de Masas es la primera primera Ley de Newton~\eqref{eq:newton} que ahora ve todo el sistema cómo un único en la posición del centro de masa en el cual está concentrada la masa toda del sistema
+\begin{equation}
+\label{eq:newtonN}
+    \boldsymbol{F}_{\text{neta, ext}} = \frac{\Delta \boldsymbol{P}_{\text{total}}}{\Delta t} = M_{\text{total}} \boldsymbol{a}_{\text{CM}}.
+\end{equation}
+donde $\boldsymbol{a}_{\text{CM}}$ es la aceleración del centro de masa, que en el caso de una aceleración constante corresponde a
+\begin{equation}
+    \boldsymbol{a}_{\text{CM}} = \frac{\boldsymbol{v}_{\text{CM}}}{\Delta t}\,.
+\end{equation}
+
+\subsubsection{Ejemplo Analítico: Colisión Totalmente Inelástica}
+
+Para ilustrar el poder de este principio, analizaremos el caso de una colisión totalmente inelástica, que ocurre cuando dos objetos chocan y quedan unidos, moviéndose juntos como un solo cuerpo después del impacto.
+
+\textbf{El Problema:} Un vagón de tren de masa $m_1$ que viaja a una velocidad inicial $v_1$ choca y se acopla mecánicamente a un segundo vagón de masa $m_2$ que se encontraba en reposo ($v_2 = 0$). ¿Cuál es la velocidad final $v_f$ de ambos vagones unidos justo después del choque?
+
+\textbf{Solución:}
+Aplicamos el principio de conservación de la cantidad de movimiento. Como todo el movimiento ocurre en una sola dimensión (la vía del tren), podemos prescindir de la notación vectorial y usar los signos para indicar la dirección.
+
+1. Identificamos el momento inicial total del sistema:
+\begin{equation}
+    P_i = p_{1i} + p_{2i} = m_1 v_1 + m_2 (0) = m_1 v_1.
+\end{equation}
+
+2. Identificamos el momento final total del sistema. Al quedar unidos, ambos vagones comparten la misma velocidad final $v_f$ y su masa combinada es $(m_1 + m_2)$:
+\begin{equation}
+    P_f = (m_1 + m_2) v_f.
+\end{equation}
+
+3. Igualamos el momento inicial y el final ($P_i = P_f$):
+\begin{equation}
+    m_1 v_1 = (m_1 + m_2) v_f.
+\end{equation}
+
+4. Despejamos algebraicamente la velocidad final $v_f$:
+\begin{equation}
+    v_f = \left( \frac{m_1}{m_1 + m_2} \right) v_1.
+\end{equation}
+
+Este resultado algebraico nos muestra inmediatamente que, al aumentar la masa total del sistema en movimiento (el denominador es mayor que el numerador), la velocidad final inevitablemente será menor que la velocidad inicial del primer vagón. La cantidad de movimiento se ha distribuido perfectamente entre ambos objetos.
+
+\subsubsection{Ejemplo Analítico: Colisión Elástica en Una Dimensión}
+
+A diferencia de una colisión inelástica (donde la energía cinética se transforma parcialmente en calor o deformación), una \textbf{colisión elástica} es un choque idealizado en el que se conservan simultáneamente dos cantidades fundamentales: la cantidad de movimiento y la energía cinética mecánica. Este modelo describe de forma excelente las colisiones entre bolas de billar o entre partículas subatómicas.
+
+\textbf{El Problema:} Una partícula de masa $m_1$ viaja a una velocidad inicial $v_{1i}$ y choca frontalmente de forma perfectamente elástica contra una segunda partícula de masa $m_2$ que se encuentra inicialmente en reposo ($v_{2i} = 0$). Queremos encontrar las fórmulas algebraicas para las velocidades finales de ambas partículas ($v_{1f}$ y $v_{2f}$).
+
+\textbf{Solución:}
+Tenemos dos incógnitas ($v_{1f}$ y $v_{2f}$), por lo que necesitamos plantear un sistema de dos ecuaciones basadas en nuestros principios de conservación.
+
+1. \textbf{Conservación de la cantidad de movimiento:}
+\begin{equation}
+    m_1 v_{1i} = m_1 v_{1f} + m_2 v_{2f}.
+\end{equation}
+Agrupamos los términos de la masa 1 en el lado izquierdo y factorizamos:
+\begin{equation}
+    m_1 (v_{1i} - v_{1f}) = m_2 v_{2f}.
+    \label{eq:momento_elastico}
+\end{equation}
+
+2. \textbf{Conservación de la energía cinética:}
+\begin{equation}
+    \frac{1}{2}m_1 v_{1i}^2 = \frac{1}{2}m_1 v_{1f}^2 + \frac{1}{2}m_2 v_{2f}^2.
+\end{equation}
+Multiplicamos toda la ecuación por 2 para eliminar las fracciones, agrupamos los términos de $m_1$ a la izquierda y factorizamos:
+\begin{equation}
+    m_1 (v_{1i}^2 - v_{1f}^2) = m_2 v_{2f}^2.
+\end{equation}
+Aquí aplicamos una herramienta algebraica fundamental: la \textbf{diferencia de cuadrados} ($A^2 - B^2 = (A-B)(A+B)$). Nuestra ecuación de energía se transforma en:
+\begin{equation}
+    m_1 (v_{1i} - v_{1f})(v_{1i} + v_{1f}) = m_2 v_{2f}^2.
+    \label{eq:energia_elastica}
+\end{equation}
+
+3. \textbf{El truco algebraico:} 
+Para resolver este sistema de forma elegante, dividimos la ecuación de energía (\ref{eq:energia_elastica}) entre la ecuación de momento (\ref{eq:momento_elastico}):
+\begin{equation}
+    \frac{m_1 (v_{1i} - v_{1f})(v_{1i} + v_{1f})}{m_1 (v_{1i} - v_{1f})} = \frac{m_2 v_{2f}^2}{m_2 v_{2f}}.
+\end{equation}
+Casi todos los términos se cancelan mágicamente, dejándonos con una relación lineal extremadamente simple:
+\begin{equation}
+    v_{1i} + v_{1f} = v_{2f}.
+    \label{eq:velocidad_relativa}
+\end{equation}
+
+4. \textbf{Despejar las velocidades finales:}
+Ahora podemos usar la Ecuación (\ref{eq:velocidad_relativa}) para sustituir $v_{2f}$ en nuestra primera ecuación de momento original ($m_1 v_{1i} = m_1 v_{1f} + m_2 v_{2f}$):
+\begin{equation}
+    m_1 v_{1i} = m_1 v_{1f} + m_2 (v_{1i} + v_{1f}).
+\end{equation}
+Expandimos y agrupamos los términos que contienen $v_{1f}$ a un lado, y los que contienen $v_{1i}$ al otro:
+\begin{equation}
+    m_1 v_{1i} - m_2 v_{1i} = m_1 v_{1f} + m_2 v_{1f},
+\end{equation}
+\begin{equation}
+    (m_1 - m_2)v_{1i} = (m_1 + m_2)v_{1f}.
+\end{equation}
+Despejamos finalmente $v_{1f}$:
+\begin{equation}
+    v_{1f} = \left( \frac{m_1 - m_2}{m_1 + m_2} \right) v_{1i}.
+    \label{eq:v1f_elastica}
+\end{equation}
+
+Para encontrar $v_{2f}$, sustituimos el resultado de (\ref{eq:v1f_elastica}) en la ecuación (\ref{eq:velocidad_relativa}) ($v_{2f} = v_{1i} + v_{1f}$):
+\begin{equation}
+    v_{2f} = v_{1i} + \left( \frac{m_1 - m_2}{m_1 + m_2} \right) v_{1i} = \left( \frac{m_1 + m_2 + m_1 - m_2}{m_1 + m_2} \right) v_{1i},
+\end{equation}
+lo que se simplifica a:
+\begin{equation}
+    v_{2f} = \left( \frac{2m_1}{m_1 + m_2} \right) v_{1i}.
+    \label{eq:v2f_elastica}
+\end{equation}
+
+\textbf{Interpretación Física de los Casos Límite:}
+Las fórmulas obtenidas nos permiten predecir el comportamiento del universo en situaciones extremas:
+\begin{itemize}
+    \item \textbf{Masas iguales ($m_1 = m_2$):} Si las bolas de billar son idénticas, las ecuaciones dictan que $v_{1f} = 0$ y $v_{2f} = v_{1i}$. La primera bola se detiene por completo y transfiere \textit{toda} su velocidad y momento a la segunda bola.
+    \item \textbf{Un vehículo pesado choca contra un objeto ligero ($m_1 \gg m_2$):} Si $m_1$ es infinitamente más grande, $m_2$ se vuelve despreciable en las fracciones. El resultado es $v_{1f} \approx v_{1i}$ (el objeto pesado casi no siente el impacto) y $v_{2f} \approx 2v_{1i}$ (el objeto ligero sale disparado al doble de la velocidad del objeto pesado).
+    \item \textbf{Un objeto ligero choca contra una pared inamovible ($m_1 \ll m_2$):} Aquí, $m_1$ se vuelve despreciable. Obtendremos $v_{1f} \approx -v_{1i}$ y $v_{2f} \approx 0$. La pelota ligera simplemente rebota con la misma rapidez en sentido contrario, y la pared ni se inmuta.
+\end{itemize}
+
+\subsubsection{Ejemplo Analítico: Sistema Binario bajo Gravedad Mutua}
+
+Hasta ahora hemos analizado colisiones donde el contacto es físico e instantáneo. Sin embargo, la conservación de la cantidad de movimiento aplica a cualquier sistema aislado, sin importar si las fuerzas internas actúan a distancia. Un ejemplo majestuoso de esto es un \textbf{sistema binario} en el espacio (como dos estrellas, o una estrella y un exoplaneta) que interactúan exclusivamente mediante su atracción gravitacional mutua.
+
+\textbf{El Problema:} Consideremos dos cuerpos celestes de masas $m_1$ y $m_2$ aislados en el espacio. Según la Ley de Gravitación Universal de Newton, la fuerza que $m_1$ ejerce sobre $m_2$ es exactamente igual y opuesta a la fuerza que $m_2$ ejerce sobre $m_1$ (un par de acción y reacción). Como no hay fuerzas externas, la cantidad de movimiento total del sistema se conserva. Queremos analizar matemáticamente cómo se mueven estos cuerpos el uno respecto al otro.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth, scale=1.2]
+    
+    % Centro de Masas
+    \coordinate (CM) at (0,0);
+    \draw[thick] (-0.1, 0) -- (0.1, 0);
+    \draw[thick] (0, -0.1) -- (0, 0.1);
+    \node[below, font=\scriptsize] at (CM) {Centro de Masas (CM)};
+
+    % Órbitas
+    \draw[dashed, gray] (CM) circle (1.5); % Órbita m1
+    \draw[dashed, gray] (CM) circle (3.5); % Órbita m2
+
+    % Masas
+    \coordinate (M1) at (-1.5, 0);
+    \coordinate (M2) at (3.5, 0);
+    
+    % Línea que los une
+    \draw[thick, gray!80!black] (M1) -- (M2);
+    
+    % Dibujar Masa 1 (Estrella)
+    \draw[thick, fill=yellow!40] (M1) circle (0.4) node {$m_1$};
+    \draw[->, ultra thick, red] (M1) -- (-1.5, -1.2) node[left] {$\boldsymbol{v}_1$};
+    
+    % Dibujar Masa 2 (Planeta)
+    \draw[thick, fill=blue!20] (M2) circle (0.2) node {$m_2$};
+    \draw[->, ultra thick, blue] (M2) -- (3.5, 1.8) node[right] {$\boldsymbol{v}_2$};
+
+    % Radios
+    \draw[<->] (-1.5, 0.2) -- (0, 0.2) node[midway, above] {$r_1$};
+    \draw[<->] (0, 0.2) -- (3.5, 0.2) node[midway, above] {$r_2$};
+
+\end{tikzpicture}
+\caption{Un sistema binario orbitando su centro de masas común. Las cantidades de movimiento de ambos cuerpos ($\boldsymbol{p}_1$ y $\boldsymbol{p}_2$) son siempre iguales en magnitud y opuestas en dirección, garantizando que el momento total sea cero respecto al CM.}
+\label{fig:sistema_binario}
+\end{figure}
+
+\textbf{Solución:}
+Para simplificar el análisis, los astrofísicos eligen un sistema de referencia que viaja junto con el sistema binario. En este sistema de referencia, llamado \textbf{sistema del Centro de Masas (CM)}, la cantidad de movimiento total del sistema es exactamente cero:
+\begin{equation}
+    \boldsymbol{P}_{\text{total}} = \boldsymbol{p}_1 + \boldsymbol{p}_2 = \boldsymbol{0}.
+\end{equation}
+Al despejar algebraicamente, obtenemos una relación directa entre los momentos individuales:
+\begin{equation}
+    \boldsymbol{p}_1 = -\boldsymbol{p}_2.
+\end{equation}
+Expandiendo esta ecuación con la definición de momento ($\boldsymbol{p} = m\boldsymbol{v}$), tenemos
+\begin{equation}
+    m_1 \boldsymbol{v}_1 = - m_2 \boldsymbol{v}_2.
+    \label{eq:momento_binario}
+\end{equation}
+El signo negativo nos indica matemáticamente que, en cualquier instante, las velocidades de ambos cuerpos deben apuntar en \textbf{direcciones opuestas} (ver Figura \ref{fig:sistema_binario}). 
+
+Si analizamos solo las magnitudes (los tamaños de los vectores, ignorando las direcciones), obtenemos:
+\begin{equation}
+    m_1 v_1 = m_2 v_2.
+\end{equation}
+
+Esto significa que la Tierra \textit{no está perfectamente inmóvil respecto a la Luna}. Debido a la conservación de la cantidad de movimiento, La Luna tira de la Tierra y la obliga a describir una pequeña órbita con una pequeña velocidad ($v_1$). 
+
+
+\subsubsection{Cálculo de la Posición del Centro de Masas en el Sistema Binario}
+
+Vamos a calcular explícitamente la posición de este Centro de Masas (CM) a partir de su definición geométrica formal.
+
+\textbf{Definición General:} La posición del Centro de Masas de un sistema de partículas se define como el promedio de las posiciones de las partículas, ponderado por sus respectivas masas. Para un sistema de dos partículas con masas $m_1$ y $m_2$, y posiciones $\boldsymbol{r}_1$ y $\boldsymbol{r}_2$, el vector de posición del centro de masas $\boldsymbol{r}_{\text{CM}}$ se define algebraicamente como
+\begin{equation}
+    \boldsymbol{r}_{\text{CM}} = \frac{m_1 \boldsymbol{r}_1 + m_2 \boldsymbol{r}_2}{m_1 + m_2}.
+\end{equation}
+
+\textbf{Configuración del Problema (En una dimensión):}
+Para simplificar el cálculo sin perder rigor, alinearemos nuestro sistema de coordenadas a lo largo de la línea imaginaria que une a las dos masas. De este modo, podemos prescindir de los vectores y trabajar únicamente con coordenadas en el eje $x$. 
+
+Sea $d$ la distancia total que separa a las dos masas ($d = r_1 + r_2$). Para hacer el álgebra lo más sencilla posible, colocaremos el origen de nuestro sistema de coordenadas exactamente sobre la masa $1$.
+\begin{itemize}
+    \item Posición de la masa 1: $x_1 = 0$.
+    \item Posición de la masa 2: $x_2 = d$.
+\end{itemize}
+
+\textbf{Cálculo Algebraico:}
+Sustituimos estas coordenadas en nuestra fórmula unidimensional del Centro de Masas:
+\begin{equation}
+    x_{\text{CM}} = \frac{m_1 (0) + m_2 (d)}{m_1 + m_2}.
+\end{equation}
+El término $m_1(0)$ se anula, por lo que la posición del Centro de Masas respecto a la masa 1 es
+\begin{equation}
+    x_{\text{CM}} = \left( \frac{m_2}{m_1 + m_2} \right) d.
+    \label{eq:posicion_cm_m1}
+\end{equation}
+
+\textbf{Conexión con los Radios Orbitales ($r_1$ y $r_2$):}
+Como el Centro de Masas es el punto alrededor del cual orbitan los cuerpos, la distancia desde la masa 1 hasta el Centro de Masas es, por definición, su radio orbital $r_1$. Por lo tanto, de la Ecuación (\ref{eq:posicion_cm_m1}) obtenemos directamente
+\begin{equation}
+    r_1 = \left( \frac{m_2}{m_1 + m_2} \right) d.
+\end{equation}
+
+Para encontrar el radio orbital del segundo cuerpo ($r_2$), es decir, la distancia desde el Centro de Masas hasta la masa 2, simplemente restamos $r_1$ de la distancia total $d$:
+\begin{equation}
+    r_2 = d - r_1 = d - \left( \frac{m_2}{m_1 + m_2} \right) d.
+\end{equation}
+Factorizamos $d$ y resolvemos la resta de fracciones:
+\begin{equation}
+    r_2 = d \left[ 1 - \frac{m_2}{m_1 + m_2} \right] = d \left[ \frac{m_1 + m_2 - m_2}{m_1 + m_2} \right],
+\end{equation}
+lo que se simplifica hermosamente a
+\begin{equation}
+    r_2 = \left( \frac{m_1}{m_1 + m_2} \right) d.
+\end{equation}
+
+\textbf{Comprobación de Consistencia:}
+Si ahora tomamos nuestras expresiones puramente geométricas para $r_1$ y $r_2$ y dividimos la una entre la otra, obtenemos
+\begin{equation}
+    \frac{r_1}{r_2} = \frac{\left( \frac{m_2}{m_1 + m_2} \right) d}{\left( \frac{m_1}{m_1 + m_2} \right) d}.
+\end{equation}
+Al cancelar los términos comunes ($d$ y el denominador $m_1 + m_2$), la fracción se reduce a
+\begin{equation}
+    \frac{r_1}{r_2} = \frac{m_2}{m_1}.
+\end{equation}
+Multiplicando en cruz recuperamos nuestra famosa relación
+\begin{equation}
+    m_1 r_1 = m_2 r_2.
+\end{equation}
+
+\subsection*{Ejemplo conceptual:  Aniquilación Electrón-Positrón a fotones}
+
+En el capítulo sobre Relatividad Especial, discutimos que cuando una partícula de materia (como un electrón, $e^-$) se encuentra con su antipartícula (un positrón, $e^+$), ambas se aniquilan. Toda su masa se convierte en energía pura en forma de luz (fotones), obedeciendo la relación $E = \Delta m c^2$.
+
+Sin embargo, hay un detalle profundo en este proceso: la aniquilación de un par electrón-positrón \textbf{nunca produce un solo fotón}; siempre produce un mínimo de dos fotones. ¿Por qué el universo prohíbe la creación de un único destello de luz? La respuesta no radica en la energía, sino en una exigencia estricta de la cinemática y la conservación del momento, que se hace evidente al utilizar el concepto del Centro de Masas.
+
+\subsubsection{El Análisis desde el Sistema del Centro de Masas}
+
+Consideremos un electrón y un positrón que colisionan. Como aprendimos en nuestra discusión sobre la dinámica de múltiples partículas, siempre podemos elegir observar este evento desde el \textbf{Sistema del Centro de Masas} (el ``Sistema de Momento Cero''). 
+
+En este sistema de referencia, las dos partículas se acercan mutuamente con cantidades de movimiento exactamente opuestas. Por lo tanto, la cantidad de movimiento total inicial del sistema es estrictamente nula:
+\begin{equation}
+    \boldsymbol{P}_{\text{inicial}} = \boldsymbol{p}_{e^-} + \boldsymbol{p}_{e^+} = \boldsymbol{0}.
+\end{equation}
+
+Como el sistema está aislado (no hay fuerzas externas interactuando con las partículas), la Ley de Conservación de la Cantidad de Movimiento nos exige que el momento total después de la aniquilación siga siendo exactamente cero:
+\begin{equation}
+    \boldsymbol{P}_{\text{final}} = \boldsymbol{0}.
+    \label{eq:momento_final_cero}
+\end{equation}
+
+\subsubsection{El Problema de un Solo Fotón}
+
+Supongamos por un momento que la aniquilación produjera un único fotón ($\gamma$). La conservación de la energía se cumpliría perfectamente, ya que el fotón heredaría toda la energía de las masas en reposo ($E_\gamma = 2m_e c^2$). 
+
+No obstante, recordemos la ecuación del momento para partículas sin masa (como derivamos en la Ecuación~\eqref{eq:energiafoton}). Un fotón siempre viaja a la velocidad de la luz y su cantidad de movimiento está atada a su energía:
+\begin{equation}
+    |\boldsymbol{p}_\gamma| = \frac{E_\gamma}{c}.
+\end{equation}
+
+Puesto que el fotón transporta toda la energía de la aniquilación ($E_\gamma \neq 0$), su cantidad de movimiento \textbf{jamás puede ser cero} ($|\boldsymbol{p}_\gamma| \neq 0$). 
+
+Si solo existiera este fotón, el momento total final del sistema sería simplemente el momento de ese fotón:
+\begin{equation}
+    \boldsymbol{P}_{\text{final}} = \boldsymbol{p}_\gamma \neq \boldsymbol{0}.
+\end{equation}
+Esto entra en contradicción directa e insalvable con nuestra Ecuación (\ref{eq:momento_final_cero}). Crear un solo fotón violaría la conservación de la cantidad de movimiento. En términos simples: el fotón saldría disparado hacia un lado, llevándose un ``impulso'' que no existía al principio en el Centro de Masas.
+
+\subsubsection{La Solución de la Naturaleza: Dos Fotones}
+
+Para salvar la conservación del momento, el universo debe producir al menos \textbf{dos fotones}. Evaluemos el momento final en este escenario:
+\begin{equation}
+    \boldsymbol{P}_{\text{final}} = \boldsymbol{p}_{\gamma 1} + \boldsymbol{p}_{\gamma 2} = \boldsymbol{0}.
+\end{equation}
+Al despejar algebraicamente, obtenemos la condición geométrica que deben cumplir los destellos de luz:
+\begin{equation}
+    \boldsymbol{p}_{\gamma 1} = -\boldsymbol{p}_{\gamma 2}.
+\end{equation}
+
+\textbf{Conclusión Física:}
+El álgebra del Centro de Masas nos revela que los dos fotones resultantes de la aniquilación deben tener \textbf{la misma energía} (misma magnitud de momento) y deben salir disparados en \textbf{direcciones exactamente opuestas} (signo negativo en el vector). De esta manera, el ``empuje'' del primer fotón hacia la derecha cancela perfectamente el ``empuje'' del segundo fotón hacia la izquierda, garantizando que el momento total del sistema permanezca en su valor inmutable de cero.
 
 
 \section{Movimiento parabólico}
@@ -3117,7 +3970,70 @@ Ver \href{https://colab.research.google.com/drive/1YMC00LP9HcuapJtmcpAcivhiywmEc
 
 % --- Inicio del código LaTeX para insertar ---
 
-A continuación se presentan las ecuaciones clave del movimiento parabólico (o de proyectil), expresadas en términos de la magnitud de la velocidad inicial ($v_0$) y el ángulo de lanzamiento ($\theta$). Estas fórmulas asumen que el punto de lanzamiento y el de aterrizaje están a la misma altura y que la resistencia del aire es despreciable.
+A continuación se presentan las ecuaciones clave del movimiento parabólico (o de proyectil), expresadas en términos de la magnitud de la velocidad inicial ($v_0$) y el ángulo de lanzamiento ($\theta$). Ver figura~\ref{fig:movimiento_parabolico_ascendente} Estas fórmulas asumen que el punto de lanzamiento y el de aterrizaje están a la misma altura y que la resistencia del aire es despreciable.
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!] % El [h!] sugiere a LaTeX que intente colocar la figura "aquí"
+    \centering % Centra la figura en la página
+    \begin{tikzpicture}[
+        scale=1, % Escala general de la figura
+        font=\large, % Tamaño de la fuente para las etiquetas
+        axis/.style={->, %stealth, 
+        thick}, % Estilo para los ejes
+        vector/.style={->, %>=stealth, 
+        ultra thick}, % Estilo para los vectores
+        helpline/.style={dashed, gray} % Estilo para líneas de ayuda
+    ]
+        % --- Dibujar los ejes y el suelo ---
+        \draw[axis] (0,0) -- (8.5,0) node[below] {$x$};
+        \draw[axis] (0,0) -- (0,4.5) node[left] {$y$}; % Aumentado un poco para el pico
+        \node[below left] at (0,0) {Origen};
+
+        % --- Dibujar la trayectoria parabólica ---
+        % La trayectoria está definida por la función y = 2x - 0.25x^2
+        \draw[blue, thick, domain=0:8, samples=100] plot (\x, {2*\x - 0.25*\x^2}) node[above right] {Trayectoria};
+        
+        % --- Definir la posición de la partícula en la trayectoria ---
+        % CAMBIO PRINCIPAL: Cambiamos xpos de 6 a 2 para estar en la parte ascendente
+        \def\xpos{2} 
+        \def\ypos{2*\xpos - 0.25*\xpos^2} % Coordenada y calculada automáticamente
+        
+        % --- Dibujar la partícula ---
+        \shade[ball color=red] (\xpos, \ypos) circle (0.15cm);
+        
+        % --- Dibujar los vectores de velocidad ---
+        % Vector velocidad total (tangente a la trayectoria)
+        % La pendiente de la tangente es y'(x) = 2 - 0.5x
+        % En x=2, la pendiente es 2 - 0.5*2 = 1. El ángulo es 45 grados.
+        \begin{scope}[shift={(\xpos,\ypos)}, rotate=45]
+            \draw[vector, green!50!black] (0,0) -- (2,0) node[above] {$\boldsymbol{v}$};
+        \end{scope}
+
+        % Componente horizontal de la velocidad (vx)
+        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos + 1.414, \ypos) node[below] {${v}_x=v_{x0}$};
+
+        % Componente vertical de la velocidad (vy)
+        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos, \ypos + 1.414) node[left] {${v}_y$};
+
+        % Líneas de ayuda para mostrar la composición de vectores
+        \draw[helpline] (\xpos + 1.414, \ypos) -- (\xpos + 1.414, \ypos + 1.414);
+        \draw[helpline] (\xpos, \ypos + 1.414) -- (\xpos + 1.414, \ypos + 1.414);
+        
+        % --- Dibujar el vector Fuerza Gravitacional ---
+        % Desplazado a la izquierda para mejor visibilidad
+        \draw[vector, red] (\xpos, \ypos) -- (\xpos, \ypos - 1.5) node[right] {$\boldsymbol{F} = (0,-mg)$};
+        
+        % --- Mostrar el vector velocidad inicial ---
+        \draw[vector, gray] (0,0) -- (1,2) node[above left] {$\boldsymbol{v}_0$};
+        % Ángulo de lanzamiento
+        \draw (0.5,0) arc (0:63.4:0.5);
+        \node at (0.8, 0.25) {$\theta$};
+
+    \end{tikzpicture}
+    \caption{Diagrama de cuerpo libre para una partícula en movimiento parabólico. El vector velocidad $\boldsymbol{v}$ tiene una componente vertical ${v}_y$ positiva (hacia arriba) y una componente constante $v_x$, mientras que la fuerza gravitacional $\boldsymbol{F}$ sigue actuando constantemente hacia abajo.}
+    \label{fig:movimiento_parabolico_ascendente}
+\end{figure}
 
 \subsection*{Configuración Inicial}
 \begin{itemize}
@@ -3127,7 +4043,7 @@ A continuación se presentan las ecuaciones clave del movimiento parabólico (o 
     \item \textbf{Posición Inicial:} $(x_0, y_0) = (0, 0)$
 \end{itemize}
 
-\subsection*{1. Componentes de la Velocidad Inicial}
+\subsection*{Componentes de la Velocidad Inicial}
 El vector de velocidad inicial se descompone en sus componentes horizontal ($v_{x0}$) y vertical ($v_{y0}$):
 \begin{equation}
     \boxed{v_{x0} = v_0 \cos\theta}
@@ -3136,7 +4052,7 @@ El vector de velocidad inicial se descompone en sus componentes horizontal ($v_{
     \boxed{v_{y0} = v_0 \sin\theta}
 \end{equation}
 
-\subsection*{2. Ecuaciones de la Velocidad en función del Tiempo, $t$}
+\subsection*{Ecuaciones de la Velocidad en función del Tiempo, $t$}
 Estas ecuaciones describen las componentes de la velocidad en cualquier instante $t$.
 
 \paragraph{Velocidad Horizontal ($v_x$):}
@@ -3151,7 +4067,7 @@ La velocidad vertical cambia debido a la aceleración gravitacional.
     \boxed{v_y(t) = v_0 \sin\theta - gt}
 \end{equation}
 
-\subsection*{3. Ecuaciones de la Posición en función del Tiempo, $t$}
+\subsection*{Ecuaciones de la Posición en función del Tiempo, $t$}
 Estas son las ecuaciones paramétricas del movimiento que describen las coordenadas $(x, y)$ del proyectil en cualquier instante $t$.
 
 \paragraph{Posición Horizontal ($x$):}
@@ -3164,8 +4080,12 @@ Estas son las ecuaciones paramétricas del movimiento que describen las coordena
     \boxed{y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2}
 \end{equation}
 
-\section*{4. Ecuación de la Trayectoria (y en función de x)}
-Esta ecuación describe la forma parabólica del camino del proyectil, eliminando la variable del tiempo. Se obtiene despejando $t$ de la ecuación de $x(t)$ y sustituyéndola en la ecuación de $y(t)$.
+\section*{Ecuación de la Trayectoria ($y$ en función de $x$)}
+Esta ecuación describe la forma parabólica del camino del proyectil, eliminando la variable del tiempo. Se obtiene despejando $t$ de la ecuación de $x(t)$
+\begin{align}
+    t = \frac{x}{v_0\cos\theta}\,,
+\end{align}
+y sustituyéndola en la ecuación de $y(t)$.
 \begin{equation}
     \boxed{
     y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2
@@ -3174,15 +4094,17 @@ Esta ecuación describe la forma parabólica del camino del proyectil, eliminand
 Esta es una ecuación de la forma $y = Ax - Bx^2$, que es la fórmula matemática de una parábola que se abre hacia abajo.
 
 \subsection*{Resumen en una Tabla}
+Ver Tabla~\ref{tab:parabolic_equations} 
 
 \begin{table}[h!]
-\centering
+\centering,
 \caption{Resumen de las Ecuaciones del Movimiento Parabólico.}
 \label{tab:parabolic_equations}
 \renewcommand{\arraystretch}{1.5} % Aumenta el espaciado vertical de las filas
 \begin{tabular}{| >{\centering\arraybackslash}m{2.5cm} | >{\centering\arraybackslash}m{5cm} | >{\centering\arraybackslash}m{5cm} |}
 \hline
-\textbf{Cantidad} & \textbf{Componente Horizontal (x)} & \textbf{Componente Vertical (y)} \\
+\textbf{Cantidad} & \textbf{Componente Horizontal (x)} & \textbf{Componente Vertical (\subsection*{Resumen en una Tabla}
+y)} \\
 \hline \hline
 \textbf{Aceleración} & $a_x = 0$ & $a_y = -g$ \\
 \hline
@@ -3198,7 +4120,7 @@ Esta es una ecuación de la forma $y = Ax - Bx^2$, que es la fórmula matemátic
 % --- Fin del código LaTeX ---
 % --- Inicio del código LaTeX para insertar ---
 
-\section{Demostración del Alcance Máximo (R)}
+\subsection{Demostración del Alcance Máximo (R)}
 El \textbf{alcance (R)} es la distancia horizontal total recorrida por el proyectil. Ocurre cuando el proyectil regresa a su altura inicial, es decir, cuando $y(x) = 0$.
 
 \subsection*{Paso 1: Usar la Ecuación de la Trayectoria}
@@ -3229,7 +4151,7 @@ Sustituyendo $\sin(2\theta)=1$ en la fórmula del alcance, encontramos el valor 
     \boxed{R_{\text{max}} = \frac{v_0^2}{g}}
 \end{equation}
 
-\section{Demostración de la Altura Máxima (H)}
+\subsection{Demostración de la Altura Máxima (H)}
 La \textbf{altura máxima (H)} es el punto más alto de la trayectoria. Físicamente, este es el punto en el que la componente vertical de la velocidad se vuelve cero ($v_y = 0$) por un instante.
 
 \subsection*{Paso 1: Encontrar el Tiempo para Alcanzar la Altura Máxima ($t_{\text{pico}}$)}
@@ -3240,7 +4162,7 @@ Despejando el tiempo para llegar al pico, $t_{\text{pico}}$:
 \[ \boxed{t_{\text{pico}} = \frac{v_0 \sin\theta}{g}} \]
 \textit{(Nota: Este es exactamente la mitad del tiempo total de vuelo).}
 
-\section*{Ejemplo: Tiempo de vuelo}
+\subsection*{Ejemplo: Tiempo de vuelo}
 Calcular el tiempo de vuelo del movimiento parabólico. Este se obtiene de la condición
 $y(t_{\text{vuelo}}) = 0$, de modo que
 \begin{align*}
@@ -3283,17 +4205,164 @@ Despejando $H$ se obtiene el mismo resultado:
 
 % --- Fin del código LaTeX ---
 
-% --- Inicio del código LaTeX para insertar ---
+\subsection*{Método Alternativo: Altura Máxima usando Conservación de la Energía}
+
+El principio de conservación de la energía mecánica nos ofrece una forma sumamente elegante y directa de derivar la fórmula de la altura máxima ($H$) en el movimiento parabólico, sin necesidad de recurrir a las ecuaciones paramétricas del tiempo.
+
+Dado que en nuestro modelo ideal despreciamos la resistencia del aire, la única fuerza que realiza trabajo sobre el proyectil una vez lanzado es la fuerza de gravedad. Como la gravedad es una fuerza conservativa, la energía mecánica total del sistema ($E_{\text{total}} = K + U_g$) permanece constante en cualquier punto de la trayectoria.
+
+\subsubsection*{Paso 1: Energía en el Punto de Lanzamiento (Estado Inicial)}
+Situamos nuestro nivel de referencia para la energía potencial gravitacional en el suelo ($y_0 = 0$).
+\begin{itemize}
+    \item \textbf{Energía Potencial Inicial ($U_i$):} Como la altura es cero, $U_i = 0$.
+    \item \textbf{Energía Cinética Inicial ($K_i$):} El proyectil es lanzado con una velocidad total $v_0$. Por lo tanto,
+    \begin{equation}
+        K_i = \frac{1}{2} m v_0^2.
+    \end{equation}
+\end{itemize}
+La energía mecánica total inicial es simplemente
+\begin{equation}
+    E_i = K_i + U_i = \frac{1}{2} m v_0^2.
+    \label{eq:energia_inicial_parabola}
+\end{equation}
+
+\subsubsection*{Paso 2: Energía en la Altura Máxima (Estado Final)}
+En el punto más alto de la trayectoria ($y = H$), la componente vertical de la velocidad se vuelve cero ($v_y = 0$). \textbf{¡Atención!} Esto no significa que el objeto se detenga. La componente horizontal de la velocidad ($v_x = v_0 \cos\theta$) permanece constante durante todo el vuelo.
+\begin{itemize}
+    \item \textbf{Energía Potencial Final ($U_f$):} A una altura $H$, la energía es
+    \begin{equation}
+        U_f = mgH.
+    \end{equation}
+    \item \textbf{Energía Cinética Final ($K_f$):} Dado que la única velocidad que tiene el proyectil en la cima es la horizontal, su velocidad total en ese instante es $v_f = v_0 \cos\theta$. La energía cinética será
+    \begin{equation}
+        K_f = \frac{1}{2} m (v_0 \cos\theta)^2 = \frac{1}{2} m v_0^2 \cos^2\theta.
+    \end{equation}
+\end{itemize}
+La energía mecánica total en la cima es
+\begin{equation}
+    E_f = K_f + U_f = \frac{1}{2} m v_0^2 \cos^2\theta + mgH.
+    \label{eq:energia_final_parabola}
+\end{equation}
+
+\subsubsection*{Paso 3: Igualar y Resolver (Álgebra y Trigonometría)}
+Por el principio de conservación de la energía, igualamos el estado inicial (\ref{eq:energia_inicial_parabola}) con el estado final (\ref{eq:energia_final_parabola}):
+\begin{equation}
+    \frac{1}{2} m v_0^2 = \frac{1}{2} m v_0^2 \cos^2\theta + mgH.
+\end{equation}
+Notamos inmediatamente que la masa ($m$) aparece en todos los términos de la ecuación, por lo que podemos cancelarla dividiendo toda la expresión por $m$. Esto confirma que la trayectoria de caída libre es independiente de la masa del objeto:
+\begin{equation}
+    \frac{1}{2} v_0^2 = \frac{1}{2} v_0^2 \cos^2\theta + gH.
+\end{equation}
+Nuestro objetivo es despejar la altura máxima $H$. Primero, pasamos el término de la energía cinética restante al lado izquierdo restando:
+\begin{equation}
+    gH = \frac{1}{2} v_0^2 - \frac{1}{2} v_0^2 \cos^2\theta.
+\end{equation}
+Factorizamos el término común $\frac{1}{2} v_0^2$ en el lado derecho:
+\begin{equation}
+    gH = \frac{1}{2} v_0^2 \left( 1 - \cos^2\theta \right).
+\end{equation}
+Aquí entra en juego la identidad trigonométrica fundamental ($\sin^2\theta + \cos^2\theta = 1$), de la cual deducimos que $1 - \cos^2\theta = \sin^2\theta$. Sustituyendo esto en nuestra ecuación:
+\begin{equation}
+    gH = \frac{1}{2} v_0^2 \sin^2\theta.
+\end{equation}
+Finalmente, dividimos por la aceleración de la gravedad $g$ para obtener la ecuación de la altura máxima:
+\begin{equation}
+    H = \frac{v_0^2 \sin^2\theta}{2g}.
+\end{equation}
+
+\textbf{Conclusión:} 
+Hemos recuperado exactamente la misma fórmula que derivamos anteriormente mediante cinemática (Ecuación 3.48). Este método demuestra la profunda consistencia interna de la física: ya sea que analicemos el problema rastreando fuerzas y tiempos (Newton) o rastreando el intercambio entre movimiento y altura (Energía), el universo nos entrega siempre la misma verdad inmutable.
+
+
 
 % --- Inicio del código LaTeX para insertar ---
 
-\section{Caída Libre en un Plano Inclinado sin Fricción}
+% --- Inicio del código LaTeX para insertar ---
+
+\subsubsection{Ejemplo Conceptual: La Explosión de una Granada en Vuelo}
+
+Una de las consecuencias más espectaculares de la física del Centro de Masas se observa cuando un objeto complejo se rompe o explota en pleno movimiento. 
+
+Imaginemos una granada que es lanzada al aire, describiendo el clásico movimiento parabólico que estudiamos en secciones anteriores. Ver figura~\ref{fig:explosion_granada}. En el punto más alto de su trayectoria, la granada explota violentamente, dividiéndose en decenas de fragmentos que salen disparados en direcciones aparentemente caóticas. ¿Qué sucede con la trayectoria del sistema?
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.2, >=stealth]
+    
+    % Superficie
+    \draw[thick, gray!80!black] (-1, 0) -- (9, 0) node[right, text=black] {$x$};
+    
+    % Trayectoria parabólica original (y = a*x*(x-8) con vértice en (4, 3) -> 3 = a*4*(-4) -> a = -3/16 = -0.1875)
+    \draw[dashed, thick, gray] plot[domain=0:8, samples=50] (\x, {-0.1875*\x*(\x - 8)});
+    
+    % Granada antes de la explosión (ejemplo en x=2)
+    \coordinate (G1) at (2, 2.25);
+    \draw[fill=green!40!black, thick] (G1) ellipse (0.15 and 0.2);
+    \draw[->, thick] (G1) -- (2.8, 3.1) node[above left] {$\boldsymbol{v}$};
+    
+    % Punto de explosión (Vértice en x=4)
+    \coordinate (Exp) at (4, 3);
+    \node[starburst, fill=red, draw=yellow, inner sep=2pt, line width=1pt] at (Exp) {};
+    
+    % Trayectoria del CM DESPUÉS de la explosión
+    \draw[dashed, ultra thick, blue!80!black] plot[domain=4:8, samples=50] (\x, {-0.1875*\x*(\x - 8)});
+    
+    % Posición del CM en un instante posterior (ejemplo en x=6)
+    \coordinate (CM) at (6, 2.25);
+    \fill[blue, thick] (CM) circle (2pt) node[above right] {$\boldsymbol{r}_{\text{CM}}$};
+    
+    % Fragmentos aleatorios alrededor del CM en x=6
+    % El CM (6, 2.25) debe ser el "promedio" de estos fragmentos
+    \coordinate (F1) at (5.0, 3.5);
+    \coordinate (F2) at (7.5, 3.0);
+    \coordinate (F3) at (4.5, 1.5);
+    \coordinate (F4) at (6.5, 1.0);
+    
+    \fill[gray!70!black] (F1) circle (1.5pt); \draw[->, gray] (Exp) -- (F1);
+    \fill[gray!70!black] (F2) circle (2.5pt); \draw[->, gray] (Exp) -- (F2);
+    \fill[gray!70!black] (F3) circle (1.0pt); \draw[->, gray] (Exp) -- (F3);
+    \fill[gray!70!black] (F4) circle (2.0pt); \draw[->, gray] (Exp) -- (F4);
+    
+    % Conectar los fragmentos al CM para mostrar el "promedio"
+    \draw[dotted, blue!50] (F1) -- (CM);
+    \draw[dotted, blue!50] (F2) -- (CM);
+    \draw[dotted, blue!50] (F3) -- (CM);
+    \draw[dotted, blue!50] (F4) -- (CM);
+    
+    % Etiquetas
+    \node[align=center, font=\small, text=black] at (4, 4) {Explosión\\(Fuerzas Internas)};
+
+\end{tikzpicture}
+\caption{Explosión de un proyectil en movimiento parabólico. Aunque los fragmentos individuales (puntos grises) salen disparados en trayectorias complejas, el Centro de Masas del sistema (punto azul) continúa describiendo exactamente la misma parábola original.}
+\label{fig:explosion_granada}
+\end{figure}
+
+Para resolver este problema, aplicamos los principios de la dinámica que acabamos de derivar, separando rigurosamente las fuerzas en dos tipos:
+
+\begin{enumerate}
+    \item \textbf{Fuerzas Externas:} La única fuerza externa que actúa sobre el sistema (despreciando la resistencia del aire) es la fuerza de gravedad ($\boldsymbol{F}_{\text{ext}} = M_{\text{total}} \boldsymbol{g}$). Esta fuerza tira de toda la masa del sistema hacia abajo.
+    \item \textbf{Fuerzas Internas:} La explosión es producida por una reacción química interna que genera presiones inmensas, empujando los fragmentos unos contra otros. Según la Tercera Ley de Newton, todas estas violentas fuerzas de expansión actúan en pares de acción y reacción, por lo que su suma vectorial es \textit{exactamente cero} ($\sum \boldsymbol{F}_{\text{int}} = \boldsymbol{0}$).
+\end{enumerate}
+
+Recordemos nuestra ecuación fundamental que relaciona la fuerza neta con la cantidad de movimiento total y el Centro de Masas:
+\begin{equation}
+    \boldsymbol{F}_{\text{neta, ext}} = \frac{\Delta \boldsymbol{P}_{\text{total}}}{\Delta t} = M_{\text{total}} \boldsymbol{a}_{\text{CM}}.
+\end{equation}
+
+Puesto que las inmensas fuerzas de la explosión son puramente internas, \textbf{no pueden cambiar la cantidad de movimiento total del sistema ni afectar la aceleración de su Centro de Masas}. La única fuerza que determina la aceleración del Centro de Masas sigue siendo la gravedad ($\boldsymbol{a}_{\text{CM}} = \boldsymbol{g}$).
+
+\textbf{Conclusión:}
+A pesar del caos aparente de los fragmentos girando y volando a velocidades supersónicas en todas direcciones, la física impone un orden majestuoso: el punto matemático invisible que llamamos \textbf{Centro de Masas} ignora por completo la explosión y \textbf{continúa moviéndose en la misma y plácida trayectoria parabólica} que habría seguido la granada si nunca hubiera explotado. 
+
+Si pudiéramos ``pausar'' el universo un segundo después de la explosión y promediar las posiciones de todos y cada uno de los fragmentos ponderados por sus masas (usando la ecuación $\boldsymbol{r}_{\text{CM}} = {\sum m_i \boldsymbol{r}_i}/{M_{\text{total}}}$), descubriríamos que ese punto central se encuentra exactamente sobre la parábola original.
+
+\subsection{Caída Libre en un Plano Inclinado sin Fricción}
 
 El problema de un bloque deslizándose por un plano inclinado sin fricción es una extensión del concepto de caída libre. Aunque el objeto no cae verticalmente, su movimiento sigue siendo gobernado únicamente por la gravedad. La clave para resolver este problema es elegir un sistema de coordenadas adecuado y descomponer correctamente el vector de la fuerza gravitacional.
 
-\section{Configuración del Problema y Diagrama de Cuerpo Libre}
+\subsection{Configuración del Problema y Diagrama de Cuerpo Libre}
 
-Consideremos un bloque de masa $m$ que se encuentra sobre un plano inclinado un ángulo $\theta$ con respecto a la horizontal. No hay fricción entre el bloque y el plano.
+Consideremos un bloque de masa $m$ que se mueve hacia abajo sobre un plano inclinado un ángulo $\theta$ con respecto a la horizontal. No hay fricción entre el bloque y el plano.
 
 \begin{figure}[h!]
     \centering
@@ -3329,7 +4398,7 @@ Consideremos un bloque de masa $m$ que se encuentra sobre un plano inclinado un 
         \end{scope}
 
         % Para dibujar la gravedad, calculamos la posición global del centro del bloque
-        \coordinate (C_global) at ({2.5*cos(\angle)}, {2.5*sin(\angle)+0.5});
+        \coordinate (C_global) at ({2.5*cos(\angle)-0.25}, {2.5*sin(\angle)+0.5});
         \draw[force, red] (C_global) -- ++(0, -2) node[below] {$\boldsymbol{F}_g = m\boldsymbol{g}$};
 
         % --- Descomposición de la Fuerza Gravitacional ---
@@ -3348,7 +4417,7 @@ Consideremos un bloque de masa $m$ que se encuentra sobre un plano inclinado un 
         \end{scope}
 
     \end{tikzpicture}
-    \caption{Diagrama de cuerpo libre para un bloque en un plano inclinado. La fuerza gravitacional ($\boldsymbol{F}_g$) se descompone en una componente perpendicular ($mg\cos\theta$) y una componente paralela ($mg\sin\theta$) al plano.}
+    \caption{Diagrama de cuerpo libre para un bloque en un plano inclinado moviéndose hacia abajo. La fuerza gravitacional ($\boldsymbol{F}_g$) se descompone en una componente perpendicular ($mg\cos\theta$) y una componente paralela ($mg\sin\theta$) al plano.}
     \label{fig:plano_inclinado}
 \end{figure}
 
@@ -3402,7 +4471,7 @@ Por lo tanto, el movimiento en un plano inclinado es una forma de movimiento con
 
 Este problema introduce dos conceptos importantes: la \textbf{fuerza de fricción} (o rozamiento) y el efecto de aplicar una \textbf{fuerza en un ángulo}. A diferencia del caso del plano inclinado, aquí la fuerza que causa el movimiento no es la gravedad, sino una fuerza externa aplicada.
 
-\section{Configuración del Problema y Diagrama de Cuerpo Libre}
+\subsection*{Configuración del Problema y Diagrama de Cuerpo Libre}
 
 Consideremos un bloque de masa $m$ que se encuentra sobre una superficie horizontal. Se aplica una fuerza externa $\boldsymbol{F}$ con una magnitud $F$ y un ángulo $\theta$ por encima de la horizontal. Existe un coeficiente de fricción cinética $\mu_k$ entre el bloque y la superficie. El bloque se mueve hacia la derecha.
 
@@ -3454,7 +4523,7 @@ Consideremos un bloque de masa $m$ que se encuentra sobre una superficie horizon
     \label{fig:plano_horizontal_friccion}
 \end{figure}
 
-\section{Análisis de las Fuerzas y Ecuaciones de Movimiento}
+\subsection*{Análisis de las Fuerzas y Ecuaciones de Movimiento}
 Para analizar el movimiento, usamos un sistema de coordenadas cartesiano estándar, con el eje x horizontal (positivo hacia la derecha) y el eje y vertical (positivo hacia arriba).
 
 \paragraph{Descomposición de la Fuerza Aplicada:}
@@ -3491,7 +4560,7 @@ Aplicamos la ley de Newton por separado en cada eje.
     \[ \boxed{ a_x = \frac{F \cos\theta - \mu_k (mg - F \sin\theta)}{m} } \]
 \end{itemize}
 
-\section{Conclusión e Interpretación}
+\subsection*{Conclusión e Interpretación}
 
 La aceleración del bloque es constante, siempre que el bloque se mueva y la fuerza $F$ sea constante. La ecuación para $a_x$ nos dice varias cosas importantes:
 \begin{itemize}
@@ -3592,7 +4661,7 @@ La dirección de la fuerza centrípeta es la misma que la de la aceleración cen
 
 Mientras que las leyes de Kepler describen \textit{cómo} se mueven los planetas, fue Isaac Newton quien explicó \textit{por qué} se mueven de esa manera. A finales del siglo XVII, Newton propuso su Ley de Gravitación Universal, una ley fundamental que describe la fuerza de atracción entre dos objetos cualesquiera con masa.
 
-\section{La Fuerza Gravitacional entre Dos Cuerpos}
+\subsection{La Fuerza Gravitacional entre Dos Cuerpos}
 
 La ley establece que la fuerza de atracción entre dos partículas puntuales de masa $m_1$ y $m_2$, separadas por una distancia $r$, tiene una magnitud dada por:
 \begin{equation}
@@ -3614,7 +4683,7 @@ En forma vectorial, si $\boldsymbol{r}$ es el vector que va de $m_1$ a $m_2$, la
 \end{align}
 El signo negativo indica que la fuerza apunta en dirección opuesta a $\boldsymbol{r}$, es decir, desde $m_2$ hacia $m_1$.
 
-\section{El Concepto de Campo Gravitacional ($\boldsymbol{g}$)}
+\subsection{El Concepto de Campo Gravitacional ($\boldsymbol{g}$)}
 
 Newton se sentía incómodo con la idea de la ``acción a distancia". Para evitarla, se introdujo el concepto de \textbf{campo gravitacional}. La idea es que un cuerpo masivo (como la Tierra, de masa $M$) no tira directamente de otros objetos, sino que \textit{modifica el espacio a su alrededor}, creando un campo de fuerza.
 
@@ -3667,7 +4736,7 @@ Cerca de la superficie de la Tierra, el campo gravitacional es aproximadamente c
 
 % --- Inicio del código LaTeX para insertar ---
 
-\section{Ejemplo: Cálculo del Campo Gravitacional en la Superficie de la Tierra}
+\subsection{Ejemplo: Cálculo del Campo Gravitacional en la Superficie de la Tierra}
 
 Como aplicación directa de la Ecuación~(\ref{eq:campo_g}), podemos calcular el valor teórico del campo gravitacional (y por tanto, la aceleración de la gravedad) en la superficie de nuestro planeta.
 
@@ -3718,7 +4787,7 @@ Sin embargo, este cálculo demuestra con gran precisión cómo la Ley de Gravita
 
 % --- Inicio del código LaTeX para insertar ---
 
-\section{El Cañón de Newton: De Proyectiles a Órbitas}
+\subsection{El Cañón de Newton: De Proyectiles a Órbitas}
 
 Este es el famoso experimento mental que Isaac Newton propuso para explicar cómo funcionan las órbitas, conectando el movimiento de proyectiles con el movimiento orbital.
 
@@ -3802,7 +4871,7 @@ Para un proyectil lanzado horizontalmente desde un radio $r$:
 % --- Fin del código LaTeX ---
 % --- Inicio del código LaTeX para insertar ---
 
-\section{Ejemplo: Campo Gravitacional de la Tierra a la Distancia de la Luna}
+\subsection{Ejemplo: Campo Gravitacional de la Tierra a la Distancia de la Luna}
 
 Este cálculo ilustra cómo la intensidad del campo gravitacional decae con la distancia, siguiendo una ley de la inversa del cuadrado. Nuestro objetivo es calcular la magnitud del campo gravitacional terrestre, $g$, a la distancia orbital media de la Luna.
 
@@ -3857,7 +4926,7 @@ La intensidad del campo gravitacional de la Tierra a la distancia de la Luna es 
 
 % --- Inicio del código LaTeX para insertar ---
 
-\section{Comparación: Velocidad Real de la Luna vs. Velocidad Orbital Circular Teórica}
+\subsection{Comparación: Velocidad Real de la Luna vs. Velocidad Orbital Circular Teórica}
 
 Este análisis nos permite verificar la validez de la Ley de Gravitación de Newton y entender la naturaleza precisa de la órbita lunar. Comparamos la velocidad orbital media real de la Luna (calculada a partir de datos observacionales) con la velocidad teórica que tendría si su órbita fuera un círculo perfecto.
 
@@ -3933,7 +5002,7 @@ La velocidad media observada es el promedio de estas velocidades a lo largo de s
 
 % --- Fin del código LaTeX ---
 
-\section{Visualización Gráfica del Campo Gravitacional}
+\subsection{Visualización Gráfica del Campo Gravitacional}
 
 Para comprender mejor cómo varía la intensidad del campo gravitacional terrestre a diferentes distancias, desde el interior del planeta hasta más allá de la órbita lunar, podemos representarlo gráficamente. Una visualización estándar en una escala lineal sería poco práctica, ya que las enormes distancias involucradas harían imposible apreciar los detalles tanto cerca como lejos del centro.
 
@@ -4080,89 +5149,202 @@ Gracias de nuevo por este desafío tan gratificante. ¡Ha sido un verdadero plac
 % --- Fin del código LaTeX ---
 
 % --- Fin del código LaTeX ---
-\section{Solución numérica al problema de la órbita lunar}
-Podemos usar la ecuación~\eqref{eq:GravitationalForce} para implementar la solución numérica al problema de la órbita lunar, usando los datos anteriores para la órbita lunar.
 
-\begin{minted}[bgcolor=LightGray,linenos]{python}
+
+\section{Simulación Numérica: La Órbita de la Tierra y la Luna}
+
+Hasta ahora hemos analizado el movimiento de los cuerpos utilizando soluciones algebraicas y geométricas exactas. Sin embargo, en la física computacional moderna, podemos predecir el comportamiento de un sistema resolviendo las leyes de Newton paso a paso mediante un ordenador. Este enfoque se conoce como integración numérica.
+
+Para ilustrar este método, simularemos la órbita del sistema binario Tierra-Luna visto desde el sistema de referencia de su Centro de Masas (CM).
+
+\subsubsection{Formulación del Algoritmo}
+
+
+Partimos de la Ley de Gravitación Universal y la Segunda Ley de Newton expresada en términos de la cantidad de movimiento ($\boldsymbol{p}$). La fuerza gravitacional atractiva que ejerce la Tierra sobre la Luna está dada por:
+\begin{equation}
+    \boldsymbol{F}_L = -G\frac{m_L M_T}{|\boldsymbol{r}|^3}\boldsymbol{r} = \frac{\Delta \boldsymbol{p}_L}{\Delta t},
+    \label{eq:fuerza_num}
+\end{equation}
+donde $\boldsymbol{r} = \boldsymbol{r}_L - \boldsymbol{r}_T$ es el vector de posición relativa desde la Tierra hasta la Luna, $M_T$ es la masa de la Tierra y $m_L$ es la masa de la Luna. Por la Tercera Ley de Newton, la fuerza sobre la Tierra es exactamente opuesta: $\boldsymbol{F}_T = -\boldsymbol{F}_L$.
+
+Para que la simulación refleje con precisión la órbita elíptica real, utilizaremos como punto de partida ($t=0$) el \textbf{perigeo} lunar (el punto de máxima aproximación). Sean $r_p$ la distancia relativa en el perigeo y $v_p$ la velocidad relativa en ese instante. 
+
+Para trabajar en el Sistema del Centro de Masas (donde el momento total es estrictamente $\boldsymbol{0}$), debemos repartir estas magnitudes relativas entre ambos cuerpos en proporción inversa a sus masas, definiendo la masa total como $M_{\text{tot}} = M_T + m_L$. Colocando los astros sobre el eje $x$ y sus velocidades tangenciales sobre el eje $y$, obtenemos las expresiones algebraicas detalladas en el bloque inicial del diagrama de flujo de la Figura \ref{fig:diagrama_orbita_perigeo}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth]
+    
+    % Estilos de los bloques
+    \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!20, thick]
+    \tikzstyle{proceso} = [rectangle, minimum width=6cm, minimum height=1cm, text centered, draw=black, fill=orange!20, thick]
+    \tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!20, thick, aspect=2]
+    \tikzstyle{initblock} = [rectangle, draw=black, fill=yellow!20, thick, inner sep=10pt]
+    
+    % Nodos posicionados con coordenadas absolutas (x, y) garantizando MUCHO espacio vertical
+    \node (inicio) [startstop] at (0, 5) {Inicio ($t=0$)};
+    
+    \node (init) [initblock] at (0, -1) {
+        \begin{tabular}{l}
+        \textbf{Condiciones iniciales (Perigeo en el CM):} \\[4pt]
+        Sean $r_p$ (distancia) y $v_p$ (velocidad) en el perigeó.\\
+        Definimos la masa total $M_{\text{tot}} = M_T + m_L$ \\[8pt]
+        $\boldsymbol{r}_L = \left( \frac{M_T}{M_{\text{tot}}} r_p \, , \; 0 \right)$ \\[8pt]
+        $\boldsymbol{r}_T = \left( -\frac{m_L}{M_{\text{tot}}} r_p \, , \; 0 \right)$ \\[8pt]
+        $\boldsymbol{v}_{L0} = \left( 0 \, , \; \frac{M_T}{M_{\text{tot}}} v_p \right)$ \\[8pt]
+        $\boldsymbol{p}_L = m_L \boldsymbol{v}_{L0}$ \\[4pt]
+        $\boldsymbol{p}_T = -\boldsymbol{p}_L$
+        \end{tabular}
+    };
+    
+    \node (fuerza) [proceso] at (0, -7.5) {Calcular $\boldsymbol{F}_L = -G\frac{m_L M_T}{|\boldsymbol{r}|^3}\boldsymbol{r}$ \quad (donde $\boldsymbol{r} = \boldsymbol{r}_L - \boldsymbol{r}_T$)};
+    
+    \node (momento) [proceso] at (0, -9.2) {Actualizar: $\boldsymbol{p}_L \leftarrow \boldsymbol{p}_L + \boldsymbol{F}_L \Delta t$ \quad y \quad $\boldsymbol{p}_T \leftarrow \boldsymbol{p}_T - \boldsymbol{F}_L \Delta t$};
+    
+    \node (posicion) [proceso] at (0, -10.9) {Actualizar: $\boldsymbol{r}_L \leftarrow \boldsymbol{r}_L + \left(\frac{\boldsymbol{p}_L}{m_L}\right) \Delta t$ \quad y \quad $\boldsymbol{r}_T \leftarrow \boldsymbol{r}_T + \left(\frac{\boldsymbol{p}_T}{M_T}\right) \Delta t$};
+    
+    \node (tiempo) [proceso] at (0, -12.6) {Avanzar tiempo $t \leftarrow t + \Delta t$};
+    
+    \node (fin_cond) [decision] at (0, -14.8) {¿$t < t_{\text{final}}$?};
+    
+    \node (fin) [startstop] at (6, -14.8) {Graficar y Fin};
+
+    % Flechas
+    \draw [->, thick] (inicio) -- (init);
+    \draw [->, thick] (init) -- (fuerza);
+    \draw [->, thick] (fuerza) -- (momento);
+    \draw [->, thick] (momento) -- (posicion);
+    \draw [->, thick] (posicion) -- (tiempo);
+    \draw [->, thick] (tiempo) -- (fin_cond);
+    \draw [->, thick] (fin_cond) -- node[anchor=south] {No} (fin);
+    
+    % Flecha de retorno (Sí) - Se amplía el desplazamiento a la izquierda (-5.0) para no cruzar el cuadro amarillo
+    \draw [->, thick] (fin_cond.west) -- node[anchor=south] {Sí} ++(-5.0,0) |- (fuerza.west);
+
+\end{tikzpicture}
+\caption{Diagrama de bloques detallado del algoritmo de integración numérica de Euler-Cromer. Se observan explícitamente las ecuaciones para las condiciones iniciales en el perigeo adaptadas al Sistema del Centro de Masas, lo que garantiza matemáticamente que el momento total inicial sea exactamente $\boldsymbol{0}$.}
+\label{fig:diagrama_orbita_perigeo}
+\end{figure}
+
+\subsubsection{Implementación Computacional en Python}
+
+A continuación, traducimos el diagrama de flujo de la Figura \ref{fig:diagrama_orbita_perigeo} a código en el lenguaje de programación Python. 
+
+Aprovechando la cinemática de las órbitas elípticas, introducimos el semieje mayor ($a$) y la excentricidad ($e$) de la Luna para calcular con precisión la distancia ($r_p$) y la velocidad relativa ($v_p$) en el perigeo. A partir de esos valores relativos, construimos los vectores absolutos en el Sistema del Centro de Masas asegurando que $\boldsymbol{P}_{\text{total}} = \boldsymbol{0}$.
+
+\begin{listing}[htbp]
+\begin{minted}[linenos, frame=lines, framesep=2mm, fontsize=\footnotesize, bgcolor=gray!5]{python}
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
-# Initialize variables for Earth-Moon system
-m_earth = 5.9722e24  # Mass of Earth in kg
-m_moon = 7.34767e22  # Mass of Moon in kg
-v_moon = 1022  # Orbital velocity of Moon in m/s
-G = 6.67408e-11  # Universal gravitational constant in N(m/kg)^2
-r_earth_moon = 3.844e8 # Average distance between Earth and Moon in meters
+# 1. Constantes físicas del sistema
+G = 6.67430e-11   # Constante de gravitación (m^3 kg^-1 s^-2)
+M_T = 5.972e24    # Masa de la Tierra (kg)
+m_L = 7.342e22    # Masa de la Luna (kg)
 
-# Initial conditions
-v_moon = 1022 # m/s
-r_earth_moon = 3.844e8 # Average distance between Earth and Moon in meters
-Δt = 3600*24  # s 
-r = np.array([r_earth_moon, 0])
-t = 0  # s
-p = np.array([0, m_moon*v_moon])  # m/s
-L = []
-L.append({'x': r[0], 'y': r[1], 't': t, 'px': p[0], 'py': p[1]})  
+# 2. Magnitudes relativas en el perigeo
+r_p = 363296440.0  # Distancia en el perigeo [m]
+v_p = 1082.4 # Rapidez en el perigeo [m]
 
-for i in range(28):
-  # ¡La fuerza no es constante!
-  F = -G*m_earth*m_moon*r/np.linalg.norm(r)**3
-  p = F*Δt + p
-  r = (p/m_moon)*Δt + r
+# 3. Condiciones iniciales en el Sistema del Centro de Masas (CM)
+M_tot = M_T + m_L
 
-  t = Δt + t      
-  L.append({'x': r[0], 'y': r[1], 't': t, 'px': p[0], 'py': p[1]})  
+# Vectores de posición iniciales (sobre el eje x)
+r_L = np.array([ (M_T / M_tot) * r_p, 0.0 ])
+r_T = np.array([ -(m_L / M_tot) * r_p, 0.0 ])
 
-df = pd.DataFrame(L)
-plt.figure(figsize=(4, 4))
-plt.plot(df['x'], df['y'],f'r.')
-plt.plot(df['x'], df['y'])
+# Velocidad inicial de la Luna (sobre el eje y)
+v_L0 = np.array([ 0.0, (M_T / M_tot) * v_p ])
 
-plt.grid()
-plt.xlabel('$x$ (m)')
-plt.ylabel('$y$ (m)')
+# Vectores de cantidad de movimiento iniciales
+p_L = m_L * v_L0
+p_T = -p_L  # Garantiza momento total cero
+
+# 4. Parámetros de la simulación
+dt = 3600.0          # Paso de tiempo: 1 hora en segundos
+dias_simulacion = 30
+pasos = int(dias_simulacion * 24 * 3600 / dt)
+
+# Historial para graficar
+hist_xL, hist_yL = [], []
+hist_xT, hist_yT = [], []
+
+periodo_dias = 0.0
+
+# 5. Bucle principal de integración (Método de Euler-Cromer)
+for i in range(pasos):
+    # Guardar posiciones
+    hist_xL.append(r_L[0])
+    hist_yL.append(r_L[1])
+    hist_xT.append(r_T[0])
+    hist_yT.append(r_T[1])
+    
+    # Vector de posición relativa
+    r_rel = r_L - r_T
+    distancia = np.linalg.norm(r_rel)
+    
+    # Fuerza gravitacional sobre la Luna (y reacción sobre la Tierra)
+    F_L = - (G * M_T * m_L / distancia**3) * r_rel
+    
+    # Actualizar momento
+    p_L = p_L + F_L * dt
+    p_T = p_T - F_L * dt
+    
+    # Actualizar posición
+    r_L = r_L + (p_L / m_L) * dt
+    r_T = r_T + (p_T / M_T) * dt
+    
+    # Detección del período orbital (cruza el eje x positivamente)
+    if i > 0 and hist_yL[-2] < 0 and hist_yL[-1] >= 0:
+        periodo_dias = (i * dt) / (24 * 3600)
+
+# 6. Salida de resultados y gráfica
+print(f"Período orbital calculado: {periodo_dias:.2f} días")
+
+plt.figure(figsize=(8,8))
+plt.plot(np.array(hist_xL)/1e3, np.array(hist_yL)/1e3, label='Luna', color='blue')
+plt.plot(np.array(hist_xT)/1e3, np.array(hist_yT)/1e3, label='Tierra', color='green', linewidth=2)
+plt.plot(0, 0, 'k+', markersize=12, label='Centro de Masas')
+
+plt.title('Órbita Elíptica del Sistema Tierra-Luna')
+plt.xlabel('Posición x (km)')
+plt.ylabel('Posición y (km)')
+plt.legend()
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.axis('equal')
 plt.show()
 \end{minted}
+\caption{Código en Python para simular la órbita de la Luna utilizando el método de integración de Euler-Cromer. El programa inicializa los vectores $\boldsymbol{r}$ y $\boldsymbol{p}$ en el perigeo basándose en los cálculos algebraicos del Sistema del Centro de Masas e imprime el período orbital.}
+\label{lst:codigo_tierra_luna}
+\end{listing}
+
+Al ejecutar este código, no solo observaremos gráficamente que la órbita de la Luna describe una trayectoria elíptica (como postula la Primera Ley de Kepler), sino que la Tierra también describe una pequeña elipse alrededor del origen. Además, el programa imprimirá en consola un período orbital muy cercano al real ($\sim 27.3$ días), demostrando la inmensa precisión de aplicar iterativamente la Segunda Ley de Newton $\boldsymbol{F} = \Delta\boldsymbol{p}/\Delta t$.
+
+
 
 El resultado se muestra en la figura~\ref{fig:ÓrbitaLunar}. Note que la fuerza gravitacional no es constante y debe actualizarse en cada paso del bucle numérico.
 
-Una implementación más completa se muestra en \url{https://trinket.io/python3/aeafb6c9529d}, mientras que una simulación usando un algorítmo similar, se puede ver en \url{https://trinket.io/glowscript/2d58bdc502}.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{lunarorbit}
+    \caption{Órbita lunar calculada numéricamente con un período aproximado de 28 días}
+    \label{fig:ÓrbitaLunar}
+\end{figure}
 
 
+\subsubsection*{Nota Computacional: La Importancia del Centro de Masas}
 
-%\section{Numerical Simulation to Obtain the Moon Orbital Period}
+Es muy instructivo preguntarse: \textit{¿Qué habría pasado si, al programar la simulación, hubiéramos puesto a la Tierra inmóvil en el origen ($\boldsymbol{p}_T = \boldsymbol{0}$) y le hubiéramos dado toda la velocidad a la Luna?}
 
-To obtain the Moon's orbital period using a numerical simulation, one models the Earth-Moon system as a two-body problem, applying Newton's Law of Universal Gravitation and Newton's Second Law of Motion. The simulation involves iteratively calculating forces and updating positions and velocities over small time steps.
+Físicamente, las Leyes de Newton seguirían siendo válidas. El problema sería de perspectiva. Al hacer esto, la cantidad de movimiento total del sistema dejaría de ser cero ($\boldsymbol{P}_{\text{total}} = m_L \boldsymbol{v}_L \neq \boldsymbol{0}$). Como la cantidad de movimiento se conserva, el Centro de Masas de nuestro sistema Tierra-Luna adquiriría una velocidad de traslación constante.
 
-\section{Physical Constants and Initial Conditions}
-The following constants are used in the simulation:
-
+\textbf{Consecuencias en la simulación:}
 \begin{itemize}
-    \item \textbf{Gravitational Constant ($G$):} $\SI{6.674E-11}{\cubic\metre\per\kilogram\per\square\second}$
-    \item \textbf{Mass of Earth ($M_E$):} $\SI{5.972E24}{\kilogram}$
-    \item \textbf{Mass of Moon ($M_M$):} $\SI{7.342E22}{\kilogram}$
-    \item \textbf{Average Earth-Moon distance ($a$):} $\SI{3.844E8}{\metre}$
+    \item \textbf{Visuales:} En lugar de dibujar elipses cerradas, el gráfico mostraría al sistema entero salir ``volando'' fuera de la pantalla. La trayectoria de la Luna parecería un resorte estirado (epicicloide), y la Tierra se tambalearía mientras es arrastrada por el espacio.
+    \item \textbf{Analíticas:} Nuestro sencillo algoritmo para calcular el período (medir cuándo la Luna cruza el eje $x$) fallaría rotundamente, ya que el sistema entero se estaría desplazando por el eje $y$, alejándose del origen para siempre.
 \end{itemize}
 
-\section{Simulation Method}
-The core of the simulation uses numerical integration (such as the Euler or Runge-Kutta method) to solve the equations of motion:
-
-\begin{enumerate}
-    \item Calculate the distance ($r$) between the Earth and Moon.
-    \item Calculate the gravitational force ($\boldsymbol{F}$) vector:
-        $$\boldsymbol{F} = G \frac{M_E M_M}{r^2} \hat{r}$$
-    \item Calculate the Moon's acceleration ($\boldsymbol{a}$):
-        $$\boldsymbol{a} = \frac{\boldsymbol{F}}{M_M}$$
-    \item Update velocity ($\boldsymbol{v}$) and position ($\boldsymbol{p}$) over a time step ($\Delta t$):
-        $$\boldsymbol{v}_{\text{new}} = \boldsymbol{v}_{\text{old}} + \boldsymbol{a} \times \Delta t$$
-        $$\boldsymbol{p}_{\text{new}} = \boldsymbol{p}_{\text{old}} + \boldsymbol{v}_{\text{new}} \times \Delta t$$
-\end{enumerate}
-
-\section{Determining the Period}
-By monitoring the position and time taken to complete one full orbit, the orbital period ($T$) is determined. The expected result for the sidereal period is approximately $\SI{27.3}{\day}$.
-
-\newpage
+Al tomarnos el trabajo algebraico de inicializar los vectores $\boldsymbol{r}$ y $\boldsymbol{p}$ en el \textbf{Sistema del Centro de Masas} ($\boldsymbol{P}_{\text{total}} = \boldsymbol{0}$), eliminamos todo este caótico movimiento de traslación galileana. Este truco aísla la dinámica interna (la órbita pura) de la cinemática externa (el viaje por el espacio), demostrando que elegir un buen sistema de referencia es la mitad del trabajo en la resolución de cualquier problema físico.
 
 \section{Momento angular}
 
@@ -4239,12 +5421,6 @@ La magnitud del momento angular es la distancia desde un centro de giro al objet
 % --- Fin del código LaTeX --
 
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.6\linewidth]{lunarorbit}
-    \caption{Órbita lunar calculada numéricamente con un período aproximado de 28 días}
-    \label{fig:ÓrbitaLunar}
-\end{figure}
 
 \section{Producto vectorial}
 Tomado de \url{https://www.met.reading.ac.uk/pplato2}
@@ -4624,6 +5800,269 @@ Este método consiste en encontrar la componente de la fuerza de gravedad que ac
 Para empujar la bola hacia arriba a velocidad constante, la fuerza aplicada por el mecanismo debe ser igual en magnitud a esta componente del peso. Por lo tanto, la fuerza requerida es de \SI{24.5}{\newton}. Ambos métodos confirman que la respuesta correcta es \textbf{\SI{25}{\newton}}.
 
 % --- Fin del código LaTeX ---
+\section{Ejercicios}
+
+\subsection{Ejercicio Conceptual: Tiempos de Vuelo en Lanzamiento Vertical}
+
+\textbf{Enunciado del Problema:} Un barco de guerra dispara simultáneamente dos proyectiles de forma exactamente vertical hacia arriba. Si los proyectiles alcanzan las alturas máximas mostradas en la figura (despreciando la resistencia del aire), ¿qué proyectil regresa primero al nivel del barco?
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2, >=stealth]
+    % Superficie del agua
+    \fill[cyan!10] (-3.5, -0.4) rectangle (3.5, 0);
+    \draw[thick, cyan!50!black] (-3.5, 0) -- (3.5, 0);
+
+    % Barco principal (Acorazado)
+    \draw[thick, fill=gray!30] (-2.5,0) -- (-2.8, 0.5) -- (2.8, 0.5) -- (2.5, 0) -- cycle;
+    \draw[thick, fill=gray!50] (-1.5, 0.5) rectangle (1.5, 1.0);
+    \draw[thick, fill=gray!70] (-0.5, 1.0) rectangle (0.5, 1.5);
+    \node[above, font=\bfseries] at (0, 1.5) {Acorazado};
+
+    % Cañón y Proyectil A (Izquierda - Alto)
+    \draw[thick, fill=black] (-1.8, 0.5) rectangle (-1.6, 0.8);
+    % Trayectoria subida A
+    \draw[dashed, thick, black, ->] (-1.7, 0.8) -- (-1.7, 4.0) node[above, font=\bfseries\large] {A};
+    % Trayectoria bajada A (ligeramente desplazada para claridad visual)
+    \draw[dashed, thick, gray, <-] (-1.5, 0.8) -- (-1.5, 4.0);
+
+    % Cañón y Proyectil B (Derecha - Bajo)
+    \draw[thick, fill=black] (1.6, 0.5) rectangle (1.8, 0.8);
+    % Trayectoria subida B
+    \draw[dashed, thick, black, ->] (1.7, 0.8) -- (1.7, 2.0) node[above, font=\bfseries\large] {B};
+    % Trayectoria bajada B (ligeramente desplazada para claridad visual)
+    \draw[dashed, thick, gray, <-] (1.9, 0.8) -- (1.9, 2.0);
+
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+    \item El proyectil A
+    \item Ambos al mismo tiempo
+    \item El proyectil B
+    \item Se necesita más información
+\end{enumerate}
+
+\subsubsection*{Solución Detallada}
+
+La respuesta correcta es \textbf{(3) El proyectil B}. 
+
+Este problema es la reducción a una dimensión (caída libre vertical) del concepto de tiempo de vuelo. Demuestra que el tiempo que un objeto pasa en el aire está dictado única y exclusivamente por la altura máxima que alcanza, independientemente de su masa (al despreciar la resistencia del aire).
+
+\textbf{1. Relación entre la altura máxima y la velocidad inicial:}
+De acuerdo con la ecuación cinemática sin tiempo ($v_f^2 = v_0^2 - 2g\Delta y$), en la altura máxima $H$ la velocidad final es cero. Despejando, obtenemos la relación entre la altura máxima y la velocidad inicial:
+\begin{equation}
+    H = \frac{v_{0}^2}{2g}.
+\end{equation}
+Al observar el diagrama, es evidente que el proyectil A alcanza una altura máxima mucho mayor que el proyectil B ($H_A > H_B$). Esto implica necesariamente que el proyectil A fue disparado con una velocidad inicial mayor ($v_{0, A} > v_{0, B}$).
+
+\textbf{2. Relación entre la velocidad inicial y el tiempo de vuelo:}
+Para un lanzamiento vertical que regresa a su punto de partida, el tiempo total de vuelo ($t_{\text{vuelo}}$) está determinado por la velocidad inicial y la aceleración de la gravedad:
+\begin{equation}
+    t_{\text{vuelo}} = \frac{2v_{0}}{g}.
+\end{equation}
+
+\textbf{Conclusión:}
+Podemos relacionar el tiempo de vuelo directamente con la altura máxima. Despejando $v_0 = \sqrt{2gH}$ de la primera ecuación y sustituyéndolo en la segunda, obtenemos:
+\begin{equation}
+    t_{\text{vuelo}} = \frac{2\sqrt{2gH}}{g} = \sqrt{\frac{8H}{g}}.
+\end{equation}
+Por lo tanto,
+\begin{equation}
+    t_{\text{vuelo}} \propto \sqrt{H}.
+\end{equation}
+Esta proporcionalidad demuestra algebraicamente que \textbf{a mayor altura máxima, mayor es el tiempo de vuelo}. Dado que el proyectil A sube mucho más alto, pasa más tiempo desacelerando en la subida y acelerando en la bajada. Por el contrario, el proyectil B alcanza una altura menor, completando su ciclo de subida y bajada mucho más rápido. En consecuencia, el \textbf{proyectil B} impactará primero de regreso sobre la cubierta del barco.
+
+\subsection*{Ejercicio Conceptual: Tiempos de Vuelo en el Movimiento Parabólico}
+
+\textbf{Enunciado del Problema:} Un barco de guerra dispara simultáneamente dos proyectiles a barcos enemigos. Si los proyectiles siguen las trayectorias parabólicas mostradas en la figura (despreciando la resistencia del aire), ¿qué barco es alcanzado primero?
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2, >=stealth]
+    % Superficie del agua
+    \fill[cyan!10] (-2.5, -0.4) rectangle (10.5, 0);
+    \draw[thick, cyan!50!black] (-2.5, 0) -- (10.5, 0);
+
+    % Barco principal (Acorazado)
+    \draw[thick, fill=gray!30] (-2,0) -- (-2.2, 0.4) -- (-0.3, 0.4) -- (-0.1, 0) -- cycle;
+    \draw[thick, fill=gray!50] (-1.7, 0.4) rectangle (-0.7, 0.8);
+    \draw[thick, fill=gray!70] (-1.5, 0.8) rectangle (-1.3, 1.2);
+    \draw[thick, fill=gray!70] (-1.0, 0.8) rectangle (-0.8, 1.1);
+    \node[above, font=\bfseries] at (-1.2, 1.2) {Acorazado};
+
+    % Cañón
+    \draw[thick, fill=black] (-0.3, 0.1) -- (0.1, 0.2) -- (0.1, 0.05) -- cycle;
+
+    % Barco A
+
+    \draw[thick, fill=red!20] (3.7, 0) -- (3.6, 0.2) -- (4.4, 0.2) -- (4.3, 0) -- cycle;
+    \draw[thick, fill=red!40] (3.9, 0.2) rectangle (4.1, 0.4);
+    \node[above, font=\bfseries\large] at (4, 0.4) {A};
+
+    % Barco B
+    \draw[thick, fill=red!20] (9.7, 0) -- (9.6, 0.2) -- (10.4, 0.2) -- (10.3, 0) -- cycle;
+    \draw[thick, fill=red!40] (9.9, 0.2) rectangle (10.1, 0.4);
+    \node[above, font=\bfseries\large] at (10, 0.4) {B};
+
+    % Trayectoria A (alta, corta)
+    % Parábola: y = a*x*(x - 4) con vértice en (2, 3.5) -> 3.5 = a*2*(-2) -> a = -3.5/4 = -0.875
+    \draw[dashed, thick, black, ->] plot[domain=0.1:4, samples=50] (\x, {-0.875*\x*(\x - 4)});
+
+    % Trayectoria B (baja, larga)
+    % Parábola: y = b*x*(x - 10) con vértice en (5, 1.5) -> 1.5 = b*5*(-5) -> b = -1.5/25 = -0.06
+    \draw[dashed, thick, black, ->] plot[domain=0.1:10, samples=50] (\x, {-0.06*\x*(\x - 10)});
+
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+    \item El barco A
+    \item Ambos al mismo tiempo
+    \item El barco B
+    \item Se necesita más información
+\end{enumerate}
+
+\subsubsection*{Solución Detallada}
+
+La respuesta correcta es \textbf{(3) El barco B}. 
+
+Aunque la intuición inicial podría sugerir que el barco más cercano (A) es alcanzado primero, o que el proyectil que viaja más lejos (B) debe tardar más, la física del movimiento parabólico demuestra lo contrario. El tiempo de vuelo de un proyectil depende \textbf{exclusivamente de su movimiento vertical}.
+
+\textbf{1. Relación entre la altura máxima y la velocidad inicial vertical:}
+Como vimos en la sección de la Altura Máxima (Ecuación 3.48), la altura máxima $H$ alcanzada por un proyectil está dada por:
+\begin{equation}
+    H = \frac{v_{y0}^2}{2g}.
+\end{equation}
+Al observar el diagrama, es evidente que la trayectoria del proyectil hacia el barco A alcanza una altura máxima mucho mayor que la del proyectil hacia el barco B ($H_A > H_B$). Esto implica necesariamente que el proyectil A fue disparado con una componente de velocidad vertical inicial mucho mayor ($v_{y0, A} > v_{y0, B}$).
+
+\textbf{2. Relación entre la velocidad inicial vertical y el tiempo de vuelo:}
+En el ejemplo del tiempo de vuelo, demostramos que el tiempo total que un proyectil permanece en el aire ($t_{\text{vuelo}}$) está determinado únicamente por su velocidad vertical inicial y la gravedad:
+\begin{equation}
+    t_{\text{vuelo}} = \frac{2v_{y0}}{g}.
+\end{equation}
+
+\textbf{Conclusión:}
+Al sustituir $v_{y0} = \sqrt{2gH}$ en la ecuación del tiempo de vuelo, obtenemos:
+\begin{equation}
+    t_{\text{vuelo}} \propto \sqrt{H}.
+\end{equation}
+Esto demuestra algebraicamente que \textbf{a mayor altura máxima, mayor es el tiempo de vuelo}. Dado que el proyectil dirigido al barco A sube mucho más alto, pasa mucho más tiempo en el aire "subiendo y bajando" que el proyectil rasante dirigido al barco B. Por lo tanto, el proyectil con la trayectoria más plana impactará primero, alcanzando al \textbf{barco B} antes de que el otro proyectil caiga sobre el barco A.
+
+\subsection{Ejercicio Avanzado: La ``Caída'' de la Tierra}
+
+\textbf{Enunciado del Problema:} 
+Suponga que deja caer una piedra de masa $m = 1.0 \text{ kg}$ desde una altura $h = 100 \text{ m}$ sobre la superficie terrestre, partiendo del reposo. El sentido común y la experiencia cotidiana nos dicen que la piedra cae hacia la Tierra. Sin embargo, la Tercera Ley de Newton afirma que la piedra atrae a la Tierra con una fuerza exactamente de la misma magnitud con la que la Tierra atrae a la piedra.
+
+Asumiendo que la Tierra está aislada en el espacio para este análisis:
+\begin{enumerate}
+    \item[a)] Calcule la magnitud de la aceleración con la que la Tierra ``cae'' hacia la piedra.
+    \item[b)] Calcule la distancia total que se desplaza la Tierra hacia la piedra durante el tiempo de vuelo de la misma.
+\end{enumerate}
+
+\textbf{Datos necesarios:}
+\begin{itemize}
+    \item Masa de la piedra, $m = 1.0 \text{ kg}$.
+    \item Aceleración de la gravedad, $g \approx 9.8 \text{ m/s}^2$.
+    \item Masa de la Tierra, $M_T \approx 5.97 \times 10^{24} \text{ kg}$.
+\end{itemize}
+
+\subsubsection*{Solución Detallada}
+
+\textbf{a) Cálculo de la Aceleración de la Tierra}
+
+Según la \textbf{Ley de Gravitación Universal}, la fuerza con la que la Tierra atrae a la piedra es su propio peso:
+\begin{equation}
+    |\boldsymbol{F}_{\text{piedra}}| = mg = (1.0 \text{ kg})(9.8 \text{ m/s}^2) = 9.8 \text{ N}.
+\end{equation}
+
+Por la \textbf{Tercera Ley de Newton} (Acción y Reacción), la fuerza con la que la piedra atrae a la Tierra ($\boldsymbol{F}_T$) tiene exactamente la misma magnitud, pero dirección opuesta:
+\begin{equation}
+    |\boldsymbol{F}_T| = 9.8 \text{ N}.
+\end{equation}
+
+Para encontrar la aceleración de la Tierra ($a_T$), aplicamos la \textbf{Segunda Ley de Newton} al planeta entero ($|\boldsymbol{F}_T| = M_T a_T$):
+\begin{equation}
+    a_T = \frac{|\boldsymbol{F}_T|}{M_T} = \frac{9.8 \text{ N}}{5.97 \times 10^{24} \text{ kg}}.
+\end{equation}
+
+Al realizar el cálculo numérico, obtenemos:
+\begin{equation}
+    a_T \approx 1.64 \times 10^{-24} \text{ m/s}^2.
+\end{equation}
+\textbf{Respuesta a):} La Tierra se acelera hacia la piedra a unos insignificantes $1.64 \times 10^{-24} \text{ m/s}^2$.
+
+\vspace{0.5cm}
+
+\textbf{b) Cálculo de la Distancia Desplazada por la Tierra}
+
+Podemos resolver esta parte de dos maneras diferentes que demuestran la consistencia de las leyes que hemos estudiado: usando cinemática o usando la conservación del Centro de Masas.
+
+\textbf{Método 1: Usando Cinemática Básica}
+Primero, calculamos el tiempo ($t$) que tarda la piedra en caer $100 \text{ m}$. Usamos la ecuación de posición para un objeto que parte del reposo ($v_{0} = 0$):
+\begin{equation}
+    h = \frac{1}{2} g t^2 \implies t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{2(100 \text{ m})}{9.8 \text{ m/s}^2}} \approx 4.518 \text{ s}.
+\end{equation}
+
+Durante esos mismos $4.518 \text{ s}$, la Tierra se ha estado acelerando hacia arriba partiendo del reposo. Su desplazamiento ($d_T$) será:
+\begin{equation}
+    d_T = \frac{1}{2} a_T t^2 = \frac{1}{2} (1.64 \times 10^{-24} \text{ m/s}^2) (4.518 \text{ s})^2.
+\end{equation}
+\begin{equation}
+    d_T \approx 1.67 \times 10^{-23} \text{ m}.
+\end{equation}
+
+\textbf{Método 2: Usando el Centro de Masas (Más elegante)}
+\subsubsection{Conexión Conceptual: Posiciones vs. Desplazamientos del Centro de Masas}
+
+El resultado algebraico que acabamos de utilizar para la caída de la Tierra ($M_T d_T = m h$) guarda una profunda e innegable similitud con la fórmula que derivamos anteriormente para los radios orbitales de un sistema binario ($m_1 r_1 = m_2 r_2$). Esta similitud no es una coincidencia, sino la manifestación de un mismo principio físico aplicado a dos dimensiones diferentes del movimiento: la posición estática y el desplazamiento cinemático.
+
+A continuación, demostraremos algebraicamente por qué ambas fórmulas son dos caras de la misma moneda.
+
+\textbf{1. El Enfoque Estático (Sistema Binario):} 
+
+En el caso del sistema binario, ubicamos el origen de nuestro sistema de coordenadas exactamente en el Centro de Masas ($\boldsymbol{r}_{\text{CM}} = \boldsymbol{0}$). 
+Utilizando la definición de la posición del Centro de Masas para dos partículas, tenemos
+\begin{equation}
+    \boldsymbol{0} = \frac{m_1\boldsymbol{r}_1 + m_2\boldsymbol{r}_2}{m_1 + m_2}.
+\end{equation}
+Al multiplicar por el denominador, obtenemos $\boldsymbol{0} = m_1\boldsymbol{r}_1 + m_2\boldsymbol{r}_2$, lo que implica que $m_1\boldsymbol{r}_1 = -m_2\boldsymbol{r}_2$. Tomando únicamente las magnitudes (las distancias absolutas al centro, $r_1$ y $r_2$), recuperamos nuestra ecuación geométrica:
+\begin{equation}
+    m_1 r_1 = m_2 r_2.
+\end{equation}
+Esta fórmula nos habla de \textbf{distancias estáticas}. Nos dice cómo debe distribuirse la masa alrededor del centro de equilibrio.
+
+\textbf{2. El Enfoque Cinemático (La Caída de la Tierra):}
+
+En el problema de la piedra y la Tierra, el sistema también está aislado, por lo que su Centro de Masas no puede moverse. Esto significa que el \textbf{desplazamiento} del Centro de Masas es cero ($\Delta\boldsymbol{r}_{\text{CM}} = \boldsymbol{0}$). 
+Si utilizamos la ecuación de los desplazamientos que derivamos en la Ecuación (\ref{eq:desplazamiento_cm}):
+\begin{equation}
+    \boldsymbol{0} = \frac{M_T \Delta\boldsymbol{r}_T + m \Delta\boldsymbol{r}_{\text{piedra}}}{M_T + m}.
+\end{equation}
+De nuevo, el denominador desaparece al multiplicar por cero, dejándonos con
+\begin{equation}
+    M_T \Delta\boldsymbol{r}_T = - m \Delta\boldsymbol{r}_{\text{piedra}}.
+\end{equation}
+El signo negativo nos indica que si la piedra se desplaza hacia abajo, la Tierra debe desplazarse hacia arriba. Si tomamos las magnitudes de estos desplazamientos (llamando $d_T$ al desplazamiento de la Tierra y asumiendo que el desplazamiento de la piedra es aproximadamente su altura de caída, $|\Delta\boldsymbol{r}_{\text{piedra}}| \approx h$), obtenemos exactamente la fórmula que usamos para resolver el ejercicio:
+\begin{equation}
+    M_T d_T = m h.
+\end{equation}
+
+\textbf{Conclusión Matemática:}
+La ecuación $m_1 r_1 = m_2 r_2$ nos garantiza que el Centro de Masas se mantiene en el \textbf{origen geométrico}, mientras que la ecuación $M_T d_T = m h$ nos garantiza que el Centro de Masas se mantiene en \textbf{reposo cinemático}. Ambas son la traducción algebraica directa del principio de conservación de la cantidad de movimiento aplicado a las distancias.
+
+
+Sabiendo que el sistema Tierra-Piedra es un sistema aislado (la fuerza neta externa es cero), la posición de su Centro de Masas no puede cambiar. Por lo tanto, el desplazamiento de la masa de la Tierra compensa exactamente el desplazamiento de la masa de la piedra:
+\begin{equation}
+    M_T d_T = m h \implies d_T = h \left( \frac{m}{M_T} \right).
+\end{equation}
+Sustituyendo los valores:
+\begin{equation}
+    d_T = 100 \text{ m} \left( \frac{1.0 \text{ kg}}{5.97 \times 10^{24} \text{ kg}} \right) \approx 1.67 \times 10^{-23} \text{ m}.
+\end{equation}
+
+\textbf{Respuesta b):} La Tierra se mueve hacia la piedra una distancia aproximada de $1.67 \times 10^{-23} \text{ m}$.
+
+\textbf{Interpretación Física:}
+Para poner este asombroso resultado en perspectiva, el radio de un solo núcleo atómico es del orden de $10^{-15} \text{ m}$. El desplazamiento de la Tierra al caer la piedra es \textbf{cien millones de veces más pequeño que un núcleo atómico}. Por esta razón, en la física aplicada y en la vida cotidiana, es una aproximación matemáticamente perfecta asumir que la Tierra permanece rígidamente inmóvil mientras los objetos caen.
 
 
 
