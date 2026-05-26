@@ -244,10 +244,17 @@ Ambos métodos arrojan el mismo resultado invariante.
 
 \subsection{Operaciones con Vectores en Tres Dimensiones: Producto Vectorial}
 
+
 Cuando pasamos del plano (2D) al espacio (3D), surge una nueva y poderosa operación matemática llamada \textbf{producto vectorial} (o producto cruz). A diferencia del producto escalar que vimos anteriormente (el cual devuelve un simple número), el producto vectorial toma dos vectores y da como resultado un \textbf{nuevo vector}.
 
 \paragraph{Definición Geométrica (Magnitud y Dirección)}
-La forma más sencilla e intuitiva de definir el producto vectorial entre dos vectores $\boldsymbol{u}$ y $\boldsymbol{v}$ es analizando por separado su tamaño y hacia dónde apunta:
+El producto vectorial de dos vectores $\boldsymbol{u}$ y $\boldsymbol{v}$ da como resultado un vector $\boldsymbol{w}$ 
+\begin{align}
+\label{eq:crossproduct}
+    \boldsymbol{w}=\boldsymbol{u}\times \boldsymbol{v}\,,
+\end{align}
+en un plano perpendicular al que definen los dos vectores iniciales.
+La forma más sencilla e intuitiva de definir el producto vectorial entre dos vectores  es analizando por separado su magnitud y dirección:
 
 \begin{itemize}
     \item \textbf{Magnitud (Tamaño):} La longitud del nuevo vector depende de las magnitudes de los vectores originales y del seno del ángulo $\theta$ que se forma entre ellos:
@@ -5422,41 +5429,19 @@ La magnitud del momento angular es la distancia desde un centro de giro al objet
 
 
 
-\section{Producto vectorial}
-Tomado de \url{https://www.met.reading.ac.uk/pplato2}
-Dados dos vectores cualesquiera, $\boldsymbol{a}$ y $\boldsymbol{b}$ , que están inclinados entre sí un ángulo $\theta$, su producto vectorial es otro vector $\boldsymbol{c}$, tal que
-\begin{align}
-    \boldsymbol{c} = \boldsymbol{a}  \times  \boldsymbol{b}
-\end{align}
-y tiene las siguientes propiedades:
-
-\begin{itemize}
-\item  Tiene magnitud 
-\begin{align}
-    c = ab \sin \theta;
-\end{align}
-    \item $\boldsymbol{c}$ es un vector perpendicular al plano formado por los vectores $\boldsymbol{a}$ y $\boldsymbol{b}$;
-\item  Su dirección es perpendicular tanto a $\boldsymbol{a}$  como a $\boldsymbol{b}$ y se define mediante la regla de la mano derecha (Figura \ref{fig:manoderecha}b).
-\end{itemize}
-
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=1]{vectorproduct}
-    \caption{Definición de la dirección del producto vectorial 
-    $\boldsymbol{a}  \times  \boldsymbol{b}$ de dos vectores $\boldsymbol{a}$ y $\boldsymbol{b}$ según la regla del sacacorchos y la regla de la mano derecha.  (b) Regla de la mano derecha: al curvar los dedos de la mano derecha en la dirección de $\boldsymbol{a}$ a $\boldsymbol{b}$, el pulgar apunta en la dirección de $\boldsymbol{a}  \times  \boldsymbol{b}$ (y no en la dirección opuesta)}
-    \label{fig:manoderecha}
-\end{figure}
-
-El momento angular se define como
+El momento angular se define como el producto vectorial (ver ecuación~\eqref{eq:crossproduct})
 \begin{align}
 \label{eq:L}
     \boldsymbol{L} = \boldsymbol{r}\times \boldsymbol{p}\,.
 \end{align}
-La dirección viene dada por el producto vectorial entre los vectores de posición y momento lineal, que da como resultado un vector perpendicular al plano definido por los vectores de posición y momento lineal con su dirección determinada por la regla de la mano derecha cómo se muestra en la figura \ref{fig:manoderecha}b.
+Ver figura~\ref{fig:momento_angular_def_mejorada}. La dirección viene dada por el producto vectorial entre los vectores de posición y momento lineal, que da como resultado un vector perpendicular al plano definido por los vectores de posición y momento lineal con su dirección determinada por la regla de la mano derecha.
+%cómo se muestra en la figura \ref{fig:manoderecha}b.
 
-
-
+La magnitud es
+\begin{align}
+    |\boldsymbol{L}| = |\boldsymbol{r}| |\boldsymbol{p}|\sin\theta\,,
+\end{align}
+donde $\theta$ es el ángulo formado por los vectores $\boldsymbol{r}$ y $\boldsymbol{p}$ en el plano $x-y$ como se ilustra en la figura~\ref{fig:momento_angular_3d_corregido}. donde se ilustra también la dirección del vector de momento angular $\boldsymbol{L}$ a lo largo de la dirección perpendicular $z$.
 
 Podemos definir de igual forma el torque como
 \begin{align}
@@ -5470,9 +5455,23 @@ Un ejemplo es un pulsar que mantiene un período constante por largos períodos 
 
 
 
-\section{Estabilidad}
+\subsection{Conservación del momento angular}
+\subsubsection{Principio de Conservación del Momento Angular}
 
-Estabilidad : El elevado momento angular de una rueda que gira a gran velocidad genera un gran efecto giroscópico. Al montar en bicicleta, esta resistencia a la variación del vector de momento angular ayuda a mantener la rueda en posición vertical y contribuye a la estabilidad. Ver figura~\ref{fig:rueda}
+A partir de las definiciones vectoriales de momento angular ($\boldsymbol{L} = \boldsymbol{r} \times \boldsymbol{p}$) y torque ($\boldsymbol{\tau} = \boldsymbol{r} \times \boldsymbol{F}$), surge una de las leyes de conservación más importantes del universo:
+
+\begin{quote}
+    \textbf{Conservación del Momento Angular:} Si el torque externo neto que actúa sobre un sistema es cero ($\boldsymbol{\tau}_{\text{neto}} = \boldsymbol{0}$), el vector de momento angular total del sistema ($\boldsymbol{L}$) permanece constante en el tiempo.
+\end{quote}
+
+Esta conservación ocurre típicamente en dos escenarios fundamentales:
+\begin{enumerate}
+    \item \textbf{Sistemas Aislados:} Como un púlsar girando en el espacio profundo o una rueda de bicicleta girando libremente (inercia rotacional), donde simplemente no hay fuerzas externas aplicadas.
+    \item \textbf{Fuerzas Centrales:} Como el caso de la gravedad. Aunque el Sol ejerce una fuerza inmensa sobre la Tierra, el vector de fuerza $\boldsymbol{F}_g$ es siempre paralelo al vector de posición $\boldsymbol{r}$ (apunta hacia adentro a lo largo de la misma línea). Por las propiedades del producto vectorial, el producto cruz de dos vectores paralelos es cero ($\boldsymbol{r} \times \boldsymbol{F}_g = \boldsymbol{0}$). Al no haber un torque que ``empuje de lado'', el momento angular de la órbita terrestre es una cantidad matemáticamente inviolable.
+\end{enumerate}
+
+
+El elevado momento angular de una rueda que gira a gran velocidad genera un gran efecto giroscópico. Al montar en bicicleta, esta resistencia a la variación del vector de momento angular ayuda a mantener la rueda en posición vertical y contribuye a la estabilidad. Ver figura~\ref{fig:rueda}
 
 \begin{figure}
     \centering
@@ -5545,6 +5544,79 @@ Estabilidad : El elevado momento angular de una rueda que gira a gran velocidad 
 \end{figure}
 
 % --- Fin del código LaTeX ---
+
+\subsection{Demostración Algebraica de la Conservación del Momento Angular}
+
+En la mecánica newtoniana, afirmamos que si el torque neto sobre un objeto es cero ($\boldsymbol{\tau} = \boldsymbol{0}$), su momento angular se conserva. A menudo, esto se demuestra usando reglas complejas de cálculo diferencial. Sin embargo, podemos demostrar la validez de este principio utilizando únicamente álgebra básica, la cinemática de pequeños incrementos ($\Delta t$) y las propiedades geométricas del producto vectorial.
+
+\subsubsection{Paso 1: Definición del Cambio en el Momento Angular ($\Delta \boldsymbol{L}$)}
+
+Partimos de la definición del vector de momento angular para una partícula de masa constante:
+\begin{equation}
+    \boldsymbol{L} = \boldsymbol{r} \times \boldsymbol{p}.
+\end{equation}
+
+Consideremos un intervalo de tiempo suficientemente pequeño $\Delta t$. Durante este intervalo, tanto la posición del objeto ($\boldsymbol{r}$) como su cantidad de movimiento ($\boldsymbol{p}$) pueden experimentar cambios, pasando a un estado final $\boldsymbol{r}_f = \boldsymbol{r} + \Delta\boldsymbol{r}$ y $\boldsymbol{p}_f = \boldsymbol{p} + \Delta\boldsymbol{p}$.
+
+El momento angular final será:
+\begin{equation}
+    \boldsymbol{L}_f = \boldsymbol{r}_f \times \boldsymbol{p}_f = (\boldsymbol{r} + \Delta\boldsymbol{r}) \times (\boldsymbol{p} + \Delta\boldsymbol{p}).
+\end{equation}
+
+Usando la propiedad distributiva del producto cruz algebraico, expandimos esta expresión:
+\begin{equation}
+    \boldsymbol{L}_f = (\boldsymbol{r} \times \boldsymbol{p}) + (\boldsymbol{r} \times \Delta\boldsymbol{p}) + (\Delta\boldsymbol{r} \times \boldsymbol{p}) + (\Delta\boldsymbol{r} \times \Delta\boldsymbol{p}).
+\end{equation}
+
+El primer término ($\boldsymbol{r} \times \boldsymbol{p}$) es exactamente el momento angular inicial, $\boldsymbol{L}_i$. Si restamos $\boldsymbol{L}_i$ a ambos lados, obtenemos la ecuación algebraica para el cambio del momento angular ($\Delta \boldsymbol{L} = \boldsymbol{L}_f - \boldsymbol{L}_i$):
+\begin{equation}
+    \Delta \boldsymbol{L} = (\boldsymbol{r} \times \Delta\boldsymbol{p}) + (\Delta\boldsymbol{r} \times \boldsymbol{p}) + (\Delta\boldsymbol{r} \times \Delta\boldsymbol{p}).
+    \label{eq:delta_L_algebraico}
+\end{equation}
+
+\subsubsection{Paso 2: Simplificación Cinemática (El término nulo)}
+
+Analicemos el segundo término del lado derecho de nuestra ecuación: $(\Delta\boldsymbol{r} \times \boldsymbol{p})$.
+Recordemos de la cinemática básica que el desplazamiento $\Delta\boldsymbol{r}$ ocurre en la misma dirección que la velocidad $\boldsymbol{v}$ a lo largo de un intervalo $\Delta t$ ($\Delta\boldsymbol{r} \approx \boldsymbol{v}\Delta t$). Y por definición, la cantidad de movimiento $\boldsymbol{p}$ es paralela a la velocidad ($\boldsymbol{p} = m\boldsymbol{v}$).
+
+Por consiguiente, el desplazamiento y el momento son vectores paralelos. Una de las propiedades fundamentales del producto cruz establece que el producto vectorial de dos vectores paralelos es siempre cero (ya que $\sin(0^\circ) = 0$). Así que:
+\begin{equation}
+    \Delta\boldsymbol{r} \times \boldsymbol{p} = \boldsymbol{0}.
+\end{equation}
+
+Además, el último término $(\Delta\boldsymbol{r} \times \Delta\boldsymbol{p})$ es el producto de dos cantidades extremadamente pequeñas, por lo que su valor es despreciable en comparación con los demás términos de la ecuación. 
+
+Al eliminar estos términos, nuestra ecuación de cambio se simplifica drásticamente a:
+\begin{equation}
+    \Delta \boldsymbol{L} \approx \boldsymbol{r} \times \Delta\boldsymbol{p}.
+    \label{eq:delta_L_simplificado}
+\end{equation}
+
+\subsubsection{Paso 3: Conexión con el Torque y la Conservación}
+
+Aquí es donde conectamos la geometría con la dinámica. La Segunda Ley de Newton establece que el cambio en la cantidad de movimiento es igual a la fuerza neta multiplicada por el tiempo de acción: $\Delta\boldsymbol{p} = \boldsymbol{F} \Delta t$.
+
+Sustituimos esta equivalencia dinámica en la Ecuación (\ref{eq:delta_L_simplificado}):
+\begin{equation}
+    \Delta \boldsymbol{L} = \boldsymbol{r} \times (\boldsymbol{F} \Delta t).
+\end{equation}
+
+Como el tiempo $\Delta t$ es un número escalar, podemos factorizarlo algebraicamente fuera del producto cruz:
+\begin{equation}
+    \Delta \boldsymbol{L} = (\boldsymbol{r} \times \boldsymbol{F}) \Delta t.
+\end{equation}
+
+Reconocemos inmediatamente que el término entre paréntesis es la definición formal del torque: $\boldsymbol{\tau} = \boldsymbol{r} \times \boldsymbol{F}$. Por lo tanto:
+\begin{equation}
+    \Delta \boldsymbol{L} = \boldsymbol{\tau} \Delta t.
+\end{equation}
+
+\textbf{Conclusión Lógica:}
+Si el torque neto aplicado sobre el objeto es igual a cero ($\boldsymbol{\tau} = \boldsymbol{0}$), entonces la ecuación nos obliga ineludiblemente a que:
+\begin{equation}
+    \Delta \boldsymbol{L} = \boldsymbol{0} \cdot \Delta t = \boldsymbol{0}.
+\end{equation}
+Al ser el cambio en el momento angular estrictamente nulo ($\Delta \boldsymbol{L} = \boldsymbol{0}$), queda demostrado algebraicamente que el vector $\boldsymbol{L}$ no cambia ni en magnitud ni en dirección; el momento angular \textbf{se conserva}.
 
 \section{Derivación Simplificada de las Leyes de Kepler}
 
@@ -6064,6 +6136,100 @@ Sustituyendo los valores:
 \textbf{Interpretación Física:}
 Para poner este asombroso resultado en perspectiva, el radio de un solo núcleo atómico es del orden de $10^{-15} \text{ m}$. El desplazamiento de la Tierra al caer la piedra es \textbf{cien millones de veces más pequeño que un núcleo atómico}. Por esta razón, en la física aplicada y en la vida cotidiana, es una aproximación matemáticamente perfecta asumir que la Tierra permanece rígidamente inmóvil mientras los objetos caen.
 
+\subsubsection{Ejercicio Conceptual: La Paradoja de la Caída Libre (El Experimento Mental de Galileo).}
+    
+    Antes de los estudios de Galileo y Newton, la física aristotélica afirmaba que los objetos más pesados caían más rápido que los objetos más ligeros. Para demostrar que esta suposición era ilógica, Galileo imaginó el escenario ilustrado en la Figura \ref{fig:paradoja_galileo}.
+    
+    Imagine dos piedras: una piedra pesada (Masa $M$) y una piedra ligera (Masa $m$). Según la teoría antigua, $M$ cae más rápido que $m$. Ahora imagine que atamos o pegamos ambas piedras con una cuerda para formar un solo objeto de masa combinada ($M + m$).
+    
+    \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=1.1]
+        
+        % Línea de inicio (Techo / Reposo)
+        \draw[thick, gray!80!black, dashed] (-1, 4) -- (8, 4);
+        \node[above, gray!80!black] at (3.5, 4) {Línea de lanzamiento (Reposo)};
+
+        % ESCENARIO 1: Piedra pesada (M)
+        \coordinate (M) at (1, 2.5);
+        \draw[fill=gray!60, thick] (M) circle (0.6) node[font=\large] {$M$};
+        \draw[->, ultra thick, red] (1, 1.8) -- (1, -0.5) node[midway, left] {Rápido};
+
+        % ESCENARIO 2: Piedra ligera (m)
+        \coordinate (m) at (3.5, 3.2);
+        \draw[fill=gray!30, thick] (m) circle (0.3) node {$m$};
+        \draw[->, thick, blue] (3.5, 2.8) -- (3.5, 1.2) node[midway, left] {Lento};
+
+        % ESCENARIO 3: Sistema Atado (M + m)
+        \coordinate (M_tied) at (6.5, 2.2);
+        \coordinate (m_tied) at (6.5, 3.3);
+        
+        % Cuerda tensa uniendo las masas
+        \draw[thick, double, brown!80!black] (M_tied) -- (m_tied);
+        
+        % Piedras atadas
+        \draw[fill=gray!60, thick] (M_tied) circle (0.6) node[font=\large] {$M$};
+        \draw[fill=gray!30, thick] (m_tied) circle (0.3) node {$m$};
+
+        % Contradicción (Flechas interrogativas punteadas)
+        % Opción A (más lento por el freno de m)
+        \draw[->, thick, purple, dashed] (5.7, 1.5) -- (5.7, 0.2) node[below, align=center, font=\footnotesize] {¿Frenado?\\($m$ retrasa a $M$)};
+        % Opción B (más rápido por ser más pesado)
+        \draw[->, ultra thick, orange!90!black, dashed] (7.3, 1.5) -- (7.3, -1.0) node[below, align=center, font=\footnotesize] {¿Acelerado?\\($M+m > M$)};
+
+    \end{tikzpicture}
+    \caption{El experimento mental de Galileo. Si los objetos pesados cayeran más rápido que los ligeros, atar dos piedras crearía un sistema que debería caer más lento (porque la piedra ligera lo frena) y, simultáneamente, más rápido (porque la masa total es mayor). Esta contradicción lógica solo se resuelve si la aceleración de caída es independiente de la masa.}
+    \label{fig:paradoja_galileo}
+    \end{figure}
+
+    \begin{enumerate}
+        \item[a)] Por un lado, argumente qué debería pasar con la velocidad de caída de este nuevo sistema si la piedra ligera, que se supone cae más despacio, actúa como un ``paracaídas'' o freno mecánico para la piedra pesada que intenta caer más rápido.
+        \item[b)] Por otro lado, analice la masa total del nuevo objeto ($M + m$). Como esta masa combinada es mayor que la de la piedra pesada sola ($M+m > M$), argumente qué debería pasar con su velocidad de caída según la propia teoría antigua.
+        \item[c)] Demuestre cómo estas dos conclusiones simultáneas generan una contradicción lógica insalvable. Finalmente, apoyándose en la ecuación de la Ley de Gravitación Universal y la Segunda Ley de Newton ($|\boldsymbol{F}| = ma$), explique algebraicamente cuál es la única resolución posible a esta paradoja en el mundo real. 
+        
+        \textit{[Resp. Conceptual: a) El sistema caería a una velocidad intermedia; b) El sistema caería más rápido que $M$ sola; c) La contradicción es que la misma configuración atada no puede caer simultáneamente más lento y más rápido que $M$. La única solución congruente, respaldada algebraicamente al igualar la gravedad y la inercia $\left(G\frac{M_T m}{r^2} = ma\right)$, es que la masa $m$ se cancela a ambos lados. La aceleración $a$ (que es la magnitud del campo gravitacional siempre presente) es estrictamente independiente de la masa, por ende, todos los objetos caen exactamente con la misma aceleración en el vacío].}
+    \end{enumerate}
+
+
+\subsubsection*{Problemas Cuantitativos Propuestos}
+
+A continuación, se presentan diez ejercicios para evaluar la asimilación de los conceptos dinámicos, energéticos y cinemáticos desarrollados en este capítulo. Se recomienda dibujar un diagrama de cuerpo libre o un esquema de la situación antes de plantear las ecuaciones. Use $g \approx 9.8 \text{ m/s}^2$ a menos que se indique lo contrario.
+
+\begin{enumerate}
+    \item \textbf{Leyes de Newton y Trabajo:} Un automóvil de masa $m = 1200 \text{ kg}$ acelera en línea recta desde el reposo hasta alcanzar una velocidad de $25 \text{ m/s}$ en un tiempo de $10 \text{ s}$ bajo la acción de una fuerza neta constante. 
+    \begin{enumerate}
+        \item Calcule la magnitud de la aceleración constante y la fuerza neta $\boldsymbol{F}$ aplicada sobre el vehículo.
+        \item Utilizando la ecuación cinemática sin tiempo, calcule el desplazamiento total y luego encuentre el trabajo mecánico total $W$ realizado sobre el auto. \textit{[Resp: a) $a = 2.5 \text{ m/s}^2$, $F = 3000 \text{ N}$; b) $\Delta x = 125 \text{ m}$, $W = 375 \text{ kJ}$]}
+    \end{enumerate}
+
+    \item \textbf{Conservación de la Energía Mecánica:} Un bloque de piedra de $2.0 \text{ kg}$ se deja caer desde el reposo desde lo alto de un acantilado de $50 \text{ m}$ de altura. Despreciando la resistencia del aire y utilizando exclusivamente el principio de conservación de la energía mecánica ($K_i + U_i = K_f + U_f$), calcule la magnitud de la velocidad del bloque justo un instante antes de impactar contra el suelo. \textit{[Resp: $v_f \approx 31.3 \text{ m/s}$]}
+
+    \item \textbf{Movimiento Parabólico:} Un jugador de fútbol patea un balón desde el nivel del suelo, imprimiéndole una velocidad inicial de $20 \text{ m/s}$ con un ángulo de elevación de $45^\circ$ respecto a la horizontal. 
+    \begin{enumerate}
+        \item Calcule la altura máxima $H$ alcanzada por el balón.
+        \item Calcule el alcance horizontal máximo $R$. \textit{[Resp: a) $H \approx 10.2 \text{ m}$; b) $R \approx 40.8 \text{ m}$]}
+    \end{enumerate}
+
+    \item \textbf{Fuerzas y Fricción con Ángulo:} Un cajón de madera de $10 \text{ kg}$ es arrastrado hacia la derecha sobre un piso horizontal. Una persona tira de él mediante una cuerda que ejerce una fuerza de $50 \text{ N}$ formando un ángulo de $30^\circ$ por encima de la horizontal. Si el cajón se mueve con \textbf{velocidad constante} (es decir, la aceleración es nula), calcule primero la fuerza normal $F_N$ ejercida por el suelo, y luego determine el coeficiente de fricción cinética $\mu_k$ entre la caja y el piso. \textit{[Resp: $F_N = 73 \text{ N}$, $\mu_k \approx 0.59$]}
+
+    \item \textbf{Fuerza Centrípeta:} Una pequeña esfera de $0.5 \text{ kg}$ está atada a una cuerda inextensible de $1.2 \text{ m}$ de longitud. La esfera gira en un círculo horizontal sobre una mesa de hielo sin fricción, completando su órbita a una rapidez constante de $6.0 \text{ m/s}$. Sabiendo que la tensión de la cuerda proporciona toda la fuerza centrípeta necesaria, calcule la magnitud de dicha tensión. \textit{[Resp: $T = 15 \text{ N}$]}
+
+    \item \textbf{Gravitación Universal (Campo Gravitacional):} Sabiendo que el planeta Marte tiene una masa de aproximadamente $M_M = 6.42 \times 10^{23} \text{ kg}$ y un radio ecuatorial de $R_M = 3390 \text{ km}$, utilice la fórmula del campo gravitacional deducida de la Ley de Newton para calcular el valor de la aceleración de la gravedad en la superficie marciana ($g_{\text{Marte}}$). \textit{[Resp: $g_{\text{Marte}} \approx 3.73 \text{ m/s}^2$]}
+
+    \item \textbf{Leyes de Kepler y Velocidad Orbital:} Un telescopio espacial orbita la Tierra en una órbita perfectamente circular a una altitud de $400 \text{ km}$ por encima de la superficie terrestre. (Datos: Masa de la Tierra $M_T = 5.97 \times 10^{24} \text{ kg}$, Radio de la Tierra $R_T = 6371 \text{ km}$, $G \approx 6.674 \times 10^{-11} \text{ N}\cdot\text{m}^2/\text{kg}^2$).
+    \begin{enumerate}
+        \item Teniendo en cuenta que el radio de la órbita se mide desde el centro del planeta, calcule la magnitud de la velocidad orbital $v_{\text{orb}}$.
+        \item Calcule su período orbital $T$ en minutos. \textit{[Resp: a) $v_{\text{orb}} \approx 7.67 \text{ km/s}$; b) $T \approx 92.4 \text{ minutos}$]}
+    \end{enumerate}
+
+    \item \textbf{Conservación del Momento (Colisión Inelástica):} Un patinador sobre hielo de $70 \text{ kg}$ se desliza suavemente hacia la derecha a una velocidad de $4.0 \text{ m/s}$. De frente a él, se desliza una pesada mochila de $10 \text{ kg}$ lanzada hacia la izquierda a $2.0 \text{ m/s}$. El patinador atrapa la mochila en pleno movimiento y la abraza, moviéndose ambos juntos después de la captura. Utilizando la conservación de la cantidad de movimiento, calcule la magnitud y dirección de la velocidad final del patinador con la mochila. \textit{[Resp: $v_f = 3.25 \text{ m/s}$ hacia la derecha]}
+
+    \item \textbf{Colisiones Elásticas y Casos Límite:} Una partícula subatómica de masa $m$ viaja a una velocidad inicial $v_{1i} = 3.0 \times 10^6 \text{ m/s}$ y choca de forma frontal y perfectamente elástica contra una partícula objetivo estacionaria ($v_{2i} = 0$). Si ambas partículas tienen \textbf{exactamente la misma masa} ($m_1 = m_2 = m$), utilice las ecuaciones analíticas derivadas en la sección de colisiones elásticas para demostrar matemáticamente cuáles serán las velocidades finales $v_{1f}$ y $v_{2f}$ de ambas partículas. \textit{[Resp: $v_{1f} = 0$, $v_{2f} = 3.0 \times 10^6 \text{ m/s}$]}
+
+    \item \textbf{Cálculo del Centro de Masas:} Tres masas puntuales se encuentran dispuestas a lo largo de un riel unidimensional (eje $x$). La primera masa $m_1 = 2.0 \text{ kg}$ se encuentra en el origen ($x_1 = 0 \text{ m}$), la segunda masa $m_2 = 3.0 \text{ kg}$ está ubicada en $x_2 = 4.0 \text{ m}$, y la tercera masa $m_3 = 5.0 \text{ kg}$ está en $x_3 = 8.0 \text{ m}$. Aplique la fórmula geométrica del Centro de Masas para encontrar la posición $x_{\text{CM}}$ donde el sistema completo podría equilibrarse perfectamente. \textit{[Resp: $x_{\text{CM}} = 5.2 \text{ m}$]}
+
+    \item \textbf{Conservación del Momento Angular (Fuerzas Centrales):} Un cometa describe una órbita elíptica alrededor del Sol. En su perihelio (el punto de su órbita más cercano al Sol), se encuentra a una distancia $r_p = 0.5 \text{ UA}$ (Unidades Astronómicas) del centro del Sol y viaja a una velocidad máxima de $v_p = 54 \text{ km/s}$. Tiempo después, el cometa alcanza su afelio (el punto más alejado de su trayectoria), a una distancia de $r_a = 3.0 \text{ UA}$. Sabiendo que la fuerza de gravedad del Sol es una fuerza central (siempre paralela al vector de posición $\boldsymbol{r}$, por lo que el torque neto es $\boldsymbol{\tau} = \boldsymbol{0}$), aplique algebraicamente el principio de conservación del momento angular en magnitud ($L_i = L_f \implies m v_p r_p = m v_a r_a$) para calcular la velocidad del cometa en el afelio, $v_a$. \textit{[Resp: $v_a = 9.0 \text{ km/s}$]}
+\end{enumerate}
 
 
 \chapter{Electromagnetismo}
@@ -6361,7 +6527,8 @@ La diferencia entre la energía electrostática almacenada antes y después de l
 \end{itemize}
 La diferencia de energía liberada es:
 \[ \Delta E_{\text{electrostática}} = U_{\text{Uranio}} - U_{\text{fragmentos}} \approx \SI{944}{\mega\electronvolt} - \SI{650}{\mega\electronvolt} \approx \SI{294}{\mega\electronvolt} \]
-Este valor, derivado puramente de la repulsión de Coulomb, se aproxima de manera sorprendente a la energía total liberada en una reacción de fisión (que experimentalmente es de unos \SI{200}{\mega\electronvolt}). Lise Meitner y Otto Frisch fueron los primeros en realizar este cálculo, explicando así el origen de la enorme cantidad de energía descubierta por Otto Hahn y Fritz Strassmann.
+Este valor, derivado puramente de la repulsión de Coulomb, se aproxima de manera sorprendente a la energía total liberada en una reacción de fisión (que experimentalmente es de unos \SI{200}{\mega\electronvolt}). Lise Meitner y Otto Frisch fueron los primeros en realizar este cálculo, explicando así el origen de la enorme cantidad de energía descubierta por Otto Hahn y Fritz Strassmann. El $85\%$ de esos $\qty{200}{MeV}$
+se manifiesta cuando los dos nuevos núcleos creados salen disparados en direcciones opuestas a velocidades increíbles (alrededor del $3\%$ de la velocidad de la luz), y rozando fuertemente contra su entorno microscópico, produciendo un calor intenso.
 
 El ${}^{235}_{92}\text{U}$ existe en nuestros días en una proporción del $0.7\%$ con respecto a ${}^{238}_{92}\text{U}$. En los reactores nucleares la principal reacción de éste último es la creación de plutonio a través de la captura de neutrones
 \begin{align*}
@@ -6399,11 +6566,7 @@ Por consiguiente
 donde
 \begin{itemize}
     \item $P$ es la potencia
-    \item  $V$ es el Potencial eléctrico, 
-
-  (realmente la diferencia de potencial)
-    
-    llamado coloquialmente el 
+    \item  $V$ es el Potencial eléctrico (realmente la diferencia de potencial), llamado coloquialmente el 
     \emph{Voltaje}
     \item $I$ es la corriente eléctrica
 \end{itemize}
@@ -7189,7 +7352,7 @@ Para resolver la paradoja de la inestabilidad del átomo, Niels Bohr propuso en 
 
 Para encontrar estas órbitas, Bohr introdujo un postulado de \textbf{cuantización}: El momento angular ($L$) del electrón no puede tener cualquier valor, sino solo múltiplos enteros de una constante fundamental.
 
-\section{Las Dos Ecuaciones Fundamentales}
+\subsection{Las Dos Ecuaciones Fundamentales}
 
 Para derivar el modelo, solo necesitamos plantear un sistema de dos ecuaciones algebraicas con dos incógnitas: la velocidad ($v$) y el radio ($r$).
 
@@ -7211,7 +7374,7 @@ debe ser un múltiplo entero de la constante de Planck reducida ($\hbar = \frac{
     \label{eq:bohr_quant}
 \end{equation}
 
-\section{Derivación Algebraica del Radio de Bohr}
+\subsection{Derivación Algebraica del Radio de Bohr}
 
 Nuestro objetivo es encontrar el radio $r$. Tenemos un sistema de ecuaciones.
 Primero, despejamos la velocidad $v$ de la ecuación de cuantización (\ref{eq:bohr_quant}):
@@ -7244,7 +7407,7 @@ Finalmente, despejamos $r$. Al depender del número entero $n$, lo llamaremos $r
     a_0 \approx 5.29 \times 10^{-11} \text{ m}.
 \end{equation}
 
-\section{Derivación de los Niveles de Energía}
+\subsection{Derivación de los Niveles de Energía}
 
 Ahora calculamos la energía total permitida para cada órbita.
 Como vimos anteriormente en la ecuación~\eqref{eq:HE}, la energía total mecánica es
