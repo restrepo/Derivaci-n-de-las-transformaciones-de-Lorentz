@@ -4590,44 +4590,91 @@ La fuerza centrípeta es la fuerza neta requerida para mantener a un objeto en u
 
 \subsection{Paso 1: Derivación de la Aceleración Centrípeta ($a_c$)}
 
-La aceleración es el cambio de velocidad en el tiempo ($a = \Delta v / \Delta t$). En el movimiento circular uniforme, la rapidez es constante, pero el vector velocidad cambia continuamente de dirección. Esta aceleración se dirige siempre hacia el centro del círculo.
+La aceleración es el cambio de velocidad en el tiempo ($a = \Delta v / \Delta t$). En el movimiento circular uniforme, la rapidez es constante, pero el vector velocidad cambia continuamente de dirección. Como veremos, esta aceleración se dirige siempre hacia el centro del círculo.
 
 \paragraph{Configuración Geométrica:}
 Consideremos un objeto que se mueve en un círculo de radio $r$. Analizamos dos puntos en su trayectoria, $P_1$ y $P_2$, separados por un pequeño ángulo $\Delta \theta$ en un intervalo de tiempo $\Delta t$.
 
-\begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}[
-        scale=1.2,
-        vector/.style={->, >=Stealth, thick},
-        line/.style={dashed, gray}
-    ]
-        % Triángulo de Posición
-        \node at (1.5, 2.5) {\textbf{Triángulo de Posición}};
-        \draw[line] (0,0) circle (2cm);
-        \draw[vector] (0,0) -- (30:2) node[midway, above right] {$\boldsymbol{r}_1$};
-        \draw[vector] (0,0) -- (90:2) node[midway, above left]  {$\boldsymbol{r}_2$};
-        \draw[vector, blue, thick] (30:2) -- (90:2) node[midway, left] {$\Delta \boldsymbol{r}$};
-        \draw (0.3,0) arc (0:90:0.3);
-        \node at (45:0.5) {$\Delta \theta$};
 
-        % Triángulo de Velocidad
-        \begin{scope}[xshift=5cm, yshift=1cm]
-            \node at (0, 1.5) {\textbf{Triángulo de Velocidad}};
-            % Movemos los vectores para que coincidan sus orígenes
-            \draw[vector] (0,0) -- (120:1.5) node[midway, above left] {$\boldsymbol{v}_1$};
-            \draw[vector] (0,0) -- (180:1.5) node[midway, above]       {$\boldsymbol{v}_2$};
-            \draw[vector, red, thick] (120:1.5) -- (180:1.5) node[midway, below] {$\Delta \boldsymbol{v}$};
-            \draw (0,0) -- ++(150:0.4);
-            \draw (150:0.4) arc (150:210:0.4);
-            \node at (180:0.6) {$\Delta \theta$};
-        \end{scope}
-    \end{tikzpicture}
-    \caption{A la izquierda, el triángulo isósceles formado por los vectores de posición $\boldsymbol{r}_1, \boldsymbol{r}_2$ y el desplazamiento $\Delta\boldsymbol{r}$. A la derecha, el triángulo isósceles formado por los vectores de velocidad $\boldsymbol{v}_1, \boldsymbol{v}_2$ y el cambio de velocidad $\Delta\boldsymbol{v}$. Ambos triángulos son semejantes.}
-    \label{fig:triangulos_centripeta}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth, scale=1.3]
+
+    % Definición de parámetros geométricos
+    \def\R{3}             % Radio del círculo
+    \def\angA{15}         % Ángulo del punto 1
+    \def\angB{75}         % Ángulo del punto 2
+    \def\angMid{45}       % Ángulo del punto medio de la trayectoria
+    \def\Vlen{2.2}        % Longitud a escala de los vectores de velocidad
+
+    % Origen
+    \coordinate (O) at (0,0);
+
+    % Puntos sobre la trayectoria circular
+    \coordinate (P1) at (\angA:\R);
+    \coordinate (P2) at (\angB:\R);
+    \coordinate (Pmid) at (\angMid:\R);
+
+    % Vectores de velocidad (Tangentes, por lo que su ángulo es \theta + 90)
+    \coordinate (V1) at (\angA+90:\Vlen);
+    \coordinate (V2) at (\angB+90:\Vlen);
+
+    % Puntas de los vectores de velocidad originados en P1 y P2
+    \coordinate (P1_V1) at ($ (P1) + (V1) $);
+    \coordinate (P2_V2) at ($ (P2) + (V2) $);
+
+    % Copia de V1 trasladada a P2 para hacer la resta vectorial
+    \coordinate (P2_V1) at ($ (P2) + (V1) $);
+
+    % Vector Delta V (de la punta de la copia de V1 a la punta de V2)
+    \coordinate (DeltaV) at ($ (V2) - (V1) $);
+    
+    % Copia de Delta V trasladada al punto medio para evidenciar que apunta al centro
+    \coordinate (Pmid_a) at ($ (Pmid) + (DeltaV) $);
+
+    % --- DIBUJO ---
+
+    % Trayectoria circular
+    \draw[thick, gray!50, dashed] (O) circle (\R);
+    \fill[gray!80!black] (O) circle (1.5pt) node[below left, text=black] {$O$};
+
+    % Vectores de Posición (Azules)
+    \draw[->, thick, blue!80!black] (O) -- (P1) node[midway, below right] {$\boldsymbol{r}_1$};
+    \draw[->, thick, blue!80!black] (O) -- (P2) node[midway, above left] {$\boldsymbol{r}_2$};
+    \draw[->, thick, blue!80!black] (P1) -- (P2) node[midway, right] {$\Delta\boldsymbol{r}$};
+
+    % Ángulo Delta Theta en el origen
+    \draw[thick, gray] (\angA:0.6) arc (\angA:\angB:0.6);
+    \node[gray] at (\angMid:0.8) {$\Delta\theta$};
+
+    % Vectores de Velocidad originales (Verdes)
+    \draw[->, ultra thick, green!60!black] (P1) -- (P1_V1) node[above right] {$\boldsymbol{v}_1$};
+    \draw[->, ultra thick, green!60!black] (P2) -- (P2_V2) node[above left] {$\boldsymbol{v}_2$};
+
+    % Triángulo de velocidades construido en P2
+    \draw[->, thick, green!60!black, dashed, opacity=0.7] (P2) -- (P2_V1) node[right, opacity=1] {$\boldsymbol{v}_1$ (copia)};
+    \draw[->, ultra thick, red] (P2_V1) -- (P2_V2) node[midway, above right] {$\Delta\boldsymbol{v}$};
+
+    % Ángulo Delta Theta entre los vectores de velocidad
+    \draw[gray, thick] ($ (P2) + (\angA+90:0.5) $) arc (\angA+90:\angB+90:0.5);
+    \node[gray] at ($ (P2) + (\angMid+90:0.7) $) {$\Delta\theta$};
+
+    % Duplicado de Delta V (Aceleración) apuntando al centro desde el punto medio
+    \draw[dotted, gray, thick] (Pmid) -- (O); % Línea de guía visual hacia el centro
+    \draw[->, ultra thick, red] (Pmid) -- (Pmid_a) node[midway, right] {$\Delta\boldsymbol{v} \propto \boldsymbol{a}_c$};
+
+    % Puntos marcados
+    \fill[black] (P1) circle (1.5pt) node[right, xshift=2pt] {$P_1$};
+    \fill[black] (P2) circle (1.5pt) node[above, yshift=2pt] {$P_2$};
+    \fill[black] (Pmid) circle (1.5pt) node[above right] {Medio};
+
+\end{tikzpicture}
+\caption{Derivación geométrica de la aceleración centrípeta en un único círculo. Al trasladar el vector $\boldsymbol{v}_1$ hacia $P_2$, se forma el triángulo de velocidades que define $\Delta\boldsymbol{v}$. Si duplicamos este vector $\Delta\boldsymbol{v}$ y lo ubicamos en el punto medio del desplazamiento espacial, observamos visualmente que se alinea a la perfección con la línea radial punteada, apuntando exactamente hacia el centro del círculo ($O$). Esto demuestra de forma irrefutable la naturaleza ``centrípeta'' (que busca el centro) de la aceleración.}
+\label{fig:aceleracion_centripeta}
 \end{figure}
 
-Como se muestra en la Figura~\ref{fig:triangulos_centripeta}, el triángulo de posición (formado por $\boldsymbol{r}_1, \boldsymbol{r}_2, \Delta\boldsymbol{r}$) y el triángulo de velocidad (formado por $\boldsymbol{v}_1, \boldsymbol{v}_2, \Delta\boldsymbol{v}$) son \textbf{triángulos semejantes}. Ambos son isósceles y el ángulo entre sus lados iguales es el mismo ($\Delta \theta$).
+Como se muestra en la Figura~\ref{fig:aceleracion_centripeta}, el triángulo de posición (formado por $\boldsymbol{r}_1, \boldsymbol{r}_2, \Delta\boldsymbol{r}$) y el triángulo de velocidad (formado por $\boldsymbol{v}_1, \boldsymbol{v}_2, \Delta\boldsymbol{v}$) son \textbf{triángulos semejantes}. Ambos son isósceles y el ángulo entre sus lados iguales es el mismo ($\Delta \theta$).
 
 Debido a la semejanza, la razón de las longitudes de sus lados correspondientes debe ser igual:
 \[ \frac{|\Delta \boldsymbol{v}|}{v} = \frac{|\Delta \boldsymbol{r}|}{r} \]
@@ -4635,16 +4682,18 @@ donde $v=|\boldsymbol{v}_1|=|\boldsymbol{v}_2|$ y $r=|\boldsymbol{r}_1|=|\boldsy
 
 Despejamos la magnitud del cambio de velocidad y dividimos por $\Delta t$:
 \[ |\Delta \boldsymbol{v}| = \frac{v}{r} |\Delta \boldsymbol{r}| \implies \frac{|\Delta \boldsymbol{v}|}{\Delta t} = \frac{v}{r} \frac{|\Delta \boldsymbol{r}|}{\Delta t} \]
-La aceleración instantánea es el límite de esta expresión cuando $\Delta t \to 0$.
-\[ a_c = \lim_{\Delta t \to 0} \frac{|\Delta \boldsymbol{v}|}{\Delta t} = \lim_{\Delta t \to 0} \left( \frac{v}{r} \frac{|\Delta \boldsymbol{r}|}{\Delta t} \right) \]
-En este límite, $\lim_{\Delta t \to 0} \frac{|\Delta \boldsymbol{r}|}{\Delta t}$ es, por definición, la rapidez instantánea $v$. Por lo tanto:
+Como la magnitud de la aceleración es constante, podemos usar cualquier intervalo $\Delta t$ para su cálculo
+\[ 
+a_c =  \frac{|\Delta \boldsymbol{v}|}{\Delta t} =\frac{v}{r} \cdot v
+\]
+donde se ha usado que $v=\frac{|\Delta \boldsymbol{r}|}{\Delta t}$ es, por definición, la rapidez constante $v$. Por lo tanto:
 \[ a_c = \frac{v}{r} \cdot v \]
 Esto nos da la fórmula para la magnitud de la \textbf{aceleración centrípeta}:
 \begin{equation}
 \label{eq:acentripeta}
-    \boxed{a_c = \frac{v^2}{r}}
+    \boxed{a_c = \frac{v^2}{r}}\,.
 \end{equation}
-Geométricamente, se puede demostrar que a medida que $\Delta t \to 0$, el vector $\Delta \boldsymbol{v}$ apunta directamente hacia el centro del círculo.
+Si ubicamos el vector $\Delta\boldsymbol{a}_c$ en el punto medio del desplazamiento espacial, observamos visualmente que se alinea a la perfección con la línea radial punteada, apuntando exactamente hacia el centro del círculo ($O$), como se ilustra en la figura~\ref{fig:aceleracion_centripeta}.
 
 \subsection{Paso 2: Aplicación de la Segunda Ley de Newton}
 Ahora que tenemos la aceleración, encontrar la fuerza es directo. La Segunda Ley de Newton establece que la fuerza neta es igual a la masa por la aceleración ($\boldsymbol{F}_{\text{neta}} = m\boldsymbol{a}$).
@@ -6544,10 +6593,104 @@ El Neptunio-239 (${}^{239}_{93}\text{Np}$) también es inestable y sufre otro de
 \end{align*}
 Resultado: Se ha creado un nuevo elemento, el Plutonio-239 (${}^{239}_{94}\text{Pu}$). Note que los nombres de estos dos elementos de la tabla períodica reciben su nombre a semejanza de cuando había nueve planetas y teníamos a Urano, Neptuno y Plutón. 
 
+
+\subsubsection{La Naturaleza Electrostática de los Enlaces Químicos}
+
+Habiendo estudiado la Ley de Coulomb y la energía potencial electrostática ($U_e$), podemos comprender uno de los fenómenos más importantes del universo: cómo y por qué se unen los átomos para formar la materia que nos rodea. En última instancia, toda la química —desde la formación de una simple molécula de agua hasta la compleja estructura del ADN— no es más que una manifestación directa de las interacciones electrostáticas.
+
+Cuando dos átomos se acercan, interactúan sus nubes de electrones (con carga negativa) y sus núcleos (con carga positiva). Dependiendo de cómo se redistribuyan estos electrones para minimizar la energía potencial del sistema, surgen diferentes tipos de enlaces, todos gobernados por la fuerza eléctrica.
+
+\paragraph{1. Enlace Iónico: La Atracción Directa}
+En un enlace iónico (como en la sal de mesa, NaCl), un átomo cede completamente uno o más electrones a otro. Esto genera dos iones: un catión (carga positiva) y un anión (carga negativa). 
+La física de este enlace es la más sencilla de modelar algebraicamente. Una vez formados los iones, experimentan una atracción puramente coulómbica que los mantiene unidos en una red cristalina. La energía potencial que los une es extremadamente negativa (lo que implica un estado muy estable) y se describe mediante nuestra fórmula ya conocida:
+\begin{equation}
+    U_e = -k \frac{|q_1| |q_2|}{r}.
+\end{equation}
+
+\paragraph{2. Enlace Covalente: El Equilibrio de Fuerzas}
+En muchas moléculas (como el gas hidrógeno, $\text{H}_2$), los átomos no ceden electrones, sino que los ``comparten''. Físicamente, esto significa que los electrones compartidos se ubican en el espacio \textit{entre} los dos núcleos positivos.
+
+Para entender por qué esto mantiene unidos a los átomos, debemos analizar el balance de las fuerzas electrostáticas (ver Figura \ref{fig:enlace_covalente}).
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth, scale=1.2]
+    
+    % Núcleos (Protones)
+    \coordinate (N1) at (-2.5, 0);
+    \coordinate (N2) at (2.5, 0);
+    
+    % Electrones compartidos (en el centro)
+    \coordinate (E1) at (0, 0.4);
+    \coordinate (E2) at (0, -0.4);
+
+    % Dibujar núcleos
+    \draw[fill=red!20, draw=red, thick] (N1) circle (0.3) node[text=red!80!black] {$+$};
+    \draw[fill=red!20, draw=red, thick] (N2) circle (0.3) node[text=red!80!black] {$+$};
+    
+    % Dibujar electrones
+    \draw[fill=blue!20, draw=blue, thick] (E1) circle (0.15) node[text=blue!80!black, font=\scriptsize] {$-$};
+    \draw[fill=blue!20, draw=blue, thick] (E2) circle (0.15) node[text=blue!80!black, font=\scriptsize] {$-$};
+
+    % Nube electrónica compartida (esquemática)
+    \draw[dashed, blue, thick, opacity=0.5] (0,0) ellipse (1.2 and 1);
+
+    % Fuerzas de REPULSIÓN (Rojas, hacia afuera)
+    \draw[->, ultra thick, red!80!black] (N1) ++(-0.4, 0) -- ++(-1, 0) node[above] {$\boldsymbol{F}_{\text{repulsión}}$};
+    \draw[->, ultra thick, red!80!black] (N2) ++(0.4, 0) -- ++(1, 0) node[above] {$\boldsymbol{F}_{\text{repulsión}}$};
+
+    % Fuerzas de ATRACCIÓN (Azules, hacia el centro)
+    \draw[->, ultra thick, blue!80!black] (N1) ++(0.35, 0.1) -- (E1) node[midway, above left, font=\scriptsize] {$\boldsymbol{F}_{\text{atracción}}$};
+    \draw[->, ultra thick, blue!80!black] (N1) ++(0.35, -0.1) -- (E2);
+    
+    \draw[->, ultra thick, blue!80!black] (N2) ++(-0.35, 0.1) -- (E1) node[midway, above right, font=\scriptsize] {$\boldsymbol{F}_{\text{atracción}}$};
+    \draw[->, ultra thick, blue!80!black] (N2) ++(-0.35, -0.1) -- (E2);
+
+\end{tikzpicture}
+\caption{Modelo electrostático de un enlace covalente (por ejemplo, $\text{H}_2$). Los dos núcleos positivos se repelen mutuamente. Sin embargo, los electrones ubicados en la región central atraen a ambos núcleos simultáneamente. Si la fuerza de atracción atractiva combinada supera a la repulsión nuclear, la molécula es estable.}
+\label{fig:enlace_covalente}
+\end{figure}
+
+El sistema alcanza un estado estable únicamente cuando la distancia entre los núcleos es tal que la enorme energía de repulsión entre ellos ($+U_e$) es compensada e incluso superada por la energía de atracción hacia los electrones centrales ($-U_e$). En términos de fuerzas, la molécula no se desintegra porque la fuerza neta sobre cada núcleo es cero:
+\begin{equation}
+    \sum \boldsymbol{F}_{\text{sobre un núcleo}} = \boldsymbol{F}_{\text{repulsión (núcleo-núcleo)}} + \boldsymbol{F}_{\text{atracción (núcleo-electrones)}} = \boldsymbol{0}.
+\end{equation}
+
+\paragraph{3. Enlace Metálico: El ``Mar'' de Electrones}
+En un trozo de metal sólido (como un cable de cobre), los átomos liberan sus electrones más externos. Esto deja una red tridimensional rígida de cationes positivos sumergidos en un fluido o ``mar'' de electrones negativos con gran movilidad. La atracción electrostática entre los iones positivos y este fluido negativo cohesiona el metal. Es precisamente la tremenda movilidad de estas cargas en el espacio libre de la red lo que hace que los metales sean excelentes conductores de la corriente eléctrica (tema que abordaremos en la siguiente sección).
+
+\paragraph{4. Interacciones Intermoleculares: Dipolos Permanentes y Fuerzas de Van der Waals}
+
+Incluso las moléculas que son globalmente neutras (cuya carga total es cero) experimentan fuerzas eléctricas que determinan sus estados físicos. Esto ocurre debido a la distribución asimétrica de la carga en el espacio.
+
+Por un lado, tenemos moléculas con \textbf{dipolos permanentes} (como el agua, $\text{H}_2\text{O}$). En estas moléculas covalentes, los electrones no se comparten de forma equitativa. Se acumulan más cerca de un átomo (como el oxígeno) dándole una carga parcial negativa ($\delta^-$), y dejando a los otros átomos (los hidrógenos) con una carga parcial positiva ($\delta^+$). La atracción electrostática entre el extremo positivo de una molécula y el extremo negativo de su vecina genera uniones como los llamados ``puentes de hidrógeno''.
+
+Por otro lado, existen las \textbf{Fuerzas de Van der Waals} (específicamente las fuerzas de dispersión de London). Estas son las interacciones electrostáticas más sorprendentes, ya que explican cómo pueden atraerse moléculas que son completamente apolares y simétricas (como el gas nitrógeno, $\text{N}_2$, o los gases nobles). 
+¿De dónde surge la fuerza eléctrica si la molécula no tiene polos positivos ni negativos fijos?
+
+La respuesta reside en el movimiento constante de los electrones. Aunque en promedio la nube electrónica es simétrica, en cualquier instante infinitesimal de tiempo ($t_0$), los electrones pueden encontrarse casualmente agrupados hacia un lado del átomo o molécula. Esto crea un \textbf{dipolo instantáneo} efímero. 
+La física electrostática nos dice que este polo negativo temporal repelerá a los electrones de las moléculas vecinas, induciendo en ellas un \textbf{dipolo inducido} con la polaridad opuesta.
+
+De forma algebraica, aunque cada carga involucrada es parcial ($\delta$), la ley de Coulomb sigue dictando la interacción atractiva neta entre estos diminutos polos enfrentados:
+\begin{equation}
+    |\boldsymbol{F}_{\text{Van der Waals}}| \propto \frac{|\delta^+| |\delta^-|}{r^7}.
+\end{equation}
+\textit{(Nota: La fuerza de Van der Waals decae con la distancia mucho más rápido ($1/r^7$) que la fuerza de Coulomb estándar entre cargas puntuales puras ($1/r^2$), debido a la compleja geometría de la interacción entre dipolos oscilantes).}
+
+Aunque son las interacciones electrostáticas más débiles, estas fuerzas son responsables de condensar los gases nobles en líquidos a muy bajas temperaturas y son el secreto biológico detrás de la capacidad de los lagartos gecko (cuyas patas tienen millones de pelillos microscópicos) para trepar por paredes de cristal mediante pura atracción eléctrica.
+
+
+
 \section{Corriente eléctrica}
 \begin{align}
     I =\frac{q}{t}
 \end{align}
+
+La corriente eléctrica está conformada típicamente por electrones en movimiento. En tal caso $q=n_e q_e$
+\begin{align}
+    I = \frac{n_e q_e}{t}\,,
+\end{align}
+donde $n_e$ es el número de electrones y $q_e$ la carga del electrón.
 
 De \eqref{eq:qV},
 \begin{align}
@@ -6570,6 +6713,39 @@ donde
     \emph{Voltaje}
     \item $I$ es la corriente eléctrica
 \end{itemize}
+
+\newpage
+\textbf{Ejemplo:} Calcule el número de electrones que fluyen por un punto particular cada segundo en un cable de cobre que transporta una corriente de $0.5 \text{ A}$.
+
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{0.5\textwidth}|p{0.45\textwidth}|}
+\hline
+\textbf{\textcolor{red}{Razonamiento}} & \textbf{\textcolor{red}{Desarrollo}} \\
+\hline
+Reorganice la ecuación $I = \frac{q}{t}$ para despejar $q$. & 
+$\begin{aligned}
+    I &= \frac{q}{t} \\
+    I \times t &= \left(\frac{q}{t}\right) \times t \\
+    \therefore q &= I \times t
+\end{aligned}$ \\
+\hline
+Calcule la cantidad de carga que fluye por el punto en cuestión sustituyendo los valores dados. & 
+$\begin{aligned}
+    q &= 0.5 \times 1 \\
+      &= 0.5 \text{ C}
+\end{aligned}$ \\
+\hline
+Encuentre el número de electrones dividiendo la carga entre la carga de un electrón ($1.6 \times 10^{-19} \text{ C}$). & 
+$\begin{aligned}
+    n_e &= \frac{q}{q_e} \\
+        &= \frac{0.5}{1.6 \times 10^{-19}} \\
+        &= 3.13 \times 10^{18} \text{ electrones.}
+\end{aligned}$ \\
+\hline
+\end{tabular}
+\end{table}
 
 % --- Inicio del código LaTeX para insertar ---
 
@@ -6615,7 +6791,7 @@ Considere la etiqueta para el consumo de energía de un electrodoméstico mostra
 \end{figure}
 
 \begin{align*}
-    \text{P} = &{34.7}{\frac{\cancel{\text{kW}}\cancel{\text{h}}}{\cancel{\text{mes}}}}
+    P = &{34.7}{\frac{\cancel{\text{kW}}\cancel{\text{h}}}{\cancel{\text{mes}}}}
     \left(\frac{\qty{1}{\cancel\month}}{\qty{720}{\cancel\hour}}\right)\frac{\qty{1000}{\watt}}{1\,\cancel{\text{kW}}}\\
     =& \qty{48}{\watt}
 \end{align*}
