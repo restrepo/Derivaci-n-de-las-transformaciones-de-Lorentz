@@ -4686,7 +4686,7 @@ Como la magnitud de la aceleración es constante, podemos usar cualquier interva
 \[ 
 a_c =  \frac{|\Delta \boldsymbol{v}|}{\Delta t} =\frac{v}{r} \cdot v
 \]
-donde se ha usado que $v=\frac{|\Delta \boldsymbol{r}|}{\Delta t}$ es, por definición, la rapidez constante $v$. Por lo tanto:
+donde se ha usado que ${|\Delta \boldsymbol{r}|}/{\Delta t}$ es, por definición, la rapidez constante $v$. Por lo tanto:
 \[ a_c = \frac{v}{r} \cdot v \]
 Esto nos da la fórmula para la magnitud de la \textbf{aceleración centrípeta}:
 \begin{equation}
@@ -6869,27 +6869,54 @@ Un imán genera un campo magnético de tipo dipolar similar al campo eléctrico 
 
 % --- Fin del código LaTeX ---
 
-\section{Electromagnetismo}
-Cuando una carga eléctrica se mueve o rota genera un campo magnético. 
+\section{Ley de Ampère}
+En electrostática, vimos que las cargas eléctricas generan campos eléctricos. En magnetismo, la regla fundamental descubierta por André-Marie Ampère establece que \textbf{las corrientes eléctricas (cargas en movimiento) generan campos magnéticos}. 
 
-En la ley de Ampere la corriente eléctrica que se mueve por un alambre, genera un campo magnético concéntrico, como se muestra en la figura~\ref{fig:ampere}  dado por la Ley de Ampere:
-\begin{align*}
-    B = \frac{\mu_0 I}{2\pi r}\,, 
-\end{align*}
+Para calcular la magnitud de este campo magnético sin recurrir a matemáticas avanzadas (como el cálculo integral), podemos utilizar una formulación geométrica y puramente algebraica de la Ley de Ampère. 
+
+Imaginemos un ``lazo cerrado'' imaginario (como una banda elástica geométrica) de longitud total $L$, que envuelve a una o varias corrientes eléctricas. Si el campo magnético $\boldsymbol{B}$ es constante a lo largo de este lazo y apunta siempre paralelo a él, la Ley de Ampère nos dice que el producto del campo por la longitud del lazo es directamente proporcional a la \textbf{corriente total encerrada} ($I_{\text{enc}}$) por dicho lazo:
+\begin{equation}
+    B \cdot L = \mu_0 I_{\text{enc}},
+    \label{eq:ampere_algebraica}
+\end{equation}
+donde $\mu_0 = 1.257 \times 10^{-6} \text{ T}\cdot\text{m/A}$ es la permeabilidad magnética del vacío, una constante universal que dicta qué tan fácil es establecer un campo magnético en el espacio vacío.
+
+Esta sencilla ecuación algebraica nos permite deducir inmediatamente las fórmulas para los campos magnéticos en diferentes geometrías cotidianas.
+
+\subsection{El Campo de un Alambre Recto}
+
+Imaginemos un cable recto y muy largo que transporta una corriente $I$. La simetría del cable nos dicta que el campo magnético $\boldsymbol{B}$ formará círculos perfectos a su alrededor, , como se muestra en la figura~\ref{fig:ampere}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.7]{ampere}
+    \caption{Ley de Ampère}
+    \label{fig:ampere}
+\end{figure}
+
+
+Si queremos calcular el campo a una distancia $r$ del cable, nuestro ``lazo imaginario'' será un círculo de radio $r$. La longitud total de este lazo cerrado es la circunferencia del círculo, es decir, $L = 2\pi r$. La corriente que atraviesa o ``perfora'' el interior de este círculo es simplemente $I_{\text{enc}} = I$.
+
+Sustituyendo estos valores geométricos en nuestra formulación algebraica de la Ley de Ampère (Ecuación \ref{eq:ampere_algebraica}), obtenemos
+\begin{equation}
+    B \cdot (2\pi r) = \mu_0 I.
+\end{equation}
+Despejando algebraicamente el campo magnético $B$, recuperamos la famosa fórmula para un alambre:
+\begin{equation}
+    B = \frac{\mu_0 I}{2\pi r}.
+\end{equation}
 donde
 \begin{itemize}
     \item $B$ es la magnitud del campo magnético (en T)
     \item $\mu_0 = \qty{1.257e-6}{NA^{-2}}$ es la permeabilidad del vacío 
     \item $I$ es la corriente (en A)
-    \item $r$ es la distancia desde el alamabre (en m)
+    \item $r$ es la distancia desde el alamabre (en m).
 \end{itemize}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.7]{ampere}
-    \caption{Ley de Ampere}
-    \label{fig:ampere}
-\end{figure}
+Este resultado nos muestra que el campo magnético decae a medida que nos alejamos del cable (inversamente proporcional a la distancia $r$).
+Cuando una carga eléctrica se mueve o gira sobre sí misma, genera un campo magnético. 
+
+
 % --- Fin del código LaTeX ---
 
 Cuando una carga de prueba, $q$, se mueve con un velocidad $\boldsymbol{v}$ en presencia de un campo magnético $\boldsymbol{B}$, se genera una fuerza dada por
@@ -6954,7 +6981,79 @@ donde
     \item $\theta$ es el ángulo entre el campo magnético y el conductor.
 \end{itemize}
 
-\section{Campo magnético alrededor de un solenoide}  
+
+\subsubsection{Aplicación Práctica: El Motor Eléctrico}
+
+La electricidad puede generar movimiento mecánico. Este es el principio de funcionamiento de un \textbf{motor eléctrico}, y está gobernado por la fuerza magnética sobre un conductor, la cual derivamos anteriormente:
+\begin{equation}
+    F = L I B \sin\theta.
+\end{equation}
+
+\subsubsection{El Mecanismo de Rotación (Fuerza y Torque)}
+
+Un motor eléctrico básico de corriente continua (DC) consiste en una espira rectangular de alambre (el \textit{rotor}) montada sobre un eje de rotación, y situada entre los polos norte y sur de un imán permanente (el \textit{estator}), como se muestra en la Figura \ref{fig:motor_electrico}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth, scale=1.3]
+    
+    % Polos Magnéticos (Estator)
+    \draw[thick, fill=red!70!black] (-2.5, -1) rectangle (-1.5, 1);
+    \node[text=white, font=\large\bfseries] at (-2, 0) {N};
+    
+    \draw[thick, fill=blue!70!black] (1.5, -1) rectangle (2.5, 1);
+    \node[text=white, font=\large\bfseries] at (2, 0) {S};
+
+    % Líneas de Campo Magnético (B)
+    \foreach \y in {-0.6, 0, 0.6} {
+        \draw[->, thick, gray, dashed] (-1.5, \y) -- (1.5, \y);
+    }
+    \node[gray, above] at (0, 0.6) {$\boldsymbol{B}$};
+
+    % Espira del Rotor (En perspectiva)
+    \coordinate (A) at (-0.8, -0.4);
+    \coordinate (B) at (-0.8, 0.8);
+    \coordinate (C) at (0.8, 0.4);
+    \coordinate (D) at (0.8, -0.8);
+    
+    \draw[ultra thick, orange!80!black] (A) -- (B) node[midway, left] {$L$};
+    \draw[ultra thick, orange!80!black] (B) -- (C);
+    \draw[ultra thick, orange!80!black] (C) -- (D);
+    \draw[ultra thick, orange!80!black] (D) -- (0.8, -1.2);
+    \draw[ultra thick, orange!80!black] (A) -- (-0.8, -1.2);
+
+    % Eje de rotación
+    \draw[thick, black, dash dot] (0, 1.5) -- (0, -1.5);
+    \draw[->, thick] (0, 1.3) arc (90:400:0.2 and 0.05);
+    \node[above] at (0, 1.5) {Eje de rotación};
+
+    % Corriente (I)
+    \draw[->, thick, black] (-0.8, -0.2) -- (-0.8, 0.3) node[midway, right] {$I$};
+    \draw[->, thick, black] (0.8, 0.2) -- (0.8, -0.3) node[midway, left] {$I$};
+
+    % Fuerzas (F)
+    % Fuerza en el cable izquierdo (Hacia ARRIBA/AFUERA en 3D, dibujada hacia arriba)
+    \draw[->, ultra thick, purple] (-0.8, 0.2) -- (-0.8, 1.5) node[above] {$\boldsymbol{F}_1$};
+    % Fuerza en el cable derecho (Hacia ABAJO/ADENTRO en 3D, dibujada hacia abajo)
+    \draw[->, ultra thick, purple] (0.8, -0.2) -- (0.8, -1.5) node[below] {$\boldsymbol{F}_2$};
+
+\end{tikzpicture}
+\caption{Esquema básico de un motor eléctrico. Una corriente $I$ fluye por una espira de alambre dentro de un campo magnético $\boldsymbol{B}$. Por la regla de la mano derecha, la corriente que sube por el lado izquierdo experimenta una fuerza $\boldsymbol{F}_1$ en una dirección, mientras que la corriente que baja por el lado derecho experimenta una fuerza $\boldsymbol{F}_2$ en la dirección opuesta. Este par de fuerzas genera un \textbf{torque} que hace girar el motor.}
+\label{fig:motor_electrico}
+\end{figure}
+
+Para entender por qué gira el motor, aplicamos la física por partes:
+\begin{enumerate}
+    \item \textbf{La Corriente y el Campo:} La batería empuja una corriente $I$ que sube por el segmento izquierdo de la espira y baja por el segmento derecho. Todo el conjunto está sumergido en un campo magnético constante $\boldsymbol{B}$ que apunta del polo Norte al polo Sur.
+    \item \textbf{La Fuerza de Lorentz:} Aplicamos la Ecuación $F = LIB \sin(90^\circ)$ a los segmentos verticales. Usando la regla de la mano derecha (dedos en dirección de $I$, doblando hacia $\boldsymbol{B}$), encontramos que sobre el cable izquierdo actúa una fuerza $\boldsymbol{F}_1$ hacia "afuera", y sobre el cable derecho actúa una fuerza $\boldsymbol{F}_2$ igual de intensa pero hacia "adentro".
+    \item \textbf{Generación del Torque:} Como vimos en el Capítulo 3, dos fuerzas paralelas que apuntan en sentidos opuestos y aplicadas a cierta distancia de un pivote no cancelan su efecto rotacional; por el contrario, se suman para generar un \textbf{torque} ($\boldsymbol{\tau} = \boldsymbol{r} \times \boldsymbol{F}$). Es este torque el que obliga a la espira a girar incesantemente alrededor de su eje central.
+\end{enumerate}
+
+\textbf{Conclusión Tecnológica:} 
+El motor eléctrico es la máxima demostración de cómo el álgebra vectorial rige la tecnología moderna. Al invertir ingeniosamente la dirección de la corriente cada media vuelta (mediante unos contactos llamados \textit{conmutadores}), los ingenieros aseguran que el torque siempre empuje en la misma dirección rotacional, transformando así la energía eléctrica en trabajo mecánico continuo.
+
+
+\subsection{Campo magnético alrededor de un solenoide}  
 
 Si se colocan muchas espiras una al lado de la otra, sus campos se suman y el efecto es mucho más intenso. Esto se logra fácilmente enrollando muchas vueltas de alambre en una bobina denominada solenoide. El campo alrededor del solenoide es similar al campo alrededor de un imán de barra normal. La dirección del campo magnético total se puede determinar considerando el campo alrededor de cada espira y, a su vez, el campo alrededor del alambre portador de corriente que forma la espira. La dirección del campo del solenoide depende de la dirección de la corriente en el alambre que lo compone.
 
@@ -6974,19 +7073,125 @@ La intensidad de un electroimán también se puede cambiar variando la cantidad 
 La dirección de la corriente crea polos en el electroimán. Los polos de un electroimán se pueden invertir invirtiendo la dirección de la corriente eléctrica.
 Hoy en día, los electroimanes se utilizan directamente para levantar objetos pesados, como interruptores y relés, y como una forma de crear nuevos imanes permanentes al alinear los átomos dentro de materiales magnéticos.
 
-La Ley de Ampère puede extenderse para calcular el campo magnético que rodea a un solenoide. El campo magnético en un punto bien adentro del solenoide es uniforme e independiente de la longitud o el diámetro del solenoide. En su lugar, depende del número de vueltas de la bobina ($N$) por unidad de longitud (
-$L$) del solenoide. Esto se muestra en la siguiente ecuación:
-\begin{align*}
-    B = \frac{\mu_0 N I}{L}\,,
-\end{align*}
-donde $N$ es el número de vueltas por unidad de longitud $L$. El campo magnético es independiente de la longitud total del solenoide.
+Un solenoide es una bobina formada por un cable enrollado en forma de espiral con $N$ vueltas (espiras) a lo largo de una longitud física $L_{\text{bobina}}$. ¿Cuál es el campo magnético en su interior?
+
+
+\subsubsection{Campo magnético al interior de un solenoide}
+
+Para entender de dónde sale la fórmula del solenoide, debemos recordar una propiedad fundamental geométrica: el producto escalar. La Ley de Ampère aplicada a un lazo cerrado completo realmente nos pide sumar el producto de la magnitud del campo ($\boldsymbol{B}$) por la longitud de cada segmento ($L$) multiplicado por el coseno del ángulo ($\theta$) entre ellos:
+\begin{equation}
+    \sum B \cdot L \cos\theta = \mu_0 I_{\text{enc}}.
+\end{equation}
+
+Para un solenoide ideal (muy largo  y con las espiras muy juntas), el campo magnético $\boldsymbol{B}$ en su interior es uniforme y perfectamente paralelo al eje del cilindro, mientras que en el exterior el campo es tan débil que se considera cero ($B \approx 0$). 
+
+Para aprovechar esta geometría sin usar matemáticas complejas, construimos un \textbf{lazo imaginario rectangular} ($a \rightarrow b \rightarrow c \rightarrow d \rightarrow a$) que corta el solenoide por la mitad, como se ilustra en la Figura \ref{fig:ampere_solenoide}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth, scale=1.5]
+    
+    % Estilos
+    \tikzstyle{wireOut}=[thick, fill=gray!20, draw=black]
+    \tikzstyle{wireIn}=[thick, fill=gray!20, draw=black]
+    
+    % --- CORTE TRANSVERSAL DE LAS ESPIRAS DEL SOLENOIDE ---
+    % Espiras superiores (corriente saliendo de la página -> Puntos)
+    \foreach \x in {-2.5, -1.83, ..., 2.5} {
+        \draw[wireOut] (\x, 1) circle (0.2);
+        \fill[black] (\x, 1) circle (0.05);
+    }
+    
+    % Espiras inferiores (corriente entrando a la página -> Cruces)
+    \foreach \x in {-2.5, -1.83, ..., 2.5} {
+        \draw[wireIn] (\x, -1) circle (0.2);
+        \draw[thick] (\x-0.1, -1-0.1) -- (\x+0.1, -1+0.1);
+        \draw[thick] (\x-0.1, -1+0.1) -- (\x+0.1, -1-0.1);
+    }
+
+    % --- LÍNEAS DE CAMPO MAGNÉTICO (B) ---
+    % Adentro (Uniformes y paralelas)
+    \foreach \y in {-0.5, 0, 0.5} {
+        \draw[->, ultra thick, blue!80!black] (-3, \y) -- (3, \y);
+    }
+    \node[blue!80!black, right] at (3, 0) {$\boldsymbol{B}$ (interior)};
+    
+    % Afuera (Campo casi nulo)
+    \node[blue!80!black, opacity=0.5] at (0, 2.3) {$\boldsymbol{B} \approx \boldsymbol{0}$ (exterior)};
+
+    % --- EL LAZO RECTANGULAR DE AMPÈRE ---
+    % Coordenadas del rectángulo
+    \coordinate (A) at (-1.5, 0.25);
+    \coordinate (B) at (1.5, 0.25);
+    \coordinate (C) at (1.5, 1.8);
+    \coordinate (D) at (-1.5, 1.8);
+    
+    % Dibujar los lados del lazo
+    \draw[->, ultra thick, red!80!black] (A) -- (B) node[midway, below,
+    yshift=3pt] {Lado 1 ($L$)};
+    \draw[->, ultra thick, red!80!black] (B) -- (C) node[midway, right, align=center] {Lado\\2};
+    \draw[->, ultra thick, red!80!black] (C) -- (D) node[midway, above] { Lado 3};
+    \draw[->, ultra thick, red!80!black] (D) -- (A) node[midway, left, align=center, xshift=-12pt] {%\hspace{-2.5cm}
+    Lado\\4};
+    
+    % Etiquetas de los vértices
+    \node[red!80!black, below right] at (A) {$a$};
+    \node[red!80!black, below left] at (B) {$b$};
+    \node[red!80!black, above left] at (C) {$c$};
+    \node[red!80!black, above right] at (D) {$d$};
+
+    % Resaltar corriente encerrada
+    \draw[decorate, decoration={brace, amplitude=5pt}, thick, black] (-1.65, 1.3) -- (1.65, 1.3) node[midway, above, yshift=2pt] {Corriente encerrada ($I_{\text{enc}}$)};
+
+\end{tikzpicture}
+\caption{Corte transversal de un solenoide mostrando el lazo rectangular de Ampère ($a \rightarrow b \rightarrow c \rightarrow d$). Los círculos superiores con un punto indican corriente saliendo del papel, y los inferiores con una cruz indican corriente entrando. El rectángulo se elige estratégicamente para que sus lados sean paralelos o perpendiculares al campo magnético $\boldsymbol{B}$.}
+\label{fig:ampere_solenoide}
+\end{figure}
+
+Analicemos la contribución de los cuatro lados del rectángulo al producto total de Ampère:
+
+\begin{enumerate}
+    \item \textbf{Lado 1 (Adentro, de $a$ hacia $b$):} Este segmento de longitud $L$ es perfectamente paralelo al campo magnético $\boldsymbol{B}$. Como el ángulo es $\theta = 0^\circ$, sabemos que $\cos(0^\circ) = 1$. Su contribución es simplemente el producto escalar máximo:
+    \begin{equation}
+        B \cdot L \cos(0^\circ) = B \cdot L.
+    \end{equation}
+    
+    \item \textbf{Lados 2 y 4 (Las paredes laterales):} Estos lados son perpendiculares al campo magnético $\boldsymbol{B}$. Como el ángulo es $\theta = 90^\circ$, sabemos por trigonometría que $\cos(90^\circ) = 0$. Su contribución al total es exactamente cero:
+    \begin{equation}
+        B \cdot L_2 \cos(90^\circ) = 0.
+    \end{equation}
+    
+    \item \textbf{Lado 3 (Afuera, de $c$ hacia $d$):} En el exterior de un solenoide ideal, el campo magnético se dispersa y su intensidad cae a cero ($B \approx 0$). Por lo tanto, independientemente del ángulo, su contribución es cero:
+    \begin{equation}
+        (0) \cdot L \cos\theta = 0.
+    \end{equation}
+\end{enumerate}
+
+Al sumar el recorrido cerrado completo, el único lado que sobrevive algebraicamente es el Lado 1. Por lo tanto, el lado izquierdo de nuestra Ley de Ampère es simplemente $B \cdot L$.
+
+Por el lado derecho de la ecuación, debemos contar cuánta corriente atraviesa el área de nuestro rectángulo. Si observamos la Figura \ref{fig:ampere_solenoide}, el rectángulo ``atrapa'' una cierta cantidad de espiras (llamémosla $N$) en esa longitud $L$. Si cada espira transporta una corriente $I$, la corriente total encerrada es
+\begin{equation}
+    I_{\text{enc}} = N \cdot I.
+\end{equation}
+
+Sustituyendo estos valores en nuestra ecuación general (\ref{eq:ampere_algebraica}), tenemos
+\begin{equation}
+    B \cdot L = \mu_0 (N \cdot I).
+\end{equation}
+Despejando $B$, obtenemos la fórmula del campo magnético para un solenoide:
+\begin{equation}
+    B = \frac{\mu_0 N I}{L}.
+\end{equation}
+
+De esta manera, el campo magnético en un punto bien adentro del solenoide es uniforme e independiente de la longitud o el diámetro del solenoide. En su lugar, depende del número de vueltas de la bobina ($N$) por unidad de longitud (
+$L$) del solenoide. 
 
 Esto significa que aumentar el número de vueltas de un solenoide se puede utilizar para incrementar la intensidad de su campo magnético (es decir, 
 $B \propto N$). Es importante tener en cuenta que este es el número de vueltas por unidad de longitud. Por lo tanto, dos solenoides con la misma corriente pero diferentes longitudes pueden tener la misma intensidad de campo magnético. Por ejemplo, el solenoide A puede tener 100 vueltas en un metro, mientras que el solenoide B tiene 50 vueltas en 0.5 m, pero con la misma corriente, ambos producirán la misma intensidad de campo magnético.
 
 Los solenoides se pueden utilizar para generar campos magnéticos casi uniformes, similares a los campos producidos por un imán de barra. Existen muchas aplicaciones prácticas para los solenoides, como en electroimanes, generación y distribución de energía, y motores eléctricos
 
-\subsection{Ejemplo: magnitud del campo magnético en un solenoide}
+\subsubsection{Ejemplo: magnitud del campo magnético en un solenoide}
 
 % --- Inicio del código LaTeX para insertar ---
 
@@ -7060,11 +7265,11 @@ https://doi.org/10.3390/en16145303}}
 
 A diferencia de una estufa convencional de gas o eléctrica que calienta mediante calor radiante desde una fuente caliente, una estufa de inducción calienta a través de la olla de metal en la que se está cocinando la comida. Una bobina de alambre de cobre se coloca dentro de la encimera. El suministro de electricidad de corriente alterna (CA) produce un campo magnético cambiante en la bobina. Esto induce una corriente  en la olla de metal conductora. La resistencia del metal en la olla, por la que fluye la corriente, transforma la energía eléctrica en calor y cocina la comida.
 
-\section{Ecuaciones de Maxwell}
+\section{Electromagnetismo: Ecuaciones de Maxwell}
 La contribución final de Maxwell fue la de simetrizar las ecuaciones del electromagnetismo para permitir también que un campo eléctrico que cambie con el tiempo induzca un campo magnético variable con el tiempo. Cómo a su vez un campo magnético variable con el tiempo vuelve a inducir un campo eléctrico variable con el tiempo en un proceso que se repite a la velocidad de la luz. Por consiguiente, la principal predicción de las ecuaciones de Maxwell es la  generación de las ondas electromagnéticas.
 
 
-\section{Ejemplo del Aporte de Maxwell: La Corriente de Desplazamiento}
+\subsection{Ejemplo del Aporte de Maxwell: La Corriente de Desplazamiento}
 
 
 
@@ -7605,6 +7810,54 @@ Todo el término entre paréntesis es una constante. Si calculamos su valor (usa
     E_n = - \frac{13.6 \text{ eV}}{n^2}.
 \end{equation}
 Esto explica perfectamente el espectro de emisión del hidrógeno: los electrones solo pueden existir en estos niveles de energía discretos y la luz se emite cuando saltan de un nivel $n$ a uno inferior.
+
+\section{Ejercicios Propuestos del Capítulo 4}
+
+A continuación, se presentan diez ejercicios para poner en práctica los principios del electromagnetismo clásico y su transición hacia la física moderna. Se recomienda repasar las constantes fundamentales (como $k$, $\mu_0$, $\epsilon_0$ y $c$) antes de comenzar.
+
+\begin{enumerate}
+
+    \item 
+    \textbf{Ley de Coulomb y Superposición:} Dos cargas puntuales, $q_1 = +4.0  \mu\text{C}$ y $q_2 = +9.0 \mu\text{C}$, están fijas y separadas por una distancia $d = 10 \text{ cm}$. ¿A qué distancia exacta $x$ de la carga $q_1$ debe colocarse una tercera carga $q_3$ (en la línea que las une) para que la fuerza eléctrica neta sobre ella sea exactamente cero ($\sum \boldsymbol{F} = \boldsymbol{0}$)?
+    % \textit{[Resp: $x = 4.0 \text{ cm}$].}
+
+    \item \textbf{Energía Potencial Electrostática:} En el núcleo de un átomo de helio existen dos protones (cada uno con carga $e \approx 1.6 \times 10^{-19} \text{ C}$). Si se encuentran separados por una distancia típica nuclear de $r = 2.0 \times 10^{-15} \text{ m}$, calcule la energía potencial electrostática $U_e$ que intenta separarlos. Exprese su resultado primero en Joules y luego conviértalo a Mega-electronvoltios (MeV).
+    \textit{[Resp: $U_e \approx 1.15 \times 10^{-13} \text{ J} \approx 0.72 \text{ MeV}$].}
+
+    \item \textbf{Potencia y Consumo de Energía:} Un calentador eléctrico de ambiente se conecta a un enchufe que proporciona un voltaje de $120 \text{ V}$ y extrae una corriente constante de $15 \text{ A}$. 
+    \begin{enumerate}
+        \item Calcule la potencia eléctrica $P$ consumida por el equipo en Watts.
+        \item Si el calentador se deja encendido durante $4 \text{ horas}$ diarias a lo largo de un mes de $30 \text{ días}$, ¿cuál será la energía total consumida en kilovatios-hora (kWh)?
+    \end{enumerate}
+    \textit{[Resp: a) $P = 1800 \text{ W}$; b) $216 \text{ kWh}$].}
+
+    \item \textbf{Ley de Ampère (Alambre Recto):} Un cable recto de transmisión de alta tensión transporta una inmensa corriente continua de $500 \text{ A}$. Utilice la fórmula algebraica de la Ley de Ampère para calcular la magnitud del campo magnético $B$ que percibe una persona parada en el suelo a $10 \text{ m}$ directamente debajo del cable. Compare este valor con el campo magnético natural de la Tierra (que es de aproximadamente $50 \mu\text{  T}$).
+    \textit{[Resp: $B = 10 \mu\text{T}$, que es cinco veces más débil que el campo terrestre].}
+
+    \item \textbf{Diseño de un Solenoide:} Un ingeniero necesita diseñar un electroimán cilíndrico (solenoide) de $L_{\text{bobina}} = 0.5 \text{ m}$ de longitud para generar un campo magnético uniforme de $B = 0.02 \text{ T}$ en su interior. Si el cable disponible solo puede soportar con seguridad una corriente máxima de $I = 5.0 \text{ A}$, ¿cuál es el número mínimo de vueltas o espiras ($N$) que debe enrollar en el cilindro?
+    \textit{[Resp: $N \approx 1591 \text{ espiras}$].}
+
+    \item \textbf{Fuerza de Lorentz (Motor Eléctrico):} Un segmento de alambre recto de $L = 0.2 \text{ m}$ de longitud, por el que fluye una corriente de $3.0 \text{ A}$, está situado de forma perpendicular ($\theta = 90^\circ$) dentro del campo magnético uniforme de un motor. Si el alambre experimenta una fuerza magnética lateral de magnitud $|\boldsymbol{F}| = 1.5 \text{ N}$, calcule la intensidad del campo magnético $B$ en el motor.
+    \textit{[Resp: $B = 2.5 \text{ T}$].}
+
+    \item \textbf{El Aporte de Maxwell (Corriente de Desplazamiento):} Un condensador de placas paralelas de área $A = 0.1 \text{ m}^2$ se está cargando rápidamente. Aunque no hay electrones cruzando el vacío entre las placas, el campo eléctrico $E$ está aumentando a un ritmo de $\frac{\Delta E}{\Delta t} = 1.0 \times 10^6 \text{ V/(m}\cdot\text{s)}$. Sabiendo que el cambio del flujo eléctrico es $\frac{\Delta \Phi_E}{\Delta t} = A \frac{\Delta E}{\Delta t}$, utilice la ecuación de Maxwell ($I_d = \epsilon_0 \frac{\Delta \Phi_E}{\Delta t}$) para calcular la ``corriente de desplazamiento'' equivalente entre las placas. (Use $\epsilon_0 \approx 8.85 \times 10^{-12} \text{ F/m}$).
+    \textit{[Resp: $I_d \approx 8.85 \times 10^{-7} \text{ A}$].}
+
+    \item \textbf{Ondas Electromagnéticas y Antenas:} Un enrutador de red inalámbrica (Wi-Fi) doméstico transmite paquetes de información utilizando ondas electromagnéticas que oscilan a una frecuencia de $2.4 \text{ GHz}$ ($2.4 \times 10^9 \text{ Hz}$). 
+    \begin{enumerate}
+        \item Calcule la longitud de onda ($\lambda$) de esta señal de radio en centímetros.
+        \item En ingeniería de telecomunicaciones, la antena óptima suele medir exactamente un cuarto de la longitud de onda ($\lambda/4$). Según su resultado anterior, ¿cuánto debería medir la antena del enrutador?
+    \end{enumerate}
+    \textit{[Resp: a) $\lambda = 12.5 \text{ cm}$; b) $3.125 \text{ cm}$].}
+
+    \item \textbf{Radiación de Sincrotrón (Límite Clásico):} En el texto, introdujimos la fórmula de ingeniería para calcular la energía que pierde un electrón ultrarrelativista en cada vuelta de un acelerador debido a su aceleración circular: $\Delta E \approx 8.85 \times 10^{-5} E^4 / R$. Si un colisionador circular tiene un radio de $R = 1000 \text{ m}$ y los electrones viajan con una energía $E = 50 \text{ GeV}$, ¿cuánta energía se pierde en forma de luz en una sola vuelta?
+    \textit{[Resp: $\Delta E \approx 0.553 \text{ GeV per vuelta}$].}
+
+    \item \textbf{El Átomo de Bohr (Niveles de Energía Cuantizados):} La solución de Bohr demostró que las energías permitidas para el electrón en el átomo de hidrógeno están dadas por la fórmula algebraica $E_n = -13.6 \text{ eV} / n^2$. 
+    Cuando un átomo "canta" y emite su famosa línea roja de luz (llamada línea $H_\alpha$ de la serie de Balmer), el electrón salta de la órbita $n=3$ cayendo a la órbita $n=2$. Calcule la diferencia de energía ($\Delta E = E_3 - E_2$) y demuestre cuál es la energía exacta del fotón rojo emitido.
+    \textit{[Resp: $E_3 \approx -1.51 \text{ eV}$, $E_2 = -3.40 \text{ eV}$. El fotón emitido tiene $\Delta E \approx 1.89 \text{ eV}$].}
+
+\end{enumerate}
 
 \appendix
 
