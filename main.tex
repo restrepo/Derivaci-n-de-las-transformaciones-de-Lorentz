@@ -2151,6 +2151,7 @@ m^2c^4 =& E^2 - p^2 c^2\\
 \end{align*}
 llegamos a la joya de la corona de la dinámica relativista, válida para cualquier partícula en el universo:
 \begin{equation}
+\label{eq:energiarelativista}
     E^2 = (m c^2)^2 + (p c)^2.
 \end{equation}
 
@@ -2164,6 +2165,19 @@ Usando la ecuación~\eqref{eq:gammasquare} para $\gamma$, tenemos
 \begin{align}
     E = \frac{m c^2}{\sqrt{1-v^2/c^2}}
 \end{align}
+
+Por lo tanto
+    \begin{align}
+        \lim_{v\to c} E = \infty\,.
+    \end{align}
+
+
+De modo que se requeriría  una energía infinita para acelerar un objeto material a la velocidad de la luz. 
+
+Además, si aceptamos la existencia de una partícula que se pueda mover más rápido que la velocidad de la luz, llamada taquión, el radicando en el denominandor tendría un signo negativo y la energía sería imaginaria, lo que aparentemente no tiene significado físico. Es de anotar que a la fecha no se ha observado ningún taquión en la naturaleza.
+
+
+
 
 Hay dos límites:
 
@@ -2205,20 +2219,9 @@ La correspondiente energía de un fotón de longitud de onda $\lambda$
 E = pc =\frac{hc}{\lambda}\,.    
 \end{align}
 
-    En el caso de una partícula relativista con masa, moviendose a una velocidad $v$, comparable a la velocidad de la luz
-    \begin{align}
-        E =&\gamma m v c \nonumber\\
-        =& \frac{mvc}{\sqrt{1-v^2/c^2}}\,.
-    \end{align}
-    Por lo tanto
-    \begin{align}
-        \lim_{v\to c} E = \infty\,.
-    \end{align}
 \end{enumerate}
-De modo que se requeriría  una energía infinita para acelerar un objeto material a la velocidad de la luz. 
 
-Además, si aceptamos la existencia de una partícula que se pueda mover más rápido que la velocidad de la luz, llamada taquión, el radicando en el denominandor tendría un signo negativo y la energía sería imaginaria, lo que aparentemente no tiene significado físico. Es de anotar que a la fecha no se ha observado ningún taquión en la naturaleza.
-
+    
 \section{Ejemplos}
 
 \subsection{ Cálculo de Fotones por Segundo para Corte por Láser de CO\textsubscript{2}}
@@ -2552,18 +2555,33 @@ La eficiencia de la fusión en una bomba H, aunque baja, es considerablemente ma
 
 \subsection{Calcule el producto escalar de Lorentz para el cuadrivector de momento}
 \begin{align*}
-    p^\mu = \left(\frac{E}{c},p_x,p_y,p_z\right),
+    p^\mu = \left(p^0,p^1,p^2,p^3\right) = \left(\frac{E}{c},p_x,p_y,p_z\right)=\left(\frac{E}{c},\boldsymbol{p}\right),
 \end{align*}
 donde la energía y la magnitud del vector $\boldsymbol{p} = (p_x,p_y,p_z)$ son
 \begin{align*}
-    E =&\gamma m c^2\,, & p=&\gamma m v \,.
+    E =&\gamma m c^2\,, & \boldsymbol{p}=&\gamma m \boldsymbol{v} \,.
 \end{align*}
 
+\textbf{Solución}
 
+\begin{align*}
+    p^\mu \cdot p^\mu =& \left(p^0\right)^2 - \boldsymbol{p}\cdot \boldsymbol{p}\\
+    =&\frac{E^2}{c^2} - \gamma^2 m^2 \boldsymbol{v}\cdot\boldsymbol{v}\\
+    =&\gamma^2 \frac{m^2 c^4}{c^2} - \gamma^2 m^2 v^2\\
+    =&\gamma^2 m^2 \left(c^2-v^2\right)\\
+    =&\frac{1}{1-\dfrac{v^2}{c^2}} m^2 \left(c^2-v^2\right)\\
+    =&\frac{c^2}{\cancel{c^2-v^2}} m^2 \cancel{\left(c^2-v^2\right)}\\
+    =&m^2 c^2\,,
+\end{align*}
+independiente de la velocidad del sistema de referencia inercial, $v$\,.
+
+\section{Velocidad relativista}
+\label{sec:vfromp1d}
+A modo de ejemplo, despejemos la magnitud de la velocidad relativista a partir de la magnitud de su cantidad de movimiento:
 \begin{enumerate}
     \item Encuentre el cuadrado de la velocidad a la que se mueve una partícula de masa $m$ a partir de su momento
 
-%\renewcommand{\phantom}[1]{#1}
+\renewcommand{\phantom}[1]{#1}
 
 \noindent
  \hspace{-1cm}\begin{tabular*}{0.95\textwidth}{l|c|p{9cm}}
@@ -2589,6 +2607,56 @@ Es claro que en si hacemos $c\to \infty$
 \begin{align*}
     v =& \frac{p}{m}\,.
 \end{align*}
+
+\subsection{Generalización a Tres Dimensiones y Conexión con la Energía}
+
+La ecuación escalar que acabamos de derivar para la rapidez,
+\begin{equation}
+    v^2 = \frac{p^2}{m^2 + \dfrac{p^2}{c^2}},
+\end{equation}
+puede generalizarse directamente a tres dimensiones. Por definición, el vector de cantidad de movimiento ($\boldsymbol{p}$) y el vector velocidad ($\boldsymbol{v}$) apuntan siempre en la misma dirección. Su relación fundamental es
+\begin{equation}
+    \boldsymbol{p} = (\gamma m) \boldsymbol{v}.
+\end{equation}
+
+Despejando el vector velocidad, vemos que simplemente debemos dividir el vector $\boldsymbol{p}$ por el factor escalar $(\gamma m)$:
+\begin{align}    
+    \boldsymbol{v} =& \frac{\boldsymbol{p}}{\gamma m}\nonumber\\
+    =&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{1-v^2/c^2}} m}\nonumber\\
+=&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{1-\dfrac{p^2}{\left(m^2+p^2/c^2\right)c^2}}} m}\nonumber\\
+=&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{1-\dfrac{p^2}{\left(m^2c^2+p^2\right)}}} m}\nonumber\\
+=&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{\dfrac{m^2c^2+p^2-p^2}{m^2c^2+p^2}}} m}\nonumber\\
+=&\frac{\boldsymbol{p}}{\sqrt{\dfrac{m^2c^2+p^2}{\cancel{m^2}c^2}}\cancel{m}}\,.
+\end{align}
+Finalmente
+\begin{align}
+\label{eq:velocidadrelativista}
+\boldsymbol{v}  =&\frac{\boldsymbol{p}}{\sqrt{m^2+p^2/c^2}}
+\end{align}
+
+
+\textbf{Una Revelación Algebraica: La Conexión con la Energía Total}
+
+Podemos llevar esta expresión vectorial a una forma aún más elegante. Si multiplicamos el numerador y el denominador dentro de la raíz cuadrada por $c^2$, obtenemos:
+\begin{equation}
+    \boldsymbol{v} = \frac{\boldsymbol{p} c}{\sqrt{m^2 c^2 + p^2}}.
+\end{equation}
+Al multiplicar y dividir toda la fracción por $c$, la expresión se transforma en
+\begin{equation}
+    \boldsymbol{v} = \frac{\boldsymbol{p} c^2}{\sqrt{m^2 c^4 + p^2 c^2}}.
+\end{equation}
+
+Si observamos el denominador, reconoceremos inmediatamente la joya de la dinámica relativista que derivamos en la Ecuación~\eqref{eq:energiarelativista}: la energía total de la partícula es $E = \sqrt{(mc^2)^2 + (pc)^2}$. 
+
+Al sustituir el denominador por $E$, llegamos a una de las relaciones más compactas, hermosas y útiles de toda la Relatividad Especial:
+\begin{equation}
+    \boldsymbol{v} = \frac{\boldsymbol{p} c^2}{E}.
+\end{equation}
+
+\textbf{Conclusión Física:}
+Esta sutil ecuación vectorial nos dice que la velocidad de cualquier partícula en el universo es simplemente la relación entre su cantidad de movimiento y su energía total, multiplicada por la constante $c^2$. 
+Además, nos confirma inmediatamente el límite de velocidad cósmico: como en objetos con masa la energía $E$ es siempre estrictamente mayor que la magnitud de $pc$ (debido al término de la masa en reposo), la fracción $|\boldsymbol{p}|c/E$ es siempre menor a $1$. Por lo tanto, el vector velocidad $\boldsymbol{v}$ jamás podrá alcanzar la velocidad de la luz $c$.
+
 
 \end{enumerate}
 
@@ -2763,12 +2831,19 @@ Si la partícula tiene masa $m$, podemos escribir ésta ecuación en términos d
 \begin{align*}
     \boldsymbol{r} \approx \boldsymbol{r}_0 + \frac{m\boldsymbol{v}}{m}\Delta t\\
 \end{align*}
-y extrapolando al caso relativista 
+de manera que, usando la ec.~\eqref{eq:velocidadrelativista}
+\begin{align}
+\label{eq:position}
+    \boldsymbol{r} \approx \boldsymbol{r}_0 +\frac{\boldsymbol{p}}{\sqrt{m^2+p^2/c^2}}\Delta t\,.
+\end{align}
+
+En el límite no relativista
 \begin{align}
 \label{eq:position}
     \boldsymbol{r} \approx \boldsymbol{r}_0 +\frac{\boldsymbol{p}}{m}\Delta t
 \end{align}
 
+\subsection{Solución numérica}
 De esta forma, si comenzamos desde el punto inicial $\boldsymbol{r}_0$, con momento $\boldsymbol{p}_0$, después de un tiempo suficientemente pequeño $\Delta t$, podemos encontrar la nueva posición $\boldsymbol{r}$ partiendo de
 \begin{align}
     \Delta\boldsymbol{p} = \boldsymbol{p} -\boldsymbol{p}_0 = \boldsymbol{F} \Delta t\,,
@@ -2782,7 +2857,54 @@ y usando la ecuación~\eqref{eq:position}
 \begin{align*}
     \boldsymbol{r} \approx \boldsymbol{r}_0 +\frac{\boldsymbol{p}}{m}\Delta t
 \end{align*}
-y podemos continuar calculando el nuevo momento y posición hasta recuperar toda la trayectoria.
+y podemos continuar calculando el nuevo momento y posición hasta recuperar toda la trayectoria. Es de anotar que siempre es posible implemenbtar un algoritmo numérico para conocer como evoluciona punto a punto el movimiento para cada $\Delta t$, como se muestra en la figura~\ref{fig:integracionley}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth]
+    
+    % Estilos de los bloques
+    \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!20, thick]
+    \tikzstyle{proceso} = [rectangle, minimum width=6cm, minimum height=1cm, text centered, draw=black, fill=orange!20, thick]
+    \tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!20, thick, aspect=2]
+    \tikzstyle{initblock} = [rectangle, draw=black, fill=yellow!20, thick, inner sep=10pt]
+    
+    % Nodos posicionados con coordenadas absolutas (x, y) garantizando MUCHO espacio vertical
+    \node (inicio) [startstop] at (0, 5) {Inicio ($t=0$)};
+    
+    \node (init) [initblock] at (0, 2) {
+        \begin{tabular}{l}
+        \textbf{Condiciones iniciales} \\[4pt]
+        Sean $\boldsymbol{r}= \boldsymbol{r}_0$ (posición) y $\boldsymbol{p} = \boldsymbol{p}_0$ (velocidad inicial).\\
+        \end{tabular}
+    };
+    
+    \node (fuerza) [proceso] at (0, -1) {Actualizar: $\boldsymbol{p}\leftarrow \boldsymbol{p} + \boldsymbol{F} \Delta t$ };
+    
+    \node (posicion) [proceso] at (0, -3) {Actualizar: $\boldsymbol{r} \leftarrow \boldsymbol{r} + \left(\dfrac{\boldsymbol{p}}{m}\right) \Delta t$};
+    
+    \node (tiempo) [proceso] at (0, -5) {Avanzar tiempo $t \leftarrow t + \Delta t$};
+    
+    \node (fin_cond) [decision] at (0, -7) {¿$t < t_{\text{final}}$?};
+    
+    \node (fin) [startstop] at (6, -7) {Graficar y Fin};
+
+    % Flechas
+    \draw [->, thick] (inicio) -- (init);
+    \draw [->, thick] (init) -- (fuerza);
+    \draw [->, thick] (fuerza) -- (posicion);
+    \draw [->, thick] (posicion) -- (tiempo);
+    \draw [->, thick] (tiempo) -- (fin_cond);
+    \draw [->, thick] (fin_cond) -- node[anchor=south] {No} (fin);
+    
+    % Flecha de retorno (Sí) - Se amplía el desplazamiento a la izquierda (-5.0) para no cruzar el cuadro amarillo
+    \draw [->, thick] (fin_cond.west) -- node[anchor=south] {Sí} ++(-5.0,0) |- (fuerza.west);
+
+\end{tikzpicture}
+\caption{Diagrama de bloques detallado del algoritmo de integración numérica en el límite no relativista. Se observan explícitamente las ecuaciones para las condiciones iniciales.}
+\label{fig:integracionley}
+\end{figure}
+
 
 Haremos un ejemplo de esto en el caso del límite no relativista del lanzamiento vertical hacia arriba a continuación.
 
@@ -3168,7 +3290,7 @@ o, escrito en su forma más universal y compacta,
 Hemos demostrado de manera estrictamente algebraica que el trabajo neto ($W$) realizado por una fuerza sobre un objeto se invierte íntegramente en cambiar su estado de movimiento; es decir, produce una variación exacta y equivalente en su energía cinética ($\Delta K$).
 
 
-
+TODO: Derivar todo a partir de la conservación de la energía
 
 \section{Fuerza constante}
 
@@ -7664,34 +7786,143 @@ La fórmula de Larmor ($P \propto a^2$) tiene una consecuencia drástica para el
 
 Consideremos un electrón moviéndose en un círculo de radio $R$ con una velocidad $v$ cercana a la de la luz ($v \approx c$).
 
-\subsection{El Conflicto Energético}
-
-\begin{enumerate}
-    \item \textbf{Ganancia de Energía:} En el acelerador, suministramos energía al electrón mediante campos eléctricos. Llamemos a esta potencia de entrada $P_{\text{entrada}}$.
-    \item \textbf{Pérdida de Energía:} Al girar, el electrón tiene aceleración centrípeta. Según Larmor, esto implica que debe radiar energía. Esta energía perdida se llama \textbf{Radiación de Sincrotrón}.
-\end{enumerate}
-
-Para velocidades relativistas, la fórmula de Larmor debe corregirse multiplicándola por el factor de Lorentz a la cuarta potencia ($\gamma^4$). Dado que la energía total es $E = \gamma m c^2$, podemos decir que $\gamma \propto E$.
-
-La potencia radiada ($P_{\text{rad}}$) escala de la siguiente manera:
-
-\begin{equation}
-    P_{\text{rad}} \propto \frac{E^4}{R^2 m^4}
+viene corregida por el factor relativista $\gamma$ como
+\begin{equation}    
+    P = \frac{2}{3} \frac{k e^2 a^2}{c^3}\gamma^4\,.
+    \label{eq:larmor}
 \end{equation}
+donde $k$: Constante de Coulomb, $e$: carga del electrón, $R$: radio de la órbita, $c$: velocidad de la luz y $\gamma$ es el factor relativista. Ver apéndice~\ref{sec:larmorrel}.
 
-Esta relación revela tres hechos fundamentales:
+Teniendo en cuenta que el electrón, de masa $m_e$, está acelerado a una energía
+\begin{align}
+    E = \gamma m_e c^2
+\end{align}
+y que para una partícula que se mueve en un círculo a la velocidad de la luz 
+\begin{equation}
+ a = \frac{c^2}{R}\,,   
+\end{equation}
+donde $R$ es el radio del circulo, calcular la potencia perdida por radiación en el acelerador LEP de $\qty{27}{\kilo\meter}$ de circunferencia. Expresar la respuesta en $\unit{GeV}/\unit{\second}$
 
-\begin{itemize}
-    \item \textbf{La Barrera de la Energía ($E^4$):} Si intentamos duplicar la energía del electrón ($2E$), la pérdida de energía por radiación se multiplica por $2^4 = 16$. La pérdida crece muchísimo más rápido que nuestra capacidad de suministrar energía.
-    \item \textbf{El Límite de Equilibrio:} Se alcanza la energía máxima cuando la energía que inyectamos es igual a la que el electrón ``tira'' en forma de luz:
-    \begin{equation}
-        P_{\text{entrada}} = P_{\text{rad}} \implies \text{Velocidad Límite Constante}
-    \end{equation}
-    \item \textbf{La Importancia de la Masa ($1/m^4$):} Como la masa está en el denominador, las partículas ligeras radian mucho más. Un protón es unas 2000 veces más masivo que un electrón. Por lo tanto, para la misma energía, un electrón radia $2000^4$ (16 billones) de veces más que un protón.
-\end{itemize}
+\textbf{Solución}
+\begin{align*}
+    P =  &  \frac{2}{3} \frac{k e^2 c^4}{R^2c^3}\left(\frac{E}{m_ec^2}\right)^4\\
+     =  &  \frac{2}{3} \frac{k e^2 c}{R^2}\left(\frac{E}{m_ec^2}\right)^4\\
+    =& \frac{A}{R^2} \left(\frac{E}{m_ec^2}\right)^4
+\end{align*}
+donde
+\begin{align}
+    m_e c^2 =& \qty{0.511}{MeV}\frac{\unit{GeV}}{\qty{1e3}{MeV}} = \qty{0.511e-3}{GeV}\,.\\
+    A =&\frac{2 }{3}  {k e^2 c}=\frac{2}{3}  {\num{8.99e9} (\num{1.602e-19})^2\num{3e8} }\nonumber\\
+    =&\qty{4.61e-20}{J\cdot m^2/s}\frac{\unit{GeV}}{\qty{1.602e-10}{J}}=\qty{2.88e-10}{GeV\cdot m^2/s}\,.\\ 
+    R =& \frac{\text{circunferencia}}{2\pi} = \frac{\qty{27e3}{m}}{2\pi} = \qty{4297.18}{m}\,
+ \end{align}
+\begin{align*}
+    \frac{A}{R^2} =&\frac{\qty{2.88e-10}{GeV\cdot m^2/s}}{(\qty{4297.18}{m})^2}
+     =\qty{1.56e-17}{GeV/s}\,.
+\end{align*}
+Entonces
+\begin{align*}
+    P =& \frac{A}{R^2}\left(\frac{E}{m_ec^2}\right)^4\\
+    =& \qty{1.56e-17}{GeV/s}\left(\frac{\qty{100}{GeV}}{\qty{0.511e-3}{GeV}}\right)^4\\
+    =& \qty{22877}{GeV/s}\,.
+\end{align*}
+    
 
-\textbf{Conclusión:}
-Es imposible acelerar electrones a energías arbitrariamente altas en un anillo circular, porque eventualmente toda la energía suministrada se disipa instantáneamente como radiación de sincrotrón (luz brillante, desde infrarrojos hasta rayos X). Por esta razón, el Gran Colisionador de Hadrones (LHC) usa protones (masivos) en lugar de electrones para alcanzar altas energías.
+
+
+Para calcular la energía perdida por radiación en una vuelta, teniendo en cuenta que el electrón se mueve a la velocidad de la luz. Expresaremos la respuesta en $\unit{GeV}$
+
+\textbf{Solución}
+\begin{align*}
+    \frac{E_{\text{perdida}}}{T} =& P \\
+    \frac{E_{\text{perdida}}}{\dfrac{2\pi R}{c}} = & P\\
+    \frac{cE_{\text{perdida}}}{2\pi R} = & P\\
+    E_{\text{perdida}}  = &\frac{2\pi R}{c} P\\
+\end{align*}
+Usando la ecuación para $P$
+\begin{align*}
+    E_{\text{perdida}}  = &\frac{\qty{27e3}{m}}{\qty{3e8}{m/s}}  \qty{22877}{GeV/s}\\
+    =&\qty{2.06}{GeV}\,.
+\end{align*}
+
+Asumiendo que la energía suministrada a un electrón por vuelta es de $\qty{3.6}{GeV}$ en LEP, podemos calcular la energía máxima a la que se puede acelerar el electrón en dicho acelerador, tal que la energía suministrada para acelerar el electrón durante una vuelta sea igual a la energía perdida por radiación en esa vuelta.
+
+\textbf{Solución}
+
+En este caso
+\begin{align*}
+    E_{\text{perdida}}  = &\frac{2\pi R}{c} P\\
+   E_{\text{perdida}} =&\frac{2\pi R}{c} \frac{2}{3} \frac{k e^2 c}{R^2}\left(\frac{E}{m_ec^2}\right)^4\\
+   E_{\text{perdida}} =&\frac{2\pi R}{c} \frac{A}{R^2}\left(\frac{E}{m_ec^2}\right)^4\\
+   E_{\text{perdida}} =&\frac{2\pi}{c} \frac{A}{R}\left(\frac{E}{m_ec^2}\right)^4\\
+   E_{\text{perdida}} =&C_\gamma \frac{E^4}{R}\\
+   \end{align*}
+Correspondiente a la ecuación (4.8) de \url{https://inspirehep.net/literature/60854}
+donde 
+\begin{align}
+    C_\gamma =& \frac{2\pi}{c}\frac{A}{\left(m_e c^2\right)^4}\nonumber\\
+    =& \frac{2\pi}{\qty{3e8}{m/s}}\frac{\qty{2.88e-10}{GeV\cdot m^2/s}}{(\qty{0.511e-3}{GeV})^4}\\
+    =&\qty{8.85e-5}{m\cdot GeV^{-3}}
+\end{align}
+La energía máxima, $E_{\text{max}}$,  a la que se puede acelerar el electrón es tal que la energía radiada por vuelta, $E_{\text{perdida}}$, sea igual a la energía suministrada por vuelta, $E_{\text{suministrada}}=\qty{3.6}{GeV}$, (ver \url{https://inspirehep.net/literature/560299})
+
+\begin{align*}
+    E_{\text{suministrada}} =&C_\gamma \frac{E_{\text{max}}^4}{R}\\
+\end{align*}
+de donde
+\begin{align*}
+    E_{\text{max}} =&\left( \frac{R E_{\text{suministrada}} }{C_\gamma}\right)^{1/4}\\
+    =&\left(\frac{4297\cdot 3.6}{\num{8.85e-5}}\right)^{1/4}\\
+    =&\qty{116}{GeV}
+\end{align*}
+
+La energía máxima a la que llegó LEP fue de $\qty{104.5}{GeV}$, $\qty{209}{GeV}$ de energía de centro de masa. Para producir el Higgs se hubiese necesitado una energía de centro de masa de al menos $\qty{220}{GeV}$, que requiere un acelerador de un radio más grande (o acelerando  partículas más pesadas como se verá en el punto siguiente)
+
+\textbf{NOTA:} En \url{https://inspirehep.net/literature/560299} se establece que para LEP, ``the total RF voltage per turn needed is $V =\qty{3630}{MV}$'' que le entrega una energía a un electrón por vuelta de
+\begin{align*}
+    E_{\text{vuelta}} = e V = e\cdot \qty{3630}{MV} \frac{\unit{eV}}{e}= \qty{3.63}{GeV}
+\end{align*}
+
+Sea en adelante, $R_0$, el radio de LEP y $E^0_{\text{suministrada}}$ la energía suministrada por vuelta en LEP. Para una acelerador de radio $R$, la energía suministrada pasa a ser
+\begin{align*}
+    E_{\text{suministrada}} = E^0_{\text{suministrada}}\frac{R}{R_0}
+\end{align*}
+Esto es lógico, ya que un túnel más largo permite instalar más cavidades de radiofrecuencia (RF) para acelerar las partículas.
+
+Para el nuevo acelerador de circunferencia de $\qty{100}{km}$
+\begin{align*}
+    E_{\text{max}} =&\left( \frac{R E_{\text{suministrada}} }{C_\gamma}\right)^{1/4}\\
+     =& \left(\frac{R^2 E^0_{\text{suministrada}}}{R_0 C_\gamma}\right)^{1/4}\\
+=& \left(\frac{R^2 }{R_0^2}\frac{R_0 E^0_{\text{suministrada}}}{ C_\gamma}\right)^{1/4}\\
+=& \left(\frac{R^2 }{R_0^2}\right)^{1/4}\left(\frac{R_0 E^0_{\text{suministrada}}}{ C_\gamma}\right)^{1/4}\\
+    =& E^0_{\text{max}}\sqrt{\frac{R}{R_0}}\\
+    =& E^0_{\text{max}}\sqrt{\frac{2\pi R}{2\pi R_0}}\\
+    =&\qty{116}{GeV}\sqrt{\frac{\qty{100}{km}}{\qty{27}{km}}}\\
+    =& \qty{223}{GeV}\,,
+\end{align*}
+por rayo, para una energía de centro de masa máxima de unos $\qty{440}{\text{GeV}}$\footnote{En \url{https://inspirehep.net/literature/2149705} la dependencia de $E_{\text{max}}$ es con $R^{1/3}$ en lugar de $R^{1/2}$.
+}
+
+En el mismo sitio del CERN, donde funciona el LHC y se encontraba LEP, se planea construir un nuevo acelerador de $\qty{90.7}{km}$ llamado el Future Circular Collider (FCC-ee) \url{https://home.cern/science/accelerators/future-circular-collider} que tendrá una energía máxima de centro de masa de $\qty{370}{GeV}$, lo suficiente no sólo para producir el Higgs, sino también pares de top-antitop, cada uno con una masa de $\qty{173}{GeV/c^2}$.
+
+ 
+
+Teniendo en cuenta que para un protón se tiene la misma carga, $e^2$, podemos explicar porque el protón se puede acelerar a energías más altas en un acelerador de partículas de la misma circunferencia de $\qty{27}{\kilo\meter}$
+
+\textbf{Solución}
+    De
+    \begin{align*}
+    E_{\text{perdida}} =&\frac{2\pi R}{c} \frac{2}{3} \frac{k e^2 c}{R^2}\left(\frac{E}{m_ec^2}\right)^4\propto \frac{1}{m_e^4}
+   \end{align*}
+vemos que va con una dependencia inversa con la cuarta potencia de la masa. De modo que a mayor masa (cómo el protón o incluso el muón) menor es la energía perdida por radiación.
+
+La energía perdida por radiación para protones, $E^p_{\text{perdida}}$ es por consiguiente un factor
+\begin{align*}
+    \left(\frac{m_e}{m_p}\right)^4 =&  \left(\frac{m_e c^2}{m_p c^2}\right)^4\\
+    =& \left(\frac{\qty{0.511}{GeV}}{{\qty{0.938}{GeV}}}\right)^4\\
+    =&\num{9e-14}
+\end{align*}
+menor.
 
 \section{Motivación: El Enigma de los Espectros Atómicos}
 
@@ -8633,5 +8864,105 @@ Este cálculo aproximado sugiere un orden de magnitud de $\mathbf{10^{68}}$.
     \end{tabular}
     \caption{Estimación del Orden de Magnitud de Partículas}
 \end{table}
+
+\section{Derivación Algebraica de la Fórmula de Larmor Relativista}
+\label{sec:larmorrel}
+
+En la física clásica, la potencia $P$ (energía radiada por unidad de tiempo) de una carga acelerada está dada por la fórmula de Larmor, que depende del cuadrado de la aceleración: $P \propto a^2$. Sin embargo, cuando un electrón se mueve a velocidades cercanas a la de la luz en un acelerador circular (sincrotrón), esta fórmula debe corregirse por efectos relativistas. 
+
+A continuación, demostraremos algebraicamente cómo surge esta corrección sin utilizar cálculo diferencial, analizando cómo se transforman el espacio, el tiempo y la velocidad entre dos observadores.
+
+\subsubsection{Configuración de los Sistemas de Referencia}
+
+Imaginemos un electrón moviéndose en una órbita circular. En un instante dado, alineamos nuestro sistema de coordenadas de modo que el electrón se mueve a lo largo del eje $x$ con velocidad $v$, y su aceleración centrípeta apunta hacia el eje $y$.
+
+Definimos dos sistemas inerciales:
+\begin{itemize}
+    \item \textbf{Sistema del Laboratorio ($S$):} El observador estacionario ve al electrón moverse con velocidad horizontal $\boldsymbol{u}_x = v$ y experimentar un cambio de velocidad vertical $\Delta \boldsymbol{u}_y$ durante un pequeño intervalo de tiempo $\Delta t$. Su aceleración medida es $a = \frac{\Delta \boldsymbol{u}_y}{\Delta t}$.
+    \item \textbf{Sistema Propio ($S'$):} Una nave imaginaria que viaja a velocidad constante $v$ junto al electrón. En este instante, el electrón está en reposo respecto a la nave ($\boldsymbol{u}'_x = 0$). La aceleración que experimenta el electrón en su propio sistema es la \textbf{aceleración propia} $a' = \frac{\Delta \boldsymbol{u}'_y}{\Delta t'}$.
+\end{itemize}
+
+Nuestro objetivo es encontrar algebraicamente la relación entre $a'$ y $a$.
+
+\subsubsection{Paso 1: Transformación del Intervalo de Tiempo ($\Delta t'$)}
+
+Primero, necesitamos saber cuánto tiempo transcurre en el sistema propio ($S'$) en comparación con el laboratorio ($S$). Utilizamos la ecuación de transformación de Lorentz para intervalos de tiempo:
+\begin{equation}
+    \Delta t' = \gamma \left( \Delta t - \frac{v \Delta x}{c^2} \right).
+\end{equation}
+Como estamos observando a la partícula, la distancia $\Delta x$ que recorre en el laboratorio durante el tiempo $\Delta t$ es simplemente $\Delta x = v \Delta t$. Sustituyendo esto en la ecuación obtenemos
+\begin{equation}
+    \Delta t' = \gamma \left( \Delta t - \frac{v (v \Delta t)}{c^2} \right).
+\end{equation}
+Factorizamos el intervalo de tiempo $\Delta t$:
+\begin{equation}
+    \Delta t' = \gamma \Delta t \left( 1 - \frac{v^2}{c^2} \right).
+\end{equation}
+Sabemos por definición que el término entre paréntesis es exactamente el inverso del factor de Lorentz al cuadrado, es decir, $\left(1 - \frac{v^2}{c^2}\right) = \frac{1}{\gamma^2}$. Al sustituirlo, la ecuación se simplifica a
+\begin{equation}
+    \Delta t' = \gamma \Delta t \left( \frac{1}{\gamma^2} \right) = \frac{\Delta t}{\gamma}.
+    \label{eq:delta_t_algebraico}
+\end{equation}
+\textit{(Nota: Esto es simplemente la dilatación del tiempo: el tiempo propio $\Delta t'$ es más corto que el tiempo del laboratorio $\Delta t$ por un factor $\gamma$).}
+
+\subsubsection{Paso 2: Transformación de la Velocidad Transversal ($\Delta \boldsymbol{u}'_y$)}
+
+Ahora debemos analizar el cambio de velocidad en la dirección perpendicular ($y$). La fórmula relativista para transformar velocidades en el eje transversal es:
+\begin{equation}
+    \boldsymbol{u}'_y = \frac{\boldsymbol{u}_y}{\gamma \left( 1 - \frac{v \boldsymbol{u}_x}{c^2} \right)}.
+\end{equation}
+En nuestro experimento, la velocidad inicial en $y$ es cero. Luego de un pequeño instante, el electrón adquiere una velocidad vertical $\Delta \boldsymbol{u}_y$. En ese mismo instante, su velocidad horizontal sigue siendo prácticamente la misma, $\boldsymbol{u}_x = v$ (ya que en un movimiento circular el cambio en la rapidez tangencial es nulo).
+
+Sustituimos la componente horizontal $\boldsymbol{u}_x = v$ en el denominador:
+\begin{equation}
+    \Delta \boldsymbol{u}'_y = \frac{\Delta \boldsymbol{u}_y}{\gamma \left( 1 - \frac{v(v)}{c^2} \right)} = \frac{\Delta \boldsymbol{u}_y}{\gamma \left( 1 - \frac{v^2}{c^2} \right)}.
+\end{equation}
+Nuevamente, utilizamos la identidad mágica $\left(1 - \frac{v^2}{c^2}\right) = \frac{1}{\gamma^2}$:
+\begin{equation}
+    \Delta \boldsymbol{u}'_y = \frac{\Delta \boldsymbol{u}_y}{\gamma \left( \frac{1}{\gamma^2} \right)}.
+\end{equation}
+Al simplificar el denominador ($\gamma / \gamma^2 = 1/\gamma$), la fracción se invierte, dándonos el resultado:
+\begin{equation}
+    \Delta \boldsymbol{u}'_y = \gamma \Delta \boldsymbol{u}_y.
+    \label{eq:delta_v_algebraico}
+\end{equation}
+Físicamente, esto significa que, debido a la relatividad del espaciotiempo, el observador que viaja con la partícula percibe un "empujón" lateral $\gamma$ veces más violento que el observador estacionario.
+
+\subsubsection{Paso 3: La Aceleración Propia ($a'$)}
+
+La aceleración propia que verdaderamente experimenta el electrón se define como su cambio de velocidad dividido por su propio intervalo de tiempo. Utilizando las Ecuaciones (\ref{eq:delta_v_algebraico}) y (\ref{eq:delta_t_algebraico}), obtenemos
+\begin{equation}
+    a' = \frac{\Delta \boldsymbol{u}'_y}{\Delta t'} = \frac{\gamma \Delta \boldsymbol{u}_y}{\left( \frac{\Delta t}{\gamma} \right)}.
+\end{equation}
+Aplicando las reglas del álgebra para dividir fracciones (extremos y medios), multiplicamos por $\gamma$:
+\begin{equation}
+    a' = \gamma \cdot \gamma \left( \frac{\Delta \boldsymbol{u}_y}{\Delta t} \right).
+\end{equation}
+Reconociendo que la fracción final es simplemente la aceleración medida en el laboratorio ($a = \Delta \boldsymbol{u}_y / \Delta t$), llegamos a nuestra conclusión geométrica:
+\begin{equation}
+    a' = \gamma^2 a.
+    \label{eq:aceleracion_propia}
+\end{equation}
+
+\subsubsection{Paso 4: La Fórmula de Larmor para el Sincrotrón}
+
+Para una partícula cargada, la \textbf{potencia total radiada} ($P = \Delta E / \Delta t$) es un invariante relativista, lo que significa que el laboratorio y la partícula acuerdan en el mismo valor de potencia ($P = P'$). 
+
+En el sistema propio de la partícula, la velocidad es cero, por lo que las leyes de la física clásica aplican perfectamente. La potencia clásica de Larmor depende del cuadrado de la aceleración:
+\begin{equation}
+    P = \frac{2}{3} \frac{k e^2}{c^3} (a')^2.
+\end{equation}
+Para predecir qué observaremos desde la Tierra, debemos escribir esta ecuación en términos de la aceleración del laboratorio ($a$). Al sustituir la Ecuación (\ref{eq:aceleracion_propia}), obtenemos
+\begin{equation}
+    P = \frac{2}{3} \frac{k e^2}{c^3} (\gamma^2 a)^2.
+\end{equation}
+Al elevar el paréntesis al cuadrado, descubrimos la fórmula final para la radiación de sincrotrón:
+\begin{equation}
+    P = \frac{2}{3} \frac{k e^2 a^2}{c^3} \gamma^4.
+\end{equation}
+
+\textbf{Conclusión:} 
+El factor $\gamma^4$ no es un ajuste arbitrario; es la consecuencia ineludible de aplicar álgebra básica a las transformaciones de Lorentz. Dado que el reloj de la partícula corre más lento (factor $\gamma$) y su cambio de velocidad lateral se magnifica (otro factor $\gamma$), la aceleración que siente es $\gamma^2$ veces mayor. Como la radiación de energía requiere cuadrar esa aceleración, el efecto total estalla proporcionalmente a $\gamma^4$, poniendo un límite infranqueable a la energía que podemos darle a un electrón en un acelerador circular.
+
 
 \end{document}
