@@ -105,8 +105,11 @@ Un \textbf{vector} es una cantidad que tiene tanto \textbf{magnitud} (tamaño) c
 \end{itemize}
 
 \subsection{Cálculo de Magnitud y Dirección}
+Para denotar vectores vamos a usar letras en ``negrita'', como por ejemplo el vector $\boldsymbol{r}$ en la figura~\ref{fig:vectorr} (izquierda).
 
-\begin{tikzpicture}[scale=0.9]
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.9]
     % Ejes
     \draw[->] (-1,0) -- (5,0) node[right] {$x$};
     \draw[->] (0,-1) -- (0,4) node[above] {$y$};
@@ -115,7 +118,7 @@ Un \textbf{vector} es una cantidad que tiene tanto \textbf{magnitud} (tamaño) c
     \coordinate (O) at (0,0);
     \coordinate (V) at (3,2);
     \coordinate (W) at (0,2);
-    \draw[->, thick, blue] (O) -- (V) node[midway, above right] {$\boldsymbol{v} = (x, y)$};
+    \draw[->, thick, blue] (O) -- (V) node[midway, above right] {$\boldsymbol{r} = (x, y)$};
 
     % Coordenadas y líneas auxiliares
     \coordinate (X) at (3,0);
@@ -136,12 +139,48 @@ Un \textbf{vector} es una cantidad que tiene tanto \textbf{magnitud} (tamaño) c
     %Cálculo de ángulo:
     \node[right] at (3.7,1) {$\tan\theta = \dfrac{y}{x}$};
 \end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}[scale=0.9]
+    % Ejes
+    \draw[->] (-1,0) -- (5,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,4) node[above] {$y$};
 
-La magnitud del vector viene dada por la longitud del vector, que corresponde a la hipotenusa del triángulo rectángulo de lados $x$ y $y$, se denota por $|\boldsymbol{v}|$ o simplemente $v$
+    % Vector v
+    \coordinate (O) at (0,0);
+    \coordinate (V) at (3,2);
+    \coordinate (W) at (0,2);
+    \draw[->, thick, blue] (O) -- (V) node[midway, above right] {$\boldsymbol{v} = (v_x, v_y)$};
+
+    % Coordenadas y líneas auxiliares
+    \coordinate (X) at (3,0);
+    \draw[dashed] (V) -- (X);
+    \draw[dashed] (V) -- (W);
+    \draw (0,0) -- (X);
+    \node[below] at (X) {$v_x$};
+    \node[left] at (0,2) {$v_y$};
+
+    % Ángulo
+    \draw[<->] (0.7,0) arc (0:33.69:0.7);
+    \node at (1.2,0.4) {$\alpha$};
+
+    % Etiquetas
+    \node[below left] at (O) {$O$}; % Origen
+    %\node[right] at (V) {$V$}; % Extremo del vector
+
+    %Cálculo de ángulo:
+    \node[right] at (3.7,1) {$\tan\alpha = \dfrac{v_y}{v_x}$};
+\end{tikzpicture}
+
+    \caption{Izquierda: vector $\boldsymbol{r}$, de componentes $x$ y $y$ y dirección $\theta$. Derecha: vector $\boldsymbol{v}$, de componentes $v_x$ y $v_y$ y dirección $\alpha$. }
+    \label{fig:vectorr}
+\end{figure}
+La magnitud del vector, en éste caso $\boldsymbol{r}$, viene dada por la longitud del vector, que corresponde a la hipotenusa del triángulo rectángulo de lados $x$ y $y$. La magnitud se denota por $|\boldsymbol{r}|$ o simplemente $r$ (en letra normal sin ``negrita'')
 \begin{align}
-    v = \sqrt{x^2+y^2}\,.
+  |\boldsymbol{r}| =  r = \sqrt{x^2+y^2}\,.
 \end{align}
 
+\subsubsection*{Ejemplo}
+El vector de velocidad se denota con $\boldsymbol{v}$  con componentes $v_x$ y $v_y$ como se muestra en la figura~\ref{fig:vectorr} (derecha). Tiene magnitud $v$ y dirección $\alpha$.
 
 
 El ángulo $\theta$ que define la dirección del vector está dado por:
@@ -3292,38 +3331,83 @@ Hemos demostrado de manera estrictamente algebraica que el trabajo neto ($W$) re
 
 TODO: Derivar todo a partir de la conservación de la energía
 
-\section{Fuerza constante}
+\section{Ecuación de Movimiento a partir del Teorema del Trabajo y la Energía}
 
-En una dimensión, $x$, con $F$ constante, $t_{\text{inicial}} = 0$ y $t_{\text{final}} = 0$, $v_{\text{inicial}} = v_0$ y $v_{\text{final}} = v$
+En las secciones anteriores demostramos cómo la cinemática nos lleva al concepto de energía. Sin embargo, la física es profundamente simétrica. A continuación, cumpliremos el objetivo de invertir el proceso: asumiremos como principio fundamental el \textbf{Teorema del Trabajo y la Energía} para una fuerza conservativa constante, y a partir de él deduciremos la ecuación de movimiento $x(t)$ utilizando exclusivamente herramientas algebraicas.
 
-\begin{align}
-    v_0 = \pm a t =\pm \frac{F}{m} t
-\end{align}
+\subsubsection{Paso 1: El Trabajo y la Diferencia de Cuadrados}
 
-\begin{align}
-    v = v_0 \pm\frac{F}{m} t
-\end{align}
+El Teorema del Trabajo y la Energía establece que el trabajo realizado por una fuerza constante $F$ a lo largo de un desplazamiento $\Delta x$ se invierte íntegramente en cambiar la energía cinética de la partícula:
+\begin{equation}
+    F \Delta x = \frac{1}{2}m v^2 - \frac{1}{2}m v_0^2.
+\end{equation}
+Podemos factorizar el lado derecho de esta igualdad aprovechando la estructura algebraica de la diferencia de cuadrados ($A^2 - B^2 = (A-B)(A+B)$):
+\begin{equation}
+    F \Delta x = \frac{1}{2}m (v - v_0)(v + v_0).
+    \label{eq:trabajo_factorizado}
+\end{equation}
 
+\subsubsection{Paso 2: Incorporación de la Velocidad Promedio}
+
+En la Sección 3.4.2 demostramos rigurosamente que, si la aceleración es constante, el desplazamiento geométrico se relaciona con el tiempo a través de la media aritmética de las velocidades (la velocidad promedio):
+\begin{equation}
+\label{eq:desplazamiento}
+    \Delta x = \left( \frac{v + v_0}{2} \right) t.
+\end{equation}
+De esta relación puramente cinemática, podemos despejar la suma de las velocidades multiplicando por $2$ y dividiendo por $t$:
+\begin{equation}
+    v + v_0 = \frac{2 \Delta x}{t}.
+    \label{eq:suma_velocidades}
+\end{equation}
+
+\subsubsection{Paso 3: Sustitución y Recuperación de la Dinámica}
+
+Ahora, sustituimos la Ecuación (\ref{eq:suma_velocidades}) directamente en nuestra ecuación de energía factorizada (\ref{eq:trabajo_factorizado}):
+\begin{equation}
+    F \Delta x = \frac{1}{2}m (v - v_0) \left( \frac{2 \Delta x}{t} \right).
+\end{equation}
+Al reorganizar los términos, el factor $2$ en el numerador se cancela perfectamente con el $\frac{1}{2}$, obteniendo:
+\begin{equation}
+    F \Delta x = m (v - v_0) \frac{\Delta x}{t}.
+\end{equation}
+Notamos que el desplazamiento $\Delta x$ aparece multiplicando a ambos lados de la igualdad. Siempre que haya existido movimiento ($\Delta x \neq 0$), podemos cancelarlo algebraicamente dividiendo ambos lados entre $\Delta x$:
+\begin{equation}
+    F = m \left( \frac{v - v_0}{t} \right).
+\end{equation}
+Reconocemos de inmediato que el término entre paréntesis es la aceleración constante ($a = \Delta v / t$). Así, \textbf{hemos deducido la Segunda Ley de Newton} ($F = ma$) partiendo de la conservación de la energía. 
+
+Despejando la velocidad final $v$ de esta expresión, obtenemos cómo evoluciona en el tiempo bajo esta fuerza:
 \begin{align*}
-    \pm F\Delta x =& \frac{1}{2}mv^2 - \frac{1}{2}mv^2_0\\
-    =&\frac{1}{2}m \left(v_0 \pm\frac{F}{m} t\right)^2 - 
-    \frac{1}{2}mv^2_0\\
-    =&\frac{1}{2}m \left(v_0^2 \pm 2v_0 \frac{F}{m} t + \frac{F^2}{m^2} t^2\right) - 
-    \frac{1}{2}mv^2_0\\
-    =&\cancel{\frac{1}{2}m v_0^2} \pm v_0 F t + \frac{F^2}{2m} t^2 - 
-    \cancel{\frac{1}{2}mv^2_0}\\
-    =& \pm v_0 t F +\frac{1}{2}\frac{F^2}{m} t^2
+    \frac{Ft}{m} = v-v_0
 \end{align*}
-Despejando $\Delta x$
-\begin{align*}
-    \Delta x = x-x_0 = v_0 t \pm \frac{1}{2}\frac{F}{m} t^2\,.
-\end{align*}
+de modo que
+\begin{equation}
+    v = v_0 + \frac{F}{m} t.
+    \label{eq:vel_tiempo_energia}
+\end{equation}
 
-Finalmente
-\begin{align}
-\label{eq:1D}
-    x(t) = x_0 + v_0 t \pm \frac{1}{2}\frac{F}{m} t^2\,.
-\end{align}
+\subsubsection{Paso 4: La Ecuación de Movimiento $x(t)$}
+
+Finalmente, para encontrar la posición de la partícula en función del tiempo, tomamos la velocidad final que acabamos de hallar (Ecuación \eqref{eq:vel_tiempo_energia}) y la sustituimos de vuelta en la ecuación del desplazamiento~\eqref{eq:desplazamiento}:
+\begin{equation}
+    \Delta x = \frac{1}{2} \left( v_0 + \left[ v_0 + \frac{F}{m} t \right] \right) t.
+\end{equation}
+Sumamos los términos semejantes ($v_0$) dentro del corchete grande:
+\begin{equation}
+    \Delta x = \frac{1}{2} \left( 2v_0 + \frac{F}{m} t \right) t.
+\end{equation}
+Al distribuir el factor $\frac{1}{2} t$ en el interior del paréntesis, llegamos a:
+\begin{equation}
+    \Delta x = v_0 t + \frac{1}{2} \frac{F}{m} t^2.
+\end{equation}
+Sabiendo que el desplazamiento es la diferencia entre la posición final e inicial ($\Delta x = x(t) - x_0$), la ecuación de movimiento final queda completamente determinada como:
+\begin{equation}
+\label{eq:mvtofuerzaconstante}
+    x(t) = x_0 + v_0 t + \frac{1}{2} \frac{F}{m} t^2.
+\end{equation}
+
+\textbf{Conclusión Física:}
+Hemos cerrado el círculo lógico del capítulo. Mediante este proceso algebraico, demostramos que la energía y el trabajo no son simplemente herramientas accesorias derivadas de la cinemática; son, de hecho, principios tan fundamentales que a partir de ellos se puede deducir íntegramente la Segunda Ley de Newton y toda la evolución temporal de las trayectorias.
 
 
 
@@ -3502,7 +3586,7 @@ plt.savefig('position.pdf')\end{lstlisting}
     \label{fig:vertical}
 \end{figure}
 
-Esto corresponde a reemplazar la Fuerza en la ec.~\eqref{eq:1D}, que para $y_0 = 0$ es
+Esto corresponde a reemplazar la Fuerza constante en la ec.~\eqref{eq:gravitationalconstantforce},  en la ec.~\eqref{eq:mvtofuerzaconstante}, que para $y_0 = 0$ es
 \begin{align}
 \label{eq:lanzamiento}
     y(t) =  v_0 t - \frac{1}{2}g t^2 \,.
@@ -3514,6 +3598,7 @@ De la ecuación para la aceleración constante~\eqref{eq:aceleración}, con $t_0
     v = v_0-g t
 \end{align}
 
+%TODO: reemplazar por conservación de la energía
 De esta ecuación podemos obtener el tiempo para alcanzar la altura máxima de la condición que en ese punto la velocidad es cero
 \begin{align*}
     0 =& v_0-gt\\
@@ -4199,12 +4284,12 @@ La velocidad vertical cambia debido a la aceleración gravitacional.
 \subsection*{Ecuaciones de la Posición en función del Tiempo, $t$}
 Estas son las ecuaciones paramétricas del movimiento que describen las coordenadas $(x, y)$ del proyectil en cualquier instante $t$.
 
-\paragraph{Posición Horizontal ($x$):}
+\paragraph{Posición Horizontal ($x$) a velocidad en $x$ constante:}
 \begin{equation}
     \boxed{x(t) = (v_0 \cos\theta) t}
 \end{equation}
 
-\paragraph{Posición Vertical ($y$):}
+\paragraph{Posición Vertical ($y$), ecuación de movimiento a aceleración constante~\eqref{eq:lanzamiento}:}
 \begin{equation}
     \boxed{y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2}
 \end{equation}
@@ -4258,6 +4343,7 @@ Partimos de la ecuación de la trayectoria:
 Para encontrar el alcance, buscamos los valores de $x$ para los cuales $y(x)=0$.
 \[ 0 = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
 
+%TODO: Usar conservación de la energía
 \subsection*{Paso 2: Resolver la Ecuación para x}
 Esta es una ecuación cuadrática para $x$ que podemos resolver factorizando:
 \[ x \left[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x \right] = 0 \]
