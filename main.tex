@@ -139,39 +139,51 @@ Para denotar vectores vamos a usar letras en ``negrita'', como por ejemplo el ve
     %Cálculo de ángulo:
     \node[right] at (3.7,1) {$\tan\theta = \dfrac{y}{x}$};
 \end{tikzpicture}
-\hspace{1cm}
-\begin{tikzpicture}[scale=0.9]
-    % Ejes
-    \draw[->] (-1,0) -- (5,0) node[right] {$x$};
-    \draw[->] (0,-1) -- (0,4) node[above] {$y$};
+\hspace{0.3cm}
+\begin{tikzpicture}[>=stealth, scale=1.2]
+    
+    % Ejes coordenados
+    \draw[->] (-0.5, 0) -- (6, 0) node[right] {$x$};
+    \draw[->] (0, -0.5) -- (0, 4) node[above] {$y$};
+    \node[below left] at (0,0) {$O$};
 
-    % Vector v
-    \coordinate (O) at (0,0);
-    \coordinate (V) at (3,2);
-    \coordinate (W) at (0,2);
-    \draw[->, thick, blue] (O) -- (V) node[midway, above right] {$\boldsymbol{v} = (v_x, v_y)$};
+    % Coordenadas de los puntos inicial y final
+    \coordinate (P1) at (1.5, 1.0);
+    \coordinate (P2) at (4.5, 3.0);
+    \coordinate (Paux) at (4.5, 1.0); % Punto auxiliar para el triángulo rectángulo
 
-    % Coordenadas y líneas auxiliares
-    \coordinate (X) at (3,0);
-    \draw[dashed] (V) -- (X);
-    \draw[dashed] (V) -- (W);
-    \draw (0,0) -- (X);
-    \node[below] at (X) {$v_x$};
-    \node[left] at (0,2) {$v_y$};
+    % Líneas proyectadas a los ejes x e y
+    \draw[dashed, gray!80] (P1) -- (1.5, 0) node[below, text=black] {$x_0$};
+    \draw[dashed, gray!80] (P2) -- (4.5, 0) node[below, text=black] {$x_1$};
+    \draw[dashed, gray!80] (P1) -- (0, 1.0) node[left, text=black] {$y_0$};
+    \draw[dashed, gray!80] (P2) -- (0, 3.0) node[left, text=black] {$y_1$};
 
-    % Ángulo
-    \draw[<->] (0.7,0) arc (0:33.69:0.7);
-    \node at (1.2,0.4) {$\alpha$};
+    % Líneas de las componentes (triángulo rectángulo)
+    \draw[dashed, thick] (P1) -- (Paux) node[midway, below] {$\Delta x=x_1-x_0$};
+    \draw[dashed, thick] (Paux) -- (P2) node[midway, right] {$\Delta y=y_1-y_0$};
 
-    % Etiquetas
-    \node[below left] at (O) {$O$}; % Origen
-    %\node[right] at (V) {$V$}; % Extremo del vector
+    % El vector desplazado
+    \draw[->, thick, blue] (P1) -- (P2) node[midway, above left, xshift=8pt, yshift=2pt] {$\boldsymbol{r} = (x_1-x_0, y_1-y_0)$};
 
-    %Cálculo de ángulo:
-    \node[right] at (3.7,1) {$\tan\alpha = \dfrac{v_y}{v_x}$};
+    % Puntos inicial y final
+    \filldraw[black] (P1) circle (1.2pt);
+    \filldraw[black] (P2) circle (1.2pt);
+
+    % Ángulo theta
+    % El ángulo de este vector específico es arctan(2/3) ~ 33.7 grados
+    \draw[<->] (2.2, 1.0) arc (0:33.7:0.7);
+    \node at (2.4, 1.3) {$\theta$};
+
+    % Fórmulas a la derecha del gráfico
+    \node[right, align=left] at (5.2, 2.0) {
+        % $\displaystyle \tan\theta = \frac{\Delta y}{\Delta x} = \frac{y_1 - y_0}{x_1 - x_0}$ \\[15pt]
+        % $\displaystyle |\boldsymbol{r}| = \sqrt{(\Delta x)^2 + (\Delta y)^2}$
+    };
+
 \end{tikzpicture}
 
-    \caption{Izquierda: vector $\boldsymbol{r}$, de componentes $x$ y $y$ y dirección $\theta$. Derecha: vector $\boldsymbol{v}$, de componentes $v_x$ y $v_y$ y dirección $\alpha$. }
+
+    \caption{Izquierda: vector $\boldsymbol{r}$, de componentes $x$ y $y$ y dirección $\theta$. Derecha: mismo vector con el origin desplazado a la posición $(x_0,y_0)$  de componentes $\Delta x =x_1-x_0$ y $\Delta y = y_1-y_0$ y dirección $\alpha$. }
     \label{fig:vectorr}
 \end{figure}
 La magnitud del vector, en éste caso $\boldsymbol{r}$, viene dada por la longitud del vector, que corresponde a la hipotenusa del triángulo rectángulo de lados $x$ y $y$. La magnitud se denota por $|\boldsymbol{r}|$ o simplemente $r$ (en letra normal sin ``negrita'')
@@ -188,11 +200,11 @@ El ángulo $\theta$ que define la dirección del vector está dado por:
 $$\theta = \arctan{\left(\frac{y}{x}\right)}$$
 
 
-\subsection{Operaciones con Vectores: Suma, Diferencia y Producto Escalar}
+\subsection{Operaciones con Vectores: Adición y Producto Escalar}
 
 Las operaciones vectoriales nos permiten modelar interacciones físicas complejas. A continuación, detallamos las tres operaciones más fundamentales en dos dimensiones:
 
-\paragraph{1. Suma de Vectores}
+\subsubsection{Suma de Vectores}
 La suma de dos vectores $\boldsymbol{u} = (u_x, u_y)$ y $\boldsymbol{v} = (v_x, v_y)$ se realiza sumando sus componentes correspondientes. Geométricamente, equivale a colocar la `cola'' del segundo vector en la ``punta'' del primero; el vector resultante va desde el origen del primero hasta la punta del segundo (regla del triángulo o del paralelogramo).
 
 \begin{equation}
@@ -217,48 +229,156 @@ La suma de dos vectores $\boldsymbol{u} = (u_x, u_y)$ y $\boldsymbol{v} = (v_x, 
 
 \textbf{Ejemplo:} Si una persona camina un desplazamiento $\boldsymbol{d}_1 = (3, 2)$ km y luego otro desplazamiento $\boldsymbol{d}_2 = (1, 3)$ km, su desplazamiento total desde el origen es $\boldsymbol{d}_{\text{total}} = (3+1, 2+3) = (4, 5)$ km.
 
-\paragraph{2. Diferencia de Vectores}
+\subsubsection{Diferencia de Vectores}
 La resta o diferencia entre dos vectores se define algebraicamente restando sus componentes:
 \begin{equation}
     \boldsymbol{u} - \boldsymbol{v} = (u_x - v_x, u_y - v_y)
 \end{equation}
 Geométricamente, si ambos vectores parten del mismo origen, el vector diferencia $\boldsymbol{u} - \boldsymbol{v}$ es el vector que va desde la punta de $\boldsymbol{v}$ hasta la punta de $\boldsymbol{u}$.
 
-\textbf{¡Importante!} La diferencia geométrica entre dos vectores (el vector relativo que los une) es una magnitud física real y, por lo tanto, es \textbf{completamente independiente de dónde coloquemos el origen del sistema de coordenadas}. Representa la relación espacial directa entre dos puntos en el espacio.
+\begin{figure}[H]
+    \centering
 
-\begin{center}
+\newcommand{\xorg}{0}
+\newcommand{\yorg}{0}
 \begin{tikzpicture}[>=stealth, scale=0.8]
     % Ejes
     \draw[<->, gray] (-1,0) -- (5,0) node[right] {$x$};
     \draw[<->, gray] (0,-1) -- (0,4) node[above] {$y$};
     
     % Vectores
-    \draw[->, thick, blue] (0,0) -- (4,2) node[midway, below right] {$\boldsymbol{u}$};
-    \draw[->, thick, red] (0,0) -- (1,3) node[midway, left] {$\boldsymbol{v}$};
+    \draw[->, thick, blue] (\xorg,\yorg) -- (4+\xorg,2+\yorg) node[midway, below right] {$\boldsymbol{u}$};
+    \draw[->, thick, red] (\xorg,\yorg) -- (1+\xorg,3+\yorg) node[midway, left] {$\boldsymbol{v}$};
     
     % Vector diferencia
-    \draw[->, thick, green!60!black] (1,3) -- (4,2) node[midway, above right] {$\boldsymbol{u}-\boldsymbol{v}$};
+    \draw[->, thick, green!60!black] (1+\xorg,3+\yorg) -- (4+\xorg,2+\yorg) node[midway, above right] {$\boldsymbol{u}-\boldsymbol{v}$};
 \end{tikzpicture}
-\end{center}
 
-\textbf{Ejemplo:} Si un objeto A está en la posición $\boldsymbol{r}_A = (1, 3)$ m y un objeto B está en $\boldsymbol{r}_B = (4, 2)$ m, el vector de posición relativa de B con respecto a A es $\Delta\boldsymbol{r} = \boldsymbol{r}_B - \boldsymbol{r}_A = (4-1, 2-3) = (3, -1)$ m. Sin importar desde dónde se mida el sistema, B siempre estará 3 metros a la derecha y 1 metro abajo de A.
+    
+    \caption{Diferencia de vectores $\boldsymbol{u}-\boldsymbol{v}$: el vector resultante tiene origin en la punta del segundo vector y va hasta la punta del primer vector}
+    \label{fig:difvecuv}
+\end{figure}
 
-\paragraph{3. Producto Escalar (Producto Punto)}
-A diferencia de la suma y la resta, el producto escalar toma dos vectores y devuelve un \textbf{número escalar} (no un vector). Algebraicamente se calcula multiplicando las componentes correspondientes y sumándolas:
+En la figura~\ref{fig:difvecuv} podemos ver que si aplicamos la interpretación geométrica de la suma, el vector $\boldsymbol{u}$ es la resultante de la suma de los vectores $\boldsymbol{v}$ y $\boldsymbol{u}-\boldsymbol{v}$. En efecto,
+\begin{align*}
+    \cancel{\boldsymbol{v}}+\boldsymbol{u}-\cancel{\boldsymbol{v}}
+    =\boldsymbol{u}\,.
+\end{align*}
+
+
+\subsubsection{Invariancia del Vector Diferencia ($\Delta\boldsymbol{r}$)}
+
+Un concepto central en la física es que las leyes de la naturaleza no deben depender de dónde coloquemos nuestro sistema de coordenadas ni de cómo lo orientemos. Si un vector representa una realidad física tangible (como la distancia y dirección entre dos partículas), entonces sus propiedades deben ser invariantes al cambiar de sistema de referencia.
+
+
+\begin{figure}[H]
+    \centering
+\newcommand{\xorg}{0}
+\newcommand{\yorg}{0}
+\begin{tikzpicture}[>=stealth, scale=0.8]
+    % Ejes
+    \draw[<->, gray] (-1,0) -- (5,0) node[right] {$x$};
+    \draw[<->, gray] (0,-1) -- (0,4) node[above] {$y$};
+    
+    % Vectores
+    \draw[->, thick, blue] (\xorg,\yorg) -- (4+\xorg,2+\yorg) node[midway, below right] {$\boldsymbol{r}_2$};
+    \draw[->, thick, red] (\xorg,\yorg) -- (1+\xorg,3+\yorg) node[midway, left] {$\boldsymbol{r}_1$};
+    
+    % Vector diferencia
+    \draw[->, thick, green!60!black] (1+\xorg,3+\yorg) -- (4+\xorg,2+\yorg) node[midway, above right] {$\boldsymbol{r}_2-\boldsymbol{r}_1$};
+\end{tikzpicture}
+%
+\renewcommand{\xorg}{1}
+\renewcommand{\yorg}{1}
+%
+\begin{tikzpicture}[>=stealth, scale=0.8]
+    % Ejes
+    \draw[<->, gray] (-1,0) -- (5,0) node[right] {$x$};
+    \draw[<->, gray] (0,-1) -- (0,4) node[above] {$y$};
+    % Ejes
+    \draw[<->, gray] (-1+\xorg,0+\yorg) -- (5+\xorg,0+\yorg) node[right] {$x'$};
+    \draw[<->, gray] (0+\xorg,-1+\yorg) -- (0+\xorg,4+\yorg) node[above] {$y'$};
+
+    
+    % Vectores
+    \draw[->, thick, blue] (\xorg,\yorg) -- (4+\xorg,2+\yorg) node[midway, below right] {$\boldsymbol{r}'_2$};
+    \draw[->, thick, red] (\xorg,\yorg) -- (1+\xorg,3+\yorg) node[midway, left] {$\boldsymbol{r}'_1$};
+    
+    % Vector diferencia
+    \draw[->, thick, green!60!black] (1+\xorg,3+\yorg) -- (4+\xorg,2+\yorg) node[midway, above right] {$\boldsymbol{r}'_2-\boldsymbol{r}'_1$};
+
+    \coordinate (P0) at (\xorg, \yorg);
+    \filldraw[black] (P0) circle (1.2pt);   
+    \node[below, align=center] at (\xorg, \yorg) {$(x_0,y_0)$};
+\end{tikzpicture}
+    
+    \caption{Diferencia de vectores vista desde dos sistemas de referencia diferentes. A la izquierda el sistema de referencia $S(x,y)$ y a la derecha el sistema de referencia $S'(x',y')$ donde los vectores $\boldsymbol{r}_1$ y $\boldsymbol{r}_2$ tienen origen en el punto $(x'_0,y'_0)$. }
+    \label{fig:difvec}
+\end{figure}
+
+
+
+
+¿Qué sucede si tenemos dos vectores en el espacio, $\boldsymbol{r}_1$ y $\boldsymbol{r}_2$ como se muestra en la figura~\ref{fig:difvec}, y analizamos el vector diferencia o vector desplazamiento que los une ($\Delta\boldsymbol{r} = \boldsymbol{r}_2 - \boldsymbol{r}_1$)? 
+
+A continuación, demostraremos algebraicamente que las componentes de este vector diferencia y su magnitud geométrica son estrictamente independientes del sistema de referencia.
+
+\paragraph{Invariancia bajo Traslación del Origen}
+
+Supongamos un sistema de coordenadas original $S(x,y)$. En este sistema, tenemos los vectores $\boldsymbol{r}_1 = (x_1, y_1)$ y $\boldsymbol{r}_2 = (x_2, y_2)$ como se muestra en la figura~\ref{fig:difvec} izquierda. El vector diferencia en el sistema $S$ es:
+\begin{equation}
+\label{eq:inS}
+    \Delta\boldsymbol{r} = \boldsymbol{r}_2 - \boldsymbol{r}_1 = (x_2 - x_1, y_2 - y_1).
+\end{equation}
+
+Ahora, imaginemos que trasladamos el triángulo formado por los tres vectores sin deformarlo ni rotarlo hasta un punto $(x_0,y_0)$ que define el origen de coordenadas de un nuevo sistema de referencia $S'(x', y')$, como se muestra en la figura~\ref{fig:difvec} derecha, con los ejes paralelos a los de $S$. Las ecuaciones de transformación para cualquier coordenada son:
+\begin{align}
+    x' &= x - x_0 \\
+    y' &= y - y_0
+\end{align}
+
+Calculamos las coordenadas de nuestros dos vectores en este nuevo sistema $S'$:
+\begin{align*}
+    \boldsymbol{r}'_1 &= (x'_1,y'_1) = (x_1 - x_0, y_1 - y_0) \\
+    \boldsymbol{r}'_2 &= (x'_2,y'_2) = (x_2 - x_0, y_2 - y_0)
+\end{align*}
+
+Ahora, calculamos el vector diferencia $\Delta\boldsymbol{r}'$ según el observador en el sistema $S'$:
+\begin{equation}
+    \Delta\boldsymbol{r}' = \boldsymbol{r}'_2 - \boldsymbol{r}'_1 = \big((x_2 - x_0) - (x_1 - x_0), \; (y_2 - y_0) - (y_1 - y_0)\big).
+\end{equation}
+Al simplificar algebraicamente cada componente, los términos constantes $x_0$ y $y_0$ se cancelan:
+\begin{equation}
+    \Delta\boldsymbol{r}' = (x_2 - \cancel{x_0} - x_1 + \cancel{x_0}, \; y_2 - \cancel{y_0} - y_1 + \cancel{y_0}) = (x_2 - x_1, \; y_2 - y_1).
+\end{equation}
+\textbf{Conclusión:} Observamos de la ecuación \eqref{eq:inS}, que $\Delta\boldsymbol{r}' = \Delta\boldsymbol{r}$. Las componentes exactas del vector diferencia son idénticas en ambos sistemas. Mover el origen de coordenadas no altera en absoluto la distancia ni la dirección relativa entre dos puntos del universo.
+
+La física se construye sobre vectores precisamente por esta propiedad. Un vector \textit{relativo} (como el desplazamiento $\Delta\boldsymbol{r}$, o un cambio en la velocidad $\Delta\boldsymbol{v}$) posee una longitud física real e inalterable en el espacio, que sobrevive intacta sin importar dónde decidamos arbitrariamente colocar nuestro punto cero (traslación).
+
+
+
+
+
+
+
+
+\textbf{Ejemplo:} Si un objeto A está en la posición $\boldsymbol{r}_A = (1, 3)$~m y un objeto B está en $\boldsymbol{r}_B = (4, 2)$~m, el vector de posición relativa de B con respecto a A es $\Delta\boldsymbol{r} = \boldsymbol{r}_B - \boldsymbol{r}_A = (4-1, 2-3) = (3, -1)$ m. Sin importar desde dónde se mida el sistema, B siempre estará 3 metros a la derecha y 1 metro abajo de A.
+
+\subsubsection{Producto Escalar (Producto Punto)}
+A diferencia de la adición de vectores, el producto escalar toma dos vectores y devuelve un \textbf{número escalar} (no un vector). Algebraicamente se calcula multiplicando las componentes correspondientes y sumándolas:
 
 \begin{equation}
     \boldsymbol{u} \cdot \boldsymbol{v} = u_x v_x + u_y v_y
 \end{equation}
 
-Sin embargo, su definición geométrica más profunda y útil en física se expresa en términos de las magnitudes de los vectores ($|\boldsymbol{u}|$ y $|\boldsymbol{v}|$) y el ángulo $\theta$ que se forma entre ellos:
+Sin embargo, su definición geométrica más profunda y útil en física se expresa en términos de las magnitudes de los vectores ($|\boldsymbol{u}|$ y $|\boldsymbol{v}|$) y el ángulo $\theta$ que se forma entre ellos, como se muestra en la figura~\ref{fig:dotproduct}:
 
 \begin{equation}
     \boldsymbol{u} \cdot \boldsymbol{v} = |\boldsymbol{u}| |\boldsymbol{v}| \cos\theta
 \end{equation}
 
-\textbf{¡Importante!} Esta definición geométrica revela que el producto escalar es una \textbf{cantidad invariante}. Su valor depende exclusivamente de las longitudes de los vectores y del ángulo físico entre ellos. Es \textbf{independiente del sistema de referencia} o de cómo estén rotados los ejes de coordenadas. Físicamente, representa la proyección de un vector a lo largo del otro, multiplicada por la longitud de este último (fundamental para calcular conceptos como el Trabajo mecánico).
-
-\begin{center}
+\begin{figure}[H]
+    \centering
 \begin{tikzpicture}[>=stealth, scale=1.2]
     % Vectores
     \draw[->, thick, blue] (0,0) -- (4,0) node[right] {$\boldsymbol{u}$};
@@ -271,7 +391,14 @@ Sin embargo, su definición geométrica más profunda y útil en física se expr
     % Ángulo
     \draw (0.8,0) arc (0:45:0.8) node[midway, right, xshift=2pt] {$\theta$};
 \end{tikzpicture}
-\end{center}
+    
+    \caption{Producto escalar}
+    \label{fig:dotproduct}
+\end{figure}
+
+
+\textbf{¡Importante!} Esta definición geométrica revela que el producto escalar es una \textbf{cantidad invariante}. Su valor depende exclusivamente de las longitudes de los vectores y del ángulo físico entre ellos. Es \textbf{independiente del sistema de referencia} o de cómo estén rotados los ejes de coordenadas. Físicamente, representa la proyección de un vector a lo largo del otro, multiplicada por la longitud de este último (fundamental para calcular conceptos como el Trabajo mecánico).
+
 
 \textbf{Ejemplo:} Supongamos que aplicamos una fuerza constante $\boldsymbol{F} = (4, 0)$ N (totalmente horizontal) sobre un bloque que realiza un desplazamiento $\Delta\boldsymbol{r} = (3, 3)$ m. 
 \begin{itemize}
@@ -379,19 +506,21 @@ Sustituyendo los valores numéricos, obtenemos
 
 
 \section{Simplificación de unidades}
+% https://openstax.org/books/f%C3%ADsica-universitaria-volumen-1/pages/1-4-analisis-dimensional
+
 \begin{table}[h!]
     \centering
     \caption{Unidades Físicas Fundamentales y sus Unidades SI. Las unidades naturales se explicarán a continuación, donde $\hbar$ es la constante de Planck reducida, $c$ es la velocidad de la luz, $\epsilon_0$ es la permitividad del vacío,  $k_B$ la constante de Boltzmann: ver \href{https://pdg.lbl.gov/2024/reviews/rpp2024-rev-phys-constants.pdf}{PDG: Physical Contants table}}
     \begin{tabular}{|l|l|l|p{2cm}|}
         \hline
        \textbf{Nombre}           &\textbf{Símbolo}  [Letra] & \textbf{Unidades} (SI) &  \textbf{Unidades Naturales} \\ \hline
-        Tiempo          & [T]               & segundo (s) & $\left[\dfrac{\hbar}{E}\right]$   \\ \hline
-        Distancia       & [L]               & metro (m)   & $\left[\dfrac{\hbar c}{E}\right]$ \\ \hline
-        Masa            & [M]               & kilogramo (kg) & $\left[\dfrac{E}{c^2}\right]$ \\ \hline
-        Carga eléctrica & [Q]               & Coulomb (C)  & 
+        Tiempo          & T               & segundo (s) & $\dfrac{[\hbar]}{\unit{E}}$   \\ \hline
+        Distancia       & L               & metro (m)   & $\dfrac{[\hbar c]}{\unit{E}}$ \\ \hline
+        Masa            & M               & kilogramo (kg) & $\dfrac{\unit{E}}{[c^2]}$ \\ \hline
+        Carga eléctrica & Q               & Coulomb (C)  & 
         $\left[\sqrt{\epsilon_0 \hbar c}\right]$\\ \hline
-        Temperatura      & [$\Theta$]               & Kelvin (K) &   $\left[\dfrac{E}{k_B}\right]$\\ \hline
-        Energía     & [$E$]               & Joules (J) & [$E$]   \\ \hline
+        Temperatura      & $\Theta$               & Kelvin (K) &   $\dfrac{\unit{E}}{[k_B]}$\\ \hline
+        Energía     & E               & Joules (J) & E   \\ \hline
     \end{tabular}
     \label{tab:cantidades_fisicas}
 \end{table}
@@ -402,17 +531,17 @@ Algunas unidades derivadas
 \begin{itemize}
 \item Magnitud de velocidad y aceleración
 \begin{align*}
-    [v] =& \left[\dfrac{L}{T}\right]\,, & [a] = \left[\dfrac{L}{T^2}\right]\,
+    [v] =& \dfrac{\unit{L}}{\unit{T}}\,, & [a] = \dfrac{\unit{L}}{\unit{T}^2}\,
 \end{align*}
     \item Magnitud de la fuerza
     \begin{align*}
-        F = m a \to [F] =\left[M \dfrac{L}{T^2}\right]
+        F = m a \to [F] =\unit{M} \dfrac{\unit{L}}{\unit{T}^2}
     \end{align*}
     donde $m$ es la masa de una partícula que se mueve con una magnitud de aceleración $a$.
     \item Energía
     A partir de la energía cinética
     \begin{align*}
-        E = \frac{1}{2}m v^2 \to [E] = \left[M\frac{L^2}{T^2}\right] \to \text{Joules (J)}
+        E = \frac{1}{2}m v^2 \to [E] = \unit{M}\frac{\unit{L}^2}{\unit{T}^2} \to \text{Joules (J)}
     \end{align*}
     donde $m$ es la masa de la partícula que se mueve con una magnitud de velocidad $v$.
 \end{itemize}
@@ -426,9 +555,9 @@ En física, la palabra \textbf{dimensión} denota la naturaleza física de una c
 
 Usamos corchetes para denotar las dimensiones de una cantidad física. Basándonos en las cantidades fundamentales definidas anteriormente, tenemos:
 \begin{itemize}
-    \item Longitud: $[L]$
-    \item Masa: $[M]$
-    \item Tiempo: $[T]$
+    \item Longitud: L
+    \item Masa: M
+    \item Tiempo: T
 \end{itemize}
 
 El \textbf{análisis dimensional} es una herramienta algebraica extremadamente poderosa que sirve para comprobar si una ecuación física es correcta o para deducir la forma de una ecuación desconocida. Se basa en una regla de sentido común llamada el \textbf{Principio de Homogeneidad Dimensional}: \textit{Solo se pueden sumar, restar o igualar cantidades que tengan exactamente las mismas dimensiones.} (En palabras sencillas: no se pueden sumar peras con manzanas).
@@ -446,17 +575,17 @@ donde $v_0$ es la velocidad inicial y $a$ es la aceleración. Podemos comprobar 
 \begin{enumerate}
     \item Dimensión del lado izquierdo (posición): 
     \begin{equation}
-        [x] = [L].
+        [x] = \unit{L}.
     \end{equation}
     
-    \item Dimensión del primer término del lado derecho ($v_0 t$): Sabiendo que la velocidad es longitud sobre tiempo ($[L]/[T]$),
+    \item Dimensión del primer término del lado derecho ($v_0 t$): Sabiendo que la velocidad es longitud sobre tiempo (L/T),
     \begin{equation}
-        [v_0 t] = [v_0][t] = \left(\frac{[L]}{[T]}\right)[T] = [L].
+        [v_0 t] = [v_0][t] = \left(\frac{\unit{L}}{\unit{T}}\right)\unit{T} = \unit{L}.
     \end{equation}
     
-    \item Dimensión del segundo término ($\frac{1}{2} a t^2$): El factor $1/2$ es adimensional. La aceleración es longitud sobre tiempo al cuadrado ($[L]/[T]^2$),
+    \item Dimensión del segundo término ($\frac{1}{2} a t^2$): El factor $1/2$ es adimensional. La aceleración es longitud sobre tiempo al cuadrado ($\unit{L}/\unit{T^2}$),
     \begin{equation}
-        \left[\frac{1}{2} a t^2\right] = [1][a] [t^2] = (1)\left(\frac{[L]}{[T]^2}\right)[T]^2 = [L].
+        \left[\frac{1}{2} a t^2\right] = [1][a] [t^2] = (1)\left(\frac{\unit{L}}{\unit{T^2}}\right)\unit{T^2} = \unit{L}.
     \end{equation}
 \end{enumerate}
 
@@ -485,16 +614,16 @@ $\displaystyle G = \frac{F_g \cdot r^2}{m_1 \cdot m_2}$ \\
 2. Escribir la ecuación en términos de sus dimensiones. & 
 $\displaystyle [G] = \frac{[F_g] [r^2]}{[m_1] [m_2]}$ \\
 \hline
-3. Sustituir las dimensiones de las cantidades conocidas. Sabemos que la fuerza es masa por aceleración, $[F] = [M][L]/[T]^2$. & 
-$\displaystyle [G] = \frac{\left( \frac{[M][L]}{[T]^2} \right) [L]^2}{[M][M]}$ \\
+3. Sustituir las dimensiones de las cantidades conocidas. Veremos que la fuerza es masa por aceleración, $[F] = \unit{ML}/\unit{T^2}$. & 
+$\displaystyle [G] = \frac{\left( \frac{\unit{ML}}{\unit{T^2}} \right) \unit{L^2}}{\unit{MM}}$ \\
 \hline
 4. Simplificar algebraicamente la expresión cancelando términos comunes. & 
-$\displaystyle[G] = \frac{[M][L]^3}{[M]^2 [T]^2} = \frac{[L]^3}{[M][T]^2}$ \\
+$\displaystyle[G] = \frac{\unit{ML^3}}{\unit{M^2 T^2}} = \frac{\unit{L^3}}{\unit{MT^2}}$ \\
 \hline
 5. Traducir las dimensiones finales a sus correspondientes unidades del Sistema Internacional (SI). & 
-$[L]^3 \rightarrow \text{m}^3$ \newline
-$[M] \rightarrow \text{kg}$ \newline
-$[T]^2 \rightarrow \text{s}^2$ \newline
+$\unit{L^3} \rightarrow \text{m}^3$ \newline
+$\unit{M} \rightarrow \text{kg}$ \newline
+$\unit{T^2} \rightarrow \text{s}^2$ \newline
 Unidades de $G$: $\displaystyle \frac{\text{m}^3}{\text{kg} \cdot \text{s}^2}$ \\
 \hline
 \end{tabular}
@@ -570,9 +699,9 @@ La siguiente expresión tiene unidades de energía
 
 
 \begin{align}
-    [T] \to & \left[\frac{\hbar}{E}\right]:& 1\,\text{s} =&1.519\,267\,447\times 10^{15}\frac{\hbar}{\text{eV}}\nonumber\\
-    [L] \to & \left[\frac{\hbar c}{E}\right]:&1\,\text{m}=&5.067\,730\,71\times 10^{6}\,\frac{\hbar c}{\text{eV}} \nonumber\\
-    [M] \to & \left[\frac{E}{c^2}\right]:& 1\,\text{kg}= &5.609\,588\,603\times 10^{26}\,\text{GeV}/c^2 \nonumber
+    \unit{T} \to & \frac{[\hbar]}{\unit{E}}:& 1\,\text{s} =&1.519\,267\,447\times 10^{15}\frac{\hbar}{\text{eV}}\nonumber\\
+    \unit{L} \to & \frac{[\hbar c]}{\unit{E}}:&1\,\text{m}=&5.067\,730\,71\times 10^{6}\,\frac{\hbar c}{\text{eV}} \nonumber\\
+    \unit{M} \to & \frac{\unit{E}}{c^2}:& 1\,\text{kg}= &5.609\,588\,603\times 10^{26}\,\text{GeV}/c^2 \nonumber
 \end{align}
 
 La masa del protón
@@ -8030,7 +8159,7 @@ Si la física clásica fuera correcta, un átomo de hidrógeno excitado debería
 
 \subsection{La Realidad Experimental: Las Líneas Discretas}
 
-Cuando calentamos gas hidrógeno y hacemos pasar su luz a través de un prisma, no vemos un arcoíris. En su lugar, observamos algo sorprendente: el átomo permanece en silencio en la gran mayoría de las frecuencias y solo ``canta" en colores muy específicos.
+Cuando calentamos gas hidrógeno y hacemos pasar su luz a través de un prisma, no vemos un arcoíris. En su lugar, observamos algo sorprendente: el átomo permanece en silencio en la gran mayoría de las frecuencias y solo ``canta'' en colores muy específicos.
 
 Para el hidrógeno visible, solo aparecen cuatro líneas nítidas (la serie de Balmer):
 \begin{itemize}
@@ -8042,6 +8171,46 @@ Para el hidrógeno visible, solo aparecen cuatro líneas nítidas (la serie de B
 Esta es la \textbf{huella digital del átomo}. La existencia de estas líneas de emisión implica que el electrón no puede caer en espiral de forma continua. En cambio, debe estar saltando instantáneamente entre ``escalones'' de energía fijos, emitiendo la diferencia exacta de energía como un paquete de luz.
 
 Este comportamiento es imposible de explicar con las ecuaciones de Maxwell y Newton puras. Se necesita una nueva \textbf{regla} que ``congele'' al electrón en órbitas estables y solo permita transiciones específicas: el modelo de Bohr.
+
+\paragraph{La Otra Cara de la Moneda: Las Líneas de Fraunhofer (Espectro de Absorción)}
+
+La evidencia de esta naturaleza cuántica de la materia ya había sido observada, sin saberlo, casi un siglo antes de que se inventara la mecánica cuántica. En 1814, el físico Joseph von Fraunhofer analizó la luz proveniente del Sol utilizando un prisma de alta precisión. Descubrió que el continuo y hermoso arcoíris solar estaba interrumpido por cientos de finas \textbf{líneas oscuras}. 
+
+Estas líneas oscuras son exactamente el fenómeno inverso a la emisión: ocurren por la \textbf{absorción} de la luz. 
+
+El núcleo del Sol emite luz en todas las frecuencias (un espectro continuo). Sin embargo, cuando esta luz atraviesa la atmósfera exterior más fría del Sol, los átomos allí presentes ``roban'' fotones de la luz. Pero debido a la cuantización, los electrones no pueden absorber cualquier energía; \textbf{solo absorben los fotones que tienen la energía exacta necesaria para hacerlos saltar a un nivel superior}. 
+
+El fotón absorbido desaparece del rayo de luz original, dejando una sombra (una línea oscura) en esa frecuencia específica. Las líneas de Fraunhofer son, históricamente, la primera huella digital registrada de la mecánica cuántica, demostrando empíricamente que la materia solo interactúa con la luz en ``paquetes'' o escalones de energía estrictamente definidos.
+
+% --- INSERTAR EN EL PREÁMBULO DEL DOCUMENTO PRINCIPAL (SI NO LO TIENES): ---
+% \usepackage{tcolorbox}
+% ---------------------------------------------------------------------------
+
+\begin{tcolorbox}[breakable,colback=blue!5!white,colframe=blue!75!black,title=\textbf{Cápsula Histórica: Un Siglo de Magia sin Física}]
+
+Las líneas discretas en los espectros atómicos se fue consolidando como uno de los mayores enigmas en la historia de la ciencia, un problema empírico que tuvo a los físicos en vilo durante exactamente 99 años. 
+
+La crisis no surgió de un día para otro; la comunidad científica pasó por tres etapas fascinantes frente a la ``anomalía'' de las líneas discretas:
+
+\begin{enumerate}
+    \item \textbf{El Pragmatismo y la Huella Dactilar (1814 - 1860s):}\\
+    Cuando Joseph von Fraunhofer descubrió las líneas oscuras en el espectro del Sol en 1814, los científicos no vieron un fallo en sus teorías, sino una curiosidad. En 1859, Gustav Kirchhoff y Robert Bunsen descubrieron que cada elemento químico ardía con un patrón de líneas único en el laboratorio, y que estas coincidían con las líneas solares. Sin saber \textit{por qué} ocurría, usaron el fenómeno como herramienta. El mayor triunfo de esta fase fue en 1868: al ver líneas solares que no coincidían con nada en la Tierra, descubrieron un elemento extraterrestre nuevo, bautizándolo \textbf{Helio} (del griego \textit{Helios}, Sol).
+
+    \item \textbf{La Numerología de Balmer (1885):}\\
+    Al consolidarse el electromagnetismo, la incapacidad de explicar estas líneas causó frustración. Los físicos intentaron modelar el átomo como una cuerda de guitarra vibrando en diferentes ``armónicos'' clásicos, pero fracasaron. Finalmente, Johann Balmer, un profesor de matemáticas y geometría de escuela secundaria, encontró por puro ensayo y error una fórmula algebraica simple que predecía perfectamente las líneas del hidrógeno
+    \begin{equation}
+        E_n = -\frac{\qty{13.6}{eV}}{n^2}\,.
+    \end{equation}
+    Sin embargo, nadie sabía \textit{por qué} funcionaba la fórmula de Balmer; era magia matemática sin fundamento físico.
+
+    \item \textbf{La Crisis de Rutherford (1911) y el Triunfo Cuántico:}\\
+    El pánico real estalló cuando Ernest Rutherford descubrió la estructura del átomo (un núcleo masivo con electrones orbitando). Como demostramos en este capítulo, al aplicar las impecables leyes de Newton y Maxwell a este modelo, el átomo debería autodestruirse en $10^{-11}$ segundos irradiando un espectro continuo. ¡La existencia misma de la materia era imposible según la física clásica!
+\end{enumerate}
+
+No fue hasta 1913 que Niels Bohr, en un acto de atrevimiento intelectual, impuso la cuantización ``a la fuerza'' sobre la mecánica clásica. Al hacerlo y derivar el factor $1/n^2$, le dio por fin a la empírica fórmula de Balmer la base física que le faltó durante casi tres décadas, cerrando la crisis y marcando el nacimiento formal de la \textbf{Mecánica Cuántica}.
+
+\end{tcolorbox}
+
 
 \section{Modelo de Bohr para el átomo de Hidrógeno}
 
