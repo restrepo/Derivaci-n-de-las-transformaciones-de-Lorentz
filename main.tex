@@ -68,8 +68,14 @@
     #1
 }
 
+\usepackage{booktabs}
+\usepackage{microtype}
+
+
 \newenvironment{abstract}{}{}
 \usepackage{abstract}
+
+
 
 % commment/uncomment to show/hide the solution
 %\renewcommand{\phantom}[1]{#1}
@@ -154,16 +160,16 @@ Para denotar vectores vamos a usar letras en ``negrita'', como por ejemplo el ve
 
     % Líneas proyectadas a los ejes x e y
     \draw[dashed, gray!80] (P1) -- (1.5, 0) node[below, text=black] {$x_0$};
-    \draw[dashed, gray!80] (P2) -- (4.5, 0) node[below, text=black] {$x_1$};
+    \draw[dashed, gray!80] (P2) -- (4.5, 0) node[below, text=black] {$x$};
     \draw[dashed, gray!80] (P1) -- (0, 1.0) node[left, text=black] {$y_0$};
-    \draw[dashed, gray!80] (P2) -- (0, 3.0) node[left, text=black] {$y_1$};
+    \draw[dashed, gray!80] (P2) -- (0, 3.0) node[left, text=black] {$y$};
 
     % Líneas de las componentes (triángulo rectángulo)
-    \draw[dashed, thick] (P1) -- (Paux) node[midway, below] {$\Delta x=x_1-x_0$};
-    \draw[dashed, thick] (Paux) -- (P2) node[midway, right] {$\Delta y=y_1-y_0$};
+    \draw[dashed, thick] (P1) -- (Paux) node[midway, below] {$\Delta x=x-x_0$};
+    \draw[dashed, thick] (Paux) -- (P2) node[midway, right] {$\Delta y=y-y_0$};
 
     % El vector desplazado
-    \draw[->, thick, blue] (P1) -- (P2) node[midway, above left, xshift=8pt, yshift=2pt] {$\boldsymbol{r} = (x_1-x_0, y_1-y_0)$};
+    \draw[->, thick, blue] (P1) -- (P2) node[midway, above left, xshift=8pt, yshift=2pt] {$\boldsymbol{r} = (x-x_0, y-y_0)$};
 
     % Puntos inicial y final
     \filldraw[black] (P1) circle (1.2pt);
@@ -183,7 +189,7 @@ Para denotar vectores vamos a usar letras en ``negrita'', como por ejemplo el ve
 \end{tikzpicture}
 
 
-    \caption{Izquierda: vector $\boldsymbol{r}$, de componentes $x$ y $y$ y dirección $\theta$. Derecha: mismo vector con el origin desplazado a la posición $(x_0,y_0)$  de componentes $\Delta x =x_1-x_0$ y $\Delta y = y_1-y_0$ y dirección $\alpha$. }
+    \caption{Izquierda: vector $\boldsymbol{r}$, de componentes $x$ y $y$ y dirección $\theta$. Derecha: mismo vector con el origin desplazado a la posición $(x_0,y_0)$  de componentes $\Delta x =x_1-x_0$ y $\Delta y = y_1-y_0$ y dirección $\theta$. }
     \label{fig:vectorr}
 \end{figure}
 La magnitud del vector, en éste caso $\boldsymbol{r}$, viene dada por la longitud del vector, que corresponde a la hipotenusa del triángulo rectángulo de lados $x$ y $y$. La magnitud se denota por $|\boldsymbol{r}|$ o simplemente $r$ (en letra normal sin ``negrita'')
@@ -199,6 +205,14 @@ El ángulo $\theta$ que define la dirección del vector está dado por:
 
 $$\theta = \arctan{\left(\frac{y}{x}\right)}$$
 
+Cuando el origen del vector no coincide con el origen de coordenadas, sino en un punto $(x_0,y_0)$ como se muestra en la figura~\ref{fig:vectorr} derecha; las componentes del vector corresponden a las longitudes de los catetos que forman el triángulo rectángulo $\Delta x=x-x_0$ y $\Delta y=y-y_0$
+\begin{equation}
+    r=(\Delta x, \Delta y)\,,
+\end{equation}
+que definen la hipotenusa de dicho triángulo,  asociada a la magnitud del vector
+\begin{equation}
+    r=\sqrt{\Delta x^2+\Delta y^2}\,.
+\end{equation}
 
 \subsection{Operaciones con Vectores: Adición y Producto Escalar}
 
@@ -266,7 +280,7 @@ En la figura~\ref{fig:difvecuv} podemos ver que si aplicamos la interpretación 
 \end{align*}
 
 
-\subsubsection{Invariancia del Vector Diferencia ($\Delta\boldsymbol{r}$)}
+\subsubsection{Invariancia bajo traslaciones del Vector Diferencia ($\Delta\boldsymbol{r}$)}
 
 Un concepto central en la física es que las leyes de la naturaleza no deben depender de dónde coloquemos nuestro sistema de coordenadas ni de cómo lo orientemos. Si un vector representa una realidad física tangible (como la distancia y dirección entre dos partículas), entonces sus propiedades deben ser invariantes al cambiar de sistema de referencia.
 
@@ -321,9 +335,8 @@ Un concepto central en la física es que las leyes de la naturaleza no deben dep
 
 ¿Qué sucede si tenemos dos vectores en el espacio, $\boldsymbol{r}_1$ y $\boldsymbol{r}_2$ como se muestra en la figura~\ref{fig:difvec}, y analizamos el vector diferencia o vector desplazamiento que los une ($\Delta\boldsymbol{r} = \boldsymbol{r}_2 - \boldsymbol{r}_1$)? 
 
-A continuación, demostraremos algebraicamente que las componentes de este vector diferencia y su magnitud geométrica son estrictamente independientes del sistema de referencia.
+A continuación, demostraremos algebraicamente que las componentes de este vector diferencia  son estrictamente independientes bajo traslaciones del sistema de referencia.
 
-\paragraph{Invariancia bajo Traslación del Origen}
 
 Supongamos un sistema de coordenadas original $S(x,y)$. En este sistema, tenemos los vectores $\boldsymbol{r}_1 = (x_1, y_1)$ y $\boldsymbol{r}_2 = (x_2, y_2)$ como se muestra en la figura~\ref{fig:difvec} izquierda. El vector diferencia en el sistema $S$ es:
 \begin{equation}
@@ -363,6 +376,34 @@ La física se construye sobre vectores precisamente por esta propiedad. Un vecto
 
 
 \textbf{Ejemplo:} Si un objeto A está en la posición $\boldsymbol{r}_A = (1, 3)$~m y un objeto B está en $\boldsymbol{r}_B = (4, 2)$~m, el vector de posición relativa de B con respecto a A es $\Delta\boldsymbol{r} = \boldsymbol{r}_B - \boldsymbol{r}_A = (4-1, 2-3) = (3, -1)$ m. Sin importar desde dónde se mida el sistema, B siempre estará 3 metros a la derecha y 1 metro abajo de A.
+
+\subsubsection{Vectores Libres vs. Vectores Ligados: La Regla y la Excepción}
+
+A partir de la demostración matemática anterior, surge una conclusión conceptual profunda: el vector diferencia ($\Delta\boldsymbol{r}$) no es un caso geométrico especial, sino \textbf{la regla general} en la física. La gran mayoría de los vectores que utilizamos gozan de esta propiedad de invariancia bajo la traslación, con una única y notable excepción. 
+
+En el formalismo matemático de la geometría afín, esta diferencia de comportamiento clasifica a los vectores en dos categorías fundamentales:
+
+\paragraph{1. El Vector Ligado (El vector de posición)}
+El vector de posición $\boldsymbol{r} = (x, y)$ es la excepción a la regla. No describe una propiedad intrínseca del objeto en sí, sino \textbf{dónde se encuentra el objeto relativo a un observador específico}. Está estrictamente ``atado'' o ``ligado'' al origen de coordenadas $(0,0)$ por definición. 
+
+Como la cola de este vector está anclada al punto de referencia, si trasladamos el origen del sistema, arrastramos irremediablemente la cola del vector. Esto altera tanto sus componentes matemáticas como su magnitud y dirección.
+
+\paragraph{2. Los Vectores Libres (Las propiedades físicas)}
+Cualquier otro vector utilizado en la cinemática o dinámica newtoniana describe una \textbf{propiedad intrínseca} o una relación relacional del sistema físico:
+\begin{itemize}
+    \item \textbf{Desplazamiento:} $\Delta\boldsymbol{r} = \boldsymbol{r}_f - \boldsymbol{r}_i$ (una diferencia espacial pura).
+    \item \textbf{Velocidad:} $\boldsymbol{v} = \frac{\Delta\boldsymbol{r}}{\Delta t}$ (la tasa de cambio temporal de un vector diferencia).
+    \item \textbf{Aceleración:} $\boldsymbol{a} = \frac{\Delta\boldsymbol{v}}{\Delta t}$ (la tasa de cambio temporal de la velocidad).
+    \item \textbf{Fuerza y Cantidad de Movimiento:} $\boldsymbol{F} = m\boldsymbol{a}$ y $\boldsymbol{p} = m\boldsymbol{v}$ (vectores libres multiplicados por escalares invariantes).
+\end{itemize}
+
+Como todos estos vectores físicos nacen, en última instancia, a partir de operaciones de resta entre coordenadas espaciales o temporales, \textbf{todos heredan automáticamente la invariancia bajo la traslación del origen}. Un vehículo que viaja a $100 \text{ km/h}$ hacia el norte posee exactamente el mismo vector velocidad libre ($\boldsymbol{v}$) sin importar si su movimiento se analiza desde un sistema de coordenadas centrado en Bogotá, en París o en el centro del Sol; la flecha abstracta que representa su movimiento es inmutable.
+
+\textbf{Consecuencia Física: La Homogeneidad del Espacio}
+
+Esta distinción algebraica es la manifestación matemática directa de uno de los principios filosóficos más sagrados de la física moderna: la \textbf{Homogeneidad del Espacio}. Este principio fundamental, que utilizaremos más adelante en el Apéndice A.13 para derivar la Relatividad de manera formal, postula que las leyes del universo no deben depender de la posición absoluta (del lugar donde decidamos colocar nuestro $0,0$). 
+
+Matemáticamente, la naturaleza garantiza esta homogeneidad formulando todas sus leyes dinámicas, como la Segunda Ley de Newton $\left(\boldsymbol{F} = \frac{\Delta\boldsymbol{p}}{\Delta t}\right)$, de manera exclusiva en términos de \textbf{vectores libres}. Al basarse en vectores cuyas dependencias traslacionales se cancelan algebraicamente, el universo se asegura de que las leyes de la física sean universales para todo observador inercial.
 
 \subsubsection{Producto Escalar (Producto Punto)}
 A diferencia de la adición de vectores, el producto escalar toma dos vectores y devuelve un \textbf{número escalar} (no un vector). Algebraicamente se calcula multiplicando las componentes correspondientes y sumándolas:
@@ -1013,6 +1054,7 @@ Imaginemos un pulso de luz emitido desde el origen en $t=t'=0$. Un observador en
 \newcounter{paso}
 
 \noindent
+%\renewcommand{\phantom}[1]{#1}
 %\renewcommand{\arraystretch}{1.5}
 \begin{tabular}{l|p{0.35\textwidth}|p{0.6\textwidth}}
 \textbf{Paso}&\textbf{Encontrar} $\gamma$& \textbf{Paso algebraico} \\\hline
@@ -1021,7 +1063,7 @@ Imaginemos un pulso de luz emitido desde el origen en $t=t'=0$. Un observador en
     x = &\gamma (x' + vt').
 \end{aligned}$& Ecuaciones \eqref{eq:xplt} y \eqref{eq:invxplt}\\\hline
 \stepcounter{paso}\thepaso)&$\begin{aligned}[t]
-ct' &= \gamma(ct - vt) = \gamma t (c-v)   \\
+ct' &= \gamma(ct - vt) = \gamma t (c-v)  \\
 ct &= \gamma(ct' + vt') = \gamma t' (c+v)  
 \end{aligned}$  &  Reemplazando $x=ct$ y $x'=ct'$ en  
 las ecuaciones anteriores\\\hline
@@ -1377,7 +1419,8 @@ La contracción de la longitud es otra predicción fundamental de la Relatividad
 
 La clave para medir correctamente la longitud de un objeto en movimiento es determinar las posiciones de sus dos extremos \textbf{simultáneamente} en el sistema de referencia del observador.
 
-La longitud propia, $L_0$, es la distancia entre dos puntos cuyas posiciones son medidas por un observador en reposo respecto a los dos puntos. La longitud contraida se denota como $L_0$
+\subsection{Definición de la longitud propia}
+La longitud propia, $L_0$, es la distancia entre dos puntos cuyas posiciones son medidas por un observador en reposo respecto a los dos puntos. Por definición, el observador en el sistema de referencia en reposo, por definición, mide distancias propias a todos los objetos en reposo con respecto a él, como la distancia a un florero sobre la mesa de la habitación en la que se encuentra. Lo mismo aplica para el observador en movimiento en el sistema $S'$: la distancia a objetos en reposo relativo a él son distancias propias para él, como la distancia al monitor de la pantalla dentro de su nave espacial. De esta forma, la longitud de la cancha de tenis es una distancia propia para un tenista en reposo que golpea fuertemente una pelota de tenis. El diámetro de la pelota de tenis es, a su vez, una distancia propia para una hormiga pegada a la bola de tenis en movimiento. Por lo tanto, el tenista verá la pelota de tenis contraída en su dirección de movimiento y la hormiga percibirá que la cancha de tenis tiene una longitud menor a la que percibe el tenista. 
 
 % --- Inicio del código LaTeX para insertar ---
 
@@ -2022,12 +2065,22 @@ Esta es la parte más crucial del problema.
 
 
 \item Demuestre que la adición de dos velocidades inferiores a la de luz en la fórmula de adición de velocidades relativistas, no puede superar la velocidad de luz.
-
-
-
 \end{enumerate}
 
+% --- REQUIERE EL PAQUETE tcolorbox EN EL PREÁMBULO ---
+\begin{tcolorbox}[colback=green!5!white,colframe=green!60!black,title=\textbf{Conexión Interdisciplinaria: Relatividad, Muones y ADN}]
 
+Hemos demostrado matemáticamente que, sin la dilatación del tiempo, los muones cósmicos jamás llegarían a la superficie terrestre. Al viajar a $v \approx 0.999c$, sobreviven el tiempo suficiente para bañar constantemente nuestro planeta. ¿Tiene esto alguna consecuencia para nosotros?
+
+La respuesta une la física relativista con la radiobiología. Los muones son una forma de \textbf{radiación ionizante}. Cada minuto, miles de ellos atraviesan nuestro cuerpo. Aunque interactúan débilmente con la materia (baja transferencia lineal de energía), tienen el potencial físico de arrancar electrones y romper los frágiles enlaces químicos de las cadenas de ADN.
+
+Cuando el ADN se rompe, los mecanismos celulares intentan repararlo. Si cometen un error, se genera una \textbf{mutación genética}. Históricamente, la biología ha considerado que la mayoría de las mutaciones evolutivas provienen de errores internos de la propia célula (procesos endógenos). Sin embargo, investigaciones recientes sugieren que el goteo constante de partículas relativistas actúa como un ruido de fondo que afecta la dinámica celular\footnote{de Groen, P. C. (2022). \textit{Muons, mutations, and planetary shielding}. Frontiers in Astronomy and Space Sciences, 9, 1067491. DOI: \url{https://doi.org/10.3389/fspas.2022.1067491}}.
+
+\textbf{La Prueba Experimental Bajo Tierra:}
+Para comprender el impacto real de esta radiación, laboratorios como el \textbf{Gran Sasso} en Italia o el \textbf{SNOLAB} en Canadá cultivan células bajo kilómetros de roca, bloqueando casi el $100\%$ de los muones. Sorprendentemente, en esta ``oscuridad cósmica'', los organismos no prosperan mejor; por el contrario, sus mecanismos de reparación de ADN se atrofian y su respuesta al estrés disminuye. 
+
+Aunque el grado exacto en que los muones impulsan las mutaciones evolutivas a largo plazo sigue siendo objeto de un fascinante debate científico, la evidencia demuestra que la vida en la Tierra evolucionó en sintonía con este bombardeo relativista y depende de él para mantener sus defensas celulares activas.
+\end{tcolorbox}
 
 
 \section{Espacio de Minkowski}
@@ -8297,6 +8350,53 @@ Todo el término entre paréntesis es una constante. Si calculamos su valor (usa
 \end{equation}
 Esto explica perfectamente el espectro de emisión del hidrógeno: los electrones solo pueden existir en estos niveles de energía discretos y la luz se emite cuando saltan de un nivel $n$ a uno inferior.
 
+\subsubsection{Profundización Conceptual: El Principio de Pauli y la Regla del Octeto}
+
+Al estudiar el átomo, los cursos de química nos enseñan que los átomos buscan tener $8$ electrones en su capa más externa para ser estables, imitando la configuración de un gas noble. Sin embargo, en la física cuántica existe una regla de oro llamada el \textbf{Principio de Exclusión de Pauli}, el cual dicta que \textit{``dos electrones en un mismo átomo no pueden ocupar exactamente el mismo estado cuántico''}. 
+
+A primera vista, esto parece una contradicción flagrante: si no pueden ocupar el mismo estado, ¿cómo es posible amontonar $8$ electrones en el mismo nivel de energía externo sin violar el principio de Pauli?
+
+La respuesta es que el nivel de energía de un átomo (la ``órbita'' de Bohr) no es una única pista donde los electrones se amontonan, sino un conjunto estructurado de ``habitaciones'' con formas geométricas y direcciones diferentes, todas compartiendo aproximadamente la misma energía.
+
+\paragraph{El ``Código Postal'' Cuántico}
+Para garantizar que la naturaleza cumpla el Principio de Pauli, basta con que un solo número en el estado cuántico (el ``código postal'' del electrón) sea diferente. Este estado se define por cuatro características (números cuánticos):
+\begin{enumerate}
+    \item \textbf{Nivel de Energía ($n$):} Es la distancia general al núcleo o ``capa'' principal ($n=1, 2, 3, \dots$).
+    \item \textbf{Geometría del Orbital ($l$):} Dentro de ese nivel, hay diferentes formas espaciales. Para acomodar los 8 electrones, nos interesan dos formas: la esférica (llamada orbital $s$) y la lobular (llamada orbital $p$).
+    \item \textbf{Orientación Espacial ($m_l$):} Es la dirección hacia donde apunta el orbital en el espacio tridimensional ($x, y, z$).
+    \item \textbf{Espín ($m_s$):} Es el giro magnético interno del electrón. Solo tiene dos valores permitidos en el universo: ``arriba'' ($+1/2$) o ``abajo'' ($-1/2$).
+\end{enumerate}
+
+\paragraph{Desglosando los 8 Electrones del Gas Noble}
+Tomemos como ejemplo el gas Neón, cuyo nivel exterior es el $n=2$. Veamos cómo el álgebra combinatoria permite acomodar exactamente $8$ electrones garantizando que cada uno tenga un estado cuántico único y diferente a los demás:
+
+\begin{itemize}
+    \item \textbf{El subnivel $s$ (Geometría esférica):} 
+    Solo existe una forma de colocar una esfera en el espacio (no tiene orientación en $x, y, z$). Por lo tanto, hay \textbf{1 solo orbital $s$}.
+    \begin{itemize}
+        \item Electrón 1: Entra en el orbital $s$ con espín ``arriba''.
+        \item Electrón 2: Entra en el orbital $s$ con espín ``abajo''.
+    \end{itemize}
+    \textit{(Aquí ya tenemos $\mathbf{2}$ electrones. Como agotamos los espines disponibles para esta geometría, el orbital $s$ está lleno).}
+
+    \item \textbf{El subnivel $p$ (Geometría lobular):} 
+    Esta geometría nos permite dibujar lóbulos a lo largo de 3 ejes perpendiculares independientes (eje $x$, eje $y$, eje $z$). Es decir, existen \textbf{3 orbitales $p$ distintos}.
+    \begin{itemize}
+        \item Electrones 3 y 4: Entran en el orbital $p_x$ (uno ``arriba'', uno ``abajo'').
+        \item Electrones 5 y 6: Entran en el orbital $p_y$ (uno ``arriba'', uno ``abajo'').
+        \item Electrones 7 y 8: Entran en el orbital $p_z$ (uno ``arriba'', uno ``abajo'').
+    \end{itemize}
+    \textit{(En estas tres orientaciones espaciales caben exactamente $\mathbf{6}$ electrones).}
+\end{itemize}
+
+\textbf{Conclusión Física:}
+Al sumar matemáticamente los estados disponibles, obtenemos la demostración de la regla química:
+\begin{equation}
+    2 \text{ (del subnivel } s) + 6 \text{ (del subnivel } p) = \mathbf{8 \text{ electrones distintos}}.
+\end{equation}
+
+El misterio queda resuelto. Aunque los $8$ electrones residen en la misma capa externa ($n=2$), \textbf{ningún electrón es idéntico a otro}. Cada uno posee una combinación única de forma geométrica, orientación en el espacio y giro magnético. Cuando un átomo llena su subnivel $s$ y sus tres subniveles $p$, alcanza un estado de simetría esférica perfecta y de mínima energía. Por esta razón, el átomo ya no necesita ceder, ganar ni compartir electrones (enlaces), manifestándose macroscópicamente como un gas noble inerte.
+
 \section{Ejercicios Propuestos del Capítulo 4}
 
 A continuación, se presentan diez ejercicios para poner en práctica los principios del electromagnetismo clásico y su transición hacia la física moderna. Se recomienda repasar las constantes fundamentales (como $k$, $\mu_0$, $\epsilon_0$ y $c$) antes de comenzar.
@@ -8349,6 +8449,99 @@ A continuación, se presentan diez ejercicios para poner en práctica los princi
 
 
 \chapter{Apendices}
+
+\section{Invariancia bajo Rotación de Ejes}
+
+¿Qué ocurre si mantenemos el origen en el mismo lugar, pero rotamos el sistema de coordenadas un ángulo $\theta$?
+Como vimos en la Ecuación (1.17), la transformación de las coordenadas individuales al nuevo sistema rotado $S'$ es:
+\begin{align}
+    x' &= x \cos\theta + y \sin\theta \\
+    y' &= -x \sin\theta + y \cos\theta
+\end{align}
+
+Determinemos las nuevas componentes del vector diferencia $\Delta\boldsymbol{r}' = (\Delta x', \Delta y')$ en el sistema rotado.
+Para la componente $x'$:
+\begin{align*}
+    \Delta x' &= x'_2 - x'_1 \\
+    \Delta x' &= (x_2 \cos\theta + y_2 \sin\theta) - (x_1 \cos\theta + y_1 \sin\theta) \\
+    \Delta x' &= (x_2 - x_1) \cos\theta + (y_2 - y_1) \sin\theta \\
+    \Delta x' &= \Delta x \cos\theta + \Delta y \sin\theta.
+\end{align*}
+
+Haciendo el mismo procedimiento para la componente $y'$:
+\begin{align*}
+    \Delta y' &= y'_2 - y'_1 \\
+    \Delta y' &= (-x_2 \sin\theta + y_2 \cos\theta) - (-x_1 \sin\theta + y_1 \cos\theta) \\
+    \Delta y' &= -(x_2 - x_1) \sin\theta + (y_2 - y_1) \cos\theta \\
+    \Delta y' &= -\Delta x \sin\theta + \Delta y \cos\theta.
+\end{align*}
+
+Nos damos cuenta de que \textbf{las componentes del vector diferencia ($\Delta x, \Delta y$) se transforman exactamente con las mismas ecuaciones geométricas que las coordenadas de posición de un punto individual ($x, y$)}. 
+
+Por lo tanto, la magnitud al cuadrado de este vector diferencia ($|\Delta\boldsymbol{r}'|^2 = (\Delta x')^2 + (\Delta y')^2$) seguirá idénticos pasos algebraicos que en nuestra demostración anterior (donde comprobamos que $(x')^2 + (y')^2 = x^2 + y^2$), y resultará en la misma invarianza fundamental garantizada por la identidad trigonométrica $\sin^2\theta + \cos^2\theta = 1$:
+\begin{equation}
+    |\Delta\boldsymbol{r}'|^2 = (\Delta x)^2 + (\Delta y)^2 = |\Delta\boldsymbol{r}|^2.
+\end{equation}
+
+
+
+
+
+
+% --- INICIO DEL APÉNDICE ---
+\section{Evidencia Experimental de la Contracción de Lorentz en el LHC}
+\label{apendice:contraccion_proton}
+
+A velocidades ultrarelativistas, las propiedades estructurales de los hadrones sufren transformaciones espaciales severas descritas por la Relatividad Especial. Este apéndice detalla los fundamentos teóricos y las metodologías de medición indirecta de la contracción del diámetro del protón en la dirección del movimiento dentro del Gran Colisionador de Hadrones (LHC).
+
+\subsection{Formulación Matemática y Geometría del Protón Relativista}
+En el sistema de referencia del laboratorio, un protón acelerado a una energía de colisión nominal de $E = 6.5\text{ TeV}$ posee un factor de Lorentz ($\gamma$) extremadamente elevado. Sabiendo que la masa en reposo del protón es $m_0 \approx 0.938\text{ GeV/c}^2$, el factor se calcula mediante la relación:
+
+\begin{equation}
+\gamma = \frac{E}{m_0 c^2} \approx \frac{6500}{0.938} \approx 6930
+\end{equation}
+
+La longitud intrínseca del protón en su sistema de reposo (su diámetro de carga axial) es $L_0 \approx 1.7\text{ fm}$ ($1.7 \times 10^{-15}\text{ m}$). Aplicando la transformación de Lorentz, la longitud contratada $L$ en la dirección del vector velocidad $\vec{v}$ resulta en:
+
+\begin{equation}
+L = \frac{L_0}{\gamma} \approx \frac{1.7\text{ fm}}{6930} \approx 2.45 \times 10^{-4}\text{ fm}
+\end{equation}
+
+Como consecuencia de esta contracción de casi cuatro órdenes de magnitud, el protón transiciona geométricamente de una distribución de carga esférica a un formalismo de \textit{disco ultraplano} o \textit{pancake relativista}. El diámetro transversal, perpendicular a la dirección del haz, permanece invariante.
+
+\subsection{Manifestaciones Experimentales y Firmas en los Detectores}
+Debido a las escalas de longitud subatómicas y la naturaleza cuántica de los constituyentes, la contracción macroscópica no es medible mediante microscopía directa. En su lugar, se verifica de manera inequívoca a través de la física de observables de alta energía:
+
+\begin{itemize}
+    \item \textbf{Saturación de Gluones y el Condensado de Vidrio de Color (CGC):} Al comprimirse el volumen del protón a un plano bidimensional, la densidad longitudinal de gluones de bajo momento (pequeño $x$ de Bjorken) diverge exponencialmente. Los experimentos \textbf{ATLAS} y \textbf{CMS} detectan esta saturación mediante la supresión de la producción de partículas a ángulos pequeños (rapideces hacia adelante), un fenómeno predicho únicamente por el modelo de QCD donde los protones se comportan como láminas densas de gluones.
+    
+    \item \textbf{Sección Eficaz Total de Colisión ($\sigma_{\text{tot}}$):} La probabilidad de interacción en colisiones hadrónicas depende críticamente del perfil de densidad de los proyectiles. Los datos experimentales de dispersión elástica e inelástica demuestran que la sección eficaz escala con el área transversal de choque de dos discos delgados en aproximación de eikonal, divergiendo de los modelos basados en geometrías esféricas o tridimensionales clásicas.
+    
+    \item \textbf{Anisotropía en el Plasma de Quarks y Gluones (QGP):} En colisiones de iones pesados (p. ej., $\text{Pb-Pb}$ en el detector \textbf{ALICE}), la contracción de Lorentz es tan extrema que la región de superposición de los núcleos en el impacto es prácticamente instantánea en el tiempo del laboratorio. La excentricidad espacial de este volumen bidimensional se transforma, mediante leyes hidrodinámicas de viscosidad casi nula, en un flujo elíptico observable ($v_2$) en la distribución angular de los hadrones resultantes.
+\end{itemize}
+
+\subsection{Resumen de Parámetros Cinemáticos}
+La Tabla \ref{tab:parametros_lhc} resume las variables cinemáticas del protón bajo las condiciones extremas de operación en el LHC, evidenciando la deformación estructural descrita.
+
+\begin{table}[htbp]
+\centering
+\caption{Parámetros relativistas del protón en el LHC.}
+\label{tab:parametros_lhc}
+\vspace{0.2cm}
+\begin{tabular}{lcr}
+%\toprule
+\textbf{Parámetro} & \textbf{Símbolo} & \textbf{Valor Nominal} \\
+%\midrule
+Energía por haz & $E$ & $6.5 - 7.0\text{ TeV}$ \\
+Velocidad relativa & $\beta = v/c$ & $0.999999991$ \\
+Factor de Lorentz & $\gamma$ & $\sim 6930$ \\
+Diámetro Transversal (Invariante) & $D_{\perp}$ & $\approx 1.7\text{ fm}$ \\
+Espesor Longitudinal Contratado & $L$ & $\approx 2.45 \times 10^{-4}\text{ fm}$ \\
+%\bottomrule
+\end{tabular}
+\end{table}
+
+
 
 
 \section{Movimiento Relativista y No Relativista Bajo una Fuerza Constante}
