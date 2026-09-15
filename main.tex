@@ -70,6 +70,7 @@
 
 \usepackage{booktabs}
 \usepackage{microtype}
+\usepackage{tabularx}
 
 
 \newenvironment{abstract}{}{}
@@ -189,17 +190,13 @@ Para denotar vectores vamos a usar letras en ``negrita'', como por ejemplo el ve
 \end{tikzpicture}
 
 
-    \caption{Izquierda: vector $\boldsymbol{r}$, de componentes $x$ y $y$ y dirección $\theta$. Derecha: mismo vector con el origin desplazado a la posición $(x_0,y_0)$  de componentes $\Delta x =x_1-x_0$ y $\Delta y = y_1-y_0$ y dirección $\theta$. }
+    \caption{Izquierda: vector $\boldsymbol{r}$, de componentes $x$ y $y$ y dirección $\theta$. Derecha: mismo vector con el origin desplazado a la posición $(x_0,y_0)$  de componentes $\Delta x =x-x_0$ y $\Delta y = y-y_0$ y dirección $\theta$. }
     \label{fig:vectorr}
 \end{figure}
 La magnitud del vector, en éste caso $\boldsymbol{r}$, viene dada por la longitud del vector, que corresponde a la hipotenusa del triángulo rectángulo de lados $x$ y $y$. La magnitud se denota por $|\boldsymbol{r}|$ o simplemente $r$ (en letra normal sin ``negrita'')
 \begin{align}
   |\boldsymbol{r}| =  r = \sqrt{x^2+y^2}\,.
 \end{align}
-
-\subsubsection*{Ejemplo}
-El vector de velocidad se denota con $\boldsymbol{v}$  con componentes $v_x$ y $v_y$ como se muestra en la figura~\ref{fig:vectorr} (derecha). Tiene magnitud $v$ y dirección $\alpha$.
-
 
 El ángulo $\theta$ que define la dirección del vector está dado por:
 
@@ -588,7 +585,7 @@ Algunas unidades derivadas
 \end{itemize}
 
 
-En el sistema internacional de unidades tenemos las siguientes cantidades fundamentes
+En el sistema internacional de unidades tenemos las siguientes cantidades fundamentales.
 
 \subsection{Análisis Dimensional}
 
@@ -630,7 +627,7 @@ donde $v_0$ es la velocidad inicial y $a$ es la aceleración. Podemos comprobar 
     \end{equation}
 \end{enumerate}
 
-Como todos los términos que se suman y se igualan tienen la misma dimensión de longitud $[L]$, concluimos que la ecuación es \textbf{dimensionalmente correcta}. Si un término hubiera dado, por ejemplo, $[L]/[T]$, sabríamos inmediatamente que cometimos un error algebraico.
+Como todos los términos que se suman y se igualan tienen la misma dimensión de longitud L, concluimos que la ecuación es \textbf{dimensionalmente correcta}. Si un término hubiera dado, por ejemplo, L/T, sabríamos inmediatamente que cometimos un error algebraico.
 
 \subsubsection{Aplicación 2: Deducción de las Unidades de una Constante}
 
@@ -641,8 +638,8 @@ El análisis dimensional también nos permite encontrar las unidades del Sistema
 donde $F_g$ es la fuerza de gravedad, $m_1$ y $m_2$ son masas, y $r$ es la distancia de separación. 
 
 \textbf{Objetivo:} Determinar las dimensiones y las unidades SI de la constante de gravitación universal $G$.
-internacional
-\begin{table}[htbp]
+
+\begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{0.45\textwidth}|p{0.5\textwidth}|}
@@ -723,11 +720,11 @@ Las otras constantes relacionan otras cantidades físicas con la energía
 
 \begin{align}
     \hbar =&\frac{h}{2\pi} = 
-    \frac{6.62607115\times 10^{-34}\,\text{J}\cdot \text{s}}{2\pi}\nonumber\\
-    =&\frac{\dfrac{6.62607115\times 10^{-34}\,\cancel{\text{J}}\cdot \text{s}}{1}
+    \frac{6.62607015\times 10^{-34}\,\text{J}\cdot \text{s}}{2\pi}\nonumber\\
+    =&\frac{\dfrac{6.62607015\times 10^{-34}\,\cancel{\text{J}}\cdot \text{s}}{1}
     \dfrac{1\text{eV}}{1.602 176 634 \times 10^{-19}\cancel{\text{J}}}
     }{2\pi}\nonumber\\
-    =&\frac{4.1356683\times 10^{-15} \text{eV}\cdot\text{s}}{2\pi}\nonumber\\
+    =&\frac{4.1356677\times 10^{-15} \text{eV}\cdot\text{s}}{2\pi}\nonumber\\
 =&6.582119569\times 10^{-16}\text{eV}\cdot\text{s}
 \end{align}
 
@@ -754,7 +751,7 @@ La masa del protón
 
 similarmente,
 \begin{align}
-    m_e =& 0.510\, 998\, 950\, 00(15) \,\text{MeV}/c2\\
+    m_e =& 0.510\, 998\, 950\, 00(15) \,\text{MeV}/c^2\\
          \approx &0.5 \,\text{MeV}/c^2
 \end{align}
 
@@ -864,11 +861,13 @@ Note que por consiguiente, la velocidad al cuadrado en la fórmula para la energ
     E =\frac{1}{2}m v^2\,.
 \end{align*}
 
-\subsection{Ejercicios}
+En el Capítulo \ref{chap:relatividad} buscaremos qué cantidad permanece invariante bajo transformaciones entre observadores en movimiento, de forma análoga a como $r^2$ permaneció invariante aquí bajo rotación
+
+\section{Ejercicios}
 
 A continuación, se presentan veinte ejercicios propuestos para afianzar los conceptos fundamentales de unidades físicas, factores de conversión y análisis vectorial abordados en este capítulo. Recuerde prestar especial atención a las unidades en cada paso de sus cálculos.
 
-\subsubsection*{Unidades Físicas y Factores de Conversión}
+\subsection*{Unidades Físicas y Factores de Conversión}
 
 \begin{enumerate}
     \item \textbf{Conversión de Velocidad:} El límite de velocidad en muchas carreteras de Colombia es de $80 \text{ km/h}$. Utilizando factores de conversión, exprese esta velocidad en metros por segundo ($\text{m/s}$).
@@ -884,7 +883,7 @@ A continuación, se presentan veinte ejercicios propuestos para afianzar los con
     \item \textbf{Unidades Naturales (Distancia):} Si el radio de un átomo de hidrógeno es de aproximadamente $0.53 \times 10^{-10} \text{ m}$, utilice el factor de conversión $1 \text{ m} = 5.067 \times 10^6 \frac{\hbar c}{\text{eV}}$ para expresar este radio atómico en unidades de $\frac{\hbar c}{\text{eV}}$.
 \end{enumerate}
 
-\subsubsection*{Componentes, Magnitud y Dirección de Vectores}
+\subsection*{Componentes, Magnitud y Dirección de Vectores}
 
 
 \begin{enumerate}
@@ -898,7 +897,7 @@ A continuación, se presentan veinte ejercicios propuestos para afianzar los con
     \item \textbf{Vectores de Posición:} Un barco se encuentra en la coordenada $\boldsymbol{r}_A = (-5, 12) \text{ km}$ respecto al faro principal del puerto. ¿A qué distancia exacta ($|\boldsymbol{r}_A|$) se encuentra el barco del faro?
 \end{enumerate}
 
-\subsubsection*{Suma y Diferencia de Vectores}
+\subsection*{Suma y Diferencia de Vectores}
 
 \begin{enumerate}
     \setcounter{enumi}{10}
@@ -911,7 +910,7 @@ A continuación, se presentan veinte ejercicios propuestos para afianzar los con
     \item \textbf{Propiedades Algebraicas:} Dados los vectores $\boldsymbol{u} = (2, -3)$ y $\boldsymbol{v} = (-1, 4)$, demuestre algebraicamente que la suma de vectores es conmutativa verificando que $\boldsymbol{u} + \boldsymbol{v} = \boldsymbol{v} + \boldsymbol{u}$.
 \end{enumerate}
 
-\subsubsection*{Producto Escalar y Trabajo}
+\subsection*{Producto Escalar y Trabajo}
 
 \begin{enumerate}
     \setcounter{enumi}{14}
@@ -922,13 +921,13 @@ A continuación, se presentan veinte ejercicios propuestos para afianzar los con
     \item \textbf{Ángulo entre Vectores:} Utilizando la relación geométrica del producto escalar ($\boldsymbol{u} \cdot \boldsymbol{v} = |\boldsymbol{u}| |\boldsymbol{v}| \cos\theta$), encuentre el ángulo $\theta$ formado entre los vectores $\boldsymbol{u} = (3, 0)$ y $\boldsymbol{v} = (3, 3)$.
 \end{enumerate}
 
-\subsubsection*{Producto Vectorial y Torque}
+\subsection*{Producto Vectorial y Torque}
 
 \begin{enumerate}
     \setcounter{enumi}{17}
     \item \textbf{Magnitud del Torque:} Un mecánico intenta aflojar una tuerca muy apretada utilizando una llave inglesa de longitud $|\boldsymbol{r}| = 0.40 \text{ m}$. Si aplica una fuerza máxima de $|\boldsymbol{F}| = 200 \text{ N}$ en el extremo de la llave con un ángulo de $60^\circ$ respecto al mango, calcule la magnitud del torque generado ($|\boldsymbol{\tau}| = |\boldsymbol{r}| |\boldsymbol{F}| \sin\theta$).
     
-    \item \textbf{Regla de la Mano Derecha:} Una partícula cargada positivamente se mueve a lo largo del eje $+x$ (hacia la derecha) con una velocidad $\boldsymbol{v}$. Entra en una región donde existe un campo magnético $\boldsymbol{B}$ que apunta directamente a lo largo del eje $+y$ (hacia arriba). Sabiendo que la fuerza magnética viene dada por $\boldsymbol{F} = q(\boldsymbol{v} \times \boldsymbol{B})$, utilice la regla de la mano derecha para determinar en qué dirección apuntará el vector de fuerza $\boldsymbol{F}$ en el espacio 3D.
+    \item \textbf{Regla de la Mano Derecha:} Una partícula cargada positivamente se mueve a lo largo del eje $+x$ (hacia la derecha) con una velocidad $\boldsymbol{v}$. Entra en una región donde existe un campo magnético $\boldsymbol{B}$ que apunta directamente a lo largo del eje $+y$ (hacia arriba). Sabiendo que la fuerza magnética viene dada por $\boldsymbol{F} = q(\boldsymbol{v} \times \boldsymbol{B})$, utilice la regla de la mano derecha para determinar en qué dirección apuntará el vector de fuerza $\boldsymbol{F}$ en el espacio 3D. (NOTA: no necesitas entender el electromagnetismo, solo aplicar la regla geométrica)
     
     \item \textbf{Maximización del Producto Vectorial:} Si la magnitud del producto cruz es $|\boldsymbol{u} \times \boldsymbol{v}| = |\boldsymbol{u}| |\boldsymbol{v}| \sin\theta$, responda conceptualmente: 
     \begin{enumerate}
@@ -940,6 +939,7 @@ A continuación, se presentan veinte ejercicios propuestos para afianzar los con
 
 
 \chapter{Relatividad especial}
+\label{chap:relatividad}
 
 \section{Introducción}
 Las transformaciones de Lorentz son la piedra angular de la teoría de la Relatividad Especial de Einstein. Relacionan las coordenadas de espacio y tiempo de un evento según lo medido por dos observadores en diferentes sistemas de referencia inerciales. Reemplazan a las antiguas transformaciones de Galileo, que son inconsistentes con la constancia observada de la velocidad de la luz.
@@ -1082,12 +1082,19 @@ Sacando raíz cuadrada a ambos lados iguales\\[8pt]\hline
 De ésta forma obtenemos el \emph{factor de Lorentz}
 \begin{align}
 \label{eq:gamma}
-    \boxed{\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}} \,,
+    \boxed{\gamma = \frac{1}{\sqrt{1 - \beta^2}}} \,,
+\end{align}
+donde
+\begin{align}
+    \label{eq:beta}
+    \beta =\frac{v}{c}\,,
 \end{align}
 y 
 \begin{align}
 \label{eq:gammasquare}
-    \gamma^2 =&\frac{1}{1-\dfrac{v^2}{c^2}} =  \frac{c^2}{c^2-v^2}\,.
+    \gamma^2 =&\frac{1}{1-\dfrac{v^2}{c^2}} =  
+    \frac{\dfrac{1}{1}}{\dfrac{c^2-v^2}{c^2}}=
+    \frac{c^2}{c^2-v^2}\,.
 \end{align}
 
 Podemos ver que el factor de Lorentz, $\gamma$, varía desde el valor $1$ cuando $v\ll c$, o $c\to \infty$, hasta $\infty$ cuando $v\to c$, como se ilustra en la figura~\ref{fig:gammafactor}. La función $\gamma$ no tiene valores reales para $v>c$. Por consiguiente, $v=c$ se considera la velocidad límite para un sistema de referencia inercial, una velocidad que no se puede superar por ningún objeto material.
@@ -1670,6 +1677,8 @@ En el límite no relativista de $u\approx u'+v$, tenemos que
 tenemos que  $c = \infty$ y de éste modo en el límite no relativista, ¡no existe una velocidad límite!.
 
 
+
+
 \subsection{Ejemplos}
 
 \subsection*{Ejemplo 1: La Nave Espacial y la Sonda}
@@ -1692,47 +1701,119 @@ Si $v \ll c$ y $u' \ll c$, el término $\frac{u'v}{c^2}$ se vuelve extremadament
 \[ u = \frac{u' + v}{1 + \frac{u'v}{c^2}} \approx \frac{u' + v}{1} = u' + v \]
 Esto muestra que la fórmula relativista contiene la fórmula clásica como una aproximación a baja velocidad, lo cual es un requisito clave para cualquier nueva teoría física.
 
+\section{Propagación de ondas y efecto Doppler}
 
-\subsection*{Ejemplo 2: Dependencia de la Velocidad del Sonido con el Sistema de Referencia}
 
-Una pregunta fundamental al estudiar cinemática y ondas es si la velocidad de propagación de una onda depende de la velocidad del observador en un sistema de referencia inercial. En el caso del sonido, la respuesta es afirmativa: \textbf{sí depende}. 
 
-A diferencia de la luz (cuya velocidad $c$ es invariante y constante para todos los observadores inerciales, como establece la Relatividad Especial), el sonido es una \textbf{onda mecánica}. Por lo tanto, su comportamiento obedece a la mecánica clásica y a las transformaciones de Galileo estudiadas en secciones anteriores.
+\subsection{Adición de velocidades no relativistas para ondas mecánicas}
 
-\subsubsection*{El Medio de Propagación y la Relatividad de Galileo}
 
-El sonido no puede viajar en el vacío; requiere un medio material (como el aire, el agua o un metal) para propagarse. La velocidad del sonido, que denotaremos como $v_s$ (aproximadamente $343 \text{ m/s}$ en el aire a temperatura ambiente), es constante \textbf{únicamente con respecto a ese medio material}.
 
-Dado que aplica la relatividad de Galileo (la suma clásica de velocidades), si un observador se mueve con una velocidad $v_o$ con respecto al aire, la velocidad de la onda de sonido que este percibe ($v_{\text{percibida}}$) será el resultado de una suma o resta vectorial:
+Una pregunta fundamental al estudiar cinemática y ondas es si la velocidad de propagación de una onda depende de la velocidad del observador en un sistema de referencia inercial. En el caso del sonido, la respuesta es afirmativa, mientras que para la luz revela la necesidad de un cambio radical en nuestra comprensión del universo.
 
+\subsubsection{El Aire como un Sistema de Referencia Privilegiado}
+
+El sonido no puede viajar en el vacío; requiere un medio material (como el aire, el agua o un metal) para propagarse. La velocidad del sonido, que denotaremos como $c_s$ (aproximadamente $343 \text{ m/s}$ en el aire a temperatura ambiente), es constante \textbf{únicamente con respecto a ese medio material}.
+
+Dado que aplica la relatividad de Galileo (la suma clásica de velocidades), si un observador se mueve con una velocidad $v$ con respecto al aire, la velocidad de la onda de sonido con respecto al sistema de movimiento ($c'_s$) es:
 \begin{itemize}
-    \item \textbf{Si el observador se acerca a la fuente del sonido:} La onda viaja al encuentro del observador. En este sistema de referencia, la velocidad percibida será mayor y se expresa como
+    \item \textbf{Si el observador se acerca a la fuente:} $c'_s$ es mayor,
     \begin{equation}
-        v_{\text{percibida}} = v_s + v_o.
+       c'_s = c_s + v.
     \end{equation}
-    donde $v_s$ es la velocidad del sonido y $v_o$ es la velocidad del observador.
-    \item \textbf{Si el observador se aleja de la fuente del sonido:} La onda debe ``perseguir'' al observador, tardando más en alcanzarlo. La velocidad percibida será menor y viene dada por
+    \item \textbf{Si el observador se aleja de la fuente:} La velocidad percibida es menor,
     \begin{equation}
-        v_{\text{percibida}} = v_s - v_o.
+        c'_s = c_s - v.
     \end{equation}
 \end{itemize}
 
-En el caso límite en el que un observador viajara alejándose exactamente a la misma velocidad del sonido ($v_o = v_s$), la onda nunca lo alcanzaría y, desde su sistema de referencia, la velocidad relativa del sonido sería exactamente cero.
+Para las ondas mecánicas como el sonido, el medio material (el aire) actúa como un sistema de referencia privilegiado o absoluto. Cualquier observador inercial que se mueva a través de él medirá una velocidad de propagación diferente.
 
-\subsubsection*{Consecuencia: El Efecto Doppler Clásico}
+\subsection{El Espejismo del Éter y el Experimento de Michelson-Morley}
+
+Durante el siglo XIX, los físicos asumieron en su contexto histórico que la luz debía comportarse exactamente igual que el sonido. Si el sonido necesitaba el aire, razonaban que las ondas electromagnéticas (la luz) debían necesitar un medio elástico invisible que llenara todo el universo, al cual denominaron el \textbf{éter luminífero}. 
+
+Bajo esta suposición, el éter constituía el ``sistema de referencia absoluto'' del cosmos. Los científicos creían que la Tierra, al orbitar alrededor del Sol, se movía a través de este éter, generando un ``viento de éter'' detectable. 
+
+Sin embargo, como revisamos en nuestra perspectiva histórica, el célebre \textbf{experimento de Michelson-Morley (1887)} midió la velocidad de la luz en direcciones perpendiculares y descubrió un resultado totalmente nulo: la velocidad de la luz era exactamente la misma en todas las direcciones, sin importar el movimiento de la Tierra. 
+
+\subsubsection{La Solución de Einstein: La Ausencia de Medio}
+
+La gran revelación que condujo a la Relatividad Especial fue entender por qué el experimento de Michelson-Morley falló: \textbf{el éter no existe}. 
+
+\begin{itemize}
+    \item \textbf{El Sonido} depende de un medio material (el aire), lo que crea un marco de referencia absoluto y genera asimetrías en la velocidad percibida.
+    \item \textbf{La Luz} es una perturbación de campos electromagnéticos que \textbf{no requiere ningún medio material} para propagarse. 
+\end{itemize}
+
+Al no existir un medio de referencia absoluto ni un ``éter'' que sirva de anclaje, la naturaleza no tiene cómo distinguir qué observador está ``realmente en reposo'' y cuál está en movimiento. Esto elevó la velocidad de la luz ($c$) a una constante universal e invariante para todos los observadores inerciales, \textbf{revelando los límites de validez de la física galileana y ampliando el marco conceptual hacia las transformaciones de Lorentz}, unificando así el electromagnetismo bajo un nuevo estándar geométrico que contiene a la mecánica clásica como un caso límite a bajas velocidades.
+
+\subsection*{Consecuencia: El Efecto Doppler Clásico}
 
 Esta dependencia de la velocidad relativa es la razón física subyacente por la cual experimentamos el \textbf{Efecto Doppler} en la acústica. 
 
 
-Si La fuente se aleja (acerca) a un observador en reposo: La onda viaja por el aire a la misma velocidad constante, pero los frentes de onda se alargan (``aplastan'') físicamente
-    \begin{equation}
-        f_{\text{obs}} = f_0 \left( \frac{v_s}{v_s \pm v} \right).
-    \end{equation}
-donde el signo ``$+$'' es cuando se aleja y la frecuencia disminuye y el ``$-$'' cuando se acerca y la frecuencia aumenta. 
+
+
+\subsection{Deducción Algebraica del Efecto Doppler para el Sonido}
+
+El Efecto Doppler describe el cambio en la frecuencia percibida de una onda cuando existe movimiento relativo entre la fuente emisora y el observador. A diferencia de la luz, el sonido requiere un medio material (el aire), por lo que las velocidades de la fuente y del observador se miden siempre respecto a dicho medio (asumido en reposo).
+
+Definiremos las siguientes variables:
+\begin{itemize}
+    \item $f_0$: Frecuencia emitida por la fuente.
+    \item $v_s$: Velocidad del sonido en el aire.
+    \item $v_f$: Velocidad de la fuente.
+    \item $v_o$: Velocidad del observador.
+    \item $\lambda_0$: Longitud de onda original ($\lambda_0 = v_s / f_0$).
+\end{itemize}
+
+\subsubsection{1. El Movimiento de la Fuente (Efecto en la Longitud de Onda)}
+
+Imaginemos que la fuente se mueve a una velocidad $v_f$ hacia un observador que está quieto ($v_o = 0$). En un segundo, la fuente emite $f_0$ ondas. Durante ese intervalo de tiempo de $1 \text{ s}$, la primera onda emitida avanza una distancia de $v_s \cdot (1 \text{ s})$ a través del aire, mientras que la fuente se ha desplazado una distancia $v_f \cdot (1 \text{ s})$ en la misma dirección, persiguiendo a su propia onda y comprimiendo el espacio entre los frentes de onda subsiguientes.
+
+Algebraicamente, la nueva longitud de onda comprimida ($\lambda'$), vista en la Ecuación (\ref{eq:doppler_longitud_onda}), es:
+\begin{equation}
+    \lambda' = \frac{v_s - v_f}{f_0}.
+    \label{eq:doppler_longitud_onda}
+\end{equation}
+\textit{(Nota: Si la fuente se alejara, el espacio se estiraría, cambiando el signo a $v_s + v_f$).}
+
+Como el observador está en reposo respecto al aire, estas ondas comprimidas viajan hacia él a la velocidad normal del sonido $v_s$. La frecuencia percibida ($f_{\text{obs}}$) es la velocidad de la onda dividida entre esta nueva longitud de onda:
+\begin{equation}
+    f_{\text{obs}} = \frac{v_s}{\lambda'} = \frac{v_s}{\left(\frac{v_s - v_f}{f_0}\right)}.
+\end{equation}
+
+Reorganizando mediante división de fracciones, obtenemos la fórmula cuando la fuente está en movimiento y el observador en reposo:
+\begin{equation}
+    f_{\text{obs}} = f_0 \left( \frac{v_s}{v_s \mp v_f} \right),
+    \label{eq:doppler_fuente}
+\end{equation}
+donde se usa el signo menos ($-$) si la fuente se acerca, y el signo más ($+$) si la fuente se aleja.
+
+\subsubsection{2. El Movimiento del Observador (Efecto en la Velocidad Relativa)}
+
+Imaginemos ahora que la fuente está inmóvil ($v_f = 0$), pero es el observador quien se mueve a una velocidad $v_o$. 
+
+Las ondas viajan por el aire a $v_s$. Si el observador se mueve al encuentro de las ondas, la velocidad relativa de impacto ya no es solo $v_s$, sino que se le suma su propia velocidad ($v_s + v_o$). Si huye, la velocidad relativa disminuye ($v_s - v_o$).
+
+La frecuencia percibida se calcula dividiendo esta nueva velocidad de impacto entre la longitud de onda original $\lambda_0$:
+\begin{equation}
+    f_{\text{obs}} = \frac{v_s \pm v_o}{\lambda_0} = \frac{v_s \pm v_o}{\left(\frac{v_s}{f_0}\right)} = f_0 \left( \frac{v_s \pm v_o}{v_s} \right).
+\end{equation}
+
+Reorganizando, obtenemos la fórmula cuando el observador está en movimiento y la fuente en reposo:
+\begin{equation}
+    f_{\text{obs}} = f_0 \left( \frac{v_s \pm v_o}{v_s} \right),
+    \label{eq:doppler_observador}
+\end{equation}
+donde se usa el signo más ($+$) si el observador se acerca, y menos ($-$) si se aleja.
+
 
 En resumen, para las ondas mecánicas como el sonido, el medio material (el aire) actúa como un sistema de referencia privilegiado. Cualquier observador inercial que se mueva a través de él medirá una velocidad de propagación diferente. Esta profunda asimetría en la física clásica servirá de contraste vital para entender el comportamiento de la luz, la cual no requiere de un medio para propagarse y mantiene su velocidad invariable sin importar quién la mida.
 
-\subsection*{ Ejemplo 4: El Efecto Doppler: Sonido Clásico vs. Luz Relativista}
+
+\subsection*{El Efecto Doppler: Sonido Clásico vs. Luz Relativista}
 
 El efecto Doppler es el fenómeno por el cual la frecuencia percibida de una onda cambia cuando la fuente y el observador se encuentran en movimiento relativo. Sin embargo, existe una diferencia fundamental entre las ondas mecánicas (como el sonido) que requieren un medio material, y las ondas electromagnéticas (como la luz) cuya velocidad es invariante.
 
@@ -1747,8 +1828,9 @@ A diferencia del sonido, donde usamos las transformaciones de Galileo, para la l
 
 \textbf{Paso 2: Dilatación del tiempo.} Desde la Tierra, vemos que el reloj de la nave funciona más lentamente debido a la relatividad. El tiempo dilatado $T$ medido por nosotros entre las emisiones de los pulsos es
 \begin{equation}
-    T = \gamma T_0 = \frac{T_0}{\sqrt{1 - \frac{v^2}{c^2}}}.
+    T = \gamma T_0 = \frac{T_0}{\sqrt{1 - \beta^2}}\,,
 \end{equation}
+con $\beta=v/c$ (ver ec.~\ref{eq:beta}).
 
 \textbf{Paso 3: El estiramiento geométrico.} Mientras la nave espera ese tiempo dilatado $T$ para emitir el segundo pulso, sigue alejándose de nosotros, recorriendo una distancia adicional $d = v T$. El tiempo extra de viaje que debe recorrer el segundo pulso para alcanzarnos es
 \begin{equation}
@@ -1757,8 +1839,14 @@ A diferencia del sonido, donde usamos las transformaciones de Galileo, para la l
 
 \textbf{Paso 4: El periodo observado.} El tiempo total medido en la Tierra entre la llegada del primer y segundo pulso, $T_{\text{obs}}$, será el tiempo dilatado $T$ más el tiempo extra de viaje:
 \begin{equation}
-    T_{\text{obs}} = T + \frac{v T}{c} = T \left(1 + \frac{v}{c}\right).
+    T_{\text{obs}} = T + \frac{v T}{c} = T \left(1 + \frac{v}{c}\right),
 \end{equation}
+de modo que
+\begin{equation}
+\label{eq:tobs0}
+    T_{\text{obs}} =  T_0\gamma \left(1 + \frac{v}{c}\right).
+\end{equation}
+
 
 \textbf{Paso 5: Álgebra y simplificación.} Sustituimos el tiempo dilatado $T$ del Paso 2 en la ecuación anterior:
 \begin{equation}
@@ -1766,19 +1854,71 @@ A diferencia del sonido, donde usamos las transformaciones de Galileo, para la l
 \end{equation}
 Aplicamos la diferencia de cuadrados en el denominador, $\left(1 - \frac{v^2}{c^2}\right) = \left(1 - \frac{v}{c}\right)\left(1 + \frac{v}{c}\right)$, y reescribimos el numerador como $\sqrt{1 + \frac{v}{c}} \sqrt{1 + \frac{v}{c}}$:
 \begin{equation}
-    T_{\text{obs}} = T_0 \frac{\sqrt{1 + \frac{v}{c}} \sqrt{1 + \frac{v}{c}}}{\sqrt{1 - \frac{v}{c}} \sqrt{1 + \frac{v}{c}}}.
+    T_{\text{obs}} = T_0 \frac{\sqrt{1 + \dfrac{v}{c}} \cancel{\sqrt{1 + \dfrac{v}{c}}}}{\sqrt{1 - \dfrac{v}{c}}\cancel{ \sqrt{1 + \dfrac{v}{c}}}}.
 \end{equation}
 Al cancelar términos semejantes, obtenemos el periodo observado:
 \begin{equation}
-    T_{\text{obs}} = T_0 \sqrt{\frac{1 + \frac{v}{c}}{1 - \frac{v}{c}}}.
+    T_{\text{obs}} = T_0 \sqrt{\frac{1 + \beta}{1 - \beta}}\,,
 \end{equation}
+donde $\beta=v/c$ (ver ec.~\eqref{eq:beta}.
+
+Note que hemos usado la identidad:
+\begin{equation}
+\label{eq:doppid}
+ \sqrt{\frac{1+\beta}{1-\beta}} =   \gamma (1+\beta).
+\end{equation}
+
 
 \textbf{Paso 6: La frecuencia observada.} La frecuencia observada ($f_{\text{obs}}$) es la inversa del periodo ($1 / T_{\text{obs}}$). Al invertir la fracción dentro de la raíz, obtenemos la fórmula del \textbf{Efecto Doppler Relativista} para una fuente que se aleja (lo que explica el corrimiento al rojo o \textit{redshift} de las galaxias):
 \begin{equation}
-    f_{\text{obs}} = f_0 \sqrt{\frac{1 - \frac{v}{c}}{1 + \frac{v}{c}}}.
+    f_{\text{obs}} = f_0 \sqrt{\frac{1 - \beta}{1 + \beta}},,
     \label{eq:doppler_aleja}
 \end{equation}
 \textit{Nota:} Si la fuente y el observador se estuvieran \textbf{acercando}, simplemente invertimos los signos de la ecuación (\ref{eq:doppler_aleja}), obteniendo un corrimiento hacia el azul (mayor frecuencia).
+
+De esta forma, si la frecuencia inicial de la fuente se conoce, a pesar de que la \emph{velocidad de la luz no cambia} si la fuente se acerca o se aleja con respecto al observador; \emph{la frecuencia medida por dicho observador si cambia}, desplazándose hacía el azul o el rojo respectivamente.
+
+\subsection{Ejemplos}
+
+\subsubsection{Invarianza con respecto a sistemas de referencia}
+Suponga que un observador está sobre una plataforma abierta al aire que se mueve sobre una vía férrea a una velocidad constante  $v$. El observador está sentado mirando hacía el frente en la dirección de movimiento. Un músico está sentado a un metro frente al observador dando la espalada a la dirección de movimiento. Sí el músico dirige una nota ``Do'' hacia el observador ¿a qué velocidad se mueve esa onda hacia el observador y a que frecuencia es percibida por el observador?. Repetir el análisis para el caso de un rayo laser verde como se muestra en la figura~\ref{fig:sl}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\linewidth]{sound}\hfill
+    \includegraphics[width=0.45\linewidth]{light}
+    \caption{Comparación entre la propagación del sonido y de la luz emitidos desde una
+plataforma en movimiento hacia un observador en reposo relativo respecto a la fuente.
+    }
+    \label{fig:sl}
+\end{figure}
+
+Definiendo $c_s\ll c$ como la velocidad del sonido, para la suma de velocidades tenemos en cada caso que 
+\begin{align*}
+u' =& \frac{u-v}{1-\dfrac{uv}{c^2}}
+=\frac{-c_s-v}{1-\dfrac{(-c_s)v}{c^2}}
+&
+u' =& \frac{u-v}{1-\dfrac{uv}{c^2}}
+= \frac{c-v}{1-\dfrac{cv}{c^2}}\\
+=&-(c_s+v)\,,
+&
+=& c\,.
+\end{align*}
+
+\begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}
+\hline
+\textbf{} & \textbf{Sonido (``Do'')} & \textbf{Luz (láser verde)} \\
+\hline
+Velocidad de la onda hacia el observador & $c_s + v$ (depende del medio) & $c$ exactamente (invariante, sin importar $v$) \\
+\hline
+Frecuencia percibida & $f_0$ (sin Doppler) & $f_0$ (sin Doppler) \\
+\hline
+Razón de la ausencia de Doppler & Fuente y observador mutuamente en reposo & Fuente y observador mutuamente en reposo \\
+\hline
+¿Por qué difiere la velocidad de la onda? & El aire define un marco de referencia preferido, distinto al del observador & No existe marco preferido — la luz es $c$ en \textit{todo} marco inercial (postulado de Einstein) \\
+\hline
+\end{tabularx}
+
 
 \subsubsection*{Ejemplos Numéricos: Asimetría Clásica vs. Simetría Relativista}
 
@@ -1811,6 +1951,118 @@ Lo que nos da un resultado simétrico y único:
 \end{equation}
 
 \textbf{Conclusión de la Luz:} Gracias a la dilatación del tiempo y a la geometría relativista, las transformaciones de Lorentz garantizan que la velocidad de la onda no cambie (sigue siendo $c$), manifestándose el alejamiento únicamente como un corrimiento al rojo de la  frecuencia de la luz. Del ultravioleta al verde en este caso, pues el verde va de $526$--$\qty{606}{THz}$.
+
+
+
+
+\subsubsection{Ejemplo: Transmisión de Video en un Viaje Interestelar Ultrarrelativista}
+
+    Como aplicación directa de las fórmulas de Efecto Doppler relativista que acabamos de
+derivar (Ecuación \eqref{eq:doppler_aleja} y su versión inversa para el acercamiento), analicemos un caso extremo
+y muy ilustrativo: una nave que viaja a $\beta = v/c = 0.9999999$ realiza un viaje de ida y
+vuelta a un destino situado a $D = 50\,000$ años luz, transmitiendo hacia la Tierra, en tiempo
+real  el video grabado a bordo.
+
+    ¿A qué velocidad de reproducción, y con qué duración total, recibiría la Tierra esta
+transmisión?
+
+Paso 1: El factor de Lorentz. Con $\beta = 0.9999999$, tenemos
+\begin{equation}
+    \gamma = \frac{1}{\sqrt{1-\beta^2}} \approx 2236.07.
+\end{equation}
+
+Paso 2: El tiempo propio de cada tramo. Cada tramo de $50\,000$ años luz dura, medido
+desde la Tierra, aproximadamente $t_{\text{Tierra}} = D/(\beta c) \approx 50\,000$ años. Por
+dilatación del tiempo, el tiempo propio $\tau$ que efectivamente transcurre —y que la
+tripulación graba— en cada tramo es
+\begin{equation}
+    \tau_{\text{tramo}} = \frac{t_{\text{Tierra}}}{\gamma} \approx \frac{50\,000}{2236.07}
+    \approx 22.36 \text{ años}.
+\end{equation}
+El metraje total grabado durante el viaje completo (ida y vuelta) es, por lo tanto,
+$\tau_{\text{total}} \approx 44.72$ años.
+
+Paso 3: El factor Doppler de alejamiento. Durante el tramo de ida, la nave se aleja, y la
+frecuencia de la señal recibida en la Tierra está dada directamente por la Ecuación~\eqref{eq:doppler_aleja}:
+\begin{equation}
+    f_{\text{obs}} = f_0\sqrt{\frac{1-\beta}{1+\beta}} \quad\Longrightarrow\quad
+    \frac{1}{\sqrt{(1-\beta)/(1+\beta)}} = \gamma(1+\beta) \approx 4472.1.
+\end{equation}
+donde hemos usado la identidad~\eqref{eq:doppid} tal que, de acuerdo a la ec.~\eqref{eq:tobs0}
+\begin{equation}
+    T\approx 4472 T_0\,.
+\end{equation}
+Este factor representa cuánto se \textit{estira} cada intervalo de tiempo de la señal: cada
+segundo grabado a bordo tarda, en llegar a la Tierra, el equivalente a 4472 segundos (poco
+más de 74 minutos).
+
+Paso 4: El factor Doppler de acercamiento. Durante el tramo de vuelta, por la nota que
+acompaña a la Ecuación \eqref{eq:doppler_aleja}, simplemente invertimos los signos, obteniendo el recíproco
+exacto del factor anterior:
+\begin{equation}
+    \gamma(1-\beta) \equiv \frac{1}{\gamma(1+\beta)} \approx \frac{1}{4472.1} \approx
+    2.236\times10^{-4}.
+\end{equation}
+Este factor representa cuánto se \textit{comprime} cada intervalo de tiempo de la señal
+durante el regreso.
+
+Paso 5: Duración de recepción de cada tramo. Multiplicando el tiempo propio de cada
+tramo (Paso 2) por el factor de estiramiento o compresión correspondiente:
+\begin{align}
+    t_{\text{recepción, ida}} &\approx 22.36 \text{ años} \times 4472.1 \approx 100\,000
+    \text{ años},\\
+    t_{\text{recepción, vuelta}} &\approx 22.36 \text{ años} \times 2.236\times10^{-4}
+    \approx 0.005 \text{ años} \approx 1.8 \text{ días}.
+\end{align}
+
+    La Tabla \ref{tab:doppler-nave} resume el resultado.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\hline
+\textbf{Fase} & \textbf{Duración a bordo} & \textbf{Duración de recepción en la Tierra} \\
+\hline
+Ida (se aleja)   & $\approx 22.36$ años & $\approx 100\,000$ años (cámara ultra lenta) \\
+Vuelta (se acerca) & $\approx 22.36$ años & $\approx 1.8$ días (cámara ultra rápida) \\
+\hline
+\textbf{Total} & $\approx 44.72$ años & $\approx 100\,000$ años \\
+\hline
+\end{tabular}
+\caption{Resultado del Ejemplo 5: transmisión sin compensación de un viaje de ida y vuelta
+a $50\,000$ años luz, con $\beta = 0.9999999$.}
+\label{tab:doppler-nave}
+\end{table}
+
+    Conclusión: A pesar de que la tripulación solo envejece $44.72$ años, la Tierra recibe la
+transmisión completa a lo largo de aproximadamente $100\,000$ años —esencialmente la duración
+completa del viaje medida desde la Tierra—, ya que prácticamente todo ese tiempo se consume en
+recibir, extremadamente estirado, el metraje de la fase de alejamiento. El metraje del regreso,
+en cambio, llega comprimido en apenas un par de días, justo antes de que la propia nave aterrice.
+
+\begin{quote}
+\textit{Nota:} Este resultado no es un simple artificio matemático: es la manifestación directa
+de un límite impuesto por la causalidad. Ninguna técnica de compensación, por avanzada que sea,
+podría lograr que la señal de la fase de alejamiento llegue \textbf{más rápido} que el límite
+dado por el factor $\gamma(1+\beta)$, ya que esto requeriría transmitir cada fotograma antes de
+haber sido grabado. En cambio, sí es físicamente posible \textit{retrasar} deliberadamente la
+transmisión durante el acercamiento —comprimiendo aún más, o incluso "estirando" artificialmente
+la señal de vuelta si así se desea—, precisamente porque un retraso adicional nunca viola la
+causalidad.
+\end{quote}
+
+\begin{quote}
+\textit{Nota Conceptual — Doppler y la Paradoja de los Gemelos:} Este método, en el que se
+analiza exclusivamente la señal luminosa que un observador efectivamente recibe (en vez de
+razonar sobre la "simultaneidad a distancia" entre eventos separados), se conoce en la literatura
+como el método de Bondi o \textit{k-calculus}. Su virtud es que resuelve la clásica Paradoja de
+los Gemelos sin necesidad de invocar la relatividad de la simultaneidad: basta con verificar que
+la suma del metraje recibido en ambas fases ($100\,000$ años de estiramiento más $1.8$ días de
+compresión) sigue correspondiendo exactamente a los $44.72$ años de metraje real grabado a bordo.
+La enorme asimetría entre "ver la fase de ida en cámara lentísima" y "ver la fase de vuelta en
+cámara rapidísima" es, precisamente, la forma en que la información —transmitida siempre dentro
+de los límites impuestos por $c$— codifica la diferencia de edades entre ambos gemelos.
+\end{quote}
 
 
 % --- Inicio del código LaTeX para insertar ---
@@ -1855,11 +2107,74 @@ Esto nos da la \textbf{fórmula del decaimiento en términos de la vida media}:
 \[ \boxed{N(t) = N_0 \left(\frac{1}{2}\right)^{\frac{t}{t_{1/2}}}} \]
 Esta forma es muy fácil de interpretar: el exponente ${t}/{t_{1/2}}$ simplemente cuenta ``cuántas vidas medias han pasado'', ver figura~\ref{fig:decrad}.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.4\linewidth]{decaimiento}
-    \caption{Decaimiento radiativo. Tomado de \cite{} }
-    \label{fig:decrad}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+
+    % Ejes coordenados (ajustados para que y llegue al menos a 110, mapeado a y=5.5)
+    \draw[->, thick] (0, 0) -- (6.5, 0) node[right] {};
+    \draw[->, thick] (0, 0) -- (0, 5.7) node[above] {};
+
+    % Rótulo del eje horizontal centrado debajo
+    \node[align=center] at (3.25, -0.8) {Número de vidas medias};
+
+    % Rótulo del eje vertical rotado 90 grados y centrado a la izquierda
+    \node[rotate=90, align=center] at (-1.2, 2.75) {Porcentaje restante};
+
+    % Líneas punteadas de referencia
+    % 100% en t=0 (marcas de los ejes)
+    %\draw[dashed, gray, thick] (0, 5) -- (5.5, 5);
+    
+    % 50% en t=1
+    \draw[dashed, gray, thick] (1, 0) -- (1, 2.5);
+    \draw[dashed, gray, thick] (0, 2.5) -- (1, 2.5);
+    
+    % 25% en t=2
+    \draw[dashed, gray, thick] (2, 0) -- (2, 1.25);
+    \draw[dashed, gray, thick] (0, 1.25) -- (2, 1.25);
+    
+    % 12.5% en t=3
+    \draw[dashed, gray, thick] (3, 0) -- (3, 0.625);
+    \draw[dashed, gray, thick] (0, 0.625) -- (3, 0.625);
+
+    % Curva de decaimiento exponencial (Función: 5 * e^{-0.693 * x})
+    % Mapeo: y=5 corresponde al 100%, y=5.5 corresponderá a 110%
+    \draw[red, thick, domain=0:5.8, samples=100] plot (\x, {5 * exp(-0.693147 * \x)});
+
+    % Puntos destacados en la curva
+    \fill[red] (1, 2.5) circle (2pt);
+    \fill[red] (2, 1.25) circle (2pt);
+    \fill[red] (3, 0.625) circle (2pt);
+
+    % Etiquetas en el eje Y (Porcentajes, escala y=5 equivale a 100)
+    %\node[left] at (0, 5.5) {$110$};
+    \node[left] at (0, 5) {$100$};
+    \node[left] at (0, 2.5) {$50$};
+    \node[left] at (0, 1.25) {$25$};
+    \node[left] at (0, 0.625) {$12.5$};
+    
+    \draw (0.1, 5) -- (-0.1, 5);
+    \draw (0.1, 5.5) -- (-0.1, 5.5);
+
+    % Etiquetas en el eje X (Número de vidas medias)
+    \node[below] at (0, 0) {$0$};
+    \node[below] at (1, 0) {$1$};
+    \node[below] at (2, 0) {$2$};
+    \node[below] at (3, 0) {$3$};
+
+    % Textos explicativos superiores
+    \node[font=\bfseries] at (3.2, 4.3) {Curva de decaimiento};
+    
+    \node at (3.5, 3.5) {$\displaystyle N_t = N_0 e^{-\lambda t}$};
+    
+    \node[align=center, font=\small] at (4.2, 2.6) {
+        donde $N_0 = \text{cantidad original}$\\
+        $N_t = \text{cantidad final}$
+    };
+
+\end{tikzpicture}
+\caption{Curva de decaimiento radiactivo en función del número de vidas medias transcurridas.}
+\label{fig:decrad}
 \end{figure}
 
 \section*{Ejemplos Aplicados}
@@ -2114,10 +2429,10 @@ Por lo tanto
 Podemos parametrizar la velocidad usando la \textbf{rapidez}, $\xi$:
 \[ \gamma = \cosh\xi, \quad -\frac{v}{c}\gamma = \sinh\xi \]
 Esta parametrización es válida porque satisface automáticamente la identidad $\gamma^2(1-v^2)=1$:
-\[ \cosh^2\xi - \sinh^2\xi = \gamma^2 - \left(\frac{v}{c}\gamma\right)^2 = \gamma^2\left(1-\frac{v^2}{c^2}\right) = 1 \]
+\[ \cosh^2\xi - \sinh^2\xi = \gamma^2 - \left(-\frac{v}{c}\gamma\right)^2 = \gamma^2\left(1-\frac{v^2}{c^2}\right) = 1 \]
 A partir de esto, también encontramos que la velocidad está relacionada con la rapidez por 
 \begin{align*}
-    \frac{v}{c} = \tanh\xi\,,
+    -\frac{v}{c} = \tanh\xi\,,
 \end{align*}
 donde
 \begin{align*}
@@ -2292,17 +2607,29 @@ El tiempo propio $\Delta t_0$ es una magnitud escalar invariante, acordada por t
 
 \subsubsection{Paso 2: Construcción de la Cuadrivelocidad}
 
-Para crear un vector de velocidad que se comporte correctamente bajo las transformaciones de Lorentz, debemos tomar el cuadrivector de posición $\Delta X^\mu$ y dividirlo, no por el tiempo relativo $\Delta t$, sino por el tiempo invariante $\Delta \tau$. Definimos así la \textbf{cuadrivelocidad} $U^\mu$:
+Para crear un vector de velocidad que se comporte correctamente bajo las transformaciones de Lorentz, debemos tomar el cuadrivector de posición $\Delta X^\mu$ y dividirlo, no por el tiempo relativo $\Delta t$, sino por el tiempo invariante $\Delta t_0$. Definimos así la \textbf{cuadrivelocidad} $V^\mu$:
 \begin{equation}
-    v^\mu = \frac{\Delta x^\mu}{\Delta t_0} = \left( c\frac{\Delta t}{\Delta \tau}, \frac{\Delta \boldsymbol{r}}{\Delta \tau} \right).
+    V^\mu = \frac{\Delta x^\mu}{\Delta t_0} = \left( c\frac{\Delta t}{\Delta t_0}, \frac{\Delta \boldsymbol{r}}{\Delta t_0} \right).
 \end{equation}
-Utilizando la regla de la cadena ($\frac{\Delta \boldsymbol{r}}{\Delta \tau} = \frac{\Delta \boldsymbol{r}}{\Delta t} \frac{\Delta t}{\Delta \tau}$) y la ecuación (\ref{eq:tiempo_propio}), podemos expresar $U^\mu$ en términos de las variables medidas en el laboratorio ($v$ y $\gamma$):
-\begin{equation}
-    v^\mu = ( \gamma c, \gamma \boldsymbol{v} ).
-\end{equation}
+Utilizando la regla de la cadena 
+$$\frac{\Delta \boldsymbol{r}}{\Delta t_0} = \frac{\Delta \boldsymbol{r}}{\Delta t} \frac{\Delta t}{\Delta t_0}$$
+y la ecuación (\ref{eq:tiempo_propio}), podemos expresar $V^\mu$ en términos de las variables medidas en el laboratorio ($v$ y $\gamma$):
+\begin{align}
+    V^\mu =& \left(c\frac{\Delta t}{\Delta t/\gamma},
+    \frac{\Delta \boldsymbol{r}}{\Delta t/\gamma}
+    \right)\nonumber\\
+    =& \left(\gamma c,
+    \gamma\frac{\Delta \boldsymbol{r}}{\Delta t}
+    \right)\nonumber\\
+    V^\mu =& ( \gamma c, \gamma \boldsymbol{v} ),
+\end{align}
+donde hemos usado que
+\begin{align*}
+\boldsymbol{v} = \frac{\Delta \boldsymbol{r}}{\Delta t}\,.
+\end{align*}
 Comprobemos que su producto escalar es efectivamente un invariante que no puede depender de la velocidad del sistema de referncia inercial, $v$:
 \begin{equation}
-    v^\mu \cdot v^\mu = (\gamma c)^2 - (\gamma v)^2 = \gamma^2 (c^2 - v^2) = \left( \frac{1}{1 - v^2/c^2} \right) c^2 \left( 1 - \frac{v^2}{c^2} \right) = c^2.
+    V^\mu \cdot V^\mu = (\gamma c)^2 - (\gamma v)^2 = \gamma^2 (c^2 - v^2) = \left( \frac{1}{1 - v^2/c^2} \right) c^2 \left( 1 - \frac{v^2}{c^2} \right) = c^2.
 \end{equation}
 El resultado es $c^2$, una constante universal. ¡Nuestra construcción geométrica funciona a la perfección!
 
@@ -2310,7 +2637,7 @@ El resultado es $c^2$, una constante universal. ¡Nuestra construcción geométr
 
 Ahora, multiplicamos la cuadrivelocidad por la masa en reposo de la partícula, $m$. Dado que $m$ es otro escalar invariante (no depende de la velocidad del sistema de referencia inercial, $v$), el resultado será un nuevo cuadrivector garantizado, llamado \textbf{cuadrimomento} ($P^\mu$):
 \begin{equation}
-    p^\mu = m v^\mu = ( \gamma m c, \gamma m \boldsymbol{v} ).
+    p^\mu = m V^\mu = ( \gamma m c, \gamma m \boldsymbol{v} ).
 \end{equation}
 Identificamos las componentes de este nuevo vector con las cantidades dinámicas físicas:
 
@@ -2322,12 +2649,28 @@ La parte espacial de nuestro cuadrivector corresponde a la generalización natur
 \end{equation}
 
 \textbf{2. La Energía Total Relativista:}
-La componente temporal del cuadrivector es $\gamma m c$. Para entender su significado físico, analicemos la cantidad multiplicada por $c$, es decir, $E \equiv \gamma m c^2$. Si evaluamos el límite de bajas velocidades ($v \ll c$), podemos usar la aproximación binomial
-\begin{align}
-    (1+x)^n \approx& 1+nx\,,&\text{sí\quad } x\ll 1\,. 
-\end{align}
+Consideremos ahora la componente temporal del
+cuadrimomento, $\gamma mc$. Un análisis dimensional revela que (como era de esperarse) esta cantidad tiene
+unidades de momento lineal ($\text{M}\cdot\text{L}/\text{T}$, las mismas que $mv$). Para construir una cantidad con dimensiones de energía
+($\text{M}\cdot\text{L}^2/\text{T}^2$), multiplicamos por la única velocidad
+invariante disponible en la teoría, $c$:
+\begin{equation}
+    E \equiv \gamma mc^2 .
+\end{equation}
+Esta es, por ahora, solo una \emph{candidata} razonable a la energía total relativista
+--- una hipótesis motivada por el análisis dimensional, no todavía una conclusión
+demostrada. Para justificarla físicamente, invocamos el \textbf{Principio de
+Correspondencia}: toda teoría física nueva debe reducirse a la teoría antigua,
+ya verificada experimentalmente, en el régimen donde esta última es válida. En
+nuestro caso, la mecánica newtoniana debe emerger de la Relatividad Especial en
+el límite de bajas velocidades ($v \ll c$).
 
-Para el limite no relativista $v\ll c$
+Verifiquemos si nuestra candidata pasa esta prueba. Usando la aproximación
+binomial para $v \ll c$,
+\begin{equation}
+    (1+x)^n \approx 1 + nx, \qquad \text{si } x \ll 1,
+\end{equation}
+con $x = -v^2/c^2$ y $n = -1/2$, obtenemos
 \begin{align*}
 \gamma =& \frac{1}{\sqrt{1-\frac{v^2}{c^2}}}&&\\
 =& \left(1-\frac{v^2}{c^2}\right)^{-1/2}&&\\
@@ -2335,13 +2678,22 @@ Para el limite no relativista $v\ll c$
 \end{align*}
 Entonces
 \begin{equation}
-    E \approx m c^2 \left( 1 + \frac{1}{2}\frac{v^2}{c^2} \right) = m c^2 + \frac{1}{2} m v^2.
+    E \approx m c^2 \left( 1 + \frac{1}{2}\frac{v^2}{c^2} \right) = m c^2 + \frac{1}{2} m v^2\,.
 \end{equation}
-Reconocemos inmediatamente el segundo término como la energía cinética clásica. El primer término, $m c^2$, es la energía en reposo intrínseca de la partícula. Queda demostrado, entonces, que la componente temporal nos revela la fórmula fundamental de la \textbf{energía total relativista}:
+El resultado es exactamente lo que el Principio de Correspondencia exige: el segundo
+término es la energía cinética clásica de Newton, ya conocida y verificada
+experimentalmente durante siglos. El primer término, $mc^2$, es un término
+completamente nuevo --- una energía intrínseca que la partícula posee incluso en
+reposo ($v=0$), sin análogo en la mecánica newtoniana.
+
+Como nuestra candidata $E=\gamma mc^2$ se reduce correctamente a toda la física
+clásica conocida en el límite apropiado, aceptamos que efectivamente representa la
+energía total relativista de la partícula:
 \begin{equation}
-    E = \gamma m c^2.
-    \label{eq:energia_relativista}
+    E = \gamma mc^2 .
 \end{equation}
+
+
 
 \subsubsection{Conclusión: El Invariante Energía-Momento}
 
@@ -2376,6 +2728,11 @@ llegamos a la joya de la corona de la dinámica relativista, válida para cualqu
     E^2 = (m c^2)^2 + (p c)^2.
 \end{equation}
 
+Note que una partícula de masa cero, como el fotón, tiene una energía (definidad positiva) asociada a la cantidad de movimiento que transporta
+\begin{equation}
+\label{eq:Em=0}
+    \lim_{m\to 0} E = pc\,.
+\end{equation}
 
 \subsection{Límites de la energía total relativista}
 Tenemos
@@ -2394,6 +2751,12 @@ Por lo tanto
 
 
 De modo que se requeriría  una energía infinita para acelerar un objeto material a la velocidad de la luz. 
+
+De otro lado, la única forma de evitar que una partícula de masa 0 tenga energía total cero es cuando $v=c$ pues sólo en ese caso la energía pasa de ser cero a una indeterminación $0/0$. En ese caso la energía de la partícula de masas cero moviéndose a la velocidad de la luz está dada por la ec.~\eqref{eq:Em=0}
+\begin{equation}
+    E =pc \quad\text{si $m=0$}\,.
+\end{equation}
+
 
 Además, si aceptamos la existencia de una partícula que se pueda mover más rápido que la velocidad de la luz, llamada taquión, el radicando en el denominandor tendría un signo negativo y la energía sería imaginaria, lo que aparentemente no tiene significado físico. Es de anotar que a la fecha no se ha observado ningún taquión en la naturaleza.
 
@@ -2420,10 +2783,13 @@ Hay dos límites:
     \end{align}
     y reemplazando en la expresión anterior, tenemos que el momento de un fotón es 
     \begin{align}
-        p=\frac{E}{c} =& \frac{h}{c}\nu\\
-        [p] =& \left[\frac{E\cdot T}{\dfrac{L}{T}}\cdot \frac{1}{T}\right]\nonumber\\
-         =& \left[\frac{M \dfrac{L^{\cancel{2}}}{T^{\cancel{2}}}\cdot \cancel{T}}{\cancel{\dfrac{L}{T}}}\cdot \frac{1}{\cancel{T}}\right]\nonumber\\
-        = &\left[M \frac{L}{T}\right]\,,
+        p=\frac{E}{c} =& \frac{h}{c}\nu\,,
+    \end{align}
+    lo cual es dimensionalmente consistente porque
+    \begin{align}
+        [p] =&\frac{E\cdot \cancel{T}}{\dfrac{L}{T}}\cdot \frac{1}{\cancel{T}}\nonumber\\
+         =& \frac{M \dfrac{L^{\cancel{2}}}{T^{\cancel{2}}}}{\cancel{\dfrac{L}{T}}}\nonumber\\
+        = &M \frac{L}{T}\,,
     \end{align}
     como era de esperarse. 
 
@@ -2441,6 +2807,93 @@ E = pc =\frac{hc}{\lambda}\,.
 \end{align}
 
 \end{enumerate}
+
+
+\subsection{Velocidad relativista}
+\label{sec:vfromp1d}
+A modo de ejemplo, despejemos la magnitud de la velocidad relativista a partir de la magnitud de su cantidad de movimiento:
+\begin{enumerate}
+    \item Encuentre el cuadrado de la velocidad a la que se mueve una partícula de masa $m$ a partir de su momento
+
+\renewcommand{\phantom}[1]{#1}
+
+\noindent
+ \hspace{-1cm}\begin{tabular*}{0.95\textwidth}{l|c|p{9cm}}
+   \textbf{Paso} & \textbf{Ecuación}  & \textbf{Justificación} \\\hline
+1)     & $p =\dfrac{m v}{\sqrt{1-\dfrac{v^2}{c^2}}}$   & ecuación inicial.\\[20pt]\hline
+2) & $p^2  =\dfrac{m^2 v^2}{1-\dfrac{v^2}{c^2}} $& Elevar ambos lados al cuadrado. \\[20pt]\hline
+3) & \phantom{$p^2\left(1-\dfrac{v^2}{c^2}\right)  =m^2 v^2 $}& Multiplicar a ambos lados por $\left(1-\dfrac{v^2}{c^2}\right)$ \\[5pt]\hline
+4) & $p^2-\dfrac{p^2v^2}{c^2}  =m^2 v^2 $& Expandir $p^2$ a \emph{ambos} términos del paréntesis en el lado izquierdo. \\[5pt]\hline
+5) & \phantom{$  \dfrac{p^2v^2}{c^2} + m^2 v^2 = p^2 $}& Sumar $\dfrac{p^2v^2}{c^2}$ a ambos lados de la igualdad y reorganizar la igualdad con los términos con $v^2$ a la izquierda. \\[5pt]\hline
+6) & $v^2\left(\dfrac{p^2}{c^2} + m^2\right)= p^2 $& Factorizar $v^2$. \\[5pt]\hline
+7) & \phantom{$v^2=\dfrac{p^2}{m^2 + \dfrac{p^2}{c^2}}$} & Dividir por $\left(\dfrac{p^2}{c^2} + m^2\right)$ a ambos lados de la igualdad. \\[20pt]\hline
+\end{tabular*}
+\item ¿Bajo que condición se recupera el límite no relativista?
+\begin{align*}
+    v = \frac{p}{m}\,,
+\end{align*}
+Asumiendo que la dirección de $p$ es la misma que la de $v$, podemos ignorar la solución con signo menos, de modo que
+\begin{align*}
+    v=&\dfrac{p}{\sqrt{m^2 + \dfrac{p^2}{c^2}}}\\
+    =&\dfrac{p/m}{\sqrt{1 + \dfrac{p^2}{m^2c^2}}}\,.
+\end{align*}
+Es claro que en si hacemos $c\to \infty$
+\begin{align*}
+    v =& \frac{p}{m}\,.
+\end{align*}
+
+\end{enumerate}
+
+
+\subsection{Generalización a Tres Dimensiones y Conexión con la Energía}
+
+La ecuación escalar que acabamos de derivar para la rapidez,
+\begin{equation}
+    v^2 = \frac{p^2}{m^2 + \dfrac{p^2}{c^2}},
+\end{equation}
+puede generalizarse directamente a tres dimensiones. Por definición, el vector de cantidad de movimiento ($\boldsymbol{p}$) y el vector velocidad ($\boldsymbol{v}$) apuntan siempre en la misma dirección. Su relación fundamental es
+\begin{equation}
+    \boldsymbol{p} = (\gamma m) \boldsymbol{v}.
+\end{equation}
+
+Despejando el vector velocidad, vemos que simplemente debemos dividir el vector $\boldsymbol{p}$ por el factor escalar $(\gamma m)$:
+\begin{align}    
+    \boldsymbol{v} =& \frac{\boldsymbol{p}}{\gamma m}\nonumber\\
+    =&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{1-v^2/c^2}} m}\nonumber\\
+=&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{1-\dfrac{p^2}{\left(m^2+p^2/c^2\right)c^2}}} m}\nonumber\\
+=&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{1-\dfrac{p^2}{\left(m^2c^2+p^2\right)}}} m}\nonumber\\
+=&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{\dfrac{m^2c^2+p^2-p^2}{m^2c^2+p^2}}} m}\nonumber\\
+=&\frac{\boldsymbol{p}}{\sqrt{\dfrac{m^2c^2+p^2}{\cancel{m^2}c^2}}\cancel{m}}\,.
+\end{align}
+Finalmente
+\begin{align}
+\label{eq:velocidadrelativista}
+\boldsymbol{v}  =&\frac{\boldsymbol{p}}{\sqrt{m^2+p^2/c^2}}
+\end{align}
+
+
+\textbf{Una Revelación Algebraica: La Conexión con la Energía Total}
+
+Podemos llevar esta expresión vectorial a una forma aún más elegante. Si multiplicamos el numerador y el denominador dentro de la raíz cuadrada por $c^2$, obtenemos:
+\begin{equation}
+    \boldsymbol{v} = \frac{\boldsymbol{p} c}{\sqrt{m^2 c^2 + p^2}}.
+\end{equation}
+Al multiplicar y dividir toda la fracción por $c$, la expresión se transforma en
+\begin{equation}
+    \boldsymbol{v} = \frac{\boldsymbol{p} c^2}{\sqrt{m^2 c^4 + p^2 c^2}}.
+\end{equation}
+
+Si observamos el denominador, reconoceremos inmediatamente la joya de la dinámica relativista que derivamos en la Ecuación~\eqref{eq:energiarelativista}: la energía total de la partícula es $E = \sqrt{(mc^2)^2 + (pc)^2}$. 
+
+Al sustituir el denominador por $E$, llegamos a una de las relaciones más compactas, hermosas y útiles de toda la Relatividad Especial:
+\begin{equation}
+    \boldsymbol{v} = \frac{\boldsymbol{p} c^2}{E}.
+\end{equation}
+
+\textbf{Conclusión Física:}
+Esta sutil ecuación vectorial nos dice que la velocidad de cualquier partícula en el universo es simplemente la relación entre su cantidad de movimiento y su energía total, multiplicada por la constante $c^2$. 
+Además, nos confirma inmediatamente el límite de velocidad cósmico: como en objetos con masa la energía $E$ es siempre estrictamente mayor que la magnitud de $pc$ (debido al término de la masa en reposo), la fracción $|\boldsymbol{p}|c/E$ es siempre menor a $1$. Por lo tanto, el vector velocidad $\boldsymbol{v}$ jamás podrá alcanzar la velocidad de la luz $c$.
+
 
     
 \section{Ejemplos}
@@ -2535,7 +2988,7 @@ El gas natural consiste principalmente de metano. Si el calor de combustión del
     \item Velocidad de la luz, $c \approx 3 \times 10^8 \text{ m/s}$.
 \end{itemize}
 
-\subsubsection*{Solución Detallada}
+\subsubsection*{Enfoque 1: del calor de combustión al defecto de masa}
 
 \textbf{Paso 1: Calcular la Energía Total Liberada ($E$)}
 
@@ -2568,9 +3021,85 @@ Para encontrar qué porción de la masa original de $1 \text{ kg}$ se transform�
 \end{equation}
 Expresado como porcentaje, esto equivale a un minúsculo $0.0000000556\%$.
 
+\subsubsection*{Enfoque 2: Verificación desde las Energías de Enlace}
+
+El cálculo anterior partió de un dato experimental ya medido: el calor de combustión
+del metano ($\approx 50\times10^6$ J/kg). Cabe preguntarse si es posible llegar al mismo
+resultado por una vía completamente independiente, sin recurrir a ese dato calorimétrico
+--- usando únicamente las energías de enlace químico de los átomos involucrados.
+
+\medskip
+\noindent\textbf{Paso 1: El principio.} Romper un enlace químico siempre requiere energía
+(proceso endotérmico); formar un enlace nuevo siempre la libera (proceso exotérmico). La
+energía neta liberada por una reacción es, entonces, la diferencia entre la energía de
+los enlaces formados en los productos y la energía de los enlaces rotos en los reactivos:
+\begin{equation}
+    E_{\text{liberada}} = \sum BE_{\text{productos}} - \sum BE_{\text{reactivos}}\,.
+\end{equation}
+
+\medskip
+\noindent\textbf{Paso 2: Contabilidad de enlaces.} Para la reacción
+$\mathrm{CH_4 + 2\,O_2 \rightarrow CO_2 + 2\,H_2O}$, identificamos los enlaces rotos y
+formados, junto con sus energías promedio tabuladas (Tabla \ref{tab:enlaces-metano}).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\hline
+\textbf{Enlace} & \textbf{Cantidad} & \textbf{Energía (eV / kJ$\!\cdot\!$mol$^{-1}$)} & \textbf{Subtotal (kJ/mol)} \\
+\hline
+\multicolumn{4}{l}{\textit{Enlaces rotos (reactivos)}} \\
+C--H (en CH$_4$)   & 4 & 4.28 / 413 & 1652 \\
+O=O (en O$_2$)     & 2 & 5.16 / 498 & 996 \\
+\hline
+\multicolumn{4}{l}{\textit{Enlaces formados (productos)}} \\
+C=O (en CO$_2$)    & 2 & 8.28 / 799 & 1598 \\
+O--H (en H$_2$O)   & 4 & 4.80 / 463 & 1852 \\
+\hline
+\textbf{Total enlaces rotos}    & & & \textbf{2648 kJ/mol} \\
+\textbf{Total enlaces formados} & & & \textbf{3450 kJ/mol} \\
+\hline
+\end{tabular}
+\caption{Contabilidad de enlaces químicos rotos y formados en la combustión del metano,
+con energías promedio tabuladas.}
+\label{tab:enlaces-metano}
+\end{table}
+
+\medskip
+\noindent\textit{Nota sobre la conversión eV $\leftrightarrow$ kJ/mol:} la equivalencia
+numérica surge de multiplicar la energía de un solo enlace (en eV) por el número de
+Avogadro $N_A$, para escalarla de una partícula individual a un mol completo de enlaces:
+\begin{equation}
+    1\ \text{eV}\times N_A = \left(1.602\times10^{-19}\ \text{J}\right)\times
+    \left(6.022\times10^{23}\ \text{mol}^{-1}\right) \approx 96{,}485\ \text{J/mol}
+    = 96.485\ \text{kJ/mol}\,.
+\end{equation}
+
+\medskip
+\noindent\textbf{Paso 3: Energía neta liberada.} Sustituyendo los totales de la Tabla
+\ref{tab:enlaces-metano} en la Ecuación (1):
+\begin{equation}
+    E_{\text{liberada}} = 3450 - 2648 = 802\ \text{kJ/mol}\,.
+\end{equation}
+Este valor coincide, dentro del margen de precisión de las energías de enlace promedio
+utilizadas, con la entalpía de combustión del metano aceptada experimentalmente
+($\Delta H^\circ \approx -802.3$ kJ/mol para agua en fase gaseosa).
+
+\medskip
+\noindent\textbf{Paso 4: Conversión a energía por kilogramo.} Dividiendo entre la masa
+molar del metano ($16.04\times10^{-3}$ kg/mol):
+\begin{equation}
+    \frac{802\ \text{kJ/mol}}{16.04\times10^{-3}\ \text{kg/mol}} \approx 50.0\ \text{MJ/kg}\,.
+\end{equation}
+
+El resultado, $\approx 50.0$ MJ/kg, coincide esencialmente
+con el valor experimental de combustión usado en el Enfoque 1 --- una confirmación
+independiente y satisfactoria de que ambos métodos describen exactamente el mismo
+fenómeno físico. 
+
 \subsubsection*{Interpretación Física y Contexto}
 
-Este resultado es fundamental para comprender la profunda diferencia de escala entre las reacciones \textbf{químicas} (como quemar gas, papel o carbón) y las reacciones \textbf{nucleares} (como la fisión del uranio analizada anteriormente en este texto, donde la fracción convertida rondaba el $0.08\%$). 
+Este resultado es fundamental para comprender la profunda diferencia de escala entre las reacciones \textbf{químicas} (como quemar gas, papel o carbón) y las reacciones \textbf{nucleares} (como la fisión del uranio analizada en la siguiente subsección~\ref{sec:fision-uranio}, donde la fracción convertida va a rondar el $0.08\%$) al pasar a la escala de energía de los enlaces nucleares del orden de MeV. 
 
 En una reacción química cotidiana, la fracción de masa que se convierte en energía es del orden de unas pocas partes por cada diez mil millones ($10^{-10}$). Esta diferencia es tan insignificantemente pequeña que, a efectos prácticos y para cualquier instrumento de pesaje estándar, parece que la masa no cambia en absoluto. Esto justifica históricamente por qué en química se postula la \textit{Ley de Conservación de la Masa} de Lavoisier. 
 
@@ -2578,6 +3107,7 @@ Sin embargo, bajo el lente de la física fundamental y la Relatividad Especial, 
 
 % --- Fin del código LaTeX ---
 \subsection{La Energía de la Fisión del Uranio}
+\label{sec:fision-uranio}
 
 La primera bomba atómica, detonada en el proyecto Manhattan, funcionaba mediante la \textbf{fisión nuclear} del Uranio-235 (\textsuperscript{235}U). En este proceso, un neutrón lento golpea un núcleo de \textsuperscript{235}U, haciéndolo inestable. El núcleo se divide en dos núcleos más pequeños (llamados fragmentos de fisión), liberando varios neutrones y una enorme cantidad de energía.
 
@@ -2774,6 +3304,97 @@ La eficiencia de la fusión en una bomba H, aunque baja, es considerablemente ma
 
 % --- Fin del código LaTeX ---
 
+
+\subsection*{Síntesis: ¿Por Qué la Energía Nuclear Supera Tan Drásticamente a la Química?}
+
+Habiendo calculado el defecto de masa en tres procesos de naturaleza muy distinta
+--- la combustión del metano, la fisión del Uranio-235 y la fusión Deuterio-Tritio---,
+podemos ahora comparar directamente sus fracciones de masa convertida en energía
+($\Delta m/m$) y preguntarnos qué explica una diferencia de escala tan extrema.
+Para completar el panorama, añadimos un cuarto caso límite: la aniquilación
+materia-antimateria.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\hline
+\textbf{Proceso} & \textbf{Fuerza / mecanismo involucrado} & \textbf{$\Delta m/m$} \\
+\hline
+Combustión de metano & Electromagnética (enlaces químicos) & $\approx 5.6\times10^{-10}$ \\
+Fisión de Uranio-235 & Nuclear fuerte (reorganización) & $\approx 8\times10^{-4}$ \\
+Fusión Deuterio-Tritio & Nuclear fuerte (reorganización) & $\approx 3.8\times10^{-3}$ \\
+Aniquilación $e^-e^+$ & Electromagnética (aniquilación total) & $=1$ \ (100\%) \\
+\hline
+\end{tabular}
+\caption{Comparación de las fracciones de masa convertida en energía, incluyendo el
+caso límite de la aniquilación materia-antimateria.}
+\end{table}
+
+Es importante subrayar qué \emph{no} explica esta diferencia: la ecuación
+$E=\Delta mc^2$ es un simple factor de conversión universal entre masa y energía
+--- el mismo $c^2$ aplica sin importar qué proceso físico esté liberando esa
+energía. La ecuación en sí misma no distingue entre procesos químicos y nucleares.
+
+La verdadera explicación reside en \textbf{qué fuerza fundamental reorganiza la
+materia} en cada caso, y a qué escala de energía característica opera:
+
+\begin{itemize}
+    \item Las \textbf{reacciones químicas} solo reorganizan los electrones de
+    valencia de los átomos, gobernados por la \textbf{fuerza electromagnética}.
+    Romper o formar un enlace químico típico involucra energías del orden de unos
+    pocos \textbf{electronvoltios (eV)}.
+    \item Las \textbf{reacciones nucleares} reorganizan protones y neutrones
+    dentro del núcleo atómico, gobernados por la \textbf{fuerza nuclear fuerte}.
+    La energía de enlace nuclear es del orden de varios \textbf{millones de
+    electronvoltios (MeV)} por nucleón.
+\end{itemize}
+
+Dado que la fuerza nuclear fuerte es, a distancias subatómicas, aproximadamente un
+millón de veces más intensa que la fuerza electromagnética, el ``presupuesto''
+energético disponible por partícula reorganizada es intrínsecamente mucho mayor en
+un proceso nuclear. Podemos verificar esta predicción directamente:
+\begin{equation}
+    \frac{(\Delta m/m)_{\text{fisión}}}{(\Delta m/m)_{\text{combustión}}}
+    \approx \frac{8\times10^{-4}}{5.6\times10^{-10}} \approx 1.4\times10^{6},
+\end{equation}
+un factor del mismo orden de magnitud ($\sim10^6$--$10^7$) que la razón entre las
+escalas de energía MeV y eV que caracterizan a cada fuerza.
+
+\textbf{El caso límite: cuando no queda masa que reorganizar.} Tanto la combustión
+como la fisión y la fusión comparten una característica estructural: los
+\emph{reactivos originales siguen existiendo}, en cierto sentido, dentro de los
+productos --- los átomos de carbono e hidrógeno del metano reaparecen como átomos
+de carbono e hidrógeno en el CO$_2$ y el H$_2$O; los protones y neutrones del
+Uranio reaparecen dentro del Kriptón y el Bario. En todos estos casos, $\Delta m$
+es solo una pequeñísima \emph{diferencia} entre la masa de los reactivos y la de
+los productos, dictada por cuánta energía de enlace cambió en la reorganización.
+
+La aniquilación materia-antimateria es cualitativamente distinta. Cuando un
+electrón ($e^-$) se encuentra con su antipartícula, el positrón ($e^+$), ambas
+partículas \emph{dejan de existir por completo}, convirtiendo el 100\% de su masa
+en reposo en radiación electromagnética pura:
+\begin{equation}
+    e^- + e^+ \rightarrow 2\gamma, \qquad E_{\text{total}} = 2m_ec^2 \approx 1.022
+    \text{ MeV},
+\end{equation}
+repartidos en dos fotones de $511$ keV cada uno --- el mismo valor que sustenta la
+Tomografía por Emisión de Positrones (PET) descrita en la Sección 2.14. Aquí no
+hay ``reorganización'' de constituyentes ni energía de enlace de por medio: no
+queda ningún nucleón, ningún electrón, ninguna masa residual. Por eso $\Delta m/m$
+alcanza su valor máximo absoluto, $1$, sin importar que la fuerza mediadora sea,
+irónicamente, la misma fuerza electromagnética --- relativamente débil--- que
+gobierna la combustión.
+
+\textbf{Conclusión:} $E=mc^2$ nunca falla ni se vuelve ``más eficiente'' en ningún
+contexto --- es exactamente la misma ley en los cuatro ejemplos de esta sección.
+Lo que determina el rendimiento energético de un proceso no es únicamente qué
+fuerza fundamental está involucrada, sino también \emph{cuánta masa participa
+efectivamente de la conversión}: una pequeña diferencia de enlace (química o
+nuclear), o la totalidad de la masa en reposo (aniquilación). Lamentablemente para
+la ingeniería energética práctica, la antimateria no existe de forma natural y
+abundante en nuestro entorno --- debe producirse artificialmente a un costo
+energético muchísimo mayor a la energía que luego libera al aniquilarse.
+
 \subsection{Calcule el producto escalar de Lorentz para el cuadrivector de momento}
 \begin{align*}
     p^\mu = \left(p^0,p^1,p^2,p^3\right) = \left(\frac{E}{c},p_x,p_y,p_z\right)=\left(\frac{E}{c},\boldsymbol{p}\right),
@@ -2796,92 +3417,242 @@ donde la energía y la magnitud del vector $\boldsymbol{p} = (p_x,p_y,p_z)$ son
 \end{align*}
 independiente de la velocidad del sistema de referencia inercial, $v$\,.
 
-\section{Velocidad relativista}
-\label{sec:vfromp1d}
-A modo de ejemplo, despejemos la magnitud de la velocidad relativista a partir de la magnitud de su cantidad de movimiento:
+
+\section{Los Peligros de los Viajes ultrarrelativistas}
+
+Imaginemos que alguna civilización en nuestra galaxia logra construir una nave espacial capaz de viajar a una velocidad ultrarrelativista de $v = 0.99c$ hacia algún sistema estelar cercano. A estas escalas, el espacio interestelar que parece vacío deja de serlo, transformando el viaje en un trayecto lleno de amenazas físicas extremas regidas enteramente por la Relatividad Especial.
+
+\subsubsection{1. El Salto de Frecuencia: De Luz Estelar a Radiación Letal}
+
+A medida que la nave se desplaza a $0.99c$ hacia adelante, intercepta la luz de las estrellas situadas en su trayectoria. Aunque los fotones emitidos por estas estrellas sean inofensivos (luz visible o infrarroja), la velocidad extrema de la nave comprime los frentes de onda en el parabrisas.
+
+Si aplicamos la fórmula del Efecto Doppler Relativista para una fuente que se aproxima (o un observador que se mueve hacia la fuente):
+\begin{equation}
+    f_{\text{obs}} = f_0 \sqrt{\frac{1 + \frac{v}{c}}{1 - \frac{v}{c}}},
+    \label{eq:doppler_peligro}
+\end{equation}
+podemos calcular el drástico cambio de frecuencia. Para una velocidad de $v = 0.99c$, el término bajo la raíz cuadrada se evalúa algebraicamente como:
+\begin{equation}
+    \sqrt{\frac{1 + 0.99}{1 - 0.99}} = \sqrt{\frac{1.99}{0.01}} = \sqrt{199} \approx 14.1.
+\end{equation}
+
+Esto significa que la frecuencia de la luz estelar se multiplica por más de $14$ veces. Un fotón de luz visible con una frecuencia ordinaria se convierte instantáneamente en un fotón de rayos X duros o incluso \textbf{radiación gamma}. El apacible brillo de las estrellas se transforma para la tripulación en un haz mortífero capaz de ionizar los tejidos biológicos y destruir los circuitos electrónicos en nanosegundos.
+
+\subsubsection{2. El Polvo Cósmico y Núcleos Ligeros como ``Bombas Cinéticas''}
+
+El espacio interestelar no está completamente vacío; contiene una densidad estimada de aproximadamente un átomo de hidrógeno por centímetro cúbico, además de granos microscópicos de polvo cósmico (silicatos, carbono y hielo) dispersos en el camino.
+
+Para una nave estacionaria, chocar contra una mota de polvo de $1$ miligramo ($m = 10^{-6} \text{ kg}$) a unos pocos metros por segundo es imperceptible. Sin embargo, a una velocidad de $0.99c$, el factor de Lorentz asociado es:
+\begin{equation}
+    \gamma = \frac{1}{\sqrt{1 - (0.99)^2}} = \frac{1}{\sqrt{0.0199}} \approx 7.09.
+\end{equation}
+
+Aunque no alcanza las masas macroscópicas de una bomba nuclear, la energía cinética relativista de ese minúsculo grano de polvo al impactar contra el escudo de la nave se calcula mediante la diferencia de energía relativista ($K = (\gamma - 1)mc^2$):
+\begin{equation}
+    K = (7.09 - 1) \times (10^{-6} \text{ kg}) \times (3.0 \times 10^8 \text{ m/s})^2.
+\end{equation}
+\begin{equation}
+    K = 6.09 \times 10^{-6} \text{ kg} \times (9.0 \times 10^{16} \text{ m}^2/\text{s}^2) \approx 5.48 \times 10^{11} \text{ J}.
+\end{equation}
+
+Para poner esta cifra en perspectiva, la energía liberada por la explosión de una tonelada de TNT es de aproximadamente $4.18 \times 10^9 \text{ J}$. Al dividir nuestra energía cinética entre este valor:
+\begin{equation}
+    \text{Equivalente en TNT} = \frac{5.48 \times 10^{11} \text{ J}}{4.18 \times 10^9 \text{ J/ton}} \approx 131 \text{ toneladas de TNT}.
+\end{equation}
+
+\textbf{Conclusión del Ejemplo:}
+Chocar contra una simple mota de polvo de un miligramo a una velocidad de $0.99c$ libera una energía destructiva equivalente a \textbf{131 toneladas de TNT}, una verdadera minibomba nuclear. Incluso los núcleos aislados de hidrógeno (protones libres del medio interestelar) se convierten a estas velocidades en un flujo constante de rayos cósmicos con poder de perforación letal. Por esta razón, cualquier viaje interestelar real requerirá escudos deflectores magnéticos avanzados o gruesos escudos sólidos en la proa para barrer o desintegrar la materia antes del impacto.
+
+\subsubsection{El Proyecto Starshot y los Desafíos hacia Alfa Centauri}
+
+Lo que hasta hace poco parecía exclusivo de la ciencia ficción hoy se estudia como un proyecto real de ingeniería: el proyecto \textbf{Breakthrough Starshot}. Impulsado en su concepción por figuras como el físico Stephen Hawking, este ambicioso plan propone enviar una flota de sondas robóticas miniaturizadas (del tamaño de un sello postal y con un peso de apenas unos gramos, llamadas \textit{StarChips}) hacia nuestro sistema estelar vecino más cercano, \textbf{Alfa Centauri}, situado a $4.3$ años luz de distancia. Al llegar allí, se enviarían imágenes
+de su planeta descubierto recientemente, Proxima b, y de cualquiera de los otros planetas que se encuentren en el sistema, a la vez que se capturarán otros datos científicos, tales como el análisis de sus campos magnéticos.
+
+Para lograr llegar en un tiempo razonable de unos $20$ años, la sonda no utilizará cohetes químicos tradicionales (los cuales requerirían cantidades masivas e imposibles de combustible). En su lugar, será acelerada mediante la presión de radiación de un gigantesco conjunto de láseres terrestres que dispararán un haz de $100 \text{ Gigawatts}$ sobre una vela reflectora ultradelgada, impulsando a la sonda hasta alcanzar el \textbf{$20\%$ de la velocidad de la luz ($0.2c$)} en cuestión de minutos.
+
+A pesar de ser una velocidad menor que el régimen del $0.99c$ analizado en el ejemplo anterior, viajar a $0.2c$ ($60,000 \text{ km/s}$) expone a la sonda a peligros interestelares severos regidos por la física clásica y la mecánica relativista.
+
+Según las estimaciones de densidad del medio interestelar local, durante el curso del viaje a Alfa Centauri, \textbf{cada centímetro cuadrado de la sección transversal frontal de la sonda y su vela reflectora chocará contra unas $1,000$ partículas de polvo} de un tamaño de $0.1$ micras o mayores. Aunque hay solo un $10\%$ de probabilidad de colisión con partículas de $1$ micra (y casi nula con fragmentos mucho más grandes), el verdadero desafío radica en la energía cinética de las más pequeñas. 
+
+Los análisis técnicos de la misión señalan un dato crítico sobre la física de estos impactos:
+\begin{quote}
+    \textit{``Una partícula de polvo de $0.1$ micras moviéndose al $20\%$ de la velocidad de la luz penetraría y fundiría el chip de la sonda hasta una profundidad del orden de $0.4 \text{ mm}$.''}
+\end{quote}
+
+Dado que el \textit{StarChip} es un circuito integrado sumamente delgado, un solo impacto de estas dimensiones sería suficiente para destruir la electrónica de a bordo o perforar la vela reflectora, haciendo que la sonda pierda el empuje del láser o su capacidad de transmisión de datos.
+
+\paragraph{Estrategias de Mitigación Ingeniería-Física:}
+Para evitar que las sondas sean destruidas antes de cruzar el espacio interestelar, los ingenieros deben aplicar principios de la termodinámica de materiales y la mecánica para mitigar el daño:
 \begin{enumerate}
-    \item Encuentre el cuadrado de la velocidad a la que se mueve una partícula de masa $m$ a partir de su momento
-
-\renewcommand{\phantom}[1]{#1}
-
-\noindent
- \hspace{-1cm}\begin{tabular*}{0.95\textwidth}{l|c|p{9cm}}
-   \textbf{Paso} & \textbf{Ecuación}  & \textbf{Justificación} \\\hline
-1)     & $p =\dfrac{m v}{\sqrt{1-\dfrac{v^2}{c^2}}}$   & ecuación inicial.\\[20pt]\hline
-2) & $p^2  =\dfrac{m^2 v^2}{1-\dfrac{v^2}{c^2}} $& Elevar ambos lados al cuadrado. \\[20pt]\hline
-3) & \phantom{$p^2\left(1-\dfrac{v^2}{c^2}\right)  =m^2 v^2 $}& Multiplicar a ambos lados por $\left(1-\dfrac{v^2}{c^2}\right)$ \\[5pt]\hline
-4) & $p^2-\dfrac{p^2v^2}{c^2}  =m^2 v^2 $& Expandir $p^2$ a \emph{ambos} términos del paréntesis en el lado izquierdo. \\[5pt]\hline
-5) & \phantom{$  \dfrac{p^2v^2}{c^2} + m^2 v^2 = p^2 $}& Sumar $\dfrac{p^2v^2}{c^2}$ a ambos lados de la igualdad y reorganizar la igualdad con los términos con $v^2$ a la izquierda. \\[5pt]\hline
-6) & $v^2\left(\dfrac{p^2}{c^2} + m^2\right)= p^2 $& Factorizar $v^2$. \\[5pt]\hline
-7) & \phantom{$v^2=\dfrac{p^2}{m^2 + \dfrac{p^2}{c^2}}$} & Dividir por $\left(\dfrac{p^2}{c^2} + m^2\right)$ a ambos lados de la igualdad. \\[20pt]\hline
-\end{tabular*}
-\item ¿Bajo que condición se recupera el límite no relativista?
-\begin{align*}
-    v = \frac{p}{m}\,,
-\end{align*}
-Asumiendo que la dirección de $p$ es la misma que la de $v$, podemos ignorar la solución con signo menos, de modo que
-\begin{align*}
-    v=&\dfrac{p}{\sqrt{m^2 + \dfrac{p^2}{c^2}}}\\
-    =&\dfrac{p/m}{\sqrt{1 + \dfrac{p^2}{m^2c^2}}}\,.
-\end{align*}
-Es claro que en si hacemos $c\to \infty$
-\begin{align*}
-    v =& \frac{p}{m}\,.
-\end{align*}
-
-\subsection{Generalización a Tres Dimensiones y Conexión con la Energía}
-
-La ecuación escalar que acabamos de derivar para la rapidez,
-\begin{equation}
-    v^2 = \frac{p^2}{m^2 + \dfrac{p^2}{c^2}},
-\end{equation}
-puede generalizarse directamente a tres dimensiones. Por definición, el vector de cantidad de movimiento ($\boldsymbol{p}$) y el vector velocidad ($\boldsymbol{v}$) apuntan siempre en la misma dirección. Su relación fundamental es
-\begin{equation}
-    \boldsymbol{p} = (\gamma m) \boldsymbol{v}.
-\end{equation}
-
-Despejando el vector velocidad, vemos que simplemente debemos dividir el vector $\boldsymbol{p}$ por el factor escalar $(\gamma m)$:
-\begin{align}    
-    \boldsymbol{v} =& \frac{\boldsymbol{p}}{\gamma m}\nonumber\\
-    =&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{1-v^2/c^2}} m}\nonumber\\
-=&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{1-\dfrac{p^2}{\left(m^2+p^2/c^2\right)c^2}}} m}\nonumber\\
-=&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{1-\dfrac{p^2}{\left(m^2c^2+p^2\right)}}} m}\nonumber\\
-=&\frac{\boldsymbol{p}}{\dfrac{1}{\sqrt{\dfrac{m^2c^2+p^2-p^2}{m^2c^2+p^2}}} m}\nonumber\\
-=&\frac{\boldsymbol{p}}{\sqrt{\dfrac{m^2c^2+p^2}{\cancel{m^2}c^2}}\cancel{m}}\,.
-\end{align}
-Finalmente
-\begin{align}
-\label{eq:velocidadrelativista}
-\boldsymbol{v}  =&\frac{\boldsymbol{p}}{\sqrt{m^2+p^2/c^2}}
-\end{align}
-
-
-\textbf{Una Revelación Algebraica: La Conexión con la Energía Total}
-
-Podemos llevar esta expresión vectorial a una forma aún más elegante. Si multiplicamos el numerador y el denominador dentro de la raíz cuadrada por $c^2$, obtenemos:
-\begin{equation}
-    \boldsymbol{v} = \frac{\boldsymbol{p} c}{\sqrt{m^2 c^2 + p^2}}.
-\end{equation}
-Al multiplicar y dividir toda la fracción por $c$, la expresión se transforma en
-\begin{equation}
-    \boldsymbol{v} = \frac{\boldsymbol{p} c^2}{\sqrt{m^2 c^4 + p^2 c^2}}.
-\end{equation}
-
-Si observamos el denominador, reconoceremos inmediatamente la joya de la dinámica relativista que derivamos en la Ecuación~\eqref{eq:energiarelativista}: la energía total de la partícula es $E = \sqrt{(mc^2)^2 + (pc)^2}$. 
-
-Al sustituir el denominador por $E$, llegamos a una de las relaciones más compactas, hermosas y útiles de toda la Relatividad Especial:
-\begin{equation}
-    \boldsymbol{v} = \frac{\boldsymbol{p} c^2}{E}.
-\end{equation}
-
-\textbf{Conclusión Física:}
-Esta sutil ecuación vectorial nos dice que la velocidad de cualquier partícula en el universo es simplemente la relación entre su cantidad de movimiento y su energía total, multiplicada por la constante $c^2$. 
-Además, nos confirma inmediatamente el límite de velocidad cósmico: como en objetos con masa la energía $E$ es siempre estrictamente mayor que la magnitud de $pc$ (debido al término de la masa en reposo), la fracción $|\boldsymbol{p}|c/E$ es siempre menor a $1$. Por lo tanto, el vector velocidad $\boldsymbol{v}$ jamás podrá alcanzar la velocidad de la luz $c$.
-
-
+    \item \textbf{Capas Sacrificiales:} Añadir un recubrimiento protector en el borde delantero de la sonda, utilizando materiales como una aleación de cobre y berilio. Esta capa actúa como un escudo sacrificial diseñado para vaporizarse y absorber la energía del impacto antes de que la onda de choque alcance los componentes lógicos del chip.
+    \item \textbf{Geometría de Cuchilla:} Durante la larga fase de crucero hacia Alfa Centauri, la sonda puede girar para viajar de perfil (con su borde más delgado orientado en la dirección del movimiento), minimizando el área de sección transversal frontal expuesta a la colisión con el polvo.
 \end{enumerate}
 
+El proyecto Starshot demuestra que las leyes de la relatividad y la dinámica que hemos estudiado en este libro no son solo ejercicios teóricos, sino las fronteras tecnológicas exactas que nuestra civilización debe dominar para dar el gran salto hacia la exploración de otros sistemas solares.
+
+
+
+
+\section{El Impacto Cotidiano de la Relatividad Especial}
+
+Es común pensar que la Teoría de la Relatividad Especial de Einstein es una rama de la física exótica, reservada únicamente para naves espaciales ultrarrelativistas, agujeros negros o colisionadores de partículas. Sin embargo, las consecuencias de la dilatación del tiempo, la contracción de la longitud y la equivalencia masa-energía moldean profundamente nuestro mundo cotidiano. 
+
+Como señaló el célebre químico teórico Pekka Pyykkö en su influyente revisión sobre la química relativista\footnote{Pyykkö, P. (2012). \textit{Relativistic effects in chemistry: more common than you thought}. Annual Review of Physical Chemistry, 63(1), 45-64. DOI: \url{https://doi.org/10.1146/annurev-physchem-032511-143755}.}, la relatividad no es solo para el cosmos; determina las propiedades físicas y químicas de los elementos pesados que nos rodean.
+
+\subsubsection{El Motor Oculto de la Biología: Muones y Radiación de Fondo}
+
+Como pudimos comprobar mediante la dilatación del tiempo, los muones creados en la alta atmósfera logran alcanzar la superficie terrestre gracias a que su reloj interno transcurre mucho más lento desde nuestra perspectiva. Lejos de ser una mera curiosidad de partículas elementales, este flujo constante de radiación ionizante natural interactúa permanentemente con la materia viva. 
+
+Aunque la mayor parte del daño celular es reparado por los organismos, este tenue bombardeo de partículas relativistas contribuye de manera permanente a la tasa de mutación basal, actuando como uno de los factores biológicos que impulsan la variabilidad genética y la evolución en la Tierra\footnote{de Groen, P. C. (2022). \textit{Muons, mutations, and planetary shielding}. Frontiers in Astronomy and Space Sciences, 9, 1067491. DOI: \url{https://doi.org/10.3389/fspas.2022.1067491}}.
+
+\subsubsection{El Escudo de la Vida: Calor Radiactivo, Magnetosfera y Rayos Cósmicos}
+
+La equivalencia fundamental entre masa y energía ($E = \gamma m c^2$) se manifiesta de forma dramática bajo nuestros pies. La Tierra contiene en su manto y corteza trazas de elementos radiactivos inestables, principalmente Uranio-238, Uranio-235, Torio-232 y Potasio-40. 
+
+Se calcula que \textbf{aproximadamente el 50\% del calor interno total} que fluye desde el interior de nuestro planeta hacia el espacio es generado de manera continua por estas desintegraciones nucleares. Este aporte constante de energía, combinado con el calor remanente de la formación planetaria, es el motor termodinámico que mantiene al \textbf{núcleo externo de la Tierra en estado líquido} (compuesto principalmente de hierro y níquel fundidos). 
+
+La convección de este metal líquido conductor, a modo de dinamo natural, genera la \textbf{magnetosfera terrestre}. Este campo magnético invisible cumple una función de protección crucial\footnote{NASA Heliophysics. \emph{Magnetosphere-Ionosphere}. \url{https://science.nasa.gov/heliophysics/focus-areas/magnetosphere-ionosphere/}.}: desvía y atrapa los \textbf{rayos cósmicos} (flujos de protones y núcleos atómicos altamente energéticos que viajan por el espacio a velocidades relativistas). Si estas partículas chocaran libremente contra la superficie de la Tierra, su tremenda energía iónica rompería de forma masiva los delicados \textbf{enlaces orgánicos} de las moléculas biológicas y del ADN, destruyendo la estructura misma de la vida celular. 
+
+Esta visión clásica está respaldada, en el caso de Marte, por observaciones de la sonda MAVEN
+de la NASA, que ha documentado la erosión activa de la atmósfera marciana por el viento solar
+tras la pérdida de su campo magnético global hace miles de millones de años. Sin embargo, el
+caso de Venus complica el panorama: pese a no poseer un campo magnético interno propio, Venus
+conserva una atmósfera casi 90 veces más densa que la terrestre, gracias en parte a una
+magnetosfera \emph{inducida} por su propia ionosfera. Esta aparente contradicción ha llevado a
+la comunidad de heliofísica planetaria a cuestionar si la relación entre magnetosfera y
+retención atmosférica es tan directa como sugiere la visión tradicional\footnote{Brain, D. A., et al. (2013). Episodic detachment of Martian crustal magnetic fields leading to bulk atmospheric plasma escape. \emph{Journal of Geophysical Research: Space Physics}. Véase también las observaciones de la misión Venus Express (ESA) sobre la magnetosfera inducida de Venus.}: el papel exacto del campo magnético interno en la habitabilidad de un planeta sigue siendo objeto
+de investigación activa, más que un hecho completamente resuelto.
+
+En cualquier caso, dentro de la propia magnetosfera terrestre y en combinación con la atmósfera,
+este escudo geomagnético desvía una fracción importante de las partículas cargadas de alta
+energía que de otro modo alcanzarían la superficie con mayor intensidad, contribuyendo así
+-junto con la atmósfera- a mantener condiciones favorables para la vida compleja tal como la
+conocemos.
+
+
+\subsubsection{Arrancar el Automóvil: La Batería de Plomo y los Electrones Relativistas}
+
+Cada mañana, al encender un automóvil tradicional, un motor eléctrico cobra vida gracias a la pesada \textbf{batería de plomo-ácido} de $12 \text{ V}$. Lo que la mayoría de los conductores ignora es que el origen físico de ese voltaje se apoya fuertemente en la Relatividad Especial.
+
+El plomo (Pb) es un elemento muy pesado ($Z = 82$). Su inmensa carga nuclear ejerce una atracción electrostática colosal sobre sus electrones internos, los cuales se ven obligados a orbitar a velocidades cercanas al $60\%$ de la velocidad de la luz ($v \approx 0.6c$). A estas magnitudes, el factor de Lorentz no es despreciable ($\gamma \approx 1.25$). 
+
+La dinámica relativista aumenta la masa inercial de estos electrones internos, retrayendo sus órbitas y provocando un efecto en cadena que estabiliza fuertemente a los electrones externos ($6s$). Demostraciones rigurosas en química cuántica han probado que, en una celda típica de plomo-ácido que genera unos $2.1 \text{ V}$, aproximadamente \textbf{$1.7 \text{ V}$ provienen exclusivamente de los efectos relativistas} sobre estos electrones\footnote{Ahuja, R., Blomqvist, A., Larsson, P., Pyykkö, P., \& Zaleski-Ejgierd, P. (2011). \textit{Relativity and the Lead-Acid Battery}. Physical Review Letters, 106(1), 018301. DOI: \url{https://doi.org/10.1103/PhysRevLett.106.018301}.}. Sin la contracción de Lorentz, una batería de carro apenas entregaría $2$ o $3$ voltios en total, haciendo imposible arrancar un motor de combustión.
+
+\subsubsection{El Color del Oro y el Estado Líquido del Mercurio}
+
+La contracción relativista de los orbitales también gobierna la estética y el estado de la materia de los metales pesados:
+\begin{itemize}
+    \item \textbf{El color del oro (Au, $Z=79$):} Sus electrones internos viajan a velocidades relativistas, contrayendo las órbitas y reduciendo la energía necesaria para excitar los electrones externos. Como resultado, el oro absorbe la luz azul del espectro visible y refleja el resto, dándole su inconfundible y cálido brillo amarillo dorado, a diferencia de metales más ligeros como la plata\footnote{Glantschnig, K., \& Ambrosch-Draxl, C. (2010). \textit{Relativistic effects on the linear optical properties of Au, Pt, Pb and W}. New Journal of Physics, 12(10), 103048. DOI: \url{https://doi.org/10.1088/1367-2630/12/10/103048}.}.
+    \item \textbf{El mercurio líquido (Hg, $Z=80$):} A temperatura ambiente, el mercurio es el único metal líquido. Las simulaciones cuánticas demuestran que la fuerte contracción relativista de sus electrones debilita las fuerzas de enlace metálico entre sus átomos, impidiendo que formen una red cristalina sólida a condiciones normales\footnote{Calvo, F., Pahl, E., Wormit, M., \& Schwerdtfeger, P. (2013). \textit{Evidence for low-temperature melting of mercury owing to relativity}. Angewandte Chemie International Edition, 52(29), 7583-7585. DOI: \url{https://doi.org/10.1002/anie.201302742}.}.
+\end{itemize}
+
+\subsubsection{Celdas Solares de Perovskita}
+
+En la búsqueda de energías renovables más eficientes, las nuevas tecnologías fotovoltaicas emplean materiales de perovskita que contienen elementos pesados como el plomo o el estaño. En estos compuestos semiconductores, los efectos relativistas de ``acoplamiento espín-órbita'' modifican de manera crítica la estructura de las bandas electrónicas del material. Esta alteración relativista optimiza la absorción de la luz solar y mejora directamente la eficiencia en la conversión de energía fotovoltaica.
+
+\subsubsection{El Sistema de Posicionamiento Global (GPS)}
+
+La aplicación tecnológica cotidiana más directa y precisa de la teoría de Einstein se encuentra en la red de satélites del Sistema de Posicionamiento Global (GPS), la cual permite triangular la ubicación en la superficie terrestre con exactitud de metros.
+
+Los satélites GPS orbitan la Tierra a una altitud de aproximadamente $20,200 \text{ km}$, desplazándose a una velocidad orbital de unos $14,000 \text{ km/h}$ ($\approx 3.87 \text{ km/s}$). Debido a esta velocidad considerable, los relojes atómicos altamente precisos que transportan a bordo experimentan los efectos de la cinemática relativista. 
+
+Aplicando la fórmula de la dilatación del tiempo que derivamos en este capítulo, la frecuencia del reloj en movimiento medida desde el sistema estacionario en la Tierra se ve afectada por el factor de Lorentz:
+\begin{equation}
+    \Delta t = \gamma \Delta t_0 \approx \left(1 + \frac{v^2}{2c^2}\right) \Delta t_0.
+\end{equation}
+Este desplazamiento temporal provoca que los relojes a bordo de los satélites se atrasen con respecto a los relojes terrestres aproximadamente **$7 \text{ microsegundos}$ por día**. 
+
+\textit{(Nota analítica: Adicionalmente, al encontrarse en una región con menor potencial gravitacional, la Relatividad General predice un adelanto de unos $45 \text{ microsegundos}$ diarios por efectos de la gravedad, resultando en una ganancia neta combinada de unos $38 \text{ microsegundos}$ al día).}
+
+Si los ingenieros y programadores no hubieran incorporado las correcciones de la teoría de la relatividad en el software de los satélites y en los receptores terrestres, el pequeño error acumulado en el tiempo se traduciría rápidamente en un error de posicionamiento espacial de más de \textbf{$10 \text{ kilómetros}$ cada día}. Esto colapsaría por completo los sistemas de navegación para la aviación civil, el transporte marítimo y los mapas de localización en dispositivos móviles.
+
+
+
+\subsubsection{La Computación Cuántica y el Talón de Aquiles de los Muones}
+
+Curiosamente, el mismo efecto que permite a los muones llegar hasta la superficie terrestre
+—la dilatación relativista del tiempo— los convierte hoy en una amenaza tecnológica muy
+actual: la escalabilidad de la computación cuántica. Cuando un muón cósmico, o un rayo gamma
+proveniente de trazas de radiactividad ambiental, atraviesa el chip de un procesador cuántico
+superconductor, deposita energía suficiente (del orden de 200 keV) para romper masivamente los
+pares de Cooper del material, generando una ráfaga de cuasipartículas que calienta el chip
+brevemente.
+
+El resultado es que decenas o cientos de qubits pierden su estado casi simultáneamente durante
+unos 10 milisegundos. Este es un \emph{error correlacionado}, mientras que los esquemas actuales
+de corrección de errores cuánticos —como el "surface code"— están diseñados asumiendo errores
+independientes entre qubits. Un estudio de 2025 con un chip de 63 qubits, equipado con
+detectores de muones dentro del propio refrigerador de dilución, logró vincular directamente
+alrededor del 17\% de los errores correlacionados observados a impactos de rayos cósmicos, atribuyendo
+el resto a radiactividad terrestre\footnote{Ye, Q., et al. (2025). Cosmic-ray-induced correlated errors in superconducting qubit array. \emph{Nature Communications}. Disponible en: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC12092583/}.}. Actualmente se investigan estrategias de mitigación como
+el blindaje físico, las trampas de cuasipartículas y, en casos extremos, la operación de
+procesadores cuánticos en laboratorios subterráneos de bajo fondo radiactivo.
+
+\subsubsection{Muografía: Radiografiando el Mundo con Rayos Cósmicos}
+
+Así como los rayos X atraviesan el tejido blando pero son bloqueados por el hueso, el flujo
+constante de muones cósmicos atraviesa cientos de metros de roca sólida, atenuándose en
+proporción a la densidad del material recorrido. Colocando detectores de muones bajo o dentro
+de una estructura de interés, es posible reconstruir un mapa tridimensional de densidades
+internas: una verdadera radiografía a escala geológica, técnica conocida como \emph{muografía}.
+
+Esta técnica se ha empleado para mapear las cámaras magmáticas internas de volcanes activos,
+para el célebre descubrimiento en 2017 de una cavidad oculta de gran tamaño dentro de la Gran
+Pirámide de Guiza, y para localizar con precisión el combustible nuclear fundido dentro de los
+reactores dañados de la central de Fukushima Daiichi sin necesidad de que ningún ser humano
+entrara en la zona de alta radiactividad.
+
+\subsubsection{Einstein en el Hospital: PET y Radioterapia}
+
+La equivalencia masa-energía y la dinámica relativista tienen aplicaciones médicas cotidianas.
+En la Tomografía por Emisión de Positrones (PET), un radiotrazador introducido en el cuerpo
+emite positrones; cuando cada positrón se aniquila con un electrón del tejido circundante, su
+masa combinada se convierte íntegramente en dos fotones gamma de 511 keV cada uno, que los
+detectores del equipo registran para reconstruir una imagen funcional del organismo —una
+aplicación médica directa de $E=mc^2$.
+
+De forma similar, los aceleradores lineales utilizados en radioterapia oncológica generan haces
+de electrones de varios MeV que se desplazan a velocidades relativistas; su diseño y calibración
+requieren un tratamiento completamente relativista. Las terapias más recientes con haces de
+protones o núcleos de carbono dependen igualmente de la dinámica relativista para calcular con
+precisión milimétrica el alcance de las partículas dentro del tejido tumoral.
+
+\subsubsection{Microscopía Electrónica: Ver Átomos Gracias a la Relatividad}
+
+En un microscopio electrónico de transmisión, los electrones se aceleran mediante voltajes de
+entre 100 y 300 kV para alcanzar la resolución necesaria para observar átomos individuales. A
+esas energías, los electrones viajan a fracciones considerables de la velocidad de la luz: a
+100 kV alcanzan $v \approx 0.55c$, y a 300 kV, $v \approx 0.78c$.
+
+Calcular la longitud de onda de De Broglie de estos electrones —y, por lo tanto, la resolución
+máxima teórica del instrumento— utilizando la fórmula clásica no relativista produce resultados
+incorrectos a estas velocidades. Es indispensable emplear la expresión relativista de la
+longitud de onda para diseñar y calibrar correctamente estos instrumentos, sin la cual gran
+parte de la nanotecnología y la ciencia de materiales modernas serían inviables.
+
+\subsubsection{El Bit que Cambia Solo: Rayos Cósmicos en la Electrónica Cotidiana}
+
+Desde 1979 se sabe que los neutrones secundarios generados por las cascadas de rayos cósmicos en
+la atmósfera, junto con trazas de material radiactivo presentes en el propio empaque de los
+circuitos integrados, pueden voltear ocasionalmente un bit en la memoria de una computadora sin
+dañar físicamente el circuito: un fenómeno conocido como "error suave" (\emph{soft error}) o
+"perturbación de evento único" (\emph{single event upset})\footnote{Ziegler, J. F., \& Lanford, W. A. (1979). Effect of cosmic rays on computer memories. \emph{Science}, 206(4420), 776-788. DOI: \url{https://doi.org/10.1126/science.206.4420.776}.}.
+
+Es la misma familia de fenómenos que afecta a los qubits superconductores, aunque con un matiz
+importante: en la electrónica clásica, el principal responsable son los neutrones secundarios
+—más ionizantes que los muones—, mientras que los qubits son tan sensibles, debido a la
+minúscula energía de enlace de sus pares de Cooper, que incluso partículas de baja ionización
+como los muones bastan para perturbarlos. Por esta razón, servidores, aviones y satélites
+utilizan memoria con corrección de errores (ECC), capaz de detectar y corregir estos "bit-flips"
+silenciosos antes de que provoquen fallas en sistemas críticos.
+
+\subsubsection{Consideración final:} 
+La Relatividad Especial trasciende el marco de una teoría abstracta sobre el cosmos; constituye el fundamento arquitectónico con el que opera la naturaleza a escalas macroscópicas y microscópicas. Desde el calor geotérmico que estabiliza el planeta hasta la estructura molecular de los elementos y la precisión de la tecnología moderna, las leyes formuladas por Einstein dictan de manera inevitable la realidad física cotidiana.
+
+
+
 \section{Ejercicios}
+\label{sec:ejerciciosrelatividad}
 % \subsection{Cuadrivector de velocidad}
 % Demuestre que el producto escalar del Lorentz del cuadrivector de velocidad consigo mismo, es independiente de la velocidad del sistema inercial.
 
@@ -2901,6 +3672,27 @@ A continuación, se presentan algunos ejercicios propuestos para afianzar los co
 
     \item \textbf{Suma Relativista de Velocidades:} Dos naves espaciales, A y B, se acercan mutuamente para un acoplamiento. Un telescopio en la Tierra observa que la nave A se mueve hacia la derecha a $0.7c$ y la nave B se mueve hacia la izquierda a $0.6c$. Utilizando la fórmula de suma de velocidades de Einstein, ¿cuál es la velocidad de la nave A según lo mide el piloto de la nave B?
 
+    \item \textbf{El Corrimiento al Rojo y el Telescopio James Webb ($z = 14$):} 
+    En astrofísica, el corrimiento al rojo cosmológico se denota con la letra $z$ y se define formalmente mediante la relación entre la longitud de onda emitida ($\lambda_0$) por una fuente distante y la longitud de onda medida en la Tierra ($\lambda_{\text{obs}}$):
+    \begin{equation}
+        1 + z = \frac{\lambda_{\text{obs}}}{\lambda_0}.
+        \label{eq:defredshift}
+    \end{equation}
+    \label{item:redshift}
+    
+    Una de las emisiones más importantes analizadas por el Telescopio Espacial James Webb (JWST) es la línea Lyman-alfa del hidrógeno, emitida originalmente en el ultravioleta extremo a una longitud de onda de $\lambda_0 = 121.6 \text{ nm}$ ($1.216 \times 10^{-7} \text{ m}$). Suponga que el telescopio detecta esta línea en una galaxia primitiva con un corrimiento al rojo de $z = 14$.
+    
+    \begin{enumerate}
+        \item[a)] Utilizando la Ecuación (\ref{eq:defredshift}), calcule la longitud de onda observada ($\lambda_{\text{obs}}$) en la Tierra, expresándola en micrómetros ($\mu\text{m}$).
+        \item[b)] Sabiendo que la velocidad de la luz es $c = \lambda f$, determine la frecuencia observada ($f_{\text{obs}}$) e identifique a qué región del espectro electromagnético pertenece (Visible, Infrarrojo cercano, Infrarrojo medio, etc.). \textit{(Dato: $c \approx 3.0 \times 10^8 \text{ m/s}$)}.
+        \item[c)] Igualando la definición del \textit{redshift} con la fórmula del Efecto Doppler Relativista para una fuente que se aleja (Ecuación~\eqref{eq:doppler_aleja} del texto), demuestre algebraicamente que la velocidad de recesión aparente ($v$) se puede expresar como:
+        \begin{equation}
+            \frac{v}{c} = \frac{(1 + z)^2 - 1}{(1 + z)^2 + 1}.
+        \end{equation}
+        \item[d)] Calcule dicha velocidad de recesión en términos de la velocidad de la luz ($c$) para $z = 14$.
+    \end{enumerate}
+    NOTA: El espejo del telescopio tiene un recubrimiento de oro para ser sensible a las frecuencias requeridas a estos altos valores de $z$.
+
     \item \textbf{Equivalencia Masa-Energía ($E=mc^2$):} En la aniquilación completa de un electrón y un positrón (ambos con masa en reposo $m_e \approx 9.11 \times 10^{-31} \text{ kg}$), toda su masa se convierte en energía en forma de dos fotones de luz. Suponiendo que las partículas colisionan prácticamente desde el reposo, calcule la energía total liberada en Joules.
 
     \item \textbf{Dinámica Relativista (Energía Cinética):} ¿Cuánto trabajo mecánico se debe realizar sobre un protón (cuya energía en reposo es aproximadamente $938 \text{ MeV}$) para acelerarlo desde el reposo absoluto hasta una velocidad de $0.8c$? Recuerde que el trabajo realizado es igual a la energía cinética relativista adquirida, $K = (\gamma - 1)mc^2$.
@@ -2919,6 +3711,20 @@ A continuación, se presentan algunos ejercicios propuestos para afianzar los co
         E^2 - (pc)^2 = (mc^2)^2.
     \end{equation}
     (Sugerencia: Eleve las expresiones al cuadrado, reste los términos, factorice $(mc^2)^2$ y utilice la definición explícita de $\gamma^2$).
+
+\item \textbf{Problema de Ingeniería Cósmica (El Muro Relativista y la Paradoja del Viajero):} 
+    Una civilización extraterrestre con un conocimiento científico basado exclusivamente en la física clásica (Galileana) planea una misión interestelar hacia un sistema planetario ubicado a una distancia de $d = 10 \text{ años-luz}$ de su planeta natal. Los ingenieros calculan que para llegar en un tiempo total de $T = 2 \text{ años}$ manteniendo una \textbf{aceleración constante} $a$ durante todo el viaje, la nave alcanzará una velocidad máxima teórica al cabo de esos 2 años de $v_{\text{máx}} = 10c$. Basándose en la mecánica clásica ($K = \frac{1}{2}mv^2$), utilizan esta velocidad final para presupuestar la energía cinética total que sus motores deben suministrar a la masa $m$ de la nave.
+    
+    Sin embargo, el universo real obedece a la Relatividad Especial, la cual impone un límite de velocidad cósmico de $v_{\text{max}} = c$. Los sistemas de navegación a bordo detectan el muro relativista y apagan los motores tan pronto como la nave alcanza el límite de velocidad medido con un error del $1\%$ ($v_{\text{max}} = 0.99c$, donde el factor de Lorentz es $\gamma \approx 7.09$). A partir de ese instante, la nave se desliza por inercia a velocidad constante el resto del trayecto.
+    
+    \begin{enumerate}
+        \item[a)] Utilizando la fórmula clásica, determine cuánta energía cinética (en unidades de $mc^2$) tenían presupuestada gastar al alcanzar su velocidad teórica final de $10c$.
+        \item[b)] Utilizando la fórmula relativista de la energía cinética ($K_{\text{relativista}} = (\gamma - 1)mc^2$), calcule cuánta energía \textit{real} gastaron los motores para acelerar la nave hasta el límite real de $0.99c$.
+        \item[c)] Explique conceptualmente por qué, a pesar de fallar en su plan, la tripulación terminó gastando mucha menos energía de la presupuestada.
+        \item[d)] Considerando que la fase de aceleración inicial es muy corta y que la mayor parte de los $10 \text{ años-luz}$ se recorre por inercia a la velocidad de crucero de $v \approx 0.99c$, calcule cuánto tiempo exacto (en años) tardarán los astronautas en llegar a la estrella según los relojes a bordo de su propia nave (tiempo propio), y analice la ironía de su llegada y la sorpresa que les espera al regresar a casa.
+    \end{enumerate}
+    \textit{[Resp: a) $50 \, mc^2$; b) $6.09 \, mc^2$; c) Gastaron menos del $13\%$ del presupuesto porque la física clásica sobreestima absurdamente la energía al escalar cuadráticamente; d) Para la Tierra el viaje toma $\approx 10.1 \text{ años}$, pero debido a la dilatación del tiempo ($\gamma \approx 7.09$), para los astronautas el viaje transcurre en apenas $\approx 1.43 \text{ años}$. La ironía es que, aunque su física clásica falló rotundamente, ¡el viaje les duró menos de los 2 años que esperaban; sin embargo, al regresar a su planeta natal descubrirán que allí han transcurrido más de 20 años y su civilización habrá envejecido sin ellos]}.
+
 
 \end{enumerate}
 
@@ -2954,6 +3760,9 @@ En una dimensión, y como se muestra en la figura~\ref{fig:velocidad_instantanea
 \begin{align}
     v \approx \frac{x-x_0}{t-t_0}= \frac{\Delta x}{\Delta t}\,.
 \end{align}
+
+
+
 
 % --- Inicio del código LaTeX para insertar ---
 
@@ -6690,7 +7499,7 @@ Otro ejemplo de fuerza central corresponde a la interacción entre dos cargas el
 donde $k$ es la constante de Coulomb
 \begin{align}
     k =\frac{1}{4\pi\epsilon_0} 
-    = \qty{8.987551785972(14)e19}{\newton\m^2\coulomb^{-2}}\,,
+    = \qty{8.987551785972(14)e9}{\newton\m^2\coulomb^{-2}}\,,
 \end{align}
 donde $\epsilon_0$ es la permitividad del vacio
 
@@ -6908,7 +7717,7 @@ y por consiguiente disminuye con el radio. Esto hace por ejemplo que un bebe (vo
 \includegraphics{gotas}
 
 \subsection*{El Problema}
-Calcular la energía potencial eléctrica total almacenada en un núcleo de Uranio-238 (${}^{235}_{92}\text{U}$) debido a la repulsión mutua de sus 92 protones. Luego, comparar esta energía con la de sus productos de fisión para entender la idea de Lise Meitner sobre la energía liberada.
+Calcular la energía potencial eléctrica total almacenada en un núcleo de Uranio-235 (${}^{235}_{92}\text{U}$) debido a la repulsión mutua de sus 92 protones. Luego, comparar esta energía con la de sus productos de fisión para entender la idea de Lise Meitner sobre la energía liberada.
 
 \subsection*{El Error del ``Doble Conteo"}
 % https://www.fisicalab.com/apartado/energia-potencial-electrica
@@ -6939,7 +7748,7 @@ La energía potencial es el trabajo realizado para, partiendo de un nucleón ini
     &\approx \num{1.58e-10} \, \si{\joule}
 \end{align*}
 Convirtiendo a Mega-electronvoltios (\SI{1}{\mega\electronvolt} = \SI{1.602e-13}{\joule}):
-\[ U_{\text{Uranio}} \approx \frac{\SI{1.51e-10}{\joule}}{\SI{1.602e-13}{\joule\per\mega\electronvolt}} \approx \SI{944}{\mega\electronvolt} \]
+\[ U_{\text{Uranio}} \approx \frac{\SI{1.51e-10}{\joule}}{\SI{1.602e-13}{\joule\per\mega\electronvolt}} \approx \SI{986}{\mega\electronvolt} \]
 
 \subsection*{La Genialidad de Lise Meitner: Comparando las Energías}
 La idea clave de Meitner y Frisch fue comparar la energía del núcleo original con la suma de las energías de sus fragmentos de fisión, por ejemplo, Kriptón-92 (${}^{92}_{36}\text{Kr}$) y Bario-141 (${}^{141}_{56}\text{Ba}$) en la fisión
@@ -6965,7 +7774,7 @@ La diferencia entre la energía electrostática almacenada antes y después de l
     \item Energía electrostática en sus productos: $\approx \SI{650}{\mega\electronvolt}$
 \end{itemize}
 La diferencia de energía liberada es:
-\[ \Delta E_{\text{electrostática}} = U_{\text{Uranio}} - U_{\text{fragmentos}} \approx \SI{944}{\mega\electronvolt} - \SI{650}{\mega\electronvolt} \approx \SI{294}{\mega\electronvolt} \]
+\[ \Delta E_{\text{electrostática}} = U_{\text{Uranio}} - U_{\text{fragmentos}} \approx \SI{986}{\mega\electronvolt} - \SI{650}{\mega\electronvolt} \approx \SI{336}{\mega\electronvolt} \]
 Este valor, derivado puramente de la repulsión de Coulomb, se aproxima de manera sorprendente a la energía total liberada en una reacción de fisión (que experimentalmente es de unos \SI{200}{\mega\electronvolt}). Lise Meitner y Otto Frisch fueron los primeros en realizar este cálculo, explicando así el origen de la enorme cantidad de energía descubierta por Otto Hahn y Fritz Strassmann. El $85\%$ de esos $\qty{200}{MeV}$
 se manifiesta cuando los dos nuevos núcleos creados salen disparados en direcciones opuestas a velocidades increíbles (alrededor del $3\%$ de la velocidad de la luz), y rozando fuertemente contra su entorno microscópico, produciendo un calor intenso.
 
@@ -8492,7 +9301,7 @@ Por lo tanto, la magnitud al cuadrado de este vector diferencia ($|\Delta\boldsy
 \section{Evidencia Experimental de la Contracción de Lorentz en el LHC}
 \label{apendice:contraccion_proton}
 
-A velocidades ultrarelativistas, las propiedades estructurales de los hadrones sufren transformaciones espaciales severas descritas por la Relatividad Especial. Este apéndice detalla los fundamentos teóricos y las metodologías de medición indirecta de la contracción del diámetro del protón en la dirección del movimiento dentro del Gran Colisionador de Hadrones (LHC).
+A velocidades ultrarrelativistas, las propiedades estructurales de los hadrones sufren transformaciones espaciales severas descritas por la Relatividad Especial. Este apéndice detalla los fundamentos teóricos y las metodologías de medición indirecta de la contracción del diámetro del protón en la dirección del movimiento dentro del Gran Colisionador de Hadrones (LHC).
 
 \subsection{Formulación Matemática y Geometría del Protón Relativista}
 En el sistema de referencia del laboratorio, un protón acelerado a una energía de colisión nominal de $E = 6.5\text{ TeV}$ posee un factor de Lorentz ($\gamma$) extremadamente elevado. Sabiendo que la masa en reposo del protón es $m_0 \approx 0.938\text{ GeV/c}^2$, el factor se calcula mediante la relación:
@@ -9412,5 +10221,66 @@ Al elevar el paréntesis al cuadrado, descubrimos la fórmula final para la radi
 \textbf{Conclusión:} 
 El factor $\gamma^4$ no es un ajuste arbitrario; es la consecuencia ineludible de aplicar álgebra básica a las transformaciones de Lorentz. Dado que el reloj de la partícula corre más lento (factor $\gamma$) y su cambio de velocidad lateral se magnifica (otro factor $\gamma$), la aceleración que siente es $\gamma^2$ veces mayor. Como la radiación de energía requiere cuadrar esa aceleración, el efecto total estalla proporcionalmente a $\gamma^4$, poniendo un límite infranqueable a la energía que podemos darle a un electrón en un acelerador circular.
 
+\section{Ejercicios resueltos}
+
+\noindent
+\textbf{\ref{sec:ejerciciosrelatividad}}
+
+Ejercicio \ref{item:redshift}:
+
+\textbf{Solución Detallada:}
+    \begin{enumerate}
+        \item[a)] Despejamos la longitud de onda observada de la definición del \textit{redshift}:
+        \begin{equation}
+            \lambda_{\text{obs}} = (1 + z) \lambda_0.
+        \end{equation}
+        Sustituyendo $z = 14$ y $\lambda_0 = 121.6 \text{ nm}$:
+        \begin{equation}
+            \lambda_{\text{obs}} = (1 + 14)(121.6 \text{ nm}) = 15(121.6 \text{ nm}) = 1824 \text{ nm}.
+        \end{equation}
+        Convirtiendo a micrómetros ($1 \text{ $\mu$m} = 1000 \text{ nm}$):
+        \begin{equation}
+            \lambda_{\text{obs}} = \frac{1824}{1000} \text{ $\mu$ m} = 1.824 \text{ $\mu$ m}.
+        \end{equation}
+        
+        \item[b)] Aplicamos la relación de onda para hallar la frecuencia observada ($f_{\text{obs}}$):
+        \begin{equation}
+            f_{\text{obs}} = \frac{c}{\lambda_{\text{obs}}} = \frac{3.0 \times 10^8 \text{ m/s}}{1.824 \times 10^{-6} \text{ m}} \approx 1.64 \times 10^{14} \text{ Hz} = 164 \text{ THz}.
+        \end{equation}
+        Esta frecuencia se ubica plenamente en la región del \textbf{Infrarrojo Cercano}, lo que justifica por qué los instrumentos del telescopio James Webb debieron optimizarse específicamente para capturar esta radiación.
+        
+        \item[c)] Igualamos la ecuación del \textit{redshift} con la fórmula del Efecto Doppler Relativista de alejamiento (Ecuación \eqref{eq:doppler_aleja}):
+        \begin{equation}
+            1 + z = \sqrt{\frac{1 - \frac{v}{c}}{1 + \frac{v}{c}}}.
+        \end{equation}
+        Elevamos ambos lados al cuadrado:
+        \begin{equation}
+            (1 + z)^2 = \frac{1 - \frac{v}{c}}{1 + \frac{v}{c}}.
+        \end{equation}
+        Hacemos el cambio algebraico temporal $u = v/c$:
+        \begin{equation}
+            (1 + z)^2 (1 + u) = 1 - u \implies (1 + z)^2 + (1 + z)^2 u = 1 - u.
+        \end{equation}
+        Agrupamos los términos con $u$ a un lado:
+        \begin{equation}
+            (1 + z)^2 - 1 = u \left[ 1 + (1 + z)^2 \right].
+        \end{equation}
+        Despejando $u$ ($v/c$), obtenemos la identidad solicitada:
+        \begin{equation}
+            \frac{v}{c} = \frac{(1 + z)^2 - 1}{(1 + z)^2 + 1}.
+        \end{equation}
+        
+        \item[d)] Sustituimos $z = 14$ en la fórmula obtenida en el inciso anterior:
+        \begin{itemize}
+            \item $1 + z = 1 + 14 = 15$
+            \item $(1 + z)^2 = 15^2 = 225$
+            \item Numerador: $225 - 1 = 224$
+            \item Denominador: $225 + 1 = 226$
+        \end{itemize}
+        \begin{equation}
+            \frac{v}{c} = \frac{224}{226} \approx 0.99115.
+        \end{equation}
+        \textbf{Respuesta d):} La velocidad aparente de recesión es $v \approx 0.991c$ (el $99.1\%$ de la velocidad de la luz).
+    \end{enumerate}
 
 \end{document}
