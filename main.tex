@@ -3046,18 +3046,18 @@ formados, junto con sus energías promedio tabuladas (Tabla \ref{tab:enlaces-met
 \centering
 \begin{tabular}{lccc}
 \hline
-\textbf{Enlace} & \textbf{Cantidad} & \textbf{Energía (eV / kJ$\!\cdot\!$mol$^{-1}$)} & \textbf{Subtotal (kJ/mol)} \\
+\textbf{Enlace} & \textbf{Cantidad} & \textbf{Energía (eV / kJ$\!\cdot\!$mol$^{-1}$)} & \textbf{Subtotal (eV/kJ/mol)} \\
 \hline
 \multicolumn{4}{l}{\textit{Enlaces rotos (reactivos)}} \\
-C--H (en CH$_4$)   & 4 & 4.28 / 413 & 1652 \\
-O=O (en O$_2$)     & 2 & 5.16 / 498 & 996 \\
+C--H (en CH$_4$)   & 4 & 4.28 / 413 & 17.12 / 1652 \\
+O=O (en O$_2$)     & 2 & 5.16 / 498 & 10.32 / 996 \\
 \hline
 \multicolumn{4}{l}{\textit{Enlaces formados (productos)}} \\
-C=O (en CO$_2$)    & 2 & 8.28 / 799 & 1598 \\
-O--H (en H$_2$O)   & 4 & 4.80 / 463 & 1852 \\
+C=O (en CO$_2$)    & 2 & 8.28 / 799 & 16.56 / 1598 \\
+O--H (en 2H$_2$O)   & 4 & 4.80 / 463 & 19.2 /1852 \\
 \hline
-\textbf{Total enlaces rotos}    & & & \textbf{2648 kJ/mol} \\
-\textbf{Total enlaces formados} & & & \textbf{3450 kJ/mol} \\
+\textbf{Total enlaces rotos}    & & & \textbf{27.44 eV / 2648 kJ/mol} \\
+\textbf{Total enlaces formados} & & & \textbf{35.76 eV / 3450 kJ/mol} \\
 \hline
 \end{tabular}
 \caption{Contabilidad de enlaces químicos rotos y formados en la combustión del metano,
@@ -3078,9 +3078,10 @@ Avogadro $N_A$, para escalarla de una partícula individual a un mol completo de
 \medskip
 \noindent\textbf{Paso 3: Energía neta liberada.} Sustituyendo los totales de la Tabla
 \ref{tab:enlaces-metano} en la Ecuación (1):
-\begin{equation}
-    E_{\text{liberada}} = 3450 - 2648 = 802\ \text{kJ/mol}\,.
-\end{equation}
+\begin{align}
+    E_{\text{liberada}} =&27.44-35.76=\qty{8.32}{eV} \nonumber\\
+    =&3450 - 2648 = 802\ \text{kJ/mol}\,.
+\end{align}
 Este valor coincide, dentro del margen de precisión de las energías de enlace promedio
 utilizadas, con la entalpía de combustión del metano aceptada experimentalmente
 ($\Delta H^\circ \approx -802.3$ kJ/mol para agua en fase gaseosa).
@@ -3669,6 +3670,26 @@ A continuación, se presentan algunos ejercicios propuestos para afianzar los co
     \item \textbf{Contracción de la Longitud:} Una regla, que mide exactamente $1.0 \text{ m}$ cuando está en reposo, es lanzada y pasa frente a un estudiante en un laboratorio a una velocidad de $0.9c$ en una dirección paralela a su propia longitud. ¿Qué longitud medirá el estudiante para esta regla en movimiento?
 
     \item \textbf{Transformaciones de Lorentz:} Un destello de luz ocurre en el origen de un sistema de referencia inercial $S$ en el tiempo $t=0$. Un segundo evento (un pequeño estallido) ocurre en el mismo sistema $S$ en la coordenada $x = 120 \text{ m}$ y en el instante $t = 3.0 \times 10^{-7} \text{ s}$. Encuentre las coordenadas espaciales ($x'$) y temporales ($t'$) de este segundo evento para un observador en un sistema $S'$ que se mueve a $v = 0.5c$ en la dirección $x$ positiva. (Asuma que los orígenes $x=x'=0$ coinciden en $t=t'=0$).
+
+\item \textbf{El Polizón Microscópico del Proyecto Starshot:} Supongamos que una
+bacteria quedó atrapada por accidente en la estructura de un StarChip —una sonda
+robótica miniaturizada del Proyecto Breakthrough Starshot—, viajando junto con
+ella hacia Alfa Centauri a una velocidad $v = 0.2c$. La distancia propia a Alfa
+Centauri, medida en el marco de referencia de la Tierra, es $D_0 = 4.3$ años luz.
+\label{item:starshot}
+
+\begin{enumerate}
+    \item[a)] Calcule el tiempo que, medido desde la Tierra, tardaría la sonda en
+    completar el viaje.
+    \item[b)] Calcule el tiempo propio $\tau$ que experimentaría la bacteria
+    durante el trayecto.
+    \item[c)] Calcule la longitud contraída $L'$ que la bacteria percibiría para
+    la distancia a Alfa Centauri.
+    \item[d)] Demuestre que los resultados de las partes (b) y (c) son
+    consistentes entre sí.
+\end{enumerate}
+
+
 
     \item \textbf{Suma Relativista de Velocidades:} Dos naves espaciales, A y B, se acercan mutuamente para un acoplamiento. Un telescopio en la Tierra observa que la nave A se mueve hacia la derecha a $0.7c$ y la nave B se mueve hacia la izquierda a $0.6c$. Utilizando la fórmula de suma de velocidades de Einstein, ¿cuál es la velocidad de la nave A según lo mide el piloto de la nave B?
 
@@ -10235,8 +10256,52 @@ El factor $\gamma^4$ no es un ajuste arbitrario; es la consecuencia ineludible d
 
 \noindent
 \textbf{\ref{sec:ejerciciosrelatividad}}
+\begin{itemize}
+    \item[Ejercicio \ref{item:starshot}:] 
 
-Ejercicio \ref{item:redshift}:
+    \textbf{Solución:}
+
+\textit{a) Tiempo medido desde la Tierra.} Con $\beta = v/c = 0.2$, el factor de
+Lorentz es
+\begin{equation}
+    \gamma = \frac{1}{\sqrt{1-\beta^2}} = \frac{1}{\sqrt{1-(0.2)^2}} \approx 1.0206\,.
+\end{equation}
+El tiempo en el marco terrestre es simplemente la distancia propia dividida entre
+la velocidad:
+\begin{equation}
+    t_{\text{Tierra}} = \frac{D_0}{v} = \frac{4.3\ \text{años luz}}{0.2c} = 21.5\ \text{años}\,.
+\end{equation}
+
+\textit{b) Tiempo propio de la bacteria.} Por dilatación del tiempo, el reloj
+biológico de la bacteria —en reposo respecto a la sonda— mide un tiempo propio
+menor:
+\begin{equation}
+    \tau = \frac{t_{\text{Tierra}}}{\gamma} \approx \frac{21.5\ \text{años}}{1.0206}
+    \approx 21.07\ \text{años}\,.
+\end{equation}
+
+\textit{c) Longitud contraída percibida.} Para la bacteria, la distancia a Alfa
+Centauri no es la propia $D_0$; está contraída en la dirección del movimiento por
+el mismo factor $\gamma$:
+\begin{equation}
+    L' = \frac{D_0}{\gamma} \approx \frac{4.3\ \text{años luz}}{1.0206}
+    \approx 4.213\ \text{años luz}\,.
+\end{equation}
+
+\textit{d) Verificación de consistencia.} Si la bacteria recorre la distancia ya
+contraída $L'$ a la velocidad $v$, el tiempo propio que debería transcurrir es
+simplemente $L'/v$:
+\begin{equation}
+    \tau' = \frac{L'}{v} \approx \frac{4.213\ \text{años luz}}{0.2c} \approx 21.07\ \text{años}\,.
+\end{equation}
+Como $\tau' = \tau$, confirmamos que la dilatación del tiempo y la contracción de
+la longitud no son dos efectos independientes, sino dos maneras equivalentes de
+describir exactamente el mismo fenómeno físico —consistentes entre sí con
+precisión matemática exacta, incluso para un organismo microscópico atrapado en
+un chip del tamaño de un sello postal.
+
+
+\item[Ejercicio \ref{item:redshift}:]
 
 \textbf{Solución Detallada:}
     \begin{enumerate}
@@ -10292,5 +10357,11 @@ Ejercicio \ref{item:redshift}:
         \end{equation}
         \textbf{Respuesta d):} La velocidad aparente de recesión es $v \approx 0.991c$ (el $99.1\%$ de la velocidad de la luz).
     \end{enumerate}
+
+
+\end{itemize}
+
+
+    
 
 \end{document}
