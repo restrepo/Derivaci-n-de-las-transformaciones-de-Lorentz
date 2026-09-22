@@ -2678,6 +2678,7 @@ con $x = -v^2/c^2$ y $n = -1/2$, obtenemos
 \end{align*}
 Entonces
 \begin{equation}
+\label{eq:Ereposomascinetica}
     E \approx m c^2 \left( 1 + \frac{1}{2}\frac{v^2}{c^2} \right) = m c^2 + \frac{1}{2} m v^2\,.
 \end{equation}
 El resultado es exactamente lo que el Principio de Correspondencia exige: el segundo
@@ -2737,6 +2738,7 @@ Note que una partícula de masa cero, como el fotón, tiene una energía (defini
 \subsection{Límites de la energía total relativista}
 Tenemos
 \begin{align}
+\label{eq:E=gammamc2}
     \boxed{E = \gamma m c^2\,.}
 \end{align}
 Usando la ecuación~\eqref{eq:gammasquare} para $\gamma$, tenemos
@@ -2889,6 +2891,35 @@ Al sustituir el denominador por $E$, llegamos a una de las relaciones más compa
 \begin{equation}
     \boldsymbol{v} = \frac{\boldsymbol{p} c^2}{E}.
 \end{equation}
+
+En el \emph{límite no relativista} de $\gamma \approx 1$ en la ec.~\eqref{eq:E=gammamc2}, la energía se reduce a la energía en reposo
+\begin{equation}
+    E=\gamma m c^2\approx mc^2\,,
+\end{equation}
+de modo que 
+\begin{align}
+\label{eq:nonrelativistcvelocity}
+    \boldsymbol{v} \approx & \frac{\boldsymbol{p}\cancel{c^2}}{m\cancel{c^2}}&&\nonumber\\
+    \boldsymbol{v} \approx & \frac{\boldsymbol{p}}{m}\,,&&\text{cuando $\gamma\approx 1$}
+\end{align}
+
+Aunque hemos corregido esta aproximación para tener en cuenta la energía cinética clásica de Newton en la ec.~\eqref{eq:Ereposomascinetica}, a velocidades no relativistas la energía en reposo suele ser más que suficiente para aproximar la energía de un objeto no relativista como se ilustra en la tabla~\ref{tab:comparacion_relativista}
+
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Sistema / Objeto} & \textbf{Velocidad típica ($v$)} & \textbf{Energía en Reposo ($E_0$)} & \textbf{Energía Cinética ($K$)} & \textbf{Proporción ($K / E_0$)} \\ \hline
+Atleta olímpico & $\approx 10 \text{ m/s}$ & $\approx 7.2 \times 10^{18} \text{ J}$ & $\approx 4,000 \text{ J}$ & $\approx 5.5 \times 10^{-14}\%$ \\ \hline
+Mosca común & $\approx 2.78 \text{ m/s}$ & $\approx 9.0 \times 10^{11} \text{ J}$ & $\approx 3.9 \times 10^{-5} \text{ J}$ & $\approx 4.3 \times 10^{-17}\%$ \\ \hline
+Electrón (Hidrógeno) & $\approx 0.0073c$ & $\approx 511,000 \text{ eV}$ & $\approx 13.6 \text{ eV}$ & $\approx 0.0027\%$ \\ \hline
+Electrón $6s$ (Plomo) & $\approx 0.40c$ & $\approx 511,000 \text{ eV}$ & $\approx 46,500 \text{ eV}$ & $\approx 9.1\%$ \\ \hline
+\end{tabular}
+\caption{Comparación cuantitativa entre la energía en reposo ($E_0 = mc^2$) y la energía cinética ($K$) en diversos sistemas físicos. Se observa cómo en los objetos macroscópicos y átomos ligeros la energía cinética es insignificante, mientras que en los elementos pesados (como el plomo) alcanza un valor relativista notable superior al $9\%$.}
+\label{tab:comparacion_relativista}
+\end{table}
+
 
 \textbf{Conclusión Física:}
 Esta sutil ecuación vectorial nos dice que la velocidad de cualquier partícula en el universo es simplemente la relación entre su cantidad de movimiento y su energía total, multiplicada por la constante $c^2$. 
@@ -3888,23 +3919,24 @@ Por consiguiente, podemos hallar la posición de una partícula después de tran
     \boldsymbol{r} -\boldsymbol{r}_0 \approx & \boldsymbol{v}\Delta t\\
     \boldsymbol{r} \approx& \boldsymbol{r}_0 + \boldsymbol{v}\Delta t\,.
 \end{align}
-Si la partícula tiene masa $m$, podemos escribir ésta ecuación en términos del momento
-\begin{align*}
-    \boldsymbol{r} \approx \boldsymbol{r}_0 + \frac{m\boldsymbol{v}}{m}\Delta t\\
-\end{align*}
-de manera que, usando la ec.~\eqref{eq:velocidadrelativista}
+
+Podemos reescribir la velocidad en términos de la cantidad de movimiento de forma completamente general para cualquier objeto en movimiento a partir de la ec~\eqref{eq:velocidadrelativista}
+
 \begin{align}
-\label{eq:position}
-    \boldsymbol{r} \approx \boldsymbol{r}_0 +\frac{\boldsymbol{p}}{\sqrt{m^2+p^2/c^2}}\Delta t\,.
+    \boldsymbol{r} \approx& \boldsymbol{r}_0 + \frac{\boldsymbol{p}c^2}{E}\Delta t\,.
 \end{align}
 
-En el límite no relativista
+Para una partícula de masa $m$ con cantidad de movimiento $\boldsymbol{p} = \gamma m \boldsymbol{v}$, la energía es
+\begin{equation*}
+    E=\gamma m c^2\,.
+\end{equation*}
+En el límite no relativista de $\gamma = 1$, tenemos que
 \begin{align}
 \label{eq:position}
     \boldsymbol{r} \approx \boldsymbol{r}_0 +\frac{\boldsymbol{p}}{m}\Delta t
 \end{align}
 
-\subsection{Solución numérica}
+\section{Solución numérica}
 De esta forma, si comenzamos desde el punto inicial $\boldsymbol{r}_0$, con momento $\boldsymbol{p}_0$, después de un tiempo suficientemente pequeño $\Delta t$, podemos encontrar la nueva posición $\boldsymbol{r}$ partiendo de
 \begin{align}
     \Delta\boldsymbol{p} = \boldsymbol{p} -\boldsymbol{p}_0 = \boldsymbol{F} \Delta t\,,
@@ -3914,11 +3946,11 @@ del cual podemos encontrar el nuevo momento
 \label{eq:momento}
     \boldsymbol{p} = \boldsymbol{p}_0 + \boldsymbol{F}\Delta t\,,
 \end{align}
-y usando la ecuación~\eqref{eq:position}
+y usando la ecuación~\eqref{eq:position} para el límite no relativista
 \begin{align*}
-    \boldsymbol{r} \approx \boldsymbol{r}_0 +\frac{\boldsymbol{p}}{m}\Delta t
+    \boldsymbol{r} \approx \boldsymbol{r}_0 +\frac{\boldsymbol{p}}{m}\Delta t\,.
 \end{align*}
-y podemos continuar calculando el nuevo momento y posición hasta recuperar toda la trayectoria. Es de anotar que siempre es posible implemenbtar un algoritmo numérico para conocer como evoluciona punto a punto el movimiento para cada $\Delta t$, como se muestra en la figura~\ref{fig:integracionley}.
+Podemos continuar calculando el nuevo momento y posición hasta recuperar toda la trayectoria. Es de anotar que siempre es posible implemenbtar un algoritmo numérico para conocer como evoluciona punto a punto el movimiento para cada $\Delta t$, como se muestra en la figura~\ref{fig:integracionley}.
 
 \begin{figure}[htbp]
 \centering
@@ -3969,7 +4001,120 @@ y podemos continuar calculando el nuevo momento y posición hasta recuperar toda
 
 Haremos un ejemplo de esto en el caso del límite no relativista del lanzamiento vertical hacia arriba a continuación.
 
-\subsection{Aceleración constante}
+\subsection{Ejemplo Numérico: El Oscilador Armónico ($F = -kx$)}
+
+Para ilustrar la versatilidad de nuestro algoritmo de integración numérica, aplicaremos el método a una fuerza que \textbf{no es constante}, sino que depende de la posición: la fuerza elástica de un resorte ideal descrita por la Ley de Hooke, $F = -kx$. 
+
+Consideremos una masa $m = 1 \text{ kg}$ unida a un resorte con una constante elástica $k = 1 \text{ N/m}$. Las condiciones iniciales son un desplazamiento inicial $x_0 = 1 \text{ m}$ desde el equilibrio y un momento inicial $p_0 = 0 \text{ kg}\cdot\text{m/s}$ (la masa parte del reposo). 
+
+Como $F = -kx$, la fuerza en cada instante depende directamente de la posición actual del objeto. La actualización del momento en nuestro bucle numérico se convierte en:
+\begin{equation}
+    p \leftarrow p + (-kx)\Delta t.
+\end{equation}
+
+\subsubsection{Seguimiento Tabular para un paso grande ($\Delta t = 1\text{ s}$)}
+
+Si elegimos un intervalo de tiempo grande de $\Delta t = 1 \text{ s}$, podemos seguir manualmente la evolución del sistema paso a paso según el diagrama de flujo del algoritmo:
+
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Paso} & \textbf{Ecuación y Sustitución} & $t \text{ [s]}$ & $x \text{ [m]}$ & $p \text{ [kg}\cdot\text{m/s]}$ \\ \hline
+0) & Condición inicial & $0$ & $1$ & $0$ \\ \hline
+1) & 
+$\begin{aligned}
+    p &= F\Delta t + p = (-x)\Delta t + p \\
+      &= -(1)(1) + 0 = -1 \\
+    x &= (p/m)\Delta t + x = p + x \\
+      &= -1 + 1 = 0
+\end{aligned}$ & $1$ & $0$ & $-1$ \\ \hline
+2) & 
+$\begin{aligned}
+    p &= -(0)(1) + (-1) = -1 \\
+    x &= (-1) + 0 = -1
+\end{aligned}$ & $2$ & $-1$ & $-1$ \\ \hline
+3) & 
+$\begin{aligned}
+    p &= -(-1)(1) + (-1) = 0 \\
+    x &= (0) + (-1) = -1
+\end{aligned}$ & $3$ & $-1$ & $0$ \\ \hline
+4) & 
+$\begin{aligned}
+    p &= -(-1)(1) + 0 = 1 \\
+    x &= (1) + (-1) = 0
+\end{aligned}$ & $4$ & $0$ & $1$ \\ \hline
+5) & 
+$\begin{aligned}
+    p &= -(0)(1) + 1 = 1 \\
+    x &= (1) + 0 = 1
+\end{aligned}$ & $5$ & $1$ & $1$ \\ \hline
+6) & 
+$\begin{aligned}
+    p &= -(1)(1) + 1 = 0 \\
+    x &= (0) + (1) = 1
+\end{aligned}$ & $6$ & $1$ & $0$ \\ \hline
+\end{tabular}
+\caption{Seguimiento numérico paso a paso para el oscilador armónico con $\Delta t = 1 \text{ s}$.}
+\label{tab:tabla_oscilador}
+\end{table}
+
+\subsubsection{Visualización Gráfica y el Efecto del Paso Temporal ($\Delta t$)}
+
+Si graficamos los datos de la Tabla \ref{tab:tabla_oscilador} ($x$ vs $t$ para $\Delta t = 1 \text{ s}$), observaremos que la masa oscila de forma cuadrada o errática, ganando energía artificialmente debido a que el intervalo de tiempo es demasiado grande para capturar la curvatura del movimiento armónico. 
+
+Sin embargo, si reducimos el paso temporal a un valor pequeño como $\Delta t = 0.05 \text{ s}$, el algoritmo numérico converge y dibuja con alta precisión la curva de un oscilador armónico ideal (una función coseno perfecta), como se muestra en la Figura \ref{fig:grafico_oscilador}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        width=10cm,
+        height=6cm,
+        xlabel={Tiempo $t$ (s)},
+        ylabel={Posición $x$ (m)},
+        xmin=0, xmax=15,
+        ymin=-1.2, ymax=1.2,
+        grid=both,
+        grid style={dashed, gray!30},
+        legend pos=south west,
+        thick
+    ]
+    
+    % Solución analítica / Paso muy pequeño (coseno perfecto)
+    \addplot[
+        domain=0:15,
+        samples=200,
+        color=blue!80!black,
+        very thick
+    ]
+    {cos(deg(x))};
+    \addlegendentry{$\Delta t = 0.05 \text{ s}$ (Preciso)}
+
+    % Simulación con paso grande (Dt = 1.0 s) - Puntos aproximados basados en la tabla
+    \addplot[
+        color=red,
+        dashed,
+        mark=*,
+        thick
+    ]
+    coordinates {
+        (0,1) (1,0) (2,-1) (3,-1) (4,0) (5,1) (6,1) (7,0) (8,-1) (9,-1) (10,0) (11,1) (12,1) (13,0) (14,-1) (15,-1)
+    };
+    \addlegendentry{$\Delta t = 1.0 \text{ s}$ (Inestable)}
+
+    \end{axis}
+\end{tikzpicture}
+\caption{Comparación de la trayectoria $x(t)$ de un oscilador armónico ($m=1\text{ kg}$, $k=1\text{ N/m}$) usando un paso numérico grande ($\Delta t = 1.0 \text{ s}$, en rojo con marcas) frente a un paso fino ($\Delta t = 0.05 \text{ s}$, en azul continuo). Se aprecia cómo el paso grande introduce errores numéricos que distorsionan la física del sistema.}
+\label{fig:grafico_oscilador}
+\end{figure}
+
+\textbf{Conclusión Computacional:}
+Este ejemplo demuestra que la integración numérica es una herramienta poderosa, pero su precisión depende directamente del tamaño del paso temporal $\Delta t$. Pasos muy grandes acumulan errores notables en sistemas dinámicos continuos, mientras que pasos pequeños replican con fidelidad absoluta las leyes de la física newtoniana.
+
+
+\section{Aceleración constante}
 
 
 La aceleración constante corresponde a la pendiente de la línea recta en el plano de velocidad en función del tiempo, como se muestra en la figura~\ref{fig:aceleracion}.
@@ -4049,7 +4194,13 @@ Así mismo, en el plano de posición en función del tiempo, la pendiente de la 
     \boldsymbol{v} \approx \frac{\Delta \boldsymbol{r}}{\Delta t}\,.
 \end{align*}
 
-
+En el caso de un objeto de masa $m$ constante sometido a una aceleración constante, tenemos que
+\begin{align}
+\label{eq:F=ma}
+    \boldsymbol{F}=&\frac{\Delta\boldsymbol{p}}{\Delta t}\nonumber\\
+    =&m\frac{\Delta\boldsymbol{v}}{\Delta t}\nonumber\\
+    =& m\boldsymbol{a}\,.
+\end{align}
 
 \section{Trabajo}
 Durante ese intervalo de tiempo el objeto se desplazo una distancia
@@ -4322,7 +4473,7 @@ En el último término, el factor $\frac{1}{2}$ se cancela algebraicamente con e
 
 \subsubsection{Paso 3: Aplicar la Segunda Ley de Newton}
 
-La Segunda Ley de Newton establece que la fuerza neta aplicada sobre el objeto es igual a su masa multiplicada por su aceleración ($F = ma$). Observamos que el término $ma$ aparece exactamente en nuestra Ecuación (\ref{eq:trabajo_energia_intermedia}). Al sustituir la fuerza, la ecuación se transforma en
+La primera Ley de Newton establece que la fuerza neta aplicada sobre un objeto a aceleración constante es igual a su masa multiplicada por su aceleración, como se muestra en la ec.~\eqref{eq:F=ma}, que en el caso de una dimensión se reduce a $F = ma$. Observamos que el término $ma$ aparece exactamente en nuestra Ecuación (\ref{eq:trabajo_energia_intermedia}). Al sustituir la fuerza, la ecuación se transforma en
 \begin{equation}
     \frac{1}{2}m v_f^2 = \frac{1}{2}m v_i^2 + F \Delta x.
 \end{equation}
@@ -4485,13 +4636,7 @@ sobre la superficie de la Tierra.
 
 % --- Fin del código LaTeX ---
 
-Podemos expresar la Ley de Newton de la ecuación~\eqref{eq:newton} en el caso en que la masa de un objeto no cambie en la dirección de movimiento como
-\begin{align*}
-    \boldsymbol{F} = &  \frac{\Delta\boldsymbol{p}}{\Delta t}\\
-    =&\frac{\Delta(m\boldsymbol{v})}{\Delta t}\\
-    =&m\frac{\Delta\boldsymbol{v}}{\Delta t}\,,
-\end{align*}
-de modo que
+Podemos expresar la Ley de Newton de la ecuación~\eqref{eq:newton} en el caso en que la masa de un objeto no cambie en la dirección de movimiento como en la ec.~\eqref{eq:F=ma}
 \begin{align}
      \boldsymbol{F}=&m\boldsymbol{a}\,.
 \end{align}
