@@ -4361,32 +4361,31 @@ Finalmente, factorizamos el tiempo $t$ y el factor $\frac{1}{2}$, obteniendo la 
     \label{eq:desplazamiento_trapecio}
 \end{equation}
 
-\subsubsection{Paso 3: La Definición de Velocidad Promedio}
+% \subsubsection{Paso 3: La Definición de Velocidad Promedio}
 
-Por definición en cinemática, la \textbf{velocidad promedio} ($v_{\text{prom}}$) es la velocidad constante a la cual un objeto tendría que viajar para cubrir el mismo desplazamiento $\Delta x$ en el mismo intervalo de tiempo $t$. Algebraicamente, esto se escribe como:
-\begin{equation}
-    v_{\text{prom}} = \frac{\Delta x}{t}.
-\end{equation}
-Lo que, reordenando, nos dice que el desplazamiento siempre es igual a la velocidad promedio por el tiempo:
-\begin{equation}
-    \Delta x = v_{\text{prom}} \cdot t.
-    \label{eq:def_vprom}
-\end{equation}
+% Por definición en cinemática, la \textbf{velocidad promedio} ($v_{\text{prom}}$) es la velocidad constante a la cual un objeto tendría que viajar para cubrir el mismo desplazamiento $\Delta x$ en el mismo intervalo de tiempo $t$. Algebraicamente, esto se escribe como:
+% \begin{equation}
+%     v_{\text{prom}} = \frac{\Delta x}{t}.
+% \end{equation}
+% Lo que, reordenando, nos dice que el desplazamiento siempre es igual a la velocidad promedio por el tiempo:
+% \begin{equation}
+%     \Delta x = v_{\text{prom}} \cdot t.
+%     \label{eq:def_vprom}
+% \end{equation}
 
-\subsubsection{Paso 4: Conclusión e Igualdad}
+% \subsubsection{Paso 4: Conclusión e Igualdad}
 
-Si igualamos nuestra deducción geométrica (Ecuación \ref{eq:desplazamiento_trapecio}) con la definición fundamental (Ecuación \ref{eq:def_vprom}), tenemos:
-\begin{equation}
-    v_{\text{prom}} \cdot t = \left( \frac{v_i + v_f}{2} \right) t.
-\end{equation}
-Al dividir ambos lados por el tiempo $t$, llegamos al resultado final:
-\begin{equation}
-    v_{\text{prom}} = \frac{v_i + v_f}{2}.
-\end{equation}
+% Si igualamos nuestra deducción geométrica (Ecuación \ref{eq:desplazamiento_trapecio}) con la definición fundamental (Ecuación \ref{eq:def_vprom}), tenemos:
+% \begin{equation}
+%     v_{\text{prom}} \cdot t = \left( \frac{v_i + v_f}{2} \right) t.
+% \end{equation}
+% Al dividir ambos lados por el tiempo $t$, llegamos al resultado final:
+% \begin{equation}
+%     v_{\text{prom}} = \frac{v_i + v_f}{2}.
+% \end{equation}
 
-\textbf{Conclusión:} Hemos demostrado rigurosamente que, si y solo si la aceleración es constante (lo que hace que la gráfica de velocidad sea una línea recta), la velocidad promedio que define el desplazamiento total es matemáticamente idéntica a la media aritmética de la velocidad inicial y la velocidad final.
+% \textbf{Conclusión:} Hemos demostrado rigurosamente que, si y solo si la aceleración es constante (lo que hace que la gráfica de velocidad sea una línea recta), la velocidad promedio que define el desplazamiento total es matemáticamente idéntica a la media aritmética de la velocidad inicial y la velocidad final.
 
-\subsubsection{Paso 1: Las Dos Ecuaciones Fundamentales}
 
 Nuestra demostración parte de dos principios básicos de la cinemática para un objeto que se mueve con una aceleración constante $a$.
 
@@ -4396,20 +4395,6 @@ La primera es la definición de la velocidad final ($v_f$), que es igual a la ve
     \label{eq:velocidad_tiempo}
 \end{equation}
 
-La segunda es la ecuación del desplazamiento ($\Delta x$). Para una aceleración constante, el desplazamiento es simplemente la velocidad promedio multiplicada por el tiempo. Dado que la aceleración es uniforme, la velocidad promedio es exactamente la media aritmética entre la velocidad inicial y la final:
-\begin{equation}
-    \Delta x = \left( \frac{v_f + v_i}{2} \right) t.
-    \label{eq:desplazamiento_promedio}
-\end{equation}
-
-\subsubsection{Paso 2: Despejar la Variable Tiempo ($t$)}
-
-Dado que nuestro objetivo es encontrar una ecuación que no dependa del tiempo, el truco algebraico consiste en despejar $t$ de la primera ecuación y sustituirlo en la segunda. 
-
-Tomamos la Ecuación (\ref{eq:velocidad_tiempo}) y restamos $v_i$ a ambos lados:
-\begin{equation}
-    v_f - v_i = a t.
-\end{equation}
 Dividimos por la aceleración $a$ para aislar el tiempo, obteniendo
 \begin{equation}
     t = \frac{v_f - v_i}{a}.
@@ -4418,7 +4403,7 @@ Dividimos por la aceleración $a$ para aislar el tiempo, obteniendo
 
 \subsubsection{Paso 3: Sustitución y Multiplicación de Fracciones}
 
-Ahora, tomamos esta expresión para el tiempo (Ecuación \ref{eq:tiempo_despejado}) y la sustituimos en nuestra ecuación de desplazamiento (Ecuación \ref{eq:desplazamiento_promedio}):
+Ahora, tomamos esta expresión para el tiempo (Ecuación \eqref{eq:tiempo_despejado}) y la sustituimos en nuestra ecuación de desplazamiento (Ecuación \eqref{eq:desplazamiento_trapecio}):
 \begin{equation}
     \Delta x = \left( \frac{v_f + v_i}{2} \right) \left( \frac{v_f - v_i}{a} \right).
 \end{equation}
@@ -4471,7 +4456,7 @@ En el último término, el factor $\frac{1}{2}$ se cancela algebraicamente con e
     \label{eq:trabajo_energia_intermedia}
 \end{equation}
 
-\subsubsection{Paso 3: Aplicar la Segunda Ley de Newton}
+\subsubsection{Paso 3: Aplicar la Primera Ley de Newton}
 
 La primera Ley de Newton establece que la fuerza neta aplicada sobre un objeto a aceleración constante es igual a su masa multiplicada por su aceleración, como se muestra en la ec.~\eqref{eq:F=ma}, que en el caso de una dimensión se reduce a $F = ma$. Observamos que el término $ma$ aparece exactamente en nuestra Ecuación (\ref{eq:trabajo_energia_intermedia}). Al sustituir la fuerza, la ecuación se transforma en
 \begin{equation}
@@ -4508,83 +4493,35 @@ TODO: Derivar todo a partir de la conservación de la energía
 
 En las secciones anteriores demostramos cómo la cinemática nos lleva al concepto de energía. Sin embargo, la física es profundamente simétrica. A continuación, cumpliremos el objetivo de invertir el proceso: asumiremos como principio fundamental el \textbf{Teorema del Trabajo y la Energía} para una fuerza conservativa constante, y a partir de él deduciremos la ecuación de movimiento $x(t)$ utilizando exclusivamente herramientas algebraicas.
 
-\subsubsection{Paso 1: El Trabajo y la Diferencia de Cuadrados}
+\section{Movimiento bajo aceleración y masa constantes}
 
-El Teorema del Trabajo y la Energía establece que el trabajo realizado por una fuerza constante $F$ a lo largo de un desplazamiento $\Delta x$ se invierte íntegramente en cambiar la energía cinética de la partícula:
-\begin{equation}
-    F \Delta x = \frac{1}{2}m v^2 - \frac{1}{2}m v_0^2.
-\end{equation}
-Podemos factorizar el lado derecho de esta igualdad aprovechando la estructura algebraica de la diferencia de cuadrados ($A^2 - B^2 = (A-B)(A+B)$):
-\begin{equation}
-    F \Delta x = \frac{1}{2}m (v - v_0)(v + v_0).
-    \label{eq:trabajo_factorizado}
-\end{equation}
+Aplicaremos ahora el Teorema del Trabajo y la Energía 
+a un cuerpo de masa $m$, sobre el cual se realiza un trabajo para llevarlo desde una velocidad inicial $v_0$ con posición inicial $x_0$ hasta una velocidad final $v$ después de recorrer una distancia $\Delta x=x-x_0$ bajo una fuerza con aceleración y masa constantes.
 
-\subsubsection{Paso 2: Incorporación de la Velocidad Promedio}
-
-En la Sección 3.4.2 demostramos rigurosamente que, si la aceleración es constante, el desplazamiento geométrico se relaciona con el tiempo a través de la media aritmética de las velocidades (la velocidad promedio):
-\begin{equation}
-\label{eq:desplazamiento}
-    \Delta x = \left( \frac{v + v_0}{2} \right) t.
-\end{equation}
-De esta relación puramente cinemática, podemos despejar la suma de las velocidades multiplicando por $2$ y dividiendo por $t$:
-\begin{equation}
-    v + v_0 = \frac{2 \Delta x}{t}.
-    \label{eq:suma_velocidades}
-\end{equation}
-
-\subsubsection{Paso 3: Sustitución y Recuperación de la Dinámica}
-
-Ahora, sustituimos la Ecuación (\ref{eq:suma_velocidades}) directamente en nuestra ecuación de energía factorizada (\ref{eq:trabajo_factorizado}):
-\begin{equation}
-    F \Delta x = \frac{1}{2}m (v - v_0) \left( \frac{2 \Delta x}{t} \right).
-\end{equation}
-Al reorganizar los términos, el factor $2$ en el numerador se cancela perfectamente con el $\frac{1}{2}$, obteniendo:
-\begin{equation}
-    F \Delta x = m (v - v_0) \frac{\Delta x}{t}.
-\end{equation}
-Notamos que el desplazamiento $\Delta x$ aparece multiplicando a ambos lados de la igualdad. Siempre que haya existido movimiento ($\Delta x \neq 0$), podemos cancelarlo algebraicamente dividiendo ambos lados entre $\Delta x$:
-\begin{equation}
-    F = m \left( \frac{v - v_0}{t} \right).
-\end{equation}
-Reconocemos de inmediato que el término entre paréntesis es la aceleración constante ($a = \Delta v / t$). Así, \textbf{hemos deducido la Segunda Ley de Newton} ($F = ma$) partiendo de la conservación de la energía. 
-
-Despejando la velocidad final $v$ de esta expresión, obtenemos cómo evoluciona en el tiempo bajo esta fuerza:
+El trabajo realizado $W=F\Delta x$, de acuerdo al Teorema de Trabajo Energía es
 \begin{align*}
-    \frac{Ft}{m} = v-v_0
+    F \Delta x =& \frac{1}{2}m v^2 - \frac{1}{2}m v_0^2\,.\\
 \end{align*}
-de modo que
+
+Reemplazando las ecuaciones~\eqref{eq:F=ma}, \eqref{eq:velocidad_tiempo}
+\begin{align}
+    v=&v_0+at\,,& F=&ma\,,
+\end{align}
+tenemos que
+\begin{align*}
+    \cancel{m}a \Delta x= & \frac{1}{2}\cancel{m}\left(v_0+at\right)^2- \frac{1}{2}\cancel{m} v_0^2\\
+2a\Delta x&=\cancel{v_0^2}+2v_0 a t +a^2t^2- \cancel{v_0^2}\\
+\Delta x&=v_0 t +\frac{1}{2}at^2\,.\\
+\end{align*}
+Como $\Delta x= x-x_0$
 \begin{equation}
-    v = v_0 + \frac{F}{m} t.
-    \label{eq:vel_tiempo_energia}
+\label{eq:movimientoparabólico}
+    x(t)=x_0+v_0 t +\frac{1}{2}at^2\,.
 \end{equation}
 
-\subsubsection{Paso 4: La Ecuación de Movimiento $x(t)$}
+Esta es la ecuación de movimiento para un objeto de masa $m$ sometido a una aceleración constante, $a$.
 
-Finalmente, para encontrar la posición de la partícula en función del tiempo, tomamos la velocidad final que acabamos de hallar (Ecuación \eqref{eq:vel_tiempo_energia}) y la sustituimos de vuelta en la ecuación del desplazamiento~\eqref{eq:desplazamiento}:
-\begin{equation}
-    \Delta x = \frac{1}{2} \left( v_0 + \left[ v_0 + \frac{F}{m} t \right] \right) t.
-\end{equation}
-Sumamos los términos semejantes ($v_0$) dentro del corchete grande:
-\begin{equation}
-    \Delta x = \frac{1}{2} \left( 2v_0 + \frac{F}{m} t \right) t.
-\end{equation}
-Al distribuir el factor $\frac{1}{2} t$ en el interior del paréntesis, llegamos a:
-\begin{equation}
-    \Delta x = v_0 t + \frac{1}{2} \frac{F}{m} t^2.
-\end{equation}
-Sabiendo que el desplazamiento es la diferencia entre la posición final e inicial ($\Delta x = x(t) - x_0$), la ecuación de movimiento final queda completamente determinada como:
-\begin{equation}
-\label{eq:mvtofuerzaconstante}
-    x(t) = x_0 + v_0 t + \frac{1}{2} \frac{F}{m} t^2.
-\end{equation}
-
-\textbf{Conclusión Física:}
-Hemos cerrado el círculo lógico del capítulo. Mediante este proceso algebraico, demostramos que la energía y el trabajo no son simplemente herramientas accesorias derivadas de la cinemática; son, de hecho, principios tan fundamentales que a partir de ellos se puede deducir íntegramente la Segunda Ley de Newton y toda la evolución temporal de las trayectorias.
-
-
-
-\subsection{Campo gravitacional de la Tierra}
+\section{Campo gravitacional de la Tierra}
 
 Un ejemplo de fuerza  constante es la que siente un cuerpo cerca a la superficie de la tierra debido a su campo gravitacional, $\boldsymbol{g}$, como se muestra en la proyección en dos dimensiones enn la figura~\ref{fig:campo_gravitacional}. Dicho campo gravitacional siempre está presente y genera una aceleración sobre cualquier cuerpo material hacía el centro de la tierra. El campo gravitacional es constante (superficie equipotencial) sobre la superficie de una esfera concéntrica al centro de la Tierra, y en particular tiene un valor constante de
  \begin{align}
@@ -4723,8 +4660,8 @@ for i in range(20):
   L.append( {'y':y,
              't':t,
              'p':p} )
-  p = F * Δt + p
-  y = (p/m) * Δt + y
+  p = p + F * Δt 
+  y = y + (p/m) * Δt 
   t = Δt + t        
 \end{minted}
 
