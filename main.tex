@@ -4840,21 +4840,21 @@ Igualando las energías: $E_{\text{total}}^{\text{final}}=E_{\text{total}}^{\tex
     y_{\text{max}}=&\frac{v_0^2}{2g}\,.
 \end{align}
 
-Reemplazando en la ecuación de movimiento~\eqref{eq:lanzamiento} (con $y_0=0$
+Reemplazando en la ecuación de movimiento~\eqref{eq:lanzamiento}) (con $y_0=0$
 \begin{align*}
-    &y_{\text{max}}=v_0 t_{\text{max}}-\frac{1}{2}gt_{\text{max}}^2\\
-    &\frac{v_0^2}{2g}-v_0t_{\text{max}}+\frac{1}{2}gt_{\text{max}}^2 =0\\
-    &v_0^2-2v_0gt_{\text{max}} +g^2t_{\text{max}}^2=0\\
-    &(v_0-gt_{\text{max}})^2=0\,,
+    &y_{\text{max}}=v_0 t_{\text{pico}}-\frac{1}{2}gt_{\text{pico}}^2\\
+    &\frac{v_0^2}{2g}-v_0t_{\text{pico}}+\frac{1}{2}gt_{\text{pico}}^2 =0\\
+    &v_0^2-2v_0gt_{\text{pico}} +g^2t_{\text{pico}}^2=0\\
+    &(v_0-gt_{\text{pico}})^2=0\,,
 \end{align*}
 que se anula sí
 \begin{align}
-    v_0-gt_{\text{max}}=&0\nonumber\\
-    t_{\text{max}}=\frac{v_0}{g}\,.
+    v_0-gt_{\text{pico}}=&0\nonumber\\
+    t_{\text{pico}}=\frac{v_0}{g}\,.
 \end{align}
 El tiempo de vuelo es el doble de ese tiempo, pues por conservación de la energía donde toda la energía potencial se vuelve a convertir en su totalidad en energía cinética, el tiempo de bajada es igual al de subida
 \begin{equation}
-    t_{\text{vuelo}}=2t_{\text{max}}=\frac{2v_0}{g}\,.
+    t_{\text{vuelo}}=2t_{\text{pico}}=\frac{2v_0}{g}\,.
 \end{equation}
 
 
@@ -5046,10 +5046,8 @@ Sustituyendo $\sin(2\theta)=1$ en la fórmula del alcance, encontramos el valor 
     \boxed{R_{\text{max}} = \frac{v_0^2}{g}}
 \end{equation}
 
-\subsection{Demostración de la Altura Máxima (H)}
-La \textbf{altura máxima (H)} es el punto más alto de la trayectoria. Físicamente, este es el punto en el que la componente vertical de la velocidad se vuelve cero ($v_y = 0$) por un instante.
 
-\subsection*{Paso 1: Encontrar el Tiempo para Alcanzar la Altura Máxima ($t_{\text{pico}}$)}
+\subsection{Tiempo para Alcanzar la Altura Máxima ($t_{\text{pico}}$)}
 Usamos la ecuación de la velocidad vertical y la igualamos a cero:
 \[ v_y(t) = v_0 \sin\theta - gt \]
 \[ 0 = v_0 \sin\theta - gt_{\text{pico}} \]
@@ -5071,7 +5069,7 @@ Esto quiere decir que, para una cierta velocidad inicial, a mayor ángulo de lan
 
 % --- Fin del código LaTeX ---
 
-\subsection*{Altura Máxima usando Conservación de la Energía}
+\subsection{Altura Máxima usando Conservación de la Energía}
 
 El principio de conservación de la energía mecánica nos ofrece una forma sumamente elegante y directa de derivar la fórmula de la altura máxima ($H$) en el movimiento parabólico, sin necesidad de recurrir a las ecuaciones paramétricas del tiempo.
 
