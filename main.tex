@@ -1939,8 +1939,9 @@ Para la luz, la velocidad es $c \approx 300,000 \text{ km/s}$, la frecuencia ori
 En relatividad, no hay éter ni medio de referencia. No importa quién se considere ``en reposo'', la luz golpeará a ambos observadores a velocidad $c$. Usamos la versión de alejamiento de la fórmula que derivamos previamente:
 
 \begin{equation}
-    f_{\text{obs}} = f_0 \sqrt{\frac{1 - \frac{v}{c}}{1 + \frac{v}{c}}}.
+    f_{\text{obs}} = f_0 \sqrt{\frac{1 - \beta}{1 + \beta}}\,\,.
 \end{equation}
+donde $\beta=v/c$.
 Sustituyendo $v = 0.5 c$:
 \begin{equation}
     f_{\text{obs}} = 1000 \sqrt{\frac{1 - 0.5}{1 + 0.5}} = 1000 \sqrt{\frac{0.5}{1.5}} = 1000 \sqrt{\frac{1}{2}}.
@@ -2064,6 +2065,66 @@ cámara rapidísima" es, precisamente, la forma en que la información —transm
 de los límites impuestos por $c$— codifica la diferencia de edades entre ambos gemelos.
 \end{quote}
 
+\subsubsection{Aplicación Tecnológica: El Telescopio Espacial James Webb y el Espejo de Oro}
+
+Una de las aplicaciones más espectaculares de la física ondulatoria y el efecto Doppler relativista se encuentra en la astronomía observacional moderna, específicamente en el diseño del \textbf{Telescopio Espacial James Webb (JWST)}. Este observatorio está optimizado para mirar hacia el pasado profundo del universo, detectando galaxias formadas apenas unos $300$ millones de años después del Big Bang.
+
+\paragraph{1. El Desafío del Corrimiento al Rojo (\textit{Redshift}):}
+A medida que la luz viaja durante más de 13,500 millones de años desde las galaxias más primitivas hasta la Tierra, la expansión del espacio estira físicamente las longitudes de onda de esa radiación. Este fenómeno se cuantifica mediante el corrimiento al rojo ($z$). Para galaxias extremas a un $z = 14$, la luz ultravioleta y visible original llega a nuestro vecindario convertida en radiación \textbf{infrarroja lejana} ($\qty{1.824}{\mu m}$ o superior). Por esta razón, el James Webb opera estrictamente en el infrarrojo. Ver ejercicio~\ref{item:redshift}.
+
+\paragraph{2. El Reto Térmico y los Espejos Recubiertos de Oro:}
+Para capturar fotones infrarrojos tan débiles, el telescopio opera en el punto L2 a temperaturas criogénicas (menores a $-233^\circ\text{C}$). Sus 18 segmentos hexagonales están recubiertos con una capa microscópica de \textbf{oro puro}. 
+
+La elección del oro no es estética, sino una consecuencia directa de la \textbf{Relatividad Especial aplicada a la estructura atómica} ($Z = 79$):
+\begin{itemize}
+    \item \textbf{Naturaleza de la Contracción Interna:} Es importante aclarar que esta contracción interna \textbf{no} es la contracción cinemática de longitudes de Lorentz que experimentan los objetos en movimiento rectilíneo uniforme ($\Delta x = \Delta x_0 / \gamma$). Se trata de un efecto cuántico-relativista derivado de la Ecuación de Dirac: al viajar los electrones más internos ($1s$) a velocidades extremas de aproximadamente el \textbf{$58\%$ de la velocidad de la luz ($0.58c$)}, la solución matemática de su distribución de probabilidad (su función de onda) se comprime espacialmente hacia el núcleo atómico.
+    \item \textbf{Ortogonalidad y el Orbital $6s$:} Para que las funciones de onda de los diferentes electrones del átomo no colapsen entre sí, la mecánica cuántica exige una estricta \textbf{ortogonalidad matemática}. Como los orbitales internos $s$ se han contraído profundamente debido a la relatividad, los electrones del orbital externo $6s$ (que se mueven a cerca del \textbf{$35\%$ de la velocidad de la luz, $0.35c$}) se ven obligados por esta condición matemática de ortogonalidad a contraerse también y descender drásticamente en energía para no solaparse con las capas internas.
+    \item \textbf{Expansión y Ascenso del Orbital $5d$:} Por su parte, los electrones del orbital $5d$ (que se desplazan a cerca del \textbf{$41\%$ de la velocidad de la luz, $0.41c$}) sufren un efecto de apantallamiento menor debido a la contracción del $6s$, lo que provoca que los orbitales $5d$ se expanda espacialmente y asciendan en energía.
+    \item \textbf{Reducción de la Brecha Energética:} Como se ilustra en la Figura \ref{fig:orbitales_oro}, esta reestructuración relativista reduce la diferencia de energía ($\Delta E$) entre los orbitales $5d$ y $6s$. Específicamente, esta brecha se estrecha hasta quedar en el rango de los fotones de luz \textbf{azul y violeta}, cuya energía fotónica se encuentra entre \textbf{$2.75 \text{ eV}$ y $3.10 \text{ eV}$}.
+    \item \textbf{Absorción y Reflexión Infrarroja:} Debido a esta menor brecha energética, los electrones del oro absorben con gran eficiencia los fotones de luz azul y violeta (provocando su característico color dorado). Sin embargo, para los fotones de menor energía del \textbf{infrarrojo}, el material carece de mecanismos de absorción a esa escala: la luz infrarroja choca contra el mar de electrones libres de la superficie y es reflejada con una \textbf{reflectividad superior al $98\%$} sin pérdidas térmicas.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.2, >=stealth]
+    
+    % --- ÁTOMO CLÁSICAMENTE ESPERADO (Sin Relatividad) ---
+    \begin{scope}[shift={(-2.5,0)}]
+        \node[font=\bfseries] at (0, 2.5) {Átomo Hipotético (Clásico)};
+        
+        % Eje de energía
+        \draw[->, thick] (-1, -1.5) -- (-1, 2) node[above] {Energía ($E$)};
+        
+        % Orbitales 5d y 6s separados por una brecha amplia
+        \draw[thick, blue!60!black] (-0.6, 1.2) -- (0.6, 1.2) node[right, font=\footnotesize] {$6s$};
+        \draw[thick, red!60!black] (-0.6, -0.8) -- (0.6, -0.8) node[right, font=\footnotesize] {$5d$};
+        
+        \draw[<->, thick, purple] (0, -0.8) -- (0, 1.2) node[midway, right] {$\Delta E$ grande};
+        \node[align=center, font=\scriptsize] at (0, -2.2) {Absorbe en el Ultravioleta\\(Se vería plateado)};
+    \end{scope}
+
+    % Flecha de transición
+    \draw[->, very thick, orange] (-0.8, 0.5) -- (0.8, 0.5) node[midway, above, font=\scriptsize] {Efectos Relativistas};
+
+    % --- ÁTOMO DE ORO REAL (Con Relatividad) ---
+    \begin{scope}[shift={(2.5,0)}]
+        \node[font=\bfseries] at (0, 2.5) {Átomo de Oro Real ($Z=79$)};
+        
+        % Eje de energía
+        \draw[->, thick] (-1, -1.5) -- (-1, 2) node[above] {Energía ($E$)};
+        
+        % Orbitales 5d y 6s acercados por la relatividad
+        \draw[thick, blue!60!black] (-0.6, 0.4) -- (0.6, 0.4) node[right, font=\footnotesize] {$6s$ (Contraído/Desciende)};
+        \draw[thick, red!60!black] (-0.6, -0.2) -- (0.6, -0.2) node[right, font=\footnotesize] {$5d$ (Expandido/Asciende)};
+        
+        \draw[<->, thick, purple] (0, -0.2) -- (0, 0.4) node[midway, right] {$\Delta E \approx 2.8 \text{ eV}$};
+        \node[align=center, font=\scriptsize] at (0, -2.2) {Absorbe en el Azul ($2.75-3.10\text{ eV}$)\\(Refleja el Infrarrojo)};
+    \end{scope}
+
+\end{tikzpicture}
+\caption{Diagrama esquemático de los niveles de energía en los orbitales de valencia ($5d$ y $6s$). A la izquierda, un átomo pesado hipotético sin corrección relativista como el aluninio o la plata; a la derecha, el átomo real de Oro ($Z=79$). Los electrones internos a $\approx 0.58c$ contraen el espacio de las funciones de onda; por ortogonalidad matemática, el orbital $6s$ ($\approx 0.35c$) también se contrae y desciende, mientras que el $5d$ ($\approx 0.41c$) asciende. Esto estrecha la brecha energética ($\Delta E$), haciendo que el metal absorba luz azul/violeta y refleje con máxima eficiencia el infrarrojo.}
+\label{fig:orbitales_oro}
+\end{figure}
 
 % --- Inicio del código LaTeX para insertar ---
 
@@ -3721,7 +3782,6 @@ Centauri, medida en el marco de referencia de la Tierra, es $D_0 = 4.3$ años lu
 \end{enumerate}
 
 
-
     \item \textbf{Suma Relativista de Velocidades:} Dos naves espaciales, A y B, se acercan mutuamente para un acoplamiento. Un telescopio en la Tierra observa que la nave A se mueve hacia la derecha a $0.7c$ y la nave B se mueve hacia la izquierda a $0.6c$. Utilizando la fórmula de suma de velocidades de Einstein, ¿cuál es la velocidad de la nave A según lo mide el piloto de la nave B?
 
     \item \textbf{El Corrimiento al Rojo y el Telescopio James Webb ($z = 14$):} 
@@ -3744,6 +3804,42 @@ Centauri, medida en el marco de referencia de la Tierra, es $D_0 = 4.3$ años lu
         \item[d)] Calcule dicha velocidad de recesión en términos de la velocidad de la luz ($c$) para $z = 14$.
     \end{enumerate}
     NOTA: El espejo del telescopio tiene un recubrimiento de oro para ser sensible a las frecuencias requeridas a estos altos valores de $z$.
+
+\item A una camioneta \includegraphics[scale=0.08]{foton.png}
+ a la cual le está permitida el límite de velocidad máxima $c$, como se muestra en la figura,
+\label{item:foton}
+
+\begin{tikzpicture}[scale=0.52]
+
+    % --- ANILLO ROJO EXTERIOR ---
+    % Círculo rojo con borde más oscuro para darle relieve
+    \fill[red!85!black] (0,0) circle (2.2cm);
+    % Círculo interior blanco para crear la señal de prohibición/límite
+    \fill[white] (0,0) circle (1.75cm);
+
+    % --- TEXTO INTERIOR ---
+    % Palabra "max"
+    \node[black, font=\sffamily\bfseries\Large] at (0, 0.95) {max};
+
+    % Valor de la velocidad "3 x 10^8"
+    % Usamos un nodo con fuente sans-serif negrita para imitar la señal
+    \node[black, font=\sffamily\bfseries\Large] at (0, 0.15) {
+        %\fontsize{32}{38}\selectfont
+        $\text{3}\boldsymbol{\times}\text{10}^{\text{8}}$
+    };
+
+    % Unidad "m/s"
+    \node[black, font=\sffamily\bfseries\Large] at (0, -0.85) {m/s};
+
+\end{tikzpicture}
+
+le ha llegado una fotomulta por cruzar un semáforo en rojo (frecuencia $\qty{450}{THz}$). El conductor asegura que vió la luz del semáforo en verde (frecuencia $\qty{550}{THz}$). ¿A qué velocidad debería ir el conductor hacia el semáforo, para que dicha afirmación sea cierta?.
+
+La fórmula del Efecto Doppler Relativista para una fuente en reposo y un observador que se acerca:
+    \begin{equation}
+        f_{\text{obs}} = f_0 \sqrt{\frac{1 + \beta}{1 - \beta}},
+    \end{equation}
+    donde hemos definido $\beta = \frac{v}{c}$.
 
     \item \textbf{Equivalencia Masa-Energía ($E=mc^2$):} En la aniquilación completa de un electrón y un positrón (ambos con masa en reposo $m_e \approx 9.11 \times 10^{-31} \text{ kg}$), toda su masa se convierte en energía en forma de dos fotones de luz. Suponiendo que las partículas colisionan prácticamente desde el reposo, calcule la energía total liberada en Joules.
 
@@ -4690,44 +4786,14 @@ plt.savefig('position.pdf')\end{lstlisting}
     \label{fig:vertical}
 \end{figure}
 
-Esto corresponde a reemplazar la Fuerza constante en la ec.~\eqref{eq:gravitationalconstantforce},  en la ec.~\eqref{eq:mvtofuerzaconstante}, que para $y_0 = 0$ es
+Esto corresponde a reemplazar la coordenada $x$ por la coordenada $y$ en la ecuación de movimiento~\eqref{eq:movimientoparabólico} y  $a = -g$, de modo que
 \begin{align}
 \label{eq:lanzamiento}
-    y(t) =  v_0 t - \frac{1}{2}g t^2 \,.
+    y(t) =y_0 +  v_0 t - \frac{1}{2}g t^2 \,,
 \end{align}
+con $y_0=0$ para el movimiento representado por la figure~\ref{fig:vertical}.
 Note que dicha ecuación es independiente de la masa del objeto lanzado.
 
-De la ecuación para la aceleración constante~\eqref{eq:aceleración}, con $t_0 =0$ y $a = -g$, tenemos
-\begin{align}
-    v = v_0-g t
-\end{align}
-
-%TODO: reemplazar por conservación de la energía
-De esta ecuación podemos obtener el tiempo para alcanzar la altura máxima de la condición que en ese punto la velocidad es cero
-\begin{align*}
-    0 =& v_0-gt\\
-    t_{\text{max}} =&\frac{v_0}{g}\,.
-\end{align*}
-Reemplazando en la ecuación~\eqref{eq:lanzamiento}
-\begin{align*}
-    y_{\text{max}} = y(t_{\text{max}}) =& v_0 t_{\text{max}} -\frac{1}{2}g t_{\text{max}}^2\\
-       =& v_0\frac{v_0}{g} -\frac{1}{2}g\frac{v_0^2}{g^2}\\
-       =& \frac{v_0^2}{g} - \frac{1}{2}\frac{v_0^2}{g}\,,
-\end{align*}
-de modo que
-\begin{align}
-    \label{eq:alturamáxima}
-    y_{\text{max}} = \frac{1}{2}\frac{v_0^2}{g}\,.
-\end{align}
-
-Reemplazando los valores numéricos $v_0 =\qty{10}{m/s}$ y $g\approx \qty{10}{m/s^2}$, las ecuaciones \eqref{eq:lanzamiento} y \eqref{eq:alturamáxima} se reducen a
-\begin{align*}
-    y(t) =& 10t - 5 t^2\\
-    y_{\text{max}} =& \qty{5}{m}\,.
-\end{align*}
-que corresponde  a la línea azul a trazos en la figura~\eqref{fig:vertical}. ¿Qué se puede hacer para hacer que la curva numérica (negra continua) coincida mejor con la curva analítica (azul a trazos)?
-
-Para éste ejemplo e independiente de su masa, si un objeto es lanzado verticalmente hacía arriba con una velocidad inicial de $\qty{10}{m/s}$, alcanza una altura de $\qty{5}{m}$. Similarmente, si un objeto se deja caer desde una altura de $\qty{5}{m}$ entonces llegará al suelo con una velocidad de $\qty{10}{m/s}$ independiente de su masa.
 
 \section{Conservación de la energía}
 El teorema de Trabajo y Energía para el problema de lanzamiento vertical hacía arriba desde una altura cero con una velocidad inicial $v_0$, hasta una altura $h$ con una velocidad $v$; se puede escribir usando la ecs.~\eqref{eq:TrabajoEnergía} y \eqref{eq:gravitationalconstantforce}, como
@@ -4742,23 +4808,343 @@ Reorganizando términos
 
 Si definimos la energía potencial de un objeto a una altura $h$ sobre la superficie terrestre como
 \begin{align}
-    E_{\text{pot}} = mgh\,,
+    U = mgh\,,
 \end{align}
-entonces, la energía potencial inicial, $E_{\text{pot}_0}$, a una altura cero, es cero, y definiendo la energía cinética como
+entonces, la energía potencial inicial, $U_0$, a una altura cero, es cero, y definiendo la energía cinética como
 \begin{align}
     K = \frac{1}{2}m v^2\,,
 \end{align}
 podemos reescribir la ec.~\eqref{eq:work} como
 \begin{align}
-    E_{\text{pot}_0} + K_0 = E_{\text{pot}} + K\,,
+    U_0 + K_0 = U + K\,,
 \end{align}
 esto quiere decir que la energía mecánica
 \begin{align}
-    E_{\text{total}} = E_{\text{pot}} + K\,,
+    E_{\text{total}} = U + K\,,
 \end{align}
 se conserva.
 
 Es de anotar que está ecuación es de validez general para fuerzas conservativas, es decir fuerzas que sólo contribuyen a la energía mecánica.
+
+Aplicando el teorema de la conservación de energía al lanzamiento vertical hacía arriba para calcular la altura máxima, $y_{\text{max}}$ bajo la condición que en ese punto la velocidad final sea cero. Si parte desde el origen, la energía potencial es cero y la energía total inicial esta dada en su totalidad  por la energía cinética 
+\begin{align}
+    E_{\text{total}}^{\text{inicial}} = \frac{1}{2}mv_0^2\,. 
+\end{align}
+Como en el punto final de altura máxima, $y_{\text{max}}$, la velocidad final es cero, la correspondiente energía cinética final es cero, de modo que toda la energía cinética final se ha convertido en energía potencial tal que
+\begin{align}
+    E_{\text{total}}^{\text{final}} = mg y_{\text{max}}\,.
+\end{align}
+Igualando las energías: $E_{\text{total}}^{\text{final}}=E_{\text{total}}^{\text{inicial}}$, tenemos que
+\begin{align}
+    \cancel{m}gy_{\text{max}} =& \frac{1}{2}\cancel{m}v_0^2\nonumber\\
+    y_{\text{max}}=&\frac{v_0^2}{2g}\,.
+\end{align}
+
+Reemplazando en la ecuación de movimiento~\eqref{eq:lanzamiento} (con $y_0=0$
+\begin{align*}
+    &y_{\text{max}}=v_0 t_{\text{max}}-\frac{1}{2}gt_{\text{max}}^2\\
+    &\frac{v_0^2}{2g}-v_0t_{\text{max}}+\frac{1}{2}gt_{\text{max}}^2 =0\\
+    &v_0^2-2v_0gt_{\text{max}} +g^2t_{\text{max}}^2=0\\
+    &(v_0-gt_{\text{max}})^2=0\,,
+\end{align*}
+que se anula sí
+\begin{align}
+    v_0-gt_{\text{max}}=&0\nonumber\\
+    t_{\text{max}}=\frac{v_0}{g}\,.
+\end{align}
+El tiempo de vuelo es el doble de ese tiempo, pues por conservación de la energía donde toda la energía potencial se vuelve a convertir en su totalidad en energía cinética, el tiempo de bajada es igual al de subida
+\begin{equation}
+    t_{\text{vuelo}}=2t_{\text{max}}=\frac{2v_0}{g}\,.
+\end{equation}
+
+
+\section{Movimiento parabólico}
+Ver \href{https://colab.research.google.com/drive/1YMC00LP9HcuapJtmcpAcivhiywmEcPwo?usp=sharing}{Colab notebook}
+
+
+% --- Inicio del código LaTeX para insertar ---
+
+A continuación se presentan las ecuaciones clave del movimiento parabólico (o de proyectil), expresadas en términos de la magnitud de la velocidad inicial ($v_0$) y el ángulo de lanzamiento ($\theta$). Ver figura~\ref{fig:movimiento_parabolico_ascendente} Estas fórmulas asumen que el punto de lanzamiento y el de aterrizaje están a la misma altura y que la resistencia del aire es despreciable.
+
+% --- Inicio del código LaTeX para insertar ---
+
+\begin{figure}[h!] % El [h!] sugiere a LaTeX que intente colocar la figura "aquí"
+    \centering % Centra la figura en la página
+    \begin{tikzpicture}[
+        scale=1, % Escala general de la figura
+        font=\large, % Tamaño de la fuente para las etiquetas
+        axis/.style={->, %stealth, 
+        thick}, % Estilo para los ejes
+        vector/.style={->, %>=stealth, 
+        ultra thick}, % Estilo para los vectores
+        helpline/.style={dashed, gray} % Estilo para líneas de ayuda
+    ]
+        % --- Dibujar los ejes y el suelo ---
+        \draw[axis] (0,0) -- (8.5,0) node[below] {$x$};
+        \draw[axis] (0,0) -- (0,4.5) node[left] {$y$}; % Aumentado un poco para el pico
+        \node[below left] at (0,0) {Origen};
+
+        % --- Dibujar la trayectoria parabólica ---
+        % La trayectoria está definida por la función y = 2x - 0.25x^2
+        \draw[blue, thick, domain=0:8, samples=100] plot (\x, {2*\x - 0.25*\x^2}) node[above right] {Trayectoria};
+        
+        % --- Definir la posición de la partícula en la trayectoria ---
+        % CAMBIO PRINCIPAL: Cambiamos xpos de 6 a 2 para estar en la parte ascendente
+        \def\xpos{2} 
+        \def\ypos{2*\xpos - 0.25*\xpos^2} % Coordenada y calculada automáticamente
+        
+        % --- Dibujar la partícula ---
+        \shade[ball color=red] (\xpos, \ypos) circle (0.15cm);
+        
+        % --- Dibujar los vectores de velocidad ---
+        % Vector velocidad total (tangente a la trayectoria)
+        % La pendiente de la tangente es y'(x) = 2 - 0.5x
+        % En x=2, la pendiente es 2 - 0.5*2 = 1. El ángulo es 45 grados.
+        \begin{scope}[shift={(\xpos,\ypos)}, rotate=45]
+            \draw[vector, green!50!black] (0,0) -- (2,0) node[above] {$\boldsymbol{v}$};
+        \end{scope}
+
+        % Componente horizontal de la velocidad (vx)
+        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos + 1.414, \ypos) node[below] {${v}_x=v_{x0}$};
+
+        % Componente vertical de la velocidad (vy)
+        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos, \ypos + 1.414) node[left] {${v}_y$};
+
+        % Líneas de ayuda para mostrar la composición de vectores
+        \draw[helpline] (\xpos + 1.414, \ypos) -- (\xpos + 1.414, \ypos + 1.414);
+        \draw[helpline] (\xpos, \ypos + 1.414) -- (\xpos + 1.414, \ypos + 1.414);
+        
+        % --- Dibujar el vector Fuerza Gravitacional ---
+        % Desplazado a la izquierda para mejor visibilidad
+        \draw[vector, red] (\xpos, \ypos) -- (\xpos, \ypos - 1.5) node[right] {$\boldsymbol{F} = (0,-mg)$};
+        
+        % --- Mostrar el vector velocidad inicial ---
+        \draw[vector, gray] (0,0) -- (1,2) node[above left] {$\boldsymbol{v}_0$};
+        % Ángulo de lanzamiento
+        \draw (0.5,0) arc (0:63.4:0.5);
+        \node at (0.8, 0.25) {$\theta$};
+
+    \end{tikzpicture}
+    \caption{Diagrama de cuerpo libre para una partícula en movimiento parabólico. El vector velocidad $\boldsymbol{v}$ tiene una componente vertical ${v}_y$ positiva (hacia arriba) y una componente constante $v_x$, mientras que la fuerza gravitacional $\boldsymbol{F}$ sigue actuando constantemente hacia abajo.}
+    \label{fig:movimiento_parabolico_ascendente}
+\end{figure}
+
+\subsection*{Configuración Inicial}
+\begin{itemize}
+    \item \textbf{Velocidad Inicial (magnitud):} $v_0$
+    \item \textbf{Ángulo de Lanzamiento:} $\theta$ (medido desde la horizontal)
+    \item \textbf{Aceleración debida a la Gravedad:} $g$ (considerada como un valor positivo, $\approx \SI{9.8}{\meter\per\second\squared}$)
+    \item \textbf{Posición Inicial:} $(x_0, y_0) = (0, 0)$
+\end{itemize}
+
+\subsection*{Componentes de la Velocidad Inicial}
+El vector de velocidad inicial se descompone en sus componentes horizontal ($v_{x0}$) y vertical ($v_{y0}$):
+\begin{equation}
+    \boxed{v_{x0} = v_0 \cos\theta}
+\end{equation}
+\begin{equation}
+    \boxed{v_{y0} = v_0 \sin\theta}
+\end{equation}
+
+\subsection*{Ecuaciones de la Velocidad en función del Tiempo, $t$}
+Estas ecuaciones describen las componentes de la velocidad en cualquier instante $t$.
+
+\paragraph{Velocidad Horizontal ($v_x$):}
+La velocidad horizontal es constante.
+\begin{equation}
+    \boxed{v_x(t) = v_0 \cos\theta}
+\end{equation}
+
+\paragraph{Velocidad Vertical ($v_y$):}
+La velocidad vertical cambia debido a la aceleración gravitacional.
+\begin{equation}
+    \boxed{v_y(t) = v_0 \sin\theta - gt}
+\end{equation}
+
+\subsection*{Ecuaciones de la Posición en función del Tiempo, $t$}
+Estas son las ecuaciones paramétricas del movimiento que describen las coordenadas $(x, y)$ del proyectil en cualquier instante $t$.
+
+\paragraph{Posición Horizontal ($x$) a velocidad en $x$ constante:}
+\begin{equation}
+    \boxed{x(t) = (v_0 \cos\theta) t}
+\end{equation}
+
+\paragraph{Posición Vertical ($y$), ecuación de movimiento a aceleración constante~\eqref{eq:lanzamiento}:}
+\begin{equation}
+    \boxed{y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2}
+\end{equation}
+
+\section*{Ecuación de la Trayectoria ($y$ en función de $x$)}
+Esta ecuación describe la forma parabólica del camino del proyectil, eliminando la variable del tiempo. Se obtiene despejando $t$ de la ecuación de $x(t)$
+\begin{align}
+    t = \frac{x}{v_0\cos\theta}\,,
+\end{align}
+y sustituyéndola en la ecuación de $y(t)$.
+\begin{equation}
+    \boxed{
+    y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2
+    }
+\end{equation}
+Esta es una ecuación de la forma $y = Ax - Bx^2$, que es la fórmula matemática de una parábola que se abre hacia abajo.
+
+\subsection*{Resumen en una Tabla}
+Ver Tabla~\ref{tab:parabolic_equations} 
+
+\begin{table}[h!]
+\centering,
+\caption{Resumen de las Ecuaciones del Movimiento Parabólico.}
+\label{tab:parabolic_equations}
+\renewcommand{\arraystretch}{1.5} % Aumenta el espaciado vertical de las filas
+\begin{tabular}{| >{\centering\arraybackslash}m{2.5cm} | >{\centering\arraybackslash}m{5cm} | >{\centering\arraybackslash}m{5cm} |}
+\hline
+\textbf{Cantidad} & \textbf{Componente Horizontal (x)} & \textbf{Componente Vertical (\subsection*{Resumen en una Tabla}
+y)} \\
+\hline \hline
+\textbf{Aceleración} & $a_x = 0$ & $a_y = -g$ \\
+\hline
+\textbf{Velocidad ($t$)} & $v_x(t) = v_0 \cos\theta$ & $v_y(t) = v_0 \sin\theta - gt$ \\
+\hline
+\textbf{Posición ($t$)} & $x(t) = (v_0 \cos\theta) t$ & $y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2$ \\
+\hline
+\textbf{Trayectoria ($y$ vs $x$)} & \multicolumn{2}{c|}{$y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2$} \\
+\hline
+\end{tabular}
+\end{table}
+
+% --- Fin del código LaTeX ---
+% --- Inicio del código LaTeX para insertar ---
+
+\subsection{Demostración del Alcance Máximo (R)}
+El \textbf{alcance (R)} es la distancia horizontal total recorrida por el proyectil. Ocurre cuando el proyectil regresa a su altura inicial, es decir, cuando $y(x) = 0$.
+
+\subsection*{Paso 1: Usar la Ecuación de la Trayectoria}
+Partimos de la ecuación de la trayectoria:
+\[ y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
+Para encontrar el alcance, buscamos los valores de $x$ para los cuales $y(x)=0$.
+\[ 0 = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
+
+%TODO: Usar conservación de la energía
+\subsection*{Paso 2: Resolver la Ecuación para x}
+Esta es una ecuación cuadrática para $x$ que podemos resolver factorizando:
+\[ x \left[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x \right] = 0 \]
+Esta ecuación tiene dos soluciones: $x=0$ (el punto de lanzamiento) y la solución que nos interesa, que corresponde al punto de aterrizaje ($x=R$):
+\[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)R = 0 \implies R = \tan\theta \cdot \frac{2v_0^2\cos^2\theta}{g} \]
+
+\subsection*{Paso 3: Simplificar la Expresión}
+Usando la identidad $\tan\theta = \frac{\sin\theta}{\cos\theta}$, simplificamos:
+\[ R = \left(\frac{\sin\theta}{\cos\theta}\right) \frac{2v_0^2\cos^2\theta}{g} = \frac{2v_0^2 \sin\theta \cos\theta}{g} \]
+Finalmente, aplicamos la identidad del ángulo doble, $2\sin\theta\cos\theta = \sin(2\theta)$, para obtener la \textbf{fórmula general del alcance}:
+\begin{equation}
+    \boxed{R = \frac{v_0^2 \sin(2\theta)}{g}}
+\end{equation}
+
+\subsection*{Paso 4: Encontrar el Alcance Máximo ($R_{\text{max}}$)}
+Para una $v_0$ dada, $R$ es máximo cuando $\sin(2\theta)$ es máximo. El valor máximo de la función seno es \textbf{1}.
+\[ \sin(2\theta) = 1 \implies 2\theta = 90^\circ \implies \boxed{\theta = 45^\circ} \]
+Sustituyendo $\sin(2\theta)=1$ en la fórmula del alcance, encontramos el valor del \textbf{alcance máximo}:
+\begin{equation}
+    \boxed{R_{\text{max}} = \frac{v_0^2}{g}}
+\end{equation}
+
+\subsection{Demostración de la Altura Máxima (H)}
+La \textbf{altura máxima (H)} es el punto más alto de la trayectoria. Físicamente, este es el punto en el que la componente vertical de la velocidad se vuelve cero ($v_y = 0$) por un instante.
+
+\subsection*{Paso 1: Encontrar el Tiempo para Alcanzar la Altura Máxima ($t_{\text{pico}}$)}
+Usamos la ecuación de la velocidad vertical y la igualamos a cero:
+\[ v_y(t) = v_0 \sin\theta - gt \]
+\[ 0 = v_0 \sin\theta - gt_{\text{pico}} \]
+Despejando el tiempo para llegar al pico, $t_{\text{pico}}$:
+\[ \boxed{t_{\text{pico}} = \frac{v_0 \sin\theta}{g}} \]
+\textit{(Nota: Este es exactamente la mitad del tiempo total de vuelo).}
+
+\subsection*{Ejemplo: Tiempo de vuelo}
+Calcular el tiempo de vuelo del movimiento parabólico. Este se obtiene de la condición
+$y(t_{\text{vuelo}}) = 0$, de modo que
+\begin{align*}
+    (v_0 \sin\theta) t_{\text{vuelo}} - \frac{1}{2}gt_{\text{vuelo}}^2 =& 0\\
+    v_0 \sin\theta  - \frac{1}{2}gt_{\text{vuelo}} = &0\\
+   \frac{1}{2}gt_{\text{vuelo}} = & v_0 \sin\theta\\
+t_{\text{vuelo}} =& 2\frac{v_0 \sin\theta}{g}\,.
+\end{align*}
+Esto quiere decir que, para una cierta velocidad inicial, a mayor ángulo de lanzamiento, mayor es el tiempo de vuelo.
+
+
+% --- Fin del código LaTeX ---
+
+\subsection*{Altura Máxima usando Conservación de la Energía}
+
+El principio de conservación de la energía mecánica nos ofrece una forma sumamente elegante y directa de derivar la fórmula de la altura máxima ($H$) en el movimiento parabólico, sin necesidad de recurrir a las ecuaciones paramétricas del tiempo.
+
+Dado que en nuestro modelo ideal despreciamos la resistencia del aire, la única fuerza que realiza trabajo sobre el proyectil una vez lanzado es la fuerza de gravedad. Como la gravedad es una fuerza conservativa, la energía mecánica total del sistema ($E_{\text{total}} = K + U_g$) permanece constante en cualquier punto de la trayectoria.
+
+\subsubsection*{Paso 1: Energía en el Punto de Lanzamiento (Estado Inicial)}
+Situamos nuestro nivel de referencia para la energía potencial gravitacional en el suelo ($y_0 = 0$).
+\begin{itemize}
+    \item \textbf{Energía Potencial Inicial ($U_i$):} Como la altura es cero, $U_i = 0$.
+    \item \textbf{Energía Cinética Inicial ($K_i$):} El proyectil es lanzado con una velocidad total $v_0$. Por lo tanto,
+    \begin{equation}
+        K_i = \frac{1}{2} m v_0^2.
+    \end{equation}
+\end{itemize}
+La energía mecánica total inicial es simplemente
+\begin{equation}
+    E_i = K_i + U_i = \frac{1}{2} m v_0^2.
+    \label{eq:energia_inicial_parabola}
+\end{equation}
+
+\subsubsection*{Paso 2: Energía en la Altura Máxima (Estado Final)}
+En el punto más alto de la trayectoria ($y = H$), la componente vertical de la velocidad se vuelve cero ($v_y = 0$). \textbf{¡Atención!} Esto no significa que el objeto se detenga. La componente horizontal de la velocidad ($v_x = v_0 \cos\theta$) permanece constante durante todo el vuelo.
+\begin{itemize}
+    \item \textbf{Energía Potencial Final ($U_f$):} A una altura $H$, la energía es
+    \begin{equation}
+        U_f = mgH.
+    \end{equation}
+    \item \textbf{Energía Cinética Final ($K_f$):} Dado que la única velocidad que tiene el proyectil en la cima es la horizontal, su velocidad total en ese instante es $v_f = v_0 \cos\theta$. La energía cinética será
+    \begin{equation}
+        K_f = \frac{1}{2} m (v_0 \cos\theta)^2 = \frac{1}{2} m v_0^2 \cos^2\theta.
+    \end{equation}
+\end{itemize}
+La energía mecánica total en la cima es
+\begin{equation}
+    E_f = K_f + U_f = \frac{1}{2} m v_0^2 \cos^2\theta + mgH.
+    \label{eq:energia_final_parabola}
+\end{equation}
+
+\subsubsection*{Paso 3: Igualar y Resolver (Álgebra y Trigonometría)}
+Por el principio de conservación de la energía, igualamos el estado inicial (\ref{eq:energia_inicial_parabola}) con el estado final (\ref{eq:energia_final_parabola}):
+\begin{equation}
+    \frac{1}{2} m v_0^2 = \frac{1}{2} m v_0^2 \cos^2\theta + mgH.
+\end{equation}
+Notamos inmediatamente que la masa ($m$) aparece en todos los términos de la ecuación, por lo que podemos cancelarla dividiendo toda la expresión por $m$. Esto confirma que la trayectoria de caída libre es independiente de la masa del objeto:
+\begin{equation}
+    \frac{1}{2} v_0^2 = \frac{1}{2} v_0^2 \cos^2\theta + gH.
+\end{equation}
+Nuestro objetivo es despejar la altura máxima $H$. Primero, pasamos el término de la energía cinética restante al lado izquierdo restando:
+\begin{equation}
+    gH = \frac{1}{2} v_0^2 - \frac{1}{2} v_0^2 \cos^2\theta.
+\end{equation}
+Factorizamos el término común $\frac{1}{2} v_0^2$ en el lado derecho:
+\begin{equation}
+    gH = \frac{1}{2} v_0^2 \left( 1 - \cos^2\theta \right).
+\end{equation}
+Aquí entra en juego la identidad trigonométrica fundamental ($\sin^2\theta + \cos^2\theta = 1$), de la cual deducimos que $1 - \cos^2\theta = \sin^2\theta$. Sustituyendo esto en nuestra ecuación:
+\begin{equation}
+    gH = \frac{1}{2} v_0^2 \sin^2\theta.
+\end{equation}
+Finalmente, dividimos por la aceleración de la gravedad $g$ para obtener la ecuación de la altura máxima:
+\begin{equation}
+    H = \frac{v_0^2 \sin^2\theta}{2g}.
+\end{equation}
+
+\textbf{Conclusión:} 
+Hemos recuperado exactamente la misma fórmula que derivamos anteriormente mediante cinemática (Ecuación 3.48). Este método demuestra la profunda consistencia interna de la física: ya sea que analicemos el problema rastreando fuerzas y tiempos (Newton) o rastreando el intercambio entre movimiento y altura (Energía), el universo nos entrega siempre la misma verdad inmutable.
+
+
+
+% --- Inicio del código LaTeX para insertar ---
+
+% --- Inicio del código LaTeX para insertar ---
+
 
 \section{Conservación de la Cantidad de Movimiento}
 
@@ -5282,321 +5668,8 @@ Al despejar algebraicamente, obtenemos la condición geométrica que deben cumpl
 El álgebra del Centro de Masas nos revela que los dos fotones resultantes de la aniquilación deben tener \textbf{la misma energía} (misma magnitud de momento) y deben salir disparados en \textbf{direcciones exactamente opuestas} (signo negativo en el vector). De esta manera, el ``empuje'' del primer fotón hacia la derecha cancela perfectamente el ``empuje'' del segundo fotón hacia la izquierda, garantizando que el momento total del sistema permanezca en su valor inmutable de cero.
 
 
-\section{Movimiento parabólico}
-Ver \href{https://colab.research.google.com/drive/1YMC00LP9HcuapJtmcpAcivhiywmEcPwo?usp=sharing}{Colab notebook}
 
 
-% --- Inicio del código LaTeX para insertar ---
-
-A continuación se presentan las ecuaciones clave del movimiento parabólico (o de proyectil), expresadas en términos de la magnitud de la velocidad inicial ($v_0$) y el ángulo de lanzamiento ($\theta$). Ver figura~\ref{fig:movimiento_parabolico_ascendente} Estas fórmulas asumen que el punto de lanzamiento y el de aterrizaje están a la misma altura y que la resistencia del aire es despreciable.
-
-% --- Inicio del código LaTeX para insertar ---
-
-\begin{figure}[h!] % El [h!] sugiere a LaTeX que intente colocar la figura "aquí"
-    \centering % Centra la figura en la página
-    \begin{tikzpicture}[
-        scale=1, % Escala general de la figura
-        font=\large, % Tamaño de la fuente para las etiquetas
-        axis/.style={->, %stealth, 
-        thick}, % Estilo para los ejes
-        vector/.style={->, %>=stealth, 
-        ultra thick}, % Estilo para los vectores
-        helpline/.style={dashed, gray} % Estilo para líneas de ayuda
-    ]
-        % --- Dibujar los ejes y el suelo ---
-        \draw[axis] (0,0) -- (8.5,0) node[below] {$x$};
-        \draw[axis] (0,0) -- (0,4.5) node[left] {$y$}; % Aumentado un poco para el pico
-        \node[below left] at (0,0) {Origen};
-
-        % --- Dibujar la trayectoria parabólica ---
-        % La trayectoria está definida por la función y = 2x - 0.25x^2
-        \draw[blue, thick, domain=0:8, samples=100] plot (\x, {2*\x - 0.25*\x^2}) node[above right] {Trayectoria};
-        
-        % --- Definir la posición de la partícula en la trayectoria ---
-        % CAMBIO PRINCIPAL: Cambiamos xpos de 6 a 2 para estar en la parte ascendente
-        \def\xpos{2} 
-        \def\ypos{2*\xpos - 0.25*\xpos^2} % Coordenada y calculada automáticamente
-        
-        % --- Dibujar la partícula ---
-        \shade[ball color=red] (\xpos, \ypos) circle (0.15cm);
-        
-        % --- Dibujar los vectores de velocidad ---
-        % Vector velocidad total (tangente a la trayectoria)
-        % La pendiente de la tangente es y'(x) = 2 - 0.5x
-        % En x=2, la pendiente es 2 - 0.5*2 = 1. El ángulo es 45 grados.
-        \begin{scope}[shift={(\xpos,\ypos)}, rotate=45]
-            \draw[vector, green!50!black] (0,0) -- (2,0) node[above] {$\boldsymbol{v}$};
-        \end{scope}
-
-        % Componente horizontal de la velocidad (vx)
-        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos + 1.414, \ypos) node[below] {${v}_x=v_{x0}$};
-
-        % Componente vertical de la velocidad (vy)
-        \draw[vector, green!50!black] (\xpos, \ypos) -- (\xpos, \ypos + 1.414) node[left] {${v}_y$};
-
-        % Líneas de ayuda para mostrar la composición de vectores
-        \draw[helpline] (\xpos + 1.414, \ypos) -- (\xpos + 1.414, \ypos + 1.414);
-        \draw[helpline] (\xpos, \ypos + 1.414) -- (\xpos + 1.414, \ypos + 1.414);
-        
-        % --- Dibujar el vector Fuerza Gravitacional ---
-        % Desplazado a la izquierda para mejor visibilidad
-        \draw[vector, red] (\xpos, \ypos) -- (\xpos, \ypos - 1.5) node[right] {$\boldsymbol{F} = (0,-mg)$};
-        
-        % --- Mostrar el vector velocidad inicial ---
-        \draw[vector, gray] (0,0) -- (1,2) node[above left] {$\boldsymbol{v}_0$};
-        % Ángulo de lanzamiento
-        \draw (0.5,0) arc (0:63.4:0.5);
-        \node at (0.8, 0.25) {$\theta$};
-
-    \end{tikzpicture}
-    \caption{Diagrama de cuerpo libre para una partícula en movimiento parabólico. El vector velocidad $\boldsymbol{v}$ tiene una componente vertical ${v}_y$ positiva (hacia arriba) y una componente constante $v_x$, mientras que la fuerza gravitacional $\boldsymbol{F}$ sigue actuando constantemente hacia abajo.}
-    \label{fig:movimiento_parabolico_ascendente}
-\end{figure}
-
-\subsection*{Configuración Inicial}
-\begin{itemize}
-    \item \textbf{Velocidad Inicial (magnitud):} $v_0$
-    \item \textbf{Ángulo de Lanzamiento:} $\theta$ (medido desde la horizontal)
-    \item \textbf{Aceleración debida a la Gravedad:} $g$ (considerada como un valor positivo, $\approx \SI{9.8}{\meter\per\second\squared}$)
-    \item \textbf{Posición Inicial:} $(x_0, y_0) = (0, 0)$
-\end{itemize}
-
-\subsection*{Componentes de la Velocidad Inicial}
-El vector de velocidad inicial se descompone en sus componentes horizontal ($v_{x0}$) y vertical ($v_{y0}$):
-\begin{equation}
-    \boxed{v_{x0} = v_0 \cos\theta}
-\end{equation}
-\begin{equation}
-    \boxed{v_{y0} = v_0 \sin\theta}
-\end{equation}
-
-\subsection*{Ecuaciones de la Velocidad en función del Tiempo, $t$}
-Estas ecuaciones describen las componentes de la velocidad en cualquier instante $t$.
-
-\paragraph{Velocidad Horizontal ($v_x$):}
-La velocidad horizontal es constante.
-\begin{equation}
-    \boxed{v_x(t) = v_0 \cos\theta}
-\end{equation}
-
-\paragraph{Velocidad Vertical ($v_y$):}
-La velocidad vertical cambia debido a la aceleración gravitacional.
-\begin{equation}
-    \boxed{v_y(t) = v_0 \sin\theta - gt}
-\end{equation}
-
-\subsection*{Ecuaciones de la Posición en función del Tiempo, $t$}
-Estas son las ecuaciones paramétricas del movimiento que describen las coordenadas $(x, y)$ del proyectil en cualquier instante $t$.
-
-\paragraph{Posición Horizontal ($x$) a velocidad en $x$ constante:}
-\begin{equation}
-    \boxed{x(t) = (v_0 \cos\theta) t}
-\end{equation}
-
-\paragraph{Posición Vertical ($y$), ecuación de movimiento a aceleración constante~\eqref{eq:lanzamiento}:}
-\begin{equation}
-    \boxed{y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2}
-\end{equation}
-
-\section*{Ecuación de la Trayectoria ($y$ en función de $x$)}
-Esta ecuación describe la forma parabólica del camino del proyectil, eliminando la variable del tiempo. Se obtiene despejando $t$ de la ecuación de $x(t)$
-\begin{align}
-    t = \frac{x}{v_0\cos\theta}\,,
-\end{align}
-y sustituyéndola en la ecuación de $y(t)$.
-\begin{equation}
-    \boxed{
-    y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2
-    }
-\end{equation}
-Esta es una ecuación de la forma $y = Ax - Bx^2$, que es la fórmula matemática de una parábola que se abre hacia abajo.
-
-\subsection*{Resumen en una Tabla}
-Ver Tabla~\ref{tab:parabolic_equations} 
-
-\begin{table}[h!]
-\centering,
-\caption{Resumen de las Ecuaciones del Movimiento Parabólico.}
-\label{tab:parabolic_equations}
-\renewcommand{\arraystretch}{1.5} % Aumenta el espaciado vertical de las filas
-\begin{tabular}{| >{\centering\arraybackslash}m{2.5cm} | >{\centering\arraybackslash}m{5cm} | >{\centering\arraybackslash}m{5cm} |}
-\hline
-\textbf{Cantidad} & \textbf{Componente Horizontal (x)} & \textbf{Componente Vertical (\subsection*{Resumen en una Tabla}
-y)} \\
-\hline \hline
-\textbf{Aceleración} & $a_x = 0$ & $a_y = -g$ \\
-\hline
-\textbf{Velocidad ($t$)} & $v_x(t) = v_0 \cos\theta$ & $v_y(t) = v_0 \sin\theta - gt$ \\
-\hline
-\textbf{Posición ($t$)} & $x(t) = (v_0 \cos\theta) t$ & $y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2$ \\
-\hline
-\textbf{Trayectoria ($y$ vs $x$)} & \multicolumn{2}{c|}{$y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2$} \\
-\hline
-\end{tabular}
-\end{table}
-
-% --- Fin del código LaTeX ---
-% --- Inicio del código LaTeX para insertar ---
-
-\subsection{Demostración del Alcance Máximo (R)}
-El \textbf{alcance (R)} es la distancia horizontal total recorrida por el proyectil. Ocurre cuando el proyectil regresa a su altura inicial, es decir, cuando $y(x) = 0$.
-
-\subsection*{Paso 1: Usar la Ecuación de la Trayectoria}
-Partimos de la ecuación de la trayectoria:
-\[ y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
-Para encontrar el alcance, buscamos los valores de $x$ para los cuales $y(x)=0$.
-\[ 0 = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
-
-%TODO: Usar conservación de la energía
-\subsection*{Paso 2: Resolver la Ecuación para x}
-Esta es una ecuación cuadrática para $x$ que podemos resolver factorizando:
-\[ x \left[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x \right] = 0 \]
-Esta ecuación tiene dos soluciones: $x=0$ (el punto de lanzamiento) y la solución que nos interesa, que corresponde al punto de aterrizaje ($x=R$):
-\[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)R = 0 \implies R = \tan\theta \cdot \frac{2v_0^2\cos^2\theta}{g} \]
-
-\subsection*{Paso 3: Simplificar la Expresión}
-Usando la identidad $\tan\theta = \frac{\sin\theta}{\cos\theta}$, simplificamos:
-\[ R = \left(\frac{\sin\theta}{\cos\theta}\right) \frac{2v_0^2\cos^2\theta}{g} = \frac{2v_0^2 \sin\theta \cos\theta}{g} \]
-Finalmente, aplicamos la identidad del ángulo doble, $2\sin\theta\cos\theta = \sin(2\theta)$, para obtener la \textbf{fórmula general del alcance}:
-\begin{equation}
-    \boxed{R = \frac{v_0^2 \sin(2\theta)}{g}}
-\end{equation}
-
-\subsection*{Paso 4: Encontrar el Alcance Máximo ($R_{\text{max}}$)}
-Para una $v_0$ dada, $R$ es máximo cuando $\sin(2\theta)$ es máximo. El valor máximo de la función seno es \textbf{1}.
-\[ \sin(2\theta) = 1 \implies 2\theta = 90^\circ \implies \boxed{\theta = 45^\circ} \]
-Sustituyendo $\sin(2\theta)=1$ en la fórmula del alcance, encontramos el valor del \textbf{alcance máximo}:
-\begin{equation}
-    \boxed{R_{\text{max}} = \frac{v_0^2}{g}}
-\end{equation}
-
-\subsection{Demostración de la Altura Máxima (H)}
-La \textbf{altura máxima (H)} es el punto más alto de la trayectoria. Físicamente, este es el punto en el que la componente vertical de la velocidad se vuelve cero ($v_y = 0$) por un instante.
-
-\subsection*{Paso 1: Encontrar el Tiempo para Alcanzar la Altura Máxima ($t_{\text{pico}}$)}
-Usamos la ecuación de la velocidad vertical y la igualamos a cero:
-\[ v_y(t) = v_0 \sin\theta - gt \]
-\[ 0 = v_0 \sin\theta - gt_{\text{pico}} \]
-Despejando el tiempo para llegar al pico, $t_{\text{pico}}$:
-\[ \boxed{t_{\text{pico}} = \frac{v_0 \sin\theta}{g}} \]
-\textit{(Nota: Este es exactamente la mitad del tiempo total de vuelo).}
-
-\subsection*{Ejemplo: Tiempo de vuelo}
-Calcular el tiempo de vuelo del movimiento parabólico. Este se obtiene de la condición
-$y(t_{\text{vuelo}}) = 0$, de modo que
-\begin{align*}
-    (v_0 \sin\theta) t_{\text{vuelo}} - \frac{1}{2}gt_{\text{vuelo}}^2 =& 0\\
-    v_0 \sin\theta  - \frac{1}{2}gt_{\text{vuelo}} = &0\\
-   \frac{1}{2}gt_{\text{vuelo}} = & v_0 \sin\theta\\
-t_{\text{vuelo}} =& 2\frac{v_0 \sin\theta}{g}\,.
-\end{align*}
-Esto quiere decir que, para una cierta velocidad inicial, a mayor ángulo de lanzamiento, mayor es el tiempo de vuelo.
-
-\subsection*{Paso 2: Calcular la Altura en ese Tiempo}
-Ahora que sabemos en qué momento se alcanza la altura máxima, sustituimos $t = t_{\text{pico}}$ en la ecuación de la posición vertical, $y(t)$. La altura en este momento será la altura máxima, $H$.
-\begin{align*}
-    H &= y(t_{\text{pico}}) = (v_0 \sin\theta)t_{\text{pico}} - \frac{1}{2}gt_{\text{pico}}^2 \\
-    % Sustituimos la expresión para t_pico
-    &= (v_0 \sin\theta)\left(\frac{v_0 \sin\theta}{g}\right) - \frac{1}{2}g\left(\frac{v_0 \sin\theta}{g}\right)^2 \\
-    % Simplificamos algebraicamente
-    &= \frac{v_0^2 \sin^2\theta}{g} - \frac{1}{2}g\left(\frac{v_0^2 \sin^2\theta}{g^2}\right) \\
-    &= \frac{v_0^2 \sin^2\theta}{g} - \frac{v_0^2 \sin^2\theta}{2g} \\
-    % Restamos las fracciones
-    &= \frac{1}{2} \frac{v_0^2 \sin^2\theta}{g}
-\end{align*}
-Esto nos da la \textbf{fórmula general de la altura máxima}:
-\begin{equation}
-    \boxed{H = \frac{v_0^2 \sin^2\theta}{2g}}
-\end{equation}
-
-\subsection*{Método Alternativo: Usando la ``Ecuación Eterna"}
-Una forma más rápida es usar la ecuación cinemática que no depende del tiempo: $v_f^2 = v_i^2 + 2a\Delta s$, aplicada a la dirección vertical ($v_{fy}^2 = v_{iy}^2 + 2a_y \Delta y$).
-\begin{itemize}
-    \item En la altura máxima, la velocidad final es cero: $v_{fy} = 0$.
-    \item La velocidad inicial es $v_{iy} = v_0 \sin\theta$.
-    \item La aceleración es $a_y = -g$.
-    \item El desplazamiento es la altura máxima, $\Delta y = H$.
-\end{itemize}
-Sustituyendo:
-\[ 0^2 = (v_0 \sin\theta)^2 + 2(-g)H \implies 2gH = v_0^2 \sin^2\theta \]
-Despejando $H$ se obtiene el mismo resultado:
-\[ H = \frac{v_0^2 \sin^2\theta}{2g} \]
-
-% --- Fin del código LaTeX ---
-
-\subsection*{Método Alternativo: Altura Máxima usando Conservación de la Energía}
-
-El principio de conservación de la energía mecánica nos ofrece una forma sumamente elegante y directa de derivar la fórmula de la altura máxima ($H$) en el movimiento parabólico, sin necesidad de recurrir a las ecuaciones paramétricas del tiempo.
-
-Dado que en nuestro modelo ideal despreciamos la resistencia del aire, la única fuerza que realiza trabajo sobre el proyectil una vez lanzado es la fuerza de gravedad. Como la gravedad es una fuerza conservativa, la energía mecánica total del sistema ($E_{\text{total}} = K + U_g$) permanece constante en cualquier punto de la trayectoria.
-
-\subsubsection*{Paso 1: Energía en el Punto de Lanzamiento (Estado Inicial)}
-Situamos nuestro nivel de referencia para la energía potencial gravitacional en el suelo ($y_0 = 0$).
-\begin{itemize}
-    \item \textbf{Energía Potencial Inicial ($U_i$):} Como la altura es cero, $U_i = 0$.
-    \item \textbf{Energía Cinética Inicial ($K_i$):} El proyectil es lanzado con una velocidad total $v_0$. Por lo tanto,
-    \begin{equation}
-        K_i = \frac{1}{2} m v_0^2.
-    \end{equation}
-\end{itemize}
-La energía mecánica total inicial es simplemente
-\begin{equation}
-    E_i = K_i + U_i = \frac{1}{2} m v_0^2.
-    \label{eq:energia_inicial_parabola}
-\end{equation}
-
-\subsubsection*{Paso 2: Energía en la Altura Máxima (Estado Final)}
-En el punto más alto de la trayectoria ($y = H$), la componente vertical de la velocidad se vuelve cero ($v_y = 0$). \textbf{¡Atención!} Esto no significa que el objeto se detenga. La componente horizontal de la velocidad ($v_x = v_0 \cos\theta$) permanece constante durante todo el vuelo.
-\begin{itemize}
-    \item \textbf{Energía Potencial Final ($U_f$):} A una altura $H$, la energía es
-    \begin{equation}
-        U_f = mgH.
-    \end{equation}
-    \item \textbf{Energía Cinética Final ($K_f$):} Dado que la única velocidad que tiene el proyectil en la cima es la horizontal, su velocidad total en ese instante es $v_f = v_0 \cos\theta$. La energía cinética será
-    \begin{equation}
-        K_f = \frac{1}{2} m (v_0 \cos\theta)^2 = \frac{1}{2} m v_0^2 \cos^2\theta.
-    \end{equation}
-\end{itemize}
-La energía mecánica total en la cima es
-\begin{equation}
-    E_f = K_f + U_f = \frac{1}{2} m v_0^2 \cos^2\theta + mgH.
-    \label{eq:energia_final_parabola}
-\end{equation}
-
-\subsubsection*{Paso 3: Igualar y Resolver (Álgebra y Trigonometría)}
-Por el principio de conservación de la energía, igualamos el estado inicial (\ref{eq:energia_inicial_parabola}) con el estado final (\ref{eq:energia_final_parabola}):
-\begin{equation}
-    \frac{1}{2} m v_0^2 = \frac{1}{2} m v_0^2 \cos^2\theta + mgH.
-\end{equation}
-Notamos inmediatamente que la masa ($m$) aparece en todos los términos de la ecuación, por lo que podemos cancelarla dividiendo toda la expresión por $m$. Esto confirma que la trayectoria de caída libre es independiente de la masa del objeto:
-\begin{equation}
-    \frac{1}{2} v_0^2 = \frac{1}{2} v_0^2 \cos^2\theta + gH.
-\end{equation}
-Nuestro objetivo es despejar la altura máxima $H$. Primero, pasamos el término de la energía cinética restante al lado izquierdo restando:
-\begin{equation}
-    gH = \frac{1}{2} v_0^2 - \frac{1}{2} v_0^2 \cos^2\theta.
-\end{equation}
-Factorizamos el término común $\frac{1}{2} v_0^2$ en el lado derecho:
-\begin{equation}
-    gH = \frac{1}{2} v_0^2 \left( 1 - \cos^2\theta \right).
-\end{equation}
-Aquí entra en juego la identidad trigonométrica fundamental ($\sin^2\theta + \cos^2\theta = 1$), de la cual deducimos que $1 - \cos^2\theta = \sin^2\theta$. Sustituyendo esto en nuestra ecuación:
-\begin{equation}
-    gH = \frac{1}{2} v_0^2 \sin^2\theta.
-\end{equation}
-Finalmente, dividimos por la aceleración de la gravedad $g$ para obtener la ecuación de la altura máxima:
-\begin{equation}
-    H = \frac{v_0^2 \sin^2\theta}{2g}.
-\end{equation}
-
-\textbf{Conclusión:} 
-Hemos recuperado exactamente la misma fórmula que derivamos anteriormente mediante cinemática (Ecuación 3.48). Este método demuestra la profunda consistencia interna de la física: ya sea que analicemos el problema rastreando fuerzas y tiempos (Newton) o rastreando el intercambio entre movimiento y altura (Energía), el universo nos entrega siempre la misma verdad inmutable.
-
-
-
-% --- Inicio del código LaTeX para insertar ---
-
-% --- Inicio del código LaTeX para insertar ---
 
 \subsubsection{Ejemplo Conceptual: La Explosión de una Granada en Vuelo}
 
@@ -10441,6 +10514,68 @@ un chip del tamaño de un sello postal.
     \end{enumerate}
 
 
+\item[Ejercicio \ref{item:foton}]
+
+\subsubsection*{Solución Detallada}
+    
+    Utilizamos la fórmula del Efecto Doppler Relativista para una fuente en reposo y un observador que se acerca:
+    \begin{equation}
+        f_{\text{obs}} = f_0 \sqrt{\frac{1 + \beta}{1 - \beta}},
+    \end{equation}
+    donde hemos definido $\beta = \frac{v}{c}$.
+    
+    Dividimos ambos lados entre $f_0$:
+    \begin{equation}
+        \frac{f_{\text{obs}}}{f_0} = \sqrt{\frac{1 + \beta}{1 - \beta}}.
+    \end{equation}
+    
+    Para despejar $\beta$, elevamos al cuadrado ambos lados de la ecuación:
+    \begin{equation}
+        \left(\frac{f_{\text{obs}}}{f_0}\right)^2 = \frac{1 + \beta}{1 - \beta}.
+    \end{equation}
+    
+    Multiplicamos por $(1 - \beta)$ a ambos lados:
+    \begin{equation}
+        \left(\frac{f_{\text{obs}}}{f_0}\right)^2 (1 - \beta) = 1 + \beta.
+    \end{equation}
+    
+    Expandimos el producto algebraico:
+    \begin{equation}
+        \left(\frac{f_{\text{obs}}}{f_0}\right)^2 - \left(\frac{f_{\text{obs}}}{f_0}\right)^2 \beta = 1 + \beta.
+    \end{equation}
+    
+    Agrupamos todos los términos que contienen a $\beta$ en el lado derecho y los independientes en el izquierdo:
+    \begin{equation}
+        \left(\frac{f_{\text{obs}}}{f_0}\right)^2 - 1 = \beta \left[ 1 + \left(\frac{f_{\text{obs}}}{f_0}\right)^2 \right].
+    \end{equation}
+    
+    Despejamos $\beta$ pasando el corchete a dividir:
+    \begin{equation}
+        \beta = \frac{\left(\frac{f_{\text{obs}}}{f_0}\right)^2 - 1}{\left(\frac{f_{\text{obs}}}{f_0}\right)^2 + 1}.
+        \label{eq:beta_fotomulta}
+    \end{equation}
+    
+    Sustituimos los valores numéricos de las frecuencias ($f_{\text{obs}} = 550 \text{ THz}$ y $f_0 = 450 \text{ THz}$):
+    \begin{enumerate}
+        \item Relación de frecuencias: $\frac{f_{\text{obs}}}{f_0} = \frac{550}{450} = \frac{55}{45} = \frac{11}{9} \approx 1.2222$.
+        \item Cuadrado de la relación: $\left(\frac{11}{9}\right)^2 = \frac{121}{81} \approx 1.4938$.
+    \end{enumerate}
+    Sustituimos este valor en la Ecuación (\ref{eq:beta_fotomulta}):
+    \begin{equation}
+        \beta = \frac{\frac{121}{81} - 1}{\frac{121}{81} + 1} = \frac{\frac{121 - 81}{81}}{\frac{121 + 81}{81}} = \frac{\frac{40}{81}}{\frac{202}{81}}.
+    \end{equation}
+    Los denominadores $81$ se cancelan algebraicamente:
+    \begin{equation}
+        \beta = \frac{40}{202} = \frac{20}{101} \approx 0.198.
+    \end{equation}
+    
+    Finalmente, como $\beta = \frac{v}{c}$, despejamos la velocidad $v$ multiplicando por $c$:
+    \begin{equation}
+        v = \beta c \approx 0.198c \approx 5.94 \times 10^7 \text{ m/s} \quad (\approx 213,840 \text{ km/h}).
+    \end{equation}
+    \textbf{Respuesta:} El conductor debería viajar a una velocidad de $v = 0.198c$ (aproximadamente el $20\%$ de la velocidad de la luz) \textbf{acercándose} al semáforo.
+
+    
 \end{itemize}
 
 
