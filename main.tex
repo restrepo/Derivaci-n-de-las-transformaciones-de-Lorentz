@@ -4836,6 +4836,7 @@ Como en el punto final de altura máxima, $y_{\text{max}}$, la velocidad final e
 \end{align}
 Igualando las energías: $E_{\text{total}}^{\text{final}}=E_{\text{total}}^{\text{inicial}}$, tenemos que
 \begin{align}
+\label{eq:ymax}
     \cancel{m}gy_{\text{max}} =& \frac{1}{2}\cancel{m}v_0^2\nonumber\\
     y_{\text{max}}=&\frac{v_0^2}{2g}\,.
 \end{align}
@@ -4849,11 +4850,13 @@ Reemplazando en la ecuación de movimiento~\eqref{eq:lanzamiento}) (con $y_0=0$
 \end{align*}
 que se anula sí
 \begin{align}
+\label{eq:tpico}
     v_0-gt_{\text{pico}}=&0\nonumber\\
     t_{\text{pico}}=\frac{v_0}{g}\,.
 \end{align}
 El tiempo de vuelo es el doble de ese tiempo, pues por conservación de la energía donde toda la energía potencial se vuelve a convertir en su totalidad en energía cinética, el tiempo de bajada es igual al de subida
 \begin{equation}
+\label{eq:tvuelo}
     t_{\text{vuelo}}=2t_{\text{pico}}=\frac{2v_0}{g}\,.
 \end{equation}
 
@@ -5002,37 +5005,29 @@ y)} \\
 \hline \hline
 \textbf{Aceleración} & $a_x = 0$ & $a_y = -g$ \\
 \hline
-\textbf{Velocidad ($t$)} & $v_x(t) = v_0 \cos\theta$ & $v_y(t) = v_0 \sin\theta - gt$ \\
+\textbf{Velocidad ($t$)} & $v_x = v_0 \cos\theta$ & $v_y(t) = v_0 \sin\theta - gt$ \\
 \hline
 \textbf{Posición ($t$)} & $x(t) = (v_0 \cos\theta) t$ & $y(t) = (v_0 \sin\theta) t - \frac{1}{2}gt^2$ \\
 \hline
-\textbf{Trayectoria ($y$ vs $x$)} & \multicolumn{2}{c|}{$y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2$} \\
+\textbf{Trayectoria ($y$ vs $x$)} & \multicolumn{2}{c|}{$y(x) = x\tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2$} \\
 \hline
 \end{tabular}
 \end{table}
 
-% --- Fin del código LaTeX ---
-% --- Inicio del código LaTeX para insertar ---
+Los movimientos en $x$ y $y$ son independientes, el primero corresponde a un movimiento a velocidad constante $v_x=v_0\cos\theta$ y el segundo a un movimiento de caída libre con velocidad inicial $v_{y0}=v_0\sin\theta$.
 
-\subsection{Demostración del Alcance Máximo (R)}
-El \textbf{alcance (R)} es la distancia horizontal total recorrida por el proyectil. Ocurre cuando el proyectil regresa a su altura inicial, es decir, cuando $y(x) = 0$.
+Por lo tanto, usando la parte de movimiento vertical podemos obtener la altura máxima, el tiempo para alcanzarla y el tiempo de vuelo de las ecuaciones~\eqref{eq:ymax}, \eqref{eq:tpico} y\eqref{eq:tvuelo}
+\begin{align}
+    y_{\texttt{max}} =& \frac{v_{y0}^2}{2g}=\frac{v_0^2\sin^2\theta}{2g}\\
+    t_{\text{pico}} =&\frac{v_{y0}}{g} = \frac{v_0\sin\theta}{g}\\
+    t_{\text{vuelo}} =& 2t_{\text{pico}}=\frac{2v_0\sin\theta}{g}\,.
+\end{align}
 
-\subsection*{Paso 1: Usar la Ecuación de la Trayectoria}
-Partimos de la ecuación de la trayectoria:
-\[ y(x) = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
-Para encontrar el alcance, buscamos los valores de $x$ para los cuales $y(x)=0$.
-\[ 0 = (\tan\theta)x - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x^2 \]
-
-%TODO: Usar conservación de la energía
-\subsection*{Paso 2: Resolver la Ecuación para x}
-Esta es una ecuación cuadrática para $x$ que podemos resolver factorizando:
-\[ x \left[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)x \right] = 0 \]
-Esta ecuación tiene dos soluciones: $x=0$ (el punto de lanzamiento) y la solución que nos interesa, que corresponde al punto de aterrizaje ($x=R$):
-\[ \tan\theta - \left(\frac{g}{2v_0^2\cos^2\theta}\right)R = 0 \implies R = \tan\theta \cdot \frac{2v_0^2\cos^2\theta}{g} \]
-
-\subsection*{Paso 3: Simplificar la Expresión}
-Usando la identidad $\tan\theta = \frac{\sin\theta}{\cos\theta}$, simplificamos:
-\[ R = \left(\frac{\sin\theta}{\cos\theta}\right) \frac{2v_0^2\cos^2\theta}{g} = \frac{2v_0^2 \sin\theta \cos\theta}{g} \]
+Con el tiempo de vuelo, podemos hallar el alcance del movimiento parabólico, $R$, que es la distancia recorrida hasta regresar al suelo
+\begin{align*}
+    R=&v_{x0}t_{\text{vuelo}}\\
+    =&\frac{2v_0\cos\theta\sin\theta}{g}\,.
+\end{align*}
 Finalmente, aplicamos la identidad del ángulo doble, $2\sin\theta\cos\theta = \sin(2\theta)$, para obtener la \textbf{fórmula general del alcance}:
 \begin{equation}
     \boxed{R = \frac{v_0^2 \sin(2\theta)}{g}}
@@ -5045,29 +5040,8 @@ Sustituyendo $\sin(2\theta)=1$ en la fórmula del alcance, encontramos el valor 
 \begin{equation}
     \boxed{R_{\text{max}} = \frac{v_0^2}{g}}
 \end{equation}
-
-
-\subsection{Tiempo para Alcanzar la Altura Máxima ($t_{\text{pico}}$)}
-Usamos la ecuación de la velocidad vertical y la igualamos a cero:
-\[ v_y(t) = v_0 \sin\theta - gt \]
-\[ 0 = v_0 \sin\theta - gt_{\text{pico}} \]
-Despejando el tiempo para llegar al pico, $t_{\text{pico}}$:
-\[ \boxed{t_{\text{pico}} = \frac{v_0 \sin\theta}{g}} \]
-\textit{(Nota: Este es exactamente la mitad del tiempo total de vuelo).}
-
-\subsection*{Ejemplo: Tiempo de vuelo}
-Calcular el tiempo de vuelo del movimiento parabólico. Este se obtiene de la condición
-$y(t_{\text{vuelo}}) = 0$, de modo que
-\begin{align*}
-    (v_0 \sin\theta) t_{\text{vuelo}} - \frac{1}{2}gt_{\text{vuelo}}^2 =& 0\\
-    v_0 \sin\theta  - \frac{1}{2}gt_{\text{vuelo}} = &0\\
-   \frac{1}{2}gt_{\text{vuelo}} = & v_0 \sin\theta\\
-t_{\text{vuelo}} =& 2\frac{v_0 \sin\theta}{g}\,.
-\end{align*}
-Esto quiere decir que, para una cierta velocidad inicial, a mayor ángulo de lanzamiento, mayor es el tiempo de vuelo.
-
-
 % --- Fin del código LaTeX ---
+% --- Inicio del código LaTeX para insertar ---
 
 \subsection{Altura Máxima usando Conservación de la Energía}
 
@@ -5137,6 +5111,14 @@ Finalmente, dividimos por la aceleración de la gravedad $g$ para obtener la ecu
 \textbf{Conclusión:} 
 Hemos recuperado exactamente la misma fórmula que derivamos anteriormente mediante cinemática (Ecuación 3.48). Este método demuestra la profunda consistencia interna de la física: ya sea que analicemos el problema rastreando fuerzas y tiempos (Newton) o rastreando el intercambio entre movimiento y altura (Energía), el universo nos entrega siempre la misma verdad inmutable.
 
+\subsubsection{La rápidez sólo depende de la altura}
+Como la energía se conserva, para cualquier punto de la trayectoria tenemos
+\begin{align}
+    \frac{1}{2}m v_0^2=&\frac{1}{2}m v^2 + mgy\nonumber\\
+    \frac{1}{2}v^2 =&\frac{1}{2} v_0^2 - gy\nonumber\\
+    v^2 =& v_0^2 - 2gy\nonumber\\
+    v(y)=&\sqrt{v_0^2-2gy}\,.
+\end{align}
 
 
 % --- Inicio del código LaTeX para insertar ---
@@ -5187,6 +5169,7 @@ La Ecuación (\ref{eq:cambio_momento_cero}) nos dice que el \textit{cambio total
     (\boldsymbol{p}_{1f} - \boldsymbol{p}_{1i}) + (\boldsymbol{p}_{2f} - \boldsymbol{p}_{2i}) = \boldsymbol{0}.
 \end{equation}
 
+
 Reorganizamos los términos, agrupando los momentos iniciales a un lado de la igualdad y los momentos finales al otro:
 \begin{equation}
     \boldsymbol{p}_{1i} + \boldsymbol{p}_{2i} = \boldsymbol{p}_{1f} + \boldsymbol{p}_{2f}.
@@ -5225,7 +5208,7 @@ Como el sistema está aislado (la fuerza externa neta es cero), la Primera Ley d
 En física, definimos un punto matemático ficticio llamado \textbf{Centro de Masas (CM)} que representa el promedio ponderado de la posición de toda la masa del sistema. La velocidad a la que se mueve este punto ($\boldsymbol{v}_{\text{CM}}$) se define dividiendo la cantidad de movimiento total entre la masa total:
 \begin{align}
     \boldsymbol{v}_{\text{CM}}=\frac{\boldsymbol{P}_{\text{total}}}{M_{\text{total}}} =  &
-\frac{\boldsymbol{p}_1+\boldsymbol{p}_12+\cdots+\boldsymbol{p}_N}{M_{\text{total}}}
+\frac{\boldsymbol{p}_1+\boldsymbol{p}_2+\cdots+\boldsymbol{p}_N}{M_{\text{total}}}
     \nonumber\\
     =&\frac{m_1\boldsymbol{v}_1 + m_2\boldsymbol{v}_2 + \dots + m_N\boldsymbol{v}_N}{M_{\text{total}}}.
 \end{align}
@@ -5750,7 +5733,7 @@ Si pudiéramos ``pausar'' el universo un segundo después de la explosión y pro
 
 El problema de un bloque deslizándose por un plano inclinado sin fricción es una extensión del concepto de caída libre. Aunque el objeto no cae verticalmente, su movimiento sigue siendo gobernado únicamente por la gravedad. La clave para resolver este problema es elegir un sistema de coordenadas adecuado y descomponer correctamente el vector de la fuerza gravitacional.
 
-\subsection{Configuración del Problema y Diagrama de Cuerpo Libre}
+\subsubsection{Configuración del Problema y Diagrama de Cuerpo Libre}
 
 Consideremos un bloque de masa $m$ que se mueve hacia abajo sobre un plano inclinado un ángulo $\theta$ con respecto a la horizontal. No hay fricción entre el bloque y el plano.
 
@@ -5811,7 +5794,7 @@ Consideremos un bloque de masa $m$ que se mueve hacia abajo sobre un plano incli
     \label{fig:plano_inclinado}
 \end{figure}
 
-\subsection{Análisis de las Fuerzas y Ecuaciones de Movimiento}
+\subsubsection{Análisis de las Fuerzas y Ecuaciones de Movimiento}
 
 Para analizar el movimiento, es mucho más conveniente elegir un sistema de coordenadas ``rotado'', donde el eje x es paralelo al plano inclinado (apuntando hacia abajo) y el eje y es perpendicular al plano (apuntando hacia afuera).
 
@@ -5841,7 +5824,7 @@ Ahora aplicamos la ley de Newton por separado en cada eje de nuestro sistema rot
     \[ \boxed{a_x = g \sin\theta} \]
 \end{itemize}
 
-\subsection{Conclusión: La Conexión con la Caída Libre}
+\subsubsection{Conclusión: La Conexión con la Caída Libre}
 
 La aceleración del bloque a lo largo del plano es $a = g \sin\theta$. Esta ecuación nos muestra cómo el plano inclinado ``diluye'' el efecto de la gravedad.
 
@@ -6096,9 +6079,218 @@ La dirección de la fuerza centrípeta es la misma que la de la aceleración cen
 
 % Asegúrate de tener \usepackage{tikz} y \usetikzlibrary{arrows.meta} en tu preámbulo.
 
+% =====================================================================
+% Va justo antes de \subsection{La ley de gravitación universal en
+% términos del campo} (archivo gravitacion_campo.tex), dentro de
+% \section{Ley de Gravitación Universal de Newton}.
+% Requiere: amsmath, siunitx.
+% =====================================================================
+
+\subsection{La prueba de la Luna}
+\label{subsec:prueba_luna}
+
+Una bala disparada horizontalmente desde lo alto de una montaña cae hacia la
+Tierra mientras avanza. Si su rapidez es suficiente, cae al mismo ritmo con
+que la superficie se curva y nunca llega al suelo: queda en órbita. Ver figura~\ref{fig:canon_newton}, curva C. Newton se
+preguntó si la Luna no sería precisamente eso, una bala de cañón muy lejana
+que cae continuamente hacia la Tierra.
+
+La Luna describe una órbita casi circular de radio
+$r_L \approx \SI{3.84e8}{\meter}$ en un período $T \approx 27{,}3$~días
+$\approx \SI{2.36e6}{\second}$. Su aceleración centrípeta, dirigida hacia el
+centro de la Tierra, es
+\begin{equation}
+  a_L = \frac{v^{2}}{r_L} = \frac{4\pi^{2} r_L}{T^{2}}
+  \approx \SI{2.72e-3}{\meter\per\second\squared} \,.
+  \label{eq:aceleracion_luna}
+\end{equation}
+Comparada con la aceleración de caída libre en la superficie,
+\begin{equation}
+  \frac{g_0}{a_L} \approx \frac{\num{9.8}}{\num{2.72e-3}}
+  \approx 3600 = 60^{2} \,,
+  \label{eq:cociente_luna}
+\end{equation}
+y la Luna está a una distancia del centro de la Tierra de unos $60$ radios
+terrestres, $r_L \approx 60\,R_T$. A una distancia $60$ veces mayor, la
+aceleración es $60^{2}$ veces menor. Dicho de otra manera: en un segundo una
+manzana cae $\SI{4.9}{\meter}$, mientras que la Luna se desvía de la línea
+recta, hacia la Tierra, apenas $\SI{1.36}{\milli\meter}$.
+
+Si suponemos que la aceleración de caída libre decae como $1/r^{n}$, la
+predicción para la Luna es $g_0/60^{n}$. Con $n = 1$ se obtiene
+$\SI{0.16}{\meter\per\second\squared}$, unas $60$ veces más de lo medido;
+con $n = 3$, unas $60$ veces menos. Solo $n = 2$ concuerda con la
+observación. La manzana y la Luna caen por la misma causa, debilitada con la
+distancia según
+\begin{equation}
+  g(r) = g_0 \left( \frac{R_T}{r} \right)^{2} \,.
+  \label{eq:g_inverso_cuadrado}
+\end{equation}
+En la siguiente subsección veremos por qué el exponente es precisamente
+$2$.
+
+
 \section{Ley de Gravitación Universal de Newton}
 
 Mientras que las leyes de Kepler describen \textit{cómo} se mueven los planetas, fue Isaac Newton quien explicó \textit{por qué} se mueven de esa manera. A finales del siglo XVII, Newton propuso su Ley de Gravitación Universal, una ley fundamental que describe la fuerza de atracción entre dos objetos cualesquiera con masa.
+
+
+% =====================================================================
+% Reemplaza la subsección «La Fuerza Gravitacional entre Dos Cuerpos»
+% (dentro de \section{Ley de Gravitación Universal de Newton}).
+% Requiere: amsmath, siunitx, tikz (ya cargados en main.tex).
+% Conserva las etiquetas eq:ley_gravitacion y eq:GravitationalForce.
+% =====================================================================
+
+\subsection{La ley de gravitación universal en términos del campo}
+\label{subsec:gravitacion_campo}
+
+Cerca de la superficie de la Tierra todos los cuerpos caen con la misma
+aceleración, $g_0 \approx \SI{9.8}{\meter\per\second\squared}$, sin importar
+su masa, y la prueba de la Luna (subsección~\ref{subsec:prueba_luna}) muestra
+que esa aceleración se debilita con la distancia como $1/r^{2}$. Esto permite describir la gravitación sin hablar primero de fuerzas:
+la Tierra, o cualquier cuerpo de masa $M$, modifica el espacio a su alrededor
+y crea un \textbf{campo gravitacional} $\boldsymbol{g}$, cuyo valor en cada
+punto es la aceleración de caída libre en ese punto.
+
+\paragraph{Por qué el campo decae como $1/r^{2}$.}
+Representamos el campo con líneas que llegan radialmente a $M$, en un número
+$N$ proporcional a la masa, $N \propto M$. Donde las líneas están más
+apretadas el campo es más intenso: la magnitud del campo es la
+\textbf{densidad de líneas}, es decir, el número de líneas que cruzan una
+superficie perpendicular a ellas dividido por su área. En el espacio vacío
+las líneas no empiezan ni terminan, así que las mismas $N$ líneas cruzan
+cualquier esfera centrada en $M$. Como el área de una esfera de radio $r$ es
+$4\pi r^{2}$,
+\begin{equation}
+  g(r) = \frac{N}{4\pi r^{2}} \propto \frac{M}{r^{2}} \,.
+  \label{eq:densidad_lineas}
+\end{equation}
+A una distancia doble el área es cuatro veces mayor y el campo se reduce a la
+cuarta parte; a una distancia triple, a la novena parte
+(figura~\ref{fig:lineas_campo_esferas}). Escogiendo la constante de
+proporcionalidad como $N = 4\pi G M$, la magnitud del campo es
+\begin{equation}
+  g(r) = \frac{G M}{r^{2}} \,,
+  \label{eq:campo_g_r}
+\end{equation}
+donde $G$ es la \textbf{constante de gravitación universal},
+$G \approx \SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}$, la
+misma para todos los cuerpos.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      scale=1.1,
+      linea/.style={-{Stealth[length=2.5mm]}, thick, red!75!black},
+      esfera/.style={thick, dashed, blue!60!black},
+    ]
+    % Esferas de radio r y 2r
+    \draw[esfera] (0,0) circle (1.3);
+    \draw[esfera] (0,0) circle (2.6);
+    % Líneas de campo: llegan radialmente a M
+    \foreach \ang in {0,30,...,330} {
+      \draw[linea] (\ang:3.4) -- (\ang:0.45);
+    }
+    % Masa central
+    \fill[ball color=teal!70!black] (0,0) circle (0.38);
+    \node[white, font=\bfseries] at (0,0) {$M$};
+    % Rótulos de las esferas
+    \node[blue!60!black, fill=white, inner sep=1.5pt, font=\small]
+      at (-50:1.3) {$4\pi r^{2}$};
+    \node[blue!60!black, fill=white, inner sep=1.5pt, font=\small]
+      at (-50:2.6) {$4\pi (2r)^{2}$};
+  \end{tikzpicture}
+  \caption{Las mismas $N$ líneas de campo cruzan la esfera de radio $r$ y la de
+    radio $2r$, pero la segunda tiene cuatro veces más área: la densidad de
+    líneas, y con ella la magnitud del campo, es cuatro veces menor.}
+  \label{fig:lineas_campo_esferas}
+\end{figure}
+
+\paragraph{Forma vectorial.}
+Sea $\boldsymbol{r}$ el vector de posición del punto medido desde el centro de
+$M$, con magnitud $r = \lvert\boldsymbol{r}\rvert$, y sea
+$\hat{\boldsymbol{r}} = \boldsymbol{r}/r$ el vector unitario que apunta desde
+$M$ hacia el punto. Como las líneas de campo apuntan \emph{hacia} $M$, el
+campo tiene la dirección de $-\hat{\boldsymbol{r}}$:
+\begin{equation}
+  \boxed{\boldsymbol{g}(\boldsymbol{r})
+    = -\frac{G M}{r^{2}}\,\hat{\boldsymbol{r}}
+    = -\frac{G M}{r^{3}}\,\boldsymbol{r}} \,.
+  \label{eq:campo_g_vectorial}
+\end{equation}
+
+\paragraph{Calibración con la superficie de la Tierra.}
+En la superficie, $r = R_T$, el campo debe ser la aceleración de caída libre:
+\begin{equation}
+  g_0 = \frac{G M_T}{R_T^{2}} \approx \SI{9.8}{\meter\per\second\squared} \,,
+  \label{eq:calibracion_g0}
+\end{equation}
+de modo que, con $R_T \approx \SI{6.371e6}{\meter}$,
+\begin{equation}
+  G M_T = g_0 R_T^{2}
+  \approx \SI{3.98e14}{\meter\cubed\per\second\squared} \,.
+  \label{eq:calibracion_GM}
+\end{equation}
+La caída libre solo determina el producto $G M_T$; para separar $G$ de $M_T$
+hace falta medir la atracción entre masas de laboratorio, como lo hizo
+Cavendish en 1798.
+
+\paragraph{Del campo a la fuerza.}
+Una masa $m$ colocada en un punto donde el campo vale $\boldsymbol{g}$ cae con
+aceleración $\boldsymbol{g}$. Por la ley de la fuerza, la fuerza que siente es
+$\boldsymbol{F} = m\,\boldsymbol{g}$. Si $\boldsymbol{r}$ va de $M$ hasta $m$,
+la fuerza que $M$ ejerce sobre $m$ es
+\begin{equation}
+  \boldsymbol{F}_{M \to m} = m\,\boldsymbol{g}(\boldsymbol{r})
+  = -\frac{G M m}{r^{3}}\,\boldsymbol{r} \,,
+  \label{eq:GravitationalForce}
+\end{equation}
+cuya magnitud es la \textbf{ley de gravitación universal} de Newton:
+\begin{equation}
+  F = \frac{G M m}{r^{2}} \,.
+  \label{eq:ley_gravitacion}
+\end{equation}
+
+\paragraph{Acción y reacción.}
+La masa $m$ también crea su propio campo. En la posición de $M$, el vector
+que va desde $m$ hasta $M$ es $-\boldsymbol{r}$, de modo que el campo de $m$
+allí es $\boldsymbol{g}_m = -G m\,(-\boldsymbol{r})/r^{3}$, y la fuerza
+sobre $M$ resulta
+\begin{equation}
+  \boldsymbol{F}_{m \to M} = M\,\boldsymbol{g}_m
+  = \frac{G M m}{r^{3}}\,\boldsymbol{r}
+  = -\boldsymbol{F}_{M \to m} \,.
+  \label{eq:gravitacion_accion_reaccion}
+\end{equation}
+Las dos fuerzas tienen la misma magnitud y sentidos opuestos, como exige la
+ley de acción y reacción: la manzana atrae a la Tierra tanto como la Tierra a
+la manzana, aunque la aceleración de la Tierra sea imperceptible.
+
+\paragraph{Características de la interacción gravitacional.}
+\begin{itemize}
+  \item Es \textbf{directamente proporcional} a cada una de las masas: si se
+    duplica una de ellas, la fuerza se duplica.
+  \item Es \textbf{inversamente proporcional} al cuadrado de la distancia: si
+    la distancia se duplica, la fuerza se reduce a la cuarta parte. Es una
+    \textbf{ley del inverso del cuadrado}, consecuencia de que las líneas de
+    campo se reparten sobre esferas de área $4\pi r^{2}$.
+  \item Es siempre \textbf{atractiva} y \textbf{central}: actúa a lo largo de
+    la línea que une los centros de los dos cuerpos.
+  \item Es \textbf{universal}: la misma expresión describe la caída de una
+    manzana, la órbita de la Luna y el movimiento de los planetas.
+\end{itemize}
+
+\paragraph{Superposición.}
+Si hay varias masas $M_i$ en las posiciones $\boldsymbol{r}_i$, el campo en
+el punto $\boldsymbol{r}$ es la suma vectorial de los campos de cada una:
+\begin{equation}
+  \boldsymbol{g}(\boldsymbol{r})
+  = -\sum_{i} \frac{G M_i}{\lvert \boldsymbol{r} - \boldsymbol{r}_i \rvert^{3}}
+    \,(\boldsymbol{r} - \boldsymbol{r}_i) .
+  \label{eq:campo_superposicion}
+\end{equation}
+
 
 \subsection{La Fuerza Gravitacional entre Dos Cuerpos}
 
@@ -6122,52 +6314,53 @@ En forma vectorial, si $\boldsymbol{r}$ es el vector que va de $m_1$ a $m_2$, la
 \end{align}
 El signo negativo indica que la fuerza apunta en dirección opuesta a $\boldsymbol{r}$, es decir, desde $m_2$ hacia $m_1$.
 
-\subsection{El Concepto de Campo Gravitacional ($\boldsymbol{g}$)}
 
-Newton se sentía incómodo con la idea de la ``acción a distancia". Para evitarla, se introdujo el concepto de \textbf{campo gravitacional}. La idea es que un cuerpo masivo (como la Tierra, de masa $M$) no tira directamente de otros objetos, sino que \textit{modifica el espacio a su alrededor}, creando un campo de fuerza.
+% \subsection{El Concepto de Campo Gravitacional ($\boldsymbol{g}$)}
 
-El campo gravitacional, $\boldsymbol{g}$, en un punto del espacio se define como la fuerza gravitacional por unidad de masa que experimentaría una pequeña masa de prueba $m$ colocada en ese punto.
-\[ \boldsymbol{g} = \frac{\boldsymbol{F}_g}{m} \]
-Usando la ley de Newton, la magnitud del campo gravitacional a una distancia $r$ de una masa central $M$ es:
-\begin{equation}
-    g = \frac{F_g}{m} = \frac{G M m / r^2}{m} \implies \boxed{g = G \frac{M}{r^2}}
-    \label{eq:campo_g}
-\end{equation}
-El campo gravitacional es una propiedad del espacio creada por la masa $M$, independientemente de que haya o no otra masa para sentirla. Su dirección es siempre radial, apuntando hacia el centro de la masa $M$.
+% Newton se sentía incómodo con la idea de la ``acción a distancia". Para evitarla, se introdujo el concepto de \textbf{campo gravitacional}. La idea es que un cuerpo masivo (como la Tierra, de masa $M$) no tira directamente de otros objetos, sino que \textit{modifica el espacio a su alrededor}, creando un campo de fuerza.
 
-\begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}[
-        scale=1.2, font=\large,
-        earth/.style={shade, ball color=blue!60!cyan, text=white},
-        equipotential/.style={dashed, orange, thick},
-        fieldline/.style={->, %{Stealth[length=3mm, width=2mm]}, 
-        ultra thick, red!80!black},
-    ]
-        % --- Dibujar la Tierra en el centro ---
-        \node[earth, circle, minimum size=3cm] at (0,0) {Tierra};
+% El campo gravitacional, $\boldsymbol{g}$, en un punto del espacio se define como la fuerza gravitacional por unidad de masa que experimentaría una pequeña masa de prueba $m$ colocada en ese punto.
+% \[ \boldsymbol{g} = \frac{\boldsymbol{F}_g}{m} \]
+% Usando la ley de Newton, la magnitud del campo gravitacional a una distancia $r$ de una masa central $M$ es:
+% \begin{equation}
+%     g = \frac{F_g}{m} = \frac{G M m / r^2}{m} \implies \boxed{g = G \frac{M}{r^2}}
+%     \label{eq:campo_g}
+% \end{equation}
+% El campo gravitacional es una propiedad del espacio creada por la masa $M$, independientemente de que haya o no otra masa para sentirla. Su dirección es siempre radial, apuntando hacia el centro de la masa $M$.
+
+% \begin{figure}[h!]
+%     \centering
+%     \begin{tikzpicture}[
+%         scale=1.2, font=\large,
+%         earth/.style={shade, ball color=blue!60!cyan, text=white},
+%         equipotential/.style={dashed, orange, thick},
+%         fieldline/.style={->, %{Stealth[length=3mm, width=2mm]}, 
+%         ultra thick, red!80!black},
+%     ]
+%         % --- Dibujar la Tierra en el centro ---
+%         \node[earth, circle, minimum size=3cm] at (0,0) {Tierra};
         
-        % --- Dibujar las líneas equipotenciales ---
-        \foreach \r in {2.5, 3.5, 4.5} {
-            \draw[equipotential] (0,0) circle (\r);
-        }
+%         % --- Dibujar las líneas equipotenciales ---
+%         \foreach \r in {2.5, 3.5, 4.5} {
+%             \draw[equipotential] (0,0) circle (\r);
+%         }
         
-        % --- Dibujar las líneas del campo gravitacional ---
-        \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
-            \draw[fieldline] (\angle:5) -- (\angle:1.5);
-        }
+%         % --- Dibujar las líneas del campo gravitacional ---
+%         \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+%             \draw[fieldline] (\angle:5) -- (\angle:1.5);
+%         }
         
-        % --- Añadir etiquetas ---
-        \node[orange, font=\small, anchor=south] at (0, 3.5) {Línea Equipotencial};
-        \node[red!80!black, font=\small, rotate=-45, anchor=south] at (45:3.5) {Campo Gravitacional ($\boldsymbol{g}$)};
-    \end{tikzpicture}
-    \caption{Representación en 2D del campo gravitacional ($\boldsymbol{g}$) generado por la Tierra. Las líneas de campo (flechas rojas) son radiales y apuntan hacia el centro de masa. Las líneas equipotenciales (círculos naranjas a trazos) son perpendiculares a las líneas de campo.}
-    \label{fig:campo_gravitacional_newton}
-\end{figure}
+%         % --- Añadir etiquetas ---
+%         \node[orange, font=\small, anchor=south] at (0, 3.5) {Línea Equipotencial};
+%         \node[red!80!black, font=\small, rotate=-45, anchor=south] at (45:3.5) {Campo Gravitacional ($\boldsymbol{g}$)};
+%     \end{tikzpicture}
+%     \caption{Representación en 2D del campo gravitacional ($\boldsymbol{g}$) generado por la Tierra. Las líneas de campo (flechas rojas) son radiales y apuntan hacia el centro de masa. Las líneas equipotenciales (círculos naranjas a trazos) son perpendiculares a las líneas de campo.}
+%     \label{fig:campo_gravitacional_newton}
+% \end{figure}
 
-La importancia del campo es que, si conocemos $\boldsymbol{g}$ en una región del espacio, podemos calcular la fuerza gravitacional sobre cualquier masa $m$ simplemente con la fórmula:
-\[ \boldsymbol{F}_g = m \boldsymbol{g} \]
-Cerca de la superficie de la Tierra, el campo gravitacional es aproximadamente constante, con una magnitud $g \approx \SI{9.8}{\meter\per\second\squared}$. Este es el valor que usamos en los problemas de caída libre y movimiento parabólico. Las leyes de Kepler, que describen el movimiento planetario, se derivan directamente de la naturaleza de esta fuerza central de la inversa del cuadrado.
+% La importancia del campo es que, si conocemos $\boldsymbol{g}$ en una región del espacio, podemos calcular la fuerza gravitacional sobre cualquier masa $m$ simplemente con la fórmula:
+% \[ \boldsymbol{F}_g = m \boldsymbol{g} \]
+% Cerca de la superficie de la Tierra, el campo gravitacional es aproximadamente constante, con una magnitud $g \approx \SI{9.8}{\meter\per\second\squared}$. Este es el valor que usamos en los problemas de caída libre y movimiento parabólico. Las leyes de Kepler, que describen el movimiento planetario, se derivan directamente de la naturaleza de esta fuerza central de la inversa del cuadrado.
 
 % --- Fin del código LaTeX ---
 
@@ -6260,15 +6453,318 @@ Si la velocidad inicial horizontal ($v_{\text{inicial}}$) es mayor que la veloci
     \item \textbf{Si $v_{\text{inicial}}$ alcanza un valor crítico:} La energía cinética del proyectil es tan grande que la gravedad ya no puede hacer que regrese. La órbita deja de ser una curva cerrada.
 \end{itemize}
 
-\section*{Energía  potencial del campo gravitacional}
-Para el campo gravitacional definimos de forma similar la energía potencial a una distancia $r$ del centro de la Tierra, pero de tal manera que sea cero en el infinito
-\begin{align}
-    E_{\text{pot}} = W =& \boldsymbol{F}\cdot\boldsymbol{r} \nonumber\\
-    =&-\frac{GMm}{r^3}\boldsymbol{r}\cdot \boldsymbol{r}\nonumber\\
-    =&-\frac{GMm}{r^3} r^2\nonumber\\
-    =&-\frac{GMm}{r}\,.
-\end{align}
 
+
+% =====================================================================
+% Reemplaza la subsección «Energía potencial del campo gravitacional»
+% (archivo energia_potencial_gravitacional.tex, o el bloque original
+%   \section*{Energía  potencial del campo gravitacional} ... \end{align}
+% de main.tex, con la deducción E_pot = F·r).
+% Deducción con la fuerza promedio (promedio geométrico), sin dividir el
+% camino en tramos.
+% Requiere: amsmath, amssymb, siunitx, booktabs, tikz con
+%   \usetikzlibrary{arrows.meta} (ya cargados en main.tex).
+% Conserva las etiquetas eq:trabajo_producto_escalar, eq:def_cambio_epot,
+% eq:fuerza_grav_epot, eq:trabajo_grav_r1_r2, eq:cambio_epot_r1_r2,
+% eq:Epot_grav, eq:epot_cerca_exacta y eq:epot_cerca_mgh.
+% =====================================================================
+
+\subsection{Energía potencial del campo gravitacional}
+\label{subsec:energia_potencial_gravitacional}
+
+\paragraph{Punto de partida: trabajo y energía potencial.}
+Una fuerza \emph{constante} $\boldsymbol{F}$ que actúa sobre un cuerpo mientras
+este experimenta un desplazamiento $\Delta\boldsymbol{r}$ realiza un trabajo
+igual al producto escalar de los dos vectores,
+\begin{equation}
+  W = \boldsymbol{F}\cdot\Delta\boldsymbol{r}
+    = \lvert\boldsymbol{F}\rvert\,\lvert\Delta\boldsymbol{r}\rvert\cos\theta \,,
+  \label{eq:trabajo_producto_escalar}
+\end{equation}
+donde $\theta$ es el ángulo entre $\boldsymbol{F}$ y $\Delta\boldsymbol{r}$.
+Cerca de la superficie, la gravedad hace sobre un cuerpo que sube una altura
+$h$ el trabajo $W = -mgh$, y por eso definimos la energía potencial
+$U = mgh$: el cambio de energía potencial es el negativo del trabajo que hace
+la gravedad,
+\begin{equation}
+  \Delta U = -\,W_{\text{grav}} \,.
+  \label{eq:def_cambio_epot}
+\end{equation}
+Usaremos la misma definición para el campo gravitacional a cualquier
+distancia, pero ahora con la referencia en el infinito: $U(\infty) = 0$.
+
+\paragraph{La dificultad: la fuerza no es constante.}
+Sobre una masa $m$ en la posición $\boldsymbol{r}$, medida desde el centro de
+la Tierra (masa $M$), actúa la fuerza gravitacional
+\begin{equation}
+  \boldsymbol{F}(\boldsymbol{r})
+  = -\,\frac{GMm}{r^{3}}\,\boldsymbol{r}
+  = -\,\frac{GMm}{r^{2}}\,\hat{\boldsymbol{r}} \,,
+  \label{eq:fuerza_grav_epot}
+\end{equation}
+cuya magnitud, $F(r) = GMm/r^{2}$, disminuye con la distancia. Llevemos la
+masa en línea recta, alejándola del centro, desde la distancia $r_{a}$ hasta
+la distancia $r_{b} > r_{a}$. El desplazamiento apunta hacia afuera y la
+fuerza hacia el centro, de modo que $\theta = 180^{\circ}$ y
+$\cos\theta = -1$. Si la fuerza fuera constante, el
+trabajo~\eqref{eq:trabajo_producto_escalar} de la gravedad sería
+\begin{equation}
+  W_{\text{grav}} = -\,F\,(r_{b} - r_{a}) \,,
+  \label{eq:trabajo_fuerza_constante}
+\end{equation}
+cuya magnitud es el área de un rectángulo de altura $F$ y base
+$r_{b} - r_{a}$ en una gráfica de $F$ contra $r$. Pero la fuerza no es
+constante: es mayor al comienzo, $F(r_{a})$, que al final, $F(r_{b})$, y la
+ecuación~\eqref{eq:trabajo_fuerza_constante} no se puede aplicar tal como
+está. En particular, \emph{no} es correcto escribir
+$U = \boldsymbol{F}\cdot\boldsymbol{r}$: el vector $\boldsymbol{r}$ no es un
+desplazamiento del proceso y la fuerza no es la misma a lo largo del camino.
+
+\paragraph{La fuerza promedio.}
+Cuando la fuerza varía, la magnitud del trabajo sigue siendo el área bajo la
+curva $F(r)$ entre $r_{a}$ y $r_{b}$. Esa área es igual a la de un
+rectángulo con la misma base, $r_{b} - r_{a}$, y una altura adecuada, que
+llamamos \textbf{fuerza promedio} $\langle F\rangle$:
+\begin{equation}
+  W_{\text{grav}} = -\,\langle F\rangle\,(r_{b} - r_{a}) \,,
+  \qquad
+  F(r_{b}) < \langle F\rangle < F(r_{a}) \,.
+  \label{eq:trabajo_fuerza_promedio}
+\end{equation}
+Es la misma idea de la velocidad media: un auto cuya rapidez cambia recorre la
+misma distancia que si fuera todo el tiempo con su velocidad media,
+$\Delta x = \bar{v}\,\Delta t$. La fuerza promedio debe quedar entre la
+fuerza mínima y la máxima del recorrido, porque el área bajo la curva queda
+entre las áreas de los rectángulos de alturas $F(r_{b})$ y $F(r_{a})$. Toda
+la dificultad se reduce a encontrar $\langle F\rangle$.
+
+\paragraph{¿Qué promedio? Tres candidatos.}
+Con $F(r) = GMm/r^{2}$ hay tres maneras naturales de promediar la fuerza: el
+promedio aritmético de las fuerzas en los extremos, la fuerza en el punto
+medio del recorrido y el promedio geométrico de las fuerzas en los extremos,
+\begin{align}
+  \langle F\rangle_{\text{arit}}
+  &= \frac{F(r_{a}) + F(r_{b})}{2}
+   = \frac{GMm}{2}\left(\frac{1}{r_{a}^{2}} + \frac{1}{r_{b}^{2}}\right) ,
+  \label{eq:promedio_aritmetico}\\
+  \langle F\rangle_{\text{medio}}
+  &= F\!\left(\frac{r_{a} + r_{b}}{2}\right)
+   = \frac{4\,GMm}{(r_{a} + r_{b})^{2}} \,,
+  \label{eq:promedio_punto_medio}\\
+  \langle F\rangle_{\text{geom}}
+  &= \sqrt{F(r_{a})\,F(r_{b})}
+   = \sqrt{\frac{GMm}{r_{a}^{2}}\,\frac{GMm}{r_{b}^{2}}}
+   = \frac{GMm}{r_{a}\,r_{b}} \,.
+  \label{eq:promedio_geometrico}
+\end{align}
+Los tres quedan entre $F(r_{b})$ y $F(r_{a})$, y si $r_{b}$ está muy cerca de
+$r_{a}$, los tres se reducen a $F(r_{a})$ y se recupera el trabajo de una
+fuerza constante. Solo se distinguen en recorridos largos, y allí debemos
+buscar el criterio para escoger.
+
+\paragraph{La prueba del infinito.}
+Alejemos la masa cada vez más, $r_{b} \to \infty$, y veamos qué predice cada
+candidato para el trabajo $\langle F\rangle\,(r_{b} - r_{a})$ que hay que
+hacer contra la gravedad.
+\begin{itemize}
+  \item \textbf{Aritmético.} Como $1/r_{b}^{2} > 0$,
+    \begin{equation*}
+      \langle F\rangle_{\text{arit}}\,(r_{b} - r_{a})
+      > \frac{GMm}{2\,r_{a}^{2}}\,(r_{b} - r_{a})
+      \xrightarrow[\;r_{b}\to\infty\;]{} \infty \,.
+    \end{equation*}
+    Escapar de la Tierra exigiría una energía infinita y ningún cohete lo
+    lograría. Sin embargo, las sondas Voyager ya salieron del sistema solar.
+    Se descarta.
+  \item \textbf{Punto medio.}
+    \begin{equation*}
+      \langle F\rangle_{\text{medio}}\,(r_{b} - r_{a})
+      = \frac{4\,GMm\,(r_{b} - r_{a})}{(r_{a} + r_{b})^{2}}
+      \xrightarrow[\;r_{b}\to\infty\;]{} 0 \,.
+    \end{equation*}
+    Ir hasta el infinito costaría menos que ir solo hasta $2r_{a}$, que cuesta
+    al menos $F(2r_{a})\,r_{a} = GMm/(4r_{a})$, porque en ese recorrido la
+    fuerza nunca es menor que $F(2r_{a})$. Es absurdo: se descarta.
+  \item \textbf{Geométrico.}
+    \begin{equation*}
+      \langle F\rangle_{\text{geom}}\,(r_{b} - r_{a})
+      = \frac{GMm}{r_{a}\,r_{b}}\,(r_{b} - r_{a})
+      = GMm\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right)
+      \xrightarrow[\;r_{b}\to\infty\;]{} \frac{GMm}{r_{a}} \,.
+    \end{equation*}
+    El trabajo es finito y positivo, como debe ser.
+\end{itemize}
+
+\paragraph{La medida del área lo confirma.}
+El área bajo la curva puede medirse directamente, por ejemplo contando
+cuadritos sobre la gráfica en papel milimetrado o con un computador. La
+tabla~\ref{tab:promedios_fuerza} compara esa medida con el trabajo que da cada
+candidato para $r_{a} = R$, en unidades de $GMm/R$: solo el promedio
+geométrico coincide con el área en todos los casos. La
+figura~\ref{fig:promedio_geometrico} muestra por qué para $r_{b} = 4R$: el
+rectángulo de altura $\langle F\rangle_{\text{geom}}$ deja por fuera, a la
+izquierda, un trozo de área bajo la curva $A_{1}$, e incluye, a la derecha, un
+trozo $A_{2}$ que no está bajo la curva, y los dos son iguales. El rectángulo
+del promedio aritmético, en cambio, tiene más del doble del área.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Magnitud del trabajo para llevar la masa de $r_{a} = R$ a
+    $r_{b}$, en unidades de $GMm/R$: el área medida bajo la curva
+    $F(r) = GMm/r^{2}$ y el producto $\langle F\rangle\,(r_{b} - r_{a})$ con
+    cada promedio.}
+  \label{tab:promedios_fuerza}
+  \begin{tabular}{@{}ccccc@{}}
+    \toprule
+    $r_{b}$ & Área medida & Aritmético & Punto medio & Geométrico \\
+    \midrule
+    $2R$      & $0{,}500$ & $0{,}625$ & $0{,}444$ & $0{,}500$ \\
+    $4R$      & $0{,}750$ & $1{,}594$ & $0{,}480$ & $0{,}750$ \\
+    $10R$     & $0{,}900$ & $4{,}545$ & $0{,}298$ & $0{,}900$ \\
+    $\infty$  & $1$       & $\infty$  & $0$       & $1$       \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      scale=0.7,x=2.4cm, y=8cm,
+      >={Stealth[length=2.5mm]},
+      curva/.style={very thick, blue!70!black},
+      geom/.style={thick, BurntOrange},
+      arit/.style={thick, dashed, gray!70!black},
+      guia/.style={thin, dashed, gray},
+    ]
+    % Área bajo la curva entre r_a = 1 y r_b = 4
+    \fill[blue!12] (1,0)
+      -- plot[domain=1:4, samples=100, smooth] (\x, {1/(\x*\x)})
+      -- (4,0) -- cycle;
+    % A_1: trozo del área que queda por encima del rectángulo (de 1 a 2)
+    \fill[blue!35] (1,0.25)
+      -- plot[domain=1:2, samples=60, smooth] (\x, {1/(\x*\x)})
+      -- cycle;
+    % A_2: trozo del rectángulo que queda por encima de la curva (de 2 a 4)
+    \fill[BurntOrange!35] (2,0.25)
+      -- plot[domain=2:4, samples=60, smooth] (\x, {1/(\x*\x)})
+      -- (4,0.25) -- cycle;
+    % Rectángulo del promedio geométrico, altura 1/(1·4) = 0,25
+    \draw[geom] (1,0) rectangle (4,0.25);
+    % Rectángulo del promedio aritmético, altura (1 + 1/16)/2 = 0,53125
+    \draw[arit] (1,0.53125) -- (4,0.53125) -- (4,0.25);
+    % Ejes
+    \draw[->] (0.6,0) -- (4.6,0) node[below left] {$r/R$};
+    \draw[->] (0.6,0) -- (0.6,1.12)
+      node[above] {$F$ \small(en $GMm/R^{2}$)};
+    \foreach \x in {1,2,3,4}
+      \draw (\x,0) -- (\x,-0.015) node[below] {$\x$};
+    \foreach \y/\t in {0.25/0{,}25, 0.5/0{,}5, 1/1}
+      \draw (0.6,\y) -- (0.57,\y) node[left] {$\t$};
+    % Curva F(r) = GMm/r^2
+    \draw[curva] plot[domain=0.95:4.4, samples=120, smooth]
+      (\x, {1/(\x*\x)});
+    \node[blue!70!black, anchor=west] at (1.12,0.92)
+      {$F(r) = \dfrac{GMm}{r^{2}}$};
+    % Guías y marcas de r_a, r_b
+    \draw[guia] (1,0.25) -- (1,1);
+    \node[below] at (1,-0.06) {$r_{a}$};
+    \node[below] at (4,-0.06) {$r_{b}$};
+    % Rótulos de las áreas
+    \node[font=\small] at (1.22,0.33) {$A_{1}$};
+    \node[font=\small] at (2.55,0.205) {$A_{2}$};
+    \node[BurntOrange!80!black, anchor=south, font=\small]
+      at (3.05,0.25) {$\langle F\rangle_{\text{geom}} = \dfrac{GMm}{r_{a} r_{b}}$};
+    \node[gray!40!black, anchor=south, font=\small]
+      at (3.05,0.53125) {$\langle F\rangle_{\text{arit}}$};
+  \end{tikzpicture}
+  \caption{Fuerza que hay que vencer para llevar una masa $m$ de $r_{a} = R$
+    a $r_{b} = 4R$. El área sombreada bajo la curva es la magnitud del
+    trabajo. El rectángulo de altura $\langle F\rangle_{\text{geom}}$ tiene
+    la misma área: lo que deja por fuera a la izquierda, $A_{1}$, es igual a
+    lo que agrega a la derecha, $A_{2}$ (ambos valen $0{,}25\,GMm/R$). La
+    altura del promedio aritmético (a trazos) da un rectángulo con más del
+    doble del área.}
+  \label{fig:promedio_geometrico}
+\end{figure}
+
+\paragraph{Una intuición.}
+La fuerza gravitacional cambia \emph{por factores}: al pasar de $R$ a $10R$ se
+divide entre $100$. En el promedio aritmético dominan los valores grandes
+cercanos a $r_{a}$, mientras que el geométrico equilibra los factores. Además,
+el promedio geométrico es exactamente la fuerza a la distancia media
+geométrica $\sqrt{r_{a}\,r_{b}}$:
+\begin{equation}
+  F\!\left(\sqrt{r_{a}\,r_{b}}\,\right)
+  = \frac{GMm}{\left(\sqrt{r_{a}\,r_{b}}\,\right)^{2}}
+  = \frac{GMm}{r_{a}\,r_{b}}
+  = \langle F\rangle_{\text{geom}} \,.
+  \label{eq:fuerza_media_geometrica}
+\end{equation}
+Quien conozca el cálculo integral puede comprobar que el promedio geométrico
+es el valor exacto:
+\begin{equation}
+  \frac{1}{r_{b} - r_{a}} \int_{r_{a}}^{r_{b}} \frac{GMm}{r^{2}}\,dr
+  = \frac{GMm}{r_{b} - r_{a}}\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right)
+  = \frac{GMm}{r_{a}\,r_{b}} \,.
+  \label{eq:promedio_integral}
+\end{equation}
+
+\paragraph{El trabajo de la gravedad.}
+Con $\langle F\rangle = GMm/(r_{a} r_{b})$
+en~\eqref{eq:trabajo_fuerza_promedio},
+\begin{equation}
+  W_{\text{grav}}
+  = -\,\frac{GMm}{r_{a}\,r_{b}}\,(r_{b} - r_{a})
+  = -\,GMm\,\frac{r_{b} - r_{a}}{r_{a}\,r_{b}}
+  = -\,GMm\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right) .
+  \label{eq:trabajo_grav_r1_r2}
+\end{equation}
+El signo menos indica que, al alejarse la masa, la gravedad se opone al
+movimiento. Si la masa se mueve sobre una esfera centrada en $M$, el
+desplazamiento es perpendicular a la fuerza, $\theta = 90^{\circ}$, y la
+gravedad no realiza trabajo; por eso el resultado depende únicamente de las
+distancias inicial y final, y tiene sentido hablar de una energía potencial
+que depende solo de $r$.
+
+\paragraph{La energía potencial.}
+Con la definición~\eqref{eq:def_cambio_epot},
+\begin{equation}
+  U(r_{b}) - U(r_{a})
+  = -\,W_{\text{grav}}
+  = GMm\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right)
+  = \left(-\,\frac{GMm}{r_{b}}\right) - \left(-\,\frac{GMm}{r_{a}}\right) .
+  \label{eq:cambio_epot_r1_r2}
+\end{equation}
+El cambio de energía potencial es la diferencia de una misma función,
+$-GMm/r$, evaluada en los dos extremos. Ahora alejamos la masa
+indefinidamente: $r_{b} \to \infty$, de modo que $1/r_{b} \to 0$, y escogemos
+$U(\infty) = 0$. Llamando $r$ a la distancia inicial $r_{a}$,
+\begin{equation}
+  0 - U(r) = \frac{GMm}{r}
+  \quad\Longrightarrow\quad
+  \boxed{U(r) = -\,\frac{GMm}{r}} \,.
+  \label{eq:Epot_grav}
+\end{equation}
+La energía potencial es negativa a cualquier distancia finita: la masa está en
+un \emph{pozo} de energía, y para sacarla del campo hay que darle al menos la
+energía $GMm/r$.
+
+\paragraph{Comprobación: cerca de la superficie se recupera $mgh$.}
+Con $r_{a} = R_{T}$ y $r_{b} = R_{T} + h$ en~\eqref{eq:cambio_epot_r1_r2},
+\begin{equation}
+  U(R_{T} + h) - U(R_{T})
+  = GMm\,\frac{(R_{T} + h) - R_{T}}{R_{T}\,(R_{T} + h)}
+  = \frac{GM}{R_{T}^{2}}\,m\,h\,\frac{1}{1 + h/R_{T}} \,.
+  \label{eq:epot_cerca_exacta}
+\end{equation}
+Para $h \ll R_{T}$, $1 + h/R_{T} \approx 1$, y con
+$g = GM/R_{T}^{2} \approx \SI{9.8}{\meter\per\second\squared}$,
+\begin{equation}
+  U(R_{T} + h) - U(R_{T}) \approx m\,g\,h \,,
+  \label{eq:epot_cerca_mgh}
+\end{equation}
+que es la energía potencial que usamos cerca de la superficie. La
+expresión~\eqref{eq:Epot_grav} la contiene como caso particular.
 
 
 
@@ -6309,6 +6805,13 @@ Para un proyectil lanzado horizontalmente desde un radio $r$:
 
 % --- Fin del código LaTeX ---
 % --- Inicio del código LaTeX para insertar ---
+
+En cualquier caso,  para un objeto partiendo de la superficie de la Tierra de radio $R$ con rapidez $v_0$,   a una distancia $r$ tenemos que
+\begin{align*}
+    \frac{1}{2}mv_0^2 -G\frac{Mm}{R} = &\frac{1}{2}mv^2 -G\frac{Mm}{r}\\
+    v_0^2 =&v^2+2GM\left(\frac{1}{R}-\frac{1}{r}\right)\\
+     v_0^2 =& v^2+v_{\text{esc}}^2\left(1-\frac{R}{r}\right)
+\end{align*}
 
 \subsection{Ejemplo: Campo Gravitacional de la Tierra a la Distancia de la Luna}
 
@@ -6590,7 +7093,7 @@ Gracias de nuevo por este desafío tan gratificante. ¡Ha sido un verdadero plac
 % --- Fin del código LaTeX ---
 
 
-\section{Simulación Numérica: La Órbita de la Tierra y la Luna}
+\subsection{Simulación Numérica: La Órbita de la Tierra y la Luna}
 
 Hasta ahora hemos analizado el movimiento de los cuerpos utilizando soluciones algebraicas y geométricas exactas. Sin embargo, en la física computacional moderna, podemos predecir el comportamiento de un sistema resolviendo las leyes de Newton paso a paso mediante un ordenador. Este enfoque se conoce como integración numérica.
 
