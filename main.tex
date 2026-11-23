@@ -10103,7 +10103,7 @@ El misterio queda resuelto. Aunque los $8$ electrones residen en la misma capa e
 
 \section{Ejercicios Propuestos del Capítulo 4}
 
-A continuación, se presentan diez ejercicios para poner en práctica los principios del electromagnetismo clásico y su transición hacia la física moderna. Se recomienda repasar las constantes fundamentales (como $k$, $\mu_0$, $\epsilon_0$ y $c$) antes de comenzar.
+A continuación, se presentan once ejercicios para poner en práctica los principios del electromagnetismo clásico y su transición hacia la física moderna. Se recomienda repasar las constantes fundamentales (como $k$, $\mu_0$, $\epsilon_0$ y $c$) antes de comenzar.
 
 \begin{enumerate}
 
@@ -10146,6 +10146,48 @@ A continuación, se presentan diez ejercicios para poner en práctica los princi
     \item \textbf{El Átomo de Bohr (Niveles de Energía Cuantizados):} La solución de Bohr demostró que las energías permitidas para el electrón en el átomo de hidrógeno están dadas por la fórmula algebraica $E_n = -13.6 \text{ eV} / n^2$. 
     Cuando un átomo "canta" y emite su famosa línea roja de luz (llamada línea $H_\alpha$ de la serie de Balmer), el electrón salta de la órbita $n=3$ cayendo a la órbita $n=2$. Calcule la diferencia de energía ($\Delta E = E_3 - E_2$) y demuestre cuál es la energía exacta del fotón rojo emitido.
     \textit{[Resp: $E_3 \approx -1.51 \text{ eV}$, $E_2 = -3.40 \text{ eV}$. El fotón emitido tiene $\Delta E \approx 1.89 \text{ eV}$].}
+
+    \item\label{prob:cap4-montana-electrica} \textbf{Montaña rusa eléctrica (Campo Eléctrico Uniforme):}
+    Una esfera pequeña de masa $m = \SI{2.0}{\gram}$ y carga $q = +\SI{2.0}{\micro\coulomb}$ se mueve sin fricción por una vía que está sobre una mesa horizontal, dentro de una región con un campo eléctrico uniforme de magnitud $E = \SI{5.0e3}{\newton\per\coulomb}$. La figura~\ref{fig:cap4-montana-electrica} muestra la vía vista desde arriba: el campo apunta hacia abajo en la figura y las distancias $y$ se miden, en contra del campo, desde la recta que pasa por $B$. La esfera parte del reposo en $A$. Como la mesa es horizontal, el peso no influye en el movimiento. Es la versión eléctrica de la montaña rusa del problema~\ref{prob:parcial2-montana} del capítulo 3.
+
+    \begin{figure}[htbp]
+        \centering
+        \begin{tikzpicture}[x=0.95cm, y=0.95cm]
+            % campo eléctrico uniforme
+            \foreach \x in {-0.6,1.4,...,11.4} {
+                \draw[-{Stealth}, gray!60, thick] (\x,4.9) -- (\x,0.4);
+            }
+            \node[gray!70!black, right] at (7.4,4.5) {$\boldsymbol{E}$};
+            % recta de referencia por B
+            \draw[dashed, gray] (-1.2,0.08) -- (11.6,0.08);
+            % vía
+            \draw[very thick] (-1.1,4) -- (0,4) to[out=0,in=180] (3,0.08)
+                to[out=0,in=180] (6,2.4) to[out=0,in=180] (8.5,1)
+                to[out=0,in=180] (11,4.4) -- (11.5,4.4);
+            % distancias medidas en contra del campo
+            \foreach \x/\y/\p/\h in {0/4/A/20, 6/2.4/C/12, 11/4.4/D/22} {
+                \draw[dashed, gray] (\x,0.08) -- (\x,\y);
+                \fill (\x,\y) circle (1.6pt);
+                \node[above] at (\x,\y+0.05) {$\p$};
+                \node[right, font=\small, fill=white, inner sep=1pt] at (\x,\y/2) {\SI{\h}{\centi\meter}};
+            }
+            \fill (3,0.08) circle (1.6pt);
+            \node[below] at (3,0.0) {$B$};
+            % esfera en A
+            \shade[ball color=gray!40] (-0.55,4.22) circle (0.2);
+            \node[font=\small] at (-0.55,4.22) {$+$};
+        \end{tikzpicture}
+        \caption{Vía del problema~\ref{prob:cap4-montana-electrica}, vista desde arriba, dentro de un campo eléctrico uniforme. La esfera parte del reposo en $A$.}
+        \label{fig:cap4-montana-electrica}
+    \end{figure}
+
+    \begin{enumerate}
+        \item Calcule la rapidez de la esfera en $B$ y en $C$.
+        \item ¿Llega la esfera hasta $D$, a \SI{22}{\centi\meter}? ¿Hasta qué distancia de la recta de $B$ puede llegar?
+        \item ¿Cambian las respuestas anteriores si la esfera tiene el doble de masa y la misma carga? Compare con la montaña rusa del capítulo 3, donde la masa se cancela.
+        \item Si la vía estuviera en un plano vertical, con el campo eléctrico apuntando hacia abajo como la gravedad, ¿se podría despreciar el peso de la esfera? Compare $qE/m$ con $g = \SI{9.8}{\meter\per\second\squared}$ y repita la comparación para un electrón en el mismo campo.
+    \end{enumerate}
+    \textit{[Resp: a) $v_B \approx \SI{1.41}{\meter\per\second}$, $v_C \approx \SI{0.89}{\meter\per\second}$; b) no, llega hasta \SI{20}{\centi\meter}; c) solo cambian las rapideces, $v \propto 1/\sqrt{m}$; d) no: $qE/m = \SI{5.0}{\meter\per\second\squared}$ es comparable con $g$; para el electrón $qE/m \approx \num{9e13}\,g$. Solución en la página~\pageref{sol:cap4-montana-electrica}]}
 
 \end{enumerate}
 
@@ -11515,5 +11557,63 @@ Respuesta b). Sin torque externo el momento angular se conserva. Cada parte
 de los brazos contribuye con $m\,r\,v$; al reducir $r$, la rapidez $v$ debe
 aumentar para mantener $L$ constante, así que la patinadora gira más rápido.
 Es la misma razón por la que un planeta va más rápido en el perihelio.
+
+% --- Solución del problema de la montaña rusa eléctrica (capítulo 4) ---
+\section{Solución del problema de la montaña rusa eléctrica}
+\label{sol:cap4-montana-electrica}
+
+Solución del problema~\ref{prob:cap4-montana-electrica} de los ejercicios propuestos del capítulo 4.
+
+\subsection*{La energía potencial en un campo uniforme}
+
+La fuerza eléctrica sobre la esfera, $\boldsymbol{F} = q\boldsymbol{E}$, es la misma en todos los puntos, igual que el peso cerca de la superficie de la Tierra. Si la esfera se desplaza una distancia $y$ en contra del campo, la fuerza eléctrica hace un trabajo negativo, $W = -qEy$, y la energía potencial aumenta en lo mismo:
+\begin{equation}
+    U = qEy\,,
+\end{equation}
+con $U = 0$ en la recta que pasa por $B$. Es la versión eléctrica de $U = mgh$. Sin fricción, y como la normal es perpendicular al desplazamiento y no hace trabajo, se conserva la energía mecánica:
+\begin{align}
+    \frac{1}{2}mv^2 + qEy &= qEy_A\,, \nonumber\\
+    v &= \sqrt{\frac{2qE}{m}\,(y_A - y)}\,.
+\end{align}
+El factor $qE/m$ es la aceleración que produce el campo:
+\begin{equation}
+    \frac{qE}{m} = \frac{(\SI{2.0e-6}{\coulomb})(\SI{5.0e3}{\newton\per\coulomb})}{\SI{2.0e-3}{\kilogram}} = \SI{5.0}{\meter\per\second\squared}\,.
+\end{equation}
+
+\subsection*{a) Rapidez en $B$ y en $C$}
+\begin{align}
+    v_B &= \sqrt{2(5.0)(0.20)}\,\si{\meter\per\second} \approx \SI{1.41}{\meter\per\second}\,, &
+    v_C &= \sqrt{2(5.0)(0.20 - 0.12)}\,\si{\meter\per\second} \approx \SI{0.89}{\meter\per\second}\,.
+\end{align}
+Comprobación con el trabajo: de $A$ a $B$ el campo hace $W = qE\,(\SI{0.20}{\meter}) = \SI{2.0e-3}{\joule}$, y $\tfrac{1}{2}(\SI{2.0e-3}{\kilogram})(\SI{1.41}{\meter\per\second})^2 \approx \SI{2.0e-3}{\joule}$.
+
+\subsection*{b) ¿Llega hasta $D$?}
+No. Para llegar a $D$ necesitaría una energía potencial $qE\,(\SI{22}{\centi\meter})$, mayor que toda la energía que tiene, $qE\,(\SI{20}{\centi\meter})$. Llega hasta \SI{20}{\centi\meter} de la recta de $B$, se detiene y regresa. La conclusión no depende de $q$, $m$ ni $E$: solo de la distancia de partida.
+
+\subsection*{c) El doble de masa}
+Las distancias que alcanza no cambian, porque en b) solo se comparan energías potenciales. Las rapideces sí: $qE/m$ se reduce a la mitad y $v \propto 1/\sqrt{m}$, así que
+\begin{align}
+    v_B &\approx \frac{\SI{1.41}{\meter\per\second}}{\sqrt{2}} = \SI{1.00}{\meter\per\second}\,, &
+    v_C &\approx \frac{\SI{0.89}{\meter\per\second}}{\sqrt{2}} = \SI{0.63}{\meter\per\second}\,.
+\end{align}
+En la montaña rusa la masa se cancela porque el peso, $mg$, es proporcional a la masa. La fuerza eléctrica, $qE$, depende de la carga y no de la masa: dos objetos con la misma carga y distinta masa no se mueven igual en un campo eléctrico.
+
+\subsection*{d) ¿Se puede despreciar el peso?}
+Hay que comparar las dos fuerzas, o lo que es lo mismo, las aceleraciones que producen:
+\begin{equation}
+    \frac{qE}{mg} = \frac{\SI{5.0}{\meter\per\second\squared}}{\SI{9.8}{\meter\per\second\squared}} \approx 0.51\,.
+\end{equation}
+Para esta esfera el peso, $mg = \SI{0.020}{\newton}$, es el doble de la fuerza eléctrica, $qE = \SI{0.010}{\newton}$: no se puede despreciar. Con la vía vertical y los dos campos hacia abajo, las dos energías potenciales se suman, $U = (qE + mg)\,y$, y la aceleración efectiva es $g + qE/m = \SI{14.8}{\meter\per\second\squared}$:
+\begin{equation}
+    v_B = \sqrt{2(14.8)(0.20)}\,\si{\meter\per\second} \approx \SI{2.43}{\meter\per\second}\,.
+\end{equation}
+Por eso el enunciado pone la vía sobre una mesa horizontal: así la normal equilibra el peso y solo cuenta el campo eléctrico.
+
+Para un electrón en el mismo campo la situación es la opuesta:
+\begin{equation}
+    \frac{qE}{m} = \frac{(\SI{1.6e-19}{\coulomb})(\SI{5.0e3}{\newton\per\coulomb})}{\SI{9.11e-31}{\kilogram}} \approx \SI{8.8e14}{\meter\per\second\squared} \approx \num{9e13}\,g\,.
+\end{equation}
+La gravedad cambiaría el resultado en menos de una parte en $10^{13}$, aunque apunte en la misma dirección que el campo eléctrico. Por eso en los tubos de rayos catódicos, los aceleradores y los átomos se desprecia el peso de las partículas cargadas: la razón carga/masa es enorme. En cambio, para objetos macroscópicos con cargas de microcoulombs hay que comparar $qE$ con $mg$ en cada caso.
+
 
 \end{document}
